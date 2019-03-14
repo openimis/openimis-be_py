@@ -16,6 +16,5 @@ def extract_requirement(module):
     return "%s==%s" % (module["package"],module["version"])
 
 OPENIMIS_CONF = load_openimis_conf()
-REQUIREMENTS = OPENIMIS_CONF["requirements"]
 MODULES = list(map(extract_requirement, OPENIMIS_CONF["modules"]))
-print("\n".join(REQUIREMENTS + MODULES))
+print("\n".join(MODULES))
