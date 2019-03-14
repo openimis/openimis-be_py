@@ -1,0 +1,4 @@
+django>=2.1
+pyodbc
+django-pyodbc
+django-pyodbc-azure
