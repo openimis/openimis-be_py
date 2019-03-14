@@ -13,7 +13,7 @@ def load_openimis_conf():
         return json.load(conf_file)
 
 def extract_requirement(module):
-    return "%s==%s" % (module["package"],module["version"])
+    return "%s%s" % (module["package"],module["version"])
 
 OPENIMIS_CONF = load_openimis_conf()
 MODULES = list(map(extract_requirement, OPENIMIS_CONF["modules"]))

@@ -3,12 +3,12 @@
     {
       "name": "core",
       "package": "openimis-be-core",
-      "version": "0.0.1"
+      "version": "==0.0.1"
     },
     {
       "name": "claim",
       "package": "openimis-be-claim",
-      "version": "0.0.1"
+      "version": "==0.0.1"
     }
   ]
 }
