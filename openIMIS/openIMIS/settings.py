@@ -79,19 +79,23 @@ WSGI_APPLICATION = 'openIMIS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+if ("DB_OPTIONS" in os.environ):
+    DATABASE_OPTIONS = json.loads(os.environ["DB_OPTIONS"])
+else:
+    DATABASE_OPTIONS = {
+        'driver': 'ODBC Driver 17 for SQL Server',
+        'unicode_results': True
+    }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': os.environ.get('DB_NAME'),    
+        'ENGINE': os.environ.get('DB_ENGINE', 'sql_server.pyodbc'),
+        'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': os.environ.get('DB_HOST'),
         'PORT': os.environ.get('DB_PORT'),
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-            'unicode_results': True
-        }
-    }
+        'OPTIONS': DATABASE_OPTIONS}
 }
 
 
