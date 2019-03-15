@@ -16,12 +16,14 @@ This repo branches, tags,... are maintained by openIMIS official delivery team w
   * install openIMIS (external) dependencies: `pip install -r requirements.txt`
   * generate the openIMIS modules dependencies file (from openimis.json config): `python modules-requirements.py openimis.json > modules-requirements`
   * install openIMIS current modules: `pip install -r modules-requirements.txt`
-* openIMIS backend connects to MS-SQL database via environment variables:
-  * `DB_HOST`
-  * `DB_PORT`
-  * `DB_NAME`
-  * `DB_USER`
-  * `DB_PASSWORD`
+  * create a `openimis-be_py/.env` file to provide your database connection info (note: can also be passed in docker command line):
+  ```
+  DB_HOST=mssql-host-server
+  DB_PORT=mssql-port
+  DB_NAME=database-name
+  DB_USER=database-user
+  DB_PASSWORD=databaase-password
+  ```
 * start openIMIS from within `openimis-be_py/openIMIS`: `python manage.py runserver`
 
 At this stage, you may (depends on the database you connect to) need to:
