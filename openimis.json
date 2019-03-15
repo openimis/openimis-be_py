@@ -2,13 +2,11 @@
   "modules": [
     {
       "name": "core",
-      "package": "openimis-be-core",
-      "version": "==0.0.1"
+      "pip": "openimis-be-core==0.0.1"
     },
     {
       "name": "claim",
-      "package": "openimis-be-claim",
-      "version": "==0.0.1"
+      "pip": "openimis-be-claim==0.0.1"
     }
   ]
 }

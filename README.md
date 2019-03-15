@@ -14,6 +14,7 @@ This repo branches, tags,... are maintained by openIMIS official delivery team w
 * install [pip](https://pip.pypa.io)
 * within `openimis-be_py` directory
   * install openIMIS (external) dependencies: `pip install -r requirements.txt`
+  * generate the openIMIS modules dependencies file (from openimis.json config): `python modules-requirements.py openimis.json > modules-requirements`
   * install openIMIS current modules: `pip install -r modules-requirements.txt`
 * openIMIS backend connects to MS-SQL database via environment variables:
   * `DB_HOST`
