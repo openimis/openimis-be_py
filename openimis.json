@@ -7,10 +7,6 @@
     {
       "name": "claim",
       "pip": "openimis-be-claim==0.0.1"
-    },
-    {
-      "name": "mymodule",
-      "pip": "openimis-be-mymodule==0.0.1"
     }
   ]
 }
