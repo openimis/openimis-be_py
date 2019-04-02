@@ -1,5 +1,5 @@
 cached-property
-django==2.1
+django>=2.1,<2.2
 django-pyodbc
 django-pyodbc-azure
 nepalicalendar
