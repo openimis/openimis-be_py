@@ -2,6 +2,7 @@ cached-property
 django>=2.1
 django-pyodbc
 django-pyodbc-azure
-pyodbc
-python-dotenv
 nepalicalendar
+pyodbc
+python-dateutil
+python-dotenv

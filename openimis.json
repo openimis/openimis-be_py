@@ -2,27 +2,27 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==0.0.2"
+      "pip": "openimis-be-core"
     },
     {
       "name": "location",
-      "pip": "openimis-be-location==0.0.1"
+      "pip": "openimis-be-location"
     },
     {
       "name": "medical",
-      "pip": "openimis-be-medical==0.0.1"
+      "pip": "openimis-be-medical"
     },
     {
       "name": "insuree",
-      "pip": "openimis-be-insuree==0.0.1"
+      "pip": "openimis-be-insuree"
     },
     {
       "name": "policy",
-      "pip": "openimis-be-policy==0.0.1"
+      "pip": "openimis-be-policy"
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==0.0.2"
+      "pip": "openimis-be-claim"
     }
   ]
 }
