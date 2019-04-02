@@ -1,3 +1,7 @@
+| :bomb: Disclaimer |
+| --- |
+| This repository currently only contains bootsrapping material for the modularized openIMIS. Don't use it (or even connect it) to a production database. |
+
 # openIMIS Backend Reference Implementation
 This repository holds the configuration files for the openIMIS Backend Reference Implementation.
 It serves 2 distinct use cases:
@@ -18,7 +22,7 @@ This includes (but is not limited to) date handling, user info,...|
 * install [pip](https://pip.pypa.io)
 * within `openimis-be_py` directory
   * install openIMIS (external) dependencies: `pip install -r requirements.txt`
-  * generate the openIMIS modules dependencies file (from openimis.json config): `python modules-requirements.py openimis.json > modules-requirements`
+  * generate the openIMIS modules dependencies file (from openimis.json config): `python modules-requirements.py openimis.json > modules-requirements.txt`
   * install openIMIS current modules: `pip install -r modules-requirements.txt`
   * configure the database connection (see section here below)
 * start openIMIS from within `openimis-be_py/openIMIS`: `python manage.py runserver`
@@ -59,6 +63,8 @@ At this stage, you may (depends on the database you connect to) need to:
 * upload the created package (in `dist/`) to PyPI.org: `twine upload -r pypi dist/openimis_be_claim-1.2.3*`
 
 ## Distributor setup
+
+Note: as a distributor, you may want to run an openIMIS version without docker. To do so, follow developers setup here above (up to running django migrations)
 
 ### To create an openIMIS Backend distribution
 * clone this repo (creates the `openimis-be_py` directory) and create a git branch (named according to the release you want to bundle)
