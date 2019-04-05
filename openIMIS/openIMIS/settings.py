@@ -41,9 +41,25 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'guardian',
+    'rest_framework',
 ]
 OPENIMIS_APPS = openimis_apps()
 INSTALLED_APPS = DJANGO_APPS + OPENIMIS_APPS
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
+)
+
+GUARDIAN_GET_INIT_ANONYMOUS_USER = 'core.models.get_anonymous_user_instance'
+GUARDIAN_MONKEY_PATCH = False
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'core.models.ObjectPermissions'
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
