@@ -48,17 +48,22 @@ OPENIMIS_APPS = openimis_apps()
 INSTALLED_APPS = DJANGO_APPS + OPENIMIS_APPS
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
+    'core.security.RemoteUserBackend',
     'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
-GUARDIAN_GET_INIT_ANONYMOUS_USER = 'core.models.get_anonymous_user_instance'
-GUARDIAN_MONKEY_PATCH = False
+ANONYMOUS_USER_NAME = None
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'core.models.ObjectPermissions'
-    ]
+        'core.security.ObjectPermissions'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'core.security.RemoteUserBackend',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
 }
 
 MIDDLEWARE = [
@@ -67,6 +72,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.RemoteUserMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
