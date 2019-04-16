@@ -24,46 +24,48 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'chv^^7i_v3-04!rzu&qe#+h*a=%h(ib#5w9n$!f2q7%2$qp=zz'
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY", 'chv^^7i_v3-04!rzu&qe#+h*a=%h(ib#5w9n$!f2q7%2$qp=zz')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get("DEBUG", False))
 
-ALLOWED_HOSTS = []
+if ("ALLOWED_HOSTS" in os.environ):
+    ALLOWED_HOSTS = json.loads(os.environ["ALLOWED_HOSTS"])
+else:
+    ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
-DJANGO_APPS = [
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'guardian',
     'rest_framework',
+    'rules',
+    'rest_framework_rules',
 ]
-OPENIMIS_APPS = openimis_apps()
-INSTALLED_APPS = DJANGO_APPS + OPENIMIS_APPS
+INSTALLED_APPS += openimis_apps()
 
-AUTHENTICATION_BACKENDS = (
-    'core.security.RemoteUserBackend',
-    'guardian.backends.ObjectPermissionBackend',
+AUTHENTICATION_BACKENDS = []
+if bool(os.environ.get("REMOTE_USER_AUTHENTICATION", False)):
+    AUTHENTICATION_BACKENDS += ['core.security.RemoteUserBackend']
+
+AUTHENTICATION_BACKENDS += [
+    'rules.permissions.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
-)
+]
 
 ANONYMOUS_USER_NAME = None
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'core.security.ObjectPermissions'
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'core.security.RemoteUserBackend',
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    )
+    ]
 }
 
 MIDDLEWARE = [
@@ -71,8 +73,13 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.RemoteUserMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware'
+]
+if bool(os.environ.get("REMOTE_USER_AUTHENTICATION", False)):
+    MIDDLEWARE += [
+        'core.security.RemoteUserMiddleware'
+    ]
+MIDDLEWARE += [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -158,4 +165,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = "/%sstatic/" % os.environ.get("SITE_ROOT", '')

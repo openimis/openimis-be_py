@@ -17,8 +17,8 @@ from django.contrib import admin
 from django.conf.urls import url, include
 from django.urls import path
 from .openimisurls import openimis_urls
+import os
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'^accounts/', include('rest_framework.urls'))
+    path('%sadmin/' % os.environ.get("SITE_ROOT", ''), admin.site.urls),
 ] + openimis_urls()
