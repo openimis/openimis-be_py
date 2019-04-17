@@ -1,8 +1,14 @@
 cached-property
 django>=2.1,<2.2
+djangorestframework
+django-filter
+django-guardian
 django-pyodbc
 django-pyodbc-azure
+markdown
 nepalicalendar
 pyodbc
 python-dateutil
 python-dotenv
+rules
+django-rest-framework-rules
