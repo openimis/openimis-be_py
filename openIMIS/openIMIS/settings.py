@@ -20,6 +20,16 @@ load_dotenv()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+def SITE_ROOT():
+    root = os.environ.get("SITE_ROOT", '')
+    if (root == ''):
+        return root
+    elif (root.endswith('/')):
+        return root
+    else:
+        return "%s/" % root
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -28,7 +38,7 @@ SECRET_KEY = os.environ.get(
     "SECRET_KEY", 'chv^^7i_v3-04!rzu&qe#+h*a=%h(ib#5w9n$!f2q7%2$qp=zz')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get("DEBUG", False))
+DEBUG = True # bool(os.environ.get("DEBUG", False)) - need to fix static file serving before turning it False
 
 if ("ALLOWED_HOSTS" in os.environ):
     ALLOWED_HOSTS = json.loads(os.environ["ALLOWED_HOSTS"])
@@ -165,4 +175,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = "/%sstatic/" % os.environ.get("SITE_ROOT", '')
+STATIC_URL = "/%sstatic/" % SITE_ROOT()
+

@@ -15,3 +15,4 @@ RUN python modules-requirements.py openimis.json > modules-requirements.txt
 RUN pip install -r modules-requirements.txt
 WORKDIR /openimis-be/openIMIS
 ENTRYPOINT ["/openimis-be/script/entrypoint.sh"]
+CMD ["/openimis-be/script/entrypoint.sh"]

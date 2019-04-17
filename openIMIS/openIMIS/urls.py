@@ -18,7 +18,8 @@ from django.conf.urls import url, include
 from django.urls import path
 from .openimisurls import openimis_urls
 import os
+from .settings import SITE_ROOT
 
 urlpatterns = [
-    path('%sadmin/' % os.environ.get("SITE_ROOT", ''), admin.site.urls),
+    path("%sadmin/" % SITE_ROOT(), admin.site.urls),
 ] + openimis_urls()
