@@ -8,7 +8,7 @@ python:
 env:
   - DJANGO=2.1 DB=default DB_HOST=localhost DB_PORT=1433 DB_NAME=test_db DB_USER=sa DB_PASSWORD=t3sts3cr3tp@ss  
 before_install:  
-  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
   - curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
   - curl https://packages.microsoft.com/config/debian/9/prod.list | sudo tee -a /etc/apt/sources.list
   - sudo apt-get update
