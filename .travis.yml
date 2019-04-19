@@ -4,13 +4,14 @@ python:
   - "3.7"
 env:
   - DJANGO=2.1 DB=default
+before_install:
+  - sudo apt-get update && apt-get install -y apt-transport-https ca-certificates
+  - curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+  - sudo curl https://packages.microsoft.com/config/debian/9/prod.list > /etc/apt/sources.list.d/mssql-release.list
+  - sudo apt-get update
+  - ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 mssql-tools mssql-cli  
+  - sudo apt-get install -y unixodbc-dev  
 install:
-  - apt-get update && apt-get install -y apt-transport-https ca-certificates
-  - curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-  - curl https://packages.microsoft.com/config/debian/9/prod.list > /etc/apt/sources.list.d/mssql-release.list
-  - apt-get update
-  - ACCEPT_EULA=Y apt-get install -y msodbcsql17 mssql-tools mssql-cli  
-  - apt-get install -y unixodbc-dev
   - pip install -r requirements.txt
 before_script:
   - python modules-requirements.py openimis.json > modules-requirements.txt
