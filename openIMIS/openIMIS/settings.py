@@ -45,7 +45,8 @@ if ("ALLOWED_HOSTS" in os.environ):
 else:
     ALLOWED_HOSTS = ['*']
 
-
+# TEST_WITHOUT_MIGRATIONS_COMMAND = 'django_nose.management.commands.test.Command'
+TEST_RUNNER = 'core.test_utils.UnManagedModelTestRunner'
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'test_without_migrations',
     'rest_framework',
     'rules',
     'rest_framework_rules',
@@ -176,4 +178,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = "/%sstatic/" % SITE_ROOT()
-

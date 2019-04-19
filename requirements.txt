@@ -5,10 +5,11 @@ django-filter
 django-guardian
 django-pyodbc
 django-pyodbc-azure
+django-rest-framework-rules
+django-test-without-migrations
 markdown
 nepalicalendar
 pyodbc
 python-dateutil
 python-dotenv
 rules
-django-rest-framework-rules
