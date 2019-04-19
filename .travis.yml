@@ -15,6 +15,7 @@ before_install:
   - sudo apt-get update
   - ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 mssql-tools mssql-cli
   - sudo ls /opt/microsoft/msodbcsql17/lib64/
+  - sudo ldd /opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.3.so.1.1
   - sudo apt-get install -y python3-dev unixodbc-dev
   - ./script/launch-mssql-in-docker.sh -p $DB_PASSWORD
 before_script:
@@ -23,4 +24,5 @@ before_script:
   - pip install -r modules-requirements.txt
 script:
   - cd openIMIS
+  - ls -al /opt/microsoft/msodbcsql17/lib64/
   - python manage.py test core -n
