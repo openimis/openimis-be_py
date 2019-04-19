@@ -14,7 +14,7 @@ before_install:
   - curl https://packages.microsoft.com/config/debian/9/prod.list | sudo tee -a /etc/apt/sources.list
   - sudo apt-get update
   - ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 mssql-tools mssql-cli
-  - ldd libmsodbcsql-17.3.so.1.1
+  - sudo ls /opt/microsoft/msodbcsql17/lib64/
   - sudo apt-get install -y python3-dev unixodbc-dev
   - ./script/launch-mssql-in-docker.sh -p $DB_PASSWORD
 before_script:
