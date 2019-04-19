@@ -23,6 +23,8 @@ before_script:
   - pip install -r modules-requirements.txt
 script:
   - cd openIMIS
-  - sudo ls /opt/microsoft/msodbcsql17/lib64/
-  - sudo ldd /opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.3.so.1.1  
+  - sudo ls -al /opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.3.so.1.1
+  - sudo chmod a+x /opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.3.so.1.1
+  - sudo ls -al /opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.3.so.1.1
+  - sudo ldd /opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.3.so.1.1
   - python manage.py test core -n
