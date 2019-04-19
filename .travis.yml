@@ -13,7 +13,7 @@ before_install:
   - curl https://packages.microsoft.com/config/debian/9/prod.list | sudo tee -a /etc/apt/sources.list
   - sudo apt-get update
   - sudo apt-get upgrade -y libstdc++6
-  - sudo apt-get install apt-transport-https ca-certificates  
+  - sudo apt-get install -y apt-transport-https ca-certificates  
   - ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 mssql-tools mssql-cli
   - sudo ls /opt/microsoft/msodbcsql17/lib64/
   - sudo ldd /opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.3.so.1.1
