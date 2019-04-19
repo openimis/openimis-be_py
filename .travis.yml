@@ -1,4 +1,11 @@
 dist: xenial   # required for Python >= 3.7
+addons:
+  apt:
+    sources:
+      - ppa:chris-lea/redis-server
+    packages:
+    - redis-tools
+    - redis-server
 language: python
 python:
   - "3.7"
@@ -8,13 +15,12 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y apt-transport-https ca-certificates
   - curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-  - sudo curl https://packages.microsoft.com/config/debian/9/prod.list > /etc/apt/sources.list.d/mssql-release.list
+  - curl https://packages.microsoft.com/config/debian/9/prod.list | sudo tee -a /etc/apt/sources.list
   - sudo apt-get update
   - ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 mssql-tools mssql-cli  
   - sudo apt-get install -y unixodbc-dev  
-install:
-  - pip install -r requirements.txt
 before_script:
+  - pip install -r requirements.txt
   - python modules-requirements.py openimis.json > modules-requirements.txt
   - pip install -r modules-requirements.txt
 script:
