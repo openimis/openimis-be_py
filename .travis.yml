@@ -6,13 +6,7 @@ services:
 python:
   - "3.7"
 env:
-  - DJANGO=2.1
-  - DB=default
-  - DB_HOST=localhost
-  - DB_PORT=1433
-  - DB_NAME=test_db
-  - DB_USER=sa
-  - DB_PASSWORD=t3sts3cr3tp@ss  
+  - DJANGO=2.1 DB=default DB_HOST=localhost DB_PORT=1433 DB_NAME=test_db DB_USER=sa DB_PASSWORD=t3sts3cr3tp@ss  
 before_install:
   - sudo apt-get update
   - sudo apt-get install -y apt-transport-https ca-certificates
@@ -21,7 +15,7 @@ before_install:
   - sudo apt-get update
   - ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 mssql-tools mssql-cli  
   - sudo apt-get install -y unixodbc-dev
-  - ./script/launch-mssql-in-docker.sh -p "$DB_PASSWORD" 
+  - ./script/launch-mssql-in-docker.sh -p $DB_PASSWORD
 before_script:
   - pip install -r requirements.txt
   - python modules-requirements.py openimis.json > modules-requirements.txt
