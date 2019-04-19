@@ -1,13 +1,13 @@
 language: python
-    python:
-      - "3.7.2"
-    env:
-      - DJANGO=2.1 DB=default
-    install:
-      - pip install -r requirements.txt
-    before_script:
-      - python modules-requirements.py openimis.json > modules-requirements.txt
-      - pip install -r modules-requirements.txt      
-    script:
-      - cd openIMIS
-      - python manage.py test core -n
+python:
+  - "3.7.2"
+env:
+  - DJANGO=2.1 DB=default
+install:
+  - pip install -r requirements.txt
+before_script:
+  - python modules-requirements.py openimis.json > modules-requirements.txt
+  - pip install -r modules-requirements.txt
+script:
+  - cd openIMIS
+  - python manage.py test core -n
