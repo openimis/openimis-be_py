@@ -5,7 +5,8 @@ python:
 env:
   - DJANGO=2.1 DB=default
 before_install:
-  - sudo apt-get update && apt-get install -y apt-transport-https ca-certificates
+  - sudo apt-get update
+  - sudo apt-get install -y apt-transport-https ca-certificates
   - curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
   - sudo curl https://packages.microsoft.com/config/debian/9/prod.list > /etc/apt/sources.list.d/mssql-release.list
   - sudo apt-get update
