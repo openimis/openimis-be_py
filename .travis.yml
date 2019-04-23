@@ -14,16 +14,15 @@ before_install:
   - sudo apt-get update
   - sudo apt-get upgrade -y libstdc++6
   - sudo apt-get install -y apt-transport-https ca-certificates  
-  - ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 mssql-tools mssql-cli
+  - ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 odbcinst mssql-tools mssql-cli
   - sudo apt-get install -y python3-dev unixodbc-dev
   - ./script/launch-mssql-in-docker.sh -p $DB_PASSWORD
 before_script:
   - pip install -r requirements.txt
   - python modules-requirements.py openimis.json > modules-requirements.txt
   - pip install -r modules-requirements.txt
+  - odbcinst -j -d  
+  - odbcinst -q -d  
 script:
   - cd openIMIS
-  - export LD_LIBRARY_PATH=/opt/microsoft/msodbcsql17/lib64:$LD_LIBRARY_PATH
-  - ls /etc
-  - cat /etc/odbcinst.ini
   - python manage.py test core -n
