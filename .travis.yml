@@ -24,4 +24,6 @@ before_script:
 script:
   - cd openIMIS
   - export LD_LIBRARY_PATH=/opt/microsoft/msodbcsql17/lib64:$LD_LIBRARY_PATH
+  - ls /etc
+  - cat /etc/odbcinst.ini
   - python manage.py test core -n
