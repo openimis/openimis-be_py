@@ -24,6 +24,7 @@ before_script:
   - odbcinst -j -d  
   - odbcinst -q -d
   - cat /etc/odbcinst.ini
+  - ls -al /opt/microsoft/msodbcsql17/lib64/
 script:
   - cd openIMIS
   - python manage.py test core -n
