@@ -22,7 +22,8 @@ before_script:
   - python modules-requirements.py openimis.json > modules-requirements.txt
   - pip install -r modules-requirements.txt
   - odbcinst -j -d  
-  - odbcinst -q -d  
+  - odbcinst -q -d
+  - cat /etc/odbcinst.ini
 script:
   - cd openIMIS
   - python manage.py test core -n
