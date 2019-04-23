@@ -4,3 +4,4 @@
 **/__pycache__
 modules-requirements.txt
 modules-tests.sh
+**/.coverage
