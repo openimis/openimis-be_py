@@ -14,9 +14,8 @@ def load_openimis_conf():
         return json.load(conf_file)
 
 def extract_test(module):
-    return "python manage.py test %s -n" % re.split('[^a-zA-Z0-9\-_]',module["pip"])[0]
+    return "coverage run --source='.' manage.py test %s -n" % re.split('[^a-zA-Z0-9\-_]',module["pip"])[0]
 
 OPENIMIS_CONF = load_openimis_conf()
 MODULES = list(map(extract_test, OPENIMIS_CONF["modules"]))
-print("#!/bin/bash")
 print("\n".join(MODULES))

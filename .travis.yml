@@ -22,12 +22,7 @@ before_script:
   - python modules-requirements.py openimis.json > modules-requirements.txt
   - pip install -r modules-requirements.txt
 script:
+  - python modules-tests.py openimis.json > modules-tests.sh
   - cd openIMIS
-  - odbcinst -j -d  
-  - odbcinst -q -d
-  - cat /etc/odbcinst.ini
-  - ls -al /opt/microsoft/msodbcsql17/lib64/
-  - ldd /opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.3.so.1.1
-  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/microsoft/msodbcsql17/lib64/
-  - echo $LD_LIBRARY_PATH
-  - python manage.py test core -n
+  - source ../modules-tests.sh
+  - coverage report
