@@ -5,3 +5,5 @@
 modules-requirements.txt
 modules-tests.sh
 **/.coverage
+**/coverage.xml
+**/coverage
