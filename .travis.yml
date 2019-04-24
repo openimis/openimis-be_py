@@ -16,7 +16,10 @@ before_install:
   - sudo apt-get install -y apt-transport-https ca-certificates  
   - ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 odbcinst mssql-tools mssql-cli
   - sudo apt-get install -y python3-dev unixodbc-dev
-  - ./script/launch-mssql-in-docker.sh -p $DB_PASSWORD
+  - ./script/launch-mssql-in-docker.sh -p $DB_PASSWORD  
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - mv cc-test-reporter /usr/local/bin/
 before_script:
   - pip install -r requirements.txt
   - python modules-requirements.py openimis.json > modules-requirements.txt

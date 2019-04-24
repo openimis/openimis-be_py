@@ -1,7 +1,7 @@
 import os
 import json
 import sys
-import re
+import itertools
 
 def load_openimis_conf():
     conf_file_path = sys.argv[1]
@@ -14,8 +14,18 @@ def load_openimis_conf():
         return json.load(conf_file)
 
 def extract_test(module):
-    return "echo '-- TESTING %(module)s ---'\ncoverage run --source='%(module)s' manage.py test %(module)s -n\ncoverage report" % {'module': module["name"]}
-
+    cmds = [
+        "echo '-- TESTING %(module)s ---'" % {'module': module["name"]},
+        "coverage run --source='%(module)s' manage.py test %(module)s -n" % {'module': module["name"]},
+        "coverage report"
+    ]
+    if "codeclimat" in module:
+        cmds += [
+            "coverage xml",
+            "export CC_TEST_REPORTER_ID=%s" % module["codeclimat"],
+            "cc-test-reporter after-build"
+        ]
+    return cmds
 OPENIMIS_CONF = load_openimis_conf()
-MODULES = list(map(extract_test, OPENIMIS_CONF["modules"]))
-print("\n".join(MODULES))
+CMDS = list(itertools.chain(*map(extract_test, OPENIMIS_CONF["modules"])))
+print("\n".join(CMDS))
