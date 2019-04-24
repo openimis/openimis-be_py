@@ -23,8 +23,8 @@ def extract_test(module):
         cmds += [
             "coverage xml",
             "export CC_TEST_REPORTER_ID=%s" % module["codeclimat"],
-            "cc-test-reporter format-coverage -t coverage.py -p ./",
-            "cc-test-reporter after-build -p ./"
+            "cc-test-reporter format-coverage -t coverage.py",
+            "cc-test-reporter after-build"
         ]
     return cmds
 OPENIMIS_CONF = load_openimis_conf()
