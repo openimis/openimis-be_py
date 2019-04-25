@@ -2,7 +2,7 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==0.0.6",
+      "pip": "openimis-be-core==0.0.7",
       "codeclimat": "9a95796cce7953d08040b4a274a32d66e2ca1e653f62e963ad08a4f567452ba4"
     },
     {

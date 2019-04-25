@@ -23,7 +23,7 @@ def extract_test(module):
         cmds += [
             "coverage xml",
             "export CC_TEST_REPORTER_ID=%s" % module["codeclimat"],
-            "cc-test-reporter format-coverage -t coverage.py",
+            "cc-test-reporter format-coverage -t coverage.py -p /home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/",
             "cc-test-reporter after-build"
         ]
     return cmds
