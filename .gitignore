@@ -3,3 +3,7 @@
 **/.env
 **/__pycache__
 modules-requirements.txt
+modules-tests.sh
+**/.coverage
+**/coverage.xml
+**/coverage

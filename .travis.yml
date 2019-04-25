@@ -1,28 +1,41 @@
 language: python
 sudo: required
-dist: xenial   # required for Python >= 3.7
+dist: xenial
 services:
-  - docker
+- docker
 python:
-  - "3.7"
+- '3.7'
 env:
-  - DJANGO=2.1 DB=default DB_HOST=localhost DB_PORT=1433 DB_NAME=test_db DB_USER=sa DB_PASSWORD=t3sts3cr3tp@ss  
-before_install:  
-  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-  - curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-  - curl https://packages.microsoft.com/config/debian/9/prod.list | sudo tee -a /etc/apt/sources.list
-  - sudo apt-get update
-  - sudo apt-get upgrade -y libstdc++6
-  - sudo apt-get install -y apt-transport-https ca-certificates  
-  - ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 mssql-tools mssql-cli
-  - sudo ls /opt/microsoft/msodbcsql17/lib64/
-  - sudo ldd /opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.3.so.1.1
-  - sudo apt-get install -y python3-dev unixodbc-dev
-  - ./script/launch-mssql-in-docker.sh -p $DB_PASSWORD
+  matrix:
+  - DJANGO=2.1 DB=default DB_HOST=localhost DB_PORT=1433 DB_NAME=test_db DB_USER=sa
+    DB_PASSWORD=t3sts3cr3tp@ss
+  global:
+  - secure: XttJxJtwP5w5uX5ZacKLXMhgSzEUlaRj5mf1tJ2tYt9XY9y4iYCnUOe32S5r3VNnhg5zULcK7UVL2DtwTJUD2Pno/3b1xGnlpPhsJUXpw/G8tSSFstAi3lPAPShXnQspZeMGfTV/cMHCAXEXWnqGeIQUDjaE//JrSCNRFKdwqiCZ0QUMD+loBJsvZxgcEbwnumSPNoqUatZJ7kGTlU17pOVMRjuUmaqi1GYTp5xYbN92xsSyVuNFATFhEhuBSHOcVbmNDoYByNMHIgnajHzw22Awe94Ssp9oXkaQjx4/inT3pAWac7qOWxYmJvNZvLkteMU4F8ucyrjWusxHsSdH3tv8d4SmT6BWsnA9epNsFgVTBs0IPJrUluDXkFwrV82ClQODCK8sS4GFEWsbpSTQSWhxGVdmfzeie8mUpSiOtDUFGeM2m5QiwXkF9vCL9nt20XkamR8FlamEf+KbVGsQBbiB+y7zqdMHY0C7l2w/GSgEjXL558Wf1hDo/TLRoxnuvwRaA8E+LxIa3xoM9N/4WWoKgtkW89ZwSsZ+so6127bQ9Q3iyF7UtEJRcA6pUw3fOWtQlsfBEUPrOVr98CoHxRQVQYiEP+cI3RnZNx1AFk3JQi5YEp4Uk42CB0KRSW9A27W2PpqpE4sE3NnrcCWhQQ4Yc6LgZv9H9W5us4pIVQI=
+  - secure: rYjehYKLirbLJFEY7Di4Nnmu/H0znm0B/garZOKZnKOMyJ+b08OSN0JwtnNn+6tmyQnX+dEHRsm+Zv58zdZGNQhOpe5N3qrTbbz8akp2ONMtBzHCP0DevvZXr3cwiwh4G5MkY4RjAh7+4On6R/Qs5JWYsqBPYBMQp5yV/I9/8B12CB78qq34EjHJLIO84ADRRsCoX5h0f0DE51TrNk3Sm9PZ9U0jjviMSSSaxHyeBB5HWJMndcuN3YvS8SEOmq4tJT8sRrYsmzOVuWTMFeT6dFk42fHPbZ39i0CpG5tJiAsWCvpMfmBfCyRS/pk8TFbakKkSQjyijqLLNVRsnclCb+n6J2YmEif/mZ1xHZ07dFWHI3n8FsPu7Ze//A2919IuUuRwqtIxEa/dNBRdALdU45MdVm3AZrrz3MCKurYJRTW0yCMaFNvEmCW+FDcfx5BRBqM1JdXLJM4mKO7CKwTbFCq3DdXwcVUPeuVptnLu8x6NpVRm7Z4pWVbcHx5PjVFoqInG0K/k1BWM4DVJimljxgC3jc+aFUMvAt+5NcsqSfpxoklg6F8lbQkBJX3inM0HJ6orVNWHc5TDvx6T7sC1erSep/UD7ZciB2TjY6wSsTkPbNIhbFd9NaUejMdsvdtQvH5VbLz1SG030VZrRpqkGw2vscCb1asnyS8DECbuC6A=
+  - secure: MwKgmA74zR1eeDugq6qNHOuXiNyo1pLFJrQkYypcqEcNvPAxnV8ML6eGd8/O4S/Q6PjfYPquK3SXkX8mn57u7iyLBHW7msr263kqB5HHNsXisuHbejEqIbourKZpPfSZ+SGCACJVEaW+9Ohs+6LnITz2mPwz3aTlIaIH9L7FSKc/YQgtGbvKS0DVLeN3gUK/vNq1ZL3KQRDnogoTEYzuTWGGVHhtMGUdC891gqsmq7OXiKpJycTkCt7CQAquR6zy22kos2khc7HspUaeahVsc0NNCeBjI/eMP5+UHhjSGiu9jw0Ou+2EMd4szXWZvGVIJ5PYo+YYhn6PiqadxpbY/6WrOkRiEYVYJGFoHGKGy/2UFH8gQPBM69/6d769BHPH2E31CRi47yONvtnczc83A5uFvsS0j3lD/kwONDiZRKTqUFeheI/Cr/HNqodsaWyG2VNrvzhM5ZcHRCP85VDojn6mW3YDxuMGFPrWuJamCVCkH6qImxde3IrhsmS3zaLwKGwoJ9sknys4Mvmhid3GR8GruVNDLBT6egnC7rM+uStYeKmu6irZiML757fQniHXXys8Upo5qvgeTHT4zs6FH+AQKTvAe3fiJhMna070YxYnbixgdpFZSMpUBqBW4gvAU/U11VTk56DSzpsqslNBcaFvPEssed87vVH+2CB/Ci0=
+  - secure: Q6o1n3HX9sbRBIa3G71RmEZ3hWz6BxxnDrztMebArb622C4iG3LITYjpQgRZa1pAIj1xm3xTJk0gxoefSMZYwVBc1Y6Kc76+PhNu4oKiWS3gNxN5gN1HNvYl71Aomgm/a5Pqw2h/vvI0GxmiwSXO7ilG8fz+7uZ/WxYcldu5B7XV4ewvHRoAd/+ldDfgkvXBzHk/G/K3x2MDoJcz4aGzAFAfZuJkgLLFhdUdfTzhgDXXT7pid93UxYmukXHg097mJ6xGtgW+kLu02IG1TJYtdXwcZL/vY6KqHu6Pi1vG4vNZcG9JVF7j/nejaDExz4P1SrlWDgTGoS6kI0/Br6+zK0ERs2gZueZusdWIMJk65/7J0M6Q0QtPLG5oLLpK4emvtxCmPGd+XeqIExscQkletn7KDiBzkrhbuRHxMWQZBrrd+9fq+KmTXoEkCC6Oa7Yl0LmuUpCTAdJDI6KfgIE1Xm6w+Iphha6ejTiuvOvnCPZHuWIoIVKp7hiHAbQ1v7AuyzfF8P4OMdLPlfEJu9tka00hO2iLopuY+Sd5/W4+DdIjKf0zlP76E+NwTferXkXiPqFLBLYbEk+yObpf4yXZm/scm4ZG39qOHvWWhynPN7F6ARFHXEUT+8jx3MoY5NeiXEmqBFDYQ9fAW4cVMuMWUcOmsxe4kN7ushcdbacFDbI=
+  - secure: SJb22IMjkWyUkzPYz7dnscBsNYvPb7WKcMhjCG6kYxqYl8/R+EG/duBLnqJbYgHktn8ATMTYawygKjZgfPQbTRDR0HvGZaD4RGfECxXlrFxLUHcz6O1FpIQnI/a/U9i09n5gD2WL7gtUlLiIAV+zGWGd9Z8q0rU29mvtTtIVDkMnAdg4aUMgdcFIUvVRlSM4v86vXoz7aOaphshUcogNcKXliH25zOOgwj2UtAkK+rhk3YI3VbCGdrfZCi14lWdm3mJ+XPhZcBtsbka1uS12qw8ImUBE7HtIM1f6mnJdEpLplS5rACQ4H1KfMxTbMXw7bqPlzH7ZIjAGSzF/YvCQyrRV1c6wWF1GeRttlW+3nz19nbVzpCmS45qHHcHJ04HeXe+zndhKiWgNk/2KOVMTgCONycqmxUO0w/Jc0eoCGlTrTjC5oIGv9FOkBCXgjmJVncgbZEfhPmnftuxZHrAH7789oqvXvoh5eEm/ZXlsxZ96QemR1EyoJbduQw1Kfd6hd/jn5UeyY59ZHYkSIgntq52+Xp1RyUFpZ4k+/A3w2wVFZh22W2KRloov37YA05Y6DV8Crpg1o0DGYrPkIzf3oXo82jAegZqvy8fMNmyvxN2KTbLjKCAhCjW+WpIX37ZQcVZVNLKl2/VVeAHO8m/Ey7nkdlQuoxJRqQryg/AgllI=
+  - secure: RuXaAGUg3+LIACvkHVRDJdNTis201gB6KuWqvF3AuFOJ6irvFPGsCB72Ba4Jz9QzUdjqYgzQSGx3dLQ1lss3vbR9Qfgk0PmgwXwKdIk7Wy+g/gLoLYGIzsSMM0yytDPZyBB8rWTJ1GH986kp/t9nXknvcuU6ZMd5xzXU+FNfaTXpHGQ2sBE7iN61Yha1AjHE5daGJ8/yswk5PSURbByjfKrztrJ/OJ01MmiqPBn6WuzpyOMqaZZ6z+YbaBttLtCHlufP+kgMI+RTqiHUdJN42+5PccOj4booZC0biRHHsAIIduwjBDbXphTOWaaKAYq/RzJZzW4TE8nclQOrg9KJmwf4jk2c1tMqxIunGkuBtpym+T3T+J5u66KpBilTdAxXrWbkRIDOxWfYOUtzN0rOwkSXCfA7aKX2VD/oJAMBf6u6ZDQi56BXfWEWF4qgdwufDuffhpjJCgo0xgFje3NROd8EpYHMAJaPX6+qDmgmej39Wxy96Q71gymBGLeuVEepXZ4s7rdAvOog/20YGzU6rmxTarKaS/uEAJyFUqw9CTQkltpnLPUwrIpdN/wenvPbpeCCZYQELOoQajD2POM+oJ6lk4dEwUzRbvG7cbZF7Uu+itSy8ha7OkmTlPQJ4t8ZzSIttv0Fx4dykz1CIH6KJSuRjjdHdQEYI5Rz88D7EtE=
+before_install:
+- sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+- curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+- curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee -a
+  /etc/apt/sources.list
+- sudo apt-get update
+- sudo apt-get upgrade -y libstdc++6 libssl-dev
+- sudo apt-get install -y apt-transport-https ca-certificates
+- ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 odbcinst mssql-tools mssql-cli
+- sudo apt-get install -y python3-dev unixodbc-dev
+- "./script/launch-mssql-in-docker.sh -p $DB_PASSWORD"
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- sudo mv cc-test-reporter /usr/local/bin/
 before_script:
-  - pip install -r requirements.txt
-  - python modules-requirements.py openimis.json > modules-requirements.txt
-  - pip install -r modules-requirements.txt
+- pip install -r requirements.txt
+- python modules-requirements.py openimis.json > modules-requirements.txt
+- pip install -r modules-requirements.txt
 script:
-  - cd openIMIS
-  - python manage.py test core -n
+- python modules-tests.py openimis.json > modules-tests.sh
+- cd openIMIS
+- source ../modules-tests.sh
