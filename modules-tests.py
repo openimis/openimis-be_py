@@ -25,7 +25,7 @@ def extract_test(module):
         cmds += [
             "coverage xml",
             "export CC_TEST_REPORTER_ID=%s" % codeclimat_key,
-            "cc-test-reporter format-coverage -t coverage.py -p %s" % get_python_lib(),
+            "cc-test-reporter format-coverage -t coverage.py -p %s --add-prefix ./" % get_python_lib(),
             "cc-test-reporter upload-coverage"
         ]
     return cmds
