@@ -2,6 +2,7 @@ import os
 import json
 import sys
 import itertools
+from distutils.sysconfig import get_python_lib
 
 def load_openimis_conf():
     conf_file_path = sys.argv[1]
@@ -24,8 +25,8 @@ def extract_test(module):
         cmds += [
             "coverage xml",
             "export CC_TEST_REPORTER_ID=%s" % codeclimat_key,
-            "cc-test-reporter format-coverage -t coverage.py",
-            "cc-test-reporter upload-coverage -p /home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages"
+            "cc-test-reporter format-coverage -t coverage.py -p %s" % get_python_lib(),
+            "cc-test-reporter upload-coverage"
         ]
     return cmds
 OPENIMIS_CONF = load_openimis_conf()
