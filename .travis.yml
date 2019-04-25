@@ -37,5 +37,8 @@ before_script:
 - pip install -r modules-requirements.txt
 script:
 - python modules-tests.py openimis.json > modules-tests.sh
+- echo '--- TEST SCRIPT ---'
+- cat modules-tests.sh
+- echo '-------------------'
 - cd openIMIS
 - source ../modules-tests.sh
