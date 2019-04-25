@@ -16,7 +16,7 @@ def load_openimis_conf():
 def extract_test(module):
     cmds = [
         "echo '-- TESTING %(module)s ---'" % {'module': module["name"]},
-        "coverage run --source='%(module)s' manage.py test %(module)s -n" % {'module': module["name"]},
+        "coverage run --source='%(module)s' --omit='*/test_*.py' manage.py test %(module)s -n" % {'module': module["name"]},
         "coverage report"
     ]
     codeclimat_key = os.environ.get("CC_TEST_REPORTER_ID_%s" % module["name"])
@@ -24,8 +24,8 @@ def extract_test(module):
         cmds += [
             "coverage xml",
             "export CC_TEST_REPORTER_ID=%s" % codeclimat_key,
-            "cc-test-reporter format-coverage -t coverage.py -p /home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages",
-            "cc-test-reporter upload-coverage"
+            "cc-test-reporter format-coverage -t coverage.py",
+            "cc-test-reporter upload-coverage -p /home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages"
         ]
     return cmds
 OPENIMIS_CONF = load_openimis_conf()
