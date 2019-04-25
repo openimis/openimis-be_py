@@ -24,8 +24,8 @@ def extract_test(module):
         cmds += [
             "coverage xml",
             "export CC_TEST_REPORTER_ID=%s" % codeclimat_key,
-            "cc-test-reporter format-coverage -t coverage.py -p /home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/",
-            "cc-test-reporter after-build"
+            "cc-test-reporter format-coverage -t coverage.py -p /home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages",
+            "cc-test-reporter after-build -p /home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages"
         ]
     return cmds
 OPENIMIS_CONF = load_openimis_conf()
