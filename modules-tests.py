@@ -21,11 +21,16 @@ def extract_test(module):
         "coverage report"
     ]
     codeclimat_key = os.environ.get("CC_TEST_REPORTER_ID_%s" % module["name"])
+    escaped_python_lib_path = get_python_lib().replace("/", "\\/")
     if codeclimat_key:
         cmds += [
             "coverage xml",
             "export CC_TEST_REPORTER_ID=%s" % codeclimat_key,
-            "cc-test-reporter format-coverage -t coverage.py -p %s --add-prefix ./" % get_python_lib(),
+            # "cc-test-reporter format-coverage -t coverage.py -p %s --add-prefix ./" % get_python_lib(), -p flag don't do the job (?!?)
+            "cc-test-reporter format-coverage -t coverage.py",
+            "cat coverage/codeclimat.json",
+            "sed -i 's/%s/.\//g' coverage/codeclimat.json",
+            "cat coverage/codeclimat.json",
             "cc-test-reporter upload-coverage"
         ]
     return cmds
