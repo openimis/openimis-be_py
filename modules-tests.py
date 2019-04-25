@@ -28,9 +28,7 @@ def extract_test(module):
             "export CC_TEST_REPORTER_ID=%s" % codeclimat_key,
             # "cc-test-reporter format-coverage -t coverage.py -p %s --add-prefix ./" % get_python_lib(), -p flag don't do the job (?!?)
             "cc-test-reporter format-coverage -t coverage.py",
-            "cat coverage/codeclimate.json",
             "sed -i 's/%s\///g' coverage/codeclimate.json" % escaped_python_lib_path,
-            "cat coverage/codeclimate.json",
             "cc-test-reporter upload-coverage"
         ]
     return cmds
