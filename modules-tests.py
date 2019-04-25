@@ -19,10 +19,11 @@ def extract_test(module):
         "coverage run --source='%(module)s' manage.py test %(module)s -n" % {'module': module["name"]},
         "coverage report"
     ]
-    if "codeclimat" in module:
+    codeclimat_key = os.environ.get("CC_TEST_REPORTER_ID_%s" % module["name"])
+    if codeclimat_key:
         cmds += [
             "coverage xml",
-            "export CC_TEST_REPORTER_ID=%s" % module["codeclimat"],
+            "export CC_TEST_REPORTER_ID=%s" % codeclimat_key,
             "cc-test-reporter format-coverage -t coverage.py -p /home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/",
             "cc-test-reporter after-build"
         ]

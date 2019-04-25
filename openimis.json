@@ -2,33 +2,27 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==0.0.7",
-      "codeclimat": "9a95796cce7953d08040b4a274a32d66e2ca1e653f62e963ad08a4f567452ba4"
+      "pip": "openimis-be-core==0.0.7"
     },
     {
       "name": "location",
-      "pip": "openimis-be-location==0.0.1",
-      "codeclimat": "5f7371e3e869715876ba4a7614449e596b0aa0599558c62b7ca644d8913c6cfd"
+      "pip": "openimis-be-location==0.0.1"
     },
     {
       "name": "medical",
-      "pip": "openimis-be-medical==0.0.1",
-      "codeclimat": "38c8e2c35c9c91bec7b27eab24154914b1d0739a0b265473045e547856f7a5c5"
+      "pip": "openimis-be-medical==0.0.1"
     },
     {
       "name": "insuree",
-      "pip": "openimis-be-insuree==0.0.1",
-      "codeclimat": "8223580969cb234d015db9b2e112a5d981667193f509814850464dfbefbe4f71"
+      "pip": "openimis-be-insuree==0.0.1"
     },
     {
       "name": "policy",
-      "pip": "openimis-be-policy==0.0.1",
-      "codeclimat": "1a72207de0b7f771d3d0e08edc78bfdd6fe4d1dbb310b6950f713de8bce106fd"
+      "pip": "openimis-be-policy==0.0.1"
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==0.0.4",
-      "codeclimat": "dcd1bbb9237d6131af0a3c2f7d8c55fecbc14edb0420cb522fd36127382d971f"
+      "pip": "openimis-be-claim==0.0.4"
     }
   ]
 }
