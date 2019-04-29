@@ -1,8 +1,8 @@
 cached-property
+coverage
 django>=2.1,<2.2
 djangorestframework
 django-filter
-django-guardian
 django-pyodbc
 django-pyodbc-azure
 django-rest-framework-rules
