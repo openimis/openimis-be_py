@@ -2,7 +2,7 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==0.0.7"
+      "pip": "openimis-be-core==0.0.8"
     },
     {
       "name": "location",
