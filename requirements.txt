@@ -13,3 +13,4 @@ pyodbc
 python-dateutil
 python-dotenv
 rules
+whitenoise

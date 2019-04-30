@@ -1,7 +1,3 @@
-| :bomb: Disclaimer |
-| --- |
-| This repository currently only contains bootsrapping material for the modularized openIMIS. Don't use it (or even connect it) to a production database. |
-
 # openIMIS Backend Reference Implementation
 This repository holds the configuration files for the openIMIS Backend Reference Implementation.
 It serves 2 distinct use cases:
@@ -9,6 +5,9 @@ It serves 2 distinct use cases:
 - distributors who want to assemble modules into a Docker image for delivery
 
 This repo branches, tags,... are maintained by openIMIS official delivery team who use it to build the official openIMIS Docker images containing the official modules (versions) list.
+
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![Build status](https://img.shields.io/travis/com/openimis/openimis-be_py/master.svg)](https://travis-ci.org/openimis/openimis-be_py)
 
 ## Developers setup
 
@@ -56,11 +55,13 @@ At this stage, you may (depends on the database you connect to) need to:
   ... but give it the same logical name as the one you want to replace: `/openimis-be-location-dhis2_py/location`
 
 ### To publish (in PyPI) the modified (or new) module
-* adapt the `openimis-be-claim_py/setup.py` to (at least) bump version number (e.g. 1.2.3)
+* adapt the `openimis-be-mymodule_py/setup.py` to (at least) bump version number (e.g. 1.2.3)
 * commit your changes to the git repo and merge into master
-* tag the git repo according to your new version number
+* tag the git repo according to your new version number:
+  * `git tag -a v1.2.3 -m "v1.2.3"`
+  * `git push --tags`
 * create the PyPI package (can be automated on a ci-build): `python setup.py bdist_wheel`
-* upload the created package (in `dist/`) to PyPI.org: `twine upload -r pypi dist/openimis_be_claim-1.2.3*`
+* upload the created package (in `dist/`) to PyPI.org: `twine upload -r pypi dist/openimis_be_mymodule-1.2.3*`
 
 ## Distributor setup
 
@@ -81,7 +82,7 @@ When release candidate is accepted:
 
 Note:
 This image only provides the openimis backend server.
-The full openIMIS deployment (with the frontend,...) is managed from `openimis-dist_dck` repo and its `docker-compose.yml` file
+The full openIMIS deployment (with the frontend,...) is managed from `openimis-dist_dkr` repo and its `docker-compose.yml` file.
 
 
 ## Database configuration (for developers and distributors)
@@ -97,7 +98,7 @@ The configuration for connection to the database is identical for developers and
   DB_PORT=mssql-port
   DB_NAME=database-name
   DB_USER=database-user
-  DB_PASSWORD=databaase-password
+  DB_PASSWORD=database-password
   ```
 Notes:
 * instead of `.env` file, you can use environment variables (e.g. provided as parameters in the docker-compose.yml)

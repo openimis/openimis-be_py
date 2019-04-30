@@ -38,7 +38,7 @@ SECRET_KEY = os.environ.get(
     "SECRET_KEY", 'chv^^7i_v3-04!rzu&qe#+h*a=%h(ib#5w9n$!f2q7%2$qp=zz')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True # bool(os.environ.get("DEBUG", False)) - need to fix static file serving before turning it False
+DEBUG = os.environ.get("DEBUG", 'False').lower() == 'true'
 
 if ("ALLOWED_HOSTS" in os.environ):
     ALLOWED_HOSTS = json.loads(os.environ["ALLOWED_HOSTS"])
@@ -82,6 +82,7 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -177,4 +178,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = "/%sstatic/" % SITE_ROOT()
