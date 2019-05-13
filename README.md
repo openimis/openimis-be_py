@@ -15,8 +15,7 @@ In case of troubles, please consult/contact our service desk via our [ticketing 
 
 ### To start working in openIMIS as a (module) developer:
 
-| When programming for openIMIS backend, you are highly encouraged to used the features provided in the openimis-be-core module.
-This includes (but is not limited to) date handling, user info,...|
+<table align="center"><tr><td>When programming for openIMIS backend, you are highly encouraged to used the features provided in the openimis-be-core module. This includes (but is not limited to) date handling, user info,...</td></tr></table>
 
 * clone this repo (creates the `openimis-be_py` directory)
 * install python 3, recommended in a [virtualenv](https://virtualenv.pypa.io)
