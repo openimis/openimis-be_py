@@ -23,6 +23,10 @@
     {
       "name": "claim",
       "pip": "openimis-be-claim==0.0.6"
+    },
+    {
+      "name": "api_fhir",
+      "pip": "openimis-be-api_fhir==0.0.1"
     }
   ]
 }
