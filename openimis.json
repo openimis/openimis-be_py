@@ -6,23 +6,23 @@
     },
     {
       "name": "location",
-      "pip": "openimis-be-location==0.0.1"
+      "pip": "openimis-be-location==0.0.2"
     },
     {
       "name": "medical",
-      "pip": "openimis-be-medical==0.0.1"
+      "pip": "openimis-be-medical==0.0.2"
     },
     {
       "name": "insuree",
-      "pip": "openimis-be-insuree==0.0.1"
+      "pip": "openimis-be-insuree==0.0.2"
     },
     {
       "name": "policy",
-      "pip": "openimis-be-policy==0.0.1"
+      "pip": "openimis-be-policy==0.0.2"
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==0.0.6"
+      "pip": "openimis-be-claim==0.0.7"
     },
     {
       "name": "api_fhir",
