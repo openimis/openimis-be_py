@@ -20,6 +20,7 @@ load_dotenv()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 def SITE_ROOT():
     root = os.environ.get("SITE_ROOT", '')
     if (root == ''):
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graphene_django',
     'test_without_migrations',
     'rest_framework',
     'rules',
@@ -117,6 +119,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'openIMIS.wsgi.application'
 
+GRAPHENE = {
+    'SCHEMA': 'openIMIS.schema.schema'
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases

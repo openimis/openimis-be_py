@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url, include
 from django.urls import path
+from graphene_django.views import GraphQLView
+
 from .openimisurls import openimis_urls
 import os
 from .settings import SITE_ROOT
 
 urlpatterns = [
     path("%sadmin/" % SITE_ROOT(), admin.site.urls),
+    path("graphql", GraphQLView.as_view(graphiql=True)),
 ] + openimis_urls()
