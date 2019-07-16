@@ -47,7 +47,7 @@ else:
     ALLOWED_HOSTS = ['*']
 
 # TEST_WITHOUT_MIGRATIONS_COMMAND = 'django_nose.management.commands.test.Command'
-TEST_RUNNER = 'core.test_utils.UnManagedModelTestRunner'
+# TEST_RUNNER = 'core.test_utils.UnManagedModelTestRunner'
 # Application definition
 
 INSTALLED_APPS = [

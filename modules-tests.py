@@ -16,8 +16,8 @@ def load_openimis_conf():
 
 def extract_test(module):
     cmds = [
-        "echo '-- TESTING %(module)s ---'" % {'module': module["name"]},
-        "coverage run --source='%(module)s' --omit='*/test_*.py' manage.py test %(module)s -n" % {'module': module["name"]},
+        "echo '--- TESTING %(module)s ---'" % {'module': module["name"]},
+        "coverage run --source='%(module)s' --omit='*/test_*.py' manage.py test %(module)s -k" % {'module': module["name"]},
         "coverage report"
     ]
     codeclimat_key = os.environ.get("CC_TEST_REPORTER_ID_%s" % module["name"])
@@ -33,5 +33,9 @@ def extract_test(module):
         ]
     return cmds
 OPENIMIS_CONF = load_openimis_conf()
-CMDS = list(itertools.chain(*map(extract_test, OPENIMIS_CONF["modules"])))
+CMDS = [
+    "echo '--- INIT TEST DATABASE ---'",
+    "python init_test_db.py",
+]
+CMDS += list(itertools.chain(*map(extract_test, OPENIMIS_CONF["modules"])))
 print("\n".join(CMDS))

@@ -55,6 +55,11 @@ At this stage, you may (depends on the database you connect to) need to:
 * follow the same procedure as for a brand new openIMIS module,
   ... but give it the same logical name as the one you want to replace: `/openimis-be-location-dhis2_py/location`
 
+### To run unit tests on a module (example openimis-be-claim)
+* from `openimis-be_py`
+  * (re)initialize test database (at this stage structure is not managed by django): `python init_test_db.py`
+  * launch unit tests, with the 'keep database' option: `python manage.py test -k claim`
+
 ### To publish (in PyPI) the modified (or new) module
 * adapt the `openimis-be-mymodule_py/setup.py` to (at least) bump version number (e.g. 1.2.3)
 * commit your changes to the git repo and merge into master
