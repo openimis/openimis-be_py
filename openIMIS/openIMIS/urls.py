@@ -24,5 +24,5 @@ from .settings import SITE_ROOT
 
 urlpatterns = [
     path("%sadmin/" % SITE_ROOT(), admin.site.urls),
-    path("graphql", GraphQLView.as_view(graphiql=True)),
+    path("%sgraphql" % SITE_ROOT(), GraphQLView.as_view(graphiql=True)),
 ] + openimis_urls()
