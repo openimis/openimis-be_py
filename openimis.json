@@ -2,11 +2,11 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==0.0.10"
+      "pip": "openimis-be-core==0.0.11"
     },
     {
       "name": "location",
-      "pip": "openimis-be-location==0.0.2"
+      "pip": "openimis-be-location==0.0.3"
     },
     {
       "name": "medical",
@@ -14,11 +14,11 @@
     },
     {
       "name": "insuree",
-      "pip": "openimis-be-insuree==0.0.3"
+      "pip": "openimis-be-insuree==0.0.4"
     },
     {
       "name": "policy",
-      "pip": "openimis-be-policy==0.0.3"
+      "pip": "openimis-be-policy==0.0.4"
     },
     {
       "name": "claim",
