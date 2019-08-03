@@ -13,12 +13,20 @@
       "pip": "openimis-be-medical==0.0.3"
     },
     {
+      "name": "product",
+      "pip": "openimis-be-product==0.0.1"
+    },
+    {
       "name": "insuree",
       "pip": "openimis-be-insuree==0.0.4"
     },
     {
       "name": "policy",
-      "pip": "openimis-be-policy==0.0.4"
+      "pip": "openimis-be-policy==0.0.5"
+    },
+    {
+      "name": "contribution",
+      "pip": "openimis-be-contribution==0.0.1"
     },
     {
       "name": "claim",
