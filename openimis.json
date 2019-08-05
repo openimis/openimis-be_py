@@ -22,7 +22,7 @@
     },
     {
       "name": "policy",
-      "pip": "openimis-be-policy==0.0.5"
+      "pip": "openimis-be-policy==0.0.6"
     },
     {
       "name": "contribution",
