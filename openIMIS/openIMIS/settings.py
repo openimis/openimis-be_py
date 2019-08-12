@@ -120,7 +120,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'openIMIS.wsgi.application'
 
 GRAPHENE = {
-    'SCHEMA': 'openIMIS.schema.schema'
+    'SCHEMA': 'openIMIS.schema.schema',
+    'RELAY_CONNECTION_MAX_LIMIT': 100,
 }
 
 # Database
