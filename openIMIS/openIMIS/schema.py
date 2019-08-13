@@ -34,4 +34,5 @@ class Mutation(*mutations, graphene.ObjectType):
     pass
 
 
-schema = graphene.Schema(query=Query, mutation=Mutation)
+# noinspection PyTypeChecker
+schema = graphene.Schema(query=Query, mutation=Mutation if len(mutations) > 0 else None)
