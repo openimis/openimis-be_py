@@ -30,7 +30,7 @@
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==0.0.9"
+      "pip": "openimis-be-claim==0.0.10"
     },
     {
       "name": "api_fhir",
