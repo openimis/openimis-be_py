@@ -1,6 +1,6 @@
-# GraphQL interface to OpenImis
+# GraphQL interface to openIMIS
 
-GraphQL allows OpenImis to provide a single interface to manipulate data across modules transparently.
+GraphQL allows openIMIS to provide a single interface to manipulate data across modules transparently.
 This document provides a quick introduction at the way to query this API.
 
 When running in development mode, accessing the `/graphql` endpoint on the backend server will provide

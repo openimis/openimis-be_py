@@ -15,14 +15,19 @@ for app in all_apps:
         if query:
             queries.append(query)
 
+    except ModuleNotFoundError as exc:
+        pass  # The module doesn't have a schema.py, just skip
+    except AttributeError as exc:
+        raise  # This can be hiding actual compilation errors
+
+    try:
         if __import__(f"{app}.schema").schema.Mutation:
             mutation = __import__(f"{app}.schema").schema.Mutation
             if mutation:
                 mutations.append(mutation)
-
-    except ModuleNotFoundError:
+    except ModuleNotFoundError as exc:
         pass  # The module doesn't have a schema.py, just skip
-    except AttributeError:
+    except AttributeError as exc:
         pass  # The module doesn't have a Query or Mutation, just ignore
 
 
