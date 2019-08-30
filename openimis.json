@@ -33,6 +33,10 @@
       "pip": "openimis-be-claim==0.0.10"
     },
     {
+      "name": "claim_batch",
+      "pip": "openimis-be-claim_batch==0.0.1"
+    },
+    {
       "name": "api_fhir",
       "pip": "openimis-be-api_fhir==0.0.4"
     }
