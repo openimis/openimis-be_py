@@ -11,7 +11,7 @@
     {
       "name": "medical",
       "pip": "openimis-be-medical==0.0.6"
-    },  
+    },
     {
       "name": "product",
       "pip": "openimis-be-product==0.0.2"
@@ -29,12 +29,12 @@
       "pip": "openimis-be-contribution==0.0.1"
     },
     {
-      "name": "claim",
-      "pip": "openimis-be-claim==0.0.11"
-    },
-    {
       "name": "claim_batch",
       "pip": "openimis-be-claim_batch==0.0.2"
+    },
+    {
+      "name": "claim",
+      "pip": "openimis-be-claim==0.0.11"
     },
     {
       "name": "api_fhir",
