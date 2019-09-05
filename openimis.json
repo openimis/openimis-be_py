@@ -29,12 +29,8 @@
       "pip": "openimis-be-contribution==0.0.1"
     },
     {
-      "name": "claim_batch",
-      "pip": "openimis-be-claim_batch==0.0.2"
-    },
-    {
       "name": "claim",
-      "pip": "openimis-be-claim==0.0.11"
+      "pip": "openimis-be-claim==0.0.12"
     },
     {
       "name": "api_fhir",
