@@ -2,7 +2,7 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==0.0.12"
+      "pip": "openimis-be-core==0.0.13"
     },
     {
       "name": "location",
@@ -10,11 +10,11 @@
     },
     {
       "name": "medical",
-      "pip": "openimis-be-medical==0.0.5"
-    },
+      "pip": "openimis-be-medical==0.0.6"
+    },  
     {
       "name": "product",
-      "pip": "openimis-be-product==0.0.1"
+      "pip": "openimis-be-product==0.0.2"
     },
     {
       "name": "insuree",
@@ -30,7 +30,7 @@
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==0.0.10"
+      "pip": "openimis-be-claim==0.0.11"
     },
     {
       "name": "claim_batch",
