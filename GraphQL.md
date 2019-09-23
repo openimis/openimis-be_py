@@ -212,33 +212,30 @@ When the mutations are basically saving a database object, one can skip a lot of
 Here is an example saving a smaller object:
 forms.py:
 ```
-class ClaimDiagnosisCodeForm(forms.ModelForm):
+class ClaimOfficerForm(forms.ModelForm):
     class Meta:
-        model = ClaimDiagnosisCode
+        model = ClaimOfficer
         fields = [
-            "legacy_id",
             "code",
-            "name",
-            "validity_from",
-            "validity_to",
-            "audit_user_id",
+            "last_name",
+            "first_name",
         ]
 ```
 
 schema.py:
 ```
-class CreateClaimDiagnosisCodeMutation(DjangoModelFormMutation):
-    claim_diagnosis_code = Field(ClaimDiagnosisCodeGQLType)
+class CreateClaimOfficerMutation(DjangoModelFormMutation):
+    claim_officer = Field(ClaimOfficerGQLType)
 
     # @classmethod
     # def perform_mutate(cls, form, info):
     #     pass
 
     class Meta:
-        form_class = ClaimDiagnosisCodeForm
+        form_class = ClaimOfficerForm
 
 class Mutation(graphene.ObjectType):
-    create_claim_diagnosis_code = CreateClaimDiagnosisCodeMutation.Field()
+    create_claim_officer = CreateClaimOfficerMutation.Field()
 ```
 
 As written above, the mutation will save new objects as the id is not in the fields.
