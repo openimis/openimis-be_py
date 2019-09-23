@@ -7,7 +7,7 @@
     {
       "name": "location",
       "pip": "openimis-be-location==0.0.6"
-    },
+    },""
     {
       "name": "medical",
       "pip": "openimis-be-medical==0.0.7"
