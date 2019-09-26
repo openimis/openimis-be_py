@@ -2,11 +2,11 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==0.0.14"
+      "pip": "openimis-be-core==0.0.15"
     },
     {
       "name": "location",
-      "pip": "openimis-be-location==0.0.6"
+      "pip": "openimis-be-location==0.0.7"
     },
     {
       "name": "medical",
@@ -34,7 +34,7 @@
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==0.0.14"
+      "pip": "openimis-be-claim==0.0.15"
     },
     {
       "name": "claim_batch",
