@@ -2,11 +2,15 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==0.0.15"
+      "pip": "openimis-be-core==0.0.16"
+    },
+    {
+      "name": "report",
+      "pip": "openimis-be-report==0.0.1"
     },
     {
       "name": "location",
-      "pip": "openimis-be-location==0.0.7"
+      "pip": "openimis-be-location==0.0.8"
     },
     {
       "name": "medical",
@@ -15,14 +19,14 @@
     {
       "name": "medical_pricelist",
       "pip": "openimis-be-medical_pricelist==0.0.2"
-    },    
+    },
     {
       "name": "product",
       "pip": "openimis-be-product==0.0.3"
     },
     {
       "name": "insuree",
-      "pip": "openimis-be-insuree==0.0.7"
+      "pip": "openimis-be-insuree==0.0.8"
     },
     {
       "name": "policy",
@@ -38,11 +42,11 @@
     },
     {
       "name": "claim_batch",
-      "pip": "openimis-be-claim_batch==0.0.3"
-    },    
+      "pip": "openimis-be-claim_batch==0.0.4"
+    },
     {
       "name": "api_fhir",
-      "pip": "openimis-be-api_fhir==0.0.4"
+      "pip": "openimis-be-api_fhir==0.0.5"
     }
   ]
 }
