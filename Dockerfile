@@ -1,6 +1,6 @@
 FROM python:3
 ENV PYTHONUNBUFFERED 1
-RUN apt-get update && apt-get install -y apt-transport-https ca-certificates
+RUN apt-get update && apt-get install -y apt-transport-https ca-certificates gettext
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 RUN curl https://packages.microsoft.com/config/debian/9/prod.list > /etc/apt/sources.list.d/mssql-release.list
 RUN apt-get update
@@ -14,6 +14,7 @@ RUN pip install -r requirements.txt
 RUN python modules-requirements.py openimis.json > modules-requirements.txt
 RUN pip install -r modules-requirements.txt
 WORKDIR /openimis-be/openIMIS
+RUN python manage.py compilemessages
 RUN python manage.py collectstatic --clear --noinput
 ENTRYPOINT ["/openimis-be/script/entrypoint.sh"]
 # CMD ["/openimis-be/script/entrypoint.sh"]
