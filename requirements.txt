@@ -1,5 +1,6 @@
 cached-property
 coverage
+celery>=4.3,<4.4
 django>=2.1,<2.2
 djangorestframework
 django-filter

@@ -150,6 +150,9 @@ DATABASES = {
         'OPTIONS': DATABASE_OPTIONS}
 }
 
+# Celery message broker configuration for RabbitMQ. One can also use Redis on AWS SQS
+CELERY_BROKER_URL = "amqp://127.0.0.1"
+
 AUTH_USER_MODEL = 'core.User'
 
 # Password validation

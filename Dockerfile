@@ -16,4 +16,4 @@ RUN pip install -r modules-requirements.txt
 WORKDIR /openimis-be/openIMIS
 RUN python manage.py collectstatic --clear --noinput
 ENTRYPOINT ["/openimis-be/script/entrypoint.sh"]
-CMD ["/openimis-be/script/entrypoint.sh"]
+# CMD ["/openimis-be/script/entrypoint.sh"]
