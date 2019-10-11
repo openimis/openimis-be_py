@@ -90,6 +90,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware'
@@ -150,6 +151,9 @@ DATABASES = {
         'OPTIONS': DATABASE_OPTIONS}
 }
 
+# Celery message broker configuration for RabbitMQ. One can also use Redis on AWS SQS
+CELERY_BROKER_URL = "amqp://127.0.0.1"
+
 AUTH_USER_MODEL = 'core.User'
 
 # Password validation
@@ -184,6 +188,10 @@ USE_L10N = True
 
 USE_TZ = False
 
+# List of places to look for translations, this could include an external translation module
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/

@@ -1,0 +1,154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-10 18:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: claim/claim/schema.py
+msgid "claim.mutation.authentication_required"
+msgstr "User needs to be authenticated for this operation"
+
+#: claim/claim/schema.py
+msgid "claim.validation.id_does_not_exist"
+msgstr "id %s does not exist"
+
+#: claim/claim/schema.py
+msgid "claim.mutation.failed_to_change_status_of_claim"
+msgstr "Failed to change status of claim %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.pricelist.item"
+msgstr "Couldn't find a valid item pricelist item for %s in location %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.pricelist.service"
+msgstr "Couldn't find a valid service pricelist item for %s in location %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.validity.item"
+msgstr "Claim Item %s is referencing item %s that is invalid"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.validity.service"
+msgstr "Claim Service %s is referencing service %s that is invalid"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.care_type.service"
+msgstr "Care type %s and health facility care type %s with date %s vs %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.target_date"
+msgstr "Claim %s: neither date_from nor date_to is specified"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.care_type.item"
+msgstr "Care type %s and health facility care type %s with date %s vs %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.limitation.item"
+msgstr ""
+"ClaimItem %s referencing item %s has a patient category mask of %s but "
+"insuree has a mask of %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.limitation.service"
+msgstr ""
+"ClaimService %s referencing service %s has a patient category mask of %s but "
+"insuree has a mask of %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.family.insuree_validity"
+msgstr "Insuree %s validity expired"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.family.no_family"
+msgstr "Insuree %s should have a family, even if only one member"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.family.family_validity"
+msgstr "Insuree %s family validity expired"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.product_family.waiting_period"
+msgstr "Item/service %s waiting period violation"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.product_family.max_nb_allowed"
+msgstr "Item/service %s, provided %s over maximum number allowed %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.product_family.no_product_found"
+msgstr "No product item/service found for %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.product_family.max_nb_consultations"
+msgstr "%s is over maximum consultations %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.product_family.max_nb_surgeries"
+msgstr "%s is over maximum surgeries %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.product_family.max_nb_deliveries"
+msgstr "%s is over maximum deliveries %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.product_family.max_nb_antenatal"
+msgstr "%s is over maximum antenatal services %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.product_family.max_nb_hospitalizations"
+msgstr "%s is over maximum hospitalizations %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.product_family.max_nb_visits"
+msgstr "%s is over maximum visits %s"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.assign_prod.item.no_product_code"
+msgstr ""
+"Claim item %s refers to an item %s that doesn't seem to have a valid Policy-"
+">Product"
+
+#: claim/claim/validations.py
+#, fuzzy
+msgid "claim.validation.assign_prod.service.no_product_code"
+msgstr ""
+"Claim service %s refers to a service %s that doesn't seem to have a valid "
+"Policy->Product"
