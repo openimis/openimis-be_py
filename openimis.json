@@ -2,7 +2,7 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==1.0.0"
+      "pip": "openimis-be-core==1.0.1"
     },
     {
       "name": "report",
