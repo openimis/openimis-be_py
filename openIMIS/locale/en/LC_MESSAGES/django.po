@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-10 18:54+0000\n"
+"POT-Creation-Date: 2019-10-14 03:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,137 +17,166 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: claim/claim/schema.py
+#: claim/build/lib/claim/schema.py:342 claim/build/lib/claim/schema.py:366
+#: claim/claim/schema.py:359 claim/claim/schema.py:390
 msgid "claim.mutation.authentication_required"
 msgstr "User needs to be authenticated for this operation"
 
-#: claim/claim/schema.py
+#: claim/build/lib/claim/schema.py:393 claim/build/lib/claim/schema.py:604
+#: claim/build/lib/claim/schema.py:643 claim/claim/schema.py:425
+#: claim/claim/schema.py:612 claim/claim/schema.py:661
+#: claim/claim/schema.py:700
 msgid "claim.validation.id_does_not_exist"
-msgstr "id %s does not exist"
+msgstr "Claim with id %(id)s does not exist"
 
-#: claim/claim/schema.py
+#: claim/build/lib/claim/schema.py:723 claim/claim/schema.py:444
+#: claim/claim/schema.py:773 claim/claim/schema.py:783
+#: claim/claim/schema.py:802
 msgid "claim.mutation.failed_to_change_status_of_claim"
-msgstr "Failed to change status of claim %s"
+msgstr "Failed to change status of claim %(code)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:89 claim/claim/validations.py:92
 msgid "claim.validation.pricelist.item"
-msgstr "Couldn't find a valid item pricelist item for %s in location %s"
+msgstr ""
+"%(code)s: Couldn't find a valid item pricelist entry for %(claim_item)s and "
+"health facility %(health_facility)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:106 claim/claim/validations.py:112
 msgid "claim.validation.pricelist.service"
-msgstr "Couldn't find a valid service pricelist item for %s in location %s"
+msgstr ""
+"%(code)s: Couldn't find a valid service pricelist entry for "
+"%(claim_service)s and health facility %(health_facility)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:144 claim/claim/validations.py:153
 msgid "claim.validation.validity.item"
-msgstr "Claim Item %s is referencing item %s that is invalid"
+msgstr "%(code)s: Item %(item)s is invalid"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:155 claim/claim/validations.py:166
 msgid "claim.validation.validity.service"
-msgstr "Claim Service %s is referencing service %s that is invalid"
+msgstr "%(code)s: Service %(service)s is invalid"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:177 claim/claim/validations.py:190
 msgid "claim.validation.care_type.service"
-msgstr "Care type %s and health facility care type %s with date %s vs %s"
+msgstr ""
+"%(code)s: Care type %(care_type)s and health facility care type "
+"%(hf_care_type)s with date %(target_date)s vs %(claim_date_from)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:187 claim/claim/validations.py:205
 msgid "claim.validation.target_date"
-msgstr "Claim %s: neither date_from nor date_to is specified"
+msgstr "%(code)s: Neither date_from nor date_to is specified"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:210 claim/claim/validations.py:228
 msgid "claim.validation.care_type.item"
-msgstr "Care type %s and health facility care type %s with date %s vs %s"
+msgstr ""
+"%(code)s: Care type %(care_type)s and health facility care type "
+"%(hf_care_type)s with date %(target_date)s vs %(claim_date_from)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:224 claim/claim/validations.py:248
 msgid "claim.validation.limitation.item"
 msgstr ""
-"ClaimItem %s referencing item %s has a patient category mask of %s but "
-"insuree has a mask of %s"
+"%(code)s: Claim item %(item)s has a patient category mask of "
+"%(patient_category)s but insuree has a mask of %(patient_category_mask)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:239 claim/claim/validations.py:267
 msgid "claim.validation.limitation.service"
 msgstr ""
-"ClaimService %s referencing service %s has a patient category mask of %s but "
-"insuree has a mask of %s"
+"%(code)s: Claim service %(service)s has a patient category mask of "
+"%(patient_category)s but insuree has a mask of %(patient_category_mask)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:250 claim/claim/validations.py:281
 msgid "claim.validation.family.insuree_validity"
-msgstr "Insuree %s validity expired"
+msgstr "%(code)s: Insuree %(insuree)s validity expired"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:253 claim/claim/validations.py:287
 msgid "claim.validation.family.no_family"
-msgstr "Insuree %s should have a family, even if only one member"
+msgstr ""
+"%(code)s: Insuree %(insuree)s should have a family, even if only one member"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:257 claim/claim/validations.py:294
 msgid "claim.validation.family.family_validity"
-msgstr "Insuree %s family validity expired"
+msgstr "%(code)s: Insuree %(insuree)s family validity expired"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:286
+#: claim/build/lib/claim/validations.py:342 claim/claim/validations.py:327
+#: claim/claim/validations.py:394
 msgid "claim.validation.product_family.waiting_period"
-msgstr "Item/service %s waiting period violation"
+msgstr "%(code)s: Item/service %{element}s waiting period violation"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:309
+#: claim/build/lib/claim/validations.py:365 claim/claim/validations.py:353
+#: claim/claim/validations.py:420
 msgid "claim.validation.product_family.max_nb_allowed"
-msgstr "Item/service %s, provided %s over maximum number allowed %s"
+msgstr ""
+"%(code)s: Item/service %{element}s, provided %(provided)s over maximum "
+"number allowed %(max)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:315
+#: claim/build/lib/claim/validations.py:441 claim/claim/validations.py:363
+#: claim/claim/validations.py:512
 msgid "claim.validation.product_family.no_product_found"
-msgstr "No product item/service found for %s"
+msgstr "%(code)s: No product item/service found for %(element)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:378 claim/claim/validations.py:436
 msgid "claim.validation.product_family.max_nb_consultations"
-msgstr "%s is over maximum consultations %s"
+msgstr "%(code)s: %(count)s is over maximum consultations %(max)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:389 claim/claim/validations.py:449
 msgid "claim.validation.product_family.max_nb_surgeries"
-msgstr "%s is over maximum surgeries %s"
+msgstr "%(code)s: %(count)s is over maximum surgeries %(max)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:400 claim/claim/validations.py:462
 msgid "claim.validation.product_family.max_nb_deliveries"
-msgstr "%s is over maximum deliveries %s"
+msgstr "%(code)s: %(count)s is over maximum deliveries %(max)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:411 claim/claim/validations.py:475
 msgid "claim.validation.product_family.max_nb_antenatal"
-msgstr "%s is over maximum antenatal services %s"
+msgstr "%(code)s: %(count)s is over maximum antenatal services %(max)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:422 claim/claim/validations.py:488
 msgid "claim.validation.product_family.max_nb_hospitalizations"
-msgstr "%s is over maximum hospitalizations %s"
+msgstr "%(code)s: %(count)s is over maximum hospitalizations %(max)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:433 claim/claim/validations.py:501
 msgid "claim.validation.product_family.max_nb_visits"
-msgstr "%s is over maximum visits %s"
+msgstr "%(code)s: %(count)s is over maximum visits %(max)s"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:572 claim/claim/validations.py:648
 msgid "claim.validation.assign_prod.item.no_product_code"
 msgstr ""
-"Claim item %s refers to an item %s that doesn't seem to have a valid Policy-"
-">Product"
+"%(code)s: Claim item %(item)s doesn't seem to have a valid Policy->Product"
 
-#: claim/claim/validations.py
-#, fuzzy
+#: claim/build/lib/claim/validations.py:651 claim/claim/validations.py:731
 msgid "claim.validation.assign_prod.service.no_product_code"
 msgstr ""
-"Claim service %s refers to a service %s that doesn't seem to have a valid "
-"Policy->Product"
+"%(code)s: Claim service %(service)s doesn't seem to have a valid Policy-"
+">Product"
+
+#: claim/claim/report_views.py:11 claim/claim/schema.py:141
+#: claim/claim/schema.py:146 claim/claim/schema.py:151
+#: claim/claim/schema.py:361 claim/claim/schema.py:392
+#: claim/claim/schema.py:415 claim/claim/schema.py:462
+#: claim/claim/schema.py:479 claim/claim/schema.py:497
+#: claim/claim/schema.py:516 claim/claim/schema.py:552
+#: claim/claim/schema.py:570 claim/claim/schema.py:588
+#: claim/claim/schema.py:608 claim/claim/schema.py:651
+#: claim/claim/schema.py:690 claim_batch/claim_batch/report_views.py:26
+#: claim_batch/claim_batch/schema.py:106 claim_batch/claim_batch/schema.py:133
+#: claim_batch/claim_batch/schema.py:137 claim_batch/claim_batch/schema.py:178
+#: insuree/insuree/schema.py:65 insuree/insuree/schema.py:73
+#: insuree/insuree/schema.py:81 location/location/schema.py:86
+#: location/location/schema.py:91 location/location/schema.py:96
+#: medical/medical/schema.py:71 medical/medical/schema.py:82
+#: medical/medical/schema.py:93 policy/policy/schema.py:104
+#: policy/policy/schema.py:141 policy/policy/schema.py:152
+#: policy/policy/schema.py:164 product/product/schema.py:55
+msgid "unauthorized"
+msgstr "User not authorized for this operation"
+
+#: claim/claim/schema.py:370
+msgid "claim.mutation.failed_to_create_claim"
+msgstr "Failed create claim %(code)s"
+
+#: claim/claim/schema.py:398 claim/claim/schema.py:535
+#: claim/claim/schema.py:634
+msgid "claim.mutation.failed_to_update_claim"
+msgstr "Failed to update claim %(code)s"
