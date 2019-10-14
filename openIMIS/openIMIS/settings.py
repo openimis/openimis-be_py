@@ -40,6 +40,10 @@ SECRET_KEY = os.environ.get(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", 'False').lower() == 'true'
+# SECURITY WARNING: don't run without row security in production!
+# Row security is dedicated to filter the data result sets according to users' right
+# Example: user registered at a Health Facility should only see claims recorded for that Health Facility
+ROW_SECURITY = os.environ.get("ROW_SECURITY", 'True').lower() == 'true'
 
 if ("ALLOWED_HOSTS" in os.environ):
     ALLOWED_HOSTS = json.loads(os.environ["ALLOWED_HOSTS"])
@@ -86,6 +90,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware'
@@ -120,7 +125,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'openIMIS.wsgi.application'
 
 GRAPHENE = {
-    'SCHEMA': 'openIMIS.schema.schema'
+    'SCHEMA': 'openIMIS.schema.schema',
+    'RELAY_CONNECTION_MAX_LIMIT': 100,
 }
 
 # Database
@@ -144,6 +150,9 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT'),
         'OPTIONS': DATABASE_OPTIONS}
 }
+
+# Celery message broker configuration for RabbitMQ. One can also use Redis on AWS SQS
+CELERY_BROKER_URL = "amqp://127.0.0.1"
 
 AUTH_USER_MODEL = 'core.User'
 
@@ -179,6 +188,10 @@ USE_L10N = True
 
 USE_TZ = False
 
+# List of places to look for translations, this could include an external translation module
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
