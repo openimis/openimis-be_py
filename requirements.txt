@@ -16,6 +16,7 @@ numpy
 pyodbc
 python-dateutil
 python-dotenv
-rules
-whitenoise
 reportbro-lib
+rules
+waitress
+whitenoise

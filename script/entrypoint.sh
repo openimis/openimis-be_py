@@ -25,7 +25,7 @@ case "$1" in
     echo "Migrating..."
     python manage.py migrate
     echo "Starting Django..."
-    python manage.py runserver 0.0.0.0:8000 --noreload
+    python server.py
   ;;
   "worker" )
     echo "Starting Celery with url ${CELERY_BROKER_URL} ${DB_NAME}..."
