@@ -180,3 +180,7 @@ msgstr "Failed create claim %(code)s"
 #: claim/claim/schema.py:634
 msgid "claim.mutation.failed_to_update_claim"
 msgstr "Failed to update claim %(code)s"
+
+#: core/utils.py:61
+msgid "core.string.over_max_length"
+msgstr "Value %(value)s is over maximum length: %(max_length)s"
