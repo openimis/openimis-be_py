@@ -198,4 +198,4 @@ msgstr "Unknown gender"
 
 #: core/utils.py:80
 msgid "core.insuree.unknown_dob"
-msgstr "Unknonw date of birth"
+msgstr "Unknown date of birth"
