@@ -188,7 +188,14 @@ msgstr "Failed to attach document to claim %(code)s"
 msgid "claim.mutation.failed_to_delete_claim_attachment"
 msgstr "Failed delete attachment from claim %(code)s"
 
-
 #: core/utils.py:61
 msgid "core.string.over_max_length"
 msgstr "Value %(value)s is over maximum length: %(max_length)s"
+
+#: core/utils.py:78
+msgid "core.insuree.unknown_gender"
+msgstr "Unknown gender"
+
+#: core/utils.py:80
+msgid "core.insuree.unknown_dob"
+msgstr "Unknonw date of birth"
