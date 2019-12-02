@@ -46,7 +46,7 @@ msgstr "User not authorized for this operation"
 
 #: claim/build/lib/claim/schema.py:484 claim/build/lib/claim/schema.py:515
 #: claim/claim/schema.py:484 claim/claim/schema.py:520
-msgid "claim.mutation.authentication_required"
+msgid "mutation.authentication_required"
 msgstr "User needs to be authenticated for this operation"
 
 #: claim/build/lib/claim/schema.py:495 claim/claim/schema.py:500
