@@ -1,4 +1,5 @@
 **/.vscode
+**/.idea
 **/venv
 **/.env
 **/__pycache__
@@ -7,4 +8,5 @@ modules-tests.sh
 **/.coverage
 **/coverage.xml
 **/coverage
+**/*.log
 openIMIS/locale/en/LC_MESSAGES/django.mo
