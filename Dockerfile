@@ -14,7 +14,7 @@ RUN pip install -r requirements.txt
 RUN python modules-requirements.py openimis.json > modules-requirements.txt
 RUN pip install -r modules-requirements.txt
 WORKDIR /openimis-be/openIMIS
-RUN python manage.py compilemessages
-RUN python manage.py collectstatic --clear --noinput
+RUN NO_DATABASE=True python manage.py compilemessages
+RUN NO_DATABASE=True python manage.py collectstatic --clear --noinput
 ENTRYPOINT ["/openimis-be/script/entrypoint.sh"]
 # CMD ["/openimis-be/script/entrypoint.sh"]
