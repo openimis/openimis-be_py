@@ -10,7 +10,7 @@
     },
     {
       "name": "location",
-      "pip": "openimis-be-location==1.0.3"
+      "pip": "openimis-be-location==1.0.4"
     },
     {
       "name": "medical",
@@ -18,7 +18,7 @@
     },
     {
       "name": "medical_pricelist",
-      "pip": "openimis-be-medical_pricelist==1.0.1"
+      "pip": "openimis-be-medical_pricelist==1.0.2"
     },
     {
       "name": "product",
@@ -26,7 +26,7 @@
     },
     {
       "name": "insuree",
-      "pip": "openimis-be-insuree==1.0.2"
+      "pip": "openimis-be-insuree==1.0.3"
     },
     {
       "name": "policy",
@@ -38,7 +38,7 @@
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==1.0.3"
+      "pip": "openimis-be-claim==1.0.4"
     },
     {
       "name": "claim_batch",
