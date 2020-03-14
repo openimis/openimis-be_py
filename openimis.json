@@ -22,7 +22,7 @@
     },
     {
       "name": "product",
-      "pip": "openimis-be-product==1.0.2"
+      "pip": "openimis-be-product==1.0.3"
     },
     {
       "name": "insuree",
@@ -38,7 +38,7 @@
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==1.0.10"
+      "pip": "openimis-be-claim==1.0.11"
     },
     {
       "name": "claim_batch",
