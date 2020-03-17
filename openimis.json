@@ -42,7 +42,7 @@
     },
     {
       "name": "claim_batch",
-      "pip": "openimis-be-claim_batch==1.0.4"
+      "pip": "openimis-be-claim_batch==1.0.5"
     },
     {
       "name": "api_fhir",
