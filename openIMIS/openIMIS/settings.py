@@ -32,17 +32,25 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.environ.get("DB_QUERIES_LOG_FILE", 'db-queries.log'),
+            'filename': os.environ.get("DB_QUERIES_LOG_FILE", '../../logs/db-queries.log'),
             'maxBytes': 1024*1024*5,  # 5 MB
             'backupCount': 10,
             'formatter': 'standard',
         }
     },
     'loggers': {
-        'django.db.backends': {
-            'level': 'DEBUG',
-            'handlers': ['file'],
-        }
+        'django.db.backends': {'level': 'DEBUG', 'handlers': ['file'], },
+        'core': {'level': 'DEBUG', 'handlers': ['file'], },
+        'claim': {'level': 'DEBUG', 'handlers': ['file'], },
+        'claim_batch': {'level': 'DEBUG', 'handlers': ['file'], },
+        'policy': {'level': 'DEBUG', 'handlers': ['file'], },
+        'insuree': {'level': 'DEBUG', 'handlers': ['file'], },
+        'product': {'level': 'DEBUG', 'handlers': ['file'], },
+        'medical': {'level': 'DEBUG', 'handlers': ['file'], },
+        'medical_price': {'level': 'DEBUG', 'handlers': ['file'], },
+        'location': {'level': 'DEBUG', 'handlers': ['file'], },
+        'contribution': {'level': 'DEBUG', 'handlers': ['file'], },
+        'report': {'level': 'DEBUG', 'handlers': ['file'], },
     }
 }
 
