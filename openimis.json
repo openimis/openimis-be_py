@@ -38,7 +38,7 @@
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==1.0.26"
+      "pip": "openimis-be-claim==1.0.27"
     },
     {
       "name": "claim_batch",
