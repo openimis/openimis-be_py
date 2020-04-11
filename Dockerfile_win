@@ -13,12 +13,12 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;\
 	Invoke-WebRequest -Uri "https://chocolatey.org/install.ps1" -UseBasicParsing | iex ; \
     choco install curl -y --no-progress ; \
+    choco install sqlserver-odbcdriver -y --no-progress;\
 	Write-Output $Env:GETTEXT_URL;\
     Invoke-WebRequest -Uri $Env:GETTEXT_URL -OutFile gettext.zip ;\
     Expand-Archive -Path gettext.zip -DestinationPath C:\gettext;
 ENV PYTHONUNBUFFERED 1
-RUN pip install --upgrade pip
-RUN mkdir /openimis-be
+RUN pip install --upgrade pip;
 COPY . /openimis-be
 WORKDIR /openimis-be
 RUN pip install -r requirements.txt
@@ -32,3 +32,5 @@ RUN refreshenv;Set-Item -Path Env:NO_DATABASE -value 'True';python manage.py col
 ENTRYPOINT ["powershell ", "-Command","/openimis-be/script/entrypoint.ps1"]
 # CMD ["powershell ", "-Command","/openimis-be/script/entrypoint.ps1"]
 CMD ["start","database","1433","5"]
+
+

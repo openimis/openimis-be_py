@@ -160,6 +160,12 @@ GRAPHENE = {
 
 if ("DB_OPTIONS" in os.environ):
     DATABASE_OPTIONS = json.loads(os.environ["DB_OPTIONS"])
+elif (os.name == 'nt'):
+    DATABASE_OPTIONS = {
+        'driver': 'ODBC Driver 17 for SQL Server',
+        'extra_params': "Persist Security Info=False;server=%s" % os.environ.get('DB_HOST'),
+        'unicode_results': True
+    }    
 else:
     DATABASE_OPTIONS = {
         'driver': 'ODBC Driver 17 for SQL Server',

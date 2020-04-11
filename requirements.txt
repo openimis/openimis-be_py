@@ -13,7 +13,7 @@ graphene-django-optimizer
 markdown
 nepalicalendar
 numpy
-pandas
+pandas==1.0.1
 pyodbc
 python-dateutil
 python-dotenv
