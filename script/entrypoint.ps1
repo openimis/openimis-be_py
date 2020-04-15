@@ -1,6 +1,6 @@
 param(
 [string]$mode,
-[string]$REMOTE='database',
+[string]$REMOTE='',
 [string]$PORT=1433,
 [string]$WAIT=5
 )
