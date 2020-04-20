@@ -1,0 +1,150 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: lokalise.com\n"
+"Project-Id-Version: openIMIS-be\n"
+"PO-Revision-Date: 2020-01-31 11:36\n"
+"Last-Translator: lokalise.com\n"
+"Language-Team: lokalise.com\n\n"
+"Language: fr\n"
+
+msgid "claim.mutation.authentication_required"
+msgstr "L'utilisateur doit être authentifié pour cette opération"
+
+msgid "claim.validation.id_does_not_exist"
+msgstr "Le remboursement %s n'existe pas"
+
+msgid "claim.mutation.failed_to_change_status_of_claim"
+msgstr "Echec de la modification du statut de la demande %s"
+
+msgid "claim.validation.pricelist.item"
+msgstr "Impossible de trouver un produit de santé valide dans  liste de prix des produits de santé pour le service %s dans le lieu %s"
+
+msgid "claim.validation.pricelist.service"
+msgstr "Impossible de trouver un service valide dans  liste de prix des services pour le service %s dans le lieu %s"
+
+msgid "claim.validation.validity.item"
+msgstr "Le produit de santé de la réclamation %s fait référence à un produit de santé %s qui n'est pas valide"
+
+msgid "claim.validation.validity.service"
+msgstr "Service de la réclamation %s fait référence à un service %s qui n'est pas valide"
+
+msgid "claim.validation.care_type.service"
+msgstr "Ce type de soins %s n'est pas compatible avec type de soins dans les établissements de santé %s avant %s alors que la réclamation date du%s"
+
+msgid "claim.validation.target_date"
+msgstr "Réclamation %s : ni \"date de début\" ni \"date de fin\" ne sont spécifié"
+
+msgid "claim.validation.care_type.item"
+msgstr "Ce type de soins %s n'est pas compatible avec type de soins dans les établissements de santé %s avant %s alors que la réclamation date du%s"
+
+msgid "claim.validation.limitation.item"
+msgstr "Le produit de santé %s de la réclamation réfère vers le produit de santé %s qui un masque de catégorie de patient %s mais l'assuré a un masque de %s"
+
+msgid "claim.validation.limitation.service"
+msgstr "La prestation %s de la réclamation réfère vers la prestation %s qui un masque de catégorie de patient %s mais l'assuré a un masque de %s"
+
+msgid "claim.validation.family.insuree_validity"
+msgstr "Réclamation %(code)s: Assuré %(insuree)s n'est plus valide"
+
+msgid "claim.validation.family.no_family"
+msgstr "L'assuré %s doivent avoir une famille, même s'il ne s'agit que d'un seul membre"
+
+#, fuzzy
+msgid "claim.validation.family.family_validity"
+msgstr "La famille de l'assuré %s est invalide"
+
+msgid "claim.validation.product_family.waiting_period"
+msgstr "Violation du délai d'attente pour la prestation  ou le produit de santé %s"
+
+msgid "claim.validation.product_family.max_nb_allowed"
+msgstr "%s services et %s prestations de santé est supérieur au nombre maximum de prestations et de produits de santé %s"
+
+msgid "claim.validation.product_family.no_product_found"
+msgstr "Pas de produit/service trouvé pour %s"
+
+msgid "claim.validation.product_family.max_nb_consultations"
+msgstr "%s est supérieur au maximum de consultations %s"
+
+msgid "claim.validation.product_family.max_nb_surgeries"
+msgstr "%s est supérieur au nombre maximum d'opérations chirurgicales %s"
+
+msgid "claim.validation.product_family.max_nb_deliveries"
+msgstr "%s est supérieur aux nombres d'accouchements maximum %s"
+
+msgid "claim.validation.product_family.max_nb_antenatal"
+msgstr "%s est supérieur au nombres maximum des services prénataux: %s "
+
+msgid "claim.validation.product_family.max_nb_hospitalizations"
+msgstr "%s est supérieur au nombre maximal d'hospitalisations %s"
+
+msgid "claim.validation.product_family.max_nb_visits"
+msgstr "%s est supérieur au nombre maximal de visites %s"
+
+msgid "claim.validation.assign_prod.item.no_product_code"
+msgstr "Le remboursement de produit de santé %s fait référence à un produit de santé %s qui ne semble pas avoir être couver par la police de l'assuré"
+
+msgid "claim.validation.assign_prod.service.no_product_code"
+msgstr "Le remboursement de service %s fait référence à un service %s qui ne semble pas avoir être couver par la police de l'assuré"
+
+msgid "unauthorized"
+msgstr "Utilisateur non autorisé pour cette opération"
+
+msgid "claim.mutation.failed_to_create_claim"
+msgstr "Échec de la  création de la réclamation %(code)s"
+
+msgid "claim.mutation.failed_to_update_claim"
+msgstr "Echec de la mise à jour la réclamation %(code)s"
+
+msgid "core.string.over_max_length"
+msgstr "Valeur %(valeur)s est supérieure à la longueur maximale : %(max_length)s"
+
+msgid "mutation.authentication_required"
+msgstr "L'utilisateur doit être authentifié pour cette opération"
+
+msgid "claim.mutation.duplicated_claim_code"
+msgstr "Réclamation avec code %(code) existe déjà"
+
+msgid "claim.mutation.failed_to_attach_document"
+msgstr "Impossible de joindre le document à la réclamation %(code)s"
+
+msgid "claim.mutation.failed_to_delete_claim_attachment"
+msgstr "Echec de la suppression de la pièce jointe de la réclamation %(code)s"
+
+msgid "claim.validation.all_items_and_services_rejected"
+msgstr "%(code)s : Tous les prestations et les produits de santé de la réclamation sont rejetés"
+
+msgid "claim.validation.assign_prod.elt.no_product_code"
+msgstr "%(code)s: la prestation ou le produit de santé de la réclamation %(elt)s ne semble pas être prise en charge par la police de l'assuré"
+
+msgid "claim_batch.reports.nodata"
+msgstr "Pas de données pour le rapport"
+
+msgid "core.insuree.unknown_gender"
+msgstr "Genre inconnu"
+
+msgid "core.insuree.unknown_dob"
+msgstr "Date de naissance inconnue"
+
+msgid "location.mutation.failed_to_create_location"
+msgstr "Echec de la création du lieu %(code)"
+
+msgid "location.mutation.failed_to_update_location"
+msgstr "Échec de la mise à jour du lieu % (code)"
+
+msgid "location.mutation.failed_to_delete_location"
+msgstr "Echec de la suppression du lieu %(code)"
+
+msgid "location.mutation.failed_to_move_location"
+msgstr "Echec du déplacement du lieu %(code)"
+
+msgid "location.mutation.failed_to_create_health_facility"
+msgstr "Echec de la création d'un établissement de santé %(code)"
+
+msgid "location.mutation.failed_to_update_health_facility"
+msgstr "Echec de la mis à jour de l'établissement de santé %(code) "
+
+msgid "location.mutation.failed_to_delete_health_facility"
+msgstr "Echec de la suppression de l'établissement de santé %(code)"
