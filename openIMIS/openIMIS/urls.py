@@ -26,4 +26,5 @@ from .settings import SITE_ROOT
 urlpatterns = [
     path("%sadmin/" % SITE_ROOT(), admin.site.urls),
     path("%sgraphql" % SITE_ROOT(), csrf_exempt(GraphQLView.as_view(graphiql=True))),
+	url(r'^ht/', include('health_check.urls')),
 ] + openimis_urls()

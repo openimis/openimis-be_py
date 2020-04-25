@@ -33,4 +33,4 @@ ENTRYPOINT ["powershell ", "-Command","/openimis-be/script/entrypoint.ps1"]
 # CMD ["powershell ", "-Command","/openimis-be/script/entrypoint.ps1"]
 CMD ["start","database","1433","5"]
 ENV REMOTE_USER_AUTHENTICATION = False
-
+#HEALTHCHECK ["powershell ", "-Command","/openimis-be/script/healthcheck.ps1"]

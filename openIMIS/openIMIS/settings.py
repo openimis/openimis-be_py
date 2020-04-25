@@ -92,6 +92,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'rules',
     'rest_framework_rules',
+	'health_check',                             # required
+    'health_check.db',                          # stock Django health checkers
+    'health_check.cache',
+    'health_check.storage',
 ]
 INSTALLED_APPS += openimis_apps()
 
