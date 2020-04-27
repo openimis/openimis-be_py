@@ -92,6 +92,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'rules',
     'rest_framework_rules',
+	'health_check',                             # required
+    'health_check.db',                          # stock Django health checkers
+    'health_check.cache',
+    'health_check.storage',
 ]
 INSTALLED_APPS += openimis_apps()
 
@@ -160,6 +164,12 @@ GRAPHENE = {
 
 if ("DB_OPTIONS" in os.environ):
     DATABASE_OPTIONS = json.loads(os.environ["DB_OPTIONS"])
+elif (os.name == 'nt'):
+    DATABASE_OPTIONS = {
+        'driver': 'ODBC Driver 17 for SQL Server',
+        'extra_params': "Persist Security Info=False;server=%s" % os.environ.get('DB_HOST'),
+        'unicode_results': True
+    }    
 else:
     DATABASE_OPTIONS = {
         'driver': 'ODBC Driver 17 for SQL Server',
