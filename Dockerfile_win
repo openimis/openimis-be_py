@@ -1,0 +1,36 @@
+ARG PYTHON_VERSION="3.7"
+ARG WINDOWS_VERSION="ltsc2016"
+FROM "python:${PYTHON_VERSION}-windowsservercore-${WINDOWS_VERSION}"
+ARG GETTEXT_VERSION="0.19.8.1"
+ARG OPENIMIS_VERSION="1.4.1" 
+ENV GETTEXT_URL="https://github.com/vslavik/gettext-tools-windows/releases/download/v${GETTEXT_VERSION}/gettext-tools-windows-${GETTEXT_VERSION}.zip"
+LABEL vendor="openIMIS"\
+      maintainer="Patrick Delcroix <patrick.delcroix@swisspth.ch>"\
+	  org.openimis.fe.is-beta= \
+      org.openimis.fe.is-production="" \
+      org.openimis.fe.version="${OPENIMIS_VERSION}" 
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;\
+	Invoke-WebRequest -Uri "https://chocolatey.org/install.ps1" -UseBasicParsing | iex ; \
+    choco install curl -y --no-progress ; \
+    choco install sqlserver-odbcdriver -y --no-progress;\
+	Write-Output $Env:GETTEXT_URL;\
+    Invoke-WebRequest -Uri $Env:GETTEXT_URL -OutFile gettext.zip ;\
+    Expand-Archive -Path gettext.zip -DestinationPath C:\gettext;
+ENV PYTHONUNBUFFERED 1
+RUN pip install --upgrade pip;
+COPY . /openimis-be
+WORKDIR /openimis-be
+RUN pip install -r requirements.txt
+RUN python modules-requirements.py openimis.json > modules-requirements.txt
+RUN pip install -r modules-requirements.txt
+WORKDIR /openimis-be/openIMIS
+RUN $env:PATH = 'C:\gettext\bin;' + $env:PATH; \
+    [Environment]::SetEnvironmentVariable('PATH', $env:PATH, [EnvironmentVariableTarget]::Machine); 
+RUN refreshenv;Set-Item -Path Env:NO_DATABASE -value 'True'; python manage.py compilemessages | Write-Output
+RUN refreshenv;Set-Item -Path Env:NO_DATABASE -value 'True';python manage.py collectstatic --clear --noinput | Write-Output
+ENTRYPOINT ["powershell ", "-Command","/openimis-be/script/entrypoint.ps1"]
+# CMD ["powershell ", "-Command","/openimis-be/script/entrypoint.ps1"]
+CMD ["start","database","1433","5"]
+ENV REMOTE_USER_AUTHENTICATION = False
+#HEALTHCHECK ["powershell ", "-Command","/openimis-be/script/healthcheck.ps1"]

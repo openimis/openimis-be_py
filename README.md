@@ -1,3 +1,12 @@
+# openIMIS Backend Reference Implementation : Windows Docker
+This repository holds the configuration files for the openIMIS Frontend Reference Implementation:
+
+Please look for the direction on the openIMIS Wiki: https://openimis.atlassian.net/wiki/spaces/OP/pages/963182705/MO1.1+Install+the+modular+openIMIS+using+Docker
+
+This repo branches, tags,... are maintained by openIMIS official delivery team who use it to build the official openIMIS Docker images containing the official modules (versions) list.
+
+In case of troubles, please consult/contact our service desk via our [ticketing site](https://openimis.atlassian.net/servicedesk/customer).
+
 # openIMIS Backend Reference Implementation
 This repository holds the configuration files for the openIMIS Backend Reference Implementation.
 It serves 2 distinct use cases:
