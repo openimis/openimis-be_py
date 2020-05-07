@@ -20,5 +20,6 @@ python-dotenv
 reportbro-lib
 rules
 waitress
+wheel
 whitenoise
 django-health-check
