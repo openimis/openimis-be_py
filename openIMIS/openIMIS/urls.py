@@ -13,18 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.conf.urls import url, include
+from django.contrib import admin
 from django.urls import path
-from graphene_django.views import GraphQLView
 from django.views.decorators.csrf import csrf_exempt
+from graphene_django.views import GraphQLView
 
 from .openimisurls import openimis_urls
-import os
 from .settings import SITE_ROOT
 
 urlpatterns = [
     path("%sadmin/" % SITE_ROOT(), admin.site.urls),
     path("%sgraphql" % SITE_ROOT(), csrf_exempt(GraphQLView.as_view(graphiql=True))),
-	url(r'^ht/', include('health_check.urls')),
+    url(r'^ht/', include('health_check.urls')),
 ] + openimis_urls()
