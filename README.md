@@ -67,7 +67,8 @@ At this stage, you may (depends on the database you connect to) need to:
 ### To run unit tests on a module (example openimis-be-claim)
 * from `openimis-be_py`
   * (re)initialize test database (at this stage structure is not managed by django): `python init_test_db.py`
-  * launch unit tests, with the 'keep database' option: `python manage.py test -k claim`
+  * launch unit tests, with the 'keep database' option: `python
+    manage.py test --keep claim`
 
 ### To publish (in PyPI) the modified (or new) module
 * adapt the `openimis-be-mymodule_py/setup.py` to (at least) bump version number (e.g. 1.2.3)
@@ -87,8 +88,10 @@ Note: as a distributor, you may want to run an openIMIS version without docker. 
 * adapt the `openimis-be_py/openimis.json` to specify the modules (and their versions) to be bundled
 * make release candidates docker image from `openimis-be_py/`: `docker build . -t openimis-be-2.3.4`
 * configure the database connection (see section here below)
-* run the docker image, refering to environment variables file: `docker run --env-file .env openimis-be-2.3.4`
-Note: when starting, the docker image will automatically apply the necessary database migrations to the database
+* run the docker image, referring to environment variables file: `docker
+  run --env-file .env openimis-be-2.3.4` Note: when starting, the docker
+  image will automatically apply the necessary database migrations to
+  the database
 
 When release candidate is accepted:
 * commit your changes to the git repo
@@ -120,4 +123,4 @@ Notes:
 * default used django database 'engine' in openIMIS is `sql_server.pyodbc`.
   If you need to use anotherone, use the `DB_ENGINE` entry in the `.env` file
 * default 'options' in openIMIS are `{'driver': 'ODBC Driver 17 for SQL Server','unicode_results': True}`
-  If you need to provide other options, use the `DB_OPTIONS` entry in the `.env` file (be complete: the new json string will entirely replace the default one)  
+  If you need to provide other options, use the `DB_OPTIONS` entry in the `.env` file (be complete: the new json string will entirely replace the default one)

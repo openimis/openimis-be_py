@@ -169,7 +169,7 @@ elif (os.name == 'nt'):
         'driver': 'ODBC Driver 17 for SQL Server',
         'extra_params': "Persist Security Info=False;server=%s" % os.environ.get('DB_HOST'),
         'unicode_results': True
-    }    
+    }
 else:
     DATABASE_OPTIONS = {
         'driver': 'ODBC Driver 17 for SQL Server',

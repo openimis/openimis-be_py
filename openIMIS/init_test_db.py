@@ -1,14 +1,13 @@
 #!/usr/bin/env python
 import os
 from django.conf import settings
-from django.db import connections, connection
+from django.db import connections
 from django.test.utils import get_unique_databases_and_mirrors
 
 
 init_test_db_file = os.path.join(os.path.dirname(__file__), 'init_test_db.sql')
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'openIMIS.settings')
-import openIMIS.settings
 test_databases, mirrored_aliases = get_unique_databases_and_mirrors()
 for db_host, db_port, db_engine, db_name in test_databases.keys():
     name, cfgs = test_databases[(db_host, db_port, db_engine, db_name)]
