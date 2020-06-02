@@ -17,7 +17,7 @@ pandas==1.0.1
 pyodbc
 python-dateutil
 python-dotenv
-reportbro-lib
+reportbro-lib==1.3.3
 rules
 waitress
 whitenoise
