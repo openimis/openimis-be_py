@@ -93,7 +93,7 @@ msgid "unauthorized"
 msgstr "Utilisateur non autorisé pour cette opération"
 
 msgid "claim.mutation.failed_to_create_claim"
-msgstr "Échec de la  création de la réclamation %(code)s"
+msgstr "Échec de la création de la réclamation %(code)s"
 
 msgid "claim.mutation.failed_to_update_claim"
 msgstr "Echec de la mise à jour la réclamation %(code)s"

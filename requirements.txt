@@ -22,3 +22,4 @@ rules
 waitress
 whitenoise
 django-health-check
+requests

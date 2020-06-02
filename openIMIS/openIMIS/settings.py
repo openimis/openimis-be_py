@@ -9,10 +9,10 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
+import importlib
 import os
 import json
-from .openimisapps import openimis_apps
+from .openimisapps import openimis_apps, get_locale_folders
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -225,9 +225,9 @@ USE_L10N = True
 USE_TZ = False
 
 # List of places to look for translations, this could include an external translation module
-LOCALE_PATHS = (
+LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
-)
+] + get_locale_folders()
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
