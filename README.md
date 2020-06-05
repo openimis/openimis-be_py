@@ -64,6 +64,11 @@ At this stage, you may (depends on the database you connect to) need to:
 * follow the same procedure as for a brand new openIMIS module,
   ... but give it the same logical name as the one you want to replace: `/openimis-be-location-dhis2_py/location`
 
+### To manage translations of your module
+* from your module root dir, execute '../openimis-be_py/gettext.sh'
+  ... this extract all your translations keys from your code into your module root dir/locale/en/LC_MESSAGES/django.po
+* you may want to provide translation in generated django.po file... or manage them via lokalize (need to upload the keys,...) 
+
 ### To run unit tests on a module (example openimis-be-claim)
 * from `openimis-be_py`
   * (re)initialize test database (at this stage structure is not managed by django): `python init_test_db.py`
