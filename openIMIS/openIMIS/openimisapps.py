@@ -1,8 +1,6 @@
 import os
 from importlib import resources
 
-from django.core.management.utils import is_ignored_path
-
 from .openimisconf import load_openimis_conf
 
 
