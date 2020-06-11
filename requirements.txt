@@ -4,6 +4,7 @@ celery>=4.3,<4.4
 django==2.1.14
 djangorestframework<3.11
 django-filter
+django-jsonfallback
 django-pyodbc
 django-pyodbc-azure
 django-rest-framework-rules
@@ -17,6 +18,7 @@ pandas==1.0.1
 pyodbc
 python-dateutil
 python-dotenv
+psycopg2
 reportbro-lib
 rules
 waitress
