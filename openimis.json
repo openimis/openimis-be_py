@@ -2,7 +2,7 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==1.2.0rc1"
+      "pip": "openimis-be-core==1.2.0rc2"
     },
     {
       "name": "report",
@@ -38,7 +38,7 @@
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==1.2.0rc2"
+      "pip": "openimis-be-claim==1.2.0rc3"
     },
     {
       "name": "claim_batch",
