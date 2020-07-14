@@ -30,7 +30,7 @@
     },
     {
       "name": "policy",
-      "pip": "openimis-be-policy==1.1.0"
+      "pip": "openimis-be-policy==1.1.1"
     },
     {
       "name": "contribution",
