@@ -38,7 +38,10 @@ In case of troubles, please consult/contact our service desk via our [ticketing 
 
 At this stage, you may (depends on the database you connect to) need to:
 * apply django migrations, from `openimis-be_py/openIMIS`: `python manage.py migrate`
-* create a superuser for django admin console, from `openimis-be_py/openIMIS`: `python manage.py createsuperuser`
+* create a superuser for django admin console, from
+  `openimis-be_py/openIMIS`: `python manage.py createsuperuser` (will
+  not prompt for a password) and then `python manage.py changepassword
+  <username>`
 
 ### To edit (modify) an existing openIMIS module (e.g. `openimis-be-claim`)
 * checkout the module's git repo NEXT TO (not within!) `openimis-be_py` directory and create a git branch for your changes
@@ -67,7 +70,7 @@ At this stage, you may (depends on the database you connect to) need to:
 ### To manage translations of your module
 * from your module root dir, execute '../openimis-be_py/gettext.sh'
   ... this extract all your translations keys from your code into your module root dir/locale/en/LC_MESSAGES/django.po
-* you may want to provide translation in generated django.po file... or manage them via lokalize (need to upload the keys,...) 
+* you may want to provide translation in generated django.po file... or manage them via lokalize (need to upload the keys,...)
 
 ### To run unit tests on a module (example openimis-be-claim)
 * from `openimis-be_py`
