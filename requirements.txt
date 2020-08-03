@@ -19,6 +19,8 @@ pyodbc
 python-dateutil
 python-dotenv
 psycopg2
+#If psycopg2 does not build on your system, try:
+#psycopg2-binary==2.8.5
 reportbro-lib==1.3.3
 rules
 waitress
@@ -26,3 +28,5 @@ wheel
 whitenoise
 django-health-check
 requests
+apscheduler
+django_apscheduler

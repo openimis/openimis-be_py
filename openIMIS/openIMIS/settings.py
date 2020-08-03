@@ -9,11 +9,13 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-import os
 import json
-from .openimisapps import openimis_apps, get_locale_folders
+import os
 
 from dotenv import load_dotenv
+
+from .openimisapps import openimis_apps, get_locale_folders
+
 load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -95,6 +97,7 @@ INSTALLED_APPS = [
     'health_check.db',                          # stock Django health checkers
     'health_check.cache',
     'health_check.storage',
+    'django_apscheduler',
 ]
 INSTALLED_APPS += openimis_apps()
 
@@ -188,6 +191,40 @@ DATABASES = {
 
 # Celery message broker configuration for RabbitMQ. One can also use Redis on AWS SQS
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "amqp://127.0.0.1")
+
+# This scheduler config will:
+# - Store jobs in the project database
+# - Execute jobs in threads inside the application process, for production use, we could use a dedicated process
+SCHEDULER_CONFIG = {
+    "apscheduler.jobstores.default": {
+        "class": "django_apscheduler.jobstores:DjangoJobStore"
+    },
+    'apscheduler.executors.processpool': {
+        "type": "threadpool"
+    },
+}
+
+SCHEDULER_AUTOSTART = True
+
+# Normally, one creates a "scheduler" method that calls the appropriate scheduler.add_job but since we are in a
+# modular architecture and calling only once from the core module, this has to be dynamic.
+# This list will be called with scheduler.add_job() as specified:
+SCHEDULER_JOBS = [
+    {
+        "method": "core.tasks.openimis_test_batch",
+        "args": ["cron"],
+        "kwargs": {"id": "openimis_test_batch", "minute": 16, "replace_existing": True},
+    },
+]
+# This one is called directly with the scheduler object as first parameter. The methods can schedule things on their own
+SCHEDULER_CUSTOM = [
+    {
+        "method": "core.tasks.sample_method",
+        "args": ["sample"],
+        "kwargs": {"sample_named": "param"},
+    },
+]
+
 
 AUTH_USER_MODEL = 'core.User'
 
