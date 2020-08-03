@@ -42,6 +42,7 @@ Switch  ($mode) {
 	Start-Sleep -Seconds $WAIT;
     python manage.py migrate
     Write-Output "Starting Django..."
+    [Environment]::SetEnvironmentVariable("SCHEDULER_AUTOSTART ", "openIMIS.settings", "True")
     python server.py
   }
   "worker" {

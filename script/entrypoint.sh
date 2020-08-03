@@ -25,7 +25,7 @@ case "$1" in
     echo "Migrating..."
     python manage.py migrate
     echo "Starting Django..."
-    python server.py
+    SCHEDULER_AUTOSTART=True python server.py
   ;;
   "worker" )
     echo "Starting Celery with url ${CELERY_BROKER_URL} ${DB_NAME}..."

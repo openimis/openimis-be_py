@@ -204,7 +204,7 @@ SCHEDULER_CONFIG = {
     },
 }
 
-SCHEDULER_AUTOSTART = True
+SCHEDULER_AUTOSTART = os.environ.get("SCHEDULER_AUTOSTART", False)
 
 # Normally, one creates a "scheduler" method that calls the appropriate scheduler.add_job but since we are in a
 # modular architecture and calling only once from the core module, this has to be dynamic.
