@@ -209,12 +209,18 @@ SCHEDULER_AUTOSTART = os.environ.get("SCHEDULER_AUTOSTART", False)
 # Normally, one creates a "scheduler" method that calls the appropriate scheduler.add_job but since we are in a
 # modular architecture and calling only once from the core module, this has to be dynamic.
 # This list will be called with scheduler.add_job() as specified:
+# Note that the document implies that the time is local and follows DST but that seems false and in UTC regardless
 SCHEDULER_JOBS = [
     {
         "method": "core.tasks.openimis_test_batch",
         "args": ["cron"],
         "kwargs": {"id": "openimis_test_batch", "minute": 16, "replace_existing": True},
     },
+    # {
+    #     "method": "policy.tasks.get_policies_for_renewal",
+    #     "args": ["cron"],
+    #     "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
+    # },
 ]
 # This one is called directly with the scheduler object as first parameter. The methods can schedule things on their own
 SCHEDULER_CUSTOM = [
