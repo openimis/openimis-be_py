@@ -28,22 +28,47 @@ LOGGING = {
         'standard': {
             'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
         },
+        'short': {
+            'format': '%(name)s: %(message)s'
+        }
     },
     'handlers': {
-        'file': {
+        'db-queries': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': os.environ.get("DB_QUERIES_LOG_FILE", 'db-queries.log'),
             'maxBytes': 1024*1024*5,  # 5 MB
             'backupCount': 10,
             'formatter': 'standard',
-        }
+        },
+        'debug-log': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.environ.get("DEBUG_LOG_FILE", 'debug.log'),
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 3,
+            'formatter': 'standard',
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'short'
+        },
     },
     'loggers': {
         'django.db.backends': {
             'level': 'DEBUG',
-            'handlers': ['file'],
-        }
+            'handlers': ['db-queries'],
+        },
+        'openIMIS': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+        },
+        # GraphQL schema loading can be tricky and hide errors, use this to debug it
+        # 'openIMIS.schema': {
+        #     'level': 'DEBUG',
+        #     'handlers': ['debug-log', 'console'],
+        # },
+
     }
 }
 
