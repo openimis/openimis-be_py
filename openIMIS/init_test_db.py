@@ -15,4 +15,4 @@ for db_host, db_port, db_engine, db_name in test_databases.keys():
         with connections[cfg]._nodb_connection.cursor() as c:
             c.execute("DROP DATABASE IF EXISTS %s" % db_name)
             c.execute("CREATE DATABASE %s" % db_name)
-        os.system("sqlcmd -S %s,%s -U %s -P %s -d %s -i init_test_db.sql" % (db_host, db_port, settings.DATABASES[cfg]['USER'], settings.DATABASES[cfg]['PASSWORD'], db_name))
+        os.system("sqlcmd -S %s,%s -U %s -P '%s' -d %s -i init_test_db.sql" % (db_host, db_port, settings.DATABASES[cfg]['USER'], settings.DATABASES[cfg]['PASSWORD'], db_name))
