@@ -5,7 +5,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: lokalise.com\n"
 "Project-Id-Version: openIMIS-be\n"
-"PO-Revision-Date: 2020-06-05 11:01\n"
+"PO-Revision-Date: 2020-11-23 16:26\n"
 "Last-Translator: lokalise.com\n"
 "Language-Team: lokalise.com\n\n"
 "Language: fr\n"
@@ -101,6 +101,7 @@ msgstr "Échec de la mise à jour la prestation %(code)s"
 msgid "core.string.over_max_length"
 msgstr "Valeur %(valeur)s est supérieure à la longueur maximale : %(max_length)s"
 
+#, fuzzy
 msgid "mutation.authentication_required"
 msgstr "L'utilisateur doit être authentifié pour cette opération"
 
@@ -148,3 +149,69 @@ msgstr "Échec de la mis à jour de l'établissement de santé %(code) "
 
 msgid "location.mutation.failed_to_delete_health_facility"
 msgstr "Échec de la suppression de l'établissement de santé %(code)"
+
+msgid "policy.mutation.failed_to_create_policy"
+msgstr "Échec de la création de la police"
+
+msgid "policy.mutation.failed_to_update_policy"
+msgstr "Échec de la mise à jour de la police"
+
+msgid "policy.mutation.failed_to_renew_policy"
+msgstr "Échec du renouvellement de la police"
+
+msgid "policy.mutation.failed_to_suspend_policy"
+msgstr "Échec de la suspension de la police"
+
+msgid "policy.mutation.id_does_not_exist"
+msgstr "La police %s n'existe pas"
+
+msgid "policy.mutation.failed_to_change_status_of_policy"
+msgstr "Échec de la modification du statut de la police %(policy)s"
+
+msgid "policy.validation.id_does_not_exist"
+msgstr "La police %(id)s n’existe pas"
+
+msgid "policy.mutation.policy_not_idle"
+msgstr "Seules les polices inactives peuvent être mises à jour"
+
+msgid "policy.validation.members_count_above_max"
+msgstr "Le nombre d'assurés %(nombre) est supérieur au maximum de la police : %(max)s"
+
+msgid "insuree.mutation.failed_to_create_family"
+msgstr "Échec de la création de la famille"
+
+msgid "insuree.mutation.failed_to_delete_family"
+msgstr "Échec de la suppression de la famille %(uuid)s"
+
+msgid "insuree.mutation.failed_to_create_insuree"
+msgstr "Échec de la création de l'assuré"
+
+msgid "insuree.mutation.failed_to_update_insuree"
+msgstr "Échec de la mise à jour de l'assuré"
+
+msgid "insuree.mutation.failed_to_delete_insuree"
+msgstr "Échec de la suppression de l'assuré %(chfid)s"
+
+msgid "insuree.validation.id_does_not_exist"
+msgstr "L'assuré %(id)s n'existe pas"
+
+msgid "insuree.validation.delete_head_insuree"
+msgstr "Impossible de supprimer l'assuré chef d'une famille %(id)s"
+
+msgid "insuree.mutation.failed_to_cancel_insuree_policies"
+msgstr "Échec de l'annulation des polices de l'assuré %(chfid)s"
+
+msgid "insuree.mutation.failed_to_remove_insuree"
+msgstr "Échec de la suppression de l'assuré %(chfid)s de sa famille"
+
+msgid "insuree.validation.remove_head_insuree"
+msgstr "Impossible de supprimer l'assuré principal %(id)s d'une famille"
+
+msgid "insuree.mutation.failed_to_set_head_insuree"
+msgstr "Échec de la désignation de l'assuré chef de famille"
+
+msgid "insuree.mutation.failed_to_change_insuree_family"
+msgstr "Échec du changement de famille de l'assuré"
+
+msgid "insuree.validation.policy_above_max_members"
+msgstr "La police %(product_code)s - %(start_date)s couvre maximum %(max)s assurés. Nombre actuel de membres de la famille: %(count)s"

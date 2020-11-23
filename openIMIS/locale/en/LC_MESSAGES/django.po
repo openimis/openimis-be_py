@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-10 18:54+0000\n"
+"POT-Creation-Date: 2020-11-11 14:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,7 +10,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "claim.mutation.authentication_required"
 msgstr "User needs to be authenticated for this operation"
@@ -106,7 +105,7 @@ msgid "core.string.over_max_length"
 msgstr "Value %(value)s is over maximum length: %(max_length)s"
 
 msgid "mutation.authentication_required"
-msgstr "User needs to be authenticated for this operation"
+msgstr "User must be authenticated for this operation"
 
 msgid "claim.mutation.duplicated_claim_code"
 msgstr "Claim with code %(code) already exists"
@@ -152,3 +151,69 @@ msgstr "Failed to update health facility %(code)"
 
 msgid "location.mutation.failed_to_delete_health_facility"
 msgstr "Failed delete health facility %(code)"
+
+msgid "policy.mutation.failed_to_create_policy"
+msgstr "Failed to create policy"
+
+msgid "policy.mutation.failed_to_update_policy"
+msgstr "Failed to update policy"
+
+msgid "policy.mutation.failed_to_renew_policy"
+msgstr "Failed to renew policy"
+
+msgid "policy.mutation.failed_to_suspend_policy"
+msgstr "Failed to suspend policy"
+
+msgid "policy.mutation.id_does_not_exist"
+msgstr "Policy %(id)s doesn't exist"
+
+msgid "policy.mutation.failed_to_change_status_of_policy"
+msgstr "Failed to change status of policy %(policy)s"
+
+msgid "policy.validation.id_does_not_exist"
+msgstr "Policy %(id)s doesn't exist"
+
+msgid "policy.mutation.policy_not_idle"
+msgstr "Only idle policies can be updated"
+
+msgid "policy.validation.members_count_above_max"
+msgstr "Number of insurees %(count)s is above policy maximum: %(max)s"
+
+msgid "insuree.mutation.failed_to_create_family"
+msgstr "Failed to create family"
+
+msgid "insuree.mutation.failed_to_delete_family"
+msgstr "Failed to delete family %(uuid)s"
+
+msgid "insuree.mutation.failed_to_create_insuree"
+msgstr "Failed to create insuree"
+
+msgid "insuree.mutation.failed_to_update_insuree"
+msgstr "Failed to update insuree"
+
+msgid "insuree.mutation.failed_to_delete_insuree"
+msgstr "Failed to delete insuree %(chfid)s"
+
+msgid "insuree.validation.id_does_not_exist"
+msgstr "Insuree %(id)s doesn't exist"
+
+msgid "insuree.validation.delete_head_insuree"
+msgstr "Cannot delete family head insuree %(id)s"
+
+msgid "insuree.mutation.failed_to_cancel_insuree_policies"
+msgstr "Failed to cancel policies of insuree %(chfid)s"
+
+msgid "insuree.mutation.failed_to_remove_insuree"
+msgstr "Failed to remove insuree %(chfid)s from its family"
+
+msgid "insuree.validation.remove_head_insuree"
+msgstr "Cannot remove head insuree %(id)s from family"
+
+msgid "insuree.mutation.failed_to_set_head_insuree"
+msgstr "Failed to set family head insuree"
+
+msgid "insuree.mutation.failed_to_change_insuree_family"
+msgstr "Failed to change insuree from family"
+
+msgid "insuree.validation.policy_above_max_members"
+msgstr "Policy %(product_code)s - %(start_date)s covers max %(max)s insurees. Current family members count: %(count)s"
