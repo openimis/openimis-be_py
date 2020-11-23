@@ -2,7 +2,7 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==1.2.0rc3"
+      "pip": "openimis-be-core==1.2.0rc4"
     },
     {
       "name": "report",
@@ -22,19 +22,19 @@
     },
     {
       "name": "product",
-      "pip": "openimis-be-product==1.2.0rc2"
+      "pip": "openimis-be-product==1.2.0rc3"
     },
     {
       "name": "insuree",
-      "pip": "openimis-be-insuree==1.2.0rc2"
+      "pip": "openimis-be-insuree==1.2.0rc3"
     },
     {
       "name": "policy",
-      "pip": "openimis-be-policy==1.2.0rc2"
+      "pip": "openimis-be-policy==1.2.0rc3"
     },
     {
       "name": "contribution",
-      "pip": "openimis-be-contribution==1.2.0rc2"
+      "pip": "openimis-be-contribution==1.2.0rc3"
     },
     {
       "name": "payer",
@@ -42,11 +42,11 @@
     },
     {
       "name": "payment",
-      "pip": "openimis-be-payment==1.2.0rc2"
+      "pip": "openimis-be-payment==1.2.0rc3"
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==1.2.0rc4"
+      "pip": "openimis-be-claim==1.2.0rc5"
     },
     {
       "name": "claim_batch",
