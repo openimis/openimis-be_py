@@ -1,4 +1,7 @@
 import graphene
+from core.models import Language
+from django.utils import translation
+
 from .openimisapps import openimis_apps
 from graphene_django.debug import DjangoDebug
 
@@ -58,6 +61,17 @@ class Query(*queries, graphene.ObjectType):
 
 class Mutation(*mutations, graphene.ObjectType):
     pass
+
+
+class GQLUserLanguageMiddleware:
+    def resolve(self, next_middleware, root, info, **kwargs):
+        if info and info.context and info.context.user and info.context.user.language:
+            lang = info.context.user.language
+            if isinstance(lang, Language):
+                translation.activate(lang.code)
+            else:
+                translation.activate(lang)
+        return next_middleware(root, info, **kwargs)
 
 
 # noinspection PyTypeChecker

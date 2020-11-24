@@ -184,6 +184,9 @@ WSGI_APPLICATION = 'openIMIS.wsgi.application'
 GRAPHENE = {
     'SCHEMA': 'openIMIS.schema.schema',
     'RELAY_CONNECTION_MAX_LIMIT': 100,
+    'MIDDLEWARE': [
+        'openIMIS.schema.GQLUserLanguageMiddleware'
+    ]
 }
 
 # Database
