@@ -91,7 +91,7 @@ At this stage, you may (depends on the database you connect to) need to:
 
 Note: as a distributor, you may want to run an openIMIS version without docker. To do so, follow developers setup here above (up to running django migrations)
 
-### To create an openIMIS Backend distribution
+### To create an openIMIS Backend distribution (Docker)
 * clone this repo (creates the `openimis-be_py` directory) and create a git branch (named according to the release you want to bundle)
 * adapt the `openimis-be_py/openimis.json` to specify the modules (and their versions) to be bundled
 * make release candidates docker image from `openimis-be_py/`: `docker build . -t openimis-be-2.3.4`
@@ -106,9 +106,29 @@ When release candidate is accepted:
 * tag the git repo according to your new version number
 * upload openimis-be docker image to docker hub
 
-Note:
-This image only provides the openimis backend server.
-The full openIMIS deployment (with the frontend,...) is managed from `openimis-dist_dkr` repo and its `docker-compose.yml` file.
+### To create an openIMIS Backend distribution (local)
+* clone this repo (creates the `openimis-be_py` directory) and create a git branch (named according to the release you want to bundle)
+* adapt the `openimis-be_py/openimis.json` to specify the modules (and their versions) to be bundled, the "pip" params can be:
+	* standard pip: "openimis-be-core==1.2.0rc1"
+	* from local: 	"-e ../openimis-be-core_py"
+	* from git: "git+https://github.com/openimis/openimis-be_py.git#develop"
+	* from tarball: "https://github.com/openimis/openimis-be_py/archive/v1.1.0.tar.gz"
+* (required only once)`python -m venv ./venv`: create the python venv
+* `./venv/Script/activate[.sh/.ps1]`: Activate the venv
+* `pyhon modules-list.py openimis.json > module-list.txt`: list the module to install
+* `python -m pip uninstall -r module-list.txt`: uninstall the previously installed module
+* `pyhon modules-requirements.py openimis.json > modules-requirements.txt`: list the source of the module to install
+* `python -m pip install -r modules-requirements.txt`: Install the modules
+* Set the different required environement variables
+	* see database configuration
+	* SITE_ROOT: iapi for graphql, other  are possible in case there is multiple django backend serving the same urlpatterns
+	* REMOTE_USER_AUTHENTICATION:  trust the header value "remote-user" for the user /!\ to be used ONLY behind a reverse proxy managing the authentification /!\
+	* ROW_SECURITY: right based also on the location of the user
+	* DEBUG: debug mode of django
+	* OPENIMIS_CONF: path of the cofiguration file
+* `python manage.py migrate`: execute the migrations
+* `python manage.py runserver 0.0.0.0:PORT`: run the server 
+
 
 
 ## Database configuration (for developers and distributors)
