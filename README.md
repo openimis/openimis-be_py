@@ -109,10 +109,11 @@ When release candidate is accepted:
 ### To create an openIMIS Backend distribution (local)
 * clone this repo (creates the `openimis-be_py` directory) and create a git branch (named according to the release you want to bundle)
 * adapt the `openimis-be_py/openimis.json` to specify the modules (and their versions) to be bundled, the "pip" params can be:
-	* standard pip: "openimis-be-core==1.2.0rc1"
-	* from local: 	"-e ../openimis-be-core_py"
-	* from git: "git+https://github.com/openimis/openimis-be_py.git#develop"
-	* from tarball: "https://github.com/openimis/openimis-be_py/archive/v1.1.0.tar.gz"
+	* standard pip: `openimis-be-core==1.2.0rc1`
+	* from local: 	`-e ../openimis-be-core_py`
+	* from git: `git+https://github.com/openimis/openimis-be-core_py.git@develop`
+		- the egg can be specified so pip know what to look `git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core`
+	* from tarball: `https://github.com/openimis/openimis-be_py/archive/v1.1.0.tar.gz`
 * (required only once)`python -m venv ./venv`: create the python venv
 * `./venv/Script/activate[.sh/.ps1]`: Activate the venv
 * `pyhon modules-list.py openimis.json > module-list.txt`: list the module to install
