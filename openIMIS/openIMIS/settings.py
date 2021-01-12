@@ -13,7 +13,6 @@ import json
 import os
 
 from dotenv import load_dotenv
-
 from .openimisapps import openimis_apps, get_locale_folders
 
 load_dotenv()
@@ -123,6 +122,7 @@ INSTALLED_APPS = [
     'health_check.cache',
     'health_check.storage',
     'django_apscheduler',
+    'channels'                                  # Websocket support
 ]
 INSTALLED_APPS += openimis_apps()
 
@@ -267,9 +267,6 @@ AUTH_USER_MODEL = 'core.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
@@ -305,3 +302,20 @@ LOCALE_PATHS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = "/%sstatic/" % SITE_ROOT()
+
+
+ASGI_APPLICATION = "openIMIS.asgi.application"
+
+# Django channels require redis server running, by default it use 127.0.0.1, port 6379
+# docker run -p 6379:6379 -d redis:5
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [(
+                os.environ.get('REDIS_HOST', '127.0.0.1'),
+                os.environ.get('REDIS_PORT',  6379)
+            )],
+        },
+    },
+}

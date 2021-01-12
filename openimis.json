@@ -2,7 +2,7 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==1.2.0rc4"
+      "pip": "-e ./../openimis-be-core_py"
     },
     {
       "name": "report",
@@ -46,7 +46,7 @@
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==1.2.0rc5"
+      "pip": "-e ./../openimis-be-claim_py"
     },
     {
       "name": "claim_batch",
@@ -55,6 +55,34 @@
     {
       "name": "api_fhir",
       "pip": "openimis-be-api_fhir==1.2.0rc1"
+    },
+    {
+      "name": "policyholder",
+      "pip": "-e ./../openimis-be-policyholder_py"
+    },
+    {
+      "name": "contribution_plan",
+      "pip": "-e ./../openimis-be-contribution_plan_py"
+    },
+    {
+      "name": "contract",
+      "pip": "-e ./../openimis-be-contract_py"
+    },
+    {
+      "name": "api_fhir_r4",
+      "pip": "-e ./../openimis-be-api_fhir_r4_py"
+    },
+    {
+      "name": "calculation",
+      "pip": "-e ./../openimis-be-calculation_py"
+    },
+    {
+      "name": "claim_ai",
+      "pip": "-e ./../openimis-be-claim_ai_py"
+    },
+    {
+      "name": "claim_ai_quality",
+      "pip": "-e ./../openimis-be-claim_ai_quality_py"
     }
   ]
 }
