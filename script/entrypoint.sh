@@ -24,7 +24,6 @@ case "$1" in
   "start" )
     echo "Migrating..."
     python manage.py migrate
-    python manage.py migrate
     echo "Starting Django..."
     SCHEDULER_AUTOSTART=True python server.py
   ;;
