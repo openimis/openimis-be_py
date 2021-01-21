@@ -55,6 +55,11 @@
     {
       "name": "api_fhir",
       "pip": "openimis-be-api_fhir==1.2.0rc1"
+    },
+    {
+      "name": "api_fhir_r4",
+      "pip": "git+https://github.com/openimis/openimis-be-api_fhir_r4_py.git@develop#egg=openimis-be-api_fhir_r4"
     }
+    
   ]
 }
