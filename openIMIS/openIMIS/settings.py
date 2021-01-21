@@ -249,6 +249,14 @@ SCHEDULER_JOBS = [
     #     "args": ["cron"],
     #     "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
     # },
+    # {
+    #     "method": "claim_ai_quality.tasks.claim_ai_processing",
+    #     "args": ["cron"],
+    #     "kwargs": {"id": "claim_ai_processing",
+    #                "hour": 0
+    #                "minute", 30
+    #                "replace_existing": True},
+    # },
 ]
 # This one is called directly with the scheduler object as first parameter. The methods can schedule things on their own
 SCHEDULER_CUSTOM = [
@@ -309,16 +317,13 @@ STATIC_URL = "/%sstatic/" % SITE_ROOT()
 
 ASGI_APPLICATION = "openIMIS.asgi.application"
 
-# Django channels require redis server running, by default it use 127.0.0.1, port 6379
-# docker run -p 6379:6379 -d redis:5
+# Django channels require rabbitMQ server, by default it use 127.0.0.1, port 5672
 CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [(
-                os.environ.get('REDIS_HOST', '127.0.0.1'),
-                os.environ.get('REDIS_PORT',  6379)
-            )],
+    "default": {
+        "BACKEND": "channels_rabbitmq.core.RabbitmqChannelLayer",
+        "CONFIG": {
+            "host":  os.environ.get('CHANNELS_HOST', "amqp://guest:guest@127.0.0.1/"),
+            # "ssl_context": ... (optional)
         },
     },
 }
