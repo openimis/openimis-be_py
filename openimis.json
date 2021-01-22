@@ -2,7 +2,7 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==1.2.0rc4"
+      "pip": "openimis-be-core==1.2.1rc1"
     },
     {
       "name": "report",
@@ -34,15 +34,15 @@
     },
     {
       "name": "contribution",
-      "pip": "openimis-be-contribution==1.2.0rc3"
+      "pip": "openimis-be-contribution==1.2.1rc1"
     },
     {
       "name": "payer",
-      "pip": "openimis-be-payer==1.2.0rc2"
+      "pip": "openimis-be-payer==1.2.1rc1"
     },
     {
       "name": "payment",
-      "pip": "openimis-be-payment==1.2.0rc3"
+      "pip": "openimis-be-payment==1.2.1rc1"
     },
     {
       "name": "claim",

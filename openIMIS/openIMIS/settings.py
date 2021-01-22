@@ -60,7 +60,27 @@ LOGGING = {
         },
         'openIMIS': {
             'level': 'DEBUG',
-            'handlers': ['console'],
+            'handlers': ['debug-log'],
+        },
+        'core': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        'contribution': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        'payment': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        'payer': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        'policy': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
         },
         # GraphQL schema loading can be tricky and hide errors, use this to debug it
         # 'openIMIS.schema': {
