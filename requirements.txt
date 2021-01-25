@@ -36,4 +36,4 @@ apscheduler
 # (autoincrement int => bigint) so we are using our own fork with a squashed migration
 git+https://github.com/openimis/django-apscheduler.git#egg=django-apscheduler
 django-simple-history
-django-dirtyfields
+django-dirtyfields==1.4.1
