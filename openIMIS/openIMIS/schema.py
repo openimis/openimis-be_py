@@ -65,7 +65,8 @@ class Mutation(*mutations, graphene.ObjectType):
 
 class GQLUserLanguageMiddleware:
     def resolve(self, next_middleware, root, info, **kwargs):
-        if info and info.context and info.context.user and info.context.user.language:
+        if info and info.context and info.context.user and hasattr(info.context.user, "language") \
+                and info.context.user.language:
             lang = info.context.user.language
             if isinstance(lang, Language):
                 translation.activate(lang.code)

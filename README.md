@@ -128,7 +128,7 @@ The configuration for connection to the database is identical for developers and
   ```
 Notes:
 * instead of `.env` file, you can use environment variables (e.g. provided as parameters in the docker-compose.yml)
-* default used django database 'engine' in openIMIS is `sql_server.pyodbc`.
-  If you need to use anotherone, use the `DB_ENGINE` entry in the `.env` file
+* default used django database 'engine' in openIMIS is
+  `sql_server.pyodbc`. If you need to use another one, use the `DB_ENGINE` entry in the `.env` file
 * default 'options' in openIMIS are `{'driver': 'ODBC Driver 17 for SQL Server','unicode_results': True}`
   If you need to provide other options, use the `DB_OPTIONS` entry in the `.env` file (be complete: the new json string will entirely replace the default one)
