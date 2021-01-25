@@ -273,8 +273,8 @@ SCHEDULER_JOBS = [
         "method": "claim_ai_quality.tasks.claim_ai_processing",
         "args": ["cron"],
         "kwargs": {"id": "claim_ai_processing",
-                   "hour": 0
-                   "minute": 30
+                   "hour": 0,
+                   "minute": 30,
                    "replace_existing": True},
     },
 ]
