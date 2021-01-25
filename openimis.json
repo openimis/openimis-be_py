@@ -62,11 +62,11 @@
     },
     {
       "name": "claim_ai_quality",
-      "pip": "git+https://github.com/openimis/openimis-be-claim_ai_quality_py.git@develop#egg=openimis-be-claim_ai_quality_py"
+      "pip": "git+https://github.com/openimis/openimis-be-claim_ai_quality_py.git@develop#egg=openimis-be-claim_ai_quality"
     },
     {
       "name": "claim_ai",
-      "pip": "git+https://github.com/openimis/openimis-be-claim_ai_py.git@develop#egg=openimis-be-claim_ai_py"
+      "pip": "git+https://github.com/openimis/openimis-be-claim_ai_py.git@develop#egg=openimis-be-claim_ai"
     }
   ]
 }
