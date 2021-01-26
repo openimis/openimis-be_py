@@ -2,7 +2,7 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==1.2.1rc1"
+      "pip": "git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core_py"
     },
     {
       "name": "report",
