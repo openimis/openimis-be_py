@@ -34,7 +34,7 @@
     },
     {
       "name": "contribution",
-      "pip": "openimis-be-contribution==1.2.1rc2"
+      "pip": "openimis-be-contribution==1.2.1rc3"
     },
     {
       "name": "payer",
