@@ -262,7 +262,7 @@ SCHEDULER_JOBS = [
     {
         "method": "core.tasks.openimis_test_batch",
         "args": ["cron"],
-        "kwargs": {"id": "openimis_test_batch", "minute": 55, "replace_existing": True},
+        "kwargs": {"id": "openimis_test_batch", "minute": 16, "replace_existing": True},
     },
     # {
     #     "method": "policy.tasks.get_policies_for_renewal",
