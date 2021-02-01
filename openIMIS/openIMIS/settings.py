@@ -262,7 +262,7 @@ SCHEDULER_JOBS = [
     {
         "method": "core.tasks.openimis_test_batch",
         "args": ["cron"],
-        "kwargs": {"id": "openimis_test_batch", "minute": 16, "replace_existing": True},
+        "kwargs": {"id": "openimis_test_batch", "minute": 55, "replace_existing": True},
     },
     # {
     #     "method": "policy.tasks.get_policies_for_renewal",
@@ -347,3 +347,13 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+# Django email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = os.environ.get('EMAIL_HOST', 'localhost')
+EMAIL_PORT = os.environ.get('EMAIL_PORT', '1025')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+EMAIL_USE_TLS: os.environ.get('EMAIL_USE_TLS', False)
+EMAIL_USE_SSL: os.environ.get('EMAIL_USE_SSL', False)
