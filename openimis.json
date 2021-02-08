@@ -38,7 +38,7 @@
     },
     {
       "name": "payer",
-      "pip": "openimis-be-payer==1.2.1rc5"
+      "pip": "openimis-be-payer==1.2.1rc1"
     },
     {
       "name": "payment",
