@@ -30,7 +30,9 @@ In case of troubles, please consult/contact our service desk via our [ticketing 
 * install python 3, recommended in a [virtualenv](https://virtualenv.pypa.io)
 * install [pip](https://pip.pypa.io)
 * within `openimis-be_py` directory
-  * install openIMIS (external) dependencies: `pip install -r requirements.txt`
+  * install openIMIS (external) dependencies: `pip install -r
+    requirements.txt`. For development workstations, one can use `pip
+    install -r dev-requirements.txt` instead for more modules.
   * generate the openIMIS modules dependencies file (from openimis.json config): `python modules-requirements.py openimis.json > modules-requirements.txt`
   * install openIMIS current modules: `pip install -r modules-requirements.txt`
   * configure the database connection (see section here below)
@@ -128,7 +130,7 @@ When release candidate is accepted:
 	* DEBUG: debug mode of django
 	* OPENIMIS_CONF: path of the cofiguration file
 * `python manage.py migrate`: execute the migrations
-* `python manage.py runserver 0.0.0.0:PORT`: run the server 
+* `python manage.py runserver 0.0.0.0:PORT`: run the server
 
 
 
