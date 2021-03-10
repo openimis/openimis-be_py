@@ -37,3 +37,4 @@ apscheduler
 git+https://github.com/openimis/django-apscheduler.git#egg=django-apscheduler
 django-simple-history
 django-dirtyfields
+daphne==3.0.1
