@@ -209,15 +209,7 @@ elif not os.environ.get('SIMPLE_DATABASE', False):
     }
 
 
-if os.environ.get('SIMPLE_DATABASE', 'False') == 'True':
-    # used by AI instance that does not require running database
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-else:
+if not os.environ.get('NO_DATABASE_ENGINE', 'False') == 'True':
     DATABASES = {
         'default': {
             'ENGINE': os.environ.get('DB_ENGINE', 'sql_server.pyodbc'),
