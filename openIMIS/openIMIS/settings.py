@@ -116,7 +116,7 @@ DEBUG = os.environ.get("DEBUG", 'False').lower() == 'true'
 # Example: user registered at a Health Facility should only see claims recorded for that Health Facility
 ROW_SECURITY = os.environ.get("ROW_SECURITY", 'True').lower() == 'true'
 
-if ("ALLOWED_HOSTS" in os.environ):
+if "ALLOWED_HOSTS" in os.environ:
     ALLOWED_HOSTS = json.loads(os.environ["ALLOWED_HOSTS"])
 else:
     ALLOWED_HOSTS = ['*']
@@ -172,6 +172,8 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware'
 ]
+
+
 if bool(os.environ.get("REMOTE_USER_AUTHENTICATION", False)):
     MIDDLEWARE += [
         'core.security.RemoteUserMiddleware'
@@ -226,16 +228,18 @@ else:
         'unicode_results': True
     }
 
-DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('DB_ENGINE', 'sql_server.pyodbc'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
-        'OPTIONS': DATABASE_OPTIONS}
-}
+
+if not os.environ.get('NO_DATABASE_ENGINE', 'False') == 'True':
+    DATABASES = {
+        'default': {
+            'ENGINE': os.environ.get('DB_ENGINE', 'sql_server.pyodbc'),
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
+            'PORT': os.environ.get('DB_PORT'),
+            'OPTIONS': DATABASE_OPTIONS}
+    }
 
 # Celery message broker configuration for RabbitMQ. One can also use Redis on AWS SQS
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "amqp://127.0.0.1")
@@ -273,8 +277,8 @@ SCHEDULER_JOBS = [
     #     "method": "claim_ai_quality.tasks.claim_ai_processing",
     #     "args": ["cron"],
     #     "kwargs": {"id": "claim_ai_processing",
-    #                "hour": 0
-    #                "minute", 30
+    #                "hour": 0,
+    #                "minute": 30,
     #                "replace_existing": True},
     # },
 ]

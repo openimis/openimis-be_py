@@ -2,7 +2,6 @@ import json
 import os
 import logging
 import django
-from channels.auth import AuthMiddlewareStack
 
 from channels.routing import ProtocolTypeRouter, URLRouter
 from importlib import import_module
@@ -11,6 +10,9 @@ from django.core.asgi import get_asgi_application
 from django.urls import path
 
 logger = logging.getLogger(__name__)
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'openIMIS.settings')
+django.setup()
 
 def SITE_ROOT():
     root = os.environ.get("SITE_ROOT", '')
@@ -50,14 +52,9 @@ def openimis_websocket_endpoints():
     return [route for route in module_routings_paths if route]
 
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'openIMIS.settings')
-django.setup()
-
 routings = openimis_websocket_endpoints()
 
 application = ProtocolTypeRouter({
   "http": get_asgi_application(),
-  "websocket": AuthMiddlewareStack(
-        URLRouter(routings)
-    ),
+  "websocket": URLRouter(routings)
 })
