@@ -202,7 +202,7 @@ elif (os.name == 'nt'):
         'extra_params': "Persist Security Info=False;server=%s" % os.environ.get('DB_HOST'),
         'unicode_results': True
     }
-elif not os.environ.get('SIMPLE_DATABASE', False):
+else:
     DATABASE_OPTIONS = {
         'driver': 'ODBC Driver 17 for SQL Server',
         'unicode_results': True
