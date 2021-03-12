@@ -24,6 +24,8 @@ before_install:
 - sudo apt-get update
 # - sudo apt-get upgrade -y libstdc++6 libssl-dev
 - sudo apt-get install -y apt-transport-https ca-certificates
+# Necessary for some pip modules
+- sudo apt-get install -y rustc cargo
 - ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 odbcinst mssql-tools mssql-cli
 - sudo ln -s /opt/mssql-tools/bin/sqlcmd /usr/bin/sqlcmd
 - sudo apt-get install -y python3-dev unixodbc-dev
