@@ -60,7 +60,27 @@ LOGGING = {
         },
         'openIMIS': {
             'level': 'DEBUG',
-            'handlers': ['console'],
+            'handlers': ['debug-log'],
+        },
+        'core': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        'contribution': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        'payment': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        'payer': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        'policy': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
         },
         # GraphQL schema loading can be tricky and hide errors, use this to debug it
         # 'openIMIS.schema': {
@@ -331,3 +351,14 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+# Django email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = os.environ.get('EMAIL_HOST', 'localhost')
+EMAIL_PORT = os.environ.get('EMAIL_PORT', '1025')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', False)
+EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', False)
+
