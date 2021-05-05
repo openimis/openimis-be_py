@@ -2,11 +2,11 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==1.2.1rc2"
+      "pip": "openimis-be-core==1.2.1rc6"
     },
     {
       "name": "report",
-      "pip": "openimis-be-report==1.2.0rc1"
+      "pip": "openimis-be-report==1.2.1rc6"
     },
     {
       "name": "location",
@@ -22,11 +22,11 @@
     },
     {
       "name": "product",
-      "pip": "openimis-be-product==1.2.0rc3"
+      "pip": "openimis-be-product==1.2.1rc6"
     },
     {
       "name": "insuree",
-      "pip": "openimis-be-insuree==1.2.1rc2"
+      "pip": "openimis-be-insuree==1.2.1rc6"
     },
     {
       "name": "policy",
@@ -34,7 +34,7 @@
     },
     {
       "name": "contribution",
-      "pip": "openimis-be-contribution==1.2.1rc5"
+      "pip": "openimis-be-contribution==1.2.1rc6"
     },
     {
       "name": "payer",
@@ -42,15 +42,15 @@
     },
     {
       "name": "payment",
-      "pip": "openimis-be-payment==1.2.1rc5"
+      "pip": "openimis-be-payment==1.2.1rc6"
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==1.2.0rc5"
+      "pip": "openimis-be-claim==1.2.1rc6"
     },
     {
       "name": "claim_batch",
-      "pip": "openimis-be-claim_batch==1.2.0rc2"
+      "pip": "openimis-be-claim_batch==1.2.1rc6"
     },
     {
       "name": "api_fhir",

@@ -207,7 +207,8 @@ GRAPHENE = {
     'SCHEMA': 'openIMIS.schema.schema',
     'RELAY_CONNECTION_MAX_LIMIT': 100,
     'MIDDLEWARE': [
-        'openIMIS.schema.GQLUserLanguageMiddleware'
+        'openIMIS.schema.GQLUserLanguageMiddleware',
+        #'graphene_django.debug.DjangoDebugMiddleware',  # adds a _debug query to graphQL with sql debug info
     ]
 }
 
