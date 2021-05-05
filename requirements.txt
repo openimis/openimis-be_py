@@ -1,7 +1,7 @@
 cached-property
 coverage
 celery>=4.3,<4.4
-django==2.1.14
+django==2.2.20
 djangorestframework<3.11
 django-filter
 django-jsonfallback
