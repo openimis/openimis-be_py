@@ -25,7 +25,19 @@ case "$1" in
     echo "Migrating..."
     python manage.py migrate
     echo "Starting Django..."
-    python server.py
+    SCHEDULER_AUTOSTART=True python server.py
+  ;;
+  "start_asgi" )
+    echo "Starting Django ASGI..."
+    def_ip='0.0.0.0'
+    def_port='8000'
+    def_app='openIMIS.asgi:application'
+
+    SERVER_IP="${ASGI_IP:-$def_ip}"
+    SERVER_PORT="${ASGI_PORT:-$def_port}"
+    SERVER_APPLICATION="${ASGI_APPLICATION:-$def_app}"
+
+    daphne -b "$SERVER_IP" -p "$SERVER_PORT" "$SERVER_APPLICATION"
   ;;
   "worker" )
     echo "Starting Celery with url ${CELERY_BROKER_URL} ${DB_NAME}..."

@@ -10,4 +10,5 @@ modules-tests.sh
 **/coverage
 **/*.log
 **/*.log.*
+**/*.mo
 openIMIS/locale/en/LC_MESSAGES/django.mo

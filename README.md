@@ -30,7 +30,9 @@ In case of troubles, please consult/contact our service desk via our [ticketing 
 * install python 3, recommended in a [virtualenv](https://virtualenv.pypa.io)
 * install [pip](https://pip.pypa.io)
 * within `openimis-be_py` directory
-  * install openIMIS (external) dependencies: `pip install -r requirements.txt`
+  * install openIMIS (external) dependencies: `pip install -r
+    requirements.txt`. For development workstations, one can use `pip
+    install -r dev-requirements.txt` instead for more modules.
   * generate the openIMIS modules dependencies file (from openimis.json config): `python modules-requirements.py openimis.json > modules-requirements.txt`
   * install openIMIS current modules: `pip install -r modules-requirements.txt`
   * configure the database connection (see section here below)
@@ -38,7 +40,10 @@ In case of troubles, please consult/contact our service desk via our [ticketing 
 
 At this stage, you may (depends on the database you connect to) need to:
 * apply django migrations, from `openimis-be_py/openIMIS`: `python manage.py migrate`
-* create a superuser for django admin console, from `openimis-be_py/openIMIS`: `python manage.py createsuperuser`
+* create a superuser for django admin console, from
+  `openimis-be_py/openIMIS`: `python manage.py createsuperuser` (will
+  not prompt for a password) and then `python manage.py changepassword
+  <username>`
 
 ### To edit (modify) an existing openIMIS module (e.g. `openimis-be-claim`)
 * checkout the module's git repo NEXT TO (not within!) `openimis-be_py` directory and create a git branch for your changes
@@ -64,10 +69,16 @@ At this stage, you may (depends on the database you connect to) need to:
 * follow the same procedure as for a brand new openIMIS module,
   ... but give it the same logical name as the one you want to replace: `/openimis-be-location-dhis2_py/location`
 
+### To manage translations of your module
+* from your module root dir, execute '../openimis-be_py/gettext.sh'
+  ... this extract all your translations keys from your code into your module root dir/locale/en/LC_MESSAGES/django.po
+* you may want to provide translation in generated django.po file... or manage them via lokalize (need to upload the keys,...)
+
 ### To run unit tests on a module (example openimis-be-claim)
 * from `openimis-be_py`
   * (re)initialize test database (at this stage structure is not managed by django): `python init_test_db.py`
-  * launch unit tests, with the 'keep database' option: `python manage.py test -k claim`
+  * launch unit tests, with the 'keep database' option: `python
+    manage.py test --keep claim`
 
 ### To publish (in PyPI) the modified (or new) module
 * adapt the `openimis-be-mymodule_py/setup.py` to (at least) bump version number (e.g. 1.2.3)
@@ -82,22 +93,45 @@ At this stage, you may (depends on the database you connect to) need to:
 
 Note: as a distributor, you may want to run an openIMIS version without docker. To do so, follow developers setup here above (up to running django migrations)
 
-### To create an openIMIS Backend distribution
+### To create an openIMIS Backend distribution (Docker)
 * clone this repo (creates the `openimis-be_py` directory) and create a git branch (named according to the release you want to bundle)
 * adapt the `openimis-be_py/openimis.json` to specify the modules (and their versions) to be bundled
 * make release candidates docker image from `openimis-be_py/`: `docker build . -t openimis-be-2.3.4`
 * configure the database connection (see section here below)
-* run the docker image, refering to environment variables file: `docker run --env-file .env openimis-be-2.3.4`
-Note: when starting, the docker image will automatically apply the necessary database migrations to the database
+* run the docker image, referring to environment variables file: `docker
+  run --env-file .env openimis-be-2.3.4` Note: when starting, the docker
+  image will automatically apply the necessary database migrations to
+  the database
 
 When release candidate is accepted:
 * commit your changes to the git repo
 * tag the git repo according to your new version number
 * upload openimis-be docker image to docker hub
 
-Note:
-This image only provides the openimis backend server.
-The full openIMIS deployment (with the frontend,...) is managed from `openimis-dist_dkr` repo and its `docker-compose.yml` file.
+### To create an openIMIS Backend distribution (local)
+* clone this repo (creates the `openimis-be_py` directory) and create a git branch (named according to the release you want to bundle)
+* adapt the `openimis-be_py/openimis.json` to specify the modules (and their versions) to be bundled, the "pip" params can be:
+	* standard pip: `openimis-be-core==1.2.0rc1`
+	* from local: 	`-e ../openimis-be-core_py`
+	* from git: `git+https://github.com/openimis/openimis-be-core_py.git@develop`
+		- the egg can be specified so pip know what to look `git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core`
+	* from tarball: `https://github.com/openimis/openimis-be_py/archive/v1.1.0.tar.gz`
+* (required only once)`python -m venv ./venv`: create the python venv
+* `./venv/Script/activate[.sh/.ps1]`: Activate the venv
+* `pyhon modules-list.py openimis.json > module-list.txt`: list the module to install
+* `python -m pip uninstall -r module-list.txt`: uninstall the previously installed module
+* `pyhon modules-requirements.py openimis.json > modules-requirements.txt`: list the source of the module to install
+* `python -m pip install -r modules-requirements.txt`: Install the modules
+* Set the different required environement variables
+	* see database configuration
+	* SITE_ROOT: iapi for graphql, other  are possible in case there is multiple django backend serving the same urlpatterns
+	* REMOTE_USER_AUTHENTICATION:  trust the header value "remote-user" for the user /!\ to be used ONLY behind a reverse proxy managing the authentification /!\
+	* ROW_SECURITY: right based also on the location of the user
+	* DEBUG: debug mode of django
+	* OPENIMIS_CONF: path of the cofiguration file
+* `python manage.py migrate`: execute the migrations
+* `python manage.py runserver 0.0.0.0:PORT`: run the server
+
 
 
 ## Database configuration (for developers and distributors)
@@ -117,7 +151,7 @@ The configuration for connection to the database is identical for developers and
   ```
 Notes:
 * instead of `.env` file, you can use environment variables (e.g. provided as parameters in the docker-compose.yml)
-* default used django database 'engine' in openIMIS is `sql_server.pyodbc`.
-  If you need to use anotherone, use the `DB_ENGINE` entry in the `.env` file
+* default used django database 'engine' in openIMIS is
+  `sql_server.pyodbc`. If you need to use another one, use the `DB_ENGINE` entry in the `.env` file
 * default 'options' in openIMIS are `{'driver': 'ODBC Driver 17 for SQL Server','unicode_results': True}`
-  If you need to provide other options, use the `DB_OPTIONS` entry in the `.env` file (be complete: the new json string will entirely replace the default one)  
+  If you need to provide other options, use the `DB_OPTIONS` entry in the `.env` file (be complete: the new json string will entirely replace the default one)

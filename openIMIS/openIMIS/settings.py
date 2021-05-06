@@ -9,12 +9,12 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
-import os
 import json
-from .openimisapps import openimis_apps
+import os
 
 from dotenv import load_dotenv
+from .openimisapps import openimis_apps, get_locale_folders
+
 load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -27,22 +27,67 @@ LOGGING = {
         'standard': {
             'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
         },
+        'short': {
+            'format': '%(name)s: %(message)s'
+        }
     },
     'handlers': {
-        'file': {
+        'db-queries': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': os.environ.get("DB_QUERIES_LOG_FILE", 'db-queries.log'),
             'maxBytes': 1024*1024*5,  # 5 MB
             'backupCount': 10,
             'formatter': 'standard',
-        }
+        },
+        'debug-log': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.environ.get("DEBUG_LOG_FILE", 'debug.log'),
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 3,
+            'formatter': 'standard',
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'short'
+        },
     },
     'loggers': {
         'django.db.backends': {
             'level': 'DEBUG',
-            'handlers': ['file'],
-        }
+            'handlers': ['db-queries'],
+        },
+        'openIMIS': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        'core': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        'contribution': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        'payment': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        'payer': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        'policy': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
+        # GraphQL schema loading can be tricky and hide errors, use this to debug it
+        # 'openIMIS.schema': {
+        #     'level': 'DEBUG',
+        #     'handlers': ['debug-log', 'console'],
+        # },
+
     }
 }
 
@@ -71,7 +116,7 @@ DEBUG = os.environ.get("DEBUG", 'False').lower() == 'true'
 # Example: user registered at a Health Facility should only see claims recorded for that Health Facility
 ROW_SECURITY = os.environ.get("ROW_SECURITY", 'True').lower() == 'true'
 
-if ("ALLOWED_HOSTS" in os.environ):
+if "ALLOWED_HOSTS" in os.environ:
     ALLOWED_HOSTS = json.loads(os.environ["ALLOWED_HOSTS"])
 else:
     ALLOWED_HOSTS = ['*']
@@ -96,6 +141,8 @@ INSTALLED_APPS = [
     'health_check.db',                          # stock Django health checkers
     'health_check.cache',
     'health_check.storage',
+    'django_apscheduler',
+    'channels'                                  # Websocket support
 ]
 INSTALLED_APPS += openimis_apps()
 
@@ -125,6 +172,8 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware'
 ]
+
+
 if bool(os.environ.get("REMOTE_USER_AUTHENTICATION", False)):
     MIDDLEWARE += [
         'core.security.RemoteUserMiddleware'
@@ -157,6 +206,10 @@ WSGI_APPLICATION = 'openIMIS.wsgi.application'
 GRAPHENE = {
     'SCHEMA': 'openIMIS.schema.schema',
     'RELAY_CONNECTION_MAX_LIMIT': 100,
+    'MIDDLEWARE': [
+        'openIMIS.schema.GQLUserLanguageMiddleware',
+        #'graphene_django.debug.DjangoDebugMiddleware',  # adds a _debug query to graphQL with sql debug info
+    ]
 }
 
 # Database
@@ -169,26 +222,76 @@ elif (os.name == 'nt'):
         'driver': 'ODBC Driver 17 for SQL Server',
         'extra_params': "Persist Security Info=False;server=%s" % os.environ.get('DB_HOST'),
         'unicode_results': True
-    }    
+    }
 else:
     DATABASE_OPTIONS = {
         'driver': 'ODBC Driver 17 for SQL Server',
         'unicode_results': True
     }
 
-DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('DB_ENGINE', 'sql_server.pyodbc'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
-        'OPTIONS': DATABASE_OPTIONS}
-}
+
+if not os.environ.get('NO_DATABASE_ENGINE', 'False') == 'True':
+    DATABASES = {
+        'default': {
+            'ENGINE': os.environ.get('DB_ENGINE', 'sql_server.pyodbc'),
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
+            'PORT': os.environ.get('DB_PORT'),
+            'OPTIONS': DATABASE_OPTIONS}
+    }
 
 # Celery message broker configuration for RabbitMQ. One can also use Redis on AWS SQS
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "amqp://127.0.0.1")
+
+# This scheduler config will:
+# - Store jobs in the project database
+# - Execute jobs in threads inside the application process, for production use, we could use a dedicated process
+SCHEDULER_CONFIG = {
+    "apscheduler.jobstores.default": {
+        "class": "django_apscheduler.jobstores:DjangoJobStore"
+    },
+    'apscheduler.executors.processpool': {
+        "type": "threadpool"
+    },
+}
+
+SCHEDULER_AUTOSTART = os.environ.get("SCHEDULER_AUTOSTART", False)
+
+# Normally, one creates a "scheduler" method that calls the appropriate scheduler.add_job but since we are in a
+# modular architecture and calling only once from the core module, this has to be dynamic.
+# This list will be called with scheduler.add_job() as specified:
+# Note that the document implies that the time is local and follows DST but that seems false and in UTC regardless
+SCHEDULER_JOBS = [
+    {
+        "method": "core.tasks.openimis_test_batch",
+        "args": ["cron"],
+        "kwargs": {"id": "openimis_test_batch", "minute": 16, "replace_existing": True},
+    },
+    # {
+    #     "method": "policy.tasks.get_policies_for_renewal",
+    #     "args": ["cron"],
+    #     "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
+    # },
+    # {
+    #     "method": "claim_ai_quality.tasks.claim_ai_processing",
+    #     "args": ["cron"],
+    #     "kwargs": {"id": "claim_ai_processing",
+    #                "hour": 0,
+    #                "minute": 30,
+    #                "replace_existing": True},
+    # },
+]
+# This one is called directly with the scheduler object as first parameter. The methods can schedule things on their own
+SCHEDULER_CUSTOM = [
+    {
+        "method": "core.tasks.sample_method",
+        "args": ["sample"],
+        "kwargs": {"sample_named": "param"},
+    },
+]
+
 
 AUTH_USER_MODEL = 'core.User'
 
@@ -225,9 +328,9 @@ USE_L10N = True
 USE_TZ = False
 
 # List of places to look for translations, this could include an external translation module
-LOCALE_PATHS = (
+LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
-)
+] + get_locale_folders()
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -235,3 +338,28 @@ LOCALE_PATHS = (
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = "/%sstatic/" % SITE_ROOT()
+
+
+ASGI_APPLICATION = "openIMIS.asgi.application"
+
+# Django channels require rabbitMQ server, by default it use 127.0.0.1, port 5672
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_rabbitmq.core.RabbitmqChannelLayer",
+        "CONFIG": {
+            "host":  os.environ.get('CHANNELS_HOST', "amqp://guest:guest@127.0.0.1/"),
+            # "ssl_context": ... (optional)
+        },
+    },
+}
+
+# Django email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = os.environ.get('EMAIL_HOST', 'localhost')
+EMAIL_PORT = os.environ.get('EMAIL_PORT', '1025')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', False)
+EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', False)
+
