@@ -55,6 +55,10 @@
     {
       "name": "api_fhir",
       "pip": "openimis-be-api_fhir==1.2.0rc1"
+    },
+    {
+      "name": "dhis2_etl",
+      "pip": "-e git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop"
     }
   ]
 }
