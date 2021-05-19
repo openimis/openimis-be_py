@@ -55,7 +55,7 @@ At this stage, you may (depends on the database you connect to) need to:
 ### To create a new openIMIS module (e.g. `openimis-be-mymodule`)
 * create a (git-enabled) directory next to the other modules, with a subdirectory named as your module 'logical' name: `/openimis-be-mymodule_py/mymodule`
 * from `/openimis-be_py/openIMIS`:
-  * create the module skeleton: `python manage.py startapp mymodule ../../openimis-be-mymodule_py/mymodule/`
+  * create the module skeleton: `python manage.py startapp mymodule ../../openimis-be-mymodule_py/mymodule`
   * prepare your module to be mounted via pip: create and complete the `/openimis-be-mymodule_py/setup.py` (and README.md,... files)
   * every openIMIS module must provide its urlpatterns (even if empty):
     * create the file `/openimis-be-mymodule_py/mymodule/urls.py`
