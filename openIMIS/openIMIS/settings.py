@@ -133,6 +133,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
+    'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
     'test_without_migrations',
     'rest_framework',
     'rules',
@@ -152,6 +153,7 @@ if bool(os.environ.get("REMOTE_USER_AUTHENTICATION", False)):
 
 AUTHENTICATION_BACKENDS += [
     'rules.permissions.ObjectPermissionBackend',
+    'graphql_jwt.backends.JSONWebTokenBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
@@ -170,7 +172,9 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware'
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    #'openIMIS.oijwt.OIGraphQLAuthBackend'
+    #'graphql_jwt.middleware.JSONWebTokenMiddleware',
 ]
 
 
@@ -209,6 +213,22 @@ GRAPHENE = {
     'MIDDLEWARE': [
         'openIMIS.schema.GQLUserLanguageMiddleware',
         #'graphene_django.debug.DjangoDebugMiddleware',  # adds a _debug query to graphQL with sql debug info
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+        #'graphql_auth.backends.GraphQLAuthBackend',
+    ]
+}
+
+GRAPHQL_JWT = {
+    "JWT_VERIFY_EXPIRATION": True,
+    "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
+    "JWT_ENCODE_HANDLER": "openIMIS.oijwt.jwt_encode_user_key",
+    "JWT_DECODE_HANDLER": "openIMIS.oijwt.jwt_decode_user_key",
+    # This can be used to expose some resources without authentication
+    "JWT_ALLOW_ANY_CLASSES": [
+        "graphql_jwt.mutations.ObtainJSONWebToken",
+        "graphql_jwt.mutations.Verify",
+        "graphql_jwt.mutations.Refresh",
+        "graphql_jwt.mutations.Revoke",
     ]
 }
 

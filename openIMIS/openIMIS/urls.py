@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
+from graphql_jwt.decorators import jwt_cookie
 
 from .openimisurls import openimis_urls
 from .settings import SITE_ROOT
 
 urlpatterns = [
     path("%sadmin/" % SITE_ROOT(), admin.site.urls),
-    path("%sgraphql" % SITE_ROOT(), csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    path("%sgraphql" % SITE_ROOT(), jwt_cookie(csrf_exempt(GraphQLView.as_view(graphiql=True)))),
     url(r'^ht/', include('health_check.urls')),
 ] + openimis_urls()
