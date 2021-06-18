@@ -36,6 +36,8 @@ class JWTAuthentication(BaseAuthentication):
                 raise exceptions.AuthenticationFailed("Unproper structure of token")
             try:
                 payload = jwt_decode_user_key(token=access_token)
+            except jwt.DecodeError:
+                raise exceptions.AuthenticationFailed('Error on decoding token')
             except jwt.ExpiredSignatureError:
                 raise exceptions.AuthenticationFailed('Access_token expired')
             except IndexError:
