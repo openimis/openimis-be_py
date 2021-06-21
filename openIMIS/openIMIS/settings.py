@@ -160,9 +160,13 @@ AUTHENTICATION_BACKENDS += [
 ANONYMOUS_USER_NAME = None
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'openIMIS.jwt_authentication.JWTAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': [
         'core.security.ObjectPermissions'
-    ]
+    ],
+    'EXCEPTION_HANDLER': 'openIMIS.rest_exception_handler.fhir_rest_api_exception_handler'
 }
 
 MIDDLEWARE = [
