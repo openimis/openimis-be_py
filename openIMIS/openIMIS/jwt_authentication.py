@@ -28,10 +28,8 @@ class JWTAuthentication(BaseAuthentication):
         if not authorization_header:
             return None
         payload = None
-        if ' ' in authorization_header and 'Bearer' in authorization_header:
+        if authorization_header.lower().startswith('bearer '):
             bearer, access_token, *extra_words = authorization_header.split(' ')
-            if bearer != 'Bearer':
-                raise exceptions.AuthenticationFailed("Missing 'Bearer' prefix")
             if len(extra_words) > 0:
                 raise exceptions.AuthenticationFailed("Unproper structure of token")
             try:
