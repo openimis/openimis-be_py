@@ -10,8 +10,6 @@ logger = logging.getLogger(__file__)
 
 
 def jwt_encode_user_key(payload, context=None):
-    logger.info("foo")
-    user_private_key = extract_private_key_from_context(context)
     token = jwt.encode(
         payload,
         get_jwt_key(encode=True, context=context),
