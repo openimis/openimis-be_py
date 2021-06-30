@@ -1,5 +1,4 @@
 import graphene
-import graphql_jwt
 
 from core.models import Language
 from django.utils import translation
@@ -62,10 +61,7 @@ class Query(*queries, graphene.ObjectType):
 
 
 class Mutation(*mutations, graphene.ObjectType):
-    token_auth = graphql_jwt.mutations.ObtainJSONWebToken.Field()
-    verify_token = graphql_jwt.mutations.Verify.Field()
-    refresh_token = graphql_jwt.mutations.Refresh.Field()
-    revoke_token = graphql_jwt.mutations.Revoke.Field()
+    pass
 
 
 class GQLUserLanguageMiddleware:

@@ -161,7 +161,7 @@ ANONYMOUS_USER_NAME = None
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'openIMIS.jwt_authentication.JWTAuthentication',
+        'core.jwt_authentication.JWTAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': [
         'core.security.ObjectPermissions'
@@ -216,17 +216,21 @@ GRAPHENE = {
     'RELAY_CONNECTION_MAX_LIMIT': 100,
     'MIDDLEWARE': [
         'openIMIS.schema.GQLUserLanguageMiddleware',
-        #'graphene_django.debug.DjangoDebugMiddleware',  # adds a _debug query to graphQL with sql debug info
         'graphql_jwt.middleware.JSONWebTokenMiddleware',
         #'graphql_auth.backends.GraphQLAuthBackend',
+        'graphene_django.debug.DjangoDebugMiddleware',  # adds a _debug query to graphQL with sql debug info
     ]
 }
 
 GRAPHQL_JWT = {
     "JWT_VERIFY_EXPIRATION": True,
     "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
-    "JWT_ENCODE_HANDLER": "openIMIS.oijwt.jwt_encode_user_key",
-    "JWT_DECODE_HANDLER": "openIMIS.oijwt.jwt_decode_user_key",
+    "JWT_ENCODE_HANDLER": "core.jwt.jwt_encode_user_key",
+    "JWT_DECODE_HANDLER": "core.jwt.jwt_decode_user_key",
+    # To override the openIMIS per-user JWT private key and settings, you can create an oijwt.py file in this folder and
+    # adapt the above lines like this:
+    #"JWT_ENCODE_HANDLER": "openIMIS.oijwt.jwt_encode_user_key",
+    #"JWT_DECODE_HANDLER": "openIMIS.oijwt.jwt_decode_user_key",
     # This can be used to expose some resources without authentication
     "JWT_ALLOW_ANY_CLASSES": [
         "graphql_jwt.mutations.ObtainJSONWebToken",
