@@ -303,11 +303,17 @@ SCHEDULER_JOBS = [
     #     "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
     # },
     # {
+    #     "method": "policy_notification.tasks.send_notification_messages",
+    #     "args": ["cron"],
+    #     "kwargs": {"id": "openimis_notification_batch", 'day_of_week': '*',
+    #                "hour": "8,12,16,20", "replace_existing": True},
+    # },
+    # {
     #     "method": "claim_ai_quality.tasks.claim_ai_processing",
     #     "args": ["cron"],
     #     "kwargs": {"id": "claim_ai_processing",
-    #                "hour": 0,
-    #                "minute": 30,
+    #                "hour": 0
+    #                "minute", 30
     #                "replace_existing": True},
     # },
 ]
