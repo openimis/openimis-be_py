@@ -9,8 +9,6 @@ RUN apt-get install -y python3-dev unixodbc-dev
 RUN pip install --upgrade pip
 RUN mkdir /openimis-be
 COPY . /openimis-be
-ARG confFile=./openimis.json # default value
-COPY ${confFile} ./
 WORKDIR /openimis-be
 RUN pip install -r requirements.txt
 RUN python modules-requirements.py openimis.json > modules-requirements.txt
