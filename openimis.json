@@ -70,7 +70,7 @@
     },
     {
       "name": "contribution_plan",
-      "pip": "git+https://github.com/openimis/openimis-be-contribution_plan_py.git@test-shema-loading-issue#egg=openimis-be-contribution_plan"
+      "pip": "git+https://github.com/openimis/openimis-be-contribution_plan_py.git@develop#egg=openimis-be-contribution_plan"
     },
         {
       "name": "policyholder",
