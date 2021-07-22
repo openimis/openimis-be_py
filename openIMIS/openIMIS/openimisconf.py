@@ -1,6 +1,6 @@
 import json
 import os
-
+import io
 
 def load_openimis_conf():
     conf_json_env = os.environ.get("OPENIMIS_CONF_JSON", "")
@@ -9,6 +9,7 @@ def load_openimis_conf():
         print("not using local conf...")
         with open(conf_file_path) as conf_file:
             return json.load(conf_file)
-    else: 
+    else:
+        conf_json_env = io.StringIO(conf_json_env) 
         print("using local conf....:")
         return json.load(conf_json_env)
