@@ -6,55 +6,55 @@
     },
     {
       "name": "report",
-      "pip": "openimis-be-report==1.2.1rc6"
+      "pip": "git+https://github.com/openimis/openimis-be-report_py.git@develop#egg=openimis-be-report"
     },
     {
       "name": "location",
-      "pip": "openimis-be-location==1.2.0rc2"
+      "pip": "git+https://github.com/openimis/openimis-be-location_py.git@develop#egg=openimis-be-location"
     },
     {
       "name": "medical",
-      "pip": "openimis-be-medical==1.2.0rc2"
+      "pip": "git+https://github.com/openimis/openimis-be-medical_py.git@develop#egg=openimis-be-medical"
     },
     {
       "name": "medical_pricelist",
-      "pip": "openimis-be-medical_pricelist==1.2.0rc2"
+      "pip": "git+https://github.com/openimis/openimis-be-medical_pricelist_py.git@develop#egg=openimis-be-medical_pricelist"
     },
     {
       "name": "product",
-      "pip": "openimis-be-product==1.2.1rc6"
+      "pip": "git+https://github.com/openimis/openimis-be-product_py.git@develop#egg=openimis-be-product"
     },
     {
       "name": "insuree",
-      "pip": "openimis-be-insuree==1.2.1rc6"
+      "pip": "git+https://github.com/openimis/openimis-be-insuree_py.git@develop#egg=openimis-be-insuree"
     },
     {
       "name": "policy",
-      "pip": "openimis-be-policy==1.2.1rc5"
+      "pip": "git+https://github.com/openimis/openimis-be-policy_py.git@develop#egg=openimis-be-policy"
     },
     {
       "name": "contribution",
-      "pip": "openimis-be-contribution==1.2.1rc6"
+      "pip": "git+https://github.com/openimis/openimis-be-contribution_py.git@develop#egg=openimis-be-contribution"
     },
     {
       "name": "payer",
-      "pip": "openimis-be-payer==1.2.1rc1"
+      "pip": "git+https://github.com/openimis/openimis-be-payer_py.git@develop#egg=openimis-be-payer"
     },
     {
       "name": "payment",
-      "pip": "openimis-be-payment==1.2.1rc6"
+      "pip": "git+https://github.com/openimis/openimis-be-payment_py.git@develop#egg=openimis-be-payment"
     },
     {
       "name": "claim",
-      "pip": "openimis-be-claim==1.2.1rc6"
+      "pip": "git+https://github.com/openimis/openimis-be-claim_py.git@develop#egg=openimis-be-claim"
     },
     {
       "name": "claim_batch",
-      "pip": "openimis-be-claim_batch==1.2.1rc6"
+      "pip": "git+https://github.com/openimis/openimis-be-claim_batch_py.git@develop#egg=openimis-be-claim_batch"
     },
     {
       "name": "api_fhir",
-      "pip": "openimis-be-api_fhir==1.2.0rc1"
+      "pip": "git+https://github.com/openimis/openimis-be-api_fhir_py.git@develop#egg=openimis-be-api_fhir"
     },
     {
       "name": "dhis2_etl",
@@ -70,7 +70,7 @@
     },
     {
       "name": "contribution_plan",
-      "pip": "git+https://github.com/openimis/openimis-be-contribution_plan_py.git@test-shema-loading-issue#egg=openimis-be-contribution_plan"
+      "pip": "git+https://github.com/openimis/openimis-be-contribution_plan_py.git@develop#egg=openimis-be-contribution_plan"
     },
         {
       "name": "policyholder",
