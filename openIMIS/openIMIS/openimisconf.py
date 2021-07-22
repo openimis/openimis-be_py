@@ -7,8 +7,8 @@ def load_openimis_conf():
     print(conf_json_env)
     conf_file_path = os.environ.get("OPENIMIS_CONF", "../openimis.json")
     if conf_json_env:
-        with open(conf_json_env) as conf_file:
-            return json.load("../openimis.json")
+        with open("../openimis.json") as conf_file:
+            return json.load(conf_file)
     else:
         with open(conf_file_path) as conf_file:
             return json.load(conf_file)
