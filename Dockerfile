@@ -11,6 +11,7 @@ RUN mkdir /openimis-be
 COPY . /openimis-be
 ARG OPENIMIS_CONF_JSON
 ENV OPENIMIS_CONF_JSON=${OPENIMIS_CONF_JSON}
+RUN echo ${OPENIMIS_CONF_JSON}
 WORKDIR /openimis-be
 RUN pip install mssql-cli
 RUN pip install -r requirements.txt
