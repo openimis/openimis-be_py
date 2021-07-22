@@ -9,5 +9,5 @@ def load_openimis_conf():
         with open(conf_file_path) as conf_file:
             return json.load(conf_file)
     else:
-        conf_json_env = io.StringIO(conf_json_env)
+        conf_json_env = io.StringIO(conf_json_env) 
         return json.load(conf_json_env)
