@@ -3,7 +3,7 @@ import os
 
 
 def load_openimis_conf():
-    conf_json_env = os.environ.get("OPENIMIS_CONF_JSON", "")
+    conf_json_env = os.environ["OPENIMIS_CONF_JSON"]
     conf_file_path = os.environ.get("OPENIMIS_CONF", "../openimis.json")
     if not conf_json_env:
         print("not using local conf...")
