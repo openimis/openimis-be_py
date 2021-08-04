@@ -1,7 +1,13 @@
 name: Automated CI testing
 # This workflow run automatically for every commit on github it checks the syntax and launch the tests.
 # | grep . | uniq -c filters out empty lines and then groups consecutive lines together with the number of occurrences
-on: [ push ]
+on: 
+  push:
+  workflow_dispatch:
+    inputs:
+      comment:
+        description: Just a simple comment to know the purpose of the manual build
+        required: false
 
 jobs:
   build:
