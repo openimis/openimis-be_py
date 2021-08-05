@@ -1,7 +1,7 @@
 name: Automated CI testing
 # This workflow run automatically for every commit on github it checks the syntax and launch the tests.
 # | grep . | uniq -c filters out empty lines and then groups consecutive lines together with the number of occurrences
-on: 
+on:
   push:
   workflow_dispatch:
     inputs:
@@ -70,7 +70,7 @@ jobs:
           ls -l
           python manage.py migrate
           python init_test_db.py | grep . | uniq -c
-          python manage.py test --keep core claim policy
+          python manage.py test --keep core claim policy medical
         env:
           SECRET_KEY: secret
           DEBUG: true
