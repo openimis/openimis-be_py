@@ -74,6 +74,10 @@ LOGGING = {
             'level': 'DEBUG',
             'handlers': ['debug-log'],
         },
+        'location': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
         'payer': {
             'level': 'DEBUG',
             'handlers': ['debug-log'],
