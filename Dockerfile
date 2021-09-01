@@ -9,6 +9,8 @@ RUN apt-get install -y python3-dev unixodbc-dev
 RUN pip install --upgrade pip
 RUN mkdir /openimis-be
 COPY . /openimis-be
+ARG OPENIMIS_CONF_JSON
+ENV OPENIMIS_CONF_JSON=${OPENIMIS_CONF_JSON}
 WORKDIR /openimis-be
 RUN pip install mssql-cli
 RUN pip install -r requirements.txt
