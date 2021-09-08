@@ -70,7 +70,7 @@ jobs:
           ls -l
           python manage.py migrate
           python init_test_db.py | grep . | uniq -c
-          python manage.py test --keepdb $(jq   -r '(.modules[]|.name)' openimis.json)
+          python manage.py test --keepdb $(jq   -r '(.modules[]|.name)' ../openimis.json)
         env:
           SECRET_KEY: secret
           DEBUG: true
