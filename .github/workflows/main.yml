@@ -46,8 +46,8 @@ jobs:
       - name: Initialize DB
         run: |
           export DBBRANCH="$([ $GITHUB_REF == 'develop' ] && echo "main" || echo "develop")"
-          wget $(https://raw.githubusercontent.com/openimis/database_ms_sqlserver/$DBBRANCH/Empty%20databases/openIMIS_ONLINE.sql -O openIMIS_ONLINE.sql)
-          wget $(https://raw.githubusercontent.com/openimis/database_ms_sqlserver/$DBBRANCH/Demo%20database/openIMIS_demo_ONLINE.sql -O openIMIS_demo_ONLINE.sql)
+          wget $(https://raw.githubusercontent.com/openimis/database_ms_sqlserver/$DBBRANCH/Empty%20databases/openIMIS_ONLINE.sql) -O openIMIS_ONLINE.sql
+          wget $(https://raw.githubusercontent.com/openimis/database_ms_sqlserver/$DBBRANCH/Demo%20database/openIMIS_demo_ONLINE.sql) -O openIMIS_demo_ONLINE.sql
           curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
           curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
           sudo apt-get update
