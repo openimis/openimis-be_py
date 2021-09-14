@@ -67,8 +67,7 @@
     {
       "name": "contract",
       "pip": "git+https://github.com/openimis/openimis-be-contract_py.git@develop#egg=openimis-be-contract"
-    }
-
+    },
     {
       "name": "api_fhir_r4",
       "pip": "git+https://github.com/openimis/openimis-be-api_fhir_r4_py.git@develop#egg=openimis-be-api_fhir_r4"
