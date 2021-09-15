@@ -4,7 +4,7 @@ celery>=4.4
 channels==3.0.2
 channels-redis==3.2.0
 channels-rabbitmq==2.0.0
-django==3.0.3
+django==3.0.14
 djangorestframework
 django-filter
 django-jsonfallback
@@ -13,7 +13,9 @@ django-mssql-backend==2.8.1
 django-rest-framework-rules
 django-test-without-migrations
 graphene-django==2.8.2
-graphene-django-optimizer
+graphene-django-optimizer==0.8.0
+PyJWT==1.7.0
+django-graphql-jwt==0.3.1
 markdown
 nepalicalendar
 numpy
@@ -36,4 +38,5 @@ apscheduler
 # (autoincrement int => bigint) so we are using our own fork with a squashed migration
 git+https://github.com/openimis/django-apscheduler.git#egg=django-apscheduler
 django-simple-history
-django-dirtyfields
+django-dirtyfields==1.4.1
+daphne==3.0.1
