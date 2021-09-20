@@ -12,13 +12,20 @@ def create_release_branches_backend(version):
        function to create release branches 'release/<version>'
        for all backend modules presented in openimis.json
     """
+    output_messages = []
     #modules = openimis_apps()
-    modules = ['calculation_rule-fs_income_percentage', 'calculation', 'policyholder']
+    modules = ['calculation_rule-fs_income_percentage', 'report', 'policyholder', 'contribution_plan', 'calculation']
     directory = path.abspath(path.join(settings.BASE_DIR, "../.."))
     release_branch = f'release/{version}'
     for module in modules:
         try:
             repo_name = f'openimis-be-{module}_py'
+            # check if repo exist - if no - clone to local
+            if not path.exists(f'{directory}/{repo_name}'):
+                git.Repo.clone_from(
+                    f'https://github.com/openimis/openimis-be-{module}_py.git',
+                    f'{directory}/{repo_name}'
+                )
             local_repo = git.Repo(f'{directory}/{repo_name}')
             current_branch = local_repo.active_branch
             if current_branch != 'develop':
@@ -33,6 +40,15 @@ def create_release_branches_backend(version):
             local_repo.git.push("origin", release_branch)
             # back to branch previously assigned
             local_repo.git.checkout(current_branch)
+            output_messages.append({
+                'module': module,
+                'success': True,
+                'message': f'Operation succeded'
+            })
         except Exception as exc:
-            return f'Operation failed: {exc}'
-    return 'Operation ended sucessfully'
+            output_messages.append({
+                'module': module,
+                'success': False,
+                'message': f'Operation failed: {exc}'
+            })
+    return output_messages
