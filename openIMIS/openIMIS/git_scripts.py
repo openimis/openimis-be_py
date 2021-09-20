@@ -42,13 +42,11 @@ def create_release_branches_backend(version):
             local_repo.git.checkout(current_branch)
             output_messages.append({
                 'module': module,
-                'success': True,
                 'message': f'Operation succeded'
             })
         except Exception as exc:
             output_messages.append({
                 'module': module,
-                'success': False,
                 'message': f'Operation failed: {exc}'
             })
     return output_messages
