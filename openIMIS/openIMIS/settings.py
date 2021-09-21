@@ -105,6 +105,14 @@ def SITE_ROOT():
     else:
         return "%s/" % root
 
+def SITE_URL():
+    url = os.environ.get("SITE_URL", '')
+    if (url == ''):
+        return url
+    elif (url.endswith('/')):
+        return url[:-1]
+    else:
+        return url
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
