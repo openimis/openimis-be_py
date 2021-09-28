@@ -158,6 +158,7 @@ INSTALLED_APPS = [
     'channels'                                  # Websocket support
 ]
 INSTALLED_APPS += openimis_apps()
+INSTALLED_APPS += ['signal_binding']            # Signal binding should be last installed module
 
 AUTHENTICATION_BACKENDS = []
 if bool(os.environ.get("REMOTE_USER_AUTHENTICATION", False)):
