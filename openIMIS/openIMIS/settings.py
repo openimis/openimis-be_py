@@ -376,9 +376,9 @@ USE_L10N = True
 USE_TZ = False
 
 # List of places to look for translations, this could include an external translation module
-LOCALE_PATHS = [
-    os.path.join(BASE_DIR, 'locale'),
-] + get_locale_folders()
+LOCALE_PATHS = get_locale_folders() + [
+    os.path.join(BASE_DIR, "locale"),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
