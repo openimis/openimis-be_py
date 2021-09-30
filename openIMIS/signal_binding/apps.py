@@ -1,11 +1,6 @@
-import io
-import json
-import os
-
-from django.apps import AppConfig
 import logging
 from django.apps import AppConfig
-
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
@@ -17,24 +12,7 @@ class SignalBindingConfig(AppConfig):
         self.bind_service_signals()
 
     def bind_service_signals(self):
-        def extract_app(module):
-            return "%s" % (module["name"])
-
-        def openimis_apps():
-            OPENIMIS_CONF = load_openimis_conf()
-            return [*map(extract_app, OPENIMIS_CONF["modules"])]
-
-        def load_openimis_conf(conf_file_param='../openimis.json'):
-            conf_json_env = os.environ.get("OPENIMIS_CONF_JSON", "")
-            conf_file_path = os.environ.get("OPENIMIS_CONF", conf_file_param)
-            if not conf_json_env:
-                with open(conf_file_path) as conf_file:
-                    return json.load(conf_file)
-            else:
-                conf_json_env = io.StringIO(conf_json_env)
-                return json.load(conf_json_env)
-
-        for app in openimis_apps():
+        for app in settings.OPENIMIS_APPS:
             self._bind_app_signals(app)
 
     def _bind_app_signals(self, app_):
