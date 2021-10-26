@@ -17,6 +17,9 @@ from .openimisapps import openimis_apps, get_locale_folders
 
 load_dotenv()
 
+# Makes openimis_apps available to other modules
+OPENIMIS_APPS = openimis_apps()
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -105,6 +108,14 @@ def SITE_ROOT():
     else:
         return "%s/" % root
 
+def SITE_URL():
+    url = os.environ.get("SITE_URL", '')
+    if (url == ''):
+        return url
+    elif (url.endswith('/')):
+        return url[:-1]
+    else:
+        return url
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -149,7 +160,8 @@ INSTALLED_APPS = [
     'django_apscheduler',
     'channels'                                  # Websocket support
 ]
-INSTALLED_APPS += openimis_apps()
+INSTALLED_APPS += OPENIMIS_APPS
+INSTALLED_APPS += ['signal_binding']            # Signal binding should be last installed module
 
 AUTHENTICATION_BACKENDS = []
 if bool(os.environ.get("REMOTE_USER_AUTHENTICATION", False)):
