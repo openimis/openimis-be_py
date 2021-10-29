@@ -12,7 +12,7 @@ django-jsonfallback
 django-mssql-backend==2.8.1
 django-rest-framework-rules
 django-test-without-migrations
-graphene-django==2.8.2
+graphene-django<3
 graphene-django-optimizer==0.8.0
 PyJWT==1.7.0
 django-graphql-jwt==0.3.1

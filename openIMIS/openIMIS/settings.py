@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 import json
+import logging
 import os
 
 from dotenv import load_dotenv
@@ -94,9 +95,38 @@ LOGGING = {
         #     'level': 'DEBUG',
         #     'handlers': ['debug-log', 'console'],
         # },
-
     }
 }
+
+SENTRY_DSN = os.environ.get("SENTRY_DSN", None)
+IS_SENTRY_ENABLED = False
+
+if SENTRY_DSN is not None:
+    try:
+        import sentry_sdk
+        from sentry_sdk.integrations.django import DjangoIntegration
+
+        sentry_sdk.init(
+            dsn=SENTRY_DSN,
+            integrations=[DjangoIntegration()],
+            # Set traces_sample_rate to 1.0 to capture 100%
+            # of transactions for performance monitoring.
+            # We recommend adjusting this value in production,
+            traces_sample_rate=1.0,
+            # If you wish to associate users to errors (assuming you are using
+            # django.contrib.auth) you may enable sending PII data.
+            send_default_pii=True,
+            # By default the SDK will try to use the SENTRY_RELEASE
+            # environment variable, or infer a git commit
+            # SHA as release, however you may want to set
+            # something more human-readable.
+            # release="myapp@1.0.0",
+        )
+        IS_SENTRY_ENABLED = True
+    except ModuleNotFoundError:
+        logging.error(
+            "sentry_sdk has to be installed to use Sentry. Run `pip install --upgrade sentry_sdk` to install it."
+        )
 
 
 def SITE_ROOT():
@@ -233,8 +263,9 @@ GRAPHENE = {
     'SCHEMA': 'openIMIS.schema.schema',
     'RELAY_CONNECTION_MAX_LIMIT': 100,
     'MIDDLEWARE': [
-        'openIMIS.schema.GQLUserLanguageMiddleware',
-        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+        "openIMIS.tracer.TracerMiddleware",
+        "openIMIS.schema.GQLUserLanguageMiddleware",
+        "graphql_jwt.middleware.JSONWebTokenMiddleware",
         #'graphql_auth.backends.GraphQLAuthBackend',
         'graphene_django.debug.DjangoDebugMiddleware',  # adds a _debug query to graphQL with sql debug info
     ]
