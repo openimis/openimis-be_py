@@ -12,3 +12,4 @@ modules-tests.sh
 **/*.log.*
 **/*.mo
 openIMIS/locale/en/LC_MESSAGES/django.mo
+**/staticfiles

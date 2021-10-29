@@ -22,8 +22,11 @@ fi
 
 case "$1" in
   "start" )
-    echo "Migrating..."
-    python manage.py migrate
+    if [ "$SITE_ROOT" == "api" ] 
+    then
+      echo "Migrating..."
+      python manage.py migrate
+    fi
     echo "Starting Django..."
     SCHEDULER_AUTOSTART=True python server.py
   ;;

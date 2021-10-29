@@ -10,12 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 import json
+import logging
 import os
 
 from dotenv import load_dotenv
 from .openimisapps import openimis_apps, get_locale_folders
 
 load_dotenv()
+
+# Makes openimis_apps available to other modules
+OPENIMIS_APPS = openimis_apps()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -74,6 +78,10 @@ LOGGING = {
             'level': 'DEBUG',
             'handlers': ['debug-log'],
         },
+        'location': {
+            'level': 'DEBUG',
+            'handlers': ['debug-log'],
+        },
         'payer': {
             'level': 'DEBUG',
             'handlers': ['debug-log'],
@@ -87,9 +95,38 @@ LOGGING = {
         #     'level': 'DEBUG',
         #     'handlers': ['debug-log', 'console'],
         # },
-
     }
 }
+
+SENTRY_DSN = os.environ.get("SENTRY_DSN", None)
+IS_SENTRY_ENABLED = False
+
+if SENTRY_DSN is not None:
+    try:
+        import sentry_sdk
+        from sentry_sdk.integrations.django import DjangoIntegration
+
+        sentry_sdk.init(
+            dsn=SENTRY_DSN,
+            integrations=[DjangoIntegration()],
+            # Set traces_sample_rate to 1.0 to capture 100%
+            # of transactions for performance monitoring.
+            # We recommend adjusting this value in production,
+            traces_sample_rate=1.0,
+            # If you wish to associate users to errors (assuming you are using
+            # django.contrib.auth) you may enable sending PII data.
+            send_default_pii=True,
+            # By default the SDK will try to use the SENTRY_RELEASE
+            # environment variable, or infer a git commit
+            # SHA as release, however you may want to set
+            # something more human-readable.
+            # release="myapp@1.0.0",
+        )
+        IS_SENTRY_ENABLED = True
+    except ModuleNotFoundError:
+        logging.error(
+            "sentry_sdk has to be installed to use Sentry. Run `pip install --upgrade sentry_sdk` to install it."
+        )
 
 
 def SITE_ROOT():
@@ -101,6 +138,14 @@ def SITE_ROOT():
     else:
         return "%s/" % root
 
+def SITE_URL():
+    url = os.environ.get("SITE_URL", '')
+    if (url == ''):
+        return url
+    elif (url.endswith('/')):
+        return url[:-1]
+    else:
+        return url
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -133,6 +178,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
+    'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
     'test_without_migrations',
     'rest_framework',
     'rules',
@@ -144,7 +190,8 @@ INSTALLED_APPS = [
     'django_apscheduler',
     'channels'                                  # Websocket support
 ]
-INSTALLED_APPS += openimis_apps()
+INSTALLED_APPS += OPENIMIS_APPS
+INSTALLED_APPS += ['signal_binding']            # Signal binding should be last installed module
 
 AUTHENTICATION_BACKENDS = []
 if bool(os.environ.get("REMOTE_USER_AUTHENTICATION", False)):
@@ -152,15 +199,22 @@ if bool(os.environ.get("REMOTE_USER_AUTHENTICATION", False)):
 
 AUTHENTICATION_BACKENDS += [
     'rules.permissions.ObjectPermissionBackend',
+    'graphql_jwt.backends.JSONWebTokenBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
 ANONYMOUS_USER_NAME = None
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'core.jwt_authentication.JWTAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': [
         'core.security.ObjectPermissions'
-    ]
+    ],
+    'EXCEPTION_HANDLER': 'openIMIS.rest_exception_handler.fhir_rest_api_exception_handler'
 }
 
 MIDDLEWARE = [
@@ -170,7 +224,9 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware'
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    #'openIMIS.oijwt.OIGraphQLAuthBackend'
+    #'graphql_jwt.middleware.JSONWebTokenMiddleware',
 ]
 
 
@@ -207,8 +263,29 @@ GRAPHENE = {
     'SCHEMA': 'openIMIS.schema.schema',
     'RELAY_CONNECTION_MAX_LIMIT': 100,
     'MIDDLEWARE': [
-        'openIMIS.schema.GQLUserLanguageMiddleware',
-        #'graphene_django.debug.DjangoDebugMiddleware',  # adds a _debug query to graphQL with sql debug info
+        "openIMIS.tracer.TracerMiddleware",
+        "openIMIS.schema.GQLUserLanguageMiddleware",
+        "graphql_jwt.middleware.JSONWebTokenMiddleware",
+        #'graphql_auth.backends.GraphQLAuthBackend',
+        'graphene_django.debug.DjangoDebugMiddleware',  # adds a _debug query to graphQL with sql debug info
+    ]
+}
+
+GRAPHQL_JWT = {
+    "JWT_VERIFY_EXPIRATION": True,
+    "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
+    "JWT_ENCODE_HANDLER": "core.jwt.jwt_encode_user_key",
+    "JWT_DECODE_HANDLER": "core.jwt.jwt_decode_user_key",
+    # To override the openIMIS per-user JWT private key and settings, you can create an oijwt.py file in this folder and
+    # adapt the above lines like this:
+    #"JWT_ENCODE_HANDLER": "openIMIS.oijwt.jwt_encode_user_key",
+    #"JWT_DECODE_HANDLER": "openIMIS.oijwt.jwt_decode_user_key",
+    # This can be used to expose some resources without authentication
+    "JWT_ALLOW_ANY_CLASSES": [
+        "graphql_jwt.mutations.ObtainJSONWebToken",
+        "graphql_jwt.mutations.Verify",
+        "graphql_jwt.mutations.Refresh",
+        "graphql_jwt.mutations.Revoke",
     ]
 }
 
@@ -275,11 +352,17 @@ SCHEDULER_JOBS = [
     #     "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
     # },
     # {
+    #     "method": "policy_notification.tasks.send_notification_messages",
+    #     "args": ["cron"],
+    #     "kwargs": {"id": "openimis_notification_batch", 'day_of_week': '*',
+    #                "hour": "8,12,16,20", "replace_existing": True},
+    # },
+    # {
     #     "method": "claim_ai_quality.tasks.claim_ai_processing",
     #     "args": ["cron"],
     #     "kwargs": {"id": "claim_ai_processing",
-    #                "hour": 0,
-    #                "minute": 30,
+    #                "hour": 0
+    #                "minute", 30
     #                "replace_existing": True},
     # },
 ]
@@ -328,9 +411,9 @@ USE_L10N = True
 USE_TZ = False
 
 # List of places to look for translations, this could include an external translation module
-LOCALE_PATHS = [
-    os.path.join(BASE_DIR, 'locale'),
-] + get_locale_folders()
+LOCALE_PATHS = get_locale_folders() + [
+    os.path.join(BASE_DIR, "locale"),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
