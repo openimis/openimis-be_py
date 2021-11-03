@@ -447,3 +447,18 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', False)
 EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', False)
 
+
+# Insuree number validation. One can use the validator function for specific processing or just specify the length
+# and modulo for the typical use case. These two can be overridden from the environment but the validator being a
+# function, it is not possible.
+#
+# def insuree_number_validator(x):
+#     if str(x)[0] != "x":
+#         return ["don't start with x"]
+#     else:
+#         return []
+#
+#
+# INSUREE_NUMBER_VALIDATOR = insuree_number_validator
+INSUREE_NUMBER_LENGTH = os.environ.get('INSUREE_NUMBER_LENGTH', 9)
+INSUREE_NUMBER_MODULE_ROOT = os.environ.get('INSUREE_NUMBER_MODULE_ROOT', 7)
