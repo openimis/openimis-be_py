@@ -1,6 +1,7 @@
 from django.db import connection, transaction
 from django.http import HttpResponseNotAllowed
 from django.http.response import HttpResponseBadRequest
+from .dataloaders import get_dataloaders
 from . import tracer
 from graphql.execution import ExecutionResult
 
@@ -25,6 +26,10 @@ class GraphQLView(BaseGraphQLView):
             )
             span.set_tag("status_code", status_code)
         return result, status_code
+
+    def get_context(self, request):
+        request.dataloaders = get_dataloaders()
+        return request
 
     def parse_body(self, request):
         with tracer.trace(op="GraphQLView.parse_body"):
