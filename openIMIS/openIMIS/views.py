@@ -32,8 +32,10 @@ class GraphQLView(BaseGraphQLView):
         return request
 
     def parse_body(self, request):
-        with tracer.trace(op="GraphQLView.parse_body"):
-            return super().parse_body(request)
+        with tracer.trace(op="GraphQLView.parse_body") as span:
+            request_json = super().parse_body(request)
+            span.set_data("Body", request_json)
+            return request_json
 
     def execute_graphql_request(
         self, request, data, query, variables, operation_name, show_graphiql=False
