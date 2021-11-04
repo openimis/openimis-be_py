@@ -24,16 +24,19 @@ OPENIMIS_APPS = openimis_apps()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+LOGGING_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "WARNING")
+DEFAULT_LOGGING_HANDLER = os.getenv("DJANGO_LOG_HANDLER", "debug-log")
 
 LOGGING = {
     "version": 1,
+    "disable_existing_loggers": False,
     "formatters": {
         "standard": {"format": "%(asctime)s [%(levelname)s] %(name)s: %(message)s"},
         "short": {"format": "%(name)s: %(message)s"},
     },
     "handlers": {
         "db-queries": {
-            "level": "DEBUG",
+            "level": LOGGING_LEVEL,
             "class": "logging.handlers.RotatingFileHandler",
             "filename": os.environ.get("DB_QUERIES_LOG_FILE", "db-queries.log"),
             "maxBytes": 1024 * 1024 * 5,  # 5 MB
@@ -41,7 +44,7 @@ LOGGING = {
             "formatter": "standard",
         },
         "debug-log": {
-            "level": "DEBUG",
+            "level": LOGGING_LEVEL,
             "class": "logging.handlers.RotatingFileHandler",
             "filename": os.environ.get("DEBUG_LOG_FILE", "debug.log"),
             "maxBytes": 1024 * 1024 * 5,  # 5 MB
@@ -51,43 +54,19 @@ LOGGING = {
         "console": {"class": "logging.StreamHandler", "formatter": "short"},
     },
     "loggers": {
+        "": {
+            "level": LOGGING_LEVEL,
+            "handlers": [DEFAULT_LOGGING_HANDLER],
+        },
         "django.db.backends": {
-            "level": "DEBUG",
+            "level": LOGGING_LEVEL,
+            "propagate": False,
             "handlers": ["db-queries"],
         },
         "openIMIS": {
-            "level": "DEBUG",
-            "handlers": ["debug-log"],
+            "level": LOGGING_LEVEL,
+            "handlers": [DEFAULT_LOGGING_HANDLER],
         },
-        "core": {
-            "level": "DEBUG",
-            "handlers": ["debug-log"],
-        },
-        "contribution": {
-            "level": "DEBUG",
-            "handlers": ["debug-log"],
-        },
-        "payment": {
-            "level": "DEBUG",
-            "handlers": ["debug-log"],
-        },
-        "location": {
-            "level": "DEBUG",
-            "handlers": ["debug-log"],
-        },
-        "payer": {
-            "level": "DEBUG",
-            "handlers": ["debug-log"],
-        },
-        "policy": {
-            "level": "DEBUG",
-            "handlers": ["debug-log"],
-        },
-        # GraphQL schema loading can be tricky and hide errors, use this to debug it
-        # 'openIMIS.schema': {
-        #     'level': 'DEBUG',
-        #     'handlers': ['debug-log', 'console'],
-        # },
     },
 }
 
