@@ -24,78 +24,50 @@ OPENIMIS_APPS = openimis_apps()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+LOGGING_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "WARNING")
+DEFAULT_LOGGING_HANDLER = os.getenv("DJANGO_LOG_HANDLER", "debug-log")
 
 LOGGING = {
-    'version': 1,
-    'formatters': {
-        'standard': {
-            'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
-        },
-        'short': {
-            'format': '%(name)s: %(message)s'
-        }
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "standard": {"format": "%(asctime)s [%(levelname)s] %(name)s: %(message)s"},
+        "short": {"format": "%(name)s: %(message)s"},
     },
-    'handlers': {
-        'db-queries': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.environ.get("DB_QUERIES_LOG_FILE", 'db-queries.log'),
-            'maxBytes': 1024*1024*5,  # 5 MB
-            'backupCount': 10,
-            'formatter': 'standard',
+    "handlers": {
+        "db-queries": {
+            "level": LOGGING_LEVEL,
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": os.environ.get("DB_QUERIES_LOG_FILE", "db-queries.log"),
+            "maxBytes": 1024 * 1024 * 5,  # 5 MB
+            "backupCount": 10,
+            "formatter": "standard",
         },
-        'debug-log': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.environ.get("DEBUG_LOG_FILE", 'debug.log'),
-            'maxBytes': 1024*1024*5,  # 5 MB
-            'backupCount': 3,
-            'formatter': 'standard',
+        "debug-log": {
+            "level": LOGGING_LEVEL,
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": os.environ.get("DEBUG_LOG_FILE", "debug.log"),
+            "maxBytes": 1024 * 1024 * 5,  # 5 MB
+            "backupCount": 3,
+            "formatter": "standard",
         },
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'short'
+        "console": {"class": "logging.StreamHandler", "formatter": "short"},
+    },
+    "loggers": {
+        "": {
+            "level": LOGGING_LEVEL,
+            "handlers": [DEFAULT_LOGGING_HANDLER],
+        },
+        "django.db.backends": {
+            "level": LOGGING_LEVEL,
+            "propagate": False,
+            "handlers": ["db-queries"],
+        },
+        "openIMIS": {
+            "level": LOGGING_LEVEL,
+            "handlers": [DEFAULT_LOGGING_HANDLER],
         },
     },
-    'loggers': {
-        'django.db.backends': {
-            'level': 'DEBUG',
-            'handlers': ['db-queries'],
-        },
-        'openIMIS': {
-            'level': 'DEBUG',
-            'handlers': ['debug-log'],
-        },
-        'core': {
-            'level': 'DEBUG',
-            'handlers': ['debug-log'],
-        },
-        'contribution': {
-            'level': 'DEBUG',
-            'handlers': ['debug-log'],
-        },
-        'payment': {
-            'level': 'DEBUG',
-            'handlers': ['debug-log'],
-        },
-        'location': {
-            'level': 'DEBUG',
-            'handlers': ['debug-log'],
-        },
-        'payer': {
-            'level': 'DEBUG',
-            'handlers': ['debug-log'],
-        },
-        'policy': {
-            'level': 'DEBUG',
-            'handlers': ['debug-log'],
-        },
-        # GraphQL schema loading can be tricky and hide errors, use this to debug it
-        # 'openIMIS.schema': {
-        #     'level': 'DEBUG',
-        #     'handlers': ['debug-log', 'console'],
-        # },
-    }
 }
 
 SENTRY_DSN = os.environ.get("SENTRY_DSN", None)
@@ -130,134 +102,133 @@ if SENTRY_DSN is not None:
 
 
 def SITE_ROOT():
-    root = os.environ.get("SITE_ROOT", '')
-    if (root == ''):
+    root = os.environ.get("SITE_ROOT", "")
+    if root == "":
         return root
-    elif (root.endswith('/')):
+    elif root.endswith("/"):
         return root
     else:
         return "%s/" % root
 
+
 def SITE_URL():
-    url = os.environ.get("SITE_URL", '')
-    if (url == ''):
+    url = os.environ.get("SITE_URL", "")
+    if url == "":
         return url
-    elif (url.endswith('/')):
+    elif url.endswith("/"):
         return url[:-1]
     else:
         return url
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get(
-    "SECRET_KEY", 'chv^^7i_v3-04!rzu&qe#+h*a=%h(ib#5w9n$!f2q7%2$qp=zz')
+    "SECRET_KEY", "chv^^7i_v3-04!rzu&qe#+h*a=%h(ib#5w9n$!f2q7%2$qp=zz"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", 'False').lower() == 'true'
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 # SECURITY WARNING: don't run without row security in production!
 # Row security is dedicated to filter the data result sets according to users' right
 # Example: user registered at a Health Facility should only see claims recorded for that Health Facility
-ROW_SECURITY = os.environ.get("ROW_SECURITY", 'True').lower() == 'true'
+ROW_SECURITY = os.environ.get("ROW_SECURITY", "True").lower() == "true"
 
 if "ALLOWED_HOSTS" in os.environ:
     ALLOWED_HOSTS = json.loads(os.environ["ALLOWED_HOSTS"])
 else:
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ["*"]
 
 # TEST_WITHOUT_MIGRATIONS_COMMAND = 'django_nose.management.commands.test.Command'
 # TEST_RUNNER = 'core.test_utils.UnManagedModelTestRunner'
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'graphene_django',
-    'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
-    'test_without_migrations',
-    'rest_framework',
-    'rules',
-    'rest_framework_rules',
-	'health_check',                             # required
-    'health_check.db',                          # stock Django health checkers
-    'health_check.cache',
-    'health_check.storage',
-    'django_apscheduler',
-    'channels'                                  # Websocket support
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "graphene_django",
+    "graphql_jwt.refresh_token.apps.RefreshTokenConfig",
+    "test_without_migrations",
+    "rest_framework",
+    "rules",
+    "rest_framework_rules",
+    "health_check",  # required
+    "health_check.db",  # stock Django health checkers
+    "health_check.cache",
+    "health_check.storage",
+    "django_apscheduler",
+    "channels",  # Websocket support
 ]
 INSTALLED_APPS += OPENIMIS_APPS
-INSTALLED_APPS += ['signal_binding']            # Signal binding should be last installed module
+INSTALLED_APPS += ["signal_binding"]  # Signal binding should be last installed module
 
 AUTHENTICATION_BACKENDS = []
 if bool(os.environ.get("REMOTE_USER_AUTHENTICATION", False)):
-    AUTHENTICATION_BACKENDS += ['core.security.RemoteUserBackend']
+    AUTHENTICATION_BACKENDS += ["core.security.RemoteUserBackend"]
 
 AUTHENTICATION_BACKENDS += [
-    'rules.permissions.ObjectPermissionBackend',
-    'graphql_jwt.backends.JSONWebTokenBackend',
-    'django.contrib.auth.backends.ModelBackend',
+    "rules.permissions.ObjectPermissionBackend",
+    "graphql_jwt.backends.JSONWebTokenBackend",
+    "django.contrib.auth.backends.ModelBackend",
 ]
 
 ANONYMOUS_USER_NAME = None
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'core.jwt_authentication.JWTAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "core.jwt_authentication.JWTAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
     ),
-    'DEFAULT_PERMISSION_CLASSES': [
-        'core.security.ObjectPermissions'
-    ],
-    'EXCEPTION_HANDLER': 'openIMIS.rest_exception_handler.fhir_rest_api_exception_handler'
+    "DEFAULT_PERMISSION_CLASSES": ["core.security.ObjectPermissions"],
+    "EXCEPTION_HANDLER": "openIMIS.rest_exception_handler.fhir_rest_api_exception_handler",
 }
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
     #'openIMIS.oijwt.OIGraphQLAuthBackend'
     #'graphql_jwt.middleware.JSONWebTokenMiddleware',
 ]
 
 
 if bool(os.environ.get("REMOTE_USER_AUTHENTICATION", False)):
-    MIDDLEWARE += [
-        'core.security.RemoteUserMiddleware'
-    ]
+    MIDDLEWARE += ["core.security.RemoteUserMiddleware"]
 MIDDLEWARE += [
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'openIMIS.urls'
+ROOT_URLCONF = "openIMIS.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'openIMIS.wsgi.application'
+WSGI_APPLICATION = "openIMIS.wsgi.application"
 
 GRAPHENE = {
     "SCHEMA": "openIMIS.schema.schema",
@@ -268,8 +239,8 @@ GRAPHENE = {
         "openIMIS.schema.GQLUserLanguageMiddleware",
         "graphql_jwt.middleware.JSONWebTokenMiddleware",
         #'graphql_auth.backends.GraphQLAuthBackend',
-        'graphene_django.debug.DjangoDebugMiddleware',  # adds a _debug query to graphQL with sql debug info
-    ]
+        "graphene_django.debug.DjangoDebugMiddleware",  # adds a _debug query to graphQL with sql debug info
+    ],
 }
 
 GRAPHQL_JWT = {
@@ -279,45 +250,47 @@ GRAPHQL_JWT = {
     "JWT_DECODE_HANDLER": "core.jwt.jwt_decode_user_key",
     # To override the openIMIS per-user JWT private key and settings, you can create an oijwt.py file in this folder and
     # adapt the above lines like this:
-    #"JWT_ENCODE_HANDLER": "openIMIS.oijwt.jwt_encode_user_key",
-    #"JWT_DECODE_HANDLER": "openIMIS.oijwt.jwt_decode_user_key",
+    # "JWT_ENCODE_HANDLER": "openIMIS.oijwt.jwt_encode_user_key",
+    # "JWT_DECODE_HANDLER": "openIMIS.oijwt.jwt_decode_user_key",
     # This can be used to expose some resources without authentication
     "JWT_ALLOW_ANY_CLASSES": [
         "graphql_jwt.mutations.ObtainJSONWebToken",
         "graphql_jwt.mutations.Verify",
         "graphql_jwt.mutations.Refresh",
         "graphql_jwt.mutations.Revoke",
-    ]
+    ],
 }
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-if ("DB_OPTIONS" in os.environ):
+if "DB_OPTIONS" in os.environ:
     DATABASE_OPTIONS = json.loads(os.environ["DB_OPTIONS"])
-elif (os.name == 'nt'):
+elif os.name == "nt":
     DATABASE_OPTIONS = {
-        'driver': 'ODBC Driver 17 for SQL Server',
-        'extra_params': "Persist Security Info=False;server=%s" % os.environ.get('DB_HOST'),
-        'unicode_results': True
+        "driver": "ODBC Driver 17 for SQL Server",
+        "extra_params": "Persist Security Info=False;server=%s"
+        % os.environ.get("DB_HOST"),
+        "unicode_results": True,
     }
 else:
     DATABASE_OPTIONS = {
-        'driver': 'ODBC Driver 17 for SQL Server',
-        'unicode_results': True
+        "driver": "ODBC Driver 17 for SQL Server",
+        "unicode_results": True,
     }
 
 
-if not os.environ.get('NO_DATABASE_ENGINE', 'False') == 'True':
+if not os.environ.get("NO_DATABASE_ENGINE", "False") == "True":
     DATABASES = {
-        'default': {
-            'ENGINE': os.environ.get('DB_ENGINE', 'sql_server.pyodbc'),
-            'NAME': os.environ.get('DB_NAME'),
-            'USER': os.environ.get('DB_USER'),
-            'PASSWORD': os.environ.get('DB_PASSWORD'),
-            'HOST': os.environ.get('DB_HOST'),
-            'PORT': os.environ.get('DB_PORT'),
-            'OPTIONS': DATABASE_OPTIONS}
+        "default": {
+            "ENGINE": os.environ.get("DB_ENGINE", "sql_server.pyodbc"),
+            "NAME": os.environ.get("DB_NAME"),
+            "USER": os.environ.get("DB_USER"),
+            "PASSWORD": os.environ.get("DB_PASSWORD"),
+            "HOST": os.environ.get("DB_HOST"),
+            "PORT": os.environ.get("DB_PORT"),
+            "OPTIONS": DATABASE_OPTIONS,
+        }
     }
 
 # Celery message broker configuration for RabbitMQ. One can also use Redis on AWS SQS
@@ -330,9 +303,7 @@ SCHEDULER_CONFIG = {
     "apscheduler.jobstores.default": {
         "class": "django_apscheduler.jobstores:DjangoJobStore"
     },
-    'apscheduler.executors.processpool': {
-        "type": "threadpool"
-    },
+    "apscheduler.executors.processpool": {"type": "threadpool"},
 }
 
 SCHEDULER_AUTOSTART = os.environ.get("SCHEDULER_AUTOSTART", False)
@@ -377,23 +348,23 @@ SCHEDULER_CUSTOM = [
 ]
 
 
-AUTH_USER_MODEL = 'core.User'
+AUTH_USER_MODEL = "core.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -401,9 +372,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-GB'
+LANGUAGE_CODE = "en-GB"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -419,8 +390,8 @@ LOCALE_PATHS = get_locale_folders() + [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_URL = "/%sstatic/" % SITE_ROOT()
 
 
@@ -431,21 +402,21 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_rabbitmq.core.RabbitmqChannelLayer",
         "CONFIG": {
-            "host":  os.environ.get('CHANNELS_HOST', "amqp://guest:guest@127.0.0.1/"),
+            "host": os.environ.get("CHANNELS_HOST", "amqp://guest:guest@127.0.0.1/"),
             # "ssl_context": ... (optional)
         },
     },
 }
 
 # Django email settings
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-EMAIL_HOST = os.environ.get('EMAIL_HOST', 'localhost')
-EMAIL_PORT = os.environ.get('EMAIL_PORT', '1025')
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
-EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', False)
-EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', False)
+EMAIL_HOST = os.environ.get("EMAIL_HOST", "localhost")
+EMAIL_PORT = os.environ.get("EMAIL_PORT", "1025")
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", False)
+EMAIL_USE_SSL = os.environ.get("EMAIL_USE_SSL", False)
 
 
 # Insuree number validation. One can use the validator function for specific processing or just specify the length
@@ -460,5 +431,5 @@ EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', False)
 #
 #
 # INSUREE_NUMBER_VALIDATOR = insuree_number_validator
-INSUREE_NUMBER_LENGTH = os.environ.get('INSUREE_NUMBER_LENGTH', 9)
-INSUREE_NUMBER_MODULE_ROOT = os.environ.get('INSUREE_NUMBER_MODULE_ROOT', 7)
+INSUREE_NUMBER_LENGTH = os.environ.get("INSUREE_NUMBER_LENGTH", 9)
+INSUREE_NUMBER_MODULE_ROOT = os.environ.get("INSUREE_NUMBER_MODULE_ROOT", 7)
