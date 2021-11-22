@@ -2,7 +2,7 @@
   "modules": [
     {
       "name": "core",
-      "pip": "openimis-be-core==1.3.0"
+      "pip": "openimis-be-core==1.3.1"
     },
     {
       "name": "report",
@@ -18,7 +18,7 @@
     },
     {
       "name": "medical_pricelist",
-      "pip": "openimis-be-medical_pricelist==1.3.0"
+      "pip": "openimis-be-medical_pricelist==1.3.1"
     },
     {
       "name": "product",
