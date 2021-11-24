@@ -60,7 +60,7 @@
       "name": "api_fhir_r4",
       "pip": "git+https://github.com/openimis/openimis-be-api_fhir_r4_py.git@develop#egg=openimis-be-api_fhir_r4"
     },
-        {
+    {
       "name": "calculation",
       "pip": "git+https://github.com/openimis/openimis-be-calculation_py.git@develop#egg=openimis-be-calculation"
     },
@@ -68,14 +68,17 @@
       "name": "contribution_plan",
       "pip": "git+https://github.com/openimis/openimis-be-contribution_plan_py.git@develop#egg=openimis-be-contribution_plan"
     },
-        {
+    {
       "name": "policyholder",
       "pip": "git+https://github.com/openimis/openimis-be-policyholder_py.git@develop#egg=openimis-be-policyholder"
     },
     {
       "name": "contract",
       "pip": "git+https://github.com/openimis/openimis-be-contract_py.git@develop#egg=openimis-be-contract"
+    },
+    {
+      "name": "invoice",
+      "pip": "git+https://github.com/openimis/openimis-be-invoice_py.git@develop#egg=openimis-be-invoice"
     }
-
   ]
 }
