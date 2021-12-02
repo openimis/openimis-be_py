@@ -169,7 +169,8 @@ INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["signal_binding"]  # Signal binding should be last installed module
 
 AUTHENTICATION_BACKENDS = []
-if bool(os.environ.get("REMOTE_USER_AUTHENTICATION", False)):
+
+if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
     AUTHENTICATION_BACKENDS += ["core.security.RemoteUserBackend"]
 
 AUTHENTICATION_BACKENDS += [
@@ -203,7 +204,7 @@ MIDDLEWARE = [
 ]
 
 
-if bool(os.environ.get("REMOTE_USER_AUTHENTICATION", False)):
+if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
     MIDDLEWARE += ["core.security.RemoteUserMiddleware"]
 MIDDLEWARE += [
     "django.contrib.messages.middleware.MessageMiddleware",
