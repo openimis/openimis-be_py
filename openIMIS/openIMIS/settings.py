@@ -162,9 +162,9 @@ INSTALLED_APPS = [
     "health_check.storage",
     "django_apscheduler",
     "channels",  # Websocket support
+    "developer_tools"
 ]
 INSTALLED_APPS += OPENIMIS_APPS
-INSTALLED_APPS += ["developer_tools"]
 INSTALLED_APPS += ["signal_binding"]  # Signal binding should be last installed module
 
 AUTHENTICATION_BACKENDS = []

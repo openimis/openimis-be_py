@@ -27,67 +27,57 @@ class Command(BaseCommand):
         base_path = Path(settings.BASE_DIR)
         modules_directory = base_path.parent.parent
 
-        new_module_directory = f'{modules_directory}/{repo_name}'
+        new_module_directory = Path(modules_directory).joinpath(repo_name)
 
         # check if module exists locally
-        if os.path.exists(f'{modules_directory}/{repo_name}/{module_name}'):
+        if Path(new_module_directory).joinpath(module_name).exists():
             raise CommandError("Module already exists in workspace")
 
-        self.__create_project_folder(module_name, new_module_directory)
-        repo = Repo.init(new_module_directory)
-        self.__create_skeleton_module(module_name, new_module_directory)
+        app_directory = self.__create_project_folder(module_name, new_module_directory)
 
+        Repo.init(new_module_directory)
+
+        self.__create_skeleton_module(module_name, app_directory)
         self.__add_setup_file(new_module_directory, module_name, author, author_email)
         self.__add_readme_file(new_module_directory, module_name)
-        self.__add_urls_file(new_module_directory, module_name)
-
+        self.__add_urls_file(app_directory)
         self.__install_module(module_name, new_module_directory)
         self.__add_module_to_openimis_json(base_path, module_name)
 
     def __create_project_folder(self, module_name, new_module_directory):
         """ create empty folder for new project """
         try:
-            os.mkdir(new_module_directory)
-            os.mkdir(f'{new_module_directory}/{module_name}')
-        except OSError:
-            raise CommandError("Creation of the directory %s failed" % new_module_directory)
+            new_module_directory.mkdir()
+            app_directory = new_module_directory.joinpath(module_name)
+            app_directory.mkdir()
+        except Exception as exc:
+            raise CommandError(f"Creation of the directory failed, reason: {exc}")
         else:
-            self.stdout.write(self.style.SUCCESS("Successfully created the directory %s " % new_module_directory))
+            self.__print_success(f"Successfully created the directory {app_directory}")
+            return app_directory
 
-    def __create_skeleton_module(self, module_name, new_module_directory):
-        result = os.system(f'python manage.py startapp {module_name} {new_module_directory}/{module_name}')
+    def __create_skeleton_module(self, module_name, app_directory):
+        result = os.system(f'python manage.py startapp {module_name} {app_directory}')
         if result != 0:
-            raise CommandError(f'skeleton module not crated properly, ended with code: {result}')
+            raise CommandError(f'Skeleton module not created properly, ended with code: {result}')
         else:
-            self.stdout.write(self.style.SUCCESS('Succesfully created skeleton module'))
+            self.__print_success('Succesfully created skeleton module')
 
     def __add_readme_file(self, new_module_directory, module_name):
-        readme_file = f'{new_module_directory}/README.md'
-        f = open(readme_file, "w+")
-        f.write(get_skeleton_readme(module_name))
-        f.close()
-        self.stdout.write(self.style.SUCCESS('Succesfully created README.md file'))
+        self.__add_file(new_module_directory, 'README.md', get_skeleton_readme(module_name))
 
-    def __add_urls_file(self, new_module_directory, module_name):
-        urls_file = f'{new_module_directory}/{module_name}/urls.py'
-        f = open(urls_file, "w+")
-        f.write(get_skeleton_urls())
-        f.close()
-        self.stdout.write(self.style.SUCCESS('Succesfully created urls.py file'))
+    def __add_urls_file(self, app_directory):
+        self.__add_file(app_directory, 'urls.py', get_skeleton_urls())
 
     def __add_setup_file(self, new_module_directory, module_name, author, author_email):
-        setup_file = f'{new_module_directory}/setup.py'
-        f = open(setup_file, "w+")
-        f.write(get_skeleton_setup(module_name, author, author_email))
-        f.close()
-        self.stdout.write(self.style.SUCCESS('Succesfully created setup.py file'))
+        self.__add_file(new_module_directory, 'setup.py', get_skeleton_setup(module_name, author, author_email))
 
     def __install_module(self, module_name, new_module_directory):
-        result = os.system(f'pip install -e {new_module_directory}/')
+        result = os.system(f'pip install -e {Path(f"{new_module_directory}/")}')
         if result != 0:
             raise CommandError(f'Failed during installation of module {module_name}')
         else:
-            self.stdout.write(self.style.SUCCESS(f'Succesfully installed module {module_name}'))
+            self.__print_success(f'Succesfully installed module {module_name}')
 
     def __add_module_to_openimis_json(self, base_path, module_name):
         module_to_append = {
@@ -95,13 +85,22 @@ class Command(BaseCommand):
             "pip": f"-e ../../openimis-be-{module_name}_py",
         }
         openimis_json_location = base_path.parent
-        with open(f"{base_path.parent}/openimis.json", "r") as read_file:
+        with open(openimis_json_location.joinpath('openimis.json'), "r") as read_file:
             openimis_json = json.load(read_file)
 
         if "modules" in openimis_json:
             openimis_json["modules"].append(module_to_append)
-            with open(f"{base_path.parent}/openimis.json", "w") as file:
+            with open(openimis_json_location.joinpath('openimis.json'), "w") as file:
                 json.dump(openimis_json, file, indent=4)
-                self.stdout.write(self.style.SUCCESS('Succesfully updated openimis.json'))
+                self.__print_success('Succesfully updated openimis.json')
         else:
             raise CommandError("Error: there is no 'modules' keyword in existing openimis.json file")
+
+    def __add_file(self, new_module_directory, filename, file_content):
+        file = new_module_directory.joinpath(filename)
+        with open(file, "w+") as f:
+            f.write(file_content)
+        self.__print_success(f'Succesfully created {filename} file')
+
+    def __print_success(self, msg: str):
+        self.stdout.write(self.style.SUCCESS(msg))
