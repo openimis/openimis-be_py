@@ -54,3 +54,67 @@ def get_skeleton_readme(module_name):
         F"# openIMIS Backend {module_name} reference module{os.linesep}" \
         F"{os.linesep}"
 
+
+def get_skeleton_yaml_ci_run():
+    return \
+        F"name: Automated CI testing{os.linesep}" \
+        F"# This workflow run automatically for every commit on github it checks the syntax and launch the tests.{os.linesep}" \
+        F"# | grep . | uniq -c filters out empty lines and then groups consecutive lines together with the number of occurrences{os.linesep}" \
+        F"on:{os.linesep}" \
+        F"  pull_request:{os.linesep}" \
+        F"  workflow_dispatch::{os.linesep}" \
+        F"    inputs:{os.linesep}" \
+        F"      comment:{os.linesep}" \
+        F"        description:{os.linesep}" \
+        F"          required:{os.linesep}" \
+        F"{os.linesep}" \
+        F"jobs:{os.linesep}" \
+        F"  run_test:{os.linesep}" \
+        F"    runs-on: ubuntu-latest:{os.linesep}" \
+        F"    services:{os.linesep}" \
+        F"      mssql:{os.linesep}" \
+        F"        image: mcr.microsoft.com/mssql/server:2017-latest:{os.linesep}" \
+        F"        env:{os.linesep}" \
+        F"          ACCEPT_EULA: Y{os.linesep}" \
+        F"          SA_PASSWORD: GitHub999{os.linesep}" \
+        F"        ports:{os.linesep}" \
+        F"          - 1433:1433{os.linesep}" \
+        F"        # needed because the mssql container does not provide a health check{os.linesep}" \
+        F"        options: --health-interval=10s --health-timeout=3s --health-start-period=10s --health-retries=10 --health-cmd='/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P {_strings('$SA_PASSWORD')} -Q 'SELECT 1' || exit 1'{os.linesep}" \
+        F"{os.linesep}" \
+        F"    steps:{os.linesep}" \
+        F"    steps:{os.linesep}" \
+        F"    steps:{os.linesep}" \
+        F"    steps:{os.linesep}" \
+        F"    steps:{os.linesep}" \
+        F"    steps:{os.linesep}" \
+        F"    steps:{os.linesep}" \
+        F"    steps:{os.linesep}" \
+        F"    steps:{os.linesep}" \
+        F"    steps:{os.linesep}" \
+        F"    steps:{os.linesep}" \
+        F"    steps:{os.linesep}" \
+        F"    steps:{os.linesep}" \        
+        F"    steps:{os.linesep}" \        
+        F"    steps:{os.linesep}" \         
+        F"    steps:{os.linesep}" \         
+        F"    steps:{os.linesep}" \
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def _strings(string):
+    return '{'+string+'}'
