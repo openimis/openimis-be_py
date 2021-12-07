@@ -1,7 +1,6 @@
 import os
 import json
 
-from ...skeletons import get_skeleton_readme, get_skeleton_urls, get_skeleton_setup
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from git import Repo
@@ -38,9 +37,12 @@ class Command(BaseCommand):
         Repo.init(new_module_directory)
 
         self.__create_skeleton_module(module_name, app_directory)
-        self.__add_setup_file(new_module_directory, module_name, author, author_email)
-        self.__add_readme_file(new_module_directory, module_name)
-        self.__add_urls_file(app_directory)
+
+        skeletons_folder = Path(base_path).joinpath('developer_tools').joinpath('skeletons')
+
+        self.__add_setup_file(skeletons_folder, new_module_directory, module_name, author, author_email)
+        self.__add_readme_file(skeletons_folder, new_module_directory, module_name)
+        self.__add_urls_file(skeletons_folder, app_directory)
         self.__install_module(module_name, new_module_directory)
         self.__add_module_to_openimis_json(base_path, module_name)
 
@@ -63,16 +65,23 @@ class Command(BaseCommand):
         else:
             self.__print_success('Succesfully created skeleton module')
 
-    def __add_readme_file(self, new_module_directory, module_name):
-        self.__add_file(new_module_directory, 'README.md', get_skeleton_readme(module_name))
+    def __add_readme_file(self, skeletons_folder, new_module_directory, module_name):
+        file_content = self.__replace_skeleton_values(skeletons_folder, 'README.md', module_name=module_name)
+        self.__add_file(new_module_directory, 'README.md', file_content)
 
-    def __add_urls_file(self, app_directory):
-        self.__add_file(app_directory, 'urls.py', get_skeleton_urls())
+    def __add_urls_file(self, skeletons_folder, app_directory):
+        file_content = self.__replace_skeleton_values(skeletons_folder, 'urls.py')
+        self.__add_file(app_directory, 'urls.py', file_content)
 
-    def __add_setup_file(self, new_module_directory, module_name, author, author_email):
-        self.__add_file(new_module_directory, 'setup.py', get_skeleton_setup(module_name, author, author_email))
+    def __add_setup_file(self, skeletons_folder, new_module_directory, module_name, author, author_email):
+        file_content = self.__replace_skeleton_values(
+            skeletons_folder, 'setup.py',
+            module_name=module_name, author=author, author_email=author_email
+        )
+        self.__add_file(new_module_directory, 'setup.py', file_content)
 
     def __install_module(self, module_name, new_module_directory):
+        """ Install newly created module in workspace """
         result = os.system(f'pip install -e {Path(f"{new_module_directory}/")}')
         if result != 0:
             raise CommandError(f'Failed during installation of module {module_name}')
@@ -80,6 +89,7 @@ class Command(BaseCommand):
             self.__print_success(f'Succesfully installed module {module_name}')
 
     def __add_module_to_openimis_json(self, base_path, module_name):
+        """ Add to the openimis.json newly created module """
         module_to_append = {
             "name": f"{module_name}",
             "pip": f"-e ../../openimis-be-{module_name}_py",
@@ -96,11 +106,25 @@ class Command(BaseCommand):
         else:
             raise CommandError("Error: there is no 'modules' keyword in existing openimis.json file")
 
+    def __replace_skeleton_values(self, skeletons_folder, file_name, **kwargs):
+        """
+            Take the skeleton for chosen file and replace values.
+            Returns transformed content of file.
+        """
+        with open(skeletons_folder.joinpath(file_name), 'r') as file:
+            file_text = file.read()
+        for key, value in kwargs.items():
+            if "{{"+key+"}}" in file_text:
+                file_text = file_text.replace("{{"+key+"}}", value)
+        return file_text
+
     def __add_file(self, new_module_directory, filename, file_content):
+        """ Add file to the project of new module """
         file = new_module_directory.joinpath(filename)
         with open(file, "w+") as f:
             f.write(file_content)
         self.__print_success(f'Succesfully created {filename} file')
 
     def __print_success(self, msg: str):
+        """ Print message to inform about the command progress """
         self.stdout.write(self.style.SUCCESS(msg))
