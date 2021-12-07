@@ -160,7 +160,7 @@ Notes:
 
 ### To create backend module skeleton in single command
 * from `/openimis-be_py/openIMIS`:
-  * run this command: `python manage.py backend_module_creation <module_name> <author> <author_email>`
+  * run this command: `python manage.py create_openimis_module <module_name> <author> <author_email>`
   * `<author>` and `<author_email>` params are required because they are necessary during creating `setup.py` file
   * this command executes every steps described in "To create a new openIMIS module (e.g. `openimis-be-mymodule`)"
   * file templates for setup, readme and urls can be found in `developer_tools/skeletons` directory 
