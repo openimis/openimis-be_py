@@ -104,4 +104,4 @@ class Command(BaseCommand):
                 json.dump(openimis_json, file, indent=4)
                 self.stdout.write(self.style.SUCCESS('Succesfully updated openimis.json'))
         else:
-            self.stdout.write(self.style.SUCCESS("Error: there is no 'modules' keyword in existing openimis.json file"))
+            raise CommandError("Error: there is no 'modules' keyword in existing openimis.json file")
