@@ -9,14 +9,18 @@ RUN apt-get install -y python3-dev unixodbc-dev
 RUN pip install --upgrade pip
 RUN mkdir /openimis-be
 COPY . /openimis-be
+
+WORKDIR /openimis-be
 ARG OPENIMIS_CONF_JSON
 ENV OPENIMIS_CONF_JSON=${OPENIMIS_CONF_JSON}
-WORKDIR /openimis-be
 RUN pip install mssql-cli
 RUN pip install -r requirements.txt
 RUN python modules-requirements.py openimis.json > modules-requirements.txt
 RUN pip install -r modules-requirements.txt
-RUN [[ -v SENTRY_DSN && ! -z SENTRY_DSN  ]] && pip install -r sentry-requirements.txt
+
+ARG SENTRY_DSN
+RUN test -z "$SENTRY_DSN" || pip install -r sentry-requirements.txt && :
+
 WORKDIR /openimis-be/openIMIS
 RUN NO_DATABASE=True python manage.py compilemessages
 RUN NO_DATABASE=True python manage.py collectstatic --clear --noinput
