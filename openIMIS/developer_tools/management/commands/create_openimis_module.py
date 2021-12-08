@@ -42,6 +42,8 @@ class Command(BaseCommand):
 
         self.__add_setup_file(skeletons_folder, new_module_directory, module_name, author, author_email)
         self.__add_readme_file(skeletons_folder, new_module_directory, module_name)
+        self.__add_license_file(skeletons_folder, new_module_directory)
+        self.__add_manifest_file(skeletons_folder, new_module_directory)
         self.__add_urls_file(skeletons_folder, app_directory)
         self.__install_module(module_name, new_module_directory)
         self.__add_module_to_openimis_json(base_path, module_name)
@@ -68,6 +70,14 @@ class Command(BaseCommand):
     def __add_readme_file(self, skeletons_folder, new_module_directory, module_name):
         file_content = self.__replace_skeleton_values(skeletons_folder, 'README.md', module_name=module_name)
         self.__add_file(new_module_directory, 'README.md', file_content)
+
+    def __add_license_file(self, skeletons_folder, new_module_directory):
+        file_content = self.__replace_skeleton_values(skeletons_folder, 'LICENSE.md')
+        self.__add_file(new_module_directory, 'LICENSE.md', file_content)
+
+    def __add_manifest_file(self, skeletons_folder, new_module_directory):
+        file_content = self.__replace_skeleton_values(skeletons_folder, 'MANIFEST.md')
+        self.__add_file(new_module_directory, 'MANIFEST.md', file_content)
 
     def __add_urls_file(self, skeletons_folder, app_directory):
         file_content = self.__replace_skeleton_values(skeletons_folder, 'urls.py')
