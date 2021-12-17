@@ -4,7 +4,6 @@ import json
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from git import Repo
-from openIMIS.openimisapps import openimis_apps
 from pathlib import Path
 
 
@@ -15,6 +14,12 @@ class Command(BaseCommand):
         parser.add_argument('module_name', type=str)
         parser.add_argument('author', type=str)
         parser.add_argument('author_email', type=str)
+
+        parser.add_argument(
+            '--github',
+            action='store_true',
+            help='Add github files related to worflow and .gitignore',
+        )
 
     def handle(self, *args, **options):
         # get basic data to create new module like module name, current path/directory
@@ -33,6 +38,7 @@ class Command(BaseCommand):
             raise CommandError("Module already exists in workspace")
 
         app_directory = self.__create_project_folder(module_name, new_module_directory)
+        self.__print_info(app_directory)
 
         Repo.init(new_module_directory)
 
@@ -47,6 +53,9 @@ class Command(BaseCommand):
         self.__add_urls_file(skeletons_folder, app_directory)
         self.__install_module(module_name, new_module_directory)
         self.__add_module_to_openimis_json(base_path, module_name)
+
+        if options['github']:
+            self.__call_add_github_files_command(module_name)
 
     def __create_project_folder(self, module_name, new_module_directory):
         """ create empty folder for new project """
@@ -131,10 +140,22 @@ class Command(BaseCommand):
     def __add_file(self, new_module_directory, filename, file_content):
         """ Add file to the project of new module """
         file = new_module_directory.joinpath(filename)
+        self.__print_info(file)
         with open(file, "w+") as f:
             f.write(file_content)
         self.__print_success(f'Succesfully created {filename} file')
 
+    def __call_add_github_files_command(self, module_name):
+        result = os.system(f"python manage.py add_github_files_to_module '{module_name}'")
+        if result != 0:
+            raise CommandError(f'Error on adding GitHub files to the module')
+        else:
+            self.__print_success('Succesfully added GitHub files to the module')
+
     def __print_success(self, msg: str):
         """ Print message to inform about the command progress """
         self.stdout.write(self.style.SUCCESS(msg))
+
+    def __print_info(self, msg: str):
+        """ Print message to inform about the command progress = info """
+        self.stdout.write(self.style.WARNING(msg))
