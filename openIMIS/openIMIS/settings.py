@@ -418,6 +418,9 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", False)
 EMAIL_USE_SSL = os.environ.get("EMAIL_USE_SSL", False)
 
+# By default, the maximum upload size is 2.5Mb, which is a bit short for base64 picture upload
+DATA_UPLOAD_MAX_MEMORY_SIZE = int(os.environ.get('DATA_UPLOAD_MAX_MEMORY_SIZE', 10*1024*1024))
+
 
 # Insuree number validation. One can use the validator function for specific processing or just specify the length
 # and modulo for the typical use case. These two can be overridden from the environment but the validator being a
