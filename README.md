@@ -185,3 +185,38 @@ Notes:
      * openmis-module-test.yml
      * python-publish.yml
      * .gitignore
+
+### To fetch a module and install it from local directory
+* first install all modules as in "Developers setup"
+* from `/openimis-be_py/openIMIS`:
+  * run this command: `python manage.py install_module_locally <module_name> [--url <url>] [--branch <branch>] [--path <path>]`.
+  This command will execute all steps required steps to first uninstall currently installed version of the module, clone
+  the module repository and install it as an editable library.
+  * The `--url` parameter allows you to specify the git repository url (By default it will use openimis.json)
+  * The `--branch` parameter allows to specify the branch that will be cloned, develop by default
+  * The `--path` allows you to specify the directory the repository will be cloned to. By default, the repository will be saved
+  next to `openimis-be_py` directory.
+  
+### To fetch all modules and install them from local directories
+* first install all modules as in "Developers setup"
+* from `/openimis-be_py/openIMIS`:
+  * run this command: `python manage.py install_module_locally all`. This command will execute all steps required steps 
+  to fetch all modules present in `openimis.json` from the git repositories and install them as editable libraries.
+
+### To install modules from PyPI
+* first install all modules as in "Developers setup"
+* from `/openimis-be_py/openIMIS`:
+  * run this command: `python manage.py install_module_pypi <module_name> [--target-version <version>] [--library-name <library_name>]
+  [--check-only]`. This command will execute all steps required steps to first uninstall currently installed version of the module, check
+  the newest version of the library and install it from PyPI.
+  * The `--target-version` parameter allows you to specify the version that will be used to install the module
+  * The `--library-name` parameter allows you to override the library name. By default, the library name is derived from
+  module name, following this scheme: `openimis-be-<module_name>`
+  * The `--check-only` flag allows to check the newest version without installing the library or modifying openimis.json
+  file. This parameter can be also used to check availability of a specific version when used with `--target-version`
+
+### To install all modules from PyPI
+* first install all modules as in "Developers setup"
+* from `/openimis-be_py/openIMIS`:
+  * run this command: `python manage.py install_module_locally all`. This command will execute all steps required steps 
+  to install most recent versions of all modules present in `openimis.json` from PyPI.
