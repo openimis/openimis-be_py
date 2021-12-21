@@ -220,3 +220,22 @@ Notes:
 * from `/openimis-be_py/openIMIS`:
   * run this command: `python manage.py install_module_locally all`. This command will execute all steps required steps 
   to install most recent versions of all modules present in `openimis.json` from PyPI.
+
+### To create calculcation backend module skeleton in single command
+* from `/openimis-be_py/openIMIS`:
+  * run this command: `python manage.py create_calcrule_module <module_name> <author> <author_email>`
+  * `<author>` and `<author_email>` params are required because they are necessary during creating `setup.py` file
+  * file templates for apps.py, config.py and calculation_rule.py can be found in `developer_tools/skeletons` directory
+  * another files necessary to launch module such as setup.py etc are also added by this command.  
+  * files to be added through that command based on provided templates:
+     * setup.py
+     * README.md
+     * LICENSE.md
+     * MANIFEST.md
+     * <module_name>/urls.py
+     * <module_name>/apps.py
+     * <module_name>/config.py
+     * <module_name>/calculation_rule.py
+  * as the option could be added `--github`. This allows to add gitignore file and workflows files so as to execute CI on every pull request (this option will execute this command `python manage.py add_github_files_to_module <module_name>`) 
+  * example with using `--github` option: `python manage.py create_calcrule_module <module_name> <author> <author_email> --github`
+* from here on, your local openIMIS has a new module called `openimis-be-calcrule-<module_name>_py`, directly loaded from your directory by using single command.

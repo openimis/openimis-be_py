@@ -1,15 +1,15 @@
 import os
 import json
+import uuid
 
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from git import Repo
 from pathlib import Path
 
-class Command(BaseCommand):
-    help = "This command will generate backend module skeleton in one command"
 
-    supported_templates = ('business', 'calculation')
+class Command(BaseCommand):
+    help = "This command will generate calcrule backend module skeleton in one command"
 
     def add_arguments(self, parser):
         parser.add_argument('module_name', type=str)
@@ -17,64 +17,53 @@ class Command(BaseCommand):
         parser.add_argument('author_email', type=str)
 
         parser.add_argument(
-            '-t', '--template',
-            nargs='?',
-            help=f'Select a template to be used when creating new module. Supported templates are: {", ".join(self.supported_templates)}',
-        )
-        parser.add_argument(
             '--github',
             action='store_true',
             help='Add github files related to workflow and .gitignore',
         )
 
     def handle(self, *args, **options):
-        # get basic data to create new module like module name, current path/directory
         author = options['author']
         author_email = options['author_email']
-        module_name = options['module_name']
-        template = options['template']
-        if template and template not in self.supported_templates:
-            raise CommandError(f'template "{template}" is not supported. Chech --help for the list of supported templates')
 
-        if options['template'] == 'calculation':
-            self.__call_add_calcrule_module_command(module_name, author, author_email, options['github'])
-        else:
-            repo_name = f"openimis-be-{module_name}_py"
-            base_path = Path(settings.BASE_DIR)
-            modules_directory = base_path.parent.parent
+        module_name = f'calcrule_{options["module_name"]}'
+        repo_name = f"openimis-be-calcrule_{options['module_name']}_py"
+        base_path = Path(settings.BASE_DIR)
+        modules_directory = base_path.parent.parent
 
-            new_module_directory = Path(modules_directory).joinpath(repo_name)
+        new_module_directory = Path(modules_directory).joinpath(repo_name)
 
-            # check if module exists locally
-            if Path(new_module_directory).joinpath(module_name).exists():
-                raise CommandError("Module already exists in workspace")
+        # check if module exists locally
+        if Path(new_module_directory).joinpath(module_name).exists():
+            raise CommandError("Module already exists in workspace")
 
-            app_directory = self.__create_project_folder(module_name, new_module_directory)
-            self.__print_info(str(app_directory))
+        app_directory = self.__create_project_folder(module_name, new_module_directory)
+        self.__print_info(app_directory)
 
-            Repo.init(new_module_directory)
+        Repo.init(new_module_directory)
 
-            self.__create_skeleton_module(module_name, app_directory)
+        self.__create_skeleton_module(module_name, app_directory)
 
-            skeletons_folder = Path(base_path).joinpath('developer_tools').joinpath('skeletons')
+        skeletons_folder = Path(base_path).joinpath('developer_tools').joinpath('skeletons')
 
-            self.__add_setup_file(skeletons_folder, new_module_directory, module_name, author, author_email)
-            self.__add_readme_file(skeletons_folder, new_module_directory, module_name)
-            self.__add_license_file(skeletons_folder, new_module_directory)
-            self.__add_manifest_file(skeletons_folder, new_module_directory)
-            self.__add_urls_file(skeletons_folder, app_directory)
+        self.__add_setup_file(skeletons_folder, new_module_directory, module_name, author, author_email)
+        self.__add_readme_file(skeletons_folder, new_module_directory, module_name)
+        self.__add_license_file(skeletons_folder, new_module_directory)
+        self.__add_manifest_file(skeletons_folder, new_module_directory)
+        self.__add_urls_file(skeletons_folder, app_directory)
 
-            self.__install_module(module_name, new_module_directory)
-            self.__add_module_to_openimis_json(base_path, module_name)
+        self.__add_apps_file(skeletons_folder, app_directory, module_name)
+        self.__add_config_file(skeletons_folder, app_directory)
+        self.__add_calculation_rule_file(skeletons_folder, app_directory, module_name)
+        self.__add_init_file(skeletons_folder, app_directory, module_name)
 
-            if options['template'] == 'business':
-                self.__add_business_services_file(skeletons_folder, app_directory)
-                self.__add_business_tests_file(skeletons_folder, app_directory, module_name)
+        self.__install_module(module_name, new_module_directory)
+        self.__add_module_to_openimis_json(base_path, module_name)
 
-            self.__call_tests(module_name)
+        self.__call_tests(module_name)
 
-            if options['github']:
-                self.__call_add_github_files_command(module_name)
+        if options['github']:
+            self.__call_add_github_files_command(module_name)
 
     def __create_project_folder(self, module_name, new_module_directory):
         """ create empty folder for new project """
@@ -111,20 +100,57 @@ class Command(BaseCommand):
         file_content = self.__replace_skeleton_values(skeletons_folder, 'urls.py')
         self.__add_file(app_directory, 'urls.py', file_content)
 
-    def __add_business_services_file(self, skeletons_folder, app_directory):
-        file_content = self.__replace_skeleton_values(skeletons_folder, 'business_services.template')
-        self.__add_file(app_directory, 'services.py', file_content)
-
-    def __add_business_tests_file(self, skeletons_folder, app_directory, module_name):
-        file_content = self.__replace_skeleton_values(skeletons_folder, 'business_tests.template', module_name=module_name)
-        self.__add_file(app_directory, 'tests.py', file_content)
-
     def __add_setup_file(self, skeletons_folder, new_module_directory, module_name, author, author_email):
         file_content = self.__replace_skeleton_values(
             skeletons_folder, 'setup.py',
             module_name=module_name, author=author, author_email=author_email
         )
         self.__add_file(new_module_directory, 'setup.py', file_content)
+
+    def __add_apps_file(self, skeletons_folder, app_directory, module_name):
+        module_name_splited = module_name.split('_')
+
+        module_name_config = ''
+        for mns in module_name_splited:
+            module_name_config += mns.capitalize()
+
+        file_content = self.__replace_skeleton_values(
+            skeletons_folder, 'apps_calcrule.py.template',
+            module_name=module_name, module_name_config=module_name_config
+        )
+        self.__add_file(app_directory, 'apps.py', file_content)
+
+    def __add_config_file(self, skeletons_folder, app_directory):
+        file_content = self.__replace_skeleton_values(skeletons_folder, 'config_calcrule.py.template')
+        self.__add_file(app_directory, 'config.py', file_content)
+
+    def __add_calculation_rule_file(self, skeletons_folder, app_directory, module_name):
+        module_name_splited = module_name.split('_')
+
+        class_name = ''
+        for mns in module_name_splited:
+            if mns != 'calcrule':
+                class_name += mns.capitalize()
+        class_name += "CalculationRule"
+
+        file_content = self.__replace_skeleton_values(
+            skeletons_folder, 'calculation_rule.py.template',
+            module_name=module_name, uuid_rule=f'{uuid.uuid4()}', class_name=class_name
+        )
+        self.__add_file(app_directory, 'calculation_rule.py', file_content)
+
+    def __add_init_file(self, skeletons_folder, app_directory, module_name):
+        module_name_splited = module_name.split('_')
+
+        module_name_config = ''
+        for mns in module_name_splited:
+            module_name_config += mns.capitalize()
+
+        file_content = self.__replace_skeleton_values(
+            skeletons_folder, 'init_calcrule_module.py.template',
+            module_name=module_name, module_name_config=module_name_config
+        )
+        self.__add_file(app_directory, '__init__.py', file_content)
 
     def __install_module(self, module_name, new_module_directory):
         """ Install newly created module in workspace """
@@ -160,14 +186,16 @@ class Command(BaseCommand):
         with open(skeletons_folder.joinpath(file_name), 'r') as file:
             file_text = file.read()
         for key, value in kwargs.items():
-            if "{{"+key+"}}" in file_text:
-                file_text = file_text.replace("{{"+key+"}}", value)
+            if "{{" + key + "}}" in file_text:
+                file_text = file_text.replace("{{" + key + "}}", value)
+        # uncomment all commented section - import statements etc
+        file_text = file_text.replace("##", '')
         return file_text
 
     def __add_file(self, new_module_directory, filename, file_content):
         """ Add file to the project of new module """
         file = new_module_directory.joinpath(filename)
-        self.__print_info(str(file))
+        self.__print_info(file)
         with open(file, "w+") as f:
             f.write(file_content)
         self.__print_success(f'Succesfully created {filename} file')
@@ -177,7 +205,7 @@ class Command(BaseCommand):
         if result != 0:
             raise CommandError(f'Error on adding GitHub files to the module')
         else:
-            self.__print_success('Successfully added GitHub files to the module')
+            self.__print_success('Succesfully added GitHub files to the module')
 
     def __call_tests(self, module_name):
         self.__print_info("Running example tests")
@@ -186,17 +214,6 @@ class Command(BaseCommand):
             raise CommandError(f'Error while running example tests')
         else:
             self.__print_success('Successfully completed example tests')
-
-    def __call_add_calcrule_module_command(self, module_name, author, author_email, github):
-        if github:
-            command = f"python manage.py create_calcrule_module '{module_name}' '{author}' '{author_email}' --github"
-        else:
-            command = f"python manage.py create_calcrule_module '{module_name}' '{author}' '{author_email}'"
-        result = os.system(command)
-        if result != 0:
-            raise CommandError(f'Error on adding new calculation module')
-        else:
-            self.__print_success('Successfully added new calculation module')
 
     def __print_success(self, msg: str):
         """ Print message to inform about the command progress """
