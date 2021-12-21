@@ -6,9 +6,10 @@ from django.core.management.base import BaseCommand, CommandError
 from git import Repo
 from pathlib import Path
 
-
 class Command(BaseCommand):
     help = "This command will generate backend module skeleton in one command"
+
+    supported_templates = ('business', )
 
     def add_arguments(self, parser):
         parser.add_argument('module_name', type=str)
@@ -16,17 +17,25 @@ class Command(BaseCommand):
         parser.add_argument('author_email', type=str)
 
         parser.add_argument(
+            '-t', '--template',
+            nargs='?',
+            help=f'Select a template to be used when creating new module. Supported templates are: {", ".join(self.supported_templates)}',
+        )
+        parser.add_argument(
             '--github',
             action='store_true',
-            help='Add github files related to worflow and .gitignore',
+            help='Add github files related to workflow and .gitignore',
         )
 
     def handle(self, *args, **options):
         # get basic data to create new module like module name, current path/directory
         author = options['author']
         author_email = options['author_email']
-
         module_name = options['module_name']
+        template = options['template']
+        if template and template not in self.supported_templates:
+            raise CommandError(f'template "{template}" is not supported. Chech --help for the list of supported templates')
+
         repo_name = f"openimis-be-{module_name}_py"
         base_path = Path(settings.BASE_DIR)
         modules_directory = base_path.parent.parent
@@ -38,7 +47,7 @@ class Command(BaseCommand):
             raise CommandError("Module already exists in workspace")
 
         app_directory = self.__create_project_folder(module_name, new_module_directory)
-        self.__print_info(app_directory)
+        self.__print_info(str(app_directory))
 
         Repo.init(new_module_directory)
 
@@ -51,8 +60,15 @@ class Command(BaseCommand):
         self.__add_license_file(skeletons_folder, new_module_directory)
         self.__add_manifest_file(skeletons_folder, new_module_directory)
         self.__add_urls_file(skeletons_folder, app_directory)
+
         self.__install_module(module_name, new_module_directory)
         self.__add_module_to_openimis_json(base_path, module_name)
+
+        if options['template'] == 'business':
+            self.__add_business_services_file(skeletons_folder, app_directory)
+            self.__add_business_tests_file(skeletons_folder, app_directory, module_name)
+
+        self.__call_tests(module_name)
 
         if options['github']:
             self.__call_add_github_files_command(module_name)
@@ -91,6 +107,14 @@ class Command(BaseCommand):
     def __add_urls_file(self, skeletons_folder, app_directory):
         file_content = self.__replace_skeleton_values(skeletons_folder, 'urls.py')
         self.__add_file(app_directory, 'urls.py', file_content)
+
+    def __add_business_services_file(self, skeletons_folder, app_directory):
+        file_content = self.__replace_skeleton_values(skeletons_folder, 'business_services.template')
+        self.__add_file(app_directory, 'services.py', file_content)
+
+    def __add_business_tests_file(self, skeletons_folder, app_directory, module_name):
+        file_content = self.__replace_skeleton_values(skeletons_folder, 'business_tests.template', module_name=module_name)
+        self.__add_file(app_directory, 'tests.py', file_content)
 
     def __add_setup_file(self, skeletons_folder, new_module_directory, module_name, author, author_email):
         file_content = self.__replace_skeleton_values(
@@ -140,7 +164,7 @@ class Command(BaseCommand):
     def __add_file(self, new_module_directory, filename, file_content):
         """ Add file to the project of new module """
         file = new_module_directory.joinpath(filename)
-        self.__print_info(file)
+        self.__print_info(str(file))
         with open(file, "w+") as f:
             f.write(file_content)
         self.__print_success(f'Succesfully created {filename} file')
@@ -150,7 +174,15 @@ class Command(BaseCommand):
         if result != 0:
             raise CommandError(f'Error on adding GitHub files to the module')
         else:
-            self.__print_success('Succesfully added GitHub files to the module')
+            self.__print_success('Successfully added GitHub files to the module')
+
+    def __call_tests(self, module_name):
+        self.__print_info("Running example tests")
+        result = os.system(f"python manage.py test {module_name} --keep")
+        if result != 0:
+            raise CommandError(f'Error while running example tests')
+        else:
+            self.__print_success('Successfully completed example tests')
 
     def __print_success(self, msg: str):
         """ Print message to inform about the command progress """
