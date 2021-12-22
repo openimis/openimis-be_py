@@ -1,0 +1,12 @@
+from django.apps import AppConfig
+
+MODULE_NAME = "{{module_name}}"
+
+DEFAULT_CFG = {
+
+}
+
+
+# Rename this class to fit the new module
+class ExampleConfig(AppConfig):
+    name = MODULE_NAME

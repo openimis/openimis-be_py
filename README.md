@@ -161,10 +161,14 @@ Notes:
 
 ## Developer tools
 
+
 ### To create backend module skeleton in single command
 * from `/openimis-be_py/openIMIS`:
-  * run this command: `python manage.py create_openimis_module <module_name> <author> <author_email>`
+  * run this command: `python manage.py create_openimis_module <module_name> <author> <author_email> [--template <template>]`
   * `<author>` and `<author_email>` params are required because they are necessary during creating `setup.py` file
+  * `--template` param allow to specify a template adding additional files, depending on module type provided:
+    * `business` provides the module with `services.py` file containing example service, tests for that service, and 
+    `apps.py` containing module config.
   * this command executes every steps described in "To create a new openIMIS module (e.g. `openimis-be-mymodule`)"
   * file templates for setup, readme, license, manifest and urls can be found in `developer_tools/skeletons` directory
   * files to be added through that command based on provided templates:
@@ -173,9 +177,10 @@ Notes:
      * LICENSE.md
      * MANIFEST.md
      * <module_name>/urls.py
-  * as the option could be added `--github`. This allows to add gitignore file and workflows files so as to execute CI on every pull request (this option will execute this command `python manage.py add_github_files_to_module <module_name>`) 
+  * as the option could be added `--github`. This allows to add gitignore file and workflows files to execute CI on every pull request (this option will execute this command `python manage.py add_github_files_to_module <module_name>`) 
   * example with using `--github` option: `python manage.py create_openimis_module <module_name> <author> <author_email> --github`
 * from here on, your local openIMIS has a new module called `openimis-be-<module_name>_py`, directly loaded from your directory by using single command.
+
 
 ### To add GitHub files like workflows, gitignore etc
 * from `/openimis-be_py/openIMIS`:
@@ -185,6 +190,7 @@ Notes:
      * openmis-module-test.yml
      * python-publish.yml
      * .gitignore
+
 
 ### To fetch a module and install it from local directory
 * first install all modules as in "Developers setup"
@@ -197,11 +203,13 @@ Notes:
   * The `--path` allows you to specify the directory the repository will be cloned to. By default, the repository will be saved
   next to `openimis-be_py` directory.
   
+
 ### To fetch all modules and install them from local directories
 * first install all modules as in "Developers setup"
 * from `/openimis-be_py/openIMIS`:
   * run this command: `python manage.py install_module_locally all`. This command will execute all steps required steps 
   to fetch all modules present in `openimis.json` from the git repositories and install them as editable libraries.
+
 
 ### To install modules from PyPI
 * first install all modules as in "Developers setup"
@@ -214,6 +222,7 @@ Notes:
   module name, following this scheme: `openimis-be-<module_name>`
   * The `--check-only` flag allows to check the newest version without installing the library or modifying openimis.json
   file. This parameter can be also used to check availability of a specific version when used with `--target-version`
+
 
 ### To install all modules from PyPI
 * first install all modules as in "Developers setup"

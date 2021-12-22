@@ -66,6 +66,7 @@ class Command(BaseCommand):
 
         if options['template'] == 'business':
             self.__add_business_services_file(skeletons_folder, app_directory)
+            self.__add_business_apps_file(skeletons_folder, app_directory, module_name)
             self.__add_business_tests_file(skeletons_folder, app_directory, module_name)
 
         self.__call_tests(module_name)
@@ -115,6 +116,10 @@ class Command(BaseCommand):
     def __add_business_tests_file(self, skeletons_folder, app_directory, module_name):
         file_content = self.__replace_skeleton_values(skeletons_folder, 'business_tests.template', module_name=module_name)
         self.__add_file(app_directory, 'tests.py', file_content)
+
+    def __add_business_apps_file(self, skeletons_folder, app_directory, module_name):
+        file_content = self.__replace_skeleton_values(skeletons_folder, 'business_apps.template', module_name=module_name)
+        self.__add_file(app_directory, 'apps.py', file_content)
 
     def __add_setup_file(self, skeletons_folder, new_module_directory, module_name, author, author_email):
         file_content = self.__replace_skeleton_values(
