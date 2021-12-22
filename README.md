@@ -169,7 +169,7 @@ Notes:
   * `--template` param allow to specify a template adding additional files, depending on module type provided:
     * `business` template provides the module with `services.py` file containing example service, tests for that service, and 
     `apps.py` containing module config.
-    * `calculation` template is an alias to `create_calcrule_module` command explained in `To create calculcation backend 
+    * `calculation` template is an alias to `create_calcrule_module` command explained in `To create calculation backend
     module skeleton in single command` section
   * this command executes every steps described in "To create a new openIMIS module (e.g. `openimis-be-mymodule`)"
   * file templates for setup, readme, license, manifest and urls can be found in `developer_tools/skeletons` directory
@@ -232,7 +232,7 @@ Notes:
   * run this command: `python manage.py install_module_locally all`. This command will execute all steps required steps 
   to install most recent versions of all modules present in `openimis.json` from PyPI.
 
-### To create calculcation backend module skeleton in single command
+### To create calculation backend module skeleton in single command
 * from `/openimis-be_py/openIMIS`:
   * run this command: `python manage.py create_calcrule_module <module_name> <author> <author_email>`
   * `<author>` and `<author_email>` params are required because they are necessary during creating `setup.py` file
