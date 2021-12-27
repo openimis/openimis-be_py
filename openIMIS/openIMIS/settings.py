@@ -239,7 +239,6 @@ GRAPHENE = {
         "openIMIS.tracer.TracerMiddleware",
         "openIMIS.schema.GQLUserLanguageMiddleware",
         "graphql_jwt.middleware.JSONWebTokenMiddleware",
-        #'graphql_auth.backends.GraphQLAuthBackend',
         "graphene_django.debug.DjangoDebugMiddleware",  # adds a _debug query to graphQL with sql debug info
     ],
 }
@@ -247,12 +246,9 @@ GRAPHENE = {
 GRAPHQL_JWT = {
     "JWT_VERIFY_EXPIRATION": True,
     "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
+    "JWT_AUTH_HEADER_PREFIX": "Bearer",
     "JWT_ENCODE_HANDLER": "core.jwt.jwt_encode_user_key",
     "JWT_DECODE_HANDLER": "core.jwt.jwt_decode_user_key",
-    # To override the openIMIS per-user JWT private key and settings, you can create an oijwt.py file in this folder and
-    # adapt the above lines like this:
-    # "JWT_ENCODE_HANDLER": "openIMIS.oijwt.jwt_encode_user_key",
-    # "JWT_DECODE_HANDLER": "openIMIS.oijwt.jwt_decode_user_key",
     # This can be used to expose some resources without authentication
     "JWT_ALLOW_ANY_CLASSES": [
         "graphql_jwt.mutations.ObtainJSONWebToken",
