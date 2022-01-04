@@ -255,6 +255,8 @@ GRAPHQL_JWT = {
         "graphql_jwt.mutations.Verify",
         "graphql_jwt.mutations.Refresh",
         "graphql_jwt.mutations.Revoke",
+        "core.schema.ResetPasswordMutation",
+        "core.schema.SetPasswordMutation",
     ],
 }
 
@@ -430,3 +432,5 @@ EMAIL_USE_SSL = os.environ.get("EMAIL_USE_SSL", False)
 # INSUREE_NUMBER_VALIDATOR = insuree_number_validator
 INSUREE_NUMBER_LENGTH = os.environ.get("INSUREE_NUMBER_LENGTH", None)
 INSUREE_NUMBER_MODULE_ROOT = os.environ.get("INSUREE_NUMBER_MODULE_ROOT", None)
+
+FRONTEND_URL = os.environ.get("FRONTENT_URL", "")
