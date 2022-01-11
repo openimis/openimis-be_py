@@ -17,7 +17,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
-from graphql_jwt.decorators import jwt_cookie
 from .views import OpenIMISGraphQLView
 
 from .openimisurls import openimis_urls
@@ -27,7 +26,7 @@ urlpatterns = [
     path("%sadmin/" % SITE_ROOT(), admin.site.urls),
     path(
         "%sgraphql" % SITE_ROOT(),
-        jwt_cookie(csrf_exempt(OpenIMISGraphQLView.as_view(graphiql=DEBUG))),
+        csrf_exempt(OpenIMISGraphQLView.as_view(graphiql=DEBUG)),
     ),
     url(r"^ht/", include("health_check.urls")),
 ] + openimis_urls()
