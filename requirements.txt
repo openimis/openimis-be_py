@@ -6,6 +6,7 @@ channels-redis==3.2.0
 channels-rabbitmq==2.0.0
 django==3.0.14
 djangorestframework
+django-cryptography==1.0
 django-filter
 django-jsonfallback
 #django-mssql-backend is a fork for django 3 of django-pyodbc-azure (django 2.1) which is a fork of django-pyodbc (1.x)
