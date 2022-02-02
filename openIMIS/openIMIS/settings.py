@@ -182,14 +182,20 @@ AUTHENTICATION_BACKENDS += [
 ANONYMOUS_USER_NAME = None
 
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
+    "DEFAULT_AUTHENTICATION_CLASSES": [
         "core.jwt_authentication.JWTAuthentication",
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
-    ),
+    ],
     "DEFAULT_PERMISSION_CLASSES": ["core.security.ObjectPermissions"],
     "EXCEPTION_HANDLER": "openIMIS.rest_exception_handler.fhir_rest_api_exception_handler",
 }
+
+if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
+    REST_FRAMEWORK["DEFAULT_AUTHENTICATION_CLASSES"].insert(
+        0,
+        "rest_framework.authentication.RemoteUserAuthentication",
+    )
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -200,7 +206,6 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     #'openIMIS.oijwt.OIGraphQLAuthBackend'
-    #'graphql_jwt.middleware.JSONWebTokenMiddleware',
 ]
 
 
