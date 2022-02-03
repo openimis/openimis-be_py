@@ -47,8 +47,8 @@ jobs:
         run: |
 
           export DBBRANCH="$([ $GITHUB_REF == 'develop' ] && echo "develop" || echo "main")"
-          wget https://raw.githubusercontent.com/openimis/database_ms_sqlserver/$DBBRANCH/Empty%20databases/openIMIS_ONLINE.sql -O openIMIS_ONLINE.sql
-          wget https://raw.githubusercontent.com/openimis/database_ms_sqlserver/$DBBRANCH/Demo%20database/openIMIS_demo_ONLINE.sql -O openIMIS_demo_ONLINE.sql
+          git clone --depth 1 --branch $DBBRANCH https://github.com/openimis/database_ms_sqlserver.git  ./sql
+          cd sql/ && bash concatenate_files.sh && cd ..
 
           curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
           curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
@@ -56,8 +56,7 @@ jobs:
           sudo apt-get install mssql-tools unixodbc-dev jq
           /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -Q 'DROP DATABASE IF EXISTS imis'
           /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -Q 'CREATE DATABASE imis'
-          /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -d imis -i openIMIS_ONLINE.sql | grep . | uniq -c
-          /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -d imis -i openIMIS_demo_ONLINE.sql | grep . | uniq -c
+          /opt/mssql-tools/bin/sqlcmd -S localhost,1433 -U SA -P $SA_PASSWORD -d imis -i sql/output/fullDemoDatabase.sql | grep . | uniq -c
         env:
           SA_PASSWORD: GitHub999
 
