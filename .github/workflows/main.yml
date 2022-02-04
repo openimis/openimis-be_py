@@ -42,10 +42,6 @@ jobs:
       - name: Environment info
         run: |
           pip list
-
-      - name: Initialize DB
-        run: |
-
           if [ ${GITHUB_REF##*/} = "develop" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
           echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
           git clone --depth 1 --branch $DBBRANCH https://github.com/openimis/database_ms_sqlserver.git  ./sql
@@ -55,9 +51,17 @@ jobs:
           curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
           sudo apt-get update
           sudo apt-get install mssql-tools unixodbc-dev jq
+
+      - name: Initialize DB
+        run: |
+
           /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -Q 'DROP DATABASE IF EXISTS imis'
           /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -Q 'CREATE DATABASE imis'
           /opt/mssql-tools/bin/sqlcmd -S localhost,1433 -U SA -P $SA_PASSWORD -d imis -i sql/output/fullDemoDatabase.sql | grep . | uniq -c
+          cd openIMIS
+          python manage.py migrate
+          python init_test_db.py | grep . | uniq -c
+          /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -Q "SELECT string_agg(concat(TABLE_NAME, ':', COLUMN_NAME), ', ') FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_CATALOG = 'CHFIMIS-01042021'GROUP BY TABLE_NAME"
         env:
           SA_PASSWORD: GitHub999
 
@@ -71,8 +75,6 @@ jobs:
           ls -l
           cd openIMIS
           ls -l
-          python manage.py migrate
-          python init_test_db.py | grep . | uniq -c
           python manage.py test --keepdb $(jq   -r '(.modules[]|.name)' ../openimis.json)
         env:
           SECRET_KEY: secret
