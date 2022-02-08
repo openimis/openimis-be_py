@@ -58,19 +58,19 @@
     },
         {
       "name": "calculation",
-      "pip": "openimis-be-calculation==1.3.0"
+      "pip": "openimis-be-calculation==1.3.1"
     },
     {
       "name": "contribution_plan",
-      "pip": "openimis-be-contribution-plan==1.3.0"
+      "pip": "openimis-be-contribution-plan==1.3.2"
     },
         {
       "name": "policyholder",
-      "pip": "openimis-be-policyholder==1.3.0"
+      "pip": "openimis-be-policyholder==1.3.1"
     },
     {
       "name": "contract",
-      "pip": "openimis-be-contract==1.3.0"
+      "pip": "openimis-be-contract==1.3.1"
     }
   ]
 }
