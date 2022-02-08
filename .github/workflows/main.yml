@@ -42,8 +42,12 @@ jobs:
       - name: Environment info
         run: |
           pip list
+
+          export DBBRANCH="$([ $GITHUB_REF == 'develop' ] && echo "develop" || echo "main")"
+
           if [ ${GITHUB_REF##*/} = "develop" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
           echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
+
           git clone --depth 1 --branch $DBBRANCH https://github.com/openimis/database_ms_sqlserver.git  ./sql
           cd sql/ && bash concatenate_files.sh && cd ..
 
