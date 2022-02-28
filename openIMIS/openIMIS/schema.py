@@ -1,4 +1,5 @@
 import graphene
+
 from core.models import Language
 from django.utils import translation
 
@@ -57,6 +58,7 @@ for app in all_apps:
 
 class Query(*queries, graphene.ObjectType):
     debug = graphene.Field(DjangoDebug, name="_debug")
+    node = graphene.relay.Node.Field()
 
 
 class Mutation(*mutations, graphene.ObjectType):

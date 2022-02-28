@@ -1,0 +1,4 @@
+# This file includes requirements that are not necessary for production systems
+# faker, for example is used to generate test data
+-r requirements.txt
+faker==8.1.3

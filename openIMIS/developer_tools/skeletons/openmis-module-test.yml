@@ -1,0 +1,100 @@
+name: Automated CI testing
+# This workflow run automatically for every commit on github it checks the syntax and launch the tests.
+# | grep . | uniq -c filters out empty lines and then groups consecutive lines together with the number of occurrences
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      comment:
+        description: Just a simple comment to know the purpose of the manual build
+        required: false
+
+jobs:
+  run_test:
+    runs-on: ubuntu-latest
+    services:
+      mssql:
+        image: mcr.microsoft.com/mssql/server:2017-latest
+        env:
+          ACCEPT_EULA: Y
+          SA_PASSWORD: GitHub999
+        ports:
+          - 1433:1433
+        # needed because the mssql container does not provide a health check
+        options: --health-interval=10s --health-timeout=3s --health-start-period=10s --health-retries=10 --health-cmd="/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${SA_PASSWORD} -Q 'SELECT 1' || exit 1"
+
+    steps:
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: install linux packages
+        run: |
+          wget https://raw.githubusercontent.com/openimis/database_ms_sqlserver/main/Empty%20databases/openIMIS_ONLINE.sql -O openIMIS_ONLINE.sql
+          wget https://raw.githubusercontent.com/openimis/database_ms_sqlserver/main/Demo%20database/openIMIS_demo_ONLINE.sql -O openIMIS_demo_ONLINE.sql
+          curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+          curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+          sudo apt-get update
+          sudo ACCEPT_EULA=Y apt-get install -y  mssql-tools build-essential dialog apt-utils unixodbc-dev -y
+          python -m pip install --upgrade pip
+      - name: pull openimis backend
+        run: |
+          rm ./openimis -rf
+          git clone --depth 1 --branch develop https://github.com/openimis/openimis-be_py.git ./openimis
+      - name: copy current branch
+        uses: actions/checkout@v2
+        with:
+          path: './current-module'
+      - name: Update the configuration
+        working-directory: ./openimis
+        run: |
+          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
+          echo "the local module called $MODULE_NAME will be injected in openIMIS .json"
+          jq --arg name "$MODULE_NAME" 'if [.modules[].name  ==  ($name)]| max then (.modules[]  | select(.name == ($name)) | .pip)|="../current-module" else .modules |= .+ [{name:($name), pip:"../current-module"}] end' openimis.json
+          echo $(jq --arg name "$MODULE_NAME" 'if [.modules[].name  ==  ($name)]| max then (.modules[]  | select(.name == ($name)) | .pip)|="../current-module" else .modules |= .+ [{name:($name), pip:"../current-module"}] end' openimis.json)  > openimis.json
+      - name: Install openIMIS Python dependencies
+        working-directory: ./openimis
+        run: |
+          pip install -r requirements.txt
+          python modules-requirements.py openimis.json > modules-requirements.txt
+          cat modules-requirements.txt
+          pip install -r modules-requirements.txt
+      - name: Environment info
+        working-directory: ./openimis
+        run: |
+          pip list
+      - name: Initialize DB
+        run: |
+          /opt/mssql-tools/bin/sqlcmd -S localhost,1433 -U SA -P $SA_PASSWORD -Q 'DROP DATABASE IF EXISTS imis'
+          /opt/mssql-tools/bin/sqlcmd -S localhost,1433 -U SA -P $SA_PASSWORD -Q 'CREATE DATABASE imis'
+          /opt/mssql-tools/bin/sqlcmd -S localhost,1433 -U SA -P $SA_PASSWORD -d imis -i openIMIS_ONLINE.sql | grep . | uniq -c
+          /opt/mssql-tools/bin/sqlcmd -S localhost,1433 -U SA -P $SA_PASSWORD -d imis -i openIMIS_demo_ONLINE.sql | grep . | uniq -c
+        env:
+          SA_PASSWORD: GitHub999
+          ACCEPT_EULA: Y
+
+#      - name: Check formatting with black
+#        run: |
+#          black --check .
+
+      - name: Django tests
+        working-directory: ./openimis/openIMIS
+        run: |
+          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
+          python -V
+          ls -l
+          python manage.py migrate
+          python init_test_db.py | grep . | uniq -c
+          python manage.py test --keepdb $MODULE_NAME
+        env:
+          SECRET_KEY: secret
+          DEBUG: true
+          #DJANGO_SETTINGS_MODULE: hat.settings
+          DB_HOST: localhost
+          DB_PORT: 1433
+          DB_NAME: imis
+          DB_USER: sa
+          DB_PASSWORD: GitHub999
+          #DEV_SERVER: true
+          SITE_ROOT: api
+          REMOTE_USER_AUTHENTICATION: True

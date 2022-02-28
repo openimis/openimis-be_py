@@ -6,13 +6,14 @@ channels-redis==3.2.0
 channels-rabbitmq==2.0.0
 django==3.0.14
 djangorestframework
+django-cryptography==1.0
 django-filter
 django-jsonfallback
 #django-mssql-backend is a fork for django 3 of django-pyodbc-azure (django 2.1) which is a fork of django-pyodbc (1.x)
 django-mssql-backend==2.8.1
 django-rest-framework-rules
 django-test-without-migrations
-graphene-django==2.8.2
+graphene-django<3
 graphene-django-optimizer==0.8.0
 PyJWT==1.7.0
 django-graphql-jwt==0.3.1
@@ -40,3 +41,4 @@ git+https://github.com/openimis/django-apscheduler.git#egg=django-apscheduler
 django-simple-history
 django-dirtyfields==1.4.1
 daphne==3.0.1
+GitPython==3.1.24
