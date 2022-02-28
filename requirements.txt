@@ -27,7 +27,8 @@ python-dotenv
 psycopg2
 #If psycopg2 does not build on your system, try:
 #psycopg2-binary==2.8.5
-reportbro-lib==1.3.3
+reportbro-lib~=2.0.1
+reportbro-fpdf~=1.7.11
 rules
 waitress
 wheel
