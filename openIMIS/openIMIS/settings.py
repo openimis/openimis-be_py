@@ -332,14 +332,14 @@ SCHEDULER_JOBS = [
     #     "kwargs": {"id": "openimis_notification_batch", 'day_of_week': '*',
     #                "hour": "8,12,16,20", "replace_existing": True},
     # },
-    # {
-    #     "method": "claim_ai_quality.tasks.claim_ai_processing",
-    #     "args": ["cron"],
-    #     "kwargs": {"id": "claim_ai_processing",
-    #                "hour": 0
-    #                "minute", 30
-    #                "replace_existing": True},
-    # },
+    {
+        "method": "claim_ai_quality.tasks.claim_ai_processing",
+        "args": ["cron"],
+        "kwargs": {"id": "claim_ai_processing",
+                   "hour": 0,
+                   "minute": 5
+                   "replace_existing": True},
+    },
 ]
 # This one is called directly with the scheduler object as first parameter. The methods can schedule things on their own
 SCHEDULER_CUSTOM = [
