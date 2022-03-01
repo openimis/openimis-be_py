@@ -50,13 +50,17 @@
     },
     {
       "name": "claim_batch",
-      "pip": "openimis-be-claim_batch==1.3.0"
-    },   
+      "pip": "git+https://github.com/openimis/openimis-be-claim_batch_py.git@develop#egg=openimis-be-claim_batch"
+    },
+    {
+      "name": "dhis2_etl",
+      "pip": "git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop#egg=openimis-be-dhis2_etl"
+    },
     {
       "name": "api_fhir_r4",
       "pip": "openimis-be-api-fhir-r4==1.0.0"
     },
-        {
+    {
       "name": "calculation",
       "pip": "openimis-be-calculation==1.3.0"
     },
@@ -64,13 +68,17 @@
       "name": "contribution_plan",
       "pip": "openimis-be-contribution-plan==1.3.0"
     },
-        {
+    {
       "name": "policyholder",
       "pip": "openimis-be-policyholder==1.3.0"
     },
     {
       "name": "contract",
-      "pip": "openimis-be-contract==1.3.0"
+      "pip": "git+https://github.com/openimis/openimis-be-contract_py.git@develop#egg=openimis-be-contract"
+    },
+    {
+      "name": "invoice",
+      "pip": "git+https://github.com/openimis/openimis-be-invoice_py.git@develop#egg=openimis-be-invoice"
     }
   ]
 }

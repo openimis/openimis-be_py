@@ -6,6 +6,7 @@ channels-redis==3.2.0
 channels-rabbitmq==2.0.0
 django==3.1.13
 djangorestframework
+django-cryptography==1.0
 django-filter
 django-jsonfallback
 #django-mssql-backend is a fork for django 3 of django-pyodbc-azure (django 2.1) which is a fork of django-pyodbc (1.x)
@@ -26,7 +27,8 @@ python-dotenv
 psycopg2
 #If psycopg2 does not build on your system, try:
 #psycopg2-binary==2.8.5
-reportbro-lib==1.3.3
+reportbro-lib~=2.0.1
+reportbro-fpdf~=1.7.11
 rules
 waitress
 wheel
@@ -40,3 +42,4 @@ git+https://github.com/openimis/django-apscheduler.git#egg=django-apscheduler
 django-simple-history
 django-dirtyfields==1.4.1
 daphne==3.0.1
+GitPython==3.1.24
