@@ -337,7 +337,7 @@ SCHEDULER_JOBS = [
         "args": ["cron"],
         "kwargs": {"id": "claim_ai_processing",
                    "hour": 0,
-                   "minute": 5
+                   "minute": 5,
                    "replace_existing": True},
     },
 ]
