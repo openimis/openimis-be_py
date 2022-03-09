@@ -162,7 +162,8 @@ INSTALLED_APPS = [
     "health_check.storage",
     "django_apscheduler",
     "channels",  # Websocket support
-    "developer_tools"
+    "developer_tools",
+    "drf_spectacular"  # Swagger UI for FHIR API
 ]
 INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["signal_binding"]  # Signal binding should be last installed module
@@ -188,6 +189,17 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_PERMISSION_CLASSES": ["core.security.ObjectPermissions"],
     "EXCEPTION_HANDLER": "openIMIS.rest_exception_handler.fhir_rest_api_exception_handler",
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'FHIR R4',
+    'DESCRIPTION': 'openIMIS FHIR R4 API',
+    'VERSION': '1.0.0',
+    'AUTHENTICATION_WHITELIST': [
+        'core.jwt_authentication.JWTAuthentication',
+        'api_fhir_r4.views.CsrfExemptSessionAuthentication'
+    ],
 }
 
 if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
