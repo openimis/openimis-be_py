@@ -170,7 +170,7 @@ INSTALLED_APPS += ["signal_binding"]  # Signal binding should be last installed 
 AUTHENTICATION_BACKENDS = []
 
 if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
-    AUTHENTICATION_BACKENDS += ["core.security.RemoteUserBackend"]
+    AUTHENTICATION_BACKENDS += ["django.contrib.auth.backends.RemoteUserBackend"]
 
 AUTHENTICATION_BACKENDS += [
     "rules.permissions.ObjectPermissionBackend",
@@ -186,7 +186,6 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ],
-    "DEFAULT_PERMISSION_CLASSES": ["core.security.ObjectPermissions"],
     "EXCEPTION_HANDLER": "openIMIS.rest_exception_handler.fhir_rest_api_exception_handler",
 }
 
@@ -204,7 +203,6 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    #'openIMIS.oijwt.OIGraphQLAuthBackend'
 ]
 
 
