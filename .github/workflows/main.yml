@@ -43,7 +43,7 @@ jobs:
         run: |
           pip list
 
-          export DBBRANCH="$([ $GITHUB_REF == 'develop' ] && echo "develop" || echo "main")"
+          export DBBRANCH="$([ $GITHUB_REF == 'main' ] && echo "main" || echo "develop")"
 
           if [ ${GITHUB_REF##*/} = "develop" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
           echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
