@@ -170,7 +170,7 @@ INSTALLED_APPS += ["signal_binding"]  # Signal binding should be last installed 
 AUTHENTICATION_BACKENDS = []
 
 if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
-    AUTHENTICATION_BACKENDS += ["core.security.RemoteUserBackend"]
+    AUTHENTICATION_BACKENDS += ["django.contrib.auth.backends.RemoteUserBackend"]
 
 AUTHENTICATION_BACKENDS += [
     "rules.permissions.ObjectPermissionBackend",
