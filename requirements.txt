@@ -43,3 +43,4 @@ django-simple-history
 django-dirtyfields==1.4.1
 daphne==3.0.1
 GitPython==3.1.24
+django-cprofile-middleware==1.0.5

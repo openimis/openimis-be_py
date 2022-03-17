@@ -207,6 +207,12 @@ MIDDLEWARE = [
     #'openIMIS.oijwt.OIGraphQLAuthBackend'
 ]
 
+if DEBUG:
+    # Attach profiler middleware
+    MIDDLEWARE.append(
+        "django_cprofile_middleware.middleware.ProfilerMiddleware"
+    )
+    DJANGO_CPROFILE_MIDDLEWARE_REQUIRE_STAFF = False
 
 if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
     MIDDLEWARE += ["core.security.RemoteUserMiddleware"]
