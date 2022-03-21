@@ -80,6 +80,15 @@ At this stage, you may (depends on the database you connect to) need to:
   * launch unit tests, with the 'keep database' option: `python
     manage.py test --keep claim`
 
+### To get profiler report (DEBUG mode only)
+In request query include additional parameters:  
+* `prof=True` - get profiler report instead of standard response for given endpoint
+* `download=True` - additionally changes report formatting to one acceptable by `snakeviz` 
+
+#### Example:   
+`http://localhost:8000/api/graphql?prof=True&download=True`  
+creates profiler report for execution of query/mutation defined in request's POST body.
+
 ### To publish (in PyPI) the modified (or new) module
 * adapt the `openimis-be-mymodule_py/setup.py` to (at least) bump version number (e.g. 1.2.3)
 * commit your changes to the git repo and merge into master

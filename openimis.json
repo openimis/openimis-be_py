@@ -79,6 +79,14 @@
 		{
 			"name": "invoice",
 			"pip": "git+https://github.com/openimis/openimis-be-invoice_py.git@develop#egg=openimis-be-invoice"
+		},
+		{
+			"name": "calcrule_third_party_payment",
+			"pip": "git+https://github.com/openimis/openimis-be-calcrule-third_party_payment_py.git@develop#egg=openimis-be-calcrule_third_party_payment"
+		},
+		{
+			"name": "calcrule_capitation_payment",
+			"pip": "git+https://github.com/openimis/openimis-be-calcrule-capitation_payment_py.git@develop#egg=openimis-be-calcrule-capitation_payment"
 		}
 	]
 }
