@@ -87,6 +87,14 @@
 		{
 			"name": "calcrule_capitation_payment",
 			"pip": "git+https://github.com/openimis/openimis-be-calcrule-capitation_payment_py.git@develop#egg=openimis-be-calcrule-capitation_payment"
+		},
+		{
+			"name": "calcrule_commision",
+			"pip": "git+https://github.com/openimis/openimis-be-calcrule_commision_py.git@develop#egg=openimis-be-calcrule_commision"
+		},
+		{
+			"name": "calcrule_fees",
+			"pip": "git+https://github.com/openimis/openimis-be-calcrule_fees_py.git@develop#egg=openimis-be-calcrule_fees"
 		}
 	]
 }
