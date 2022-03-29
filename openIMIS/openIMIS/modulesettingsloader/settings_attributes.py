@@ -6,25 +6,26 @@ import typing
 
 class SettingsAttributeConflictPolicy(Enum):
     """
-    Determines behaviour on conflicts of settings attributes coming from external sources.
+    Determines behaviour on conflicting settings attributes coming from installed modules.
+
     MERGE_YIELD - add new or combine with an already existing variable, if it's already determined then:
         * for primitives / objects: don't perform action
         * for dictionaries: add keys (recursively), if keys are already determined then don't override them
-        * for iterables: add element to iterable
+        * for iterables: combine iterables
 
     MERGE_OVERRIDE - add new or combine with an already existing variable, if it's already determined then:
         * for primitives / objects: override existing variable
         * for dictionaries: add keys (recursively), if keys are already determined then override them
-        * for iterables: add element to iterable
+        * for iterables: combine iterables
 
     ENFORCE - assign variable, if it's already determined then:
-        * completely override existing one with new definition, unless it's fixed
+        * override existing one with new definition
 
     FIX - assign variable, if it's already determined then:
-        * completely existing one with new definition without combining with existing content.
+        * override existing one with new definition without combining with existing content.
         Can't be overridden. If another module attempted to override it - raise FixedSettingAttribute exception.
 
-    ENFORCE - assign variable, if it's already determined then:
+    YIELD - assign variable, if it's already determined then:
         * don't perform any action
 
     """
