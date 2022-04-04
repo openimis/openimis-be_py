@@ -95,6 +95,10 @@
 		{
 			"name": "calcrule_fees",
 			"pip": "git+https://github.com/openimis/openimis-be-calcrule_fees_py.git@develop#egg=openimis-be-calcrule_fees"
+		},
+		{
+			"name":"calcrule_unconditional_cash_payment",
+			"pip":"git+https://github.com/openimis/openimis-be-calcrule_unconditional_cash_payment_py.git@develop#egg=openimis-be-calcrule_unconditional_cash_payment"
 		}
 	]
 }
