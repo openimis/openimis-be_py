@@ -2,7 +2,7 @@ import json
 import os
 import io
 
-def load_openimis_conf( conf_file_param = "../openimis.json" ):
+def load_openimis_conf(conf_file_param = "../openimis.json" ):
     conf_json_env = os.environ.get("OPENIMIS_CONF_JSON", "")
     conf_file_path = os.environ.get("OPENIMIS_CONF", conf_file_param)
     if not conf_json_env:
