@@ -101,4 +101,4 @@ jobs:
           DB_PASSWORD: GitHub999
           #DEV_SERVER: true
           SITE_ROOT: api
-          REMOTE_USER_AUTHENTICATION: True
+          REMOTE_USER_AUTHENTICATION: False
