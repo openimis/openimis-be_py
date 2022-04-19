@@ -2,103 +2,103 @@
 	"modules": [
 		{
 			"name": "core",
-			"pip": "git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core"
+			"pip": "openimis-be-core==1.4.*"
 		},
 		{
 			"name": "report",
-			"pip": "git+https://github.com/openimis/openimis-be-report_py.git@develop#egg=openimis-be-report"
+			"pip": "openimis-be-report==1.4.*"
 		},
 		{
 			"name": "location",
-			"pip": "git+https://github.com/openimis/openimis-be-location_py.git@develop#egg=openimis-be-location"
+			"pip": "openimis-be-location==1.4.*"
 		},
 		{
 			"name": "medical",
-			"pip": "git+https://github.com/openimis/openimis-be-medical_py.git@develop#egg=openimis-be-medical"
+			"pip": "openimis-be-medical==1.4.*"
 		},
 		{
 			"name": "medical_pricelist",
-			"pip": "git+https://github.com/openimis/openimis-be-medical_pricelist_py.git@develop#egg=openimis-be-medical_pricelist"
+			"pip": "gopenimis-be-medical_pricelist==1.4.*"
 		},
 		{
 			"name": "product",
-			"pip": "git+https://github.com/openimis/openimis-be-product_py.git@develop#egg=openimis-be-product"
+			"pip": "openimis-be-product==1.4.*"
 		},
 		{
 			"name": "insuree",
-			"pip": "git+https://github.com/openimis/openimis-be-insuree_py.git@develop#egg=openimis-be-insuree"
+			"pip": "openimis-be-insuree==1.4.*"
 		},
 		{
 			"name": "policy",
-			"pip": "git+https://github.com/openimis/openimis-be-policy_py.git@develop#egg=openimis-be-policy"
+			"pip": "openimis-be-policy==1.4.*"
 		},
 		{
 			"name": "contribution",
-			"pip": "git+https://github.com/openimis/openimis-be-contribution_py.git@develop#egg=openimis-be-contribution"
+			"pip": "openimis-be-contribution==1.4.*"
 		},
 		{
 			"name": "payer",
-			"pip": "git+https://github.com/openimis/openimis-be-payer_py.git@develop#egg=openimis-be-payer"
+			"pip": "openimis-be-payer==1.4.*"
 		},
 		{
 			"name": "payment",
-			"pip": "git+https://github.com/openimis/openimis-be-payment_py.git@develop#egg=openimis-be-payment"
+			"pip": "openimis-be-payment==1.4.*"
 		},
 		{
 			"name": "claim",
-			"pip": "git+https://github.com/openimis/openimis-be-claim_py.git@develop#egg=openimis-be-claim"
+			"pip": "openimis-be-claim==1.4.*"
 		},
 		{
 			"name": "claim_batch",
-			"pip": "git+https://github.com/openimis/openimis-be-claim_batch_py.git@develop#egg=openimis-be-claim_batch"
+			"pip": "openimis-be-claim_batch==1.4.*"
 		},
 		{
 			"name": "dhis2_etl",
-			"pip": "-e git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop#egg=openimis-be-dhis2_etl"
+			"pip": "openimis-be-dhis2_etl==1.4.*"
 		},
 		{
 			"name": "api_fhir_r4",
-			"pip": "-e git+https://github.com/openimis/openimis-be-api_fhir_r4_py.git@develop#egg=openimis-be-api_fhir_r4"
+			"pip": "openimis-be-api_fhir_r4==1.4.*"
 		},
 		{
 			"name": "calculation",
-			"pip": "git+https://github.com/openimis/openimis-be-calculation_py.git@develop#egg=openimis-be-calculation"
+			"pip": "openimis-be-calculation==1.4.*"
 		},
 		{
 			"name": "contribution_plan",
-			"pip": "git+https://github.com/openimis/openimis-be-contribution_plan_py.git@develop#egg=openimis-be-contribution_plan"
+			"pip": "openimis-be-contribution_plan==1.4.*"
 		},
 		{
 			"name": "policyholder",
-			"pip": "git+https://github.com/openimis/openimis-be-policyholder_py.git@develop#egg=openimis-be-policyholder"
+			"pip": "openimis-be-policyholder==1.4.*"
 		},
 		{
 			"name": "contract",
-			"pip": "git+https://github.com/openimis/openimis-be-contract_py.git@develop#egg=openimis-be-contract"
+			"pip": "openimis-be-contract==1.4.*"
 		},
 		{
 			"name": "invoice",
-			"pip": "git+https://github.com/openimis/openimis-be-invoice_py.git@develop#egg=openimis-be-invoice"
+			"pip": "openimis-be-invoice==1.4.*"
 		},
 		{
 			"name": "calcrule_third_party_payment",
-			"pip": "git+https://github.com/openimis/openimis-be-calcrule-third_party_payment_py.git@develop#egg=openimis-be-calcrule_third_party_payment"
+			"pip": "openimis-be-calcrule_third_party_payment==1.4.*"
 		},
 		{
 			"name": "calcrule_capitation_payment",
-			"pip": "git+https://github.com/openimis/openimis-be-calcrule-capitation_payment_py.git@develop#egg=openimis-be-calcrule-capitation_payment"
+			"pip": "openimis-be-calcrule-capitation_payment==1.4.*"
 		},
 		{
 			"name": "calcrule_commission",
-			"pip": "git+https://github.com/openimis/openimis-be-calcrule_commission_py.git@develop#egg=openimis-be-calcrule_commission"
+			"pip": "openimis-be-calcrule_commission==1.4.*"
 		},
 		{
 			"name": "calcrule_fees",
-			"pip": "git+https://github.com/openimis/openimis-be-calcrule_fees_py.git@develop#egg=openimis-be-calcrule_fees"
+			"pip": "openimis-be-calcrule_fees==1.4.*"
 		},
 		{
 			"name":"calcrule_unconditional_cash_payment",
-			"pip":"git+https://github.com/openimis/openimis-be-calcrule_unconditional_cash_payment_py.git@develop#egg=openimis-be-calcrule_unconditional_cash_payment"
+			"pip":"openimis-be-calcrule_unconditional_cash_payment==1.4.*"
 		}
 	]
 }
