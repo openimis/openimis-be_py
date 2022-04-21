@@ -14,6 +14,9 @@ def openimis_apps():
 
 
 def get_locale_folders():
+    """
+    Get locale folders for the modules in a reverse order to make it easy to override the translations
+    """
     apps = []
     basedirs = []
     for mod in load_openimis_conf()["modules"]:
@@ -24,6 +27,6 @@ def get_locale_folders():
     for topdir in ["."] + apps:
         for dirpath, dirnames, filenames in os.walk(topdir, topdown=True):
             for dirname in dirnames:
-                if dirname == 'locale':
-                    basedirs.append(os.path.join(dirpath, dirname))
+                if dirname == "locale":
+                    basedirs.insert(0, os.path.join(dirpath, dirname))
     return basedirs
