@@ -40,7 +40,6 @@ class Command(BaseCommand):
                 module_directory = Path(modules_directory).joinpath(repo_name)
                 self.__check_module_exist_locally_frontend(module_directory, module)
                 translation_file = Path(module_directory).joinpath('src').joinpath('translations').joinpath('en.json')
-                translations = []
                 if Path(translation_file).exists():
                     with open(translation_file, 'r') as file:
                         translations = json.load(file)
