@@ -259,3 +259,16 @@ Notes:
   * as the option could be added `--github`. This allows to add gitignore file and workflows files so as to execute CI on every pull request (this option will execute this command `python manage.py add_github_files_to_module <module_name>`) 
   * example with using `--github` option: `python manage.py create_calcrule_module <module_name> <author> <author_email> --github`
 * from here on, your local openIMIS has a new module called `openimis-be-calcrule-<module_name>_py`, directly loaded from your directory by using single command.
+
+
+### To create release branches for all backend/frontend modules presented in openimis.json
+* from `/openimis-be_py/openIMIS`:
+  * run this command: `python manage.py create_release_branch <version> <from_branch: by default 'develop'>`. This command will execute all steps required 
+  to create release branches of all modules present in `openimis.json` (frontend json and backend json).
+
+
+### To extract all translations from frontend modules
+* from `/openimis-be_py/openIMIS`:
+  * run this command: `python manage.py extract_translations`. This command will execute all steps required 
+  to extract frontend translations of all modules present in `openimis.json`. 
+  * those translations will be copied into 'extracted_translations_fe' folder in assembly backend module
