@@ -33,7 +33,7 @@ class Command(BaseCommand):
             for all backend modules presented in openimis.json
         """
         output_messages = []
-        modules = openimis_apps(),
+        modules = openimis_apps()
         release_branch = f'release/{version}'
         base_path = Path(settings.BASE_DIR)
         modules_directory = base_path.parent.parent
