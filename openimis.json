@@ -53,6 +53,10 @@
 			"pip": "git+https://github.com/openimis/openimis-be-claim_batch_py.git@develop#egg=openimis-be-claim_batch"
 		},
 		{
+			"name": "tools",
+			"pip": "git+https://github.com/openimis/openimis-be-tools_py.git@develop#egg=openimis-be-tools"
+		},
+		{
 			"name": "dhis2_etl",
 			"pip": "-e git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop#egg=openimis-be-dhis2_etl"
 		},
