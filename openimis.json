@@ -58,11 +58,11 @@
 		},
 		{
 			"name": "dhis2_etl",
-			"pip": "-e git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop#egg=openimis-be-dhis2_etl"
+			"pip": "git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop#egg=openimis-be-dhis2_etl"
 		},
 		{
 			"name": "api_fhir_r4",
-			"pip": "-e git+https://github.com/openimis/openimis-be-api_fhir_r4_py.git@develop#egg=openimis-be-api_fhir_r4"
+			"pip": "git+https://github.com/openimis/openimis-be-api_fhir_r4_py.git@develop#egg=openimis-be-api_fhir_r4"
 		},
 		{
 			"name": "calculation",
