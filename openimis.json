@@ -18,7 +18,7 @@
 		},
 		{
 			"name": "medical_pricelist",
-			"pip": "gopenimis-be-medical_pricelist==1.4.*"
+			"pip": "openimis-be-medical_pricelist==1.4.*"
 		},
 		{
 			"name": "product",
