@@ -49,12 +49,12 @@
 			"pip": "openimis-be-claim==1.4.*"
 		},
 		{
-			"name": "claim_batch",
-			"pip": "openimis-be-claim_batch==1.4.*"
+			"name": "insuree_batch",
+			"pip": "openimis-be-insuree_batch>=1.3,<1.5"
 		},
 		{
-			"name": "dhis2_etl",
-			"pip": "openimis-be-dhis2_etl==1.4.*"
+			"name": "claim_batch",
+			"pip": "openimis-be-claim_batch==1.4.*"
 		},
 		{
 			"name": "api_fhir_r4",
