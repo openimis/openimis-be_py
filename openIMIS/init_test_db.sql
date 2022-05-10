@@ -2843,8 +2843,12 @@ CREATE TABLE [tblPayment](
 	[LanguageName] [nvarchar](10) NULL,
 	[TypeOfPayment] [nvarchar](50) NULL,
 	[TransferFee] [decimal](18, 2) NULL,
+	[SmsRequired] [bit] NULL,
 	[PaymentUUID] [uniqueidentifier] NOT NULL,
- CONSTRAINT [PK_tblPayment] PRIMARY KEY CLUSTERED
+	[PayerPhoneNumber] [nvarchar](15) NULL,
+	[SpReconcReqId] [nvarchar](30) NULL,
+	[ReconciliationDate] [datetime] NULL,
+CONSTRAINT [PK_tblPayment] PRIMARY KEY CLUSTERED
 (
 	[PaymentID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
