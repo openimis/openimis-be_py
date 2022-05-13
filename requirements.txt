@@ -18,8 +18,6 @@ PyJWT==1.7.0
 django-graphql-jwt==0.3.1
 markdown
 nepalicalendar
-numpy
-pandas==1.0.1
 pyodbc
 python-dateutil
 python-dotenv
