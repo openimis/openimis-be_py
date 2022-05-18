@@ -86,7 +86,7 @@
 		},
 		{
 			"name": "calcrule_capitation_payment",
-			"pip": "openimis-be-calcrule-capitation_payment==1.4.*"
+			"pip": "openimis-be-calcrule-capitation_payment>=1.0.0"
 		},
 		{
 			"name": "calcrule_commission",
