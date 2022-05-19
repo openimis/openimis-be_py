@@ -81,6 +81,10 @@
 			"pip": "openimis-be-invoice==1.4.*"
 		},
 		{
+			"name": "tools",
+			"pip": "openimis-be-tools==1.4.*"
+		},
+		{
 			"name": "calcrule_third_party_payment",
 			"pip": "openimis-be-calcrule_third_party_payment==1.4.*"
 		},
