@@ -1,0 +1,10 @@
+**/venv
+**/.env
+**/.idea
+**/__pycache__
+build
+dist
+*.egg-info
+**/.vscode
+**/*.mo
+locale/__init__.py
