@@ -15,7 +15,7 @@ django-rest-framework-rules
 django-test-without-migrations
 graphene-django<3
 graphene-django-optimizer==0.8.0
-PyJWT==1.7.0
+PyJWT==2.4.0
 django-graphql-jwt==0.3.1
 markdown
 nepalicalendar
