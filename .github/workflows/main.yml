@@ -43,34 +43,33 @@ jobs:
         run: |
           pip list
 
-      - name: Initialize DB
-        run: |
-          wget https://raw.githubusercontent.com/openimis/database_ms_sqlserver/develop/Empty%20databases/openIMIS_ONLINE.sql -O openIMIS_ONLINE.sql
-          wget https://raw.githubusercontent.com/openimis/database_ms_sqlserver/develop/Demo%20database/openIMIS_demo_ONLINE.sql -O openIMIS_demo_ONLINE.sql
+          export DBBRANCH="$([ $GITHUB_REF == 'main' ] && echo "main" || echo "develop")"
+
+          if [ ${GITHUB_REF##*/} = "develop" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
+          echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
+
+          git clone --depth 1 --branch $DBBRANCH https://github.com/openimis/database_ms_sqlserver.git  ./sql
+          cd sql/ && bash concatenate_files.sh && cd ..
+
           curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
           curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
           sudo apt-get update
-          sudo apt-get install mssql-tools unixodbc-dev
+          sudo apt-get install mssql-tools unixodbc-dev jq
+
+      - name: Initialize DB
+        run: |
+
           /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -Q 'DROP DATABASE IF EXISTS imis'
           /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -Q 'CREATE DATABASE imis'
-          /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -d imis -i openIMIS_ONLINE.sql | grep . | uniq -c
-          /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -d imis -i openIMIS_demo_ONLINE.sql | grep . | uniq -c
+          /opt/mssql-tools/bin/sqlcmd -S localhost,1433 -U SA -P $SA_PASSWORD -d imis -i sql/output/fullDemoDatabase.sql | grep . | uniq -c
         env:
           SA_PASSWORD: GitHub999
 
-#      - name: Check formatting with black
-#        run: |
-#          black --check .
-
-      - name: Django tests
+      - name: migrate DB
         run: |
-          python -V
-          ls -l
           cd openIMIS
-          ls -l
           python manage.py migrate
           python init_test_db.py | grep . | uniq -c
-          python manage.py test --keepdb
         env:
           SECRET_KEY: secret
           DEBUG: true
@@ -83,3 +82,23 @@ jobs:
           #DEV_SERVER: true
           SITE_ROOT: api
           REMOTE_USER_AUTHENTICATION: True
+          
+      - name: Django tests
+        run: |
+          python -V
+          ls -l
+          cd openIMIS
+          ls -l
+          python manage.py test --keepdb $(jq   -r '(.modules[]|.name)' ../openimis.json)
+        env:
+          SECRET_KEY: secret
+          DEBUG: true
+          #DJANGO_SETTINGS_MODULE: hat.settings
+          DB_HOST: localhost
+          DB_PORT: 1433
+          DB_NAME: imis
+          DB_USER: sa
+          DB_PASSWORD: GitHub999
+          #DEV_SERVER: true
+          SITE_ROOT: api
+          REMOTE_USER_AUTHENTICATION: False

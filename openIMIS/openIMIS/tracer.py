@@ -29,15 +29,7 @@ def trace(*args, **kwargs):
 
 class TracerMiddleware:
     def resolve(self, next, root, info, **kwargs):
-
-        parent_type_name = (
-            root._meta.name
-            if root and hasattr(root, "_meta") and hasattr(root._meta, "name")
-            else ""
-        )
-        field_name = (
-            parent_type_name + ("." if parent_type_name else "") + info.field_name
-        )
-        with trace(op=f"graphql.resolve.{field_name}") as span:
-            span.set_tag("field_name", field_name)
+        path = ".".join([str(x) for x in info.path])
+        with trace(op="graphql.resolve") as span:
+            span.set_tag("path", path)
             return next(root, info, **kwargs)
