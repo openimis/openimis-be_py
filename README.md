@@ -318,3 +318,7 @@ This commands will build with the latest version of database. You can specify pa
 * `SQL_SCRIPT_URL=<url to the sql script to create the database>`
 
 You can find more informations about seeting up db docker [here](https://github.com/openimis/openimis-db_dkr/tree/develop).
+
+### How to report another issues? 
+If you face another issues not described in that section you could use our [ticketing site](https://openimis.atlassian.net/servicedesk/customer/portal/1). 
+Here you can report any bugs/problems you faced during setting up openIMIS app. 
