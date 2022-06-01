@@ -306,7 +306,7 @@ Using wrong version of db docker could cause several issues both on backend and 
 * problems with filling demo dataset into database while running demo database script (backend)
 * error while running frontend (web console `Uncaught TypeError: Cannot read properties of null (reading 'health_facility_id')`) (frontend)
 
-So as to avoid thoose issues it is recommended to use such command to run db docker (NOTE: DO NOT USE for a production environment!):
+So as to avoid those issues it is recommended to use such command to run db docker (NOTE: DO NOT USE for a production environment!):
 ```
 docker build \
   --build-arg ACCEPT_EULA=Y \
