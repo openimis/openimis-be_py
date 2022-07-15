@@ -166,7 +166,7 @@ INSTALLED_APPS = [
     "drf_spectacular"  # Swagger UI for FHIR API
 ]
 INSTALLED_APPS += OPENIMIS_APPS
-INSTALLED_APPS += ["signal_binding"]  # Signal binding should be last installed module
+INSTALLED_APPS += ["apscheduler_runner", "signal_binding"]  # Signal binding should be last installed module
 
 AUTHENTICATION_BACKENDS = []
 
