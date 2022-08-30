@@ -12,6 +12,7 @@ import os
 
 from dotenv import load_dotenv
 from .openimisapps import openimis_apps, get_locale_folders
+from datetime import timedelta
 
 load_dotenv()
 
@@ -266,8 +267,8 @@ GRAPHENE = {
 GRAPHQL_JWT = {
     "JWT_VERIFY_EXPIRATION": True,
     "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
-    "JWT_EXPIRATION_DELTA": datetime.timedelta(days=1),
-    "JWT_REFRESH_EXPIRATION_DELTA": datetime.timedelta(days=30),
+    "JWT_EXPIRATION_DELTA": timedelta(days=1),
+    "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=30),
     "JWT_AUTH_HEADER_PREFIX": "Bearer",
     "JWT_ENCODE_HANDLER": "core.jwt.jwt_encode_user_key",
     "JWT_DECODE_HANDLER": "core.jwt.jwt_decode_user_key",
