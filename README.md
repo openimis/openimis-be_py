@@ -128,9 +128,9 @@ When release candidate is accepted:
 	* from tarball: `https://github.com/openimis/openimis-be_py/archive/v1.1.0.tar.gz`
 * (required only once)`python -m venv ./venv`: create the python venv
 * `./venv/Script/activate[.sh/.ps1]`: Activate the venv
-* `pyhon modules-list.py openimis.json > module-list.txt`: list the module to install
+* `python modules-list.py openimis.json > module-list.txt`: list the module to install
 * `python -m pip uninstall -r module-list.txt`: uninstall the previously installed module
-* `pyhon modules-requirements.py openimis.json > modules-requirements.txt`: list the source of the module to install
+* `python modules-requirements.py openimis.json > modules-requirements.txt`: list the source of the module to install
 * `python -m pip install -r modules-requirements.txt`: Install the modules
 * Set the different required environement variables
 	* see database configuration
