@@ -28,6 +28,7 @@ ARG SENTRY_DSN
 RUN test -z "$SENTRY_DSN" || pip install -r sentry-requirements.txt && :
 
 WORKDIR /openimis-be/openIMIS
-RUN NO_DATABASE=True python manage.py compilemessages
+# For some reason, the zh_Hans (Simplified Chinese) of django-graphql-jwt fails to compile, excluding it
+RUN NO_DATABASE=True python manage.py compilemessages -x zh_Hans
 RUN NO_DATABASE=True python manage.py collectstatic --clear --noinput
 ENTRYPOINT ["/openimis-be/script/entrypoint.sh"]
