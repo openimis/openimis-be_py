@@ -62,7 +62,7 @@
   },
   {
     "name": "api_fhir_r4",
-    "pip": "openimis-be-api_fhir_r4==1.5.0"
+    "pip": "openimis-be-api_fhir_r4==1.5.1"
   },
   {
     "name": "calculation",
