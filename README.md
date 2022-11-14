@@ -34,6 +34,7 @@ In case of troubles, please consult/contact our service desk via our [ticketing 
     requirements.txt`. For development workstations, one can use `pip
     install -r dev-requirements.txt` instead for more modules.
   * generate the openIMIS modules dependencies file (from openimis.json config): `python modules-requirements.py openimis.json > modules-requirements.txt`
+  * if you previously installed openIMIS on another version, it seems safe to uninstall all previous modules-requirement to be sure it match current version `pip uninstall -r modules-requirements.txt`
   * install openIMIS current modules: `pip install -r modules-requirements.txt`
   * configure the database connection (see section here below)
 * start openIMIS from within `openimis-be_py/openIMIS`: `python manage.py runserver`
@@ -127,9 +128,9 @@ When release candidate is accepted:
 	* from tarball: `https://github.com/openimis/openimis-be_py/archive/v1.1.0.tar.gz`
 * (required only once)`python -m venv ./venv`: create the python venv
 * `./venv/Script/activate[.sh/.ps1]`: Activate the venv
-* `pyhon modules-list.py openimis.json > module-list.txt`: list the module to install
+* `python modules-list.py openimis.json > module-list.txt`: list the module to install
 * `python -m pip uninstall -r module-list.txt`: uninstall the previously installed module
-* `pyhon modules-requirements.py openimis.json > modules-requirements.txt`: list the source of the module to install
+* `python modules-requirements.py openimis.json > modules-requirements.txt`: list the source of the module to install
 * `python -m pip install -r modules-requirements.txt`: Install the modules
 * Set the different required environement variables
 	* see database configuration
@@ -259,3 +260,66 @@ Notes:
   * as the option could be added `--github`. This allows to add gitignore file and workflows files so as to execute CI on every pull request (this option will execute this command `python manage.py add_github_files_to_module <module_name>`) 
   * example with using `--github` option: `python manage.py create_calcrule_module <module_name> <author> <author_email> --github`
 * from here on, your local openIMIS has a new module called `openimis-be-calcrule-<module_name>_py`, directly loaded from your directory by using single command.
+
+
+### To create release branches for all backend/frontend modules presented in openimis.json
+* from `/openimis-be_py/openIMIS`:
+  * run this command: `python manage.py create_release_branch <version> <from_branch: by default 'develop'>`. This command will execute all steps required 
+  to create release branches of all modules present in `openimis.json` (frontend json and backend json).
+
+
+### To extract all translations from frontend modules
+* from `/openimis-be_py/openIMIS`:
+  * run this command: `python manage.py extract_translations`. This command will execute all steps required 
+  to extract frontend translations of all modules present in `openimis.json`. 
+  * those translations will be copied into 'extracted_translations_fe' folder in assembly backend module
+
+
+
+## Handling errors while running openIMIS app - the most common ones
+
+### Handling error with `wheel` package
+If there are some problems with 'wheel package' after executing `pip install -r requirements.txt` (for example `error: invalid command 'bdist_wheel'`) you may need to execute two commands:
+* `pip install wheel`
+* `python setup.py bdist_wheel`
+* optionally `pip uninstall -r requirements.txt` to clean requirements and reinstall them again
+
+If those commands doesn't help you need to try with this sort of commands: 
+* `apt-get update`
+* `ACCEPT_EULA=Y apt-get install -y msodbcsql17 mssql-tools` 
+* `apt-get install -y -f python3-dev unixodbc-dev`
+* `pip install --upgrade pip`
+* `pip install mssql-cli`
+
+After executing those commands you can run `pip install -r requirements.txt` again and there shouldn't be any issues with `wheel` package.
+
+
+### Handling error with `connection_is_mariadb` after executing `python manage.py runserver`
+Another error that relates to this issue with `wheel` is such one:
+* `ImportError: cannot import name 'connection_is_mariadb' from 'django_mysql.utils'`
+This error indicates that the db client is not set up properly. But it realized that it is related to the fact that the wheel package is not working (see `### Handling error with wheel package` section).
+Therefore you need to follows steps described in this above section. 
+
+
+### Using wrong build for database docker
+Using wrong version of db docker could cause several issues both on backend and frontend for example:
+* problems with creating database schema (backend)
+* problems with filling demo dataset into database while running demo database script (backend)
+* error while running frontend (web console `Uncaught TypeError: Cannot read properties of null (reading 'health_facility_id')`) (frontend)
+
+So as to avoid those issues it is recommended to use such command to run db docker (NOTE: DO NOT USE for a production environment!):
+```
+docker build \
+  --build-arg ACCEPT_EULA=Y \
+  --build-arg SA_PASSWORD=<your secret password> \
+  . \
+  -t openimis-db
+```
+This commands will build with the latest version of database. You can specify particular version of database by adding optional parameter:
+* `SQL_SCRIPT_URL=<url to the sql script to create the database>`
+
+You can find more informations about seeting up db docker [here](https://github.com/openimis/openimis-db_dkr/tree/develop).
+
+### How to report another issues? 
+If you face another issues not described in that section you could use our [ticketing site](https://openimis.atlassian.net/servicedesk/customer/portal/1). 
+Here you can report any bugs/problems you faced during setting up openIMIS app. 
