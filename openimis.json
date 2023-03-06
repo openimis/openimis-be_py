@@ -110,7 +110,7 @@
 		},
 		{
 			"name":"im_export",
-			"pip":"https://github.com/openimis/openimis-be-im_export_py.git"
+			"pip":"https://github.com/openimis/openimis-be-im_export_py.git@develop#egg=openimis-be-im_export"
 		}
 	]
 }
