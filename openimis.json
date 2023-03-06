@@ -84,10 +84,10 @@
 			"name": "invoice",
 			"pip": "git+https://github.com/openimis/openimis-be-invoice_py.git@develop#egg=openimis-be-invoice"
 		},
-        {
-            "name": "calcrule_contribution_legacy",
-            "pip": "git+https://github.com/openimis/openimis-be-calcrule_contribution_legacy_py.git@develop#egg=openimis-be-calcrule_contribution_legacy"
-        },
+		{
+		    "name": "calcrule_contribution_legacy",
+		    "pip": "git+https://github.com/openimis/openimis-be-calcrule_contribution_legacy_py.git@develop#egg=openimis-be-calcrule_contribution_legacy"
+		},
 		{
 			"name": "calcrule_third_party_payment",
 			"pip": "git+https://github.com/openimis/openimis-be-calcrule-third_party_payment_py.git@develop#egg=openimis-be-calcrule_third_party_payment"
@@ -107,6 +107,10 @@
 		{
 			"name":"calcrule_unconditional_cash_payment",
 			"pip":"git+https://github.com/openimis/openimis-be-calcrule_unconditional_cash_payment_py.git@develop#egg=openimis-be-calcrule_unconditional_cash_payment"
+		},
+		{
+			"name":"im_export",
+			"pip":"https://github.com/openimis/openimis-be-im_export_py.git"
 		}
 	]
 }
