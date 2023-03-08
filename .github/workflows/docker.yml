@@ -9,7 +9,7 @@ on:
       tag:
         description: 'tag'     
         required: true
-        default: 'warning'
+        default: 'manual'
 jobs:
   publish-docker-image:
     runs-on: ubuntu-latest
@@ -21,9 +21,9 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build the hello-docker Docker image
+    - name: Build the openimis backend  Docker image
       run: |
-         LABEL=[${{github.event_name == 'push'}} ] && ${{ github.event.inputs.tag }} || ${GITHUB_REF##*/}
+         [ ${{github.event_name == 'push'}} ] &&  LABEL=${GITHUB_REF##*/} || LABEL=${{ github.event_name == 'workflow_dispatch' &&  github.event.inputs.tag || 'manual' }}
          docker build . --tag ghcr.io/openimis/openimis-be:${LABEL}
          docker run ghcr.io/openimis/openimis-be:latest:${LABEL}
          docker push ghcr.io/openimis/openimis-be:latest:${LABEL}
