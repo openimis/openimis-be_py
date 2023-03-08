@@ -4,7 +4,6 @@ on:
     branches:
       - master
       - develop
-      - test-dk
   workflow_dispatch:
     inputs:
       tag:
@@ -22,7 +21,7 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build the hello-docker Docker image
+    - name: Build the openimis backend  Docker image
       run: |
          [ ${{github.event_name == 'push'}} ] &&  LABEL=${GITHUB_REF##*/} || LABEL=${{ github.event_name == 'workflow_dispatch' &&  github.event.inputs.tag || 'manual' }}
          docker build . --tag ghcr.io/openimis/openimis-be:${LABEL}
