@@ -24,7 +24,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build the hello-docker Docker image
       run: |
-         LABEL=[${{github.event_name == 'push'}} ] &&  ${GITHUB_REF##*/} || ${{ github.event_name == 'workflow_dispatch' &&  github.event.inputs.tag || 'manual' }}
+         LABEL=`[${{github.event_name == 'push'}} ] &&  ${GITHUB_REF##*/} || ${{ github.event_name == 'workflow_dispatch' &&  github.event.inputs.tag || 'manual' }}`
          docker build . --tag ghcr.io/openimis/openimis-be:${LABEL}
          docker run ghcr.io/openimis/openimis-be:latest:${LABEL}
          docker push ghcr.io/openimis/openimis-be:latest:${LABEL}
