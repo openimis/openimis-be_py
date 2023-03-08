@@ -1,5 +1,15 @@
-name: publish
-on: [push]
+name: create docker image
+on:
+  push:
+    branches:
+      - master
+      - develop
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'tag'     
+        required: true
+        default: 'warning'
 jobs:
   publish-docker-image:
     runs-on: ubuntu-latest
@@ -9,10 +19,11 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build the hello-docker Docker image
       run: |
-         docker build . --tag ghcr.io/openimis/openimis-be:latest
-         docker run ghcr.io/openimis/openimis-be:latest
-         docker push ghcr.io/openimis/openimis-be:latest
+         LABEL=${{ github.event_name == 'push' && ${GITHUB_REF##*/} || github.event.inputs.tag }}
+         docker build . --tag ghcr.io/openimis/openimis-be:${LABEL}
+         docker run ghcr.io/openimis/openimis-be:latest:${LABEL}
+         docker push ghcr.io/openimis/openimis-be:latest:${LABEL}
