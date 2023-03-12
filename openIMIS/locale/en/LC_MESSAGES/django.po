@@ -63,7 +63,9 @@ msgid "claim.validation.product_family.waiting_period"
 msgstr "Item/service %s waiting period violation"
 
 msgid "claim.validation.product_family.max_nb_allowed"
-msgstr "Item/service %s, provided %s over maximum number allowed %s"
+msgstr ""
+"%(code)s: Item/service %(element)s, provided %(provided)s over maximum "
+"number allowed %(max)s"
 
 msgid "claim.validation.product_family.no_product_found"
 msgstr "No product item/service found for %s"
