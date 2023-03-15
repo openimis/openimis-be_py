@@ -1,20 +1,14 @@
-name: create docker image
+name: create daily docker image on develop
 on:
-  push:
-    branches:
-      - master
-      - develop
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: 'tag'     
-        required: true
-        default: 'manual'
+  schedule:
+   - cron: "0 2 * * *"
 jobs:
-  publish-docker-image:
+  publish-docker-develop-image:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: develop
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v1
       with:
@@ -23,7 +17,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build the openimis backend  Docker image
       run: |
-         [ ${{github.event_name == 'push'}} ] &&  LABEL=${GITHUB_REF##*/} || LABEL=${{ github.event_name == 'workflow_dispatch' &&  github.event.inputs.tag || 'manual' }}
+         [ ${{github.event_name == 'push'}} ] &&  LABEL=${GITHUB_REF##*/} || LABEL=${{  github.event.inputs.tag }}
          docker build . --tag ghcr.io/openimis/openimis-be:${LABEL}
          docker run ghcr.io/openimis/openimis-be:${LABEL}
          docker push ghcr.io/openimis/openimis-be:${LABEL}
