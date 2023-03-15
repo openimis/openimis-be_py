@@ -1,5 +1,6 @@
 name: create daily docker image on develop
 on:
+  workflow_dispatch:
   schedule:
    - cron: "0 2 * * *"
 jobs:
@@ -17,7 +18,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build the openimis backend  Docker image
       run: |
-         LABEL=${GITHUB_REF##*/}
+         LABEL=develop
          docker build . --tag ghcr.io/openimis/openimis-be:${LABEL}
          docker run ghcr.io/openimis/openimis-be:${LABEL}
          docker push ghcr.io/openimis/openimis-be:${LABEL}
