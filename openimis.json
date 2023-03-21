@@ -97,6 +97,10 @@
 			"pip": "git+https://github.com/openimis/openimis-be-calcrule_commission_py.git@develop#egg=openimis-be-calcrule_commission"
 		},
 		{
+			"name": "calcrule_contribution_income_percentage",
+			"pip": "git+https://github.com/openimis/openimis-be-calcrule_contribution_income_percentage_py.git@develop#egg=calcrule_contribution_income_percentage"
+		},
+		{
 			"name": "calcrule_fees",
 			"pip": "git+https://github.com/openimis/openimis-be-calcrule_fees_py.git@develop#egg=openimis-be-calcrule_fees"
 		},
