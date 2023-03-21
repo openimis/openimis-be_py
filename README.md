@@ -52,6 +52,7 @@ At this stage, you may (depends on the database you connect to) need to:
 * from `openimis-be_py`
   * uninstall the packaged module you want to work on (example: openimis-be-claim): `pip uninstall openimis-be-claim`
   * install the 'local' version of the module: `pip install -e ../openimis-be-claim_py/`
+* check if module is registered to openIMIS django site in '/openimis-be_py/openimis.json'
 * from here on, openIMIS is using the local content of the module (with live update)
 
 ### To create a new openIMIS module (e.g. `openimis-be-mymodule`)
