@@ -151,7 +151,6 @@ INSTALLED_APPS = [
     "test_without_migrations",
     "rest_framework",
     "rules",
-    "rest_framework_rules",
     "health_check",  # required
     "health_check.db",  # stock Django health checkers
     "health_check.cache",
