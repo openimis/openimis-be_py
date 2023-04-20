@@ -111,6 +111,10 @@
 		{
 			"name":"im_export",
 			"pip":"git+https://github.com/openimis/openimis-be-im_export_py.git@develop#egg=openimis-be-im_export"
+		},
+		{
+			"name":"dhis2_etl",
+			"pip":"git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop#egg=openimis-be-dhis2_etl"
 		}
 	]
 }
