@@ -14,18 +14,21 @@ jobs:
     runs-on: ubuntu-20.04
     services:
       pgsql:
-        image: postgres:13-alpine
+        image: postgres
         env:
           DB_HOST: localhost
           DB_PORT: 5432
           POSTGRES_DB: imis
-          POSTGRES_USER: sa
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: GitHub999
-          PGUSER: postgres
         ports:
           - 5432:5432
         # needed because the mssql container does not provide a health check
-        options: --health-interval=10s --health-timeout=3s --health-start-period=10s --health-retries=10 --health-cmd="pg_isready -d ${imis}"
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - uses: actions/checkout@v2
@@ -61,7 +64,7 @@ jobs:
 
       - name: Initialize DB
         run: |
-          psql postgresql://sa:GitHub999@localhost:5433/imid a -f  fullDemoDatabase.sql | grep . | uniq -c
+          psql postgresql://postgres:GitHub999@localhost:5433/imid a -f  fullDemoDatabase.sql | grep . | uniq -c
         env:
           SA_PASSWORD: GitHub999
           
@@ -81,7 +84,7 @@ jobs:
           DB_HOST: localhost
           DB_PORT: 5432
           DB_NAME: imis
-          DB_USER: sa
+          DB_USER: postgres
           DB_PASSWORD: GitHub999
           #DEV_SERVER: true
           SITE_ROOT: api
