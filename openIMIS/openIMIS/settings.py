@@ -8,6 +8,7 @@ import os
 from dotenv import load_dotenv
 from .openimisapps import openimis_apps, get_locale_folders
 from datetime import timedelta
+from core.middleware import ExceptionHandlerMiddleware
 
 load_dotenv()
 
@@ -210,6 +211,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "core.middleware.ExceptionHandlerMiddleware.ExceptionHandlerMiddleware",
 ]
 
 if DEBUG:
