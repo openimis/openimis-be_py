@@ -65,8 +65,6 @@ jobs:
       - name: Initialize DB
         run: |
           psql postgresql://postgres:GitHub999@localhost:5432/imis a -f  ./sql/output/fullDemoDatabase.sql | grep . | uniq -c
-        env:
-          SA_PASSWORD: GitHub999
           
           
       - name: Django tests
@@ -88,4 +86,3 @@ jobs:
           DB_PASSWORD: GitHub999
           #DEV_SERVER: true
           SITE_ROOT: api
-          REMOTE_USER_AUTHENTICATION: False
