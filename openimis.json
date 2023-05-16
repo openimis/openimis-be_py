@@ -1,5 +1,6 @@
 {
 	"modules": [
+
             {
             "name": "core",
             "pip": "openimis-be-core==1.5.1"
@@ -116,5 +117,6 @@
             "name": "dhis2_etl",
             "pip": "openimis-be-dhis2_etl==1.1.0"
         }
+
 	]
 }

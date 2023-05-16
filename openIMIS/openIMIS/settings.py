@@ -462,7 +462,6 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = int(os.environ.get('DATA_UPLOAD_MAX_MEMORY_SIZE', 
 INSUREE_NUMBER_LENGTH = os.environ.get("INSUREE_NUMBER_LENGTH", None)
 INSUREE_NUMBER_MODULE_ROOT = os.environ.get("INSUREE_NUMBER_MODULE_ROOT", None)
 
-USER_USERNAME_AND_CODE_LENGTH_LIMIT = os.environ.get("USER_USERNAME_LIMIT", 50)  # actual length is managed in CoreConfig
 
 # There used to be a default password for zip files but for security reasons, it was removed. Trying to export
 # without a password defined is going to fail
