@@ -14,13 +14,14 @@ jobs:
     runs-on: ubuntu-20.04
     services:
       pgsql:
-        image: ghcr.io/openimis/openimis-pgsql:latest
+        image: postgres:13-alpine
         env:
           DB_HOST: localhost
-          DB_PORT: 1433
+          DB_PORT: 5432
           POSTGRES_DB: imis
           POSTGRES_USER: sa
           POSTGRES_PASSWORD: GitHub999
+          PGUSER: postgres
         ports:
           - 5432:5432
         # needed because the mssql container does not provide a health check
@@ -40,6 +41,30 @@ jobs:
           pip install -r requirements.txt
           python modules-requirements.py openimis.json > modules-requirements.txt
           pip install -r modules-requirements.txt
+          
+          
+      - name: Environment info
+        run: |
+          pip list
+
+          export DBBRANCH="$([ $GITHUB_REF == 'main' ] && echo "main" || echo "develop")"
+        
+          if [ ${GITHUB_REF##*/} = "develop" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
+          echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
+
+          git clone --depth 1 --branch $DBBRANCH https://github.com/openimis/database_postgresql.git  ./sql
+          cd bash concatenate_files.sh && cd ..
+          
+          wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+          echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/postgresql-pgdg.list &gt; /dev/null
+          sudo apt-get install postgresql-client-13
+
+      - name: Initialize DB
+        run: |
+          psql postgresql://sa:GitHub999@localhost:5433/imid a -f  fullDemoDatabase.sql | grep . | uniq -c
+        env:
+          SA_PASSWORD: GitHub999
+          
           
       - name: Django tests
         run: |
