@@ -303,7 +303,7 @@ elif MSSQL:
             "unicode_results": True,
         }
 else:
-    DATABASE_OPTIONS = {}
+    DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
 
 if not os.environ.get("NO_DATABASE_ENGINE", "False") == "True":
     DATABASES = {
