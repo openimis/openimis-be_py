@@ -1,4 +1,4 @@
-name: Automated CI testing
+name: Automated CI PSQL testing
 # This workflow run automatically for every commit on github it checks the syntax and launch the tests.
 # | grep . | uniq -c filters out empty lines and then groups consecutive lines together with the number of occurrences
 on:
@@ -14,10 +14,7 @@ jobs:
     runs-on: ubuntu-20.04
     services:
       pgsql:
-        build:
-          context: https://github.com/openimis/database_postgresql.git#${DB_BRANCH:-develop}
-            args:
-              - POSTGRES_PASSWORD=${DB_PASSWORD}
+        image: ghcr.io/openimis/openimis-pgsql:latest
         env:
           DB_HOST: localhost
           DB_PORT: 1433
