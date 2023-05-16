@@ -24,7 +24,7 @@ jobs:
         ports:
           - 5432:5432
         # needed because the mssql container does not provide a health check
-        options: --health-interval=10s --health-timeout=3s --health-start-period=10s --health-retries=10 --health-cmd="pg_isready -U ${POSTGRES_USER} -d ${imis}"
+        options: --health-interval=10s --health-timeout=3s --health-start-period=10s --health-retries=10 --health-cmd="pg_isready -d ${imis}"
 
     steps:
       - uses: actions/checkout@v2
