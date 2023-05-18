@@ -8,7 +8,6 @@ import os
 from dotenv import load_dotenv
 from .openimisapps import openimis_apps, get_locale_folders
 from datetime import timedelta
-from core.middleware import ExceptionHandlerMiddleware
 
 load_dotenv()
 
@@ -183,7 +182,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ],
-    "EXCEPTION_HANDLER": "openIMIS.rest_exception_handler.fhir_rest_api_exception_handler",
+    "EXCEPTION_HANDLER": "openIMIS.ExceptionHandlerDispatcher.dispatcher",
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
@@ -211,7 +210,6 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "core.middleware.ExceptionHandlerMiddleware.ExceptionHandlerMiddleware",
 ]
 
 if DEBUG:
