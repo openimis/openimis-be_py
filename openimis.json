@@ -117,6 +117,6 @@
             "name": "dhis2_etl",
             "pip": "openimis-be-dhis2_etl==1.1.0"
         }
+]
 
-	]
 }
