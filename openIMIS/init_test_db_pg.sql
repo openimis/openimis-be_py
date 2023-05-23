@@ -3815,7 +3815,7 @@ ALTER SEQUENCE "public"."tblPayer_PayerID_seq" OWNED BY "public"."tblPayer"."Pay
 --
 
 CREATE TABLE "public"."tblPayment" (
-    "PaymentID" bigint NOT NULL,
+    "PaymentID" bigserial NOT NULL,
     "PaymentUUID" "uuid" NOT NULL,
     "ExpectedAmount" numeric(18,2),
     "ReceivedAmount" numeric(18,2),
@@ -3854,7 +3854,7 @@ ALTER TABLE "public"."tblPayment" OWNER TO "postgres";
 --
 
 CREATE TABLE "public"."tblPaymentDetails" (
-    "PaymentDetailsID" bigint NOT NULL,
+    "PaymentDetailsID" bigserial NOT NULL,
     "PaymentID" bigint NOT NULL,
     "ProductCode" character varying(8),
     "InsuranceNumber" character varying(12),
