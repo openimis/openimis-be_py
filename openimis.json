@@ -1,88 +1,85 @@
 {
-  "modules": [
-  {
+	"modules": [
+
+            {
             "name": "core",
-            "pip": "openimis-be-core==1.5.0"
+            "pip": "openimis-be-core==1.5.1"
         },
             {
             "name": "report",
-            "pip": "openimis-be-report==1.5.0"
+            "pip": "openimis-be-report==1.5.1"
         },
             {
             "name": "location",
-            "pip": "openimis-be-location==1.5.0"
+            "pip": "openimis-be-location==1.5.1"
         },
             {
             "name": "medical",
-            "pip": "openimis-be-medical==1.5.0"
+            "pip": "openimis-be-medical==1.5.1"
         },
             {
             "name": "medical_pricelist",
-            "pip": "openimis-be-medical_pricelist==1.5.0"
+            "pip": "openimis-be-medical_pricelist==1.5.1"
         },
             {
             "name": "product",
-            "pip": "openimis-be-product==1.5.0"
+            "pip": "openimis-be-product==1.5.1"
         },
             {
             "name": "insuree",
-            "pip": "openimis-be-insuree==1.5.0"
+            "pip": "openimis-be-insuree==1.5.1"
         },
             {
             "name": "policy",
-            "pip": "openimis-be-policy==1.5.0"
+            "pip": "openimis-be-policy==1.5.1"
         },
             {
             "name": "contribution",
-            "pip": "openimis-be-contribution==1.5.0"
+            "pip": "openimis-be-contribution==1.5.1"
         },
             {
             "name": "payer",
-            "pip": "openimis-be-payer==1.4.1"
+            "pip": "openimis-be-payer==1.4.2"
         },
             {
             "name": "payment",
-            "pip": "openimis-be-payment==1.5.0"
+            "pip": "openimis-be-payment==1.5.1"
         },
             {
             "name": "claim",
-            "pip": "openimis-be-claim==1.5.0"
+            "pip": "openimis-be-claim==1.5.1"
         },
             {
             "name": "claim_batch",
-            "pip": "openimis-be-claim_batch==1.5.1"
+            "pip": "openimis-be-claim_batch==1.5.2"
         },
             {
             "name": "tools",
-            "pip": "openimis-be-tools==1.5.0"
-        },
-            {
-            "name": "dhis2_etl",
-            "pip": "openimis-be-dhis2_etl==1.0.0"
+            "pip": "openimis-be-tools==1.5.1"
         },
             {
             "name": "api_fhir_r4",
-            "pip": "openimis-be-api_fhir_r4==1.5.1"
+            "pip": "openimis-be-api_fhir_r4==1.5.2"
         },
             {
             "name": "calculation",
-            "pip": "openimis-be-calculation==1.5.0"
+            "pip": "openimis-be-calculation==1.5.1"
         },
             {
             "name": "contribution_plan",
-            "pip": "openimis-be-contribution-plan==1.5.0"
+            "pip": "openimis-be-contribution-plan==1.5.1"
         },
             {
             "name": "policyholder",
-            "pip": "openimis-be-policyholder==1.5.0"
+            "pip": "openimis-be-policyholder==1.5.1"
         },
             {
             "name": "contract",
-            "pip": "openimis-be-contract==1.5.0"
+            "pip": "openimis-be-contract==1.5.1"
         },
             {
             "name": "invoice",
-            "pip": "openimis-be-invoice==1.5.0"
+            "pip": "openimis-be-invoice==1.5.1"
         },
             {
             "name": "calcrule_contribution_legacy",
@@ -90,23 +87,35 @@
         },
             {
             "name": "calcrule_third_party_payment",
-            "pip": "openimis-be-calcrule-third_party_payment==1.5.0"
+            "pip": "openimis-be-calcrule-third_party_payment==1.5.1"
         },
             {
             "name": "calcrule_capitation_payment",
-            "pip": "openimis-be-calcrule-capitation_payment==1.5.0"
+            "pip": "openimis-be-calcrule-capitation_payment==1.5.1"
         },
             {
             "name": "calcrule_commission",
-            "pip": "openimis-be-calcrule_commission==1.4.2"
+            "pip": "openimis-be-calcrule_commission==1.4.3"
+        },
+            {
+            "name": "calcrule_contribution_income_percentage",
+            "pip": "openimis-be-calcrule_contribution_income_percentage==1.4.1"
         },
             {
             "name": "calcrule_fees",
-            "pip": "openimis-be-calcrule_fees==1.4.1"
+            "pip": "openimis-be-calcrule_fees==1.4.2"
         },
             {
             "name": "calcrule_unconditional_cash_payment",
-            "pip": "openimis-be-calcrule_unconditional_cash_payment==1.4.1"
+            "pip": "openimis-be-calcrule_unconditional_cash_payment==1.4.2"
+        },
+            {
+            "name": "im_export",
+            "pip": "openimis-be-im_export==1.0.0"
+        },
+            {
+            "name": "dhis2_etl",
+            "pip": "openimis-be-dhis2_etl==1.1.0"
         }
 ]
 

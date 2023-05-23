@@ -151,7 +151,6 @@ INSTALLED_APPS = [
     "test_without_migrations",
     "rest_framework",
     "rules",
-    "rest_framework_rules",
     "health_check",  # required
     "health_check.db",  # stock Django health checkers
     "health_check.cache",
@@ -465,6 +464,7 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = int(os.environ.get('DATA_UPLOAD_MAX_MEMORY_SIZE', 
 
 INSUREE_NUMBER_LENGTH = os.environ.get("INSUREE_NUMBER_LENGTH", None)
 INSUREE_NUMBER_MODULE_ROOT = os.environ.get("INSUREE_NUMBER_MODULE_ROOT", None)
+
 
 # There used to be a default password for zip files but for security reasons, it was removed. Trying to export
 # without a password defined is going to fail

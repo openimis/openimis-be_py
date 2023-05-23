@@ -15,10 +15,10 @@ msgid "claim.mutation.authentication_required"
 msgstr "User needs to be authenticated for this operation"
 
 msgid "claim.validation.id_does_not_exist"
-msgstr "id %s does not exist"
+msgstr "Claim with id %(id)s does not exist"
 
 msgid "claim.mutation.failed_to_change_status_of_claim"
-msgstr "Failed to change status of claim %s"
+msgstr "Failed to change status of claim %(code)s"
 
 msgid "claim.validation.pricelist.item"
 msgstr "Couldn't find a valid item price list item for %s in location %s"
@@ -38,7 +38,7 @@ msgid "claim.validation.care_type.service"
 msgstr "Care type %s and health facility care type %s with date %s vs %s"
 
 msgid "claim.validation.target_date"
-msgstr "Claim %s: neither date_from nor date_to is specified"
+msgstr "%(code)s: Neither date_from nor date_to is specified"
 
 #, fuzzy
 msgid "claim.validation.care_type.item"
@@ -54,37 +54,40 @@ msgid "claim.validation.family.insuree_validity"
 msgstr "claim %(code)s: Insuree %(insuree)s validity expired"
 
 msgid "claim.validation.family.no_family"
-msgstr "Insuree %s should have a family, even if only one member"
+msgstr ""
+"%(code)s: Insuree %(insuree)s should have a family, even if only one member"
 
 msgid "claim.validation.family.family_validity"
-msgstr "Insuree %s family is not valid"
+msgstr "%(code)s: Insuree %(insuree)s family validity expired"
 
 msgid "claim.validation.product_family.waiting_period"
-msgstr "Item/service %s waiting period violation"
+msgstr "%(code)s: Item/service %(element)s waiting period violation"
 
 msgid "claim.validation.product_family.max_nb_allowed"
-msgstr "Item/service %s, provided %s over maximum number allowed %s"
+msgstr ""
+"%(code)s: Item/service %(element)s, provided %(provided)s over maximum "
+"number allowed %(max)s"
 
 msgid "claim.validation.product_family.no_product_found"
-msgstr "No product item/service found for %s"
+msgstr "%(code)s: No product item/service found for %(element)s"
 
-msgid "claim.validation.product_family.max_nb_consultations"
-msgstr "%s is over maximum consultations %s"
+msgid "claim.validation.product_family.max_nb_consultation"
+msgstr "%(code)s: %(count)s is over maximum consultations %(max)s"
 
 msgid "claim.validation.product_family.max_nb_surgeries"
-msgstr "%s is over maximum surgeries %s"
+msgstr "%(code)s: %(count)s is over maximum surgeries %(max)s"
 
 msgid "claim.validation.product_family.max_nb_deliveries"
-msgstr "%s is over maximum deliveries %s"
+msgstr "%(code)s: %(count)s is over maximum deliveries %(max)s"
 
 msgid "claim.validation.product_family.max_nb_antenatal"
-msgstr "%s is over maximum antenatal services %s"
+msgstr "%(code)s: %(count)s is over maximum antenatal services %(max)s"
 
 msgid "claim.validation.product_family.max_nb_hospitalizations"
-msgstr "%s is over maximum hospitalizations %s"
+msgstr "%(code)s: %(count)s is over maximum hospitalizations %(max)s"
 
 msgid "claim.validation.product_family.max_nb_visits"
-msgstr "%s is over maximum visits %s"
+msgstr "%(code)s: %(count)s is over maximum visits %(max)s"
 
 msgid "claim.validation.assign_prod.item.no_product_code"
 msgstr "Claim item %s refers to an item %s that doesn't seem to have a valid Policy ⇾ Product"
@@ -113,6 +116,9 @@ msgstr "Claim with code %(code) already exists"
 msgid "claim.mutation.failed_to_attach_document"
 msgstr "Failed to attach document to the claim %(code)s"
 
+msgid "claim.mutation.failed_to_update_claim_attachment"
+msgstr "Failed to update attachment from claim %(code)s"
+
 msgid "claim.mutation.failed_to_delete_claim_attachment"
 msgstr "Failed delete attachment from claim %(code)s"
 
@@ -120,7 +126,44 @@ msgid "claim.validation.all_items_and_services_rejected"
 msgstr "%(code)s: All claim items/services are rejected"
 
 msgid "claim.validation.assign_prod.elt.no_product_code"
-msgstr "%(code)s: Claim service/item %(elt)s doesn't seem to have a valid Policy->Product"
+msgstr ""
+"%(code)s: Claim service/item %(elt)s doesn't seem to have a valid Policy-"
+">Product"
+
+msgid "claim.validation.claimitem_validity"
+msgstr "%(code)s: Claim item validity_to is not null"
+
+#: claim/validations.py:200 claim/validations.py:200
+msgid "claim.validation.claimservice_validity"
+msgstr "%(code)s: Claim service validity_to is not null"
+
+#: claim/validations.py:218 claim/validations.py:218
+msgid "claim.validation.claimitem_in_price_list_validity"
+msgstr "%(code)s: Claim item not in the price list"
+
+#: claim/validations.py:237 claim/validations.py:237
+msgid "claim.validation.claimservice_in_price_list_validity"
+msgstr "%(code)s: Claim service not in the price list"
+
+#: claim/validations.py:261 claim/validations.py:261
+msgid "claim.validation.claimdetail_care_type_validity"
+msgstr "%(code)s: Claim item/service invalid care type"
+
+#: claim/validations.py:277 claim/validations.py:277
+msgid "claim.validation.claimdetail_limitation_validity"
+msgstr "%(code)s: Claim item/service passed its limit"
+
+#: claim/validations.py:307 claim/validations.py:307
+msgid "claim.validation.claimitem_frequency_validity"
+msgstr "%(code)s: Claim item invalid frequency"
+
+#: claim/validations.py:320 claim/validations.py:320
+msgid "claim.validation.claimservice_frequency_validity"
+msgstr "%(code)s: Claim service invalid frequency"
+
+#: claim/gql_mutations.py:284 claim/gql_mutations.py:284
+msgid "mutation.code_name_duplicated"
+msgstr "Code name duplicate"
 
 msgid "claim_batch.reports.nodata"
 msgstr "No data for the report"

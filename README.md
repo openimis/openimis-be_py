@@ -27,7 +27,7 @@ In case of troubles, please consult/contact our service desk via our [ticketing 
 <table align="center"><tr><td>When programming for openIMIS backend, you are highly encouraged to used the features provided in the openimis-be-core module. This includes (but is not limited to) date handling, user info,...</td></tr></table>
 
 * clone this repo (creates the `openimis-be_py` directory)
-* install python 3, recommended in a [virtualenv](https://virtualenv.pypa.io)
+* install python 3, recommended in a [venv](https://docs.python.org/3/library/venv.html) or [virtualenv](https://virtualenv.pypa.io)
 * install [pip](https://pip.pypa.io)
 * within `openimis-be_py` directory
   * install openIMIS (external) dependencies: `pip install -r
@@ -36,7 +36,8 @@ In case of troubles, please consult/contact our service desk via our [ticketing 
   * generate the openIMIS modules dependencies file (from openimis.json config): `python modules-requirements.py openimis.json > modules-requirements.txt`
   * if you previously installed openIMIS on another version, it seems safe to uninstall all previous modules-requirement to be sure it match current version `pip uninstall -r modules-requirements.txt`
   * install openIMIS current modules: `pip install -r modules-requirements.txt`
-  * configure the database connection (see section here below)
+  * Copy the example environment setup and adjust the settings (like database connection): `cp .env.example .env`.
+    Refer to .env.example for more info.
 * start openIMIS from within `openimis-be_py/openIMIS`: `python manage.py runserver`
 
 At this stage, you may (depends on the database you connect to) need to:
@@ -132,13 +133,7 @@ When release candidate is accepted:
 * `python -m pip uninstall -r module-list.txt`: uninstall the previously installed module
 * `python modules-requirements.py openimis.json > modules-requirements.txt`: list the source of the module to install
 * `python -m pip install -r modules-requirements.txt`: Install the modules
-* Set the different required environement variables
-	* see database configuration
-	* SITE_ROOT: iapi for graphql, other  are possible in case there is multiple django backend serving the same urlpatterns
-	* REMOTE_USER_AUTHENTICATION:  trust the header value "remote-user" for the user /!\ to be used ONLY behind a reverse proxy managing the authentification /!\
-	* ROW_SECURITY: right based also on the location of the user
-	* DEBUG: debug mode of django
-	* OPENIMIS_CONF: path of the cofiguration file
+* `cp .env.example .env`: Copy the example environment setup and adjust the variables (refer to .env.example for more info)
 * `python manage.py migrate`: execute the migrations
 * `python manage.py runserver 0.0.0.0:PORT`: run the server
 
@@ -151,7 +146,7 @@ The configuration for connection to the database is identical for developers and
   * using TCP/IP protocol (with server DNS name as hostname... or localhost) and fixed port (leave `DB_PORT` here below empty for dynamic port)
   * SQL Server (not Windows/AD) authentication (user name password managed in SQL Server admin)
   Download and install the ODBC that correspond to your OS and MS-SQL Server version (https://docs.microsoft.com/en-us/sql/connect/odbc/)
-* create a `openimis-be_py/.env` file to provide your database connection info:
+* Copy the example environment setup and adjust the variables: `cp .env.example .env`. Refer to .env.example for more info.
   ```
   DB_HOST=mssql-host-server
   DB_PORT=mssql-port
@@ -165,8 +160,6 @@ Notes:
   `sql_server.pyodbc`. If you need to use another one, use the `DB_ENGINE` entry in the `.env` file
 * default 'options' in openIMIS are `{'driver': 'ODBC Driver 17 for SQL Server','unicode_results': True}`
   If you need to provide other options, use the `DB_OPTIONS` entry in the `.env` file (be complete: the new json string will entirely replace the default one)
-
-
 
 
 ## Developer tools
