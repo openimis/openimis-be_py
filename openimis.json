@@ -5,6 +5,14 @@
 			"pip": "git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core"
 		},
 		{
+		        "name": "individual",
+		        "pip": "git+https://github.com/openimis/openimis-be-individual_py.git@develop#egg=openimis-be-individual"
+		},
+		{
+		        "name": "workflow",
+		        "pip": "git+https://github.com/openimis/openimis-be-workflow_py.git@develop#egg=openimis-be-workflow"
+		},
+		{
 			"name": "report",
 			"pip": "git+https://github.com/openimis/openimis-be-report_py.git@develop#egg=openimis-be-report"
 		},
@@ -115,6 +123,10 @@
 		{
 			"name":"dhis2_etl",
 			"pip":"git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop#egg=openimis-be-dhis2_etl"
-		}
+		},
+		{
+		        "name": "social_protection",
+		        "pip": "git+https://github.com/openimis/openimis-be-social_protection_py.git@develop#egg=openimis-be-social_protection"
+		},
 	]
 }
