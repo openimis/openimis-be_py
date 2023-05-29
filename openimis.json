@@ -127,6 +127,6 @@
 		{
 		        "name": "social_protection",
 		        "pip": "git+https://github.com/openimis/openimis-be-social_protection_py.git@develop#egg=openimis-be-social_protection"
-		},
+		}
 	]
 }
