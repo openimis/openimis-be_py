@@ -1,5 +1,6 @@
 from .ExceptionHandlerRegistry import ExceptionHandlerRegistry
 from rest_framework.views import exception_handler
+from rest_framework import exceptions, status
 
 
 def dispatcher(exc, context):
@@ -12,7 +13,12 @@ def dispatcher(exc, context):
     if handler is None:
         # Fallback to default DRF exception handler if no handler is defined for the module
         handler = exception_handler
-    return handler(exc, context)
+
+    response = handler(exc, context)
+    if isinstance(exc, (exceptions.AuthenticationFailed, exceptions.NotAuthenticated)):
+        response.status_code = status.HTTP_401_UNAUTHORIZED
+
+    return response
 
 
 def _extract_module_name(request):
