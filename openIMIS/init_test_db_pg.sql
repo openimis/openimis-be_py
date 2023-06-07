@@ -2852,7 +2852,6 @@ CREATE TABLE "public"."tblFamilySMS" (
     CONSTRAINT UC_FamilySMS UNIQUE (FamilyID, ValidityTo)
 );
 
-
 ALTER TABLE "public"."tblFamilySMS" OWNER TO "postgres";
 
 --
