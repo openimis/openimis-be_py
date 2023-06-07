@@ -267,7 +267,19 @@ Notes:
   to extract frontend translations of all modules present in `openimis.json`. 
   * those translations will be copied into 'extracted_translations_fe' folder in assembly backend module
 
+## Custom exception handler for new modules REST-based modules
+If the module you want to add to the openIMIS uses its own REST exception handler you have to register 
+it in the main module. To do this, you can use following code snippet in the class
+`ModuleConfig` (in your `apps.py` file):
 
+```Python
+from openIMIS.ExceptionHandlerRegistry import ExceptionHandlerRegistry
+from .exceptions.your_exception_handler import your_exception_handler
+ExceptionHandlerRegistry.register_exception_handler(MODULE_NAME, your_exception_handler)
+```
+
+This way, the exception handler in the main module will check if incoming rest request has to be handled
+by specific code in the added module. If not - default DRF handler will take care of that.
 
 ## Handling errors while running openIMIS app - the most common ones
 
