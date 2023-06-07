@@ -270,7 +270,7 @@ Notes:
 ## Custom exception handler for new modules REST-based modules
 If the module you want to add to the openIMIS uses its own REST exception handler you have to register 
 it in the main module. To do this, you can use following code snippet in the class
-`ModuleConfig` (in your `apps.py` file):
+`ModuleConfig` (in your `apps.py` file). Add this in the `def ready(self)` method:
 
 ```Python
 from openIMIS.ExceptionHandlerRegistry import ExceptionHandlerRegistry
