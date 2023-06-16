@@ -43,5 +43,6 @@ daphne==3.0.1
 GitPython~=3.1.27
 drf-spectacular==0.25.1
 django-cprofile-middleware==1.0.5
+# flake8 and django-nose are needed for sonar scan in openimis-be-invoice_py
 flake8
 django-nose
