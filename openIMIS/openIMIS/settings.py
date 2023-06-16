@@ -141,7 +141,6 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 # Tell nose to measure coverage on the 'foo' and 'bar' apps
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package=foo,bar',
 ]
 
 # Application definition
@@ -166,7 +165,7 @@ INSTALLED_APPS = [
     "channels",  # Websocket support
     "developer_tools",
     "drf_spectacular",  # Swagger UI for FHIR API
-    'django_nose'
+    "django_nose"
 ]
 INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["apscheduler_runner", "signal_binding"]  # Signal binding should be last installed module
