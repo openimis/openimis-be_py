@@ -1,0 +1,20 @@
+[flake8]
+exclude =
+    .git,
+    .gitignore,
+    *.pot,
+    *.py[co],
+    __pycache__,
+    venv,
+    .env,
+    .coverage,
+    openIMIS/wsgi.py,
+    dist,
+    openIMIS/migrations
+
+ignore =
+    E261, # At least two spaces before inline comment.
+    E303, # Too many blank lines (3).
+    E741, # Ambiguous variable name.
+
+max-line-length = 120
