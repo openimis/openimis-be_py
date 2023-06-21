@@ -13,9 +13,6 @@ test_databases, mirrored_aliases = get_unique_databases_and_mirrors()
 for db_host, db_port, db_engine, db_name in test_databases.keys():
     name, cfgs = test_databases[(db_host, db_port, db_engine, db_name)]
     for cfg in cfgs:
-        with connections[cfg].cursor() as c:
-            c.execute(f"DROP DATABASE IF EXISTS \"{db_name}\"")
-            c.execute(f"CREATE DATABASE \"{db_name}\"")
         if "postgres" in db_engine:
             with connections[cfg].cursor() as c:
                 c.execute(f"DROP DATABASE IF EXISTS \"{db_name}\"")
