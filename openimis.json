@@ -125,8 +125,12 @@
 			"pip":"git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop#egg=openimis-be-dhis2_etl"
 		},
 		{
-		        "name": "social_protection",
-		        "pip": "git+https://github.com/openimis/openimis-be-social_protection_py.git@develop#egg=openimis-be-social_protection"
-		}
+			"name": "social_protection",
+			"pip": "git+https://github.com/openimis/openimis-be-social_protection_py.git@develop#egg=openimis-be-social_protection"
+		},
+		{
+            "name": "tasks_management",
+            "pip": "git+https://github.com/openimis/openimis-be-tasks_management_py.git@develop#egg=openimis-be-tasks_management"
+        }
 	]
 }
