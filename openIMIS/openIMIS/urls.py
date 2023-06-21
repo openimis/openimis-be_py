@@ -31,4 +31,5 @@ urlpatterns = [
         csrf_exempt(jwt_cookie(OpenIMISGraphQLView.as_view(graphiql=DEBUG))),
     ),
     url(r"^ht/", include("health_check.urls")),
+    path('', include('govstack_test_harness_api.urls')),
 ] + openimis_urls()

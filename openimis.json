@@ -109,12 +109,8 @@
 			"pip":"git+https://github.com/openimis/openimis-be-calcrule_unconditional_cash_payment_py.git@develop#egg=openimis-be-calcrule_unconditional_cash_payment"
 		},
 		{
-			"name":"im_export",
-			"pip":"git+https://github.com/openimis/openimis-be-im_export_py.git@develop#egg=openimis-be-im_export"
-		},
-		{
-			"name":"dhis2_etl",
-			"pip":"git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop#egg=openimis-be-dhis2_etl"
+			"name":"govstack_test_harness_api",
+			"pip":"git+https://github.com/openimis/openimis-be-govstack_test_harness_api_py.git@main#egg=openimis-be-govstack_test_harness_api"
 		}
 	]
 }
