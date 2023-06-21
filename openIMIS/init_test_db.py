@@ -15,8 +15,8 @@ for db_host, db_port, db_engine, db_name in test_databases.keys():
     for cfg in cfgs:
         if "postgres" in db_engine:
             with connections[cfg].cursor() as c:
-                c.execute('DROP DATABASE IF EXISTS "%s"' % db_name)
-                c.execute('CREATE DATABASE "%s"' % db_name)
+                c.execute(f"DROP DATABASE IF EXISTS \"{db_name}\"")
+                c.execute(f"CREATE DATABASE \"{db_name}\"")
             os.system("PGPASSWORD='%s' psql -h %s -p %s -U %s %s -f init_test_db_pg.sql" %
                       (settings.DATABASES[cfg]['PASSWORD'], db_host, db_port, settings.DATABASES[cfg]['USER'], db_name))
         else:
