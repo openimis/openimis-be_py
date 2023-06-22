@@ -141,6 +141,7 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 # Tell nose to measure coverage on apps
 NOSE_ARGS = [
     '--with-coverage',
+    '--cover-package=openIMIS',
     '--exclude=(.*helper\.py$|.*test_helper\.py$)',
 ]
 
