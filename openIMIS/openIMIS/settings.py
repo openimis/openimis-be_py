@@ -138,9 +138,10 @@ else:
 # TEST_WITHOUT_MIGRATIONS_COMMAND = 'django_nose.management.commands.test.Command'
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
-# Tell nose to measure coverage on the 'foo' and 'bar' apps
+# Tell nose to measure coverage on apps
 NOSE_ARGS = [
     '--with-coverage',
+    '--exclude=(.*helper\.py$|.*test_helper\.py$)',
 ]
 
 # Application definition
