@@ -136,7 +136,7 @@ else:
     ALLOWED_HOSTS = ["*"]
 
 # TEST_WITHOUT_MIGRATIONS_COMMAND = 'django_nose.management.commands.test.Command'
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+TEST_RUNNER = 'django_nose.runner.NoseTestSuiteRunner'
 
 # Tell nose to measure coverage on apps
 NOSE_ARGS = [
