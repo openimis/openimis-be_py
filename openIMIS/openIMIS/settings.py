@@ -135,12 +135,8 @@ if "ALLOWED_HOSTS" in os.environ:
 else:
     ALLOWED_HOSTS = ["*"]
 
-# Add coverage settings
-COVERAGE_MODULE_EXCLUDES = [
-    'tests$', 'settings$', 'urls$', 'locale$', 'migrations$', 'admin$', 'django_extensions', 'venv$'
-]
-
-TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+# TEST_WITHOUT_MIGRATIONS_COMMAND = 'django_nose.management.commands.test.Command'
+# TEST_RUNNER = 'core.test_utils.UnManagedModelTestRunner'
 
 # Application definition
 
