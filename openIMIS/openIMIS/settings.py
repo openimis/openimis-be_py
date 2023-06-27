@@ -142,7 +142,6 @@ COVERAGE_MODULE_EXCLUDES = [
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
-
 # Application definition
 
 INSTALLED_APPS = [
