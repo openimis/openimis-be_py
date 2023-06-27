@@ -90,8 +90,6 @@ jobs:
           cd openIMIS
           ls -l
           coverage run manage.py test --keepdb $(jq   -r '(.modules[]|.name)' ../openimis.json)
-      - name: Coverage report
-        run: |
           coverage report    
         env:
           SECRET_KEY: secret
