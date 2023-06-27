@@ -135,15 +135,13 @@ if "ALLOWED_HOSTS" in os.environ:
 else:
     ALLOWED_HOSTS = ["*"]
 
-# TEST_WITHOUT_MIGRATIONS_COMMAND = 'django_nose.management.commands.test.Command'
-TEST_RUNNER = 'django_nose.runner.NoseTestSuiteRunner'
-
-# Tell nose to measure coverage on apps
-NOSE_ARGS = [
-    '--with-coverage',
-    '--cover-package=openIMIS',
-    '--exclude=(.*helper\.py$|.*test_helper\.py$)',
+# Add coverage settings
+COVERAGE_MODULE_EXCLUDES = [
+    'tests$', 'settings$', 'urls$', 'locale$', 'migrations$', 'admin$', 'django_extensions', 'venv$'
 ]
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
 
 # Application definition
 
@@ -167,7 +165,6 @@ INSTALLED_APPS = [
     "channels",  # Websocket support
     "developer_tools",
     "drf_spectacular",  # Swagger UI for FHIR API
-    "django_nose"
 ]
 INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["apscheduler_runner", "signal_binding"]  # Signal binding should be last installed module
