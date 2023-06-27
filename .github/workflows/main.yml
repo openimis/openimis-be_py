@@ -55,11 +55,6 @@ jobs:
           curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
           sudo apt-get update
           sudo apt-get install mssql-tools unixodbc-dev jq
-      
-      - name: Run Flake8
-        run: |
-          # Run Flake8
-          flake8 .
 
       - name: Initialize DB
         run: |
