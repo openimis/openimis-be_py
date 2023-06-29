@@ -45,4 +45,4 @@ drf-spectacular==0.25.1
 django-cprofile-middleware==1.0.5
 # flake8 and django-nose are needed for sonar scan in backend modules
 flake8
-
+django-nose
