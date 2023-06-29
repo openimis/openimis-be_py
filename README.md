@@ -164,6 +164,32 @@ Notes:
 
 ## Developer tools
 
+### Adding Django Settings 
+If modules are using additional libraries that would usually require changes in `settings.py`, 
+these settings should be added within the module and not directly in assembly.  
+To do this, `django_settings.py` file with `SETTINGS` variable containing 
+a list of `SettingAttribute` objects has to be added to module (the same as in assembly module). 
+`SettingAttribute` provides information regarding setting `name`, setting `value` and conflict `resolving policy`. 
+
+#### Example: 
+```python
+# django_settings.py
+from openIMIS.modulesettingsloader import SettingsAttribute, SettingsAttributeConflictPolicy as setting_type
+
+SETTINGS = [
+  SettingAttribute('CUSTOM_REQUIRED_SETTING', {'key': 'value'}, setting_type.MERGE_YIELD)
+]
+```
+Is equivalent of assigning:
+```python
+# settings.py
+CUSTOM_REQUIRED_SETTING = {'key': 'value'}
+```
+in `settings.py`.
+
+Last parameter is used for resolving conflicts between overlying settings.  
+By default, values are merged (dictionaries are combined, lists concatenated), and if it's not possible 
+then already declared settings are not overridden.
 
 ### To create backend module skeleton in single command
 * from `/openimis-be_py/openIMIS`:
