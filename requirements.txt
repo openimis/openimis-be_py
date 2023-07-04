@@ -114,38 +114,6 @@ nepalicalendar==0.4
 nose==1.3.7
 numpy==1.24.2
 odfpy==1.4.1
--e git+https://github.com/openimis/openimis-be-api_fhir_r4_py.git@6914bdeb4b3f1e4801cf5caac1c9f84871d9dce7#egg=openimis_be_api_fhir_r4
--e git+https://github.com/openimis/openimis-be-calcrule-capitation_payment_py.git@74551cb5df785a021aa3a18fde02afec137d5601#egg=openimis_be_calcrule_capitation_payment
--e git+https://github.com/openimis/openimis-be-calcrule_commission_py.git@7d309ead9592560e30380770be4238ca1620b0ac#egg=openimis_be_calcrule_commission
--e git+https://github.com/openimis/openimis-be-calcrule_contribution_income_percentage_py.git@36e71c47677085a1c67eb4cecb30ba9a98da6253#egg=openimis_be_calcrule_contribution_income_percentage
--e git+https://github.com/openimis/openimis-be-calcrule_contribution_legacy_py.git@272df3b7b0dd414f318b6e9e7e0ad9f61d0b505d#egg=openimis_be_calcrule_contribution_legacy
--e git+https://github.com/openimis/openimis-be-calcrule_fees_py.git@fbd5d6e3068840b84234605deb129c08efcfb969#egg=openimis_be_calcrule_fees
--e git+https://github.com/openimis/openimis-be-calcrule-third_party_payment_py.git@0eaded407ccfc35b3fdfa929863a13cc286399b7#egg=openimis_be_calcrule_third_party_payment
--e git+https://github.com/openimis/openimis-be-calcrule_unconditional_cash_payment_py.git@0f9478a6dadc7a9de53a3f3f03064a19ccf5a50b#egg=openimis_be_calcrule_unconditional_cash_payment
--e git+https://github.com/openimis/openimis-be-calculation_py.git@7f1340b49772f798621827f655a77f497cac7bc4#egg=openimis_be_calculation
--e git+https://github.com/openimis/openimis-be-claim_py.git@564f1b8f734e2cd957e5c7f9726cfcb90177f4da#egg=openimis_be_claim
--e git+https://github.com/openimis/openimis-be-claim_batch_py.git@ad2f87fdecffd5f38d94e2d5819945deb8c30952#egg=openimis_be_claim_batch
--e git+https://github.com/openimis/openimis-be-contract_py.git@50247dcd3a2b5074b255ad8bdda4fb7c34d2f9d0#egg=openimis_be_contract
--e git+https://github.com/openimis/openimis-be-contribution_py.git@58f41d928f39e873a97b147502a28be2b319aab3#egg=openimis_be_contribution
--e git+https://github.com/openimis/openimis-be-contribution_plan_py.git@3d8f541e3e4f6d87438b4cd7b0e623306c40e00b#egg=openimis_be_contribution_plan
--e git+https://github.com/openimis/openimis-be-core_py.git@4a7055f452050eedfa204140158ff9ba6e95aa73#egg=openimis_be_core
--e git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@29bd53afc2e5fc9fee6b18666be66cd1152258ef#egg=openimis_be_dhis2_etl
-openimis-be-govstack-test-harness-api @ file:///home/user/Desktop/openimis/openimis-be-govstack_test_harness_api_py
--e git+https://github.com/openimis/openimis-be-im_export_py.git@a9e87fdf27684d6c7730c80f7a0e922b64dec532#egg=openimis_be_im_export
--e git+https://github.com/openimis/openimis-be-insuree_py.git@dc7b53db4595791a5942c2631bf572a348ad8672#egg=openimis_be_insuree
--e git+https://github.com/openimis/openimis-be-insuree_batch_py.git@3394fb6aaaf96a3966a481a6b1a261ca5ec92b60#egg=openimis_be_insuree_batch
--e git+https://github.com/openimis/openimis-be-invoice_py.git@ad2e4044d4e922d68fbb3577e943cac89fd5a666#egg=openimis_be_invoice
--e git+https://github.com/openimis/openimis-be-location_py.git@4b7356600c3d21c5e866232ae2b79b3d678e8ba8#egg=openimis_be_location
--e git+https://github.com/openimis/openimis-be-medical_py.git@9687e39965d0e9538d3ff2b65061d9e78d609cc3#egg=openimis_be_medical
--e git+https://github.com/openimis/openimis-be-medical_pricelist_py.git@21cba848e9fe300e6d186f60d9a8414b858fd880#egg=openimis_be_medical_pricelist
--e git+https://github.com/openimis/openimis-be-payer_py.git@06de6d93b31db55c3a5615bdbd6389962649dd4d#egg=openimis_be_payer
--e git+https://github.com/openimis/openimis-be-payment_py.git@d5a32c7c2a5a473f9a489e144dd3befed047c81e#egg=openimis_be_payment
--e git+https://github.com/openimis/openimis-be-policy_py.git@679a76376ce07a3b4bf11bf593ae4ff085eb8dd9#egg=openimis_be_policy
--e git+https://github.com/openimis/openimis-be-policy_notification_py.git@a2d50e86cd943da5dde51d719da3b15d7019fe33#egg=openimis_be_policy_notification
--e git+https://github.com/openimis/openimis-be-policyholder_py.git@7d2b6a47af6e67b3b29322836b6210551f12d09f#egg=openimis_be_policyholder
--e git+https://github.com/openimis/openimis-be-product_py.git@c9becd1bcd5bcfc4fc8b4182ec8474d577dd72f8#egg=openimis_be_product
--e git+https://github.com/openimis/openimis-be-report_py.git@a0320330abc736f68e4c841d0af344fc6468ba2b#egg=openimis_be_report
--e git+https://github.com/openimis/openimis-be-tools_py.git@c541938b4c139a01166df830c174c4f4c34fa6f1#egg=openimis_be_tools
 openpyxl==3.1.2
 orjson==3.8.8
 packaging==23.1
