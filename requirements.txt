@@ -23,6 +23,7 @@ django~=3.2.15
 djangorestframework
 django-cryptography==1.1
 django-filter~=22.1
+drf_yasg
 #django-mssql-backend is a fork for django 3 of django-pyodbc-azure (django 2.1) which is a fork of django-pyodbc (1.x)
 # Since Q3 2021, Microsoft is providing an official driver mssql-django, the engine needs to become "mssql"
 #django-mssql-backend==2.8.1
