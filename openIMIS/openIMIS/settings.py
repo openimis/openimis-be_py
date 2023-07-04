@@ -352,11 +352,11 @@ SCHEDULER_JOBS = [
         "args": ["cron"],
         "kwargs": {"id": "openimis_test_batch", "minute": 16, "replace_existing": True},
     },
-    {
-        "method": "policy.tasks.get_policies_for_renewal",
-        "args": ["cron"],
-        "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
-    },
+    # {
+    #     "method": "policy.tasks.get_policies_for_renewal",
+    #     "args": ["cron"],
+    #     "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
+    # },
     # {
     #     "method": "policy_notification.tasks.send_notification_messages",
     #     "args": ["cron"],
