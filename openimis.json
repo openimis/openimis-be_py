@@ -135,6 +135,14 @@
 		{
 			"name": "opensearch_reports",
 			"pip": "git+https://github.com/openimis/openimis-be-opensearch_reports_py.git@develop#egg=openimis-be-opensearch_reports"
+		},
+		{
+			"name": "payment_cycle",
+			"pip": "git+https://github.com/openimis/openimis-be-payment_cycle_py.git@develop#egg=openimis-be-payment_cycle"
+		},
+		{
+			"name": "calcrule_social_protection",
+			"pip": "git+https://github.com/openimis/openimis-be-calcrule_social_protection_py.git@develop#egg=openimis-be-calcrule_social_protection"
 		}
 	]
 }
