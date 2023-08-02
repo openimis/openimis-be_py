@@ -165,13 +165,7 @@ INSTALLED_APPS = [
     "channels",  # Websocket support
     "developer_tools",
     "drf_spectacular",  # Swagger UI for FHIR API,
-<<<<<<< HEAD
-    'drf_yasg'
-=======
     'drf_yasg',
-    "django_nose",
-    'oidc_provider'
->>>>>>> 100da5d (oidc empty dict added)
 ]
 INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["apscheduler_runner", "signal_binding"]  # Signal binding should be last installed module
