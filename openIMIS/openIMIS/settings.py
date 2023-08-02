@@ -136,12 +136,7 @@ else:
     ALLOWED_HOSTS = ["*"]
 
 # TEST_WITHOUT_MIGRATIONS_COMMAND = 'django_nose.management.commands.test.Command'
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-
-# Tell nose to measure coverage on the 'foo' and 'bar' apps
-NOSE_ARGS = [
-    '--with-coverage',
-]
+# TEST_RUNNER = 'core.test_utils.UnManagedModelTestRunner'
 
 # Application definition
 
@@ -164,8 +159,7 @@ INSTALLED_APPS = [
     "django_apscheduler",
     "channels",  # Websocket support
     "developer_tools",
-    "drf_spectacular",  # Swagger UI for FHIR API
-    "django_nose"
+    "drf_spectacular"  # Swagger UI for FHIR API
 ]
 INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["apscheduler_runner", "signal_binding"]  # Signal binding should be last installed module
@@ -350,11 +344,11 @@ SCHEDULER_JOBS = [
         "args": ["cron"],
         "kwargs": {"id": "openimis_test_batch", "minute": 16, "replace_existing": True},
     },
-    # {
-    #     "method": "policy.tasks.get_policies_for_renewal",
-    #     "args": ["cron"],
-    #     "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
-    # },
+    {
+        "method": "policy.tasks.get_policies_for_renewal",
+        "args": ["cron"],
+        "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
+    },
     # {
     #     "method": "policy_notification.tasks.send_notification_messages",
     #     "args": ["cron"],

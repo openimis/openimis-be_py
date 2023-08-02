@@ -13,8 +13,11 @@ exclude =
     openIMIS/migrations
 
 ignore =
-    E261, # At least two spaces before inline comment.
-    E303, # Too many blank lines (3).
-    E741, # Ambiguous variable name.
+    # At least two spaces before inline comment.
+    E261,
+    # Too many blank lines (3).
+    E303,
+    # Ambiguous variable name.
+    E741,
 
 max-line-length = 120
