@@ -109,8 +109,8 @@
 			"pip":"git+https://github.com/openimis/openimis-be-calcrule_unconditional_cash_payment_py.git@develop#egg=openimis-be-calcrule_unconditional_cash_payment"
 		},
 		{
-			"name":"govstack_test_harness_api",
-			"pip":"git+https://github.com/openimis/openimis-be-govstack_test_harness_api_py.git@develop#egg=openimis-be-govstack_test_harness_api"
+			"name":"govstack_api",
+			"pip":"git+https://github.com/openimis/openimis-be-govstack_api_py.git@develop#egg=openimis-be-govstack_api"
 		}
 	]
 }
