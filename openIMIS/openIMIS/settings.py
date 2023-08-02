@@ -214,6 +214,7 @@ if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'govstack_api.middleware.InformationMediatorMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
