@@ -17,7 +17,7 @@ OPENIMIS_APPS = openimis_apps()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-LOGGING_LEVEL = "DEBUG"
+LOGGING_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "WARNING")
 DEFAULT_LOGGING_HANDLER = os.getenv("DJANGO_LOG_HANDLER", "debug-log")
 
 LOGGING = {
@@ -138,6 +138,11 @@ else:
 # TEST_WITHOUT_MIGRATIONS_COMMAND = 'django_nose.management.commands.test.Command'
 # TEST_RUNNER = 'core.test_utils.UnManagedModelTestRunner'
 
+# Tell nose to measure coverage on the 'foo' and 'bar' apps
+NOSE_ARGS = [
+    '--with-coverage',
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -160,10 +165,12 @@ INSTALLED_APPS = [
     "channels",  # Websocket support
     "developer_tools",
     "drf_spectacular",  # Swagger UI for FHIR API,
-    'drf_yasg',
+    'drf_yasg'
 ]
 INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["apscheduler_runner", "signal_binding"]  # Signal binding should be last installed module
+
+LOGIN_URL = '/accounts/login/'
 
 AUTHENTICATION_BACKENDS = []
 

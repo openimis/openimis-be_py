@@ -4,21 +4,55 @@ celery>=4.4
 channels~=3.0.3
 channels-redis==3.2.0
 channels-rabbitmq==2.0.0
-django~=3.2.15
-djangorestframework
-django-cryptography==1.1
-django-filter~=22.1
+channels-redis==3.2.0
+charset-normalizer==2.1.1
+click==8.1.3
+click-didyoumean==0.3.0
+click-plugins==1.1.1
+click-repl==0.2.0
+constantly==15.1.0
 coreapi==2.3.3
 coreschema==0.0.4
+coverage==6.4.4
+cryptography==39.0.2
+daphne==3.0.1
+defusedxml==0.7.1
+dhis2.py==2.3.0
+dict2obj==1.2.0
+diff-match-patch==20200713
+Django==3.2.18
+django-appconf==1.0.5
+django-apscheduler @ git+https://github.com/openimis/django-apscheduler.git@7e65524cb174f688a5aaa2a75bea3c17fc158b00
+django-cprofile-middleware==1.0.5
+django-cryptography==1.1
+django-db-signals==0.1.1
+django-dirtyfields==1.4.1
+django-filter==22.1
+django-graphql-jwt==0.3.4
+django-health-check==3.17.0
+django-import-export==3.1.0
+django-nose==1.4.7
+django-oidc-provider==0.8.0
+django-rest-framework-rules==1.0.0
+django-simple-history==3.3.0
+django-sql-utils==0.6.1
+django-test-without-migrations==0.6
+djangorestframework==3.14.0
+djangorestframework-xml==2.0.0
 dnspython==2.3.0
 drf-spectacular==0.25.1
 drf-yasg==1.21.6
-#django-mssql-backend is a fork for django 3 of django-pyodbc-azure (django 2.1) which is a fork of django-pyodbc (1.x)
-# Since Q3 2021, Microsoft is providing an official driver mssql-django, the engine needs to become "mssql"
-#django-mssql-backend==2.8.1
-mssql-django==1.1.3
-django-test-without-migrations
-graphene-django<3
+email-validator==1.3.1
+et-xmlfile==1.1.0
+export==0.2.0
+Faker==8.1.3
+fhir.resources==6.2.0b3
+frozenlist==1.3.3
+future==0.18.3
+gitdb==4.0.10
+GitPython==3.1.31
+graphene==2.1.9
+graphene-django==2.15.0
 graphene-django-optimizer==0.8.0
 PyJWT~=2.4.0
 django-graphql-jwt==0.3.4
@@ -53,3 +87,126 @@ flake8
 # TODO remove to a separate file for implementations and change test workflows to reflect that
 nepali_datetime
 
+graphql-core==2.3.2
+graphql-relay==2.0.1
+graphqlclient==0.2.4
+hiredis==2.2.2
+hyperlink==21.0.0
+idna==3.4
+importlib-metadata==6.0.0
+importlib-resources==5.10.2
+incremental==22.10.0
+inflection==0.5.1
+isodate==0.6.1
+itypes==1.2.0
+Jinja2==3.1.2
+jsonschema==4.17.3
+kombu==5.2.4
+logzero==1.7.0
+Markdown==3.4.2
+MarkupPy==1.14
+MarkupSafe==2.1.3
+mock==5.0.2
+msgpack==1.0.5
+mssql-django==1.1.3
+multidict==6.0.4
+nepalicalendar==0.4
+nose==1.3.7
+numpy==1.24.2
+odfpy==1.4.1
+-e git+https://github.com/openimis/openimis-be-api_fhir_r4_py.git@6914bdeb4b3f1e4801cf5caac1c9f84871d9dce7#egg=openimis_be_api_fhir_r4
+-e git+https://github.com/openimis/openimis-be-calcrule-capitation_payment_py.git@74551cb5df785a021aa3a18fde02afec137d5601#egg=openimis_be_calcrule_capitation_payment
+-e git+https://github.com/openimis/openimis-be-calcrule_commission_py.git@7d309ead9592560e30380770be4238ca1620b0ac#egg=openimis_be_calcrule_commission
+-e git+https://github.com/openimis/openimis-be-calcrule_contribution_income_percentage_py.git@36e71c47677085a1c67eb4cecb30ba9a98da6253#egg=openimis_be_calcrule_contribution_income_percentage
+-e git+https://github.com/openimis/openimis-be-calcrule_contribution_legacy_py.git@272df3b7b0dd414f318b6e9e7e0ad9f61d0b505d#egg=openimis_be_calcrule_contribution_legacy
+-e git+https://github.com/openimis/openimis-be-calcrule_fees_py.git@fbd5d6e3068840b84234605deb129c08efcfb969#egg=openimis_be_calcrule_fees
+-e git+https://github.com/openimis/openimis-be-calcrule-third_party_payment_py.git@0eaded407ccfc35b3fdfa929863a13cc286399b7#egg=openimis_be_calcrule_third_party_payment
+-e git+https://github.com/openimis/openimis-be-calcrule_unconditional_cash_payment_py.git@0f9478a6dadc7a9de53a3f3f03064a19ccf5a50b#egg=openimis_be_calcrule_unconditional_cash_payment
+-e git+https://github.com/openimis/openimis-be-calculation_py.git@7f1340b49772f798621827f655a77f497cac7bc4#egg=openimis_be_calculation
+-e git+https://github.com/openimis/openimis-be-claim_py.git@564f1b8f734e2cd957e5c7f9726cfcb90177f4da#egg=openimis_be_claim
+-e git+https://github.com/openimis/openimis-be-claim_batch_py.git@ad2f87fdecffd5f38d94e2d5819945deb8c30952#egg=openimis_be_claim_batch
+-e git+https://github.com/openimis/openimis-be-contract_py.git@50247dcd3a2b5074b255ad8bdda4fb7c34d2f9d0#egg=openimis_be_contract
+-e git+https://github.com/openimis/openimis-be-contribution_py.git@58f41d928f39e873a97b147502a28be2b319aab3#egg=openimis_be_contribution
+-e git+https://github.com/openimis/openimis-be-contribution_plan_py.git@3d8f541e3e4f6d87438b4cd7b0e623306c40e00b#egg=openimis_be_contribution_plan
+-e git+https://github.com/openimis/openimis-be-core_py.git@4a7055f452050eedfa204140158ff9ba6e95aa73#egg=openimis_be_core
+-e git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@29bd53afc2e5fc9fee6b18666be66cd1152258ef#egg=openimis_be_dhis2_etl
+openimis-be-govstack-test-harness-api @ file:///home/user/Desktop/openimis/openimis-be-govstack_test_harness_api_py
+-e git+https://github.com/openimis/openimis-be-im_export_py.git@a9e87fdf27684d6c7730c80f7a0e922b64dec532#egg=openimis_be_im_export
+-e git+https://github.com/openimis/openimis-be-insuree_py.git@dc7b53db4595791a5942c2631bf572a348ad8672#egg=openimis_be_insuree
+-e git+https://github.com/openimis/openimis-be-insuree_batch_py.git@3394fb6aaaf96a3966a481a6b1a261ca5ec92b60#egg=openimis_be_insuree_batch
+-e git+https://github.com/openimis/openimis-be-invoice_py.git@ad2e4044d4e922d68fbb3577e943cac89fd5a666#egg=openimis_be_invoice
+-e git+https://github.com/openimis/openimis-be-location_py.git@4b7356600c3d21c5e866232ae2b79b3d678e8ba8#egg=openimis_be_location
+-e git+https://github.com/openimis/openimis-be-medical_py.git@9687e39965d0e9538d3ff2b65061d9e78d609cc3#egg=openimis_be_medical
+-e git+https://github.com/openimis/openimis-be-medical_pricelist_py.git@21cba848e9fe300e6d186f60d9a8414b858fd880#egg=openimis_be_medical_pricelist
+-e git+https://github.com/openimis/openimis-be-payer_py.git@06de6d93b31db55c3a5615bdbd6389962649dd4d#egg=openimis_be_payer
+-e git+https://github.com/openimis/openimis-be-payment_py.git@d5a32c7c2a5a473f9a489e144dd3befed047c81e#egg=openimis_be_payment
+-e git+https://github.com/openimis/openimis-be-policy_py.git@679a76376ce07a3b4bf11bf593ae4ff085eb8dd9#egg=openimis_be_policy
+-e git+https://github.com/openimis/openimis-be-policy_notification_py.git@a2d50e86cd943da5dde51d719da3b15d7019fe33#egg=openimis_be_policy_notification
+-e git+https://github.com/openimis/openimis-be-policyholder_py.git@7d2b6a47af6e67b3b29322836b6210551f12d09f#egg=openimis_be_policyholder
+-e git+https://github.com/openimis/openimis-be-product_py.git@c9becd1bcd5bcfc4fc8b4182ec8474d577dd72f8#egg=openimis_be_product
+-e git+https://github.com/openimis/openimis-be-report_py.git@a0320330abc736f68e4c841d0af344fc6468ba2b#egg=openimis_be_report
+-e git+https://github.com/openimis/openimis-be-tools_py.git@c541938b4c139a01166df830c174c4f4c34fa6f1#egg=openimis_be_tools
+openpyxl==3.1.2
+orjson==3.8.8
+packaging==23.1
+pamqp==3.0.1
+pandas==1.1.4
+Pillow==9.4.0
+pkgutil_resolve_name==1.3.10
+promise==2.3
+prompt-toolkit==3.0.38
+psycopg2-binary==2.8.5
+pyasn1==0.4.8
+pyasn1-modules==0.2.8
+pycparser==2.21
+pycryptodomex==3.17
+pydantic==1.10.7
+Pygments==2.15.1
+pyjwkest==1.4.2
+PyJWT==2.4.0
+pyminizip==0.2.6
+pyodbc==4.0.35
+pyOpenSSL==23.0.0
+pypng==0.20220715.0
+pyrsistent==0.19.3
+python-dateutil==2.8.2
+python-dotenv==1.0.0
+python-graphql-client==0.4.3
+pytz==2022.7.1
+pytz-deprecation-shim==0.1.0.post0
+PyYAML==6.0
+pyzipper==0.3.6
+qrcode==7.4.2
+reportbro-fpdf==1.7.11
+reportbro-lib==2.1.1
+reportbro-simpleeval==0.9.11
+requests==2.28.2
+rules==3.3
+Rx==1.6.3
+service-identity==21.1.0
+simplejson==3.18.4
+singledispatch==4.0.0
+six==1.16.0
+smmap==5.0.0
+sqlparse==0.4.3
+tablib==3.3.0
+text-unidecode==1.3
+Twisted==22.10.0
+txaio==23.1.1
+typing_extensions==4.5.0
+tzdata==2022.7
+tzlocal==4.3
+uritemplate==4.1.1
+urllib3==1.26.15
+vine==5.0.0
+waitress==2.1.2
+wcwidth==0.2.6
+websocket-client==1.5.1
+websockets==11.0.3
+whitenoise==6.4.0
+xlrd==2.0.1
+XlsxWriter==3.0.9
+xlwt==1.3.0
+yarl==1.8.2
+zipp==3.15.0
+zope.interface==6.0
