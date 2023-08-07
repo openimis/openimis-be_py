@@ -143,6 +143,10 @@
 		{
 			"name": "calcrule_social_protection",
 			"pip": "git+https://github.com/openimis/openimis-be-calcrule_social_protection_py.git@develop#egg=openimis-be-calcrule_social_protection"
+		},
+		{
+			"name": "payroll",
+			"pip": "git+https://github.com/openimis/openimis-be-payroll_py.git@develop#egg=openimis-be-payroll"
 		}
 	]
 }
