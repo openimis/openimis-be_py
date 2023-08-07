@@ -26,7 +26,7 @@
 		},
 		{
 			"name": "insuree",
-			"pip": "git+https://github.com/openimis/openimis-be-insuree_py.git@develop#egg=openimis-be-insuree"
+			"pip": "git+https://github.com/openimis/openimis-be-insuree_py.git@lruzicki/govstack_api#egg=openimis-be-insuree"
 		},
 		{
 			"name": "policy",
