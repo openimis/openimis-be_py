@@ -64,8 +64,7 @@ jobs:
 
       - name: Initialize DB
         run: |
-          psql -h localhost -d imis -U postgres -f  ./sql/output/fullDemoDatabase.sql | grep . | uniq -c
-          
+          PGPASSWORD=GitHub999 psql -U postgres -h localhost -d imis -U postgres -f  ./sql/output/fullDemoDatabase.sql | grep . | uniq -c
       - name: Django tests
         run: |
           python -V
