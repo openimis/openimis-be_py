@@ -13,3 +13,4 @@ modules-tests.sh
 **/*.mo
 openIMIS/locale/en/LC_MESSAGES/django.mo
 **/staticfiles
+extracted_translations_fe

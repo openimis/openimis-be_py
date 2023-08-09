@@ -1,11 +1,14 @@
 """
 Django settings for openIMIS project.
+
 Settings and values are added to settings.py
 through load_settings_from_modules()
 """
 from dotenv import load_dotenv
+
 from .openimisapps import openimis_apps
 from .modulesettingsloader import load_settings_from_modules
+
 
 load_dotenv()
 
@@ -19,3 +22,4 @@ OPENIMIS_APPS = openimis_apps()
 # imis apps and signals are added directly in settings as they should be installed at the end.
 INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["signal_binding"]  # Signal binding should be last installed module
+

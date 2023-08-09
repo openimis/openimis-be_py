@@ -60,7 +60,9 @@ msgid "claim.validation.product_family.waiting_period"
 msgstr "Violation du délai d'attente pour le soin  ou le produit médical %s"
 
 msgid "claim.validation.product_family.max_nb_allowed"
-msgstr "%s soins et %s produit médicaux est supérieur au nombre maximum de prestations et de produits de santé %s"
+msgstr ""
+"%(code): %(element) soins et %(provided) produit médicaux est supérieur au "
+"nombre maximum de prestations et de produits de santé %(max)"
 
 msgid "claim.validation.product_family.no_product_found"
 msgstr "Pas de produit/soin trouvé pour %s"

@@ -1,0 +1,66 @@
+name: Automated CI testing
+# This workflow run automatically for every commit on github it checks the syntax and launch the tests.
+# | grep . | uniq -c filters out empty lines and then groups consecutive lines together with the number of occurrences
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      comment:
+        description: Just a simple comment to know the purpose of the manual build
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    services:
+      pgsql:
+        build:
+          context: https://github.com/openimis/database_postgresql.git#${DB_BRANCH:-develop}
+            args:
+              - POSTGRES_PASSWORD=${DB_PASSWORD}
+        env:
+          DB_HOST: localhost
+          DB_PORT: 1433
+          POSTGRES_DB: imis
+          POSTGRES_USER: sa
+          POSTGRES_PASSWORD: GitHub999
+        ports:
+          - 5432:5432
+        # needed because the mssql container does not provide a health check
+        options: --health-interval=10s --health-timeout=3s --health-start-period=10s --health-retries=10 --health-cmd="pg_isready -U ${POSTGRES_USER} -d ${imis}"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python modules-requirements.py openimis.json > modules-requirements.txt
+          pip install -r modules-requirements.txt
+          
+      - name: Django tests
+        run: |
+          python -V
+          ls -l
+          cd openIMIS
+          ls -l
+          python manage.py test --keepdb $(jq   -r '(.modules[]|.name)' ../openimis.json)
+        env:
+          SECRET_KEY: secret
+          DEBUG: true
+          DB_ENGINE: django.db.backends.postgresql
+          #DJANGO_SETTINGS_MODULE: hat.settings
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: imis
+          DB_USER: sa
+          DB_PASSWORD: GitHub999
+          #DEV_SERVER: true
+          SITE_ROOT: api
+          REMOTE_USER_AUTHENTICATION: False

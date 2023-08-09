@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 def has_jwt_error(errors):
     for error in errors:
-        if isinstance(error.original_error, JSONWebTokenError):
+        if isinstance(getattr(error, "original_error", None), JSONWebTokenError):
             return True
     return False
 

@@ -22,7 +22,7 @@ fi
 
 case "$1" in
   "start" )
-    if [ "$SITE_ROOT" == "api" ] 
+    if [ "${DJANGO_MIGRATE,,}" == "true" ] || [ "${SITE_ROOT}" == "api" ]
     then
       echo "Migrating..."
       python manage.py migrate

@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     services:
       mssql:
@@ -89,7 +89,8 @@ jobs:
           ls -l
           cd openIMIS
           ls -l
-          python manage.py test --keepdb $(jq   -r '(.modules[]|.name)' ../openimis.json)
+          coverage run manage.py test --keepdb $(jq   -r '(.modules[]|.name)' ../openimis.json)
+          coverage report    
         env:
           SECRET_KEY: secret
           DEBUG: true
@@ -101,4 +102,4 @@ jobs:
           DB_PASSWORD: GitHub999
           #DEV_SERVER: true
           SITE_ROOT: api
-          REMOTE_USER_AUTHENTICATION: True
+          REMOTE_USER_AUTHENTICATION: False
