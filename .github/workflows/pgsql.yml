@@ -56,7 +56,6 @@ jobs:
           echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
 
           git clone --depth 1 --branch $DBBRANCH https://github.com/openimis/database_postgresql.git  ./sql
-          cd ./sql && bash concatenate_files.sh && cd ..
           
           wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
           echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/postgresql-pgdg.list > /dev/null
@@ -65,7 +64,13 @@ jobs:
       - name: Initialize DB
         run: |
           echo 'set search_path to public' >> ~/.psqlrc
-          PGPASSWORD=GitHub999 psql -U postgres -h localhost -d imis -U postgres -f  ./sql/output/fullDemoDatabase.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U postgres -h localhost -d imis -U postgres -f  ./sql/database\ scripts/00_dump.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U postgres -h localhost -d imis -U postgres -f  ./sql/database\ scripts/02_aux_functions.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U postgres -h localhost -d imis -U postgres -f  ./sql/database\ scripts/03_views.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U postgres -h localhost -d imis -U postgres -f  ./sql/database\ scripts/04_functions.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U postgres -h localhost -d imis -U postgres -f  ./sql/database\ scripts/05_stored_procs.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U postgres -h localhost -d imis -U postgres -f  ./sql/database\ scripts/demo_db.sql | grep . | uniq -c
+
       - name: Django tests
         run: |
           python -V
