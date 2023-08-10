@@ -1,4 +1,4 @@
-name: Automated CI testing
+name: Automated CI testing MSSQL
 # This workflow run automatically for every commit on github it checks the syntax and launch the tests.
 # | grep . | uniq -c filters out empty lines and then groups consecutive lines together with the number of occurrences
 on:
@@ -61,7 +61,7 @@ jobs:
 
           /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -Q 'DROP DATABASE IF EXISTS imis'
           /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -Q 'CREATE DATABASE imis'
-          /opt/mssql-tools/bin/sqlcmd -S localhost,1433 -U SA -P $SA_PASSWORD -d imis -i sql/output/fullDemoDatabase.sql | grep . | uniq -c
+          /opt/mssql-tools/bin/sqlcmd -S localhost,1433 -U SA -P $SA_PASSWORD -d imis -i sql/output/fullEmptyDatabase.sql | grep . | uniq -c
         env:
           SA_PASSWORD: GitHub999
 
@@ -89,6 +89,7 @@ jobs:
           ls -l
           cd openIMIS
           ls -l
+          python manage.py migrate
           coverage run manage.py test --keepdb $(jq   -r '(.modules[]|.name)' ../openimis.json)
           coverage report    
         env:
