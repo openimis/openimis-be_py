@@ -33,7 +33,7 @@ wheel
 whitenoise
 django-health-check
 requests~=2.28.1
-apscheduler
+apscheduler==3.10.1
 # As from v0.4, Django-apscheduler has a migration that is incompatible with SQL Server
 # (autoincrement int => bigint) so we are using our own fork with a squashed migration
 git+https://github.com/openimis/django-apscheduler.git#egg=django-apscheduler
