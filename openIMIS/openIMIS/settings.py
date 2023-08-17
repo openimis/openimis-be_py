@@ -304,7 +304,7 @@ elif MSSQL:
             "unicode_results": True,
         }
 else:
-    DATABASE_OPTIONS = {}
+    DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
 
 if not os.environ.get("NO_DATABASE_ENGINE", "False") == "True":
     DATABASES = {
@@ -344,11 +344,11 @@ SCHEDULER_JOBS = [
         "args": ["cron"],
         "kwargs": {"id": "openimis_test_batch", "minute": 16, "replace_existing": True},
     },
-    # {
-    #     "method": "policy.tasks.get_policies_for_renewal",
-    #     "args": ["cron"],
-    #     "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
-    # },
+    {
+        "method": "policy.tasks.get_policies_for_renewal",
+        "args": ["cron"],
+        "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
+    },
     # {
     #     "method": "policy_notification.tasks.send_notification_messages",
     #     "args": ["cron"],
