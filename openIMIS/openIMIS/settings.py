@@ -317,7 +317,7 @@ if not os.environ.get("NO_DATABASE_ENGINE", "False") == "True":
             "PORT": os.environ.get("DB_PORT"),
             "OPTIONS": DATABASE_OPTIONS,
             'TEST': {
-                'NAME': os.environ.get("DB_NAME"),
+                'NAME': 'imis_test',
             },
         }
     }
