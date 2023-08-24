@@ -20,7 +20,6 @@ COPY . /openimis-be
 WORKDIR /openimis-be
 ARG OPENIMIS_CONF_JSON
 ENV OPENIMIS_CONF_JSON=${OPENIMIS_CONF_JSON}
-ENV SCHEDULER_AUTOSTART=True
 RUN pip install gunicorn
 RUN pip install -r requirements.txt
 RUN python modules-requirements.py openimis.json > modules-requirements.txt
@@ -31,6 +30,7 @@ RUN test -z "$SENTRY_DSN" || pip install -r sentry-requirements.txt && :
 
 WORKDIR /openimis-be/openIMIS
 # For some reason, the zh_Hans (Simplified Chinese) of django-graphql-jwt fails to compile, excluding it
-RUN SCHEDULER_AUTOSTART=False NO_DATABASE=True python manage.py compilemessages -x zh_Hans
-RUN SCHEDULER_AUTOSTART=False NO_DATABASE=True python manage.py collectstatic --clear --noinput
+RUN NO_DATABASE=True python manage.py compilemessages -x zh_Hans
+RUN NO_DATABASE=True python manage.py collectstatic --clear --noinput
+ENV SCHEDULER_AUTOSTART=True
 ENTRYPOINT ["/openimis-be/script/entrypoint.sh"]
