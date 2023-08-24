@@ -133,6 +133,7 @@ jobs:
           DB_PASSWORD: GitHub999
 
       - name: Django tests PSQL
+        # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
         if: success() || failure()
         run: |
           python -V
@@ -154,6 +155,7 @@ jobs:
           SITE_ROOT: api
 
       - name: Django tests MSSQL
+        # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
         if: success() || failure()
         run: |
           python -V
