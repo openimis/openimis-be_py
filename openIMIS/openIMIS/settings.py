@@ -267,6 +267,7 @@ GRAPHQL_JWT = {
     "JWT_AUTH_HEADER_PREFIX": "Bearer",
     "JWT_ENCODE_HANDLER": "core.jwt.jwt_encode_user_key",
     "JWT_DECODE_HANDLER": "core.jwt.jwt_decode_user_key",
+    "JWT_SECRET_KEY": "ALIBABAaQuArANTeVOLeuRSETTrOIsp",
     # This can be used to expose some resources without authentication
     "JWT_ALLOW_ANY_CLASSES": [
         "graphql_jwt.mutations.ObtainJSONWebToken",

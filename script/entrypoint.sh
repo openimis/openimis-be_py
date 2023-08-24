@@ -32,6 +32,11 @@ case "$1" in
     python server.py
   ;;
   "start_asgi" )
+    if [ "${DJANGO_MIGRATE,,}" == "true" ] || [ "${SITE_ROOT}" == "api" ]
+    then
+      echo "Migrating..."
+      python manage.py migrate
+    fi
     echo "Starting Django ASGI..."
     def_ip='0.0.0.0'
     def_port='8000'
@@ -44,6 +49,11 @@ case "$1" in
     daphne -b "$SERVER_IP" -p "$SERVER_PORT" "$SERVER_APPLICATION"
   ;;
   "start_wsgi" )
+    if [ "${DJANGO_MIGRATE,,}" == "true" ] || [ "${SITE_ROOT}" == "api" ]
+    then
+      echo "Migrating..."
+      python manage.py migrate
+    fi
     echo "Starting Django WSGI..."
     def_ip='0.0.0.0'
     def_port='8000'
