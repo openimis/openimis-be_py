@@ -8,7 +8,8 @@ show_help() {
 
   start            : start django
   worker           : start Celery worker
-
+  start_asgi       : use daphne -b ASGI_IP:WSGI_PORT -p SERVER_PORT  ASGI_APPLICATION
+  start_wsgi       : use gunicorn -b WSGI_IP:WSGI_PORT -w WSGI_WORKERS WSGI_APPLICATION
   manage           : run django manage.py
   eval             : eval shell command
   bash             : run bash
@@ -28,7 +29,7 @@ case "$1" in
       python manage.py migrate
     fi
     echo "Starting Django..."
-    gunicorn -w 4 openIMIS.wsgi
+    python server.py
   ;;
   "start_asgi" )
     echo "Starting Django ASGI..."
@@ -41,6 +42,19 @@ case "$1" in
     SERVER_APPLICATION="${ASGI_APPLICATION:-$def_app}"
 
     daphne -b "$SERVER_IP" -p "$SERVER_PORT" "$SERVER_APPLICATION"
+  ;;
+  "start_wsgi" )
+    echo "Starting Django WSGI..."
+    def_ip='0.0.0.0'
+    def_port='8000'
+    def_app='openIMIS.wsgi'
+
+    SERVER_IP="${WSGI_IP:-$def_ip}"
+    SERVER_PORT="${WSGI_PORT:-$def_port}"
+    SERVER_APPLICATION="${WSGI_APPLICATION:-$def_app}"
+    SERVER_WORKERS="${WSGI_WORKERS:-4}"
+
+    gunicorn -b "$SERVER_IP:$SERVER_PORT" -w $SERVER_WORKERS "$SERVER_APPLICATION"
   ;;
   "worker" )
     echo "Starting Celery with url ${CELERY_BROKER_URL} ${DB_NAME}..."
