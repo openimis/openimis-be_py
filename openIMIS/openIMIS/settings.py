@@ -306,7 +306,7 @@ elif MSSQL:
 else:
     DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
 
-if not os.environ.get("NO_DATABASE_ENGINE", "False") == "True":
+if not os.environ.get("NO_DATABASE", "False") == "True":
     DATABASES = {
         "default": {
             "ENGINE": DB_ENGINE,
