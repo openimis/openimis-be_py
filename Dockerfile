@@ -21,7 +21,8 @@ WORKDIR /openimis-be
 ARG OPENIMIS_CONF_JSON
 ENV OPENIMIS_CONF_JSON=${OPENIMIS_CONF_JSON}
 ENV SCHEDULER_AUTOSTART=True
-RUN pip install -r requirements.txt && pip install gunicorn
+RUN pip install gunicorn
+RUN pip install -r requirements.txt
 RUN python modules-requirements.py openimis.json > modules-requirements.txt
 RUN pip install -r modules-requirements.txt
 
