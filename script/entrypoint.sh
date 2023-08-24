@@ -28,7 +28,7 @@ case "$1" in
       python manage.py migrate
     fi
     echo "Starting Django..."
-    SCHEDULER_AUTOSTART=True python server.py
+    gunicorn -w 4 openIMIS.wsgi
   ;;
   "start_asgi" )
     echo "Starting Django ASGI..."
