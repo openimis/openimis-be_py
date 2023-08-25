@@ -1,3 +1,4 @@
+
 #!/bin/bash
 set -e
 
@@ -16,6 +17,14 @@ show_help() {
   """
 }
 
+init(){
+  if [ "${DJANGO_MIGRATE,,}" == "true" ] || [ -z "$SCHEDULER_AUTOSTART" ]; then
+        echo "Migrating..."
+        python manage.py migrate
+        export SCHEDULER_AUTOSTART=True
+  fi
+}
+
 #export PYTHONPATH="/opt/app:$PYTHONPATH"
 if [ -z "$DJANGO_SETTINGS_MODULE" ]; then
   export DJANGO_SETTINGS_MODULE=openIMIS.settings
@@ -23,20 +32,12 @@ fi
 
 case "$1" in
   "start" )
-    if [ "${DJANGO_MIGRATE,,}" == "true" ] || [ "${SITE_ROOT}" == "api" ]
-    then
-      echo "Migrating..."
-      python manage.py migrate
-    fi
+    init()
     echo "Starting Django..."
     python server.py
   ;;
   "start_asgi" )
-    if [ "${DJANGO_MIGRATE,,}" == "true" ] || [ "${SITE_ROOT}" == "api" ]
-    then
-      echo "Migrating..."
-      python manage.py migrate
-    fi
+    init()
     echo "Starting Django ASGI..."
     def_ip='0.0.0.0'
     def_port='8000'
@@ -49,11 +50,7 @@ case "$1" in
     daphne -b "$SERVER_IP" -p "$SERVER_PORT" "$SERVER_APPLICATION"
   ;;
   "start_wsgi" )
-    if [ "${DJANGO_MIGRATE,,}" == "true" ] || [ "${SITE_ROOT}" == "api" ]
-    then
-      echo "Migrating..."
-      python manage.py migrate
-    fi
+    init()
     echo "Starting Django WSGI..."
     def_ip='0.0.0.0'
     def_port='8000'
