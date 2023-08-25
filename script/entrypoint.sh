@@ -32,12 +32,12 @@ fi
 
 case "$1" in
   "start" )
-    init()
+    init
     echo "Starting Django..."
     python server.py
   ;;
   "start_asgi" )
-    init()
+    init
     echo "Starting Django ASGI..."
     def_ip='0.0.0.0'
     def_port='8000'
@@ -50,7 +50,7 @@ case "$1" in
     daphne -b "$SERVER_IP" -p "$SERVER_PORT" "$SERVER_APPLICATION"
   ;;
   "start_wsgi" )
-    init()
+    init
     echo "Starting Django WSGI..."
     def_ip='0.0.0.0'
     def_port='8000'
