@@ -64,6 +64,9 @@ jobs:
 
       - name: Install Python dependencies
         run: |
+          sudo apt-get update
+          sudo apt-get install jq
+
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           python modules-requirements.py openimis.json > modules-requirements.txt
@@ -74,9 +77,6 @@ jobs:
       - name: Environment info
         run: |
           pip list
-
-          sudo apt-get update
-          sudo apt-get install jq
 
       - name: Initialize PSQL
         run: |
