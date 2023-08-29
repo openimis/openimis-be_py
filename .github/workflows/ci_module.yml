@@ -3,9 +3,9 @@ name: Automated CI testing
 # | grep . | uniq -c filters out empty lines and then groups consecutive lines together with the number of occurrences
 on:
   workflow_call:
-  
+
 jobs:
-  ci_assembly:
+  ci_module:
     runs-on: ubuntu-20.04
 
     services:
@@ -76,7 +76,8 @@ jobs:
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           
           # Add or replace MODULE_NAME module in openimis.json (local version)
-          jq "del(.modules[] | select(.name == \"$MODULE_NAME\")) | .modules += [{\"name\": \"$MODULE_NAME\", \"pip\": \"-e ../current-module\"}]" openimis.json
+          echo $(jq --arg name "$MODULE_NAME" 'if [.modules[].name  ==  ($name)]| max then (.modules[]  | select(.name == ($name)) | .pip)|="../current-module" else .modules |= .+ [{name:($name), pip:"../current-module"}] end' openimis.json)  > openimis.json
+          cat openimis.json
 
       - name: Install Python dependencies
         working-directory: ./openimis
@@ -84,13 +85,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           python modules-requirements.py openimis.json > modules-requirements.txt
+          cat modules-requirements.txt
           pip install --no-cache-dir -r modules-requirements.txt
-          export MODULES=$(jq -r '(.modules[].name)' openimis.json | xargs)
-          echo $modules
 
       - name: Environment info
         run: |
           pip list
+          ls -l
 
       - name: Initialize PSQL
         run: |
@@ -147,13 +148,13 @@ jobs:
           DB_PASSWORD: GitHub999
 
       - name: Django tests PSQL
+        working-directory: ./openimis/openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
         if: success() || failure()
         run: |
           python -V
-          export MODULES=$(jq -r '(.modules[].name)' openimis.json | xargs)
+          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
           echo $MODULES
-          cd openIMIS
           python manage.py test --keepdb $MODULES
         env:
           SECRET_KEY: secret
@@ -169,13 +170,13 @@ jobs:
           SITE_ROOT: api
 
       - name: Django tests MSSQL
+        working-directory: ./openimis/openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
         if: success() || failure()
         run: |
           python -V
-          export MODULES=$(jq -r '(.modules[].name)' openimis.json | xargs)
+          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
           echo $MODULES
-          cd openIMIS
           python manage.py test --debug-mode --timing --keepdb $MODULES
         env:
           SECRET_KEY: secret
