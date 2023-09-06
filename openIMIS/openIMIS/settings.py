@@ -267,7 +267,6 @@ GRAPHQL_JWT = {
     "JWT_AUTH_HEADER_PREFIX": "Bearer",
     "JWT_ENCODE_HANDLER": "core.jwt.jwt_encode_user_key",
     "JWT_DECODE_HANDLER": "core.jwt.jwt_decode_user_key",
-    "JWT_SECRET_KEY": "ALIBABAaQuArANTeVOLeuRSETTrOIsp",
     # This can be used to expose some resources without authentication
     "JWT_ALLOW_ANY_CLASSES": [
         "graphql_jwt.mutations.ObtainJSONWebToken",
@@ -323,7 +322,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': ' /dev/null',                      # Or path to database file if using sqlite3.
+            'NAME': ' ../script/sqlite.db',                      # Or path to database file if using sqlite3.
             'USER': '',                      # Not used with sqlite3.
             'PASSWORD': '',                  # Not used with sqlite3.
             'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
