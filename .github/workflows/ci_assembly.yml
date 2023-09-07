@@ -135,7 +135,7 @@ jobs:
           DB_PASSWORD: GitHub999
 
       - name: Django tests PSQL
-        working-directory: ./openimis/openIMIS
+        working-directory: ./openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
         if: steps.Initialize_PSQL.outcome == 'success'
         run: |
@@ -157,7 +157,7 @@ jobs:
           SITE_ROOT: api
 
       - name: Django tests MSSQL
-        working-directory: ./openimis/openIMIS
+        working-directory: ./openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
         if: steps.Initialize_MSSQL.outcome == 'success'
         run: |
