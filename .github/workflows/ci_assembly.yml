@@ -79,6 +79,7 @@ jobs:
           pip list
 
       - name: Initialize PSQL
+        id: Initialize_PSQL
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
 
@@ -104,7 +105,8 @@ jobs:
           DB_USER: postgres
           DB_PASSWORD: GitHub999
 
-      - name: Initialize MSSQL 
+      - name: Initialize MSSQL
+        id: Initialize_MSSQL
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
           
@@ -133,13 +135,13 @@ jobs:
           DB_PASSWORD: GitHub999
 
       - name: Django tests PSQL
+        working-directory: ./openimis/openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
-        if: success() || failure()
+        if: steps.Initialize_PSQL.outcome == 'success'
         run: |
           python -V
-          export MODULES=$(jq -r '(.modules[].name)' openimis.json | xargs)
+          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
           echo $MODULES
-          cd openIMIS
           python manage.py test --keepdb $MODULES
         env:
           SECRET_KEY: secret
@@ -155,13 +157,13 @@ jobs:
           SITE_ROOT: api
 
       - name: Django tests MSSQL
+        working-directory: ./openimis/openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
-        if: success() || failure()
+        if: steps.Initialize_MSSQL.outcome == 'success'
         run: |
           python -V
-          export MODULES=$(jq -r '(.modules[].name)' openimis.json | xargs)
+          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
           echo $MODULES
-          cd openIMIS
           python manage.py test --debug-mode --timing --keepdb $MODULES
         env:
           SECRET_KEY: secret
