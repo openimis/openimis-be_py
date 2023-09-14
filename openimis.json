@@ -5,6 +5,14 @@
 			"pip": "git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core"
 		},
 		{
+			"name": "workflow",
+			"pip": "git+https://github.com/openimis/openimis-be-workflow_py.git@develop#egg=openimis-be-workflow"
+		},
+		{
+            "name": "tasks_management",
+            "pip": "git+https://github.com/openimis/openimis-be-tasks_management_py.git@develop#egg=openimis-be-tasks_management"
+        },
+		{
 			"name": "report",
 			"pip": "git+https://github.com/openimis/openimis-be-report_py.git@develop#egg=openimis-be-report"
 		},
@@ -115,6 +123,26 @@
 		{
 			"name":"dhis2_etl",
 			"pip":"git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop#egg=openimis-be-dhis2_etl"
+		},
+		{
+			"name": "social_protection",
+			"pip": "git+https://github.com/openimis/openimis-be-social_protection_py.git@develop#egg=openimis-be-social_protection"
+		},
+		{
+			"name": "opensearch_reports",
+			"pip": "git+https://github.com/openimis/openimis-be-opensearch_reports_py.git@develop#egg=openimis-be-opensearch_reports"
+		},
+		{
+			"name": "payment_cycle",
+			"pip": "git+https://github.com/openimis/openimis-be-payment_cycle_py.git@develop#egg=openimis-be-payment_cycle"
+		},
+		{
+			"name": "calcrule_social_protection",
+			"pip": "git+https://github.com/openimis/openimis-be-calcrule_social_protection_py.git@develop#egg=openimis-be-calcrule_social_protection"
+		},
+		{
+			"name": "payroll",
+			"pip": "git+https://github.com/openimis/openimis-be-payroll_py.git@develop#egg=openimis-be-payroll"
 		}
 	]
 }
