@@ -5,13 +5,17 @@
 			"pip": "git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core"
 		},
 		{
+			"name": "individual",
+			"pip": "git+https://github.com/openimis/openimis-be-individual_py.git@develop#egg=openimis-be-individual"
+		},
+		{
 			"name": "workflow",
 			"pip": "git+https://github.com/openimis/openimis-be-workflow_py.git@develop#egg=openimis-be-workflow"
 		},
 		{
-            "name": "tasks_management",
-            "pip": "git+https://github.com/openimis/openimis-be-tasks_management_py.git@develop#egg=openimis-be-tasks_management"
-        },
+		    "name": "tasks_management",
+		    "pip": "git+https://github.com/openimis/openimis-be-tasks_management_py.git@develop#egg=openimis-be-tasks_management"
+		},
 		{
 			"name": "report",
 			"pip": "git+https://github.com/openimis/openimis-be-report_py.git@develop#egg=openimis-be-report"
