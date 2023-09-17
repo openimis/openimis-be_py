@@ -64,9 +64,10 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
         id: locate
 
-      - name: Compress site-packages
+      - name: Compress IMIS artifacts
         run: |
           tar -czf site-packages.tar.gz -C ${{ env.SITE_PACKAGES }} .
+          tar -czf openimis.tar.gz ./openimis ./current-module
 
       - name: Upload compressed site-packages as artifact
         uses: actions/upload-artifact@v2
@@ -78,7 +79,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: code-artifacts
-          path: ./
+          path: openimis.tar.gz
 
 #      - name: Flake8 Style Check
 #        working-directory: ./openimis/openIMIS
@@ -109,31 +110,8 @@ jobs:
           --health-retries=10
           --health-cmd="/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${SA_PASSWORD} -Q 'SELECT 1' || exit 1"
     steps:
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-      # Download compressed site-packages
-      - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: site-packages
-          path: /tmp/
-
-      # Locate site-packages directory
-      - name: Locate site-packages
-        run: |
-          SITE_PACKAGES=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
-          echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
-
-      # Decompress site-packages
-      - name: Decompress site-packages
-        run: |
-          sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
-      - name: Download build artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: code-artifacts
+    - name: Use build setup
+      uses: ./.github/workflows/shared-steps.yml@${{ github.head_ref }}
       - name: Initialize MSSQL
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
@@ -212,40 +190,8 @@ jobs:
           --health-timeout 5s
           --health-retries 10
     steps:
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-      # Download compressed site-packages
-      - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: site-packages
-          path: /tmp/
-
-      # Locate site-packages directory
-      - name: Locate site-packages
-        run: |
-          SITE_PACKAGES=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
-          echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
-
-      # Decompress site-packages
-      - name: Decompress site-packages
-        run: |
-          sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
-      - name: Download build artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: code-artifacts
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-            ${{ runner.os }}-pip-
-            ${{ runner.os }}-
+    - name: Use build setup
+      uses: ./.github/workflows/shared-steps.yml@${{ github.head_ref }}
       - name: Initialize PSQL
         run: |
           export DB_NAME_TEST="test_$DB_NAME"

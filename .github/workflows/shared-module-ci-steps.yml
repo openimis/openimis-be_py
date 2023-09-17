@@ -1,0 +1,32 @@
+name: Shared Steps
+
+jobs:
+  shared-steps:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Download site-packages artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: site-packages
+        path: /tmp/
+
+    - name: Locate site-packages
+      run: |
+        SITE_PACKAGES=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
+        echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
+
+    - name: Download site-packages artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: code-artifacts
+        path: openimis.tar.gz
+
+    - name: Decompress artifacts
+      run: |
+        sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
+        tar -xzf ./openimis.tar.gz -C .
