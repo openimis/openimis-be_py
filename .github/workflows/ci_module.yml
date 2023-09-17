@@ -292,6 +292,7 @@ jobs:
           #DEV_SERVER: true
           SITE_ROOT: api
       - name: Check if Sonar properties file exists
+        if: success() || failure()
         id: checkfile
         run: |
           if [[ -f "./current-module/sonar-project.properties" ]]; then
