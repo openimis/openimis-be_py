@@ -284,7 +284,8 @@ jobs:
           DB_PASSWORD: GitHub999
           #DEV_SERVER: true
           SITE_ROOT: api
-      - name: Generate Report
+      - name: Generate Coverage Report
+        if: always()
         working-directory: ./openimis/openIMIS
         run: python -m coverage xml -o coverage.xml
       - name: Coverage results

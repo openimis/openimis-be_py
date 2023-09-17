@@ -10,7 +10,8 @@ exclude =
     .coverage,
     openIMIS/wsgi.py,
     dist,
-    openIMIS/migrations
+    openIMIS/migrations,
+    **/migrations
 
 ignore =
     # At least two spaces before inline comment.
