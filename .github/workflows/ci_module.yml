@@ -7,8 +7,25 @@ on:
       SONAR_TOKEN:
         description: 'A sonar access token passed from the caller workflow'
         required: false
-
-
+    inputs:
+      SONAR_PROJECT_KEY:
+        description: 'SonarQube Project Key'
+        required: false
+      SONAR_ORGANIZATION:
+        description: 'SonarQube Organization'
+        required: false
+      SONAR_PROJECT_NAME:
+        description: 'SonarQube Project Name'
+        required: false
+      SONAR_PROJECT_VERSION:
+        description: 'SonarQube Project Version'
+        required: false
+      SONAR_EXCLUSIONS:
+        description: 'SonarQube Project Exclusions'
+        required: false
+      SONAR_SOURCES:
+        description: 'SonarQube Project Sources'
+        required: false
 jobs:
   build_backend:
     name: Build Backend
@@ -350,6 +367,16 @@ jobs:
     runs-on: ubuntu-20.04
     needs: [ci_module_psql_test, flake-8-linter]
     if: always()
+    env:
+      SONAR_PROJECT_KEY: ${{ inputs.SONAR_PROJECT_KEY }}
+      SONAR_ORGANIZATION: ${{ inputs.SONAR_ORGANIZATION }}
+      SONAR_PROJECT_NAME: ${{ inputs.SONAR_PROJECT_NAME }}
+      SONAR_PROJECT_VERSION: ${{ inputs.SONAR_PROJECT_VERSION:-1.0 }}
+      SONAR_PYTHON_VERSION: 3.8
+      SONAR_COVERAGE_REPORT_PATHS: ../report/coverage.xml
+      SONAR_FLAKE8_REPORT_PATHS: ../report/flake8-report.txt
+      SONAR_EXCLUSIONS: ${{ inputs.SONAR_PROJECT_VERSION:-"**/migrations/**,**/static/**,**/media/**,**/tests/**"}}
+      SONAR_SOURCES: ${{ inputs.SONAR_SOURCES }}
     steps:
       - name: Copy Current branch
         uses: actions/checkout@v3
@@ -371,7 +398,15 @@ jobs:
         with:
           projectBaseDir: ${GITHUB_REPOSITORY}
         env:
+          SONAR_PROJECT_KEY: ${{ inputs.SONAR_PROJECT_KEY }}
+          SONAR_ORGANIZATION: ${{ inputs.SONAR_ORGANIZATION }}
+          SONAR_PROJECT_NAME: ${{ inputs.SONAR_PROJECT_NAME }}
+          SONAR_PROJECT_VERSION: ${{ inputs.SONAR_PROJECT_VERSION }}
+          SONAR_PYTHON_VERSION: 3.8
+          SONAR_SOURCES: invoice
+          SONAR_COVERAGE_REPORT_PATHS: ../report/coverage.xml
+          SONAR_FLAKE8_REPORT_PATHS: ../report/flake8-report.txt
+          SONAR_EXCLUSIONS: "**/migrations/**,**/static/**,**/media/**,**/tests/**"
+
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#  ci_module_flake8:
-#  ci_module_sonar:
