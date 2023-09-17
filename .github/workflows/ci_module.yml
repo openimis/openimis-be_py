@@ -5,7 +5,7 @@ on:
   workflow_call:
 
 jobs:
-  ci_module:
+  ci_module_build:
     runs-on: ubuntu-20.04
 
     services:
@@ -41,7 +41,6 @@ jobs:
           --health-retries 10
 
     steps:
-
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
@@ -146,6 +145,12 @@ jobs:
           DB_USER: sa
           DB_PASSWORD: GitHub999
 
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-artifacts
+          path: ./
+
       - name: Django tests PSQL
         working-directory: ./openimis/openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
@@ -171,6 +176,23 @@ jobs:
           #DEV_SERVER: true
           SITE_ROOT: api
 
+      - name: Flake8 Style Check
+        working-directory: ./openimis/openIMIS
+        # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
+        if: success() || failure()
+        run: |
+          # Flake8 Report 
+          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
+          MOD_DIR="../../current-module/${$MODULE_NAME}
+          flake8 --append-config=../.flake8 --output-file=flake8-report.txt $MOD_DIR
+
+  ci_module_mssql_tests:
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: code-artifacts
+
       - name: Django tests MSSQL
         working-directory: ./openimis/openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
@@ -193,12 +215,6 @@ jobs:
           #DEV_SERVER: true
           SITE_ROOT: api
           #REMOTE_USER_AUTHENTICATION: False
-
-      - name: Flake8 Style Check
-        working-directory: ./openimis/openIMIS
-        # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
-        if: success() || failure()
-        run: |
-          # Flake8 Report 
-          MOD_DIR="../../openimis-be-${MODULES}/${MODULES}
-          flake8 --append-config=../.flake8 --output-file=flake8-report.txt $MOD_DIR
+#  ci_module_mssql_test:
+#  ci_module_flake8:
+#  ci_module_sonar:
