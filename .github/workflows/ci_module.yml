@@ -382,7 +382,7 @@ jobs:
       SONAR_PYTHON_VERSION: 3.8
       SONAR_COVERAGE_REPORT_PATHS: ../report/coverage.xml
       SONAR_FLAKE8_REPORT_PATHS: ../report/flake8-report.txt
-      SONAR_EXCLUSIONS: ${{ inputs.SONAR_PROJECT_VERSION:-"**/migrations/**,**/static/**,**/media/**,**/tests/**"}}
+      SONAR_EXCLUSIONS: ${{ inputs.SONAR_PROJECT_VERSION:-**/migrations/**,**/static/**,**/media/**,**/tests/**}}
       SONAR_SOURCES: ${{ inputs.SONAR_SOURCES }}
     steps:
       - name: Copy Current branch
