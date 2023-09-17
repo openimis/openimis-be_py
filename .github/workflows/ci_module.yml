@@ -271,10 +271,7 @@ jobs:
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           
           # This has to exit 0, or report is not generated 
-          python -m coverage run --source=$MODULE_NAME --omit=*/migrations/* ./manage.py test --keepdb $MODULES || true
-          python -m coverage xml -o coverage.xml
-          # Fail / Success Depends on this execution, coverage is done ahead in order to be available for sonar
-          python manage.py test --keepdb $MODULES
+          coverage run --source=$MODULES --omit=*/migrations/* ./manage.py test --keepdb $MODULES
         env:
           SECRET_KEY: secret
           DEBUG: true
@@ -287,6 +284,9 @@ jobs:
           DB_PASSWORD: GitHub999
           #DEV_SERVER: true
           SITE_ROOT: api
+      - name: Generate Report
+        working-directory: ./openimis/openIMIS
+        run: python -m coverage xml -o coverage.xml
       - name: Coverage results
         if: success() || failure()
         uses: actions/upload-artifact@v3
