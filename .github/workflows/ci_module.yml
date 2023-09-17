@@ -239,7 +239,6 @@ jobs:
           path: /tmp/
 
       - name: Decompress artifacts
-        working-directory: /
         run: |
           sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
           sudo tar -xzf /tmp/openimis.tar.gz -C .
