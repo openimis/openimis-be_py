@@ -188,6 +188,7 @@ jobs:
 
   ci_module_mssql_tests:
     runs-on: ubuntu-20.04
+    needs: ci_module_build
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v2
