@@ -79,7 +79,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: code-artifacts
-          path: openimis.tar.gz
+          path: /
 
 #      - name: Flake8 Style Check
 #        working-directory: ./openimis/openIMIS
@@ -234,7 +234,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: code-artifacts
-          path: openimis.tar.gz
+          path: /
 
       - name: Decompress artifacts
         run: |
