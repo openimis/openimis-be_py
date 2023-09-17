@@ -362,9 +362,11 @@ jobs:
           name: flake8-report.txt
           path: report
       - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: ${{ GITHUB_REPOSITORY }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #  ci_module_flake8:
 #  ci_module_sonar:
