@@ -41,6 +41,8 @@ jobs:
 
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           
+          echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
+          
           # Add or replace MODULE_NAME module in openimis.json (local version)
           echo $(jq --arg name "$MODULE_NAME" 'if [.modules[].name  ==  ($name)]| max then (.modules[]  | select(.name == ($name)) | .pip)|="../current-module" else .modules |= .+ [{name:($name), pip:"../current-module"}] end' openimis.json)  > openimis.json
           cat openimis.json
@@ -130,12 +132,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: code-artifacts
-          path: /
+          path: /tmp/
 
       - name: Decompress artifacts
         run: |
           sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
-          tar -xzf ./openimis.tar.gz -C .
+          sudo tar tar -xzf /tmp/openimis.tar.gz -C .
       - name: Initialize MSSQL
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
@@ -230,16 +232,16 @@ jobs:
           SITE_PACKAGES=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
 
-      - name: Download code artifact
+      - name: Download site-packages artifact
         uses: actions/download-artifact@v2
         with:
           name: code-artifacts
-          path: /
+          path: /tmp/
 
       - name: Decompress artifacts
         run: |
           sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
-          tar -xzf ./openimis.tar.gz -C .
+          sudo tar tar -xzf /tmp/openimis.tar.gz -C .
       - name: Initialize PSQL
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
@@ -289,5 +291,29 @@ jobs:
           DB_PASSWORD: GitHub999
           #DEV_SERVER: true
           SITE_ROOT: api
+      - name: Check if Sonar properties file exists
+        id: checkfile
+        run: |
+          if [[ -f "./current-module/sonar-project.properties" ]]; then
+            echo "::set-output name=exists::true"
+          else
+            echo "::set-output name=exists::false"
+          fi
+
+      - name: Coverage results
+        if: steps.checkfile.outputs.exists == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage.xml
+          path: ./openimis/openIMIS/coverage.xml
+
+      - name: SonarCloud Scan
+        if: steps.checkfile.outputs.exists == 'true'
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: ./current-module/${{ env.MODULE_NAME }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #  ci_module_flake8:
 #  ci_module_sonar:
