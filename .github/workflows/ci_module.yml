@@ -298,7 +298,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
-
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
         with:
@@ -356,11 +355,10 @@ jobs:
         with:
           name: flake8-report.txt
           path: /
-
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #  ci_module_flake8:
 #  ci_module_sonar:
