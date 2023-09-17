@@ -61,14 +61,14 @@ jobs:
       - name: Locate site-packages and upload
         run: |
           SITE_PACKAGES=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
-          echo $SITE_PACKAGES
+          echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
         id: locate
 
       - name: Upload Python site-packages as artifact
         uses: actions/upload-artifact@v2
         with:
           name: site-packages
-          path: ${{ steps.locate.outputs.SITE_PACKAGES }}
+          path: ${{ env.SITE_PACKAGES }}
 
       - name: Upload build as artifact
         uses: actions/upload-artifact@v2
