@@ -11,21 +11,28 @@ on:
       SONAR_PROJECT_KEY:
         description: 'SonarQube Project Key'
         required: false
+        type: string
       SONAR_ORGANIZATION:
         description: 'SonarQube Organization'
         required: false
+        type: string
       SONAR_PROJECT_NAME:
         description: 'SonarQube Project Name'
         required: false
+        type: string
       SONAR_PROJECT_VERSION:
         description: 'SonarQube Project Version'
         required: false
+        type: string
       SONAR_EXCLUSIONS:
         description: 'SonarQube Project Exclusions'
         required: false
+        type: string
       SONAR_SOURCES:
         description: 'SonarQube Project Sources'
         required: false
+        type: string
+
 jobs:
   build_backend:
     name: Build Backend
