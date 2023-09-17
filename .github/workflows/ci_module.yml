@@ -354,12 +354,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: coverage.xml
-          path: /
+          path: report
       - name: Download flake8 artifact
         uses: actions/download-artifact@v2
         with:
           name: flake8-report.txt
-          path: /
+          path: report
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
