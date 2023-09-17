@@ -3,14 +3,9 @@ name: Automated CI testing
 # | grep . | uniq -c filters out empty lines and then groups consecutive lines together with the number of occurrences
 on:
   workflow_call:
-    inputs:
-      config-path:
-        required: true
-        type: string
     secrets:
-      # Not mandatory for the time being. In order to ensure all repositories are
-      # using sonar we should enforce it in future
       SONAR_TOKEN:
+        description: 'A sonar access token passed from the caller workflow'
         required: false
 
 
