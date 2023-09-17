@@ -193,33 +193,36 @@ jobs:
           SITE_ROOT: api
           #REMOTE_USER_AUTHENTICATION: False
   ci_module_psql_test:
-    - name: Download build artifacts
-      uses: actions/download-artifact@v2
-      with:
-        name: code-artifacts
-    - name: Django tests PSQL
-      working-directory: ./openimis/openIMIS
-      # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
-      if: success() || failure()
-      run: |
-        python -V
-        export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
-        echo $MODULES
-        python manage.py test --keepdb $MODULES
-        # Generate sonar report 
-        coverage run --source=$MODULES --omit=*/migrations/* ./manage.py test --keepdb $MODULES
-        coverage xml -o coverage.xml
-      env:
-        SECRET_KEY: secret
-        DEBUG: true
-        DB_ENGINE: django.db.backends.postgresql
-        #DJANGO_SETTINGS_MODULE: hat.settings
-        DB_HOST: localhost
-        DB_PORT: 5432
-        DB_NAME: imis
-        DB_USER: postgres
-        DB_PASSWORD: GitHub999
-        #DEV_SERVER: true
-        SITE_ROOT: api
+    runs-on: ubuntu-20.04
+    needs: ci_module_build
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: code-artifacts
+      - name: Django tests PSQL
+        working-directory: ./openimis/openIMIS
+        # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
+        if: success() || failure()
+        run: |
+          python -V
+          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
+          echo $MODULES
+          python manage.py test --keepdb $MODULES
+          # Generate sonar report 
+          coverage run --source=$MODULES --omit=*/migrations/* ./manage.py test --keepdb $MODULES
+          coverage xml -o coverage.xml
+        env:
+          SECRET_KEY: secret
+          DEBUG: true
+          DB_ENGINE: django.db.backends.postgresql
+          #DJANGO_SETTINGS_MODULE: hat.settings
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: imis
+          DB_USER: postgres
+          DB_PASSWORD: GitHub999
+          #DEV_SERVER: true
+          SITE_ROOT: api
 #  ci_module_flake8:
 #  ci_module_sonar:
