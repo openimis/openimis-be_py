@@ -137,7 +137,7 @@ jobs:
       - name: Decompress artifacts
         run: |
           sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
-          sudo tar tar -xzf /tmp/openimis.tar.gz -C .
+          sudo tar -xzf /tmp/openimis.tar.gz -C .
       - name: Initialize MSSQL
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
@@ -239,9 +239,10 @@ jobs:
           path: /tmp/
 
       - name: Decompress artifacts
+        working-directory: /
         run: |
           sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
-          sudo tar tar -xzf /tmp/openimis.tar.gz -C .
+          sudo tar -xzf /tmp/openimis.tar.gz -C .
       - name: Initialize PSQL
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
