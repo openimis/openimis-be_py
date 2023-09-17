@@ -93,7 +93,7 @@ jobs:
 
   ci_module_mssql_tests:
     runs-on: ubuntu-20.04
-    needs: ci_module_build
+    needs: build_backend
     services:
       mssql:
         image: mcr.microsoft.com/mssql/server:2017-latest
@@ -196,7 +196,7 @@ jobs:
           #REMOTE_USER_AUTHENTICATION: False
   ci_module_psql_test:
     runs-on: ubuntu-20.04
-    needs: ci_module_build
+    needs: build_backend
     services:
       pgsql:
         image: postgres
