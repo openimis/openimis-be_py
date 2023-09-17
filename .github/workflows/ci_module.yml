@@ -93,6 +93,10 @@ jobs:
           --health-retries=10
           --health-cmd="/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${SA_PASSWORD} -Q 'SELECT 1' || exit 1"
     steps:
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
       - name: Download build artifacts
         uses: actions/download-artifact@v2
         with:
@@ -175,6 +179,10 @@ jobs:
           --health-timeout 5s
           --health-retries 10
     steps:
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
       - name: Download build artifacts
         uses: actions/download-artifact@v2
         with:
