@@ -114,7 +114,7 @@ jobs:
           --health-cmd="/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${SA_PASSWORD} -Q 'SELECT 1' || exit 1"
     steps:
       - name: Use build setup
-        uses: ./.github/workflows/shared-module-ci-steps.yml@${{ GITHUB_REF_NAME }}
+        uses: ./.github/workflows/shared-module-ci-steps.yml@${GITHUB_REF_NAME}
       - name: Initialize MSSQL
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
