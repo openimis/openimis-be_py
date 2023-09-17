@@ -8,8 +8,6 @@ on:
       # using sonar we should enforce it in future
       SONAR_TOKEN:
         required: false
-      GITHUB_TOKEN:
-        required: false
 
 
 jobs:
