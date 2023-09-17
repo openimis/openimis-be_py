@@ -194,7 +194,7 @@ jobs:
           --health-retries 10
     steps:
       - name: Use build setup
-        uses: ./.github/workflows/shared-module-ci-steps.yml@${{ github.head_ref }}
+        uses: ./.github/workflows/shared-module-ci-steps.yml@${GITHUB_REF_NAME}
       - name: Initialize PSQL
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
