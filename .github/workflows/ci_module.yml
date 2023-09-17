@@ -267,10 +267,11 @@ jobs:
           python -V
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
           echo $MODULES
-          python manage.py test --keepdb $MODULES
           # Generate sonar report 
           coverage run --source=$MODULES --omit=*/migrations/* ./manage.py test --keepdb $MODULES
           coverage xml -o coverage.xml
+          # Fail / Success Depends on this execution, coverage is done ahead in order to be available for sonar
+          python manage.py test --keepdb $MODULES
         env:
           SECRET_KEY: secret
           DEBUG: true
@@ -327,7 +328,7 @@ jobs:
           # Flake8 Report
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           MOD_DIR="../../current-module/$MODULE_NAME"
-          flake8 --append-config=../.flake8 --output-file=flake8-report.txt $MOD_DIR
+          python -m flake8 --append-config=../.flake8 --output-file=flake8-report.txt $MOD_DIR
       - name: Flake8 results upload
         if: success() || failure()
         uses: actions/upload-artifact@v3
