@@ -6,6 +6,7 @@ on:
 
 jobs:
   build_backend:
+    name: Build Backend
     runs-on: ubuntu-20.04
     steps:
       - name: Set up Python 3.8
@@ -94,6 +95,7 @@ jobs:
 #          flake8 --append-config=../.flake8 --output-file=flake8-report.txt $MOD_DIR
 
   ci_module_mssql_tests:
+    name: Run All Tests (MSSQL)
     runs-on: ubuntu-20.04
     needs: build_backend
     services:
@@ -197,6 +199,7 @@ jobs:
           SITE_ROOT: api
           #REMOTE_USER_AUTHENTICATION: False
   ci_module_psql_test:
+    name: Run All Tests (PSQL)
     runs-on: ubuntu-20.04
     needs: build_backend
     services:
@@ -291,30 +294,33 @@ jobs:
           DB_PASSWORD: GitHub999
           #DEV_SERVER: true
           SITE_ROOT: api
-      - name: Check if Sonar properties file exists
-        if: success() || failure()
-        id: checkfile
-        run: |
-          if [[ -f "./current-module/sonar-project.properties" ]]; then
-            echo "::set-output name=exists::true"
-          else
-            echo "::set-output name=exists::false"
-          fi
-
       - name: Coverage results
-        if: steps.checkfile.outputs.exists == 'true'
+        if: success() || failure()
         uses: actions/upload-artifact@v3
         with:
           name: coverage.xml
           path: ./openimis/openIMIS/coverage.xml
-
-      - name: SonarCloud Scan
-        if: steps.checkfile.outputs.exists == 'true'
-        uses: SonarSource/sonarcloud-github-action@master
+  sonar_scan:
+    name: Run Sonar Scan
+    runs-on: ubuntu-20.04
+    needs: ci_module_psql_test
+    if: always()
+    steps:
+      - name: Copy Current branch
+        uses: actions/checkout@v3
         with:
-          projectBaseDir: ./current-module/${{ env.MODULE_NAME }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
+      - name: Download coverage artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage.xml
+          path: /
+
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #  ci_module_flake8:
 #  ci_module_sonar:
