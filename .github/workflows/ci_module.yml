@@ -187,6 +187,7 @@ jobs:
           flake8 --append-config=../.flake8 --output-file=flake8-report.txt $MOD_DIR
 
   ci_module_mssql_tests:
+    runs-on: ubuntu-20.04
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v2
