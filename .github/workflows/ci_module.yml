@@ -155,6 +155,9 @@ jobs:
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
           echo $MODULES
           python manage.py test --keepdb $MODULES
+          # Generate sonar report 
+          coverage run --source=$MODULES --omit=*/migrations/* ./manage.py test --keepdb $MODULES
+          coverage xml -o coverage.xml
         env:
           SECRET_KEY: secret
           DEBUG: true
@@ -190,3 +193,12 @@ jobs:
           #DEV_SERVER: true
           SITE_ROOT: api
           #REMOTE_USER_AUTHENTICATION: False
+
+      - name: Flake8 Style Check
+        working-directory: ./openimis/openIMIS
+        # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
+        if: success() || failure()
+        run: |
+          # Flake8 Report 
+          MOD_DIR="../../openimis-be-${MODULES}/${MODULES}
+          flake8 --append-config=../.flake8 --output-file=flake8-report.txt $MOD_DIR
