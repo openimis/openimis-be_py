@@ -338,7 +338,7 @@ jobs:
   sonar_scan:
     name: Run Sonar Scan
     runs-on: ubuntu-20.04
-    needs: ci_module_psql_test
+    needs: [ci_module_psql_test, flake-8-linter]
     if: always()
     steps:
       - name: Copy Current branch
