@@ -268,8 +268,8 @@ jobs:
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
           echo $MODULES
           # Generate sonar report 
-          coverage run --source=$MODULES --omit=*/migrations/* ./manage.py test --keepdb $MODULES
-          coverage xml -o coverage.xml
+          python -m coverage run --source=$MODULES --omit=*/migrations/* ./manage.py test --keepdb $MODULES
+          python -m coverage xml -o coverage.xml
           # Fail / Success Depends on this execution, coverage is done ahead in order to be available for sonar
           python manage.py test --keepdb $MODULES
         env:
