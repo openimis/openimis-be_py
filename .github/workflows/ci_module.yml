@@ -83,17 +83,6 @@ jobs:
         with:
           name: code-artifacts
           path: openimis.tar.gz
-
-#      - name: Flake8 Style Check
-#        working-directory: ./openimis/openIMIS
-#        # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
-#        if: success() || failure()
-#        run: |
-#          # Flake8 Report
-#          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
-#          MOD_DIR="../../current-module/${$MODULE_NAME}
-#          flake8 --append-config=../.flake8 --output-file=flake8-report.txt $MOD_DIR
-
   ci_module_mssql_tests:
     name: Run All Tests (MSSQL)
     runs-on: ubuntu-20.04
@@ -300,6 +289,52 @@ jobs:
         with:
           name: coverage.xml
           path: ./openimis/openIMIS/coverage.xml
+  flake-8-linter:
+    name: Run flake8 check
+    runs-on: ubuntu-20.04
+    needs: build_backend
+    steps:
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Download site-packages artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: site-packages
+          path: /tmp/
+
+      - name: Locate site-packages
+        run: |
+          SITE_PACKAGES=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
+          echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
+
+      - name: Download site-packages artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: code-artifacts
+          path: /tmp/
+
+      - name: Decompress artifacts
+        run: |
+          sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
+          sudo tar -xzf /tmp/openimis.tar.gz -C .
+      - name: Flake8 Style Check
+        working-directory: ./openimis/openIMIS
+        # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
+        if: success() || failure()
+        run: |
+          # Flake8 Report
+          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
+          MOD_DIR="../../current-module/${$MODULE_NAME}
+          flake8 --append-config=../.flake8 --output-file=flake8-report.txt $MOD_DIR
+      - name: Flake8 results upload
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: flake8-report.txt
+          path: ./openimis/openIMIS/flake8-report.txt
   sonar_scan:
     name: Run Sonar Scan
     runs-on: ubuntu-20.04
@@ -315,6 +350,11 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: coverage.xml
+          path: /
+      - name: Download flake8 artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: flake8-report.txt
           path: /
 
     - name: SonarCloud Scan
