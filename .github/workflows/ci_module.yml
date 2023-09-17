@@ -378,13 +378,17 @@ jobs:
       SONAR_PROJECT_KEY: ${{ inputs.SONAR_PROJECT_KEY }}
       SONAR_ORGANIZATION: ${{ inputs.SONAR_ORGANIZATION }}
       SONAR_PROJECT_NAME: ${{ inputs.SONAR_PROJECT_NAME }}
-      SONAR_PROJECT_VERSION: ${{ inputs.SONAR_PROJECT_VERSION:-1.0 }}
+      SONAR_PROJECT_VERSION: ${{ inputs.SONAR_PROJECT_VERSION }}
       SONAR_PYTHON_VERSION: 3.8
       SONAR_COVERAGE_REPORT_PATHS: ../report/coverage.xml
       SONAR_FLAKE8_REPORT_PATHS: ../report/flake8-report.txt
-      SONAR_EXCLUSIONS: ${{ inputs.SONAR_PROJECT_VERSION:-**/migrations/**,**/static/**,**/media/**,**/tests/**}}
       SONAR_SOURCES: ${{ inputs.SONAR_SOURCES }}
     steps:
+      - name: Set environment variables with default values
+        run: |
+          echo "SONAR_PROJECT_VERSION=${{ inputs.SONAR_PROJECT_VERSION:-1.0 }}" >> $GITHUB_ENV
+          echo "SONAR_EXCLUSIONS=${{ inputs.SONAR_EXCLUSIONS:-'**/migrations/**,**/static/**,**/media/**,**/tests/**' }}" >> $GITHUB_ENV
+
       - name: Copy Current branch
         uses: actions/checkout@v3
         with:
@@ -410,7 +414,7 @@ jobs:
           SONAR_PROJECT_NAME: ${{ inputs.SONAR_PROJECT_NAME }}
           SONAR_PROJECT_VERSION: ${{ inputs.SONAR_PROJECT_VERSION }}
           SONAR_PYTHON_VERSION: 3.8
-          SONAR_SOURCES: invoice
+          SONAR_SOURCES: ${{ inputs.SONAR_SOURCES }}
           SONAR_COVERAGE_REPORT_PATHS: ../report/coverage.xml
           SONAR_FLAKE8_REPORT_PATHS: ../report/flake8-report.txt
           SONAR_EXCLUSIONS: "**/migrations/**,**/static/**,**/media/**,**/tests/**"
