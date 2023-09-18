@@ -421,7 +421,6 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
-          projectBaseDir: ${GITHUB_REPOSITORY}
           args: >
             -Dsonar.projectKey=${{ inputs.SONAR_PROJECT_KEY }}
             -Dsonar.organization=${{ inputs.SONAR_ORGANIZATION }}
