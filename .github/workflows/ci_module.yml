@@ -428,8 +428,8 @@ jobs:
             -Dsonar.projectVersion=${{ env.SONAR_PROJECT_VERSION }}
             -Dsonar.python.version=3.8
             -Dsonar.sources=${{ inputs.SONAR_SOURCES }}
-            -Dsonar.python.coverage.reportPaths=../report/coverage.xml
-            -Dsonar.python.flake8.reportPaths../report/flake8-report.txt
+            -Dsonar.python.coverage.reportPaths=report/coverage.xml
+            -Dsonar.python.flake8.reportPaths=report/flake8-report.txt
             -Dsonar.exclusions=${{ env.SONAR_EXCLUSIONS }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
