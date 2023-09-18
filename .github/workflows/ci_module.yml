@@ -51,6 +51,8 @@ jobs:
       - name: Copy Current branch
         uses: actions/checkout@v2
         with:
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
           path: './current-module'
 
       - name: Cache dependencies
@@ -370,7 +372,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: flake8-report.txt
-          path: ./openimis/openIMIS/flake8-report.txt
+          path: ./openimis/flake8-report.txt
   sonar_scan:
     name: Run Sonar Scan
     runs-on: ubuntu-20.04
@@ -399,11 +401,6 @@ jobs:
           else
             echo "SONAR_EXCLUSIONS=${{ inputs.SONAR_EXCLUSIONS }}" >> $GITHUB_ENV
           fi
-      - name: Copy Current branch
-        uses: actions/checkout@v3
-        with:
-          # Disabling shallow clone is recommended for improving relevancy of reporting
-          fetch-depth: 0
       - name: Download coverage artifact
         uses: actions/download-artifact@v2
         with:
@@ -422,13 +419,14 @@ jobs:
       - name: Decompress artifacts
         run: |
           # This path is required by the structure of coverage.xml paths
-          mkdir openimis-be-invoice_py
-          sudo tar -xzf /tmp/openimis.tar.gz -C ./openimis-be-invoice_py
+          sudo tar -xzf /tmp/openimis.tar.gz -C .
       - name: Debug
         run: |
           ls 
-          echo "$GITHUB_REPOSITORY"
+          echo "---"
           ls report
+          echo "---"
+          ls current-module
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
@@ -439,7 +437,7 @@ jobs:
             -Dsonar.projectName=${{ inputs.SONAR_PROJECT_NAME }}
             -Dsonar.projectVersion=${{ env.SONAR_PROJECT_VERSION }}
             -Dsonar.python.version=3.8
-            -Dsonar.sources=${{ inputs.SONAR_SOURCES }}
+            -Dsonar.sources=current-module
             -Dsonar.python.coverage.reportPaths=report/coverage.xml
             -Dsonar.python.flake8.reportPaths=report/flake8-report.txt
             -Dsonar.exclusions=${{ env.SONAR_EXCLUSIONS }}
