@@ -450,7 +450,7 @@ jobs:
             -Dsonar.projectVersion=${{ env.SONAR_PROJECT_VERSION }}
             -Dsonar.python.version=3.8
             -Dsonar.sources=current-module
-            -Dsonar.python.coverage.reportPaths=report/coverage/coverage1.xml,report/coverage/coverage2.xml,report/coverage/coverage3.xml,report/coverage/coverage4.xml,report/coverage/coverage5.xml
+            -Dsonar.python.coverage.reportPaths=report/coverage1.xml,report/coverage2.xml,report/coverage3.xml,report/coverage4.xml,report/coverage5.xml
             -Dsonar.python.flake8.reportPaths=report/flake8-report.txt
             -Dsonar.exclusions=${{ env.SONAR_EXCLUSIONS }}
             -X
