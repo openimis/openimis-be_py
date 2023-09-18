@@ -372,6 +372,8 @@ jobs:
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           MOD_DIR="../current-module/$MODULE_NAME"
           python -m flake8 --output-file=flake8-report.txt $MOD_DIR --exit-zero
+          sed -i 's|\.\./current-module/||g' flake8-report.txt
+          
           python -m flake8 $MOD_DIR
       - name: Flake8 results upload
         if: success() || failure()
