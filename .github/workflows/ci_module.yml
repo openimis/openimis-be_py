@@ -324,6 +324,7 @@ jobs:
           # /home/runner/work/openimis-be-invoice_py/openimis-be-invoice_py/current-module/
           # It's required by circle-ci setup
           sed -i 's|/home/runner/work/openimis-be-\(.*\)_py/openimis-be-\1_py/current-module/|./|g' coverage.xml
+          sed -i 's|filename="./|filename="|g' coverage.xml
           
           cat coverage.xml
       - name: Coverage results
