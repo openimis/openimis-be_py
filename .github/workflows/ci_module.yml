@@ -324,12 +324,8 @@ jobs:
           # /home/runner/work/openimis-be-invoice_py/openimis-be-invoice_py/current-module/
           # It's required by circle-ci setup
           mkdir coverage
-          sed -E 's|/home/runner/work/openimis-be-\(.*\)_py/openimis-be-\(.*\)_py/current-module/||g' coverage.xml >> coverage/coverage1.xml
-          sed -E 's|/home/runner/work/(.*?)/(.*?)/current-module/|/home/runner/work/current-module/|' coverage.xml >> coverage/coverage1.xml
-          sed -E 's|/home/runner/work/(.*?)/(.*?)/current-module/|./current-module/|' coverage.xml >> coverage/coverage2.xml
-          sed -E 's|/home/runner/work/(.*?)/(.*?)/current-module/|/current-module/|' coverage.xml >> coverage/coverage3.xml
-          sed -E 's|/home/runner/work/(.*?)/(.*?)/current-module/|/|' coverage.xml >> coverage/coverage4.xml
-          sed -E 's|/home/runner/work/(.*?)/(.*?)/current-module/|./|' coverage.xml >> coverage/coverage5.xml
+          sed -E 's|/home/runner/work/(.*?)/(.*?)/current-module/|./current-module/|' coverage.xml >> coverage/coverage1.xml
+          sed -E 's|/home/runner/work/(.*?)/(.*?)/current-module/|./|' coverage.xml >> coverage/coverage2.xml
           
           cat coverage.xml
       - name: Coverage results
@@ -450,7 +446,7 @@ jobs:
             -Dsonar.projectVersion=${{ env.SONAR_PROJECT_VERSION }}
             -Dsonar.python.version=3.8
             -Dsonar.sources=current-module
-            -Dsonar.python.coverage.reportPaths=report/coverage1.xml,report/coverage2.xml,report/coverage3.xml,report/coverage4.xml,report/coverage5.xml
+            -Dsonar.python.coverage.reportPaths=report/coverage1.xml,report/coverage2.xml
             -Dsonar.python.flake8.reportPaths=report/flake8-report.txt
             -Dsonar.exclusions=${{ env.SONAR_EXCLUSIONS }}
             -X
