@@ -316,7 +316,9 @@ jobs:
       - name: Generate Coverage Report
         if: always()
         working-directory: ./openimis/openIMIS
-        run: python -m coverage xml -o coverage.xml
+        run: |
+          python -m coverage xml -o coverage.xml
+          cat coverage.xml
       - name: Coverage results
         if: success() || failure()
         uses: actions/upload-artifact@v3
