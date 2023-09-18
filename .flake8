@@ -11,7 +11,7 @@ exclude =
     openIMIS/wsgi.py,
     dist,
     openIMIS/migrations,
-    **/migrations
+    **/**/**/migrations,
 
 ignore =
     # At least two spaces before inline comment.

@@ -325,7 +325,7 @@ jobs:
           # It's required by circle-ci setup
           sed -i 's|/home/runner/work/openimis-be-\(.*\)-py/openimis-be-\1-py/current-module/|./\1/|g' coverage.xml
           
-          cat coverage.xml- name: Fix Paths in Coverage Report
+          cat coverage.xml
       - name: Coverage results
         if: success() || failure()
         uses: actions/upload-artifact@v3
