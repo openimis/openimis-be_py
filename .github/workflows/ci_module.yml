@@ -320,7 +320,12 @@ jobs:
         working-directory: ./openimis/openIMIS
         run: |
           python -m coverage xml -o coverage.xml
-          cat coverage.xml
+          # Only leave actual code part, skip absuolute directory like 
+          # /home/runner/work/openimis-be-invoice_py/openimis-be-invoice_py/current-module/
+          # It's required by circle-ci setup
+          sed -i 's|/home/runner/work/openimis-be-\(.*\)-py/openimis-be-\1-py/current-module/|./\1/|g' coverage.xml
+          
+          cat coverage.xml- name: Fix Paths in Coverage Report
       - name: Coverage results
         if: success() || failure()
         uses: actions/upload-artifact@v3
