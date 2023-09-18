@@ -397,7 +397,6 @@ jobs:
       SONAR_PROJECT_NAME: ${{ inputs.SONAR_PROJECT_NAME }}
       SONAR_PROJECT_VERSION: ${{ inputs.SONAR_PROJECT_VERSION }}
       SONAR_PYTHON_VERSION: 3.8
-      SONAR_COVERAGE_REPORT_PATHS: ../report/coverage/coverage1.xml,../report/coverage/coverage2.xml,../report/coverage/coverage3.xml,../report/coverage/coverage4.xml,../report/coverage/coverage5.xml
       SONAR_FLAKE8_REPORT_PATHS: ../report/flake8-report.txt
       SONAR_SOURCES: ${{ inputs.SONAR_SOURCES }}
     steps:
@@ -452,7 +451,7 @@ jobs:
             -Dsonar.python.version=3.8
             -Dsonar.sources=current-module
             -Dsonar.python.coverage.reportPaths=report/coverage.xml
-            -Dsonar.python.flake8.reportPaths=report/flake8-report.txt
+            -Dsonar.python.flake8.reportPaths=report/coverage/coverage1.xml,report/coverage/coverage2.xml,report/coverage/coverage3.xml,report/coverage/coverage4.xml,report/coverage/coverage5.xml
             -Dsonar.exclusions=${{ env.SONAR_EXCLUSIONS }}
             -X
         env:
