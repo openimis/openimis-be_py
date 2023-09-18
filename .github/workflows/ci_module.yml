@@ -399,9 +399,6 @@ jobs:
           else
             echo "SONAR_EXCLUSIONS=${{ inputs.SONAR_EXCLUSIONS }}" >> $GITHUB_ENV
           fi
-      - name: Decompress site packages artifacts
-        run: |
-          sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
       - name: Copy Current branch
         uses: actions/checkout@v3
         with:
