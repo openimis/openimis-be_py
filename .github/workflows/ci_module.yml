@@ -421,7 +421,9 @@ jobs:
           path: /tmp/
       - name: Decompress artifacts
         run: |
-          sudo tar -xzf /tmp/openimis.tar.gz -C .
+          # This path is required by the structure of coverage.xml paths
+          mkdir openimis-be-invoice_py
+          sudo tar -xzf /tmp/openimis.tar.gz -C ./openimis-be-invoice_py
       - name: Debug
         run: |
           ls 
