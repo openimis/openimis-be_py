@@ -430,16 +430,17 @@ jobs:
           sudo tar -xzf /tmp/openimis.tar.gz -C .
       - name: Debug
         run: |
-          ls 
+          ls -a
           echo "---"
           ls report
           echo "---"
-          ls current-module
+          ls current-module -a
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
           args: >
+            -Dsonar.scm.provider=git
             -Dsonar.projectKey=${{ inputs.SONAR_PROJECT_KEY }}
             -Dsonar.organization=${{ inputs.SONAR_ORGANIZATION }}
             -Dsonar.projectName=${{ inputs.SONAR_PROJECT_NAME }}
