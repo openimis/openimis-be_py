@@ -323,7 +323,7 @@ jobs:
           # Only leave actual code part, skip absuolute directory like 
           # /home/runner/work/openimis-be-invoice_py/openimis-be-invoice_py/current-module/
           # It's required by circle-ci setup
-          sed -i 's|/home/runner/work/openimis-be-\(.*\)-py/openimis-be-\1-py/current-module/|./\1/|g' coverage.xml
+          sed -i 's|/home/runner/work/openimis-be-\(.*\)_py/openimis-be-\1_py/current-module/|./\1/|g' coverage.xml
           
           cat coverage.xml
       - name: Coverage results
