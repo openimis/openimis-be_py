@@ -360,9 +360,9 @@ jobs:
         run: |
           # Flake8 Report
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
-          MOD_DIR="../../current-module/$MODULE_NAME"
-          python -m flake8 --append-config=../.flake8 --output-file=flake8-report.txt $MOD_DIR --exit-zero
-          python -m flake8 --append-config=../.flake8 $MOD_DIR
+          MOD_DIR="../current-module/$MODULE_NAME"
+          python -m flake8 --output-file=flake8-report.txt $MOD_DIR --exit-zero
+          python -m flake8 $MOD_DIR
       - name: Flake8 results upload
         if: success() || failure()
         uses: actions/upload-artifact@v3
