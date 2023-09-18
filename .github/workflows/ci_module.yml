@@ -363,7 +363,7 @@ jobs:
           sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
           sudo tar -xzf /tmp/openimis.tar.gz -C .
       - name: Flake8 Style Check
-        working-directory: ./openimis/openIMIS
+        working-directory: ./openimis/
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
         if: success() || failure()
         run: |
