@@ -74,7 +74,7 @@ jobs:
           echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
           
           # Add or replace MODULE_NAME module in openimis.json (local version)
-          echo $(jq --arg name "$MODULE_NAME" 'if [.modules[].name  ==  ($name)]| max then (.modules[]  | select(.name == ($name)) | .pip)|="../current-module" else .modules |= .+ [{name:($name), pip:"../current-module"}] end' openimis.json)  > openimis.json
+          echo $(jq --arg name "$MODULE_NAME" 'if [.modules[].name  ==  ($name)]| max then (.modules[]  | select(.name == ($name)) | .pip)|="-e ../current-module" else .modules |= .+ [{name:($name), pip:"../current-module"}] end' openimis.json)  > openimis.json
           cat openimis.json
 
       - name: Install Python dependencies
