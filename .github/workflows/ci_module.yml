@@ -440,7 +440,6 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         with:
           args: >
-            -Dsonar.scm.provider=git
             -Dsonar.projectKey=${{ inputs.SONAR_PROJECT_KEY }}
             -Dsonar.organization=${{ inputs.SONAR_ORGANIZATION }}
             -Dsonar.projectName=${{ inputs.SONAR_PROJECT_NAME }}
