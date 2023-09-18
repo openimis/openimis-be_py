@@ -412,6 +412,12 @@ jobs:
         with:
           name: flake8-report.txt
           path: report
+      - name: Debug
+        run: |
+          ls 
+          echo "$GITHUB_REPOSITORY"
+          ls report
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
