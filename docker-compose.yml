@@ -1,26 +1,25 @@
-version: "2.4"
+version: "3.7"
 
 services:
   db:
     container_name: ${PROJECT_NAME:-openimis}-db
-    build:
-      context: https://github.com/openimis/database_postgresql.git#${DB_BRANCH:-develop}
-      args:
-        - POSTGRES_PASSWORD=${DB_PASSWORD}
+    image: ghcr.io/openimis/openimis-pgsql:${DB_TAG:-latest}
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
+      - INIT_MODE=${INIT_MODE}
     healthcheck:
-      test: pg_isready -U ${DB_USER} -d ${DB_NAME}
+      test: ['CMD', 'pg_isready', '-U', "$DB_USER", '-d', "$DB_NAME"]
       interval: 10s
       timeout: 5s
       retries: 5
       start_period: 30s
     volumes:
       - database:/var/lib/postgresql/data
+    restart: always
     ports:
       - 5432:5432
-    restart: always
+
 volumes:
   database:
