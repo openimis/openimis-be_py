@@ -31,7 +31,7 @@ def clone_repo(repo,  module_name):
         print(f"cloning {module_name}")
         repo_git = git.Repo.clone_from(remote, path)
         repo_git.git.checkout(BRANCH)
-    return {"name":f"{module_name}", "pip":f"{path} -e"} 
+    return {"name":f"{module_name}", "pip":f"-e {path}"} 
 
 def set_default(obj):
     if isinstance(obj, set):
