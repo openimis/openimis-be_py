@@ -1,4 +1,4 @@
-from config import GITHUB_TOKEN, USER_NAME
+from config import GITHUB_TOKEN, USER_NAME, BRANCH
 from utils import parse_pip, walk_config_be
 import os
 import json
@@ -24,10 +24,13 @@ def clone_repo(repo,  module_name):
     remote = f"https://{USER_NAME}:{GITHUB_TOKEN}@{repo.git_url[6:]}"
     if os.path.exists(path):
         print(f"pulling {module_name}")
-        git.Repo(path).remotes.origin.pull()
+        repo_git = git.Repo(path)
+        repo_git.remotes.origin.pull()
+        repo_git.git.checkout(BRANCH)
     else:
         print(f"cloning {module_name}")
-        git.Repo.clone_from(remote, path)
+        repo_git = git.Repo.clone_from(remote, path)
+        repo_git.git.checkout(BRANCH)
     return {"name":f"{module_name}", "pip":f"{path} -e"} 
 
 def set_default(obj):
