@@ -34,8 +34,6 @@ def extract_test(module):
     return cmds
 OPENIMIS_CONF = load_openimis_conf()
 CMDS = [
-    "echo '--- INIT TEST DATABASE ---'",
-    "python init_test_db.py",
 ]
 CMDS += list(itertools.chain(*map(extract_test, OPENIMIS_CONF["modules"])))
 print("\n".join(CMDS))
