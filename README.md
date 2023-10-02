@@ -325,6 +325,12 @@ This commands will build with the latest version of database. You can specify pa
 
 You can find more informations about seeting up db docker [here](https://github.com/openimis/openimis-db_dkr/tree/develop).
 
+### How to report another issues? 
+If you face another issues not described in that section you could use our [ticketing site](https://openimis.atlassian.net/servicedesk/customer/portal/1). 
+Here you can report any bugs/problems you faced during setting up openIMIS app. 
+
+
+## OpenSearch
 
 ### OpenSearch - Adding Environmental Variables to Your Build
 To configure environmental variables for your build, include the following:
@@ -338,6 +344,5 @@ For the dockerized instance, use opensearch:9200.
 achieve this by using the commands available in the business module: `python manage.py add_<model_name>_data_to_opensearch`. 
 This command loads existing data into OpenSearch.
 
-### How to report another issues? 
-If you face another issues not described in that section you could use our [ticketing site](https://openimis.atlassian.net/servicedesk/customer/portal/1). 
-Here you can report any bugs/problems you faced during setting up openIMIS app. 
+### OpenSearch - more details
+For more detailed information on OpenSearch configuration, please refer to the following [resource](https://github.com/openimis/openimis-be-opensearch_reports_py/pull/3).
