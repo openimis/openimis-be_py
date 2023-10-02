@@ -478,8 +478,8 @@ OPENSEARCH_DSL = {
     'default': {
         'hosts': os.environ.get("OPENSEARCH_HOST", '0.0.0.0:9200'),
         'http_auth': (
-            os.environ.get("OPENSEARCH_ADMIN"),
-            os.environ.get("OPENSEARCH_PASSWORD")
+            f"{os.environ.get('OPENSEARCH_ADMIN')}",
+            f"{os.environ.get('OPENSEARCH_PASSWORD')}"
         ),
         'timeout': 120,
     }
