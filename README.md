@@ -328,3 +328,22 @@ You can find more informations about seeting up db docker [here](https://github.
 ### How to report another issues? 
 If you face another issues not described in that section you could use our [ticketing site](https://openimis.atlassian.net/servicedesk/customer/portal/1). 
 Here you can report any bugs/problems you faced during setting up openIMIS app. 
+
+
+## OpenSearch
+
+### OpenSearch - Adding Environmental Variables to Your Build
+To configure environmental variables for your build, include the following:
+* `OPENSEARCH_HOST` - For the non-dockerized instance in a local context, set it to 0.0.0.0:9200. 
+For the dockerized instance, use opensearch:9200.
+* `OPENSEARCH_ADMIN` This variable is used for the admin username. (default value: admin)
+* `OPENSEARCH_PASSWORD`  This variable is used for the admin password. (default value: admin)
+
+### OpenSearch - How to initialize data after deployment
+* If you have initialized the application but still have some data to be transferred, you can effortlessly 
+achieve this by using the commands available in the business module: `python manage.py add_<model_name>_data_to_opensearch`. 
+This command loads existing data into OpenSearch.
+
+### OpenSearch - more details
+* For more comprehensive details on OpenSearch configuration, please consult the [resource](https://github.com/openimis/openimis-be-opensearch_reports_py/tree/develop) 
+provided in the README section.
