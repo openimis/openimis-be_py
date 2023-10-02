@@ -159,7 +159,8 @@ INSTALLED_APPS = [
     "django_apscheduler",
     "channels",  # Websocket support
     "developer_tools",
-    "drf_spectacular"  # Swagger UI for FHIR API
+    "drf_spectacular"  # Swagger UI for FHIR API,
+    "django_opensearch_dsl"
 ]
 INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["apscheduler_runner", "signal_binding"]  # Signal binding should be last installed module
@@ -472,3 +473,14 @@ FRONTEND_URL = os.environ.get("FRONTEND_URL", "")
 
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+OPENSEARCH_DSL = {
+    'default': {
+        'hosts': os.environ.get("OPENSEARCH_HOST", '0.0.0.0:9200'),
+        'http_auth': (
+            os.environ.get("OPENSEARCH_USER", "admin"),
+            os.environ.get("OPENSEARCH_PASSWORD", "admin")
+        ),
+        'timeout': 120,
+    }
+}
