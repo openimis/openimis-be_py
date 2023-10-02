@@ -159,7 +159,7 @@ INSTALLED_APPS = [
     "django_apscheduler",
     "channels",  # Websocket support
     "developer_tools",
-    "drf_spectacular"  # Swagger UI for FHIR API,
+    "drf_spectacular",  # Swagger UI for FHIR API
     "django_opensearch_dsl"
 ]
 INSTALLED_APPS += OPENIMIS_APPS
