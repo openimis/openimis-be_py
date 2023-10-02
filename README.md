@@ -345,4 +345,4 @@ achieve this by using the commands available in the business module: `python man
 This command loads existing data into OpenSearch.
 
 ### OpenSearch - more details
-For more detailed information on OpenSearch configuration, please refer to the following [resource](https://github.com/openimis/openimis-be-opensearch_reports_py/pull/3).
+For more detailed information on OpenSearch configuration, please refer to the following [resource](https://github.com/openimis/openimis-be-opensearch_reports_py/tree/develop).
