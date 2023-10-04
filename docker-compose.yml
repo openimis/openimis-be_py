@@ -3,14 +3,13 @@ version: "3.7"
 services:
   db:
     container_name: ${PROJECT_NAME:-openimis}-db
-    image: ghcr.io/openimis/openimis-pgsql:${DB_TAG:-latest}
+    image: ghcr.io/openimis/openimis-pgsql:${DB_TAG:-develop}
     environment:
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_USER=${DB_USER}
-      - INIT_MODE=${INIT_MODE}
+      - POSTGRES_PASSWORD=IMISuser@1234
+      - POSTGRES_DB=test_imis
+      - POSTGRES_USER=IMISuser
     healthcheck:
-      test: ['CMD', 'pg_isready', '-U', "$DB_USER", '-d', "$DB_NAME"]
+      test: ['CMD', 'pg_isready', '-U', "$DB_USER", '-d', "test_imis"]
       interval: 10s
       timeout: 5s
       retries: 5
