@@ -94,7 +94,7 @@
 		},
 		{
 			"name": "msystems",
-			"pip": "git+https://github.com/openimis/openimis-be-msystems_py.git@feature/OM-35#egg=openimis-be-msystems"
+			"pip": "git+https://github.com/openimis/openimis-be-msystems_py.git@feature/OM-38#egg=openimis-be-msystems"
 
 		}
 	]
