@@ -306,7 +306,7 @@ elif MSSQL:
 else:
     DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
 
-if not os.environ.get("NO_DATABASE_ENGINE", "False") == "True":
+if not os.environ.get("NO_DATABASE", "False") == "True":
     DATABASES = {
         "default": {
             "ENGINE": DB_ENGINE,
@@ -316,6 +316,17 @@ if not os.environ.get("NO_DATABASE_ENGINE", "False") == "True":
             "HOST": os.environ.get("DB_HOST"),
             "PORT": os.environ.get("DB_PORT"),
             "OPTIONS": DATABASE_OPTIONS,
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': ' ../script/sqlite.db',                      # Or path to database file if using sqlite3.
+            'USER': '',                      # Not used with sqlite3.
+            'PASSWORD': '',                  # Not used with sqlite3.
+            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
         }
     }
 
