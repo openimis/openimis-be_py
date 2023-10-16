@@ -46,7 +46,7 @@ jobs:
       - name: Pull openIMIS Backend
         run: |
           rm ./openimis -rf
-          git clone --depth=1 --branch=develop https://github.com/openimis/openimis-be_py.git ./openimis
+          git clone --depth=1 --branch=moldova https://github.com/openimis/openimis-be_py.git ./openimis
 
       - name: Copy Current branch
         uses: actions/checkout@v2
@@ -70,6 +70,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install jq
+
+          # required for python3-saml
+          sudo apt-get install pkg-config libxml2-dev libxmlsec1-dev libxmlsec1-openssl
 
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           
