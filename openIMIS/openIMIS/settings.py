@@ -307,16 +307,20 @@ else:
     DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
 
 if not os.environ.get("NO_DATABASE", "False") == "True":
+    
     DATABASES = {
         "default": {
             "ENGINE": DB_ENGINE,
-            "NAME": os.environ.get("DB_NAME"),
+            "NAME": os.environ.get("DB_NAME","imis"),
             "USER": os.environ.get("DB_USER"),
             "PASSWORD": os.environ.get("DB_PASSWORD"),
             "HOST": os.environ.get("DB_HOST"),
             "PORT": os.environ.get("DB_PORT"),
             "OPTIONS": DATABASE_OPTIONS,
-        }
+            'TEST': {
+                'NAME':  os.environ.get("DB_TEST_NAME","test_"+os.environ.get("DB_NAME", "imis")),
+            }
+        },
     }
 else:
     DATABASES = {
