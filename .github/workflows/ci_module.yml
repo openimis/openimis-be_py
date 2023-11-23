@@ -125,7 +125,7 @@ jobs:
           ACCEPT_EULA: Y
           SA_PASSWORD: GitHub999
         ports:
-          - 1433:1433
+          - 2433:1433
         # this health-cmd needed because the mssql container does not provide a health check
         options: >-
           --health-interval=10s
@@ -183,7 +183,7 @@ jobs:
           /opt/mssql-tools/bin/sqlcmd -S $DB_HOST -U $DB_USER -P $DB_PASSWORD -d $DB_NAME_TEST -i ./sql_mssql/output/fullDemoDatabase.sql | grep . | uniq -c
         env:
           DB_HOST: localhost
-          DB_PORT: 1433
+          DB_PORT: 2433
           DB_NAME: imis
           DB_USER: sa
           DB_PASSWORD: GitHub999
@@ -213,7 +213,7 @@ jobs:
           DB_ENGINE: mssql
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
-          DB_PORT: 1433
+          DB_PORT: 2433
           DB_NAME: imis
           DB_USER: sa
           DB_PASSWORD: GitHub999
@@ -222,14 +222,14 @@ jobs:
           #REMOTE_USER_AUTHENTICATION: False
   ci_module_psql_test:
     name: Run All Tests (PSQL)
-    runs-on: ubuntu-20.04
+    runs-on: [self-hosted, linux, x64]
     needs: build_backend
     services:
       pgsql:
         image: postgres
         env:
           DB_HOST: localhost
-          DB_PORT: 5432
+          DB_PORT: 6432
           POSTGRES_DB: imis
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: GitHub999
@@ -288,7 +288,7 @@ jobs:
 
         env:
           DB_HOST: localhost
-          DB_PORT: 5432
+          DB_PORT: 6432
           DB_NAME: imis
           DB_USER: postgres
           DB_PASSWORD: GitHub999
@@ -314,7 +314,7 @@ jobs:
           DB_ENGINE: django.db.backends.postgresql
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
-          DB_PORT: 5432
+          DB_PORT: 6432
           DB_NAME: imis
           DB_USER: postgres
           DB_PASSWORD: GitHub999
@@ -341,7 +341,7 @@ jobs:
           path: ./openimis/openIMIS/coverage
   flake-8-linter:
     name: Run flake8 check
-    runs-on: ubuntu-20.04
+    runs-on: [self-hosted, linux, x64]
     needs: build_backend
     steps:
       - name: Set up Python 3.8
@@ -389,7 +389,7 @@ jobs:
           path: ./openimis/flake8-report.txt
   sonar_scan:
     name: Run Sonar Scan
-    runs-on: ubuntu-20.04
+    runs-on: [self-hosted, linux, x64]
     needs: [ci_module_psql_test, flake-8-linter]
     if: always()
     env:
