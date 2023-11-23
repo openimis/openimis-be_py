@@ -11,7 +11,7 @@ on:
 
 jobs:
   ci_assembly:
-    runs-on: ubuntu-20.04
+    runs-on: [self-hosted, linux, x64]
 
     services:
       mssql:
@@ -20,7 +20,7 @@ jobs:
           ACCEPT_EULA: Y
           SA_PASSWORD: GitHub999
         ports:
-          - 1433:1433
+          - 2433:1433
         # this health-cmd needed because the mssql container does not provide a health check
         options: >-
           --health-interval=10s
@@ -38,7 +38,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: GitHub999
         ports:
-          - 5432:5432
+          - 6432:5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -99,7 +99,7 @@ jobs:
 
         env:
           DB_HOST: localhost
-          DB_PORT: 5432
+          DB_PORT: 6432
           DB_NAME: imis
           DB_USER: postgres
           DB_PASSWORD: GitHub999
@@ -127,7 +127,7 @@ jobs:
           /opt/mssql-tools/bin/sqlcmd -S $DB_HOST -U $DB_USER -P $DB_PASSWORD -d $DB_NAME_TEST -i ./sql_mssql/output/fullDemoDatabase.sql | grep . | uniq -c
         env:
           DB_HOST: localhost
-          DB_PORT: 1433
+          DB_PORT: 2433
           DB_NAME: imis
           DB_USER: sa
           DB_PASSWORD: GitHub999
@@ -147,7 +147,7 @@ jobs:
           DB_ENGINE: django.db.backends.postgresql
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
-          DB_PORT: 5432
+          DB_PORT: 6432
           DB_NAME: imis
           DB_USER: postgres
           DB_PASSWORD: GitHub999
@@ -169,7 +169,7 @@ jobs:
           DB_ENGINE: mssql
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
-          DB_PORT: 1433
+          DB_PORT: 2433
           DB_NAME: imis
           DB_USER: sa
           DB_PASSWORD: GitHub999
