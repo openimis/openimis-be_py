@@ -36,7 +36,7 @@ on:
 jobs:
   build_backend:
     name: Build Backend
-    runs-on: ubuntu-20.04
+    runs-on: [self-hosted, linux, x64]
     steps:
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
