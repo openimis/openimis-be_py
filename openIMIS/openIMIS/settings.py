@@ -344,6 +344,7 @@ elif DB_DEFAULT == 'PSQL' and os.environ.get("PSQL_DB_ENGINE", "False") != "Fals
             }
         }
 
+
 elif DB_DEFAULT == 'MSSQL' and os.environ.get("MSSQL_DB_ENGINE", "False") != "False":
     if "DB_OPTIONS" in os.environ:
         DATABASE_OPTIONS = json.loads(os.environ["DB_OPTIONS"])
@@ -375,6 +376,7 @@ elif DB_DEFAULT == 'MSSQL' and os.environ.get("MSSQL_DB_ENGINE", "False") != "Fa
     
 if "sql_server.pyodbc" in DATABASES["default"]['ENGINE'] or "mssql" in DATABASES["default"]['ENGINE']:
     MSSQL = True
+
 else:
     MSSQL = False
 
