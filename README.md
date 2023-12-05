@@ -78,7 +78,7 @@ At this stage, you may (depends on the database you connect to) need to:
 
 ### To run unit tests on a module (example openimis-be-claim)
 * from `openimis-be_py`
-  * (re)initialize test database (at this stage structure is not managed by django): `python init_test_db.py`
+  * (re)initialize test database (at this stage structure is not managed by django): 
   * launch unit tests, with the 'keep database' option: `python
     manage.py test --keep claim`
 
