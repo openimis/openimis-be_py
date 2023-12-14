@@ -209,6 +209,7 @@ jobs:
           # Remove api_fhir_r4 from MODULES
           MODULES=$(echo "$MODULES" | sed 's/api_fhir_r4//g' | xargs)
           echo $MODULES
+          pip freeze | grep openimis
           python manage.py test --debug-mode --timing --keepdb $MODULES
         env:
           SECRET_KEY: secret
