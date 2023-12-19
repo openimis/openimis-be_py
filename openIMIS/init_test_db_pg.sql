@@ -49,6 +49,9 @@ COMMENT ON EXTENSION "plpgsql" IS 'PL/pgSQL procedural language';
 -- Name: dateadd_day(integer, "date"); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
+CREATE USER postgres WITH PASSWORD '{PGPASSWORD}';
+GRANT ALL PRIVILEGES ON DATABASE test_IMIS TO postgres;
+
 CREATE FUNCTION "public"."dateadd_day"(integer, "date") RETURNS timestamp without time zone
     LANGUAGE "sql" IMMUTABLE
     AS $_$
@@ -2808,7 +2811,9 @@ CREATE TABLE "public"."tblFamilies" (
     "FamilyType" character varying(2),
     "InsureeID" integer NOT NULL,
     "LocationId" integer,
-    "RowID" "text"
+    "RowID" "text",
+    "Source" VARCHAR(50) NULL,
+    "SourceVersion" VARCHAR(15) NULL
 );
 
 
@@ -2838,6 +2843,16 @@ ALTER TABLE "public"."tblFamilies_FamilyID_seq" OWNER TO "postgres";
 
 ALTER SEQUENCE "public"."tblFamilies_FamilyID_seq" OWNED BY "public"."tblFamilies"."FamilyID";
 
+CREATE TABLE "public"."tblFamilySMS" (
+    FamilyID INT NOT NULL,
+    ApprovalOfSMS BOOLEAN,
+    LanguageOfSMS VARCHAR(5),
+    ValidityFrom TIMESTAMPTZ NOT NULL,
+    ValidityTo TIMESTAMPTZ,
+    CONSTRAINT UC_FamilySMS UNIQUE (FamilyID, ValidityTo)
+);
+
+ALTER TABLE "public"."tblFamilySMS" OWNER TO "postgres";
 
 --
 -- TOC entry 262 (class 1259 OID 20726)
@@ -3178,7 +3193,9 @@ CREATE TABLE "public"."tblIMISDefaults" (
     "SMSType" integer,
     "AppVersionFeedbackRenewal" numeric(3,1),
     "AppVersionImis" numeric(3,1),
-    "APIKey" character varying(100)
+    "APIKey" character varying(100),
+    "ActivationOption" smallint DEFAULT 2 NOT NULL,
+    "BypassReviewClaim" boolean DEFAULT true NOT NULL
 );
 
 
@@ -3191,7 +3208,8 @@ ALTER TABLE "public"."tblIMISDefaults" OWNER TO "postgres";
 
 CREATE TABLE "public"."tblIMISDefaultsPhone" (
     "RuleName" character varying(100),
-    "RuleValue" boolean
+    "RuleValue" boolean,
+    "Usage" character varying(200) NULL
 );
 
 
@@ -3248,7 +3266,9 @@ CREATE TABLE "public"."tblInsuree" (
     "ValidityTo" timestamp with time zone,
     "Vulnerability" boolean,
     "isOffline" boolean,
-    "passport" character varying(25)
+    "passport" character varying(25),
+    "Source" character varying(50) NULL,
+    "SourceVersion" character varying(15) NULL
 );
 
 
@@ -3388,7 +3408,8 @@ ALTER SEQUENCE "public"."tblItems_ItemID_seq" OWNED BY "public"."tblItems"."Item
 CREATE TABLE "public"."tblLanguages" (
     "LanguageCode" character varying(5) NOT NULL,
     "LanguageName" character varying(50) NOT NULL,
-    "SortOrder" integer
+    "SortOrder" integer,
+    "CountryCode" character varying(10) NULL
 );
 
 
@@ -3557,7 +3578,8 @@ CREATE TABLE "public"."tblPLItems" (
     "ValidityTo" timestamp with time zone,
     "LegacyID" integer,
     "AuditUserID" integer NOT NULL,
-    "LocationId" integer
+    "LocationId" integer,
+    "RowID" timestamp NULL
 );
 
 
@@ -3795,7 +3817,7 @@ ALTER SEQUENCE "public"."tblPayer_PayerID_seq" OWNED BY "public"."tblPayer"."Pay
 --
 
 CREATE TABLE "public"."tblPayment" (
-    "PaymentID" bigint NOT NULL,
+    "PaymentID" bigserial NOT NULL,
     "PaymentUUID" "uuid" NOT NULL,
     "ExpectedAmount" numeric(18,2),
     "ReceivedAmount" numeric(18,2),
@@ -3818,7 +3840,11 @@ CREATE TABLE "public"."tblPayment" (
     "DateLastSMS" timestamp with time zone,
     "LanguageName" character varying(10),
     "TypeOfPayment" character varying(50),
-    "TransferFee" numeric(18,2)
+    "TransferFee" numeric(18,2),
+    "SpReconcReqId" character varying(30) NULL,
+    "ReconciliationDate" timestamp NULL,
+    "PayerPhoneNumber" character varying(50) NULL,
+    "SmsRequired" bit NULL
 );
 
 
@@ -3830,7 +3856,7 @@ ALTER TABLE "public"."tblPayment" OWNER TO "postgres";
 --
 
 CREATE TABLE "public"."tblPaymentDetails" (
-    "PaymentDetailsID" bigint NOT NULL,
+    "PaymentDetailsID" bigserial NOT NULL,
     "PaymentID" bigint NOT NULL,
     "ProductCode" character varying(8),
     "InsuranceNumber" character varying(12),
@@ -3921,7 +3947,9 @@ CREATE TABLE "public"."tblPolicy" (
     "FamilyID" integer NOT NULL,
     "OfficerID" integer,
     "ProdID" integer NOT NULL,
-    "RowID" "bytea"
+    "RowID" "bytea",
+    "Source" character varying(50) NULL,
+    "SourceVersion" character varying(15) NULL
 );
 
 
@@ -3933,7 +3961,7 @@ ALTER TABLE "public"."tblPolicy" OWNER TO "postgres";
 --
 
 CREATE TABLE "public"."tblPolicyRenewalDetails" (
-    "RenewalDetailID" integer NOT NULL,
+    "RenewalDetailID" SERIAL NOT NULL,
     "RenewalID" integer NOT NULL,
     "InsureeID" integer NOT NULL,
     "ValidityFrom" timestamp with time zone NOT NULL,
@@ -3951,7 +3979,7 @@ ALTER TABLE "public"."tblPolicyRenewalDetails" OWNER TO "postgres";
 --
 
 CREATE TABLE "public"."tblPolicyRenewals" (
-    "RenewalID" integer NOT NULL,
+    "RenewalID" SERIAL NOT NULL,
     "RenewalPromptDate" "date" NOT NULL,
     "RenewalDate" "date" NOT NULL,
     "NewOfficerID" integer,
@@ -4019,7 +4047,10 @@ CREATE TABLE "public"."tblPremium" (
     "AuditUserID" integer NOT NULL,
     "PayerID" integer,
     "PolicyID" integer NOT NULL,
-    "RowID" "text"
+    "RowID" "text",
+    "CreatedDate" "date" DEFAULT CURRENT_DATE NOT NULL,
+    "Source" character varying(50) NULL,
+    "SourceVersion" character varying(15) NULL
 );
 
 
@@ -4348,7 +4379,8 @@ CREATE TABLE "public"."tblRelDistr" (
     "ValidityTo" timestamp with time zone,
     "LegacyID" integer,
     "AuditUserID" integer NOT NULL,
-    "ProdID" integer NOT NULL
+    "ProdID" integer NOT NULL,
+    "RowID" timestamp NULL
 );
 
 
@@ -4459,8 +4491,9 @@ CREATE TABLE "public"."tblReporting" (
     "RecordFound" integer NOT NULL,
     "OfficerID" integer,
     "ReportType" integer,
-    "CammissionRate" numeric(18,2),
-    "CommissionRate" numeric(18,2)
+    "ReportMode" integer,
+    "CommissionRate" numeric(18,2),
+    "Scope" integer
 );
 
 
@@ -4636,7 +4669,8 @@ CREATE TABLE "public"."tblUserRole" (
     "UserRoleID" integer NOT NULL,
     "AudituserID" integer,
     "RoleID" integer NOT NULL,
-    "UserID" integer NOT NULL
+    "UserID" integer NOT NULL,
+    "Assign" integer NULL
 );
 
 

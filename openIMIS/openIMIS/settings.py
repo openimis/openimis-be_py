@@ -137,6 +137,7 @@ else:
 
 # TEST_WITHOUT_MIGRATIONS_COMMAND = 'django_nose.management.commands.test.Command'
 # TEST_RUNNER = 'core.test_utils.UnManagedModelTestRunner'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -182,7 +183,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ],
-    "EXCEPTION_HANDLER": "openIMIS.rest_exception_handler.fhir_rest_api_exception_handler",
+    "EXCEPTION_HANDLER": "openIMIS.ExceptionHandlerDispatcher.dispatcher",
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
@@ -303,9 +304,9 @@ elif MSSQL:
             "unicode_results": True,
         }
 else:
-    DATABASE_OPTIONS = {}
+    DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
 
-if not os.environ.get("NO_DATABASE_ENGINE", "False") == "True":
+if not os.environ.get("NO_DATABASE", "False") == "True":
     DATABASES = {
         "default": {
             "ENGINE": DB_ENGINE,
@@ -315,6 +316,17 @@ if not os.environ.get("NO_DATABASE_ENGINE", "False") == "True":
             "HOST": os.environ.get("DB_HOST"),
             "PORT": os.environ.get("DB_PORT"),
             "OPTIONS": DATABASE_OPTIONS,
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': ' ../script/sqlite.db',                      # Or path to database file if using sqlite3.
+            'USER': '',                      # Not used with sqlite3.
+            'PASSWORD': '',                  # Not used with sqlite3.
+            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
         }
     }
 
@@ -343,11 +355,11 @@ SCHEDULER_JOBS = [
         "args": ["cron"],
         "kwargs": {"id": "openimis_test_batch", "minute": 16, "replace_existing": True},
     },
-    # {
-    #     "method": "policy.tasks.get_policies_for_renewal",
-    #     "args": ["cron"],
-    #     "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
-    # },
+    {
+        "method": "policy.tasks.get_policies_for_renewal",
+        "args": ["cron"],
+        "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
+    },
     # {
     #     "method": "policy_notification.tasks.send_notification_messages",
     #     "args": ["cron"],
