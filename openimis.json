@@ -77,6 +77,10 @@
 			"pip": "git+https://github.com/openimis/openimis-be-calculation_py.git@develop#egg=openimis-be-calculation"
 		},
 		{
+			"name": "calcrule_capitation_payment",
+			"pip": "git+https://github.com/openimis/openimis-be-calcrule-capitation_payment_py.git@develop#egg=openimis-be-calcrule-capitation_payment"
+		},
+		{
 			"name": "contribution_plan",
 			"pip": "git+https://github.com/openimis/openimis-be-contribution_plan_py.git@develop#egg=openimis-be-contribution_plan"
 		},
