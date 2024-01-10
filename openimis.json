@@ -147,6 +147,10 @@
 		{
 			"name": "payroll",
 			"pip": "git+https://github.com/openimis/openimis-be-payroll_py.git@develop#egg=openimis-be-payroll"
+		},
+		{
+			"name": "deduplication",
+			"pip": "git+https://github.com/openimis/openimis-be-deduplication_py.git@develop#egg=openimis-be-deduplication"
 		}
 	]
 }
