@@ -118,7 +118,7 @@
         },
 	{
 	    "name": "controls",
-            "pip": "openimis-be-contols==1.0.0"
+            "pip": "openimis-be-controls==1.0.0"
 		}
 	]
 }
