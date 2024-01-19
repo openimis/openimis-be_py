@@ -151,6 +151,10 @@
 		{
 			"name": "deduplication",
 			"pip": "git+https://github.com/openimis/openimis-be-deduplication_py.git@develop#egg=openimis-be-deduplication"
-		}
+		},
+		{
+            "name": "calcrule_validations",
+            "pip": "git+https://github.com/openimis/openimis-be-calcrule_validations_py.git@develop#egg=openimis-be-calcrule_validations"
+        }
 	]
 }
