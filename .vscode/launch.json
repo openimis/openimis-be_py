@@ -26,6 +26,56 @@
 
     ],
     "configurations": [
+
+        {
+            "name": "pushpastMonth",
+            "type": "python",
+            "request": "launch",
+            "program": "./manage.py",
+            "args": [
+                "pushadx","2023-03-01","pushLastMonth","--verbose"
+            ],
+            "django": true,
+            "cwd": "${workspaceRoot}/openIMIS",
+            "env": {
+                "DB_DEFAULT": "PSQL"
+            },
+            "purpose":["debug-in-terminal"],
+            "justMyCode": true
+        },
+
+        {
+            "name": "orgunit",
+            "type": "python",
+            "request": "launch",
+            "program": "./manage.py",
+            "args": [
+                "pushmetadata","2010-06-01","orgunit","--verbose"
+            ],
+            "django": true,
+            "cwd": "${workspaceRoot}/openIMIS",
+            "env": {
+                "DB_DEFAULT": "PSQL"
+            },
+            "purpose":["debug-in-terminal"],
+            "justMyCode": true
+        },
+        {
+            "name": "pushMetadata",
+            "type": "python",
+            "request": "launch",
+            "program": "./manage.py",
+            "args": [
+                "pushadx","2023-06-01","pushMetadata","--verbose"
+            ],
+            "django": true,
+            "cwd": "${workspaceRoot}/openIMIS",
+            "env": {
+                "DB_DEFAULT": "PSQL"
+            },
+            "purpose":["debug-in-terminal"],
+            "justMyCode": true
+        },
         {
             "name": "gen trad be",
             "type": "python",
@@ -42,6 +92,7 @@
             "purpose":["debug-in-terminal"],
             "justMyCode": true
         },
+
         {
             "name": "migrate",
             "type": "python",

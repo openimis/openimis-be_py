@@ -17,8 +17,13 @@ OPENIMIS_APPS = openimis_apps()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-LOGGING_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "WARNING")
-DEFAULT_LOGGING_HANDLER = os.getenv("DJANGO_LOG_HANDLER", "debug-log")
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+
+LOGGING_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "DEBUG" if DEBUG else "WARNING" )
+DEFAULT_LOGGING_HANDLER = os.getenv("DJANGO_LOG_HANDLER", "console")
 
 LOGGING = {
     "version": 1,
@@ -123,8 +128,7 @@ SECRET_KEY = os.environ.get(
     "SECRET_KEY", "chv^^7i_v3-04!rzu&qe#+h*a=%h(ib#5w9n$!f2q7%2$qp=zz"
 )
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+
 # SECURITY WARNING: don't run without row security in production!
 # Row security is dedicated to filter the data result sets according to users' right
 # Example: user registered at a Health Facility should only see claims recorded for that Health Facility
