@@ -131,14 +131,20 @@
             "args": [
                 "test",
                 "--keepdb",
-                "--debug-mode", "--timing",
+                "--timing",
                 "core","individual",
                 "workflow","tasks_management",
                 "report","location","medical",
                 "medical_pricelist","product",
                 "insuree","policy","contribution","payer"
                 ,"payment","claim","claim_batch","tools","api_fhir_r4",
-                "calculation","contribution_plan","policyholder","contract","invoice","calcrule_contribution_legacy","calcrule_third_party_payment","calcrule_capitation_payment","calcrule_commission","calcrule_contribution_income_percentage","calcrule_fees","calcrule_unconditional_cash_payment","im_export","dhis2_etl","social_protection","opensearch_reports","payment_cycle","calcrule_social_protection","payroll"
+                "calculation","contribution_plan","policyholder","contract",
+                "invoice","calcrule_contribution_legacy","calcrule_third_party_payment",
+                "calcrule_capitation_payment","calcrule_commission",
+                "calcrule_contribution_income_percentage","calcrule_fees",
+                "calcrule_unconditional_cash_payment","im_export",
+                "dhis2_etl","social_protection","opensearch_reports",
+                "payment_cycle","calcrule_social_protection","payroll"
             ],
             "django": true,
             "cwd": "${workspaceRoot}/openIMIS",
@@ -156,7 +162,7 @@
                 "test",
                 "--keepdb",
                 "--debug-mode", "--timing",
-                "${input:moduleName}",
+                "${input:moduleName}"
             ],
             "django": true,
             "cwd": "${workspaceRoot}/openIMIS",
