@@ -5,8 +5,8 @@ import json
 import git # pip install GitPython
 from github import Github # pip install pyGithub
 
-ref = 'release/23.10'
-ref_assembly = '23.10'
+ref = 'develop'
+ref_assembly = 'develop'
 
 def main():
     g=Github(GITHUB_TOKEN)
@@ -26,10 +26,14 @@ def clone_repo(repo,  module_name):
     path = os.path.join('../src/',module_name)
     remote = f"https://{USER_NAME}:{GITHUB_TOKEN}@{repo.git_url[6:]}"
     if os.path.exists(path):
-        print(f"pulling {module_name}")
+        
         repo_git = git.Repo(path)
-        repo_git.git.checkout(ref)
-        repo_git.remotes.origin.pull()
+        try:
+            repo_git.git.checkout(ref)
+            repo_git.remotes.origin.pull()
+            print(f"{module_name} pulled and checked out")
+        except:
+            print(f'error while checking out {module_name} to {ref}, please ensure the local changes are commited')
     else:
         print(f"cloning {module_name}")
         repo_git = git.Repo.clone_from(remote, path)

@@ -10,7 +10,7 @@
             "description": "provide module name to test",
             "options" : ["core","individual",
             "workflow","tasks_management",
-            "report","location","medical",
+            "report","location","medical","controls",
             "medical_pricelist","product",
             "insuree","policy","contribution","payer"
             ,"payment","claim","claim_batch","tools","api_fhir_r4",
@@ -132,7 +132,7 @@
                 "test",
                 "--keepdb",
                 "--timing",
-                "core","individual",
+                "core","individual","controls",
                 "workflow","tasks_management",
                 "report","location","medical",
                 "medical_pricelist","product",
