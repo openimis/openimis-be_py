@@ -8,6 +8,7 @@ from github import Github # pip install pyGithub
 ref = 'develop'
 ref_assembly = 'develop'
 
+
 def main():
     g=Github(GITHUB_TOKEN)
     #assembly_fe='openimis/openimis-fe_js'

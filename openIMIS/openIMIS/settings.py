@@ -379,6 +379,7 @@ elif DB_DEFAULT == 'MSSQL' and os.environ.get("MSSQL_DB_ENGINE", "False") != "Fa
     
 if "sql_server.pyodbc" in DATABASES["default"]['ENGINE'] or "mssql" in DATABASES["default"]['ENGINE']:
     MSSQL = True
+
 else:
     MSSQL = False
 
