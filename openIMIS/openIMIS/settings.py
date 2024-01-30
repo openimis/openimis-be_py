@@ -296,41 +296,27 @@ if os.environ.get("NO_DATABASE", "False") == "True":
             'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
             'PORT': '',                      # Set to empty string for default. Not used with sqlite3. 
     }
-elif os.environ.get("DB_ENGINE", "False") != "False":
-    if "DB_OPTIONS" in os.environ:
-        DATABASE_OPTIONS = json.loads(os.environ["DB_OPTIONS"])
-    elif MSSQL:
-        if os.name == "nt":
-            DATABASE_OPTIONS = {
-                "driver": "ODBC Driver 17 for SQL Server",
-                "extra_params": "Persist Security Info=False;server=%s"
-                % os.environ.get("DB_HOST"),
-                "unicode_results": True,
-            }
-        else:
-            DATABASE_OPTIONS = {
-                "driver": "ODBC Driver 17 for SQL Server",
-                "unicode_results": True,
-            }
-    else:
-        DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
-    DATABASES["default"] = {
-            "ENGINE": os.environ.get("DB_ENGINE"),
-            "NAME": os.environ.get("DB_NAME","imis"),
-            "USER": os.environ.get("DB_USER", "IMISuser"),
-            "PASSWORD": os.environ.get("DB_PASSWORD",os.environ.get("DB_PASSWORD")),
-            "HOST": os.environ.get("DB_HOST",'db'),
-            "PORT": os.environ.get("DB_PORT","5432"),
-            "OPTIONS": DATABASE_OPTIONS,
-            'TEST': {
-                'NAME':  os.environ.get("DB_TEST_NAME","test_"+os.environ.get("MSSQL_DB_NAME", "imis")),
-            }
+if "DB_OPTIONS" in os.environ:
+    DATABASE_OPTIONS = json.loads(os.environ["DB_OPTIONS"])
+    MSSQL_DATABASE_OPTIONS = DATABASE_OPTIONS
+    PSQL_DATABASE_OPTIONS = DATABASE_OPTIONS
+else:
+    if os.name == "nt":
+        MSSQL_DATABASE_OPTIONS = {
+            "driver": "ODBC Driver 17 for SQL Server",
+            "extra_params": "Persist Security Info=False;server=%s"
+            % os.environ.get("DB_HOST"),
+            "unicode_results": True,
         }
-elif DB_DEFAULT == 'PSQL' and os.environ.get("PSQL_DB_ENGINE", "False") != "False":
-    if "DB_OPTIONS" in os.environ:
-        DATABASE_OPTIONS = json.loads(os.environ["DB_OPTIONS"])
     else:
-        DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
+        MSSQL_DATABASE_OPTIONS = {
+            "driver": "ODBC Driver 17 for SQL Server",
+            "unicode_results": True,
+        }
+    PSQL_DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
+
+
+if DB_DEFAULT == 'PSQL' and os.environ.get("PSQL_DB_ENGINE", "False") != "False":
     DATABASES["default"] = {
             "ENGINE": os.environ.get("PSQL_DB_ENGINE", 'django.db.backends.postgresql'),
             "NAME": os.environ.get("PSQL_DB_NAME","imis"),
@@ -338,28 +324,13 @@ elif DB_DEFAULT == 'PSQL' and os.environ.get("PSQL_DB_ENGINE", "False") != "Fals
             "PASSWORD": os.environ.get("PSQL_DB_PASSWORD",os.environ.get("DB_PASSWORD")),
             "HOST": os.environ.get("PSQL_DB_HOST",'postgres'),
             "PORT": os.environ.get("PSQL_DB_PORT","5432"),
-            "OPTIONS": DATABASE_OPTIONS,
+            "OPTIONS": PSQL_DATABASE_OPTIONS,
             'TEST': {
                 'NAME':  os.environ.get("DB_TEST_NAME","test_"+os.environ.get("MSSQL_DB_NAME", "imis")),
             }
         }
 
 elif DB_DEFAULT == 'MSSQL' and os.environ.get("MSSQL_DB_ENGINE", "False") != "False":
-    if "DB_OPTIONS" in os.environ:
-        DATABASE_OPTIONS = json.loads(os.environ["DB_OPTIONS"])
-    else:
-        if os.name == "nt":
-            DATABASE_OPTIONS = {
-                "driver": "ODBC Driver 17 for SQL Server",
-                "extra_params": "Persist Security Info=False;server=%s"
-                % os.environ.get("MSSQL_DB_HOST"),
-                "unicode_results": True,
-            }
-        else:
-            DATABASE_OPTIONS = {
-                "driver": "ODBC Driver 17 for SQL Server",
-                "unicode_results": True,
-            }
     DATABASES["default"] = {
             "ENGINE": os.environ.get("MSSQL_DB_ENGINE", 'mssql'),
             "NAME": os.environ.get("MSSQL_DB_NAME","imis"),
@@ -367,11 +338,24 @@ elif DB_DEFAULT == 'MSSQL' and os.environ.get("MSSQL_DB_ENGINE", "False") != "Fa
             "PASSWORD": os.environ.get("MSSQL_DB_PASSWORD",os.environ.get("DB_PASSWORD")),
             "HOST": os.environ.get("MSSQL_DB_HOST",'mssql'),
             "PORT": os.environ.get("MSSQL_DB_PORT",'1433'),
-            "OPTIONS": DATABASE_OPTIONS,
+            "OPTIONS": MSSQL_DATABASE_OPTIONS,
             'TEST': {
                 'NAME':  os.environ.get("DB_TEST_NAME","test_"+os.environ.get("MSSQL_DB_NAME", "imis")),
             }
         }
+else:
+    DATABASES["default"] = {
+        "ENGINE": os.environ.get("DB_ENGINE"),
+        "NAME": os.environ.get("DB_NAME","imis"),
+        "USER": os.environ.get("DB_USER", "IMISuser"),
+        "PASSWORD": os.environ.get("DB_PASSWORD",os.environ.get("DB_PASSWORD")),
+        "HOST": os.environ.get("DB_HOST",'db'),
+        "PORT": os.environ.get("DB_PORT","5432"),
+        "OPTIONS": PSQL_DATABASE_OPTIONS if os.environ.get("MSSQL_DB_ENGINE", 'mssql') == 'postgres' else MSSQL_DATABASE_OPTIONS,
+        'TEST': {
+            'NAME':  os.environ.get("DB_TEST_NAME","test_"+os.environ.get("DB_NAME", "imis")),
+        }
+    }
     
 if "sql_server.pyodbc" in DATABASES["default"]['ENGINE'] or "mssql" in DATABASES["default"]['ENGINE']:
     MSSQL = True
