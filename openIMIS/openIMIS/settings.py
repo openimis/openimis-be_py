@@ -351,7 +351,7 @@ else:
         "PASSWORD": os.environ.get("DB_PASSWORD",os.environ.get("DB_PASSWORD")),
         "HOST": os.environ.get("DB_HOST",'db'),
         "PORT": os.environ.get("DB_PORT","5432"),
-        "OPTIONS": PSQL_DATABASE_OPTIONS if os.environ.get("MSSQL_DB_ENGINE", 'mssql') == 'postgres' else MSSQL_DATABASE_OPTIONS,
+        "OPTIONS": PSQL_DATABASE_OPTIONS if DB_DEFAULT == 'PSQL' else MSSQL_DATABASE_OPTIONS,
         'TEST': {
             'NAME':  os.environ.get("DB_TEST_NAME","test_"+os.environ.get("DB_NAME", "imis")),
         }
