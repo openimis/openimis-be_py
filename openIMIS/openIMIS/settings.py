@@ -95,6 +95,14 @@ if SENTRY_DSN is not None:
         )
 
 
+def get_secret(key, default):
+    value = os.getenv(key, default)
+    if value and os.path.isfile(value):
+        with open(value) as f:
+            return f.read().rstrip()
+    return value
+
+
 def SITE_ROOT():
     root = os.environ.get("SITE_ROOT", "")
     if root == "":
@@ -119,7 +127,7 @@ def SITE_URL():
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get(
+SECRET_KEY = get_secret(
     "SECRET_KEY", "chv^^7i_v3-04!rzu&qe#+h*a=%h(ib#5w9n$!f2q7%2$qp=zz"
 )
 
@@ -313,7 +321,7 @@ if not os.environ.get("NO_DATABASE", "False") == "True":
             "ENGINE": DB_ENGINE,
             "NAME": os.environ.get("DB_NAME","imis"),
             "USER": os.environ.get("DB_USER"),
-            "PASSWORD": os.environ.get("DB_PASSWORD"),
+            "PASSWORD": get_secret("DB_PASSWORD", ""),
             "HOST": os.environ.get("DB_HOST"),
             "PORT": os.environ.get("DB_PORT"),
             "OPTIONS": DATABASE_OPTIONS,
@@ -481,7 +489,7 @@ INSUREE_NUMBER_MODULE_ROOT = os.environ.get("INSUREE_NUMBER_MODULE_ROOT", None)
 
 # There used to be a default password for zip files but for security reasons, it was removed. Trying to export
 # without a password defined is going to fail
-MASTER_DATA_PASSWORD = os.environ.get("MASTER_DATA_PASSWORD", None)
+MASTER_DATA_PASSWORD = get_secret("MASTER_DATA_PASSWORD", None)
 
 FRONTEND_URL = os.environ.get("FRONTEND_URL", "")
 
