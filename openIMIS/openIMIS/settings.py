@@ -484,3 +484,16 @@ OPENSEARCH_DSL = {
         'timeout': 120,
     }
 }
+
+MEDIA_URL = "/file_storage/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "file_storage/")
+
+STORAGES = {
+    "default": {
+        "class": "core.filesystem.storage.FileSystemStorage",
+        "options": {
+            "location": MEDIA_URL,
+            "base_url": MEDIA_URL
+        },
+    }
+}
