@@ -5,6 +5,9 @@ ENV DB_ENGINE=${DB_ENGINE:-mssql}
 RUN apt-get update && apt-get install -y apt-transport-https ca-certificates gettext unixodbc-dev && apt-get upgrade -y
 RUN apt-get install -y -f python3-dev
 
+# For required msystems module (python3-saml)
+RUN apt-get -y install pkg-config libxml2-dev libxmlsec1-dev libxmlsec1-openssl
+
 RUN test "$DB_ENGINE" != "django.db.backends.postgresql" && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - || :
 RUN test "$DB_ENGINE" != "django.db.backends.postgresql" && curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list || :
 RUN test "$DB_ENGINE" != "django.db.backends.postgresql" && apt-get update || :
