@@ -98,7 +98,7 @@
 		},
 		{
 			"name": "msystems",
-			"pip": "git+https://github.com/openimis/openimis-be-msystems_py.git@fix_mpass#egg=openimis-be-msystems"
+			"pip": "git+https://github.com/openimis/openimis-be-msystems_py.git@develop#egg=openimis-be-msystems"
 		},
 		{
 			"name": "worker_voucher",
