@@ -488,6 +488,9 @@ OPENSEARCH_DSL = {
 MEDIA_URL = "/file_storage/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "file_storage/")
 
+if not os.path.exists(MEDIA_ROOT):
+    os.makedirs(MEDIA_ROOT)
+
 STORAGES = {
     "default": {
         "class": "core.filesystem.storage.FileSystemStorage",
