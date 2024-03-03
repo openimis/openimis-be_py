@@ -151,6 +151,10 @@
 		{
 			"name": "controls",
 			"pip": "git+https://github.com/openimis/openimis-be-controls_py.git@develop#egg=openimis-be-controls"
-		}
+		},
+	        {
+	            "name": "grievance",
+	            "pip": "git+https://github.com/openimis/openimis-be-grievance_py.git@develop#egg=openimis-be-grievance"
+	        }
 	]
 }
