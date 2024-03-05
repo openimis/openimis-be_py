@@ -114,7 +114,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/openIMIS/manage.py",
             "args": [
-                "start"
+                "runserver"
             ],
             "django": true,
             "cwd": "${workspaceRoot}/openIMIS",

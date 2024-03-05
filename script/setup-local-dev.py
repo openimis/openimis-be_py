@@ -24,7 +24,8 @@ def main():
         outfile.write(json.dumps(be, indent = 4, default=set_default) )
     
 def clone_repo(repo,  module_name):
-    path = os.path.join('../src/',module_name)
+    src_path = os.path.abspath('../src/')
+    path = os.path.join(src_path, module_name)
     remote = f"https://{USER_NAME}:{GITHUB_TOKEN}@{repo.git_url[6:]}"
     if os.path.exists(path):
         
