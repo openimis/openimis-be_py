@@ -1,160 +1,160 @@
 {
-	"modules": [
-		{
-			"name": "core",
-			"pip": "git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core"
-		},
-		{
-			"name": "individual",
-			"pip": "git+https://github.com/openimis/openimis-be-individual_py.git@develop#egg=openimis-be-individual"
-		},
-		{
-			"name": "workflow",
-			"pip": "git+https://github.com/openimis/openimis-be-workflow_py.git@develop#egg=openimis-be-workflow"
-		},
-		{
-		    "name": "tasks_management",
-		    "pip": "git+https://github.com/openimis/openimis-be-tasks_management_py.git@develop#egg=openimis-be-tasks_management"
-		},
-		{
-			"name": "report",
-			"pip": "git+https://github.com/openimis/openimis-be-report_py.git@develop#egg=openimis-be-report"
-		},
-		{
-			"name": "location",
-			"pip": "git+https://github.com/openimis/openimis-be-location_py.git@develop#egg=openimis-be-location"
-		},
-		{
-			"name": "medical",
-			"pip": "git+https://github.com/openimis/openimis-be-medical_py.git@develop#egg=openimis-be-medical"
-		},
-		{
-			"name": "medical_pricelist",
-			"pip": "git+https://github.com/openimis/openimis-be-medical_pricelist_py.git@develop#egg=openimis-be-medical_pricelist"
-		},
-		{
-			"name": "product",
-			"pip": "git+https://github.com/openimis/openimis-be-product_py.git@develop#egg=openimis-be-product"
-		},
-		{
-			"name": "insuree",
-			"pip": "git+https://github.com/openimis/openimis-be-insuree_py.git@develop#egg=openimis-be-insuree"
-		},
-		{
-			"name": "policy",
-			"pip": "git+https://github.com/openimis/openimis-be-policy_py.git@develop#egg=openimis-be-policy"
-		},
-		{
-			"name": "contribution",
-			"pip": "git+https://github.com/openimis/openimis-be-contribution_py.git@develop#egg=openimis-be-contribution"
-		},
-		{
-			"name": "payer",
-			"pip": "git+https://github.com/openimis/openimis-be-payer_py.git@develop#egg=openimis-be-payer"
-		},
-		{
-			"name": "payment",
-			"pip": "git+https://github.com/openimis/openimis-be-payment_py.git@develop#egg=openimis-be-payment"
-		},
-		{
-			"name": "claim",
-			"pip": "git+https://github.com/openimis/openimis-be-claim_py.git@develop#egg=openimis-be-claim"
-		},
-		{
-			"name": "claim_batch",
-			"pip": "git+https://github.com/openimis/openimis-be-claim_batch_py.git@develop#egg=openimis-be-claim_batch"
-		},
-		{
-			"name": "tools",
-			"pip": "git+https://github.com/openimis/openimis-be-tools_py.git@develop#egg=openimis-be-tools"
-		},
-		{
-			"name": "api_fhir_r4",
-			"pip": "git+https://github.com/openimis/openimis-be-api_fhir_r4_py.git@develop#egg=openimis-be-api_fhir_r4"
-		},
-		{
-			"name": "calculation",
-			"pip": "git+https://github.com/openimis/openimis-be-calculation_py.git@develop#egg=openimis-be-calculation"
-		},
-		{
-			"name": "contribution_plan",
-			"pip": "git+https://github.com/openimis/openimis-be-contribution_plan_py.git@develop#egg=openimis-be-contribution_plan"
-		},
-		{
-			"name": "policyholder",
-			"pip": "git+https://github.com/openimis/openimis-be-policyholder_py.git@develop#egg=openimis-be-policyholder"
-		},
-		{
-			"name": "contract",
-			"pip": "git+https://github.com/openimis/openimis-be-contract_py.git@develop#egg=openimis-be-contract"
-		},
-		{
-			"name": "invoice",
-			"pip": "git+https://github.com/openimis/openimis-be-invoice_py.git@develop#egg=openimis-be-invoice"
-		},
-		{
-		    "name": "calcrule_contribution_legacy",
-		    "pip": "git+https://github.com/openimis/openimis-be-calcrule_contribution_legacy_py.git@develop#egg=openimis-be-calcrule_contribution_legacy"
-		},
-		{
-			"name": "calcrule_third_party_payment",
-			"pip": "git+https://github.com/openimis/openimis-be-calcrule-third_party_payment_py.git@develop#egg=openimis-be-calcrule_third_party_payment"
-		},
-		{
-			"name": "calcrule_capitation_payment",
-			"pip": "git+https://github.com/openimis/openimis-be-calcrule-capitation_payment_py.git@develop#egg=openimis-be-calcrule-capitation_payment"
-		},
-		{
-			"name": "calcrule_commission",
-			"pip": "git+https://github.com/openimis/openimis-be-calcrule_commission_py.git@develop#egg=openimis-be-calcrule_commission"
-		},
-		{
-			"name": "calcrule_contribution_income_percentage",
-			"pip": "git+https://github.com/openimis/openimis-be-calcrule_contribution_income_percentage_py.git@develop#egg=openimis-be-calcrule_contribution_income_percentage"
-		},
-		{
-			"name": "calcrule_fees",
-			"pip": "git+https://github.com/openimis/openimis-be-calcrule_fees_py.git@develop#egg=openimis-be-calcrule_fees"
-		},
-		{
-			"name":"calcrule_unconditional_cash_payment",
-			"pip":"git+https://github.com/openimis/openimis-be-calcrule_unconditional_cash_payment_py.git@develop#egg=openimis-be-calcrule_unconditional_cash_payment"
-		},
-		{
-			"name":"im_export",
-			"pip":"git+https://github.com/openimis/openimis-be-im_export_py.git@develop#egg=openimis-be-im_export"
-		},
-		{
-			"name":"dhis2_etl",
-			"pip":"git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop#egg=openimis-be-dhis2_etl"
-		},
-		{
-			"name": "social_protection",
-			"pip": "git+https://github.com/openimis/openimis-be-social_protection_py.git@develop#egg=openimis-be-social_protection"
-		},
-		{
-			"name": "opensearch_reports",
-			"pip": "git+https://github.com/openimis/openimis-be-opensearch_reports_py.git@develop#egg=openimis-be-opensearch_reports"
-		},
-		{
-			"name": "payment_cycle",
-			"pip": "git+https://github.com/openimis/openimis-be-payment_cycle_py.git@develop#egg=openimis-be-payment_cycle"
-		},
-		{
-			"name": "calcrule_social_protection",
-			"pip": "git+https://github.com/openimis/openimis-be-calcrule_social_protection_py.git@develop#egg=openimis-be-calcrule_social_protection"
-		},
-		{
-			"name": "payroll",
-			"pip": "git+https://github.com/openimis/openimis-be-payroll_py.git@develop#egg=openimis-be-payroll"
-		},
-		{
-			"name": "controls",
-			"pip": "git+https://github.com/openimis/openimis-be-controls_py.git@develop#egg=openimis-be-controls"
-		},
-	        {
-	            "name": "grievance",
-	            "pip": "git+https://github.com/openimis/openimis-be-grievance_py.git@develop#egg=openimis-be-grievance"
-	        }
-	]
+    "modules": [
+        {
+            "name": "core",
+            "pip": "-e ../src/core"
+        },
+        {
+            "name": "individual",
+            "pip": "-e ../src/individual"
+        },
+        {
+            "name": "workflow",
+            "pip": "-e ../src/workflow"
+        },
+        {
+            "name": "tasks_management",
+            "pip": "-e ../src/tasks_management"
+        },
+        {
+            "name": "report",
+            "pip": "-e ../src/report"
+        },
+        {
+            "name": "location",
+            "pip": "-e ../src/location"
+        },
+        {
+            "name": "medical",
+            "pip": "-e ../src/medical"
+        },
+        {
+            "name": "medical_pricelist",
+            "pip": "-e ../src/medical_pricelist"
+        },
+        {
+            "name": "product",
+            "pip": "-e ../src/product"
+        },
+        {
+            "name": "insuree",
+            "pip": "-e ../src/insuree"
+        },
+        {
+            "name": "policy",
+            "pip": "-e ../src/policy"
+        },
+        {
+            "name": "contribution",
+            "pip": "-e ../src/contribution"
+        },
+        {
+            "name": "payer",
+            "pip": "-e ../src/payer"
+        },
+        {
+            "name": "payment",
+            "pip": "-e ../src/payment"
+        },
+        {
+            "name": "claim",
+            "pip": "-e ../src/claim"
+        },
+        {
+            "name": "claim_batch",
+            "pip": "-e ../src/claim_batch"
+        },
+        {
+            "name": "tools",
+            "pip": "-e ../src/tools"
+        },
+        {
+            "name": "api_fhir_r4",
+            "pip": "-e ../src/api_fhir_r4"
+        },
+        {
+            "name": "calculation",
+            "pip": "-e ../src/calculation"
+        },
+        {
+            "name": "contribution_plan",
+            "pip": "-e ../src/contribution_plan"
+        },
+        {
+            "name": "policyholder",
+            "pip": "-e ../src/policyholder"
+        },
+        {
+            "name": "contract",
+            "pip": "-e ../src/contract"
+        },
+        {
+            "name": "invoice",
+            "pip": "-e ../src/invoice"
+        },
+        {
+            "name": "calcrule_contribution_legacy",
+            "pip": "-e ../src/calcrule_contribution_legacy"
+        },
+        {
+            "name": "calcrule_third_party_payment",
+            "pip": "-e ../src/calcrule_third_party_payment"
+        },
+        {
+            "name": "calcrule_capitation_payment",
+            "pip": "-e ../src/calcrule_capitation_payment"
+        },
+        {
+            "name": "calcrule_commission",
+            "pip": "-e ../src/calcrule_commission"
+        },
+        {
+            "name": "calcrule_contribution_income_percentage",
+            "pip": "-e ../src/calcrule_contribution_income_percentage"
+        },
+        {
+            "name": "calcrule_fees",
+            "pip": "-e ../src/calcrule_fees"
+        },
+        {
+            "name": "calcrule_unconditional_cash_payment",
+            "pip": "-e ../src/calcrule_unconditional_cash_payment"
+        },
+        {
+            "name": "im_export",
+            "pip": "-e ../src/im_export"
+        },
+        {
+            "name": "dhis2_etl",
+            "pip": "-e ../src/dhis2_etl"
+        },
+        {
+            "name": "social_protection",
+            "pip": "-e ../src/social_protection"
+        },
+        {
+            "name": "opensearch_reports",
+            "pip": "-e ../src/opensearch_reports"
+        },
+        {
+            "name": "payment_cycle",
+            "pip": "-e ../src/payment_cycle"
+        },
+        {
+            "name": "calcrule_social_protection",
+            "pip": "-e ../src/calcrule_social_protection"
+        },
+        {
+            "name": "payroll",
+            "pip": "-e ../src/payroll"
+        },
+        {
+            "name": "controls",
+            "pip": "-e ../src/controls"
+        },
+        {
+            "name": "grievance",
+            "pip": "-e ../src/grievance"
+        }
+    ]
 }
