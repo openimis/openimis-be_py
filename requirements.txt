@@ -4,7 +4,7 @@ celery>=4.4
 channels~=3.0.3
 channels-redis==3.2.0
 channels-rabbitmq==2.0.0
-django>=4, <5
+django~=4.2
 djangorestframework
 django-cryptography==1.1
 django-filter~=22.1
@@ -22,9 +22,9 @@ nepalicalendar
 pyodbc
 python-dateutil
 python-dotenv
-psycopg2
+# psycopg2
 #If psycopg2 does not build on your system, try:
-#psycopg2-binary==2.8.5
+psycopg2-binary==2.9.9
 reportbro-lib~=2.1.1
 reportbro-fpdf~=1.7.11
 rules
