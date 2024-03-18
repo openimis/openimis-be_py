@@ -392,16 +392,16 @@ SCHEDULER_AUTOSTART = os.environ.get("SCHEDULER_AUTOSTART", False)
 # This list will be called with scheduler.add_job() as specified:
 # Note that the document implies that the time is local and follows DST but that seems false and in UTC regardless
 SCHEDULER_JOBS = [
-    {
-        "method": "core.tasks.openimis_test_batch",
-        "args": ["cron"],
-        "kwargs": {"id": "openimis_test_batch", "minute": 16, "replace_existing": True},
-    },
-    {
-        "method": "policy.tasks.get_policies_for_renewal",
-        "args": ["cron"],
-        "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
-    },
+    # {
+    #     "method": "core.tasks.openimis_test_batch",
+    #     "args": ["cron"],
+    #     "kwargs": {"id": "openimis_test_batch", "minute": 16, "replace_existing": True},
+    # },
+    # {
+    #     "method": "policy.tasks.get_policies_for_renewal",
+    #     "args": ["cron"],
+    #     "kwargs": {"id": "openimis_renewal_batch", "hour": 8, "minute": 30, "replace_existing": True},
+    # },
     # {
     #     "method": "policy_notification.tasks.send_notification_messages",
     #     "args": ["cron"],
