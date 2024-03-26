@@ -139,7 +139,7 @@ jobs:
         run: |
           python -V
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
-          MODULES=$(echo "$MODULES" | sed -E "s/$(echo "${{ vars.CI_EXCLUDED_MODULE }}" | tr ' ' '|')//g" | xargs)
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${{ vars.CI_EXCLUDED_MODULE }}" | tr ' ' '\b|\b')\b/ /g" | xargs)
           echo $MODULES
           python manage.py test --keepdb $MODULES
         env:
@@ -162,7 +162,7 @@ jobs:
         run: |
           python -V
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
-          MODULES=$(echo "$MODULES" | sed -E "s/$(echo "${{ vars.CI_EXCLUDED_MODULE }}" | tr ' ' '|')//g" | xargs)
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${{ vars.CI_EXCLUDED_MODULE }}" | tr ' ' '\b|\b')\b/ /g" | xargs)
           echo $MODULES
           python manage.py test --debug-mode --timing --keepdb $MODULES
         env:
