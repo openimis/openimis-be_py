@@ -203,8 +203,7 @@ jobs:
         run: |
           python -V
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
-          # Remove api_fhir_r4 from MODULES
-          MODULES=$(echo "$MODULES" | sed 's/api_fhir_r4//g' | xargs)
+          MODULES=$(echo "$MODULES" | sed "s/$(echo "${{ secrets.CI_EXCLUDED_MODULE }}" | tr ' ' '|')//g" | xargs)
           echo $MODULES
           python manage.py test --debug-mode --timing --keepdb $MODULES
         env:
@@ -300,8 +299,8 @@ jobs:
           python -V
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
 
-          # Remove api_fhir_r4 from MODULES
-          MODULES=$(echo "$MODULES" | sed 's/api_fhir_r4//g' | xargs)
+          # Remove some module from MODULES
+          MODULES=$(echo "$MODULES" | sed "s/$(echo "${{ secrets.CI_EXCLUDED_MODULE }}" | tr ' ' '|')//g" | xargs)
           echo $MODULES
           # Generate sonar report 
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
