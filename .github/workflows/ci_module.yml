@@ -203,7 +203,8 @@ jobs:
         run: |
           python -V
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
-          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${{ vars.CI_EXCLUDED_MODULE }}" | tr ' ' '\b|\b')\b/ /g" | xargs)
+          export CI_EXCLUDED_MODULE=${{ vars.CI_EXCLUDED_MODULE }}
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo $MODULES
           python manage.py test --debug-mode --timing --keepdb $MODULES
         env:
@@ -300,7 +301,8 @@ jobs:
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
 
           # Remove some module from MODULES
-          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${{ vars.CI_EXCLUDED_MODULE }}" | tr ' ' '\b|\b')\b/ /g" | xargs)
+          export CI_EXCLUDED_MODULE=${{ vars.CI_EXCLUDED_MODULE }}
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo $MODULES
           # Generate sonar report 
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
