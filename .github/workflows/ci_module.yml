@@ -203,7 +203,6 @@ jobs:
         run: |
           python -V
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
-          export CI_EXCLUDED_MODULE=${{ vars.CI_EXCLUDED_MODULE }}
           MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo $MODULES
           python manage.py test --debug-mode --timing --keepdb $MODULES
@@ -220,6 +219,7 @@ jobs:
           #DEV_SERVER: true
           SITE_ROOT: api
           #REMOTE_USER_AUTHENTICATION: False
+          CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
   ci_module_psql_test:
     name: Run All Tests (PSQL)
     runs-on: ubuntu-20.04
@@ -301,7 +301,6 @@ jobs:
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
 
           # Remove some module from MODULES
-          export CI_EXCLUDED_MODULE=${{ vars.CI_EXCLUDED_MODULE }}
           MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo $MODULES
           # Generate sonar report 
@@ -321,6 +320,7 @@ jobs:
           DB_PASSWORD: GitHub999
           #DEV_SERVER: true
           SITE_ROOT: api
+          CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
       - name: Generate Coverage Report
         if: always()
         working-directory: ./openimis/openIMIS

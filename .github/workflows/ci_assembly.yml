@@ -138,7 +138,6 @@ jobs:
         if: success() || failure()
         run: |
           python -V
-          export CI_EXCLUDED_MODULE=${{ vars.CI_EXCLUDED_MODULE }}
           MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo $MODULES
           python manage.py test --keepdb $MODULES
@@ -154,6 +153,7 @@ jobs:
           DB_PASSWORD: GitHub999
           #DEV_SERVER: true
           SITE_ROOT: api
+          CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
 
       - name: Django tests MSSQL
         working-directory: ./openIMIS
@@ -161,7 +161,6 @@ jobs:
         if: success() || failure()
         run: |
           python -V
-          export CI_EXCLUDED_MODULE=${{ vars.CI_EXCLUDED_MODULE }}
           MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo $MODULES
           python manage.py test --debug-mode --timing --keepdb $MODULES
@@ -178,3 +177,4 @@ jobs:
           #DEV_SERVER: true
           SITE_ROOT: api
           #REMOTE_USER_AUTHENTICATION: False
+          CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
