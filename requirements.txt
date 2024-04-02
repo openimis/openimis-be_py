@@ -51,3 +51,4 @@ nepali_datetime
 twisted>=23.10.0rc1 # not directly required, pinned by Snyk to avoid a vulnerability
 pillow>=10.2.0 # not directly required, pinned by Snyk to avoid a vulnerability
 django-redis==5.4.0
+django-opensearch-dsl==0.5.1
