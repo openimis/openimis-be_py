@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-LOGGING_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "DEBUG" if DEBUG else "WARNING" )
+LOGGING_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "DEBUG" if DEBUG else "WARNING")
 DEFAULT_LOGGING_HANDLER = os.getenv("DJANGO_LOG_HANDLER", "console")
 
 LOGGING = {
@@ -59,7 +59,7 @@ LOGGING = {
         "django.db.backends": {
             "level": LOGGING_LEVEL,
             "propagate": False,
-            "handlers": ["db-queries"],
+            "handlers": ["console" if os.environ.get("MODE", "PROD") == "DEV" else "db-queries"],
         },
         "openIMIS": {
             "level": LOGGING_LEVEL,
@@ -282,19 +282,20 @@ GRAPHQL_JWT = {
     ],
 }
 
-#no db
+# no db
 DATABASES = {}
 DB_DEFAULT = os.environ.get("DB_DEFAULT", 'PSQL')
 
 if os.environ.get("NO_DATABASE", "False") == "True":
-    
+
     DATABASES['default'] = {
-            'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': ' ../script/sqlite.db',                      # Or path to database file if using sqlite3.
-            'USER': '',                      # Not used with sqlite3.
-            'PASSWORD': '',                  # Not used with sqlite3.
-            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3. 
+        # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ' ../script/sqlite.db',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 if "DB_OPTIONS" in os.environ:
     DATABASE_OPTIONS = json.loads(os.environ["DB_OPTIONS"])
@@ -318,45 +319,54 @@ else:
 
 if DB_DEFAULT == 'PSQL' and os.environ.get("PSQL_DB_ENGINE", "False") != "False":
     DATABASES["default"] = {
-            "ENGINE": os.environ.get("PSQL_DB_ENGINE", 'django.db.backends.postgresql'),
-            "NAME": os.environ.get("PSQL_DB_NAME","imis"),
-            "USER": os.environ.get("PSQL_DB_USER", "IMISuser"),
-            "PASSWORD": os.environ.get("PSQL_DB_PASSWORD",os.environ.get("DB_PASSWORD")),
-            "HOST": os.environ.get("PSQL_DB_HOST",'postgres'),
-            "PORT": os.environ.get("PSQL_DB_PORT","5432"),
-            "OPTIONS": PSQL_DATABASE_OPTIONS,
-            'TEST': {
-                'NAME':  os.environ.get("DB_TEST_NAME","test_"+os.environ.get("MSSQL_DB_NAME", "imis")),
-            }
+        "ENGINE": os.environ.get("PSQL_DB_ENGINE", 'django.db.backends.postgresql'),
+        "NAME": os.environ.get("PSQL_DB_NAME", "imis"),
+        "USER": os.environ.get("PSQL_DB_USER", "IMISuser"),
+        "PASSWORD": os.environ.get("PSQL_DB_PASSWORD", os.environ.get("DB_PASSWORD")),
+        "HOST": os.environ.get("PSQL_DB_HOST", 'postgres'),
+        "PORT": os.environ.get("PSQL_DB_PORT", "5432"),
+        "OPTIONS": PSQL_DATABASE_OPTIONS,
+        'TEST': {
+            'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("MSSQL_DB_NAME", "imis")),
         }
+    }
 
 elif DB_DEFAULT == 'MSSQL' and os.environ.get("MSSQL_DB_ENGINE", "False") != "False":
     DATABASES["default"] = {
-            "ENGINE": os.environ.get("MSSQL_DB_ENGINE", 'mssql'),
-            "NAME": os.environ.get("MSSQL_DB_NAME","imis"),
-            "USER": os.environ.get("MSSQL_DB_USER", "IMISuser"),
-            "PASSWORD": os.environ.get("MSSQL_DB_PASSWORD",os.environ.get("DB_PASSWORD")),
-            "HOST": os.environ.get("MSSQL_DB_HOST",'mssql'),
-            "PORT": os.environ.get("MSSQL_DB_PORT",'1433'),
-            "OPTIONS": MSSQL_DATABASE_OPTIONS,
-            'TEST': {
-                'NAME':  os.environ.get("DB_TEST_NAME","test_"+os.environ.get("MSSQL_DB_NAME", "imis")),
-            }
+        "ENGINE": os.environ.get("MSSQL_DB_ENGINE", 'mssql'),
+        "NAME": os.environ.get("MSSQL_DB_NAME", "imis"),
+        "USER": os.environ.get("MSSQL_DB_USER", "IMISuser"),
+        "PASSWORD": os.environ.get("MSSQL_DB_PASSWORD", os.environ.get("DB_PASSWORD")),
+        "HOST": os.environ.get("MSSQL_DB_HOST", 'mssql'),
+        "PORT": os.environ.get("MSSQL_DB_PORT", '1433'),
+        "OPTIONS": MSSQL_DATABASE_OPTIONS,
+        'TEST': {
+            'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("MSSQL_DB_NAME", "imis")),
         }
+    }
 else:
     DATABASES["default"] = {
         "ENGINE": os.environ.get("DB_ENGINE"),
-        "NAME": os.environ.get("DB_NAME","imis"),
+        "NAME": os.environ.get("DB_NAME", "imis"),
         "USER": os.environ.get("DB_USER", "IMISuser"),
-        "PASSWORD": os.environ.get("DB_PASSWORD",os.environ.get("DB_PASSWORD")),
-        "HOST": os.environ.get("DB_HOST",'db'),
-        "PORT": os.environ.get("DB_PORT","5432"),
+        "PASSWORD": os.environ.get("DB_PASSWORD", os.environ.get("DB_PASSWORD")),
+        "HOST": os.environ.get("DB_HOST", 'db'),
+        "PORT": os.environ.get("DB_PORT", "5432"),
         "OPTIONS": PSQL_DATABASE_OPTIONS if DB_DEFAULT == 'PSQL' else MSSQL_DATABASE_OPTIONS,
         'TEST': {
-            'NAME':  os.environ.get("DB_TEST_NAME","test_"+os.environ.get("DB_NAME", "imis")),
+            'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("DB_NAME", "imis")),
         }
     }
-    
+
+DATABASES['dashboard_db'] = {
+    "ENGINE": os.environ.get("DASHBOARD_DB_ENGINE", 'mssql'),
+    "NAME": os.environ.get("DASHBOARD_DB_NAME", "imis"),
+    "USER": os.environ.get("DASHBOARD_DB_USER", "IMISuser"),
+    "PASSWORD": os.environ.get("DASHBOARD_DB_PASSWORD"),
+    "HOST": os.environ.get("DASHBOARD_DB_HOST", 'mssql'),
+    "PORT": os.environ.get("DASHBOARD_DB_PORT", '1433')
+}
+
 if "sql_server.pyodbc" in DATABASES["default"]['ENGINE'] or "mssql" in DATABASES["default"]['ENGINE']:
     MSSQL = True
 
@@ -367,13 +377,25 @@ else:
     # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 
-
+DATABASE_ROUTERS = ["openIMIS.routers.DashboardDatabaseRouter"]
 
 
 
 
 # Celery message broker configuration for RabbitMQ. One can also use Redis on AWS SQS
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
+CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq"),
+        'OPTIONS': {
+            'DB': 0
+        }
+    }
+}
 
 # This scheduler config will:
 # - Store jobs in the project database
@@ -498,7 +520,7 @@ EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", False)
 EMAIL_USE_SSL = os.environ.get("EMAIL_USE_SSL", False)
 
 # By default, the maximum upload size is 2.5Mb, which is a bit short for base64 picture upload
-DATA_UPLOAD_MAX_MEMORY_SIZE = int(os.environ.get('DATA_UPLOAD_MAX_MEMORY_SIZE', 10*1024*1024))
+DATA_UPLOAD_MAX_MEMORY_SIZE = int(os.environ.get('DATA_UPLOAD_MAX_MEMORY_SIZE', 10 * 1024 * 1024))
 
 
 # Insuree number validation. One can use the validator function for specific processing or just specify the length
