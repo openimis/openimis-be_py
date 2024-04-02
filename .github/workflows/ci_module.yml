@@ -312,7 +312,7 @@ jobs:
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           
           cat openIMIS/settings.py
-          cd openimis 
+          git branch
           git log 
           
           # This has to exit 0, or report is not generated 
