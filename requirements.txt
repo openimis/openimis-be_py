@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 cached-property
 coverage~=6.4.4
 celery>=4.4
@@ -49,3 +50,58 @@ flake8
 # TODO remove to a separate file for implementations and change test workflows to reflect that
 nepali_datetime
 
+=======
+cached-property
+coverage~=6.4.4
+celery>=4.4
+channels~=3.0.3
+channels-redis==3.2.0
+channels-rabbitmq==2.0.0
+django~=4.2
+djangorestframework
+django-cryptography==1.1
+django-filter~=22.1
+#django-mssql-backend is a fork for django 3 of django-pyodbc-azure (django 2.1) which is a fork of django-pyodbc (1.x)
+# Since Q3 2021, Microsoft is providing an official driver mssql-django, the engine needs to become "mssql"
+#django-mssql-backend==2.8.1
+mssql-django==1.4
+django-test-without-migrations
+graphene-django<3
+graphene-django-optimizer==0.8.0
+PyJWT~=2.4.0
+django-graphql-jwt==0.3.4
+markdown~=3.4.1
+nepalicalendar
+pyodbc
+python-dateutil
+python-dotenv
+# psycopg2
+#If psycopg2 does not build on your system, try:
+psycopg2-binary==2.9.9
+reportbro-lib~=2.1.1
+reportbro-fpdf~=1.7.11
+rules
+waitress
+wheel
+whitenoise
+django-health-check
+requests~=2.28.1
+apscheduler==3.10.1
+# As from v0.4, Django-apscheduler has a migration that is incompatible with SQL Server
+# (autoincrement int => bigint) so we are using our own fork with a squashed migration
+git+https://github.com/openimis/django-apscheduler.git@django-4.2#egg=django-apscheduler
+django-simple-history
+django-dirtyfields==1.4.1
+daphne==3.0.1
+GitPython~=3.1.27
+drf-spectacular==0.25.1
+django-cprofile-middleware==1.0.5
+# flake8 and django-nose are needed for sonar scan in backend modules
+flake8
+# TODO remove to a separate file for implementations and change test workflows to reflect that
+nepali_datetime
+
+twisted>=23.10.0rc1 # not directly required, pinned by Snyk to avoid a vulnerability
+pillow>=10.2.0 # not directly required, pinned by Snyk to avoid a vulnerability
+
+>>>>>>> develop

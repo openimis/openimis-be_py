@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 **/.vscode
 **/.idea
 **/venv
@@ -15,3 +16,5 @@ openIMIS/locale/en/LC_MESSAGES/django.mo
 **/staticfiles
 extracted_translations_fe
 openIMIS/file_storage
+**/src/*
+**/images/insurees
