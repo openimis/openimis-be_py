@@ -53,6 +53,9 @@ jobs:
           rm ./openimis -rf
           git clone --depth=1 --branch=${{ inputs.branchName }} https://github.com/openimis/openimis-be_py.git ./openimis
           cat openimis/openIMIS/openIMIS/settings.py
+          cd openimis 
+          git log 
+
       - name: Copy Current branch
         uses: actions/checkout@v2
         with:
