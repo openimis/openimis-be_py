@@ -33,6 +33,11 @@ on:
         required: false
         type: string
 
+      branchName:
+        required: false
+        type: string
+        default: 'develop'
+
 jobs:
   build_backend:
     name: Build Backend
@@ -46,7 +51,7 @@ jobs:
       - name: Pull openIMIS Backend
         run: |
           rm ./openimis -rf
-          git clone --depth=1 --branch=develop https://github.com/openimis/openimis-be_py.git ./openimis
+          git clone --depth=1 --branch=${{ inputs.branchName }} https://github.com/openimis/openimis-be_py.git ./openimis
 
       - name: Copy Current branch
         uses: actions/checkout@v2
