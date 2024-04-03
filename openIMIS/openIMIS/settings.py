@@ -390,11 +390,9 @@ CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
 
 CACHES = {
     'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq"),
-        'OPTIONS': {
-            'DB': 0
-        }
+        'BACKEND': os.environ.get('CACHE_BACKEND', 'django.core.cache.backends.memcached.PyMemcacheCache'),
+        'LOCATION': os.environ.get("CACHE_URL", "unix:/tmp/memcached.sock"),
+        'OPTIONS': json.loads(os.environ.get("CACHE_OPTIONS", "{}"))
     }
 }
 
