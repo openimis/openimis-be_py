@@ -4,6 +4,7 @@ Django settings for openIMIS project.
 import json
 import logging
 import os
+import sys
 
 from dotenv import load_dotenv
 from .openimisapps import openimis_apps, get_locale_folders
@@ -166,6 +167,11 @@ INSTALLED_APPS = [
     "drf_spectacular",  # Swagger UI for FHIR API
     "django_opensearch_dsl"
 ]
+
+if 'test' in sys.argv:
+    # Remove django opensearch in case of tests execution
+    INSTALLED_APPS.pop()
+
 INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["apscheduler_runner", "signal_binding"]  # Signal binding should be last installed module
 
