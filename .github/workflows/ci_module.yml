@@ -312,6 +312,7 @@ jobs:
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
 
           # This has to exit 0, or report is not generated 
+          python manage.py migrate
           python -m coverage run --source=$MODULE_NAME --omit=*/migrations/* ./manage.py test --keepdb $MODULE_NAME
         env:
           SECRET_KEY: secret
@@ -413,6 +414,7 @@ jobs:
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           
           # This has to exit 0, or report is not generated 
+          python manage.py migrate
           python -m coverage run --source=$MODULE_NAME --omit=*/migrations/* ./manage.py test --keepdb $MODULES
         env:
           SECRET_KEY: secret
