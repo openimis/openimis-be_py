@@ -314,6 +314,7 @@ jobs:
           cat openIMIS/settings.py
           git branch
           git log 
+          cat ../.env
           
           # This has to exit 0, or report is not generated 
           python -m coverage run --source=$MODULE_NAME --omit=*/migrations/* ./manage.py test --keepdb $MODULES
