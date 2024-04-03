@@ -46,7 +46,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.10
+          python-version: '3.10'
 
       - name: Pull openIMIS Backend
         run: |
@@ -142,7 +142,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.10
+          python-version: '3.10'
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -249,7 +249,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.10
+          python-version: '3.10'
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -353,7 +353,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.10
+          python-version: '3.10'
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
         with:
@@ -403,7 +403,7 @@ jobs:
       SONAR_ORGANIZATION: ${{ inputs.SONAR_ORGANIZATION }}
       SONAR_PROJECT_NAME: ${{ inputs.SONAR_PROJECT_NAME }}
       SONAR_PROJECT_VERSION: ${{ inputs.SONAR_PROJECT_VERSION }}
-      SONAR_PYTHON_VERSION: 3.10
+      SONAR_PYTHON_VERSION: '3.10'
       SONAR_FLAKE8_REPORT_PATHS: ../report/flake8-report.txt
       SONAR_SOURCES: ${{ inputs.SONAR_SOURCES }}
     steps:
