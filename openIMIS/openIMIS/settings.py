@@ -499,9 +499,9 @@ ASGI_APPLICATION = "openIMIS.asgi.application"
 # Django channels require rabbitMQ server, by default it use 127.0.0.1, port 5672
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels_rabbitmq.core.RabbitmqChannelLayer",
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "host": os.environ.get("CHANNELS_HOST", "amqp://guest:guest@127.0.0.1/"),
+            "hosts": [os.environ.get("CHANNELS_HOST", "redis://")],
             # "ssl_context": ... (optional)
         },
     },
