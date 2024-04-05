@@ -387,13 +387,14 @@ CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
 
 
-CACHES = {
-    'default': {
-        'BACKEND': os.environ.get('CACHE_BACKEND', 'django.core.cache.backends.memcached.PyMemcacheCache'),
-        'LOCATION': os.environ.get("CACHE_URL", "unix:/tmp/memcached.sock"),
-        'OPTIONS': json.loads(os.environ.get("CACHE_OPTIONS", "{}"))
+if 'CACHE_BACKEND' in os.environ and 'CACHE_URL' in os.environ:
+    CACHES = {
+        'default': {
+            'BACKEND': os.environ.get('CACHE_BACKEND'),
+            'LOCATION': os.environ.get("CACHE_URL"),
+            'OPTIONS': json.loads(os.environ.get("CACHE_OPTIONS", "{}"))
+        }
     }
-}
 
 # This scheduler config will:
 # - Store jobs in the project database
