@@ -498,15 +498,17 @@ STATIC_URL = "/%sstatic/" % SITE_ROOT()
 ASGI_APPLICATION = "openIMIS.asgi.application"
 
 # Django channels require rabbitMQ server, by default it use 127.0.0.1, port 5672
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [os.environ.get("CHANNELS_HOST", "redis://")],
-            # "ssl_context": ... (optional)
+
+if "CHANNELS_BACKEND" in os.environ and "CHANNELS_HOST" in os.environ:
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": os.environ.get("CHANNELS_BACKEND"),
+            "CONFIG": {
+                "hosts": [os.environ.get("CHANNELS_HOST")],
+                # "ssl_context": ... (optional)
+            },
         },
-    },
-}
+    }
 
 # Django email settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
