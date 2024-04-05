@@ -386,14 +386,14 @@ DATABASE_ROUTERS = ["openIMIS.routers.DashboardDatabaseRouter"]
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
 
-
-CACHES = {
-    'default': {
-        'BACKEND': os.environ.get('CACHE_BACKEND', 'django.core.cache.backends.memcached.PyMemcacheCache'),
-        'LOCATION': os.environ.get("CACHE_URL", "unix:/tmp/memcached.sock"),
-        'OPTIONS': json.loads(os.environ.get("CACHE_OPTIONS", "{}"))
+if 'CACHE_BACKEND' in  os.environ and 'CACHE_URL' in os.environ:
+    CACHES = {
+        'default': {
+            'BACKEND': os.environ.get('CACHE_BACKEND', 'django.core.cache.backends.memcached.PyMemcacheCache'),
+            'LOCATION': os.environ.get("CACHE_URL", "unix:/tmp/memcached.sock"),
+            'OPTIONS': json.loads(os.environ.get("CACHE_OPTIONS", "{}"))
+        }
     }
-}
 
 # This scheduler config will:
 # - Store jobs in the project database
@@ -497,15 +497,17 @@ STATIC_URL = "/%sstatic/" % SITE_ROOT()
 ASGI_APPLICATION = "openIMIS.asgi.application"
 
 # Django channels require rabbitMQ server, by default it use 127.0.0.1, port 5672
+
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "BACKEND": os.environ.get("CHANNELS_BACKEND","channels_rabbitmq.core.RabbitmqChannelLayer"),
         "CONFIG": {
-            "hosts": [os.environ.get("CHANNELS_HOST", "redis://")],
+            "host": os.environ.get("CHANNELS_HOST", "amqp://guest:guest@127.0.0.1/"),
             # "ssl_context": ... (optional)
         },
     },
 }
+
 
 # Django email settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
