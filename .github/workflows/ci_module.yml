@@ -208,7 +208,7 @@ jobs:
           python manage.py test --debug-mode --timing --keepdb $MODULES
         env:
           SECRET_KEY: secret
-          DEBUG: true
+          MODE: DEV
           DB_ENGINE: mssql
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
@@ -310,7 +310,7 @@ jobs:
           python -m coverage run --source=$MODULE_NAME --omit=*/migrations/* ./manage.py test --keepdb $MODULES
         env:
           SECRET_KEY: secret
-          DEBUG: true
+          MODE: DEV
           DB_ENGINE: django.db.backends.postgresql
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
