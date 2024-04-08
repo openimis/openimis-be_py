@@ -392,7 +392,7 @@ if 'CACHE_BACKEND' in os.environ and 'CACHE_URL' in os.environ:
         'default': {
             'BACKEND': os.environ.get('CACHE_BACKEND'),
             'LOCATION': os.environ.get("CACHE_URL"),
-            'OPTIONS': json.loads(os.environ.get("CACHE_OPTIONS", "{}"))
+            'OPTIONS': json.loads(os.environ.get("CACHE_OPTIONS", ""))
         }
     }
 
