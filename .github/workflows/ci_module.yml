@@ -38,10 +38,10 @@ jobs:
     name: Build Backend
     runs-on: ubuntu-20.04
     steps:
-      - name: Set up Python 3.8
+      - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.10
 
       - name: Pull openIMIS Backend
         run: |
@@ -134,10 +134,10 @@ jobs:
           --health-retries=10
           --health-cmd="/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${SA_PASSWORD} -Q 'SELECT 1' || exit 1"
     steps:
-      - name: Set up Python 3.8
+      - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.10
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -208,7 +208,7 @@ jobs:
           python manage.py test --debug-mode --timing --keepdb $MODULES
         env:
           SECRET_KEY: secret
-          DEBUG: true
+          MODE: DEV
           DB_ENGINE: mssql
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
@@ -241,10 +241,10 @@ jobs:
           --health-timeout 5s
           --health-retries 10
     steps:
-      - name: Set up Python 3.8
+      - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.10
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -310,7 +310,7 @@ jobs:
           python -m coverage run --source=$MODULE_NAME --omit=*/migrations/* ./manage.py test --keepdb $MODULES
         env:
           SECRET_KEY: secret
-          DEBUG: true
+          MODE: DEV
           DB_ENGINE: django.db.backends.postgresql
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
@@ -345,10 +345,10 @@ jobs:
     runs-on: ubuntu-20.04
     needs: build_backend
     steps:
-      - name: Set up Python 3.8
+      - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.10
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
         with:
@@ -398,7 +398,7 @@ jobs:
       SONAR_ORGANIZATION: ${{ inputs.SONAR_ORGANIZATION }}
       SONAR_PROJECT_NAME: ${{ inputs.SONAR_PROJECT_NAME }}
       SONAR_PROJECT_VERSION: ${{ inputs.SONAR_PROJECT_VERSION }}
-      SONAR_PYTHON_VERSION: 3.8
+      SONAR_PYTHON_VERSION: 3.10
       SONAR_FLAKE8_REPORT_PATHS: ../report/flake8-report.txt
       SONAR_SOURCES: ${{ inputs.SONAR_SOURCES }}
     steps:
@@ -450,7 +450,7 @@ jobs:
             -Dsonar.organization=${{ inputs.SONAR_ORGANIZATION }}
             -Dsonar.projectName=${{ inputs.SONAR_PROJECT_NAME }}
             -Dsonar.projectVersion=${{ env.SONAR_PROJECT_VERSION }}
-            -Dsonar.python.version=3.8
+            -Dsonar.python.version=3.10
             -Dsonar.sources=current-module
             -Dsonar.python.coverage.reportPaths=report/coverage1.xml,report/coverage2.xml
             -Dsonar.python.flake8.reportPaths=report/flake8-report.txt

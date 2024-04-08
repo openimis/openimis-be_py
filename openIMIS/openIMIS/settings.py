@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = os.environ.get("MODE", "PROD") == "DEV"
 
 LOGGING_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "DEBUG" if DEBUG else "WARNING")
 DEFAULT_LOGGING_HANDLER = os.getenv("DJANGO_LOG_HANDLER", "console")
@@ -386,7 +386,6 @@ DATABASE_ROUTERS = ["openIMIS.routers.DashboardDatabaseRouter"]
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
 
-
 if 'CACHE_BACKEND' in os.environ and 'CACHE_URL' in os.environ:
     CACHES = {
         'default': {
@@ -498,7 +497,6 @@ STATIC_URL = "/%sstatic/" % SITE_ROOT()
 ASGI_APPLICATION = "openIMIS.asgi.application"
 
 # Django channels require rabbitMQ server, by default it use 127.0.0.1, port 5672
-
 if "CHANNELS_BACKEND" in os.environ and "CHANNELS_HOST" in os.environ:
     CHANNEL_LAYERS = {
         "default": {
@@ -509,6 +507,7 @@ if "CHANNELS_BACKEND" in os.environ and "CHANNELS_HOST" in os.environ:
             },
         },
     }
+
 
 # Django email settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
