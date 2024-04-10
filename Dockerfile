@@ -31,8 +31,7 @@ WORKDIR /openimis-be
 
 ARG OPENIMIS_CONF_JSON
 ENV OPENIMIS_CONF_JSON=${OPENIMIS_CONF_JSON}
-RUN python modules-requirements.py openimis.json > modules-requirements.txt
-RUN pip install -r modules-requirements.txt
+RUN python modules-requirements.py openimis.json > modules-requirements.txt && pip install -r modules-requirements.txt 
 
 WORKDIR /openimis-be/openIMIS
 

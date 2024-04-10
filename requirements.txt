@@ -53,4 +53,3 @@ pillow>=10.2.0 # not directly required, pinned by Snyk to avoid a vulnerability
 
 django-redis==5.4.0
 django-opensearch-dsl==0.5.1
-pymemcache==4.0.0
