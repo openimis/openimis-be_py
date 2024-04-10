@@ -41,7 +41,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.10
+          python-version: "3.10"
 
       - name: Pull openIMIS Backend
         run: |
@@ -79,7 +79,7 @@ jobs:
           echo $(jq --arg name "$MODULE_NAME" 'if [.modules[].name  ==  ($name)]| max then (.modules[]  | select(.name == ($name)) | .pip)|="-e ../current-module" else .modules |= .+ [{name:($name), pip:"../current-module"}] end' openimis.json)  > openimis.json
           cat openimis.json
 
-      - name: Install Python dependencies
+      - name: Install Python dependencies3.10
         working-directory: ./openimis
         run: |
           python -m pip install --upgrade pip
@@ -137,7 +137,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.10
+          python-version: "3.10"
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -244,7 +244,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.10
+          python-version: "3.10"
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -348,7 +348,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.10
+          python-version: "3.10"
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
         with:
@@ -398,7 +398,7 @@ jobs:
       SONAR_ORGANIZATION: ${{ inputs.SONAR_ORGANIZATION }}
       SONAR_PROJECT_NAME: ${{ inputs.SONAR_PROJECT_NAME }}
       SONAR_PROJECT_VERSION: ${{ inputs.SONAR_PROJECT_VERSION }}
-      SONAR_PYTHON_VERSION: 3.10
+      SONAR_PYTHON_VERSION: "3.10"
       SONAR_FLAKE8_REPORT_PATHS: ../report/flake8-report.txt
       SONAR_SOURCES: ${{ inputs.SONAR_SOURCES }}
     steps:
@@ -450,7 +450,7 @@ jobs:
             -Dsonar.organization=${{ inputs.SONAR_ORGANIZATION }}
             -Dsonar.projectName=${{ inputs.SONAR_PROJECT_NAME }}
             -Dsonar.projectVersion=${{ env.SONAR_PROJECT_VERSION }}
-            -Dsonar.python.version=3.10
+            -Dsonar.python.version="3.10"
             -Dsonar.sources=current-module
             -Dsonar.python.coverage.reportPaths=report/coverage1.xml,report/coverage2.xml
             -Dsonar.python.flake8.reportPaths=report/flake8-report.txt
