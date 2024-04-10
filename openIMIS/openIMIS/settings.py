@@ -384,7 +384,8 @@ DATABASE_ROUTERS = ["openIMIS.routers.DashboardDatabaseRouter"]
 
 # Celery message broker configuration for RabbitMQ. One can also use Redis on AWS SQS
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
-CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
+if 'CELERY_RESULT_BACKEND' in os.environ:
+    CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
 
 if 'CACHE_BACKEND' in os.environ and 'CACHE_URL' in os.environ:
     CACHES = {
