@@ -155,10 +155,6 @@
 		{
 			"name": "grievance",
 			"pip": "git+https://github.com/openimis/openimis-be-grievance_py.git@develop#egg=openimis-be-grievance"
-		},
-		{
-			"name":"dashboard_etl",
-			"pip" : "git+https://github.com/openimis/openimis-be-dashboard_etl_py.git@develop#egg=openimis-be-dashboard_etl"
 		}
 	]
 }
