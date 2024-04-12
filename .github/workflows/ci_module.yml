@@ -38,10 +38,10 @@ jobs:
     name: Build Backend
     runs-on: ubuntu-20.04
     steps:
-      - name: Set up Python 3.8
+      - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: "3.10"
 
       - name: Pull openIMIS Backend
         run: |
@@ -79,7 +79,7 @@ jobs:
           echo $(jq --arg name "$MODULE_NAME" 'if [.modules[].name  ==  ($name)]| max then (.modules[]  | select(.name == ($name)) | .pip)|="-e ../current-module" else .modules |= .+ [{name:($name), pip:"../current-module"}] end' openimis.json)  > openimis.json
           cat openimis.json
 
-      - name: Install Python dependencies
+      - name: Install Python dependencies3.10
         working-directory: ./openimis
         run: |
           python -m pip install --upgrade pip
@@ -134,10 +134,10 @@ jobs:
           --health-retries=10
           --health-cmd="/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${SA_PASSWORD} -Q 'SELECT 1' || exit 1"
     steps:
-      - name: Set up Python 3.8
+      - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: "3.10"
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -164,7 +164,7 @@ jobs:
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
           
-          if [ ${GITHUB_REF##*/} = "develop" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
+          if [ ${GITHUB_REF##*/} = "main" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
           echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
           git clone --depth=1 --branch=$DBBRANCH https://github.com/openimis/database_ms_sqlserver.git ./sql_mssql
           cd sql_mssql/ && bash concatenate_files.sh && cd ..
@@ -203,13 +203,12 @@ jobs:
         run: |
           python -V
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
-          # Remove api_fhir_r4 from MODULES
-          MODULES=$(echo "$MODULES" | sed 's/api_fhir_r4//g' | xargs)
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo $MODULES
           python manage.py test --debug-mode --timing --keepdb $MODULES
         env:
           SECRET_KEY: secret
-          DEBUG: true
+          MODE: DEV
           DB_ENGINE: mssql
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
@@ -220,6 +219,7 @@ jobs:
           #DEV_SERVER: true
           SITE_ROOT: api
           #REMOTE_USER_AUTHENTICATION: False
+          CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
   ci_module_psql_test:
     name: Run All Tests (PSQL)
     runs-on: ubuntu-20.04
@@ -241,10 +241,10 @@ jobs:
           --health-timeout 5s
           --health-retries 10
     steps:
-      - name: Set up Python 3.8
+      - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: "3.10"
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -271,7 +271,7 @@ jobs:
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
           
-          if [ ${GITHUB_REF##*/} = "develop" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
+          if [ ${GITHUB_REF##*/} = "main" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
           echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
           git clone  --depth=1 --branch=$DBBRANCH https://github.com/openimis/database_postgresql.git ./sql_psql
           
@@ -300,8 +300,8 @@ jobs:
           python -V
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
 
-          # Remove api_fhir_r4 from MODULES
-          MODULES=$(echo "$MODULES" | sed 's/api_fhir_r4//g' | xargs)
+          # Remove some module from MODULES
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo $MODULES
           # Generate sonar report 
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
@@ -310,7 +310,7 @@ jobs:
           python -m coverage run --source=$MODULE_NAME --omit=*/migrations/* ./manage.py test --keepdb $MODULES
         env:
           SECRET_KEY: secret
-          DEBUG: true
+          MODE: DEV
           DB_ENGINE: django.db.backends.postgresql
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
@@ -320,6 +320,7 @@ jobs:
           DB_PASSWORD: GitHub999
           #DEV_SERVER: true
           SITE_ROOT: api
+          CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
       - name: Generate Coverage Report
         if: always()
         working-directory: ./openimis/openIMIS
@@ -344,10 +345,10 @@ jobs:
     runs-on: ubuntu-20.04
     needs: build_backend
     steps:
-      - name: Set up Python 3.8
+      - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: "3.10"
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
         with:
@@ -397,7 +398,7 @@ jobs:
       SONAR_ORGANIZATION: ${{ inputs.SONAR_ORGANIZATION }}
       SONAR_PROJECT_NAME: ${{ inputs.SONAR_PROJECT_NAME }}
       SONAR_PROJECT_VERSION: ${{ inputs.SONAR_PROJECT_VERSION }}
-      SONAR_PYTHON_VERSION: 3.8
+      SONAR_PYTHON_VERSION: "3.10"
       SONAR_FLAKE8_REPORT_PATHS: ../report/flake8-report.txt
       SONAR_SOURCES: ${{ inputs.SONAR_SOURCES }}
     steps:
@@ -449,7 +450,7 @@ jobs:
             -Dsonar.organization=${{ inputs.SONAR_ORGANIZATION }}
             -Dsonar.projectName=${{ inputs.SONAR_PROJECT_NAME }}
             -Dsonar.projectVersion=${{ env.SONAR_PROJECT_VERSION }}
-            -Dsonar.python.version=3.8
+            -Dsonar.python.version="3.10"
             -Dsonar.sources=current-module
             -Dsonar.python.coverage.reportPaths=report/coverage1.xml,report/coverage2.xml
             -Dsonar.python.flake8.reportPaths=report/flake8-report.txt
