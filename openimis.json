@@ -155,6 +155,14 @@
 	        {
 	            "name": "grievance",
 	            "pip": "git+https://github.com/openimis/openimis-be-grievance_py.git@release/24.04#egg=openimis-be-grievance"
-	        }
+	        },
+		{
+                    "name": "calcrule_validations",
+                    "pip": "git+https://github.com/openimis/openimis-be-calcrule_validations_py.git@release/24.04#egg=openimis-be-calcrule_validations"
+                },
+		{
+                    "name": "deduplication",
+                    "pip": "git+https://github.com/openimis/openimis-be-deduplication_py.git@release/24.04#egg=openimis-be-deduplication"
+                }
 	]
 }
