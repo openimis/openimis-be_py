@@ -72,9 +72,7 @@ jobs:
           sudo apt-get install jq
 
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
-          
           echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
-
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
           # Remove some module from MODULES
           MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
@@ -150,10 +148,17 @@ jobs:
           name: site-packages
           path: /tmp/
 
+
       - name: Locate site-packages
         run: |
           SITE_PACKAGES=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
+          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
+          echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
+          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
+          # Remove some module from MODULES
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
+          echo "MODULES=$MODULES" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -258,6 +263,12 @@ jobs:
         run: |
           SITE_PACKAGES=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
+          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
+          echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
+          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
+          # Remove some module from MODULES
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
+          echo "MODULES=$MODULES" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -318,8 +329,8 @@ jobs:
       - name: Django full PSQL
         working-directory: ./openimis/openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
-        if: success() || failure()
         run: python manage.py test --debug-mode --timing --keepdb $MODULES
+        continue-on-error: true
         env:
           SECRET_KEY: secret
           MODE: DEV
@@ -336,11 +347,11 @@ jobs:
       # Check if the full test failed but not the PSQL
       - name: Set warning status if full test step failed
         id: check-status
-        run: echo ::set-output name=status::${{ job.status != 'success' && steps.django-full-psql.outcome == 'failure' && steps.django-test-psql.outcome == 'success' }}
+        run: echo "status=${{ job.status != 'success' && steps.django-full-psql.outcome == 'failure' && steps.django-test-psql.outcome == 'success' }}" >> $GITHUB_OUTPUT
       # Print a warning message if the previous step failed
       - name: Print warning
         if: steps.check-status.outputs.status == 'true'
-        run: echo "Global test failed, check if it is not because of your changes"
+        run: echo "warning:: Global test failed, check if it is not because of your changes"
 
       - name: Generate Coverage Report
         if: always()
