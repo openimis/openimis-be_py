@@ -299,6 +299,7 @@ jobs:
           DB_PASSWORD: GitHub999
       - name: Django tests PSQL
         working-directory: ./openimis/openIMIS
+        id: django-test-psql
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
         if: success() || failure()
         run: |
@@ -320,6 +321,7 @@ jobs:
           CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
       - name: Django full PSQL
         working-directory: ./openimis/openIMIS
+        id: django-full-psql
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
         run: |
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
@@ -344,7 +346,7 @@ jobs:
       # Check if the full test failed but not the PSQL
       - name: Set warning status if full test step failed
         id: check-status
-        run: echo "status=${{ job.status != 'success' && steps.django-full-psql.outcome == 'failure' && steps.django-test-psql.outcome == 'success' }}" >> $GITHUB_OUTPUT
+        run: echo "status=${{ steps.django-full-psql.outcome == 'failure' && steps.django-test-psql.outcome == 'success' }}" >> $GITHUB_OUTPUT
       # Print a warning message if the previous step failed
       - name: Print warning
         if: steps.check-status.outputs.status == 'true'
