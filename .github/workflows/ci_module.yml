@@ -73,7 +73,7 @@ jobs:
 
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
-          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
+          export MODULES=$(jq -r '(.modules[].name)' ./openimis.json | xargs)
           # Remove some module from MODULES
           MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo "MODULES=$MODULES" >> $GITHUB_ENV
@@ -155,10 +155,6 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
-          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
-          # Remove some module from MODULES
-          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
-          echo "MODULES=$MODULES" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -265,7 +261,7 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
-          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
+          export MODULES=$(jq -r '(.modules[].name)' ./openimis/openimis.json | xargs)
           # Remove some module from MODULES
           MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo "MODULES=$MODULES" >> $GITHUB_ENV
