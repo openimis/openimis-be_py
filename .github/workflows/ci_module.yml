@@ -72,8 +72,11 @@ jobs:
           sudo apt-get install jq
 
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
-          
           echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
+          export MODULES=$(jq -r '(.modules[].name)' ./openimis.json | xargs)
+          # Remove some module from MODULES
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
+          echo "MODULES=$MODULES" >> $GITHUB_ENV
           
           # Add or replace MODULE_NAME module in openimis.json (local version)
           echo $(jq --arg name "$MODULE_NAME" 'if [.modules[].name  ==  ($name)]| max then (.modules[]  | select(.name == ($name)) | .pip)|="-e ../current-module" else .modules |= .+ [{name:($name), pip:"../current-module"}] end' openimis.json)  > openimis.json
@@ -145,10 +148,13 @@ jobs:
           name: site-packages
           path: /tmp/
 
+
       - name: Locate site-packages
         run: |
           SITE_PACKAGES=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
+          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
+          echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -202,10 +208,7 @@ jobs:
         if: success() || failure()
         run: |
           python -V
-          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
-          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
-          echo $MODULES
-          python manage.py test --debug-mode --timing --keepdb $MODULES
+          python manage.py test --debug-mode --timing --keepdb $MODULE_NAME
         env:
           SECRET_KEY: secret
           MODE: DEV
@@ -256,6 +259,8 @@ jobs:
         run: |
           SITE_PACKAGES=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
+          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
+          echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -294,20 +299,13 @@ jobs:
           DB_PASSWORD: GitHub999
       - name: Django tests PSQL
         working-directory: ./openimis/openIMIS
+        id: django-test-psql
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
         if: success() || failure()
         run: |
           python -V
-          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
-
-          # Remove some module from MODULES
-          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
-          echo $MODULES
-          # Generate sonar report 
-          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
-          
           # This has to exit 0, or report is not generated 
-          python -m coverage run --source=$MODULE_NAME --omit=*/migrations/* ./manage.py test --keepdb $MODULES
+          python -m coverage run --source=$MODULE_NAME --omit=*/migrations/* ./manage.py test --keepdb $MODULE_NAME
         env:
           SECRET_KEY: secret
           MODE: DEV
@@ -321,6 +319,38 @@ jobs:
           #DEV_SERVER: true
           SITE_ROOT: api
           CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
+      - name: Django full PSQL
+        working-directory: ./openimis/openIMIS
+        id: django-full-psql
+        # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
+        run: |
+          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
+          # Remove some module from MODULES
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
+          echo "MODULES=$MODULES" >> $GITHUB_ENV  
+          python manage.py test --debug-mode --timing --keepdb $MODULES
+        continue-on-error: true
+        env:
+          SECRET_KEY: secret
+          MODE: DEV
+          DB_ENGINE: django.db.backends.postgresql
+          #DJANGO_SETTINGS_MODULE: hat.settings
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: imis
+          DB_USER: postgres
+          DB_PASSWORD: GitHub999
+          #DEV_SERVER: true
+          SITE_ROOT: api
+          CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
+      # Check if the full test failed but not the PSQL
+      - name: Set warning status if full test step failed
+        id: check-status
+        run: echo "status=${{ steps.django-full-psql.outcome == 'failure' && steps.django-test-psql.outcome == 'success' }}" >> $GITHUB_OUTPUT
+      # Print a warning message if the previous step failed
+      - name: Print warning
+        if: steps.check-status.outputs.status == 'true'
+        run: echo "::warning::Global test failed, check if it is not because of your changes"
       - name: Generate Coverage Report
         if: always()
         working-directory: ./openimis/openIMIS
@@ -376,7 +406,6 @@ jobs:
         if: success() || failure()
         run: |
           # Flake8 Report
-          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           MOD_DIR="../current-module/$MODULE_NAME"
           python -m flake8 --output-file=flake8-report.txt $MOD_DIR --exit-zero
           sed -i 's|\.\./current-module/||g' flake8-report.txt
