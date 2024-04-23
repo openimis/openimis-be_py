@@ -351,7 +351,7 @@ jobs:
       # Print a warning message if the previous step failed
       - name: Print warning
         if: steps.check-status.outputs.status == 'true'
-        run: echo "::warning:: Global test failed, check if it is not because of your changes"
+        run: echo "::warning::Global test failed, check if it is not because of your changes"
       - name: Generate Coverage Report
         if: always()
         working-directory: ./openimis/openIMIS
