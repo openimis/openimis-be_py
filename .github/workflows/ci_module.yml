@@ -261,10 +261,6 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
-          export MODULES=$(jq -r '(.modules[].name)' ./openimis/openimis.json | xargs)
-          # Remove some module from MODULES
-          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
-          echo "MODULES=$MODULES" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
         uses: actions/download-artifact@v2
@@ -325,7 +321,12 @@ jobs:
       - name: Django full PSQL
         working-directory: ./openimis/openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
-        run: python manage.py test --debug-mode --timing --keepdb $MODULES
+        run: |
+          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
+          # Remove some module from MODULES
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
+          echo "MODULES=$MODULES" >> $GITHUB_ENV  
+          python manage.py test --debug-mode --timing --keepdb $MODULES
         continue-on-error: true
         env:
           SECRET_KEY: secret
