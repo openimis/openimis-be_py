@@ -303,13 +303,14 @@ jobs:
         if: success() || failure()
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
-          DB_NAME=$DB_NAME_TEST python manage.py migrate
           
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
 
           # Remove some module from MODULES
           MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo $MODULES
+          
+          DB_NAME=test_imis python manage.py migrate
           # Generate sonar report 
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
 
