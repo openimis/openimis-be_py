@@ -418,8 +418,8 @@ jobs:
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           
           # This has to exit 0, or report is not generated 
-          MODE=DEV python manage.py migrate
-          MODE=DEV python -m coverage run --source=$MODULE_NAME --omit=*/migrations/* ./manage.py test --keepdb $MODULES
+          DB_NAME=test_imis python manage.py migrate
+          python -m coverage run --source=$MODULE_NAME --omit=*/migrations/* ./manage.py test --keepdb $MODULES
         env:
           SECRET_KEY: secret
           DEBUG: true
@@ -433,6 +433,7 @@ jobs:
           #DEV_SERVER: true
           SITE_ROOT: api
           CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
+          MODE: DEV
       - name: Generate Coverage Report
         if: always()
         working-directory: ./openimis/openIMIS
