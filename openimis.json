@@ -159,6 +159,9 @@
 		{
             "name": "grievance_social_protection",
             "pip": "git+https://github.com/openimis/openimis-be-grievance_social_protection_py.git@develop#egg=openimis-be-grievance_social_protection"
-        }
+        },{
+			"name": "grievance",
+			"pip": "git+https://github.com/openimis/openimis-be-grievance_py.git@develop#egg=openimis-be-grievance"
+		}
 	]
 }

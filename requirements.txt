@@ -11,7 +11,7 @@ django-filter~=22.1
 #django-mssql-backend is a fork for django 3 of django-pyodbc-azure (django 2.1) which is a fork of django-pyodbc (1.x)
 # Since Q3 2021, Microsoft is providing an official driver mssql-django, the engine needs to become "mssql"
 #django-mssql-backend==2.8.1
-mssql-django==1.4
+mssql-django~=1.4
 django-test-without-migrations
 graphene-django<3
 graphene-django-optimizer==0.8.0
@@ -32,7 +32,7 @@ waitress
 wheel
 whitenoise
 django-health-check
-requests~=2.28.1
+requests~=2.31.0
 apscheduler==3.10.1
 # As from v0.4, Django-apscheduler has a migration that is incompatible with SQL Server
 # (autoincrement int => bigint) so we are using our own fork with a squashed migration

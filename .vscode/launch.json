@@ -114,6 +114,17 @@
       "purpose": ["debug-in-terminal"],
       "justMyCode": true
     },
+    {
+      "name": "Sync src with GH",
+      "type": "python",
+      "request": "launch",
+      "program": "./setup-local-dev.py",
+      "args": ["extract_translations"],
+      "django": true,
+      "cwd": "${workspaceRoot}/script",
+      "purpose": ["debug-in-terminal"],
+      "justMyCode": true
+    },
 
     {
       "name": "migrate",
@@ -211,7 +222,27 @@
       "django": true,
       "cwd": "${workspaceRoot}/openIMIS",
       "env": {
-        "DB_DEFAULT": "${input:dbEngine}"
+        "DB_DEFAULT": "${input:dbEngine}",
+        //"ASYNC": "PROD",
+        "CELERY_BROKER_URL": "memory://openIMIS-test//",
+        "CELERY_RESULT_BACKEND": "cache+memory://openIMIS-test//"
+      },
+    },
+    {
+      "name": "Python: Celery Workers",
+      "type": "python",
+      "request": "launch",
+      "module": "celery",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceRoot}/openIMIS",
+
+      "envFile": "${workspaceFolder}/.env",
+      "args": ["-A", "openIMIS", "worker", "-l", "debug", "-Q", "queueName"],
+      "env": {
+        "DB_DEFAULT": "${input:dbEngine}",
+        "ASYNC": "PROD",
+        "CELERY_BROKER_URL": "amqp://lov",
+        "CELERY_RESULT_BACKEND": "cache+memory://openIMIS-test//"
       },
       "justMyCode": true
     }

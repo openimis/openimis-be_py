@@ -21,10 +21,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-
-LOGGING_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "DEBUG" if DEBUG else "WARNING")
+DEBUG = os.environ.get("MODE", "PROD") == "DEV"
 DEFAULT_LOGGING_HANDLER = os.getenv("DJANGO_LOG_HANDLER", "console")
+DEFAULT_DB_LOGGING_HANDLER = os.getenv("DJANGO_DB_LOG_HANDLER", "db-queries")
+LOGGING_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "DEBUG" if DEBUG else "WARNING")
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
+
 
 LOGGING = {
     "version": 1,
@@ -60,7 +66,7 @@ LOGGING = {
         "django.db.backends": {
             "level": LOGGING_LEVEL,
             "propagate": False,
-            "handlers": ["console" if os.environ.get("MODE", "PROD") == "DEV" else "db-queries"],
+            "handlers": [DEFAULT_DB_LOGGING_HANDLER],
         },
         "openIMIS": {
             "level": LOGGING_LEVEL,
@@ -365,14 +371,16 @@ else:
         }
     }
 
-DATABASES['dashboard_db'] = {
-    "ENGINE": os.environ.get("DASHBOARD_DB_ENGINE", 'mssql'),
-    "NAME": os.environ.get("DASHBOARD_DB_NAME", "imis"),
-    "USER": os.environ.get("DASHBOARD_DB_USER", "IMISuser"),
-    "PASSWORD": os.environ.get("DASHBOARD_DB_PASSWORD"),
-    "HOST": os.environ.get("DASHBOARD_DB_HOST", 'mssql'),
-    "PORT": os.environ.get("DASHBOARD_DB_PORT", '1433')
-}
+#should not add that config unless used
+if "DASHBOARD_DB_ENGINE" in os.environ:
+    DATABASES['dashboard_db'] = {
+        "ENGINE": os.environ.get("DASHBOARD_DB_ENGINE", 'mssql'),
+        "NAME": os.environ.get("DASHBOARD_DB_NAME", "imis"),
+        "USER": os.environ.get("DASHBOARD_DB_USER", "IMISuser"),
+        "PASSWORD": os.environ.get("DASHBOARD_DB_PASSWORD"),
+        "HOST": os.environ.get("DASHBOARD_DB_HOST", 'mssql'),
+        "PORT": os.environ.get("DASHBOARD_DB_PORT", '1433')
+    }
 
 if "sql_server.pyodbc" in DATABASES["default"]['ENGINE'] or "mssql" in DATABASES["default"]['ENGINE']:
     MSSQL = True
@@ -391,16 +399,17 @@ DATABASE_ROUTERS = ["openIMIS.routers.DashboardDatabaseRouter"]
 
 # Celery message broker configuration for RabbitMQ. One can also use Redis on AWS SQS
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
-CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
+if 'CELERY_RESULT_BACKEND' in os.environ:
+    CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
 
-
-CACHES = {
-    'default': {
-        'BACKEND': os.environ.get('CACHE_BACKEND', 'django.core.cache.backends.memcached.PyMemcacheCache'),
-        'LOCATION': os.environ.get("CACHE_URL", "unix:/tmp/memcached.sock"),
-        'OPTIONS': json.loads(os.environ.get("CACHE_OPTIONS", "{}"))
+if 'CACHE_BACKEND' in os.environ and 'CACHE_URL' in os.environ:
+    CACHES = {
+        'default': {
+            'BACKEND': os.environ.get('CACHE_BACKEND'),
+            'LOCATION': os.environ.get("CACHE_URL"),
+            'OPTIONS': json.loads(os.environ.get("CACHE_OPTIONS", ""))
+        }
     }
-}
 
 # This scheduler config will:
 # - Store jobs in the project database
@@ -504,15 +513,17 @@ STATIC_URL = "/%sstatic/" % SITE_ROOT()
 ASGI_APPLICATION = "openIMIS.asgi.application"
 
 # Django channels require rabbitMQ server, by default it use 127.0.0.1, port 5672
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_rabbitmq.core.RabbitmqChannelLayer",
-        "CONFIG": {
-            "host": os.environ.get("CHANNELS_HOST", "amqp://guest:guest@127.0.0.1/"),
-            # "ssl_context": ... (optional)
+if "CHANNELS_BACKEND" in os.environ and "CHANNELS_HOST" in os.environ:
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": os.environ.get("CHANNELS_BACKEND"),
+            "CONFIG": {
+                "hosts": [os.environ.get("CHANNELS_HOST")],
+                # "ssl_context": ... (optional)
+            },
         },
-    },
-}
+    }
+
 
 # Django email settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
