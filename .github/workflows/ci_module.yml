@@ -315,7 +315,7 @@ jobs:
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
 
           # This has to exit 0, or report is not generated 
-          DB_NAME=test_imis python -m coverage run --omit=*/migrations/* ./manage.py test --keepdb $MODULE_NAME
+          python -m coverage run --omit=*/migrations/* ./manage.py test --keepdb $MODULE_NAME
         env:
           SECRET_KEY: secret
           DEBUG: true
