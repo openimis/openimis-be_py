@@ -225,6 +225,7 @@ jobs:
           SITE_ROOT: api
           #REMOTE_USER_AUTHENTICATION: False
           CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
+          MODE: DEV
   ci_module_psql_test_module_only:
     name: Run Module Tests (PSQL)
     runs-on: ubuntu-20.04
