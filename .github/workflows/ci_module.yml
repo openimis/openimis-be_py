@@ -273,13 +273,14 @@ jobs:
           sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
           sudo tar -xzf /tmp/openimis.tar.gz -C .
       - name: Initialize PSQL
-        working-directory: ./openimis/
+        working-directory: ./openimis
         run: |
           export DB_NAME_TEST="$DB_NAME"
 
           if [ ${GITHUB_REF##*/} = "main" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
           echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
-          git clone  --depth=1 --branch=$DBBRANCH https://github.com/openimis/database_postgresql.git ./sql_psql
+          
+          ls
 
           python ./testUtils/createDockerTestDB.py setup
         env:
