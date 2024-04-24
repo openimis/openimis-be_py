@@ -174,7 +174,7 @@ INSTALLED_APPS = [
     "django_opensearch_dsl"
 ]
 
-if 'test' in sys.argv:
+if 'test' in sys.argv or 'migrate' in sys.argv:
     # Remove django opensearch in case of tests execution
     INSTALLED_APPS.pop()
 
