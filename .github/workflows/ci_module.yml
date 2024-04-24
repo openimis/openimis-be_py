@@ -401,6 +401,7 @@ jobs:
           DB_NAME: imis
           DB_USER: postgres
           DB_PASSWORD: GitHub999
+          MODE: DEV
       - name: Django tests PSQL
         working-directory: ./openimis/openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
@@ -431,6 +432,7 @@ jobs:
           #DEV_SERVER: true
           SITE_ROOT: api
           CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
+          MODE: DEV
       - name: Generate Coverage Report
         if: always()
         working-directory: ./openimis/openIMIS
