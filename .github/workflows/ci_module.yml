@@ -235,7 +235,7 @@ jobs:
         env:
           DB_HOST: localhost
           DB_PORT: 5432
-          POSTGRES_DB: imis
+          POSTGRES_DB: test_imis
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: GitHub999
         ports:
@@ -273,20 +273,28 @@ jobs:
           sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
           sudo tar -xzf /tmp/openimis.tar.gz -C .
       - name: Initialize PSQL
-        working-directory: ./openimis
         run: |
-          export DB_NAME_TEST="$DB_NAME"
+          export DB_NAME_TEST="test_$DB_NAME"
 
           if [ ${GITHUB_REF##*/} = "main" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
           echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
-          
-          ls
+          git clone  --depth=1 --branch=$DBBRANCH https://github.com/openimis/database_postgresql.git ./sql_psql
 
-          python ./testUtils/createDockerTestDB.py setup
+          echo 'set search_path to public' >> ~/.psqlrc
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -c "DROP DATABASE IF EXISTS \"$DB_NAME_TEST\";"
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -c "CREATE DATABASE \"$DB_NAME_TEST\";"
+
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/00_dump.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/02_aux_functions.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/03_views.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/04_functions.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/05_stored_procs.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/demo_db.sql | grep . | uniq -c
+
         env:
           DB_HOST: localhost
           DB_PORT: 5432
-          DB_NAME: test_imis
+          DB_NAME: imis
           DB_USER: postgres
           DB_PASSWORD: GitHub999
       - name: Django tests PSQL
@@ -294,7 +302,9 @@ jobs:
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
         if: success() || failure()
         run: |
-          python -V
+          export DB_NAME_TEST="test_$DB_NAME"
+          DB_NAME=$DB_NAME_TEST python manage.py migrate
+          
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
 
           # Remove some module from MODULES
@@ -304,8 +314,7 @@ jobs:
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
 
           # This has to exit 0, or report is not generated 
-          python manage.py migrate
-          python -m coverage run --source=$MODULE_NAME --omit=*/migrations/* ./manage.py test --keepdb $MODULE_NAME
+          python -m coverage run --omit=*/migrations/* ./manage.py test --keepdb $MODULE_NAME
         env:
           SECRET_KEY: secret
           DEBUG: true
