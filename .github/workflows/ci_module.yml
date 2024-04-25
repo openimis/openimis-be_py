@@ -120,7 +120,7 @@ jobs:
           name: code-artifacts
           path: openimis.tar.gz
   ci_module_mssql_tests:
-    name: Run All Tests (MSSQL)
+    name: Run Module Tests (MSSQL)
     runs-on: ubuntu-20.04
     needs: build_backend
     services:
