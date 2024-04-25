@@ -210,7 +210,7 @@ jobs:
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
           MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo $MODULES
-          python manage.py test --debug-mode --timing --keepdb $MODULES
+          python manage.py test --debug-mode --timing --keepdb $MODULE_NAME
         env:
           SECRET_KEY: secret
           DB_ENGINE: mssql
