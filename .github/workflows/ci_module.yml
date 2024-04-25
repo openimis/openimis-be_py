@@ -201,7 +201,7 @@ jobs:
             ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
             ${{ runner.os }}-pip-
             ${{ runner.os }}-
-      - name: Django tests MSSQL
+      - name: Django tests MSSQL Module
         working-directory: ./openimis/openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
         if: success() || failure()
@@ -209,7 +209,10 @@ jobs:
           python -V
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
           MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
-          echo $MODULES
+          
+          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
+          echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
+          
           python manage.py test --debug-mode --timing --keepdb $MODULE_NAME
         env:
           SECRET_KEY: secret
