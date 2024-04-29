@@ -152,10 +152,6 @@
 			"name": "controls",
 			"pip": "git+https://github.com/openimis/openimis-be-controls_py.git@release/24.04#egg=openimis-be-controls"
 		},
-	        {
-	            "name": "grievance",
-	            "pip": "git+https://github.com/openimis/openimis-be-grievance_py.git@release/24.04#egg=openimis-be-grievance"
-	        },
 		{
                     "name": "calcrule_validations",
                     "pip": "git+https://github.com/openimis/openimis-be-calcrule_validations_py.git@release/24.04#egg=openimis-be-calcrule_validations"
