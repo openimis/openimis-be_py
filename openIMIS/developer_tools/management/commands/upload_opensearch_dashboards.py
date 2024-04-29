@@ -45,7 +45,7 @@ class Command(BaseCommand):
         with open(ndjson_file_path, 'r') as file:
             ndjson_data = file.read()
 
-        username = os.getenv('IMIS_USERNAME', None)
+        username = 'Admin'
         password = os.getenv('IMIS_PASSWORD', None)
         token = self.__get_jwt_token(host_domain, username, password)
 

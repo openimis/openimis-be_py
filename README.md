@@ -63,6 +63,7 @@
 | CACHE_URL                   | String                               |  Defines the location of the cache backend. Default is `unix:/tmp/memcached.sock` for a Unix socket connection.                                                                                  |
 | CACHE_OPTIONS               | String                               | A JSON string representing a dictionary of additional options passed to the cache backend. Empty by default
 | HOST_DOMAIN                 | String                               | A string with domain address with http protocol for example https://release.openimis.org
+| IMIS_PASSWORD               | String                               | Configure the password with which you want to connect to the openIMIS API
 
 ## Developers setup
 
