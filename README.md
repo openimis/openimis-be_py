@@ -327,7 +327,7 @@ module skeleton in single command` section
 ### To upload opensearch configuration
 
 - from `/openimis-be_py/openIMIS`:
-  - run this command: `python manage.py upload_opensearch_dashbaords`. This command will This command will upload dashboards config 
+  - run this command: `python manage.py upload_opensearch_dashboards`. This command will This command will upload dashboards config 
   including charts, visualizations, indexes if the opensearch is available in package.
 
 ## Custom exception handler for new modules REST-based modules
