@@ -63,8 +63,6 @@
 | CACHE_URL                   | String                               |  Defines the location of the cache backend. Default is `unix:/tmp/memcached.sock` for a Unix socket connection.                                                                                  |
 | CACHE_OPTIONS               | String                               | A JSON string representing a dictionary of additional options passed to the cache backend. Empty by default
 | HOST_DOMAIN                 | String                               | A string with domain address with http protocol for example https://release.openimis.org
-| IMIS_USERNAME               | String                               | Define the admin username to authenticate to openIMIS API 
-| IMIS_PASSWORD               | String                               | Define the admin password to authenticate to openIMIS API 
 
 ## Developers setup
 
@@ -329,6 +327,8 @@ module skeleton in single command` section
 - from `/openimis-be_py/openIMIS`:
   - run this command: `python manage.py upload_opensearch_dashboards`. This command will This command will upload dashboards config 
   including charts, visualizations, indexes if the opensearch is available in package.
+  - IMPORTANT - please use and set `HOST_DOMAIN`, `IMIS_USERNAME`, `IMIS_PASSWORD` 
+  environmental variables in order to have working command.
 
 ## Custom exception handler for new modules REST-based modules
 
