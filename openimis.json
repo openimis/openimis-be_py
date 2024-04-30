@@ -151,10 +151,6 @@
     {
       "name": "controls",
       "pip": "openimis-be-controls==v1.1.0"
-    },
-    {
-      "name": "grievance",
-      "pip": "openimis-be-grievance==1.0.0"
     }
   ]
 }
