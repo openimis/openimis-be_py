@@ -61,7 +61,7 @@
 | CLAIMDOC_TOKEN              | String                               | Used in backend caching. Define a token to communicate with the remote server. Default is set to 'TestToken'                                                                                     |
 | CACHE_BACKEND               | String                               | Specifies the [caching backend](https://docs.djangoproject.com/en/5.0/topics/cache/#setting-up-the-cache) to be used. Default is set to PyMemcached.                                                                                                                         |
 | CACHE_URL                   | String                               |  Defines the location of the cache backend. Default is `unix:/tmp/memcached.sock` for a Unix socket connection.                                                                                  |
-| CACHE_OPTIONS               | String                               | A JSON string representing a dictionary of additional options passed to the cache backend. Empty by default                                                                                                                                                                                                                                                                                            |
+| CACHE_OPTIONS               | String                               | A JSON string representing a dictionary of additional options passed to the cache backend. Empty by default
 
 ## Developers setup
 
@@ -320,6 +320,14 @@ module skeleton in single command` section
   - run this command: `python manage.py extract_translations`. This command will execute all steps required
     to extract frontend translations of all modules present in `openimis.json`.
   - those translations will be copied into 'extracted_translations_fe' folder in assembly backend module
+
+### To upload opensearch configuration
+
+- from `/openimis-be_py/openIMIS`:
+  - run this command: `python manage.py upload_opensearch_dashboards --host-domain <host-domain> --imis-password <password>`. This command will This command will upload dashboards config 
+  including charts, visualizations, indexes if the opensearch is available in package.
+  - `<password>` - password necessary to log as admin user to obtain token to connect with API
+  - `<host-domain>` is a hostname with http or https protocol for example `https://release.openimis.org`
 
 ## Custom exception handler for new modules REST-based modules
 
