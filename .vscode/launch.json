@@ -133,7 +133,7 @@
       "type": "python",
       "request": "launch",
       "program": "${workspaceFolder}/openIMIS/manage.py",
-      "args": ["runserver"],
+      "args": ["start"],
       "django": true,
       "cwd": "${workspaceRoot}/openIMIS",
       "env": {
