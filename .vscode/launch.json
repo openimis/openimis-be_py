@@ -1,0 +1,250 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "inputs": [
+    {
+      "id": "moduleName",
+      "type": "pickString",
+      "description": "provide module name to test",
+      "options": [
+        "core",
+        "individual",
+        "workflow",
+        "tasks_management",
+        "report",
+        "location",
+        "medical",
+        "controls",
+        "medical_pricelist",
+        "product",
+        "insuree",
+        "policy",
+        "contribution",
+        "payer",
+        "payment",
+        "claim",
+        "claim_batch",
+        "tools",
+        "api_fhir_r4",
+        "calculation",
+        "contribution_plan",
+        "policyholder",
+        "contract",
+        "invoice",
+        "calcrule_contribution_legacy",
+        "calcrule_third_party_payment",
+        "calcrule_capitation_payment",
+        "calcrule_commission",
+        "calcrule_contribution_income_percentage",
+        "calcrule_fees",
+        "calcrule_unconditional_cash_payment",
+        "im_export",
+        "dhis2_etl",
+        "social_protection",
+        "opensearch_reports",
+        "payment_cycle",
+        "calcrule_social_protection",
+        "payroll"
+      ]
+    },
+    {
+      "id": "dbEngine",
+      "type": "pickString",
+      "description": "provide DB engine to use",
+      "options": ["MSSQL", "PSQL"]
+    }
+  ],
+  "configurations": [
+    {
+      "name": "pushpastMonth",
+      "type": "python",
+      "request": "launch",
+      "program": "./manage.py",
+      "args": ["pushadx", "2023-03-01", "pushLastMonth", "--verbose"],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "PSQL"
+      },
+      "purpose": ["debug-in-terminal"],
+      "justMyCode": true
+    },
+
+    {
+      "name": "orgunit",
+      "type": "python",
+      "request": "launch",
+      "program": "./manage.py",
+      "args": ["pushmetadata", "2010-06-01", "orgunit", "--verbose"],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "PSQL"
+      },
+      "purpose": ["debug-in-terminal"],
+      "justMyCode": true
+    },
+    {
+      "name": "pushMetadata",
+      "type": "python",
+      "request": "launch",
+      "program": "./manage.py",
+      "args": ["pushadx", "2023-06-01", "pushMetadata", "--verbose"],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "PSQL"
+      },
+      "purpose": ["debug-in-terminal"],
+      "justMyCode": true
+    },
+    {
+      "name": "gen trad be",
+      "type": "python",
+      "request": "launch",
+      "program": "./manage.py",
+      "args": ["extract_translations"],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "PSQL"
+      },
+      "purpose": ["debug-in-terminal"],
+      "justMyCode": true
+    },
+    {
+      "name": "Sync src with GH",
+      "type": "python",
+      "request": "launch",
+      "program": "./setup-local-dev.py",
+      "args": ["extract_translations"],
+      "django": true,
+      "cwd": "${workspaceRoot}/script",
+      "purpose": ["debug-in-terminal"],
+      "justMyCode": true
+    },
+
+    {
+      "name": "migrate",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/openIMIS/manage.py",
+      "args": ["migrate"],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "${input:dbEngine}"
+      },
+      "justMyCode": true
+    },
+    {
+      "name": "Start",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/openIMIS/manage.py",
+      "args": ["runserver"],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "${input:dbEngine}"
+      },
+      "justMyCode": true
+    },
+    {
+      "name": "Test",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/openIMIS/manage.py",
+      "args": [
+        "test",
+        "--keepdb",
+        "--timing",
+        "core",
+        "individual",
+        "controls",
+        "workflow",
+        "tasks_management",
+        "report",
+        "location",
+        "medical",
+        "medical_pricelist",
+        "product",
+        "insuree",
+        "policy",
+        "contribution",
+        "payer",
+        "payment",
+        "claim",
+        "claim_batch",
+        "tools",
+        "api_fhir_r4",
+        "calculation",
+        "contribution_plan",
+        "policyholder",
+        "contract",
+        "invoice",
+        "calcrule_contribution_legacy",
+        "calcrule_third_party_payment",
+        "calcrule_capitation_payment",
+        "calcrule_commission",
+        "calcrule_contribution_income_percentage",
+        "calcrule_fees",
+        "calcrule_unconditional_cash_payment",
+        "im_export",
+        "dhis2_etl",
+        "social_protection",
+        "opensearch_reports",
+        "payment_cycle",
+        "calcrule_social_protection",
+        "payroll"
+      ],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "${input:dbEngine}"
+      },
+      "justMyCode": true
+    },
+    {
+      "name": "Test module",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/openIMIS/manage.py",
+      "args": [
+        "test",
+        "--keepdb",
+        "--debug-mode",
+        "--timing",
+        "${input:moduleName}"
+      ],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "${input:dbEngine}",
+        //"ASYNC": "PROD",
+        "CELERY_BROKER_URL": "memory://openIMIS-test//",
+        "CELERY_RESULT_BACKEND": "cache+memory://openIMIS-test//"
+      },
+    },
+    {
+      "name": "Python: Celery Workers",
+      "type": "python",
+      "request": "launch",
+      "module": "celery",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceRoot}/openIMIS",
+
+      "envFile": "${workspaceFolder}/.env",
+      "args": ["-A", "openIMIS", "worker", "-l", "debug", "-Q", "queueName"],
+      "env": {
+        "DB_DEFAULT": "${input:dbEngine}",
+        "ASYNC": "PROD",
+        "CELERY_BROKER_URL": "amqp://lov",
+        "CELERY_RESULT_BACKEND": "cache+memory://openIMIS-test//"
+      },
+      "justMyCode": true
+    }
+  ]
+}

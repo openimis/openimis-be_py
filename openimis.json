@@ -1,152 +1,156 @@
 {
-	"modules": [
-		{
-            "name": "core",
-            "pip": "openimis-be-core==v1.6.0"
-        },
-            {
-            "name": "individual",
-            "pip": "openimis-be-individual==1.0.0"
-        },
-            {
-            "name": "workflow",
-            "pip": "openimis-be-workflow==1.0.0"
-        },
-            {
-            "name": "tasks_management",
-            "pip": "openimis-be-tasks_management==1.0.0"
-        },
-            {
-            "name": "report",
-            "pip": "openimis-be-report==v1.6.0"
-        },
-            {
-            "name": "location",
-            "pip": "openimis-be-location==v1.6.0"
-        },
-            {
-            "name": "medical",
-            "pip": "openimis-be-medical==v1.6.0"
-        },
-            {
-            "name": "medical_pricelist",
-            "pip": "openimis-be-medical_pricelist==v1.6.0"
-        },
-            {
-            "name": "product",
-            "pip": "openimis-be-product==v1.6.0"
-        },
-            {
-            "name": "insuree",
-            "pip": "openimis-be-insuree==v1.6.0"
-        },
-            {
-            "name": "policy",
-            "pip": "openimis-be-policy==v1.6.0"
-        },
-            {
-            "name": "contribution",
-            "pip": "openimis-be-contribution==v1.6.0"
-        },
-            {
-            "name": "payer",
-            "pip": "openimis-be-payer==v1.5.0"
-        },
-            {
-            "name": "payment",
-            "pip": "openimis-be-payment==v1.6.0"
-        },
-            {
-            "name": "claim",
-            "pip": "openimis-be-claim==v1.6.0"
-        },
-            {
-            "name": "claim_batch",
-            "pip": "openimis-be-claim_batch==v1.6.0"
-        },
-            {
-            "name": "tools",
-            "pip": "openimis-be-tools==v1.6.0"
-        },
-            {
-            "name": "api_fhir_r4",
-            "pip": "openimis-be-api_fhir_r4==v1.6.0"
-        },
-            {
-            "name": "calculation",
-            "pip": "openimis-be-calculation==v1.6.0"
-        },
-            {
-            "name": "contribution_plan",
-            "pip": "openimis-be-contribution-plan==v1.6.0"
-        },
-            {
-            "name": "policyholder",
-            "pip": "openimis-be-policyholder==v1.6.0"
-        },
-            {
-            "name": "contract",
-            "pip": "openimis-be-contract==v1.6.0"
-        },
-            {
-            "name": "invoice",
-            "pip": "openimis-be-invoice==v1.6.0"
-        },
-            {
-            "name": "calcrule_contribution_legacy",
-            "pip": "openimis-be-calcrule-contribution-legacy==v1.5.0"
-        },
-            {
-            "name": "calcrule_third_party_payment",
-            "pip": "openimis-be-calcrule-third_party_payment==v1.6.0"
-        },
-            {
-            "name": "calcrule_capitation_payment",
-            "pip": "openimis-be-calcrule-capitation_payment==v1.6.0"
-        },
-            {
-            "name": "calcrule_commission",
-            "pip": "openimis-be-calcrule_commission==v1.5.0"
-        },
-            {
-            "name": "calcrule_contribution_income_percentage",
-            "pip": "openimis-be-calcrule_contribution_income_percentage==v1.5.0"
-        },
-            {
-            "name": "calcrule_fees",
-            "pip": "openimis-be-calcrule_fees==v1.5.0"
-        },
-            {
-            "name": "calcrule_unconditional_cash_payment",
-            "pip": "openimis-be-calcrule_unconditional_cash_payment==v1.5.0"
-        },
-            {
-            "name": "im_export",
-            "pip": "openimis-be-im_export==v1.1.0"
-        },
-            {
-            "name": "dhis2_etl",
-            "pip": "openimis-be-dhis2_etl==v1.2.0"
-        },
-            {
-            "name": "social_protection",
-            "pip": "openimis-be-social_protection==1.0.0"
-        },
-            {
-            "name": "opensearch_reports",
-            "pip": "openimis-be-opensearch_reports==1.0.0"
-        },
-            {
-            "name": "payment_cycle",
-            "pip": "openimis-be-payment_cycle==1.0.0"
-        },
-            {
-            "name": "calcrule_social_protection",
-            "pip": "openimis-be-calcrule_social_protection==1.0.0"
-        },
-            {
-            "name": "payroll",
-            "pip": "openimis-be-payroll==1.0.0"
-        }
-	]
+  "modules": [
+    {
+      "name": "core",
+      "pip": "openimis-be-core==v1.7.1"
+    },
+    {
+      "name": "individual",
+      "pip": "openimis-be-individual==v1.1.1"
+    },
+    {
+      "name": "workflow",
+      "pip": "openimis-be-workflow==v1.0.1"
+    },
+    {
+      "name": "tasks_management",
+      "pip": "openimis-be-tasks_management==v1.1.0"
+    },
+    {
+      "name": "report",
+      "pip": "openimis-be-report==v1.6.1"
+    },
+    {
+      "name": "location",
+      "pip": "openimis-be-location==v1.7.0"
+    },
+    {
+      "name": "medical",
+      "pip": "openimis-be-medical==v1.7.0"
+    },
+    {
+      "name": "medical_pricelist",
+      "pip": "openimis-be-medical_pricelist==v1.6.1"
+    },
+    {
+      "name": "product",
+      "pip": "openimis-be-product==v1.6.1"
+    },
+    {
+      "name": "insuree",
+      "pip": "openimis-be-insuree==v1.7.0"
+    },
+    {
+      "name": "policy",
+      "pip": "openimis-be-policy==v1.7.1"
+    },
+    {
+      "name": "contribution",
+      "pip": "openimis-be-contribution==v1.7.0"
+    },
+    {
+      "name": "payer",
+      "pip": "openimis-be-payer==v1.6.0"
+    },
+    {
+      "name": "payment",
+      "pip": "openimis-be-payment==v1.7.1"
+    },
+    {
+      "name": "claim",
+      "pip": "openimis-be-claim==v1.7.0"
+    },
+    {
+      "name": "claim_batch",
+      "pip": "openimis-be-claim_batch==v1.7.0"
+    },
+    {
+      "name": "tools",
+      "pip": "openimis-be-tools==v1.7.0"
+    },
+    {
+      "name": "api_fhir_r4",
+      "pip": "openimis-be-api_fhir_r4==v1.7.0"
+    },
+    {
+      "name": "calculation",
+      "pip": "openimis-be-calculation==v1.7.1"
+    },
+    {
+      "name": "contribution_plan",
+      "pip": "openimis-be-contribution-plan==v1.7.0"
+    },
+    {
+      "name": "policyholder",
+      "pip": "openimis-be-policyholder==v1.7.0"
+    },
+    {
+      "name": "contract",
+      "pip": "openimis-be-contract==v1.7.0"
+    },
+    {
+      "name": "invoice",
+      "pip": "openimis-be-invoice==v1.7.0"
+    },
+    {
+      "name": "calcrule_contribution_legacy",
+      "pip": "openimis-be-calcrule-contribution-legacy==v1.6.0"
+    },
+    {
+      "name": "calcrule_third_party_payment",
+      "pip": "openimis-be-calcrule-third_party_payment==v1.7.0"
+    },
+    {
+      "name": "calcrule_capitation_payment",
+      "pip": "openimis-be-calcrule-capitation_payment==v1.7.0"
+    },
+    {
+      "name": "calcrule_commission",
+      "pip": "openimis-be-calcrule_commission==v1.6.0"
+    },
+    {
+      "name": "calcrule_contribution_income_percentage",
+      "pip": "openimis-be-calcrule_contribution_income_percentage==v1.6.0"
+    },
+    {
+      "name": "calcrule_fees",
+      "pip": "openimis-be-calcrule_fees==v1.6.0"
+    },
+    {
+      "name": "calcrule_unconditional_cash_payment",
+      "pip": "openimis-be-calcrule_unconditional_cash_payment==v1.6.0"
+    },
+    {
+      "name": "im_export",
+      "pip": "openimis-be-im_export==v1.2.0"
+    },
+    {
+      "name": "dhis2_etl",
+      "pip": "openimis-be-dhis2_etl==v1.3.0"
+    },
+    {
+      "name": "social_protection",
+      "pip": "openimis-be-social_protection==v1.1.0"
+    },
+    {
+      "name": "opensearch_reports",
+      "pip": "openimis-be-opensearch_reports==v1.1.1"
+    },
+    {
+      "name": "payment_cycle",
+      "pip": "openimis-be-payment_cycle==v1.1.0"
+    },
+    {
+      "name": "calcrule_social_protection",
+      "pip": "openimis-be-calcrule_social_protection==v1.1.1"
+    },
+    {
+      "name": "payroll",
+      "pip": "openimis-be-payroll==v1.1.0"
+    },
+    {
+      "name": "controls",
+      "pip": "openimis-be-controls==v1.1.0"
+    }
+  ]
 }
