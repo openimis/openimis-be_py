@@ -227,7 +227,7 @@ MIDDLEWARE = [
 ]
 
 # Lockout mechanism configuration
-AXES_ENABLED = True if os.environ.get("MODE", "PROD") == "DEV" else False
+AXES_ENABLED = True if os.environ.get("MODE", "DEV") == "PROD" else False
 AXES_FAILURE_LIMIT = int(os.getenv("LOGIN_LOCKOUT_FAILURE_LIMIT", 5))
 AXES_COOLOFF_TIME = timedelta(minutes=int(os.getenv("LOGIN_LOCKOUT_COOLOFF_TIME", 5)))
 
