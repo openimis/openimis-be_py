@@ -222,8 +222,8 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    'axes.middleware.AxesMiddleware',
-    'core.middleware.DefaultAxesAttributesMiddleware',
+    "axes.middleware.AxesMiddleware",
+    "core.middleware.DefaultAxesAttributesMiddleware",
 ]
 
 # Lockout mechanism configuration
