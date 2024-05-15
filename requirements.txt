@@ -56,3 +56,4 @@ django-opensearch-dsl==0.5.1
 
 zxcvbn~=4.4.28
 password-validator==1.0
+django-axes==6.4.0

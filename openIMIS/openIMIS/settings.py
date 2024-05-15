@@ -169,7 +169,8 @@ INSTALLED_APPS = [
     "django_apscheduler",
     "channels",  # Websocket support
     "developer_tools",
-    "drf_spectacular"  # Swagger UI for FHIR API
+    "drf_spectacular",  # Swagger UI for FHIR API
+    "axes",
 ]
 INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["apscheduler_runner", "signal_binding"]  # Signal binding should be last installed module
@@ -221,7 +222,14 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "axes.middleware.AxesMiddleware",
+    "core.middleware.DefaultAxesAttributesMiddleware",
 ]
+
+# Lockout mechanism configuration
+AXES_ENABLED = True if os.environ.get("MODE", "DEV") == "PROD" else False
+AXES_FAILURE_LIMIT = int(os.getenv("LOGIN_LOCKOUT_FAILURE_LIMIT", 5))
+AXES_COOLOFF_TIME = timedelta(minutes=int(os.getenv("LOGIN_LOCKOUT_COOLOFF_TIME", 5)))
 
 if DEBUG:
     # Attach profiler middleware
