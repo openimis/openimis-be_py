@@ -29,7 +29,7 @@ services:
       - DB_NAME=$MSSQL_DB_NAME
       - DB_USER=$MSSQL_DB_USER
       - ACCEPT_EULA=Y
-      - INIT_MODE=demo
+      - DEMO_DATASET=true
     healthcheck:
       test: "bash /app/healthcheck.sh"
       interval: 10s
