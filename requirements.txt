@@ -49,3 +49,6 @@ flake8
 # TODO remove to a separate file for implementations and change test workflows to reflect that
 nepali_datetime
 
+zxcvbn~=4.4.28
+password-validator==1.0
+django-axes==6.4.0
