@@ -16,4 +16,4 @@ extracted_translations_fe
 script/config.py
 **/src/*
 **/images/insurees
-
+openimis-dev.json
