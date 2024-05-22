@@ -181,6 +181,7 @@ if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
     AUTHENTICATION_BACKENDS += ["django.contrib.auth.backends.RemoteUserBackend"]
 
 AUTHENTICATION_BACKENDS += [
+    "axes.backends.AxesStandaloneBackend",
     "rules.permissions.ObjectPermissionBackend",
     "graphql_jwt.backends.JSONWebTokenBackend",
     "django.contrib.auth.backends.ModelBackend",
