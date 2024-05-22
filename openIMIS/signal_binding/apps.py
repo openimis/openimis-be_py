@@ -17,13 +17,17 @@ class SignalBindingConfig(AppConfig):
 
     def _bind_app_signals(self, app_):
         try:
-            signals_module = __import__(f"{app_}.signals")
-            if hasattr(signals_module.signals, "bind_service_signals"):
-                signals_module.signals.bind_service_signals()
+            app = __import__(app_)
+            if (
+                hasattr(app, "signals") and
+                hasattr(app.signals, "signals") and
+                hasattr(app.signals.signals, "bind_service_signals")
+            ):
+                app.signals.signals.bind_service_signals()
                 logger.debug(f"{app_} service signals connected")
             else:
-                logger.debug(f"{app_} has a signals module but no bind_service_signals function")
-        except ModuleNotFoundError as exc:
-            logger.debug(f"{app_} has no signals module, skipping")
+                logger.debug(
+                    f"{app_} has either no signals or no bind_service_signals function"
+                )
         except Exception as exc:
             logger.debug(f"{app_}: unknown exception occurred during bind_service_signals: {exc}")
