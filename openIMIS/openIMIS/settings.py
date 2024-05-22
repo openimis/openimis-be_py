@@ -217,13 +217,13 @@ if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "axes.middleware.AxesMiddleware",
+    "core.middleware.DefaultAxesAttributesMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "axes.middleware.AxesMiddleware",
-    "core.middleware.DefaultAxesAttributesMiddleware",
 ]
 
 # Lockout mechanism configuration
