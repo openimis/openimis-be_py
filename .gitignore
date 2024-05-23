@@ -17,3 +17,8 @@ script/config.py
 **/src/*
 **/images/insurees
 
+# Except for the runConfigurations folder
+!.idea/runConfigurations
+
+# Ensure all files in runConfigurations are included
+!.idea/runConfigurations/*
