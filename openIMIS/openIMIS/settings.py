@@ -299,7 +299,7 @@ GRAPHQL_JWT = {
 
 # no db
 DATABASES = {}
-DB_DEFAULT = os.environ.get("DB_DEFAULT", 'PSQL')
+DB_DEFAULT = os.environ.get("DB_DEFAULT", 'postgresql')
 
 if os.environ.get("NO_DATABASE", "False") == "True":
 
@@ -330,30 +330,24 @@ else:
             "unicode_results": True,
         }
     PSQL_DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
+    
+DEFAULT_ENGINE = os.environ.get("DB_ENGINE", "mssql" if DB_DEFAULT == 'mssql' else "django.db.backends.postgresql")
+DEFAULT_NAME = os.environ.get("DB_NAME", "imis")
+DEFAULT_USER = os.environ.get("DB_USER", "IMISuser")
+DEFAULT_PASSWORD = os.environ.get("DB_PASSWORD")
+DEFAULT_HOST = os.environ.get("DB_HOST", 'db')
+DEFAULT_PORT = os.environ.get("DB_PORT", "1433" if DB_DEFAULT == 'mssql' else "5432")
+    
 
 
-if DB_DEFAULT == 'PSQL' and os.environ.get("PSQL_DB_ENGINE", "False") != "False":
+if DB_DEFAULT == 'mssql':
     DATABASES["default"] = {
-        "ENGINE": os.environ.get("PSQL_DB_ENGINE", 'django.db.backends.postgresql'),
-        "NAME": os.environ.get("PSQL_DB_NAME", "imis"),
-        "USER": os.environ.get("PSQL_DB_USER", "IMISuser"),
-        "PASSWORD": os.environ.get("PSQL_DB_PASSWORD", os.environ.get("DB_PASSWORD")),
-        "HOST": os.environ.get("PSQL_DB_HOST", 'postgres'),
-        "PORT": os.environ.get("PSQL_DB_PORT", "5432"),
-        "OPTIONS": PSQL_DATABASE_OPTIONS,
-        'TEST': {
-            'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("MSSQL_DB_NAME", "imis")),
-        }
-    }
-
-elif DB_DEFAULT == 'MSSQL' and os.environ.get("MSSQL_DB_ENGINE", "False") != "False":
-    DATABASES["default"] = {
-        "ENGINE": os.environ.get("MSSQL_DB_ENGINE", 'mssql'),
-        "NAME": os.environ.get("MSSQL_DB_NAME", "imis"),
-        "USER": os.environ.get("MSSQL_DB_USER", "IMISuser"),
-        "PASSWORD": os.environ.get("MSSQL_DB_PASSWORD", os.environ.get("DB_PASSWORD")),
-        "HOST": os.environ.get("MSSQL_DB_HOST", 'mssql'),
-        "PORT": os.environ.get("MSSQL_DB_PORT", '1433'),
+        "ENGINE": os.environ.get("MSSQL_DB_ENGINE", DEFAULT_ENGINE),
+        "NAME": os.environ.get("MSSQL_DB_NAME", DEFAULT_NAME),
+        "USER": os.environ.get("MSSQL_DB_USER", DEFAULT_USER),
+        "PASSWORD": os.environ.get("MSSQL_DB_PASSWORD", DEFAULT_PASSWORD),
+        "HOST": os.environ.get("MSSQL_DB_HOST", DEFAULT_HOST),
+        "PORT": os.environ.get("MSSQL_DB_PORT", DEFAULT_PORT),
         "OPTIONS": MSSQL_DATABASE_OPTIONS,
         'TEST': {
             'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("MSSQL_DB_NAME", "imis")),
@@ -361,15 +355,15 @@ elif DB_DEFAULT == 'MSSQL' and os.environ.get("MSSQL_DB_ENGINE", "False") != "Fa
     }
 else:
     DATABASES["default"] = {
-        "ENGINE": os.environ.get("DB_ENGINE"),
-        "NAME": os.environ.get("DB_NAME", "imis"),
-        "USER": os.environ.get("DB_USER", "IMISuser"),
-        "PASSWORD": os.environ.get("DB_PASSWORD", os.environ.get("DB_PASSWORD")),
-        "HOST": os.environ.get("DB_HOST", 'db'),
-        "PORT": os.environ.get("DB_PORT", "5432"),
-        "OPTIONS": PSQL_DATABASE_OPTIONS if DB_DEFAULT == 'PSQL' else MSSQL_DATABASE_OPTIONS,
+        "ENGINE": os.environ.get("PSQL_DB_ENGINE", DEFAULT_ENGINE),
+        "NAME": os.environ.get("PSQL_DB_NAME", DEFAULT_NAME),
+        "USER": os.environ.get("PSQL_DB_USER", DEFAULT_USER),
+        "PASSWORD": os.environ.get("PSQL_DB_PASSWORD", DEFAULT_PASSWORD),
+        "HOST": os.environ.get("PSQL_DB_HOST", DEFAULT_HOST),
+        "PORT": os.environ.get("PSQL_DB_PORT", DEFAULT_PORT),
+        "OPTIONS": PSQL_DATABASE_OPTIONS,
         'TEST': {
-            'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("DB_NAME", "imis")),
+            'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("MSSQL_DB_NAME", "imis")),
         }
     }
 
