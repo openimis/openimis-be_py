@@ -63,13 +63,13 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install Python dependencies
+        working-directory: ./script
         run: |
           sudo apt-get update
           sudo apt-get install jq
-
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          python modules-requirements.py openimis.json > modules-requirements.txt
+          pip install -r ../requirements.txt
+          python modules-requirements.py ../openimis.json > modules-requirements.txt
           pip install --no-cache-dir -r modules-requirements.txt
           export MODULES=$(jq -r '(.modules[].name)' openimis.json | xargs)
           echo $modules
