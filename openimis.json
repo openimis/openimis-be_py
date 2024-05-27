@@ -155,6 +155,10 @@
 		{
 			"name": "grievance",
 			"pip": "git+https://github.com/openimis/openimis-be-grievance_py.git@develop#egg=openimis-be-grievance"
+		},
+		{
+			"name": "claim_sampling",
+			"pip": "git+https://github.com/openimis/openimis-be-claim_sampling_py.git@develop#egg=openimis-be-claim_sampling"
 		}
 	]
 }
