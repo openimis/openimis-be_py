@@ -120,7 +120,7 @@ At this stage, you may (depends on the database you connect to) need to:
 
 ### To manage translations of your module
 
-- from your module root dir, execute '../openimis-be_py/gettext.sh'
+- from your module root dir, execute '../openimis-be_py/script/gettext.sh'
   ... this extract all your translations keys from your code into your module root dir/locale/en/LC_MESSAGES/django.po
 - you may want to provide translation in generated django.po file... or manage them via lokalize (need to upload the keys,...)
 
@@ -185,9 +185,7 @@ When release candidate is accepted:
   - from tarball: `https://github.com/openimis/openimis-be_py/archive/v1.1.0.tar.gz`
 - (required only once)`python -m venv ./venv`: create the python venv
 - `./venv/Script/activate[.sh/.ps1]`: Activate the venv
-- `python modules-list.py openimis.json > module-list.txt`: list the module to install
-- `python -m pip uninstall -r module-list.txt`: uninstall the previously installed module
-- `python modules-requirements.py openimis.json > modules-requirements.txt`: list the source of the module to install
+- `python script/modules-requirements.py openimis.json > modules-requirements.txt`: list the source of the module to install
 - `python -m pip install -r modules-requirements.txt`: Install the modules
 - `cp .env.example .env`: Copy the example environment setup and adjust the variables (refer to .env.example for more info)
 - `python manage.py migrate`: execute the migrations
