@@ -1,6 +1,7 @@
 import logging
 from django.apps import AppConfig
 from django.conf import settings
+import importlib.util
 
 logger = logging.getLogger(__name__)
 
@@ -17,17 +18,22 @@ class SignalBindingConfig(AppConfig):
 
     def _bind_app_signals(self, app_):
         try:
-            app = __import__(app_)
-            if (
-                hasattr(app, "signals") and
-                hasattr(app.signals, "signals") and
-                hasattr(app.signals.signals, "bind_service_signals")
-            ):
-                app.signals.signals.bind_service_signals()
-                logger.debug(f"{app_} service signals connected")
+            spec = importlib.util.find_spec(f"{app_}.signals")
+            if spec:
+                app = __import__(f"{app_}.signals")
+                if (
+                    hasattr(app, "signals") and
+                    hasattr(app.signals, "bind_service_signals")
+                ):
+                    app.signals.bind_service_signals()
+                    logger.debug(f"{app_} service signals connected")
+                else:
+                    logger.debug(
+                        f"{app_} has signals but no bind_service_signals function"
+                    )
             else:
                 logger.debug(
-                    f"{app_} has either no signals or no bind_service_signals function"
+                    f"{app_} has no signals submodule"
                 )
         except Exception as exc:
             logger.debug(f"{app_}: unknown exception occurred during bind_service_signals: {exc}")
