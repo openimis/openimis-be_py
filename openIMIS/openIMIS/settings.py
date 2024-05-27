@@ -472,7 +472,10 @@ AUTH_USER_MODEL = "core.User"
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'core.utils.CustomPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+    },
+    {
+        "NAME": "core.utils.CustomPasswordValidator",
     },
 ]
 
