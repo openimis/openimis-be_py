@@ -319,6 +319,27 @@ module skeleton in single command` section
     to extract frontend translations of all modules present in `openimis.json`.
   - those translations will be copied into 'extracted_translations_fe' folder in assembly backend module
 
+### JWT Security Configuration
+
+To enhance JWT token security, you can configure the system to use RSA keys for signing and verifying tokens.
+
+1. **Generate RSA Keys**:
+   ```bash
+   # Generate a private key
+   openssl genpkey -algorithm RSA -out jwt_private_key.pem -aes256
+
+   # Generate a public key
+   openssl rsa -pubout -in jwt_private_key.pem -out jwt_public_key.pem
+
+2. **Store RSA Keys**:
+    Place jwt_private_key.pem and jwt_public_key.pem in a secure directory within your project, e.g., keys/.
+
+3. **Django Configuration**:
+    Ensure that the settings.py file is configured to read these keys. If RSA keys are found, the system will use RS256. Otherwise, it will fallback to HS256 using DJANGO_SECRET_KEY.
+
+Note: If RSA keys are not provided, the system defaults to HS256. Using RS256 with RSA keys is recommended for enhanced security.
+
+
 ## Custom exception handler for new modules REST-based modules
 
 If the module you want to add to the openIMIS uses its own REST exception handler you have to register
