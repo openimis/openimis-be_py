@@ -349,6 +349,9 @@ if MODE == "PROD":
     SECURE_HSTS_PRELOAD = True
     SECURE_SSL_REDIRECT = True
 
+csrf_trusted_origins = os.environ.get('CSRF_TRUSTED_ORIGINS', default='')
+CSRF_TRUSTED_ORIGINS = csrf_trusted_origins.split(',') if csrf_trusted_origins else []
+
 # no db
 DATABASES = {}
 DB_DEFAULT = os.environ.get("DB_DEFAULT", 'postgresql')
