@@ -8,6 +8,7 @@ import os
 from dotenv import load_dotenv
 from .openimisapps import openimis_apps, get_locale_folders
 from datetime import timedelta
+from cryptography.hazmat.primitives import serialization
 
 load_dotenv()
 
@@ -280,7 +281,6 @@ GRAPHENE = {
 
 GRAPHQL_JWT = {
     "JWT_VERIFY_EXPIRATION": True,
-    "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
     "JWT_EXPIRATION_DELTA": timedelta(days=1),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=30),
     "JWT_AUTH_HEADER_PREFIX": "Bearer",
@@ -296,6 +296,29 @@ GRAPHQL_JWT = {
         "core.schema.SetPasswordMutation",
     ],
 }
+
+# Load RSA keys
+private_key_path = os.path.join(BASE_DIR, 'keys', 'jwt_private_key.pem')
+public_key_path = os.path.join(BASE_DIR, 'keys', 'jwt_public_key.pem')
+
+if os.path.exists(private_key_path) and os.path.exists(public_key_path):
+    with open(private_key_path, 'rb') as f:
+        private_key = serialization.load_pem_private_key(
+            f.read(),
+            password=None,
+        )
+
+    with open(public_key_path, 'rb') as f:
+        public_key = serialization.load_pem_public_key(
+            f.read(),
+        )
+
+    # If RSA keys exist, update the algorithm and add keys to GRAPHQL_JWT settings
+    GRAPHQL_JWT.update({
+        "JWT_ALGORITHM": "RS256",
+        "JWT_PRIVATE_KEY": private_key,
+        "JWT_PUBLIC_KEY": public_key,
+    })
 
 # no db
 DATABASES = {}
