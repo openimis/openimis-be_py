@@ -369,6 +369,31 @@ In the production environment, you need to specify the trusted origins in your `
      CSRF_TRUSTED_ORIGINS=https://example.com,https://api.example.com
      ```
 
+
+## Security Headers
+
+This section describes the security headers used in the application, based on OWASP recommendations, to enhance the security of your Django application.
+
+### Security Headers in Production
+
+In the production environment, several security headers are set to protect the application from common vulnerabilities:
+
+- **Strict-Transport-Security**: `max-age=63072000; includeSubDomains` - Enforces secure (HTTP over SSL/TLS) connections to the server and ensures all subdomains also follow this rule.
+- **Content-Security-Policy**: `default-src 'self';` - Prevents a wide range of attacks, including Cross-Site Scripting (XSS), by restricting sources of content to the same origin.
+- **X-Frame-Options**: `DENY` - Protects against clickjacking attacks by preventing the page from being framed.
+- **X-Content-Type-Options**: `nosniff` - Prevents the browser from MIME-sniffing the content type, ensuring that the browser uses the declared content type.
+- **Referrer-Policy**: `no-referrer` - Controls how much referrer information is included with requests by not sending any referrer information with requests.
+- **Permissions-Policy**: `geolocation=(), microphone=()` - Controls access to browser features by disabling access to geolocation and microphone features.
+
+In production, additional security settings are applied to cookies used for CSRF and JWT:
+
+- **CSRF_COOKIE_SECURE**: Ensures the CSRF cookie is only sent over HTTPS.
+- **CSRF_COOKIE_HTTPONLY**: Prevents JavaScript from accessing the CSRF cookie.
+- **CSRF_COOKIE_SAMESITE**: Sets the `SameSite` attribute to 'Lax', which allows the cookie to be sent with top-level navigations and gets rid of the risk of CSRF attacks.
+- **JWT_COOKIE_SECURE**: Ensures the JWT cookie is only sent over HTTPS.
+- **JWT_COOKIE_SAMESITE**: Sets the `SameSite` attribute to 'Lax' for the JWT cookie.
+
+
 ## Custom exception handler for new modules REST-based modules
 
 If the module you want to add to the openIMIS uses its own REST exception handler you have to register
