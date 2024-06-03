@@ -219,6 +219,7 @@ if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    'core.middleware.GraphQLRateLimitMiddleware',
     "axes.middleware.AxesMiddleware",
     "core.middleware.DefaultAxesAttributesMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -234,6 +235,13 @@ MODE = os.environ.get("MODE")
 AXES_ENABLED = True if os.environ.get("MODE", "DEV") == "PROD" else False
 AXES_FAILURE_LIMIT = int(os.getenv("LOGIN_LOCKOUT_FAILURE_LIMIT", 5))
 AXES_COOLOFF_TIME = timedelta(minutes=int(os.getenv("LOGIN_LOCKOUT_COOLOFF_TIME", 5)))
+
+RATELIMIT_CACHE = os.getenv('RATELIMIT_CACHE', 'default')
+RATELIMIT_KEY = os.getenv('RATELIMIT_KEY', 'ip')
+RATELIMIT_RATE = os.getenv('RATELIMIT_RATE', '150/m')
+RATELIMIT_METHOD = os.getenv('RATELIMIT_METHOD', 'ALL')
+RATELIMIT_GROUP = os.getenv('RATELIMIT_GROUP', 'graphql')
+RATELIMIT_SKIP_TIMEOUT = os.getenv('RATELIMIT_SKIP_TIMEOUT', 'False')
 
 if DEBUG:
     # Attach profiler middleware
