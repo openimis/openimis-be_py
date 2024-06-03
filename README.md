@@ -62,6 +62,13 @@
 | CACHE_BACKEND               | String                               | Specifies the [caching backend](https://docs.djangoproject.com/en/5.0/topics/cache/#setting-up-the-cache) to be used. Default is set to PyMemcached.                                                                                                                         |
 | CACHE_URL                   | String                               |  Defines the location of the cache backend. Default is `unix:/tmp/memcached.sock` for a Unix socket connection.                                                                                  |
 | CACHE_OPTIONS               | String                               | A JSON string representing a dictionary of additional options passed to the cache backend. Empty by default                                                                                                                                                                                                                                                                                            |
+| RATELIMIT_CACHE     | String                               | The cache alias to use for rate limiting. Defaults to `default`.                                                                                                |
+| RATELIMIT_KEY       | String                               | Key to identify the client for rate limiting; `ip` means it will use the client's IP address. Defaults to `ip`.                                                 |
+| RATELIMIT_RATE      | String                               | Rate limit value (e.g., `150/m` for 150 requests per minute). Defaults to `150/m`.                                                                              |
+| RATELIMIT_METHOD    | String                               | HTTP methods to rate limit; `ALL` means all methods. Defaults to `ALL`.                                                                                         |
+| RATELIMIT_GROUP     | String                               | Group name for the rate limit. Defaults to `graphql`.                                                                                                           |
+| RATELIMIT_SKIP_TIMEOUT | Boolean                              | Whether to skip rate limiting during cache timeout. Defaults to `False`.                                                                                        |
+| CSRF_TRUSTED_ORIGINS     | String                               | Define the trusted origins for CSRF protection, separated by commas. Defaults to `http://localhost:3000,http://localhost:8000`.                                 |
 
 ## Developers setup
 
@@ -339,6 +346,52 @@ To enhance JWT token security, you can configure the system to use RSA keys for 
     Ensure that the settings.py file is configured to read these keys. If RSA keys are found, the system will use RS256. Otherwise, it will fallback to HS256 using DJANGO_SECRET_KEY.
 
 Note: If RSA keys are not provided, the system defaults to HS256. Using RS256 with RSA keys is recommended for enhanced security.
+
+
+## CSRF Setup Guide
+
+CSRF (Cross-Site Request Forgery) protection ensures that unauthorized commands are not performed on behalf of authenticated users without their consent. It achieves this by including a unique token in each form submission or AJAX request, which is then validated by the server.
+When using JWT (JSON Web Token) for authentication, CSRF protection is not executed because the server does not rely on cookies for authentication. Instead, the JWT is included in the request headers, making CSRF attacks less likely.
+
+### Development Environment
+
+In the development environment, CSRF protection is configured to allow requests from `localhost:3000` and `localhost:8000` by default in .env.example file.
+
+### Production Environment
+
+In the production environment, you need to specify the trusted origins in your `.env` file.
+
+1. **Trusted Origins Setup**:
+   - Define the trusted origins in your `.env` file to allow cross-origin requests from specific domains.
+   - Use a comma-separated list to specify multiple origins.
+   - Example of setting trusted origins in `.env`:
+     ```env
+     CSRF_TRUSTED_ORIGINS=https://example.com,https://api.example.com
+     ```
+
+
+## Security Headers
+
+This section describes the security headers used in the application, based on OWASP recommendations, to enhance the security of your Django application.
+
+### Security Headers in Production
+
+In the production environment, several security headers are set to protect the application from common vulnerabilities:
+
+- **Strict-Transport-Security**: `max-age=63072000; includeSubDomains` - Enforces secure (HTTP over SSL/TLS) connections to the server and ensures all subdomains also follow this rule.
+- **Content-Security-Policy**: `default-src 'self';` - Prevents a wide range of attacks, including Cross-Site Scripting (XSS), by restricting sources of content to the same origin.
+- **X-Frame-Options**: `DENY` - Protects against clickjacking attacks by preventing the page from being framed.
+- **X-Content-Type-Options**: `nosniff` - Prevents the browser from MIME-sniffing the content type, ensuring that the browser uses the declared content type.
+- **Referrer-Policy**: `no-referrer` - Controls how much referrer information is included with requests by not sending any referrer information with requests.
+- **Permissions-Policy**: `geolocation=(), microphone=()` - Controls access to browser features by disabling access to geolocation and microphone features.
+
+In production, additional security settings are applied to cookies used for CSRF and JWT:
+
+- **CSRF_COOKIE_SECURE**: Ensures the CSRF cookie is only sent over HTTPS.
+- **CSRF_COOKIE_HTTPONLY**: Prevents JavaScript from accessing the CSRF cookie.
+- **CSRF_COOKIE_SAMESITE**: Sets the `SameSite` attribute to 'Lax', which allows the cookie to be sent with top-level navigations and gets rid of the risk of CSRF attacks.
+- **JWT_COOKIE_SECURE**: Ensures the JWT cookie is only sent over HTTPS.
+- **JWT_COOKIE_SAMESITE**: Sets the `SameSite` attribute to 'Lax' for the JWT cookie.
 
 
 ## Custom exception handler for new modules REST-based modules
