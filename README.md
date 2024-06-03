@@ -62,6 +62,13 @@
 | CACHE_BACKEND               | String                               | Specifies the [caching backend](https://docs.djangoproject.com/en/5.0/topics/cache/#setting-up-the-cache) to be used. Default is set to PyMemcached.                                                                                                                         |
 | CACHE_URL                   | String                               |  Defines the location of the cache backend. Default is `unix:/tmp/memcached.sock` for a Unix socket connection.                                                                                  |
 | CACHE_OPTIONS               | String                               | A JSON string representing a dictionary of additional options passed to the cache backend. Empty by default                                                                                                                                                                                                                                                                                            |
+| RATELIMIT_CACHE     | String                               | The cache alias to use for rate limiting. Defaults to `default`.                                                                                                |
+| RATELIMIT_KEY       | String                               | Key to identify the client for rate limiting; `ip` means it will use the client's IP address. Defaults to `ip`.                                                 |
+| RATELIMIT_RATE      | String                               | Rate limit value (e.g., `150/m` for 150 requests per minute). Defaults to `150/m`.                                                                              |
+| RATELIMIT_METHOD    | String                               | HTTP methods to rate limit; `ALL` means all methods. Defaults to `ALL`.                                                                                         |
+| RATELIMIT_GROUP     | String                               | Group name for the rate limit. Defaults to `graphql`.                                                                                                           |
+| RATELIMIT_SKIP_TIMEOUT | Boolean                              | Whether to skip rate limiting during cache timeout. Defaults to `False`.                                                                                        |
+| CSRF_TRUSTED_ORIGINS     | String                               | Define the trusted origins for CSRF protection, separated by commas. Defaults to `http://localhost:3000,http://localhost:8000`.                                 |
 
 ## Developers setup
 
@@ -340,6 +347,27 @@ To enhance JWT token security, you can configure the system to use RSA keys for 
 
 Note: If RSA keys are not provided, the system defaults to HS256. Using RS256 with RSA keys is recommended for enhanced security.
 
+
+## CSRF Setup Guide
+
+CSRF (Cross-Site Request Forgery) protection ensures that unauthorized commands are not performed on behalf of authenticated users without their consent. It achieves this by including a unique token in each form submission or AJAX request, which is then validated by the server.
+When using JWT (JSON Web Token) for authentication, CSRF protection is not executed because the server does not rely on cookies for authentication. Instead, the JWT is included in the request headers, making CSRF attacks less likely.
+
+### Development Environment
+
+In the development environment, CSRF protection is configured to allow requests from `localhost:3000` and `localhost:8000` by default in .env.example file.
+
+### Production Environment
+
+In the production environment, you need to specify the trusted origins in your `.env` file.
+
+1. **Trusted Origins Setup**:
+   - Define the trusted origins in your `.env` file to allow cross-origin requests from specific domains.
+   - Use a comma-separated list to specify multiple origins.
+   - Example of setting trusted origins in `.env`:
+     ```env
+     CSRF_TRUSTED_ORIGINS=https://example.com,https://api.example.com
+     ```
 
 ## Custom exception handler for new modules REST-based modules
 
