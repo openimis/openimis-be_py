@@ -228,6 +228,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
 ]
 
+MODE = os.environ.get("MODE")
+
 # Lockout mechanism configuration
 AXES_ENABLED = True if os.environ.get("MODE", "DEV") == "PROD" else False
 AXES_FAILURE_LIMIT = int(os.getenv("LOGIN_LOCKOUT_FAILURE_LIMIT", 5))
@@ -320,6 +322,18 @@ if os.path.exists(private_key_path) and os.path.exists(public_key_path):
         "JWT_PUBLIC_KEY": public_key,
     })
 
+if MODE == "PROD":
+    # Enhance security in production
+    GRAPHQL_JWT.update({
+        "JWT_COOKIE_SECURE": True,
+        "JWT_COOKIE_SAMESITE": "Lax",
+    })
+
+    CSRF_COOKIE_SECURE = True
+    CSRF_COOKIE_HTTPONLY = True
+    CSRF_COOKIE_SAMESITE = 'Lax'
+
+
 # no db
 DATABASES = {}
 DB_DEFAULT = os.environ.get("DB_DEFAULT", 'postgresql')
@@ -353,14 +367,14 @@ else:
             "unicode_results": True,
         }
     PSQL_DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
-    
+
 DEFAULT_ENGINE = os.environ.get("DB_ENGINE", "mssql" if DB_DEFAULT == 'mssql' else "django.db.backends.postgresql")
 DEFAULT_NAME = os.environ.get("DB_NAME", "imis")
 DEFAULT_USER = os.environ.get("DB_USER", "IMISuser")
 DEFAULT_PASSWORD = os.environ.get("DB_PASSWORD")
 DEFAULT_HOST = os.environ.get("DB_HOST", 'db')
 DEFAULT_PORT = os.environ.get("DB_PORT", "1433" if DB_DEFAULT == 'mssql' else "5432")
-    
+
 
 
 if DB_DEFAULT == 'mssql':
