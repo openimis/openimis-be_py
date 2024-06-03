@@ -225,6 +225,7 @@ AXES_ENABLED = True if os.environ.get("MODE", "DEV") == "PROD" else False
 AXES_FAILURE_LIMIT = int(os.getenv("LOGIN_LOCKOUT_FAILURE_LIMIT", 5))
 AXES_COOLOFF_TIME = timedelta(minutes=int(os.getenv("LOGIN_LOCKOUT_COOLOFF_TIME", 5)))
 
+
 MODE = os.environ.get("MODE")
 
 RATELIMIT_CACHE = os.getenv('RATELIMIT_CACHE', 'default')
