@@ -1,0 +1,47 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="RunTestsWithSetup" type="PythonConfigurationType" factoryName="Python">
+    <module name="be" />
+    <option name="INTERPRETER_OPTIONS" value="" />
+    <option name="PARENT_ENVS" value="true" />
+    <envs>
+      <env name="PYTHONUNBUFFERED" value="1" />
+      <env name="DB_DEFAULT" value="PSQL" />
+      <env name="DB_NAME" value="generated_imis" />
+      <env name="DB_PASSWORD" value="IMISuserP@s" />
+      <env name="DB_PORT" value="5559" />
+      <env name="DB_USER" value="user" />
+    </envs>
+    <option name="SDK_HOME" value="$PROJECT_DIR$/openimis-be_py/venv/bin/python" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/openimis-be_py/openIMIS" />
+    <option name="IS_MODULE_SDK" value="false" />
+    <option name="ADD_CONTENT_ROOTS" value="true" />
+    <option name="ADD_SOURCE_ROOTS" value="true" />
+    <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+    <EXTENSION ID="net.ashald.envfile">
+      <option name="IS_ENABLED" value="false" />
+      <option name="IS_SUBST" value="false" />
+      <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+      <option name="IS_IGNORE_MISSING_FILES" value="false" />
+      <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+      <ENTRIES>
+        <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+      </ENTRIES>
+    </EXTENSION>
+    <EXTENSION ID="software.aws.toolkits.jetbrains.core.execution.PythonAwsConnectionExtension">
+      <option name="credential" />
+      <option name="region" />
+      <option name="useCurrentConnection" value="false" />
+    </EXTENSION>
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openimis-be_py/openIMIS/manage.py" />
+    <option name="PARAMETERS" value="test --keepdb --debug-mode --timing core" />
+    <option name="SHOW_COMMAND_LINE" value="false" />
+    <option name="EMULATE_TERMINAL" value="false" />
+    <option name="MODULE_MODE" value="false" />
+    <option name="REDIRECT_INPUT" value="false" />
+    <option name="INPUT_FILE" value="" />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="_CreateTestDB" run_configuration_type="PythonConfigurationType" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Run Migrations " run_configuration_type="PythonConfigurationType" />
+    </method>
+  </configuration>
+</component>

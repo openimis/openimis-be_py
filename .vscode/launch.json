@@ -140,6 +140,19 @@
       "justMyCode": true
     },
     {
+      "name": "make migration",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/openIMIS/manage.py",
+      "args": ["makemigrationsy"],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "${input:dbEngine}"
+      },
+      "justMyCode": true
+    },
+    {
       "name": "Start",
       "type": "python",
       "request": "launch",

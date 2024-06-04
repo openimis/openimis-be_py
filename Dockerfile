@@ -31,8 +31,8 @@ WORKDIR /openimis-be
 
 ARG OPENIMIS_CONF_JSON
 ENV OPENIMIS_CONF_JSON=${OPENIMIS_CONF_JSON}
-RUN python modules-requirements.py openimis.json > modules-requirements.txt && pip install -r modules-requirements.txt 
-
+WORKDIR /openimis-be/script
+RUN python modules-requirements.py ../openimis.json > modules-requirements.txt && pip install -r modules-requirements.txt 
 WORKDIR /openimis-be/openIMIS
 
 # Compile messages (Exclude zh_Hans)
