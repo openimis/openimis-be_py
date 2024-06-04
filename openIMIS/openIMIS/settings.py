@@ -219,6 +219,7 @@ if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    'core.middleware.GraphQLRateLimitMiddleware',
     "axes.middleware.AxesMiddleware",
     "core.middleware.DefaultAxesAttributesMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -226,12 +227,22 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "core.middleware.SecurityHeadersMiddleware",
 ]
+
+MODE = os.environ.get("MODE")
 
 # Lockout mechanism configuration
 AXES_ENABLED = True if os.environ.get("MODE", "DEV") == "PROD" else False
 AXES_FAILURE_LIMIT = int(os.getenv("LOGIN_LOCKOUT_FAILURE_LIMIT", 5))
 AXES_COOLOFF_TIME = timedelta(minutes=int(os.getenv("LOGIN_LOCKOUT_COOLOFF_TIME", 5)))
+
+RATELIMIT_CACHE = os.getenv('RATELIMIT_CACHE', 'default')
+RATELIMIT_KEY = os.getenv('RATELIMIT_KEY', 'ip')
+RATELIMIT_RATE = os.getenv('RATELIMIT_RATE', '150/m')
+RATELIMIT_METHOD = os.getenv('RATELIMIT_METHOD', 'ALL')
+RATELIMIT_GROUP = os.getenv('RATELIMIT_GROUP', 'graphql')
+RATELIMIT_SKIP_TIMEOUT = os.getenv('RATELIMIT_SKIP_TIMEOUT', 'False')
 
 if DEBUG:
     # Attach profiler middleware
@@ -320,6 +331,27 @@ if os.path.exists(private_key_path) and os.path.exists(public_key_path):
         "JWT_PUBLIC_KEY": public_key,
     })
 
+if MODE == "PROD":
+    # Enhance security in production
+    GRAPHQL_JWT.update({
+        "JWT_COOKIE_SECURE": True,
+        "JWT_COOKIE_SAMESITE": "Lax",
+    })
+
+    CSRF_COOKIE_SECURE = True
+    CSRF_COOKIE_HTTPONLY = True
+    CSRF_COOKIE_SAMESITE = 'Lax'
+
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_SECONDS = 63072000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_SSL_REDIRECT = True
+
+csrf_trusted_origins = os.environ.get('CSRF_TRUSTED_ORIGINS', default='')
+CSRF_TRUSTED_ORIGINS = csrf_trusted_origins.split(',') if csrf_trusted_origins else []
+
 # no db
 DATABASES = {}
 DB_DEFAULT = os.environ.get("DB_DEFAULT", 'postgresql')
@@ -353,14 +385,14 @@ else:
             "unicode_results": True,
         }
     PSQL_DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
-    
+
 DEFAULT_ENGINE = os.environ.get("DB_ENGINE", "mssql" if DB_DEFAULT == 'mssql' else "django.db.backends.postgresql")
 DEFAULT_NAME = os.environ.get("DB_NAME", "imis")
 DEFAULT_USER = os.environ.get("DB_USER", "IMISuser")
 DEFAULT_PASSWORD = os.environ.get("DB_PASSWORD")
 DEFAULT_HOST = os.environ.get("DB_HOST", 'db')
 DEFAULT_PORT = os.environ.get("DB_PORT", "1433" if DB_DEFAULT == 'mssql' else "5432")
-    
+
 
 
 if DB_DEFAULT == 'mssql':
