@@ -8,6 +8,7 @@ import os
 from dotenv import load_dotenv
 from .openimisapps import openimis_apps, get_locale_folders
 from datetime import timedelta
+from cryptography.hazmat.primitives import serialization
 
 load_dotenv()
 
@@ -172,6 +173,7 @@ if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
     AUTHENTICATION_BACKENDS += ["django.contrib.auth.backends.RemoteUserBackend"]
 
 AUTHENTICATION_BACKENDS += [
+    "axes.backends.AxesStandaloneBackend",
     "rules.permissions.ObjectPermissionBackend",
     "graphql_jwt.backends.JSONWebTokenBackend",
     "django.contrib.auth.backends.ModelBackend",
@@ -208,18 +210,30 @@ if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    'core.middleware.GraphQLRateLimitMiddleware',
+    "axes.middleware.AxesMiddleware",
+    "core.middleware.DefaultAxesAttributesMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "axes.middleware.AxesMiddleware",
-    "core.middleware.DefaultAxesAttributesMiddleware",
+    "core.middleware.SecurityHeadersMiddleware",
 ]
 
 AXES_ENABLED = True if os.environ.get("MODE", "DEV") == "PROD" else False
 AXES_FAILURE_LIMIT = int(os.getenv("LOGIN_LOCKOUT_FAILURE_LIMIT", 5))
 AXES_COOLOFF_TIME = timedelta(minutes=int(os.getenv("LOGIN_LOCKOUT_COOLOFF_TIME", 5)))
+
+
+MODE = os.environ.get("MODE")
+
+RATELIMIT_CACHE = os.getenv('RATELIMIT_CACHE', 'default')
+RATELIMIT_KEY = os.getenv('RATELIMIT_KEY', 'ip')
+RATELIMIT_RATE = os.getenv('RATELIMIT_RATE', '150/m')
+RATELIMIT_METHOD = os.getenv('RATELIMIT_METHOD', 'ALL')
+RATELIMIT_GROUP = os.getenv('RATELIMIT_GROUP', 'graphql')
+RATELIMIT_SKIP_TIMEOUT = os.getenv('RATELIMIT_SKIP_TIMEOUT', 'False')
 
 if DEBUG:
     # Attach profiler middleware
@@ -285,6 +299,50 @@ GRAPHQL_JWT = {
         "core.schema.SetPasswordMutation",
     ],
 }
+
+# Load RSA keys
+private_key_path = os.path.join(BASE_DIR, 'keys', 'jwt_private_key.pem')
+public_key_path = os.path.join(BASE_DIR, 'keys', 'jwt_public_key.pem')
+
+if os.path.exists(private_key_path) and os.path.exists(public_key_path):
+    with open(private_key_path, 'rb') as f:
+        private_key = serialization.load_pem_private_key(
+            f.read(),
+            password=None,
+        )
+
+    with open(public_key_path, 'rb') as f:
+        public_key = serialization.load_pem_public_key(
+            f.read(),
+        )
+
+    # If RSA keys exist, update the algorithm and add keys to GRAPHQL_JWT settings
+    GRAPHQL_JWT.update({
+        "JWT_ALGORITHM": "RS256",
+        "JWT_PRIVATE_KEY": private_key,
+        "JWT_PUBLIC_KEY": public_key,
+    })
+
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_SECONDS = 63072000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_SSL_REDIRECT = True
+
+if MODE == "PROD":
+    # Enhance security in production
+    GRAPHQL_JWT.update({
+        "JWT_COOKIE_SECURE": True,
+        "JWT_COOKIE_SAMESITE": "Lax",
+    })
+
+    CSRF_COOKIE_SECURE = True
+    CSRF_COOKIE_HTTPONLY = True
+    CSRF_COOKIE_SAMESITE = 'Lax'
+
+csrf_trusted_origins = os.environ.get('CSRF_TRUSTED_ORIGINS', default='')
+CSRF_TRUSTED_ORIGINS = csrf_trusted_origins.split(',') if csrf_trusted_origins else []
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -392,13 +450,7 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "core.utils.CustomPasswordValidator",
     },
 ]
 
