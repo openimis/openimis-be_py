@@ -30,7 +30,7 @@ def main():
 def install_modules():
     print("installing dependencies and modules")
     root_path = os.path.abspath("../")
-    command = f'pip install {root_path}/requirements.txt & python modules-requirements.py openimis-dev.json > modules-requirements.txt & pip install -r modules-requirements.txt'
+    command = f'pip install -r {root_path}/requirements.txt & python modules-requirements.py ../openimis-dev.json > modules-requirements.txt & pip install -r modules-requirements.txt'
 
     try:
         result = subprocess.check_output(command, shell = True, executable = "/bin/bash", stderr = subprocess.STDOUT)
