@@ -11,7 +11,7 @@ ref_assembly = BRANCH#"develop"
 
 
 def main():
-    g = Github(GITHUB_TOKEN)
+    g = Github(GITHUB_TOKEN, verify=False)
     # assembly_fe='openimis/openimis-fe_js'
     assembly_be = "openimis/openimis-be_py"
     # refresh openimis.json from git
@@ -53,7 +53,7 @@ def clone_repo(repo, module_name):
             print(f"{module_name} pulled and checked out")
         except:
             print(
-                f"error while checking out {module_name} to {ref}, please ensure the local changes are commited"
+                f"error while checking out {module_name} to {ref}, please ensure the local changes are committed"
             )
     else:
         print(f"cloning {module_name}")
