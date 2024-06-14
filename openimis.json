@@ -69,10 +69,6 @@
 			"pip": "git+https://github.com/openimis/openimis-be-tools_py.git@develop#egg=openimis-be-tools"
 		},
 		{
-			"name": "api_fhir_r4",
-			"pip": "git+https://github.com/openimis/openimis-be-api_fhir_r4_py.git@develop#egg=openimis-be-api_fhir_r4"
-		},
-		{
 			"name": "calculation",
 			"pip": "git+https://github.com/openimis/openimis-be-calculation_py.git@develop#egg=openimis-be-calculation"
 		},
@@ -123,10 +119,6 @@
 		{
 			"name":"im_export",
 			"pip":"git+https://github.com/openimis/openimis-be-im_export_py.git@develop#egg=openimis-be-im_export"
-		},
-		{
-			"name":"dhis2_etl",
-			"pip":"git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop#egg=openimis-be-dhis2_etl"
 		},
 		{
 			"name": "social_protection",
