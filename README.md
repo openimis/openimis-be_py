@@ -52,7 +52,7 @@ In case of troubles, please consult/contact our service desk via our [ticketing 
 * start openIMIS from within `openimis-be_py/openIMIS`: `python manage.py runserver`
 
 At this stage, you may (depends on the database you connect to) need to:
-* apply django migrations, from `openimis-be_py/openIMIS`: `python manage.py migrate`
+* apply django migrations, from `openimis-be_py/openIMIS`: `python manage.py migrate`. See [PostgresQL section](#postgresql) if you are using postgresql for dev DB.
 * create a superuser for django admin console, from
   `openimis-be_py/openIMIS`: `python manage.py createsuperuser` (will
   not prompt for a password) and then `python manage.py changepassword
@@ -172,6 +172,39 @@ Notes:
 * default 'options' in openIMIS are `{'driver': 'ODBC Driver 17 for SQL Server','unicode_results': True}`
   If you need to provide other options, use the `DB_OPTIONS` entry in the `.env` file (be complete: the new json string will entirely replace the default one)
 
+### PostgresQL
+
+**Requirement:** `postgres-json-schema`.
+Follow the README at https://github.com/gavinwahl/postgres-json-schema to install.
+
+To use postgresql as the dev database, specify `DB_ENGINE` in `.env` alongside other DB config vars:
+```
+DB_ENGINE=django.db.backends.postgresql
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=coremis
+DB_USER=postgres
+```
+
+Create the database, named `coremis` using the example `DB_NAME` above:
+```bash
+psql postgres -c 'create database coremis'
+```
+
+Before applying django migrations, the database needs to be prepared using scripts from https://github.com/openimis/database_postgresql:
+
+```bash
+git clone https://github.com/openimis/database_postgresql
+cd database_postgresql
+
+# generate concatenated .sql for easy execution
+bash concatenate_files.sh
+
+# prepare the database - replace fullDemoDatabase.sql with EmptyDatabase.sql if you don't need demo data
+psql -d coremis -a -f output/fullDemoDatabase.sql
+```
+
+From here on django's `python manage.py migrate` should execute succesfully.
 
 ## Developer tools
 
