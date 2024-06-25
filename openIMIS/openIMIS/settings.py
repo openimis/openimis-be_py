@@ -425,12 +425,12 @@ else:
 #should not add that config unless used
 if "DASHBOARD_DB_ENGINE" in os.environ:
     DATABASES['dashboard_db'] = {
-        "ENGINE": os.environ.get("DASHBOARD_DB_ENGINE", 'mssql'),
-        "NAME": os.environ.get("DASHBOARD_DB_NAME", "imis"),
-        "USER": os.environ.get("DASHBOARD_DB_USER", "IMISuser"),
+        "ENGINE": os.environ.get("DASHBOARD_DB_ENGINE", DEFAULT_ENGINE),
+        "NAME": os.environ.get("DASHBOARD_DB_NAME"),
+        "USER": os.environ.get("DASHBOARD_DB_USER"),
         "PASSWORD": os.environ.get("DASHBOARD_DB_PASSWORD"),
-        "HOST": os.environ.get("DASHBOARD_DB_HOST", 'mssql'),
-        "PORT": os.environ.get("DASHBOARD_DB_PORT", '1433')
+        "HOST": os.environ.get("DASHBOARD_DB_HOST", DEFAULT_HOST),
+        "PORT": os.environ.get("DASHBOARD_DB_PORT", DEFAULT_PORT)
     }
 
 if "sql_server.pyodbc" in DATABASES["default"]['ENGINE'] or "mssql" in DATABASES["default"]['ENGINE']:

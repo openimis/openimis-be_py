@@ -218,7 +218,7 @@
       "env": {
         "DB_DEFAULT": "${input:dbEngine}"
       },
-      "justMyCode": true
+      "justMyCode": false
     },
     {
       "name": "Test module",
@@ -240,6 +240,7 @@
         "CELERY_BROKER_URL": "memory://openIMIS-test//",
         "CELERY_RESULT_BACKEND": "cache+memory://openIMIS-test//"
       },
+      "justMyCode": false
     },
     {
       "name": "Python: Celery Workers",
