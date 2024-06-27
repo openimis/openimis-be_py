@@ -5,18 +5,6 @@
       "pip": "openimis-be-core==v1.7.1"
     },
     {
-      "name": "individual",
-      "pip": "openimis-be-individual==v1.1.1"
-    },
-    {
-      "name": "workflow",
-      "pip": "openimis-be-workflow==v1.0.1"
-    },
-    {
-      "name": "tasks_management",
-      "pip": "openimis-be-tasks_management==v1.1.0"
-    },
-    {
       "name": "report",
       "pip": "openimis-be-report==v1.6.1"
     },
@@ -127,26 +115,6 @@
     {
       "name": "dhis2_etl",
       "pip": "openimis-be-dhis2_etl==v1.3.0"
-    },
-    {
-      "name": "social_protection",
-      "pip": "openimis-be-social_protection==v1.1.0"
-    },
-    {
-      "name": "opensearch_reports",
-      "pip": "openimis-be-opensearch_reports==v1.1.1"
-    },
-    {
-      "name": "payment_cycle",
-      "pip": "openimis-be-payment_cycle==v1.1.0"
-    },
-    {
-      "name": "calcrule_social_protection",
-      "pip": "openimis-be-calcrule_social_protection==v1.1.1"
-    },
-    {
-      "name": "payroll",
-      "pip": "openimis-be-payroll==v1.1.0"
     },
     {
       "name": "controls",
