@@ -4,6 +4,9 @@ on:
     inputs:   
       tag:
         required: true
+      file_url:
+        description: 'url (CURL compatible) of your custom openIMIS.json'
+        required: false
 
 jobs:
   publish-manual-docker-image:
@@ -16,6 +19,10 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Download custom openimis.json
+      if: ${{ inputs.file_url != '' }}
+      run: |
+          curl -o ./openimis.json ${{ inputs.file_url }}
     - name: Build the openimis backend  Docker image
       run: |
          docker build . --tag ghcr.io/openimis/openimis-be:${{ github.event.inputs.tag }}
