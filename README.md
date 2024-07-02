@@ -80,12 +80,11 @@ When programming for openIMIS backend, you are highly encouraged to use the feat
 - install python 3, recommended in a [venv](https://docs.python.org/3/library/venv.html) or [virtualenv](https://virtualenv.pypa.io)
 - install [pip](https://pip.pypa.io)
 - within `openimis-be_py` directory
-  - install openIMIS (external) dependencies: `pip install -r
-requirements.txt`. For development workstations, one can use `pip
-install -r dev-requirements.txt` instead, for more modules.
-  - generate the openIMIS modules dependencies file (from openimis.json config): `python modules-requirements.py openimis.json > modules-requirements.txt`
-  - if you previously installed openIMIS on another version, it seems safe to uninstall all previous modules-requirement to be sure it match current version `pip uninstall -r modules-requirements.txt`
-  - install openIMIS current modules: `pip install -r modules-requirements.txt`
+  - install openIMIS (external) dependencies: `pip install -r requirements.txt`. For development workstations, one can use `pip install -r dev-requirements.txt` instead, for more modules.
+  - In the script directory, 
+    - generate the openIMIS modules dependencies file (from openimis.json config): `python modules-requirements.py openimis.json > modules-requirements.txt`
+    - if you previously installed openIMIS on another version, it seems safe to uninstall all previous modules-requirement to be sure it match current version `pip uninstall -r modules-requirements.txt`
+    - install openIMIS current modules: `pip install -r modules-requirements.txt`
   - Copy the example environment setup and adjust the settings (like database connection): `cp .env.example .env`.
     Refer to .env.example or the Environment Variable tables above for more info.
 - start openIMIS from within `openimis-be_py/openIMIS`: `python manage.py runserver`
