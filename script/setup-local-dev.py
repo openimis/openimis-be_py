@@ -6,7 +6,6 @@ import git  # pip install GitPython
 from github import Github  # pip install pyGithub
 import subprocess, sys
 
-ref = BRANCH#"develop"
 ref_assembly = BRANCH#"develop"
 
 
@@ -40,7 +39,7 @@ def install_modules():
     return result
 
 
-def clone_repo(repo, module_name):
+def clone_repo(repo, module_name, ref='develop'):
     src_path = os.path.abspath("../src/")
     path = os.path.join(src_path, module_name)
     remote = f"https://{USER_NAME}:{GITHUB_TOKEN}@{repo.git_url[6:]}"
@@ -51,9 +50,9 @@ def clone_repo(repo, module_name):
             repo_git.git.checkout(ref)
             repo_git.remotes.origin.pull()
             print(f"{module_name} pulled and checked out")
-        except:
+        except Exception as e:
             print(
-                f"error while checking out {module_name} to {ref}, please ensure the local changes are committed"
+                f"error while checking out {module_name} to {ref}:\n{e}"
             )
     else:
         print(f"cloning {module_name}")
