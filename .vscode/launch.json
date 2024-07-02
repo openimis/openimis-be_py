@@ -114,17 +114,6 @@
       "purpose": ["debug-in-terminal"],
       "justMyCode": true
     },
-    {
-      "name": "Sync src with GH",
-      "type": "python",
-      "request": "launch",
-      "program": "./setup-local-dev.py",
-      "args": ["extract_translations"],
-      "django": true,
-      "cwd": "${workspaceRoot}/script",
-      "purpose": ["debug-in-terminal"],
-      "justMyCode": true
-    },
 
     {
       "name": "migrate",
@@ -157,7 +146,7 @@
       "type": "python",
       "request": "launch",
       "program": "${workspaceFolder}/openIMIS/manage.py",
-      "args": ["runserver"],
+      "args": ["start"],
       "django": true,
       "cwd": "${workspaceRoot}/openIMIS",
       "env": {
