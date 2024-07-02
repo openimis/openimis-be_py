@@ -8,6 +8,7 @@ import os
 from dotenv import load_dotenv
 from .openimisapps import openimis_apps, get_locale_folders
 from datetime import timedelta
+from cryptography.hazmat.primitives import serialization
 
 load_dotenv()
 
@@ -169,7 +170,8 @@ INSTALLED_APPS = [
     "django_apscheduler",
     "channels",  # Websocket support
     "developer_tools",
-    "drf_spectacular"  # Swagger UI for FHIR API
+    "drf_spectacular",  # Swagger UI for FHIR API
+    "axes",
 ]
 INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["apscheduler_runner", "signal_binding"]  # Signal binding should be last installed module
@@ -180,6 +182,7 @@ if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
     AUTHENTICATION_BACKENDS += ["django.contrib.auth.backends.RemoteUserBackend"]
 
 AUTHENTICATION_BACKENDS += [
+    "axes.backends.AxesStandaloneBackend",
     "rules.permissions.ObjectPermissionBackend",
     "graphql_jwt.backends.JSONWebTokenBackend",
     "django.contrib.auth.backends.ModelBackend",
@@ -216,12 +219,30 @@ if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    'core.middleware.GraphQLRateLimitMiddleware',
+    "axes.middleware.AxesMiddleware",
+    "core.middleware.DefaultAxesAttributesMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "core.middleware.SecurityHeadersMiddleware",
 ]
+
+MODE = os.environ.get("MODE")
+
+# Lockout mechanism configuration
+AXES_ENABLED = True if os.environ.get("MODE", "DEV") == "PROD" else False
+AXES_FAILURE_LIMIT = int(os.getenv("LOGIN_LOCKOUT_FAILURE_LIMIT", 5))
+AXES_COOLOFF_TIME = timedelta(minutes=int(os.getenv("LOGIN_LOCKOUT_COOLOFF_TIME", 5)))
+
+RATELIMIT_CACHE = os.getenv('RATELIMIT_CACHE', 'default')
+RATELIMIT_KEY = os.getenv('RATELIMIT_KEY', 'ip')
+RATELIMIT_RATE = os.getenv('RATELIMIT_RATE', '150/m')
+RATELIMIT_METHOD = os.getenv('RATELIMIT_METHOD', 'ALL')
+RATELIMIT_GROUP = os.getenv('RATELIMIT_GROUP', 'graphql')
+RATELIMIT_SKIP_TIMEOUT = os.getenv('RATELIMIT_SKIP_TIMEOUT', 'False')
 
 if DEBUG:
     # Attach profiler middleware
@@ -271,7 +292,6 @@ GRAPHENE = {
 
 GRAPHQL_JWT = {
     "JWT_VERIFY_EXPIRATION": True,
-    "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
     "JWT_EXPIRATION_DELTA": timedelta(days=1),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=30),
     "JWT_AUTH_HEADER_PREFIX": "Bearer",
@@ -288,9 +308,53 @@ GRAPHQL_JWT = {
     ],
 }
 
+# Load RSA keys
+private_key_path = os.path.join(BASE_DIR, 'keys', 'jwt_private_key.pem')
+public_key_path = os.path.join(BASE_DIR, 'keys', 'jwt_public_key.pem')
+
+if os.path.exists(private_key_path) and os.path.exists(public_key_path):
+    with open(private_key_path, 'rb') as f:
+        private_key = serialization.load_pem_private_key(
+            f.read(),
+            password=None,
+        )
+
+    with open(public_key_path, 'rb') as f:
+        public_key = serialization.load_pem_public_key(
+            f.read(),
+        )
+
+    # If RSA keys exist, update the algorithm and add keys to GRAPHQL_JWT settings
+    GRAPHQL_JWT.update({
+        "JWT_ALGORITHM": "RS256",
+        "JWT_PRIVATE_KEY": private_key,
+        "JWT_PUBLIC_KEY": public_key,
+    })
+
+if MODE == "PROD":
+    # Enhance security in production
+    GRAPHQL_JWT.update({
+        "JWT_COOKIE_SECURE": True,
+        "JWT_COOKIE_SAMESITE": "Lax",
+    })
+
+    CSRF_COOKIE_SECURE = True
+    CSRF_COOKIE_HTTPONLY = True
+    CSRF_COOKIE_SAMESITE = 'Lax'
+
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_SECONDS = 63072000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_SSL_REDIRECT = True
+
+csrf_trusted_origins = os.environ.get('CSRF_TRUSTED_ORIGINS', default='')
+CSRF_TRUSTED_ORIGINS = csrf_trusted_origins.split(',') if csrf_trusted_origins else []
+
 # no db
 DATABASES = {}
-DB_DEFAULT = os.environ.get("DB_DEFAULT", 'PSQL')
+DB_DEFAULT = os.environ.get("DB_DEFAULT", 'postgresql')
 
 if os.environ.get("NO_DATABASE", "False") == "True":
 
@@ -322,29 +386,23 @@ else:
         }
     PSQL_DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
 
+DEFAULT_ENGINE = os.environ.get("DB_ENGINE", "mssql" if DB_DEFAULT == 'mssql' else "django.db.backends.postgresql")
+DEFAULT_NAME = os.environ.get("DB_NAME", "imis")
+DEFAULT_USER = os.environ.get("DB_USER", "IMISuser")
+DEFAULT_PASSWORD = os.environ.get("DB_PASSWORD")
+DEFAULT_HOST = os.environ.get("DB_HOST", 'db')
+DEFAULT_PORT = os.environ.get("DB_PORT", "1433" if DB_DEFAULT == 'mssql' else "5432")
 
-if DB_DEFAULT == 'PSQL' and os.environ.get("PSQL_DB_ENGINE", "False") != "False":
-    DATABASES["default"] = {
-        "ENGINE": os.environ.get("PSQL_DB_ENGINE", 'django.db.backends.postgresql'),
-        "NAME": os.environ.get("PSQL_DB_NAME", "imis"),
-        "USER": os.environ.get("PSQL_DB_USER", "IMISuser"),
-        "PASSWORD": os.environ.get("PSQL_DB_PASSWORD", os.environ.get("DB_PASSWORD")),
-        "HOST": os.environ.get("PSQL_DB_HOST", 'postgres'),
-        "PORT": os.environ.get("PSQL_DB_PORT", "5432"),
-        "OPTIONS": PSQL_DATABASE_OPTIONS,
-        'TEST': {
-            'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("MSSQL_DB_NAME", "imis")),
-        }
-    }
 
-elif DB_DEFAULT == 'MSSQL' and os.environ.get("MSSQL_DB_ENGINE", "False") != "False":
+
+if DB_DEFAULT == 'mssql':
     DATABASES["default"] = {
-        "ENGINE": os.environ.get("MSSQL_DB_ENGINE", 'mssql'),
-        "NAME": os.environ.get("MSSQL_DB_NAME", "imis"),
-        "USER": os.environ.get("MSSQL_DB_USER", "IMISuser"),
-        "PASSWORD": os.environ.get("MSSQL_DB_PASSWORD", os.environ.get("DB_PASSWORD")),
-        "HOST": os.environ.get("MSSQL_DB_HOST", 'mssql'),
-        "PORT": os.environ.get("MSSQL_DB_PORT", '1433'),
+        "ENGINE": os.environ.get("MSSQL_DB_ENGINE", DEFAULT_ENGINE),
+        "NAME": os.environ.get("MSSQL_DB_NAME", DEFAULT_NAME),
+        "USER": os.environ.get("MSSQL_DB_USER", DEFAULT_USER),
+        "PASSWORD": os.environ.get("MSSQL_DB_PASSWORD", DEFAULT_PASSWORD),
+        "HOST": os.environ.get("MSSQL_DB_HOST", DEFAULT_HOST),
+        "PORT": os.environ.get("MSSQL_DB_PORT", DEFAULT_PORT),
         "OPTIONS": MSSQL_DATABASE_OPTIONS,
         'TEST': {
             'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("MSSQL_DB_NAME", "imis")),
@@ -352,27 +410,27 @@ elif DB_DEFAULT == 'MSSQL' and os.environ.get("MSSQL_DB_ENGINE", "False") != "Fa
     }
 else:
     DATABASES["default"] = {
-        "ENGINE": os.environ.get("DB_ENGINE"),
-        "NAME": os.environ.get("DB_NAME", "imis"),
-        "USER": os.environ.get("DB_USER", "IMISuser"),
-        "PASSWORD": os.environ.get("DB_PASSWORD", os.environ.get("DB_PASSWORD")),
-        "HOST": os.environ.get("DB_HOST", 'db'),
-        "PORT": os.environ.get("DB_PORT", "5432"),
-        "OPTIONS": PSQL_DATABASE_OPTIONS if DB_DEFAULT == 'PSQL' else MSSQL_DATABASE_OPTIONS,
+        "ENGINE": os.environ.get("PSQL_DB_ENGINE", DEFAULT_ENGINE),
+        "NAME": os.environ.get("PSQL_DB_NAME", DEFAULT_NAME),
+        "USER": os.environ.get("PSQL_DB_USER", DEFAULT_USER),
+        "PASSWORD": os.environ.get("PSQL_DB_PASSWORD", DEFAULT_PASSWORD),
+        "HOST": os.environ.get("PSQL_DB_HOST", DEFAULT_HOST),
+        "PORT": os.environ.get("PSQL_DB_PORT", DEFAULT_PORT),
+        "OPTIONS": PSQL_DATABASE_OPTIONS,
         'TEST': {
-            'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("DB_NAME", "imis")),
+            'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("MSSQL_DB_NAME", "imis")),
         }
     }
 
 #should not add that config unless used
 if "DASHBOARD_DB_ENGINE" in os.environ:
     DATABASES['dashboard_db'] = {
-        "ENGINE": os.environ.get("DASHBOARD_DB_ENGINE", 'mssql'),
-        "NAME": os.environ.get("DASHBOARD_DB_NAME", "imis"),
-        "USER": os.environ.get("DASHBOARD_DB_USER", "IMISuser"),
+        "ENGINE": os.environ.get("DASHBOARD_DB_ENGINE", DEFAULT_ENGINE),
+        "NAME": os.environ.get("DASHBOARD_DB_NAME"),
+        "USER": os.environ.get("DASHBOARD_DB_USER"),
         "PASSWORD": os.environ.get("DASHBOARD_DB_PASSWORD"),
-        "HOST": os.environ.get("DASHBOARD_DB_HOST", 'mssql'),
-        "PORT": os.environ.get("DASHBOARD_DB_PORT", '1433')
+        "HOST": os.environ.get("DASHBOARD_DB_HOST", DEFAULT_HOST),
+        "PORT": os.environ.get("DASHBOARD_DB_PORT", DEFAULT_PORT)
     }
 
 if "sql_server.pyodbc" in DATABASES["default"]['ENGINE'] or "mssql" in DATABASES["default"]['ENGINE']:
@@ -461,20 +519,15 @@ AUTH_USER_MODEL = "core.User"
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-]
+if not DEBUG:
+    AUTH_PASSWORD_VALIDATORS = [
+        {
+            "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        },
+        {
+            "NAME": "core.utils.CustomPasswordValidator",
+        }
+    ]
 
 
 # Internationalization
@@ -556,3 +609,9 @@ FRONTEND_URL = os.environ.get("FRONTEND_URL", "")
 
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+PASSWORD_MIN_LENGTH = int(os.getenv('PASSWORD_MIN_LENGTH', 8))
+PASSWORD_UPPERCASE = int(os.getenv('PASSWORD_UPPERCASE', 1))
+PASSWORD_LOWERCASE = int(os.getenv('PASSWORD_LOWERCASE', 1))
+PASSWORD_DIGITS = int(os.getenv('PASSWORD_DIGITS', 1))
+PASSWORD_SYMBOLS = int(os.getenv('PASSWORD_SYMBOLS', 1))

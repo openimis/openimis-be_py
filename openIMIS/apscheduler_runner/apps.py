@@ -5,6 +5,8 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from django.conf import settings
 from django.apps import AppConfig
 from copy import deepcopy
+import importlib.util
+
 
 logger = logging.getLogger(__name__)
 
@@ -27,14 +29,14 @@ class ApschedulerRunnerConfig(AppConfig):
         self.scheduler.start()
 
     def __add_module_tasks_to_scheduler(self, app_):
-        try:
-            module = __import__(f"{app_}.scheduled_tasks")
-            if hasattr(module.scheduled_tasks, "schedule_tasks"):
-                module.scheduled_tasks.schedule_tasks(self.scheduler)
+        spec = importlib.util.find_spec(f"{app_}.scheduled_tasks")
+        if spec:
+            try:
+                app = __import__(f"{app_}.scheduled_tasks")
+                app.scheduled_tasks.schedule_tasks(self.scheduler)
                 logger.debug(f"{app_} tasks scheduled")
-            else:
-                logger.debug(f"{app_} has a scheduled_tasks package but no schedule_tasks callable")
-        except ModuleNotFoundError as exc:
+            except Exception as exc:
+                logger.debug(f"{app_}: unknown exception occurred during registering scheduled tasks: {exc}")
+        else:
             logger.debug(f"{app_} has no scheduled_tasks module, skipping")
-        except Exception as exc:
-            logger.debug(f"{app_}: unknown exception occurred during registering scheduled tasks: {exc}")
+        

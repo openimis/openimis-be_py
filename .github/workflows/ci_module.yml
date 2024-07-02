@@ -81,15 +81,15 @@ jobs:
           echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
           
           # Add or replace MODULE_NAME module in openimis.json (local version)
-          echo $(jq --arg name "$MODULE_NAME" 'if [.modules[].name  ==  ($name)]| max then (.modules[]  | select(.name == ($name)) | .pip)|="-e ../current-module" else .modules |= .+ [{name:($name), pip:"../current-module"}] end' openimis.json)  > openimis.json
+          echo $(jq --arg name "$MODULE_NAME" 'if [.modules[].name  ==  ($name)]| max then (.modules[]  | select(.name == ($name)) | .pip)|="-e ../../current-module" else .modules |= .+ [{name:($name), pip:"../../current-module"}] end' openimis.json)  > openimis.json
           cat openimis.json
 
       - name: Install Python dependencies
-        working-directory: ./openimis
+        working-directory: ./openimis/script
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          python modules-requirements.py openimis.json > modules-requirements.txt
+          pip install -r ../requirements.txt
+          python modules-requirements.py ../openimis.json > modules-requirements.txt
           cat modules-requirements.txt
           pip install --no-cache-dir -r modules-requirements.txt
 
