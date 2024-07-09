@@ -13,9 +13,9 @@
 			"pip": "git+https://github.com/openimis/openimis-be-workflow_py.git@develop#egg=openimis-be-workflow"
 		},
 		{
-            "name": "tasks_management",
-            "pip": "git+https://github.com/openimis/openimis-be-tasks_management_py.git@develop#egg=openimis-be-tasks_management"
-        },
+			"name": "tasks_management",
+			"pip": "git+https://github.com/openimis/openimis-be-tasks_management_py.git@develop#egg=openimis-be-tasks_management"
+		},
 		{
 			"name": "report",
 			"pip": "git+https://github.com/openimis/openimis-be-report_py.git@develop#egg=openimis-be-report"
@@ -121,6 +121,10 @@
 			"pip":"git+https://github.com/openimis/openimis-be-im_export_py.git@develop#egg=openimis-be-im_export"
 		},
 		{
+			"name":"dhis2_etl",
+			"pip":"git+https://github.com/openimis/openimis-be-dhis2_etl_py.git@develop#egg=openimis-be-dhis2_etl"
+		},
+		{
 			"name": "social_protection",
 			"pip": "git+https://github.com/openimis/openimis-be-social_protection_py.git@develop#egg=openimis-be-social_protection"
 		},
@@ -145,12 +149,20 @@
 			"pip": "git+https://github.com/openimis/openimis-be-deduplication_py.git@develop#egg=openimis-be-deduplication"
 		},
 		{
-            "name": "calcrule_validations",
-            "pip": "git+https://github.com/openimis/openimis-be-calcrule_validations_py.git@develop#egg=openimis-be-calcrule_validations"
-        },
+			"name": "calcrule_validations",
+			"pip": "git+https://github.com/openimis/openimis-be-calcrule_validations_py.git@develop#egg=openimis-be-calcrule_validations"
+		},
 		{
-            "name": "grievance_social_protection",
-            "pip": "git+https://github.com/openimis/openimis-be-grievance_social_protection_py.git@develop#egg=openimis-be-grievance_social_protection"
-        }
+			"name": "controls",
+			"pip": "git+https://github.com/openimis/openimis-be-controls_py.git@develop#egg=openimis-be-controls"
+		},
+		{
+			"name": "grievance_social_protection",
+			"pip": "git+https://github.com/openimis/openimis-be-grievance_social_protection_py.git@develop#egg=openimis-be-grievance_social_protection"
+		},
+		{
+			"name": "claim_sampling",
+			"pip": "git+https://github.com/openimis/openimis-be-claim_sampling_py.git@develop#egg=openimis-be-claim_sampling"
+		}
 	]
 }

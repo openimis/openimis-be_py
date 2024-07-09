@@ -1,0 +1,182 @@
+name: Automated CI testing
+# This workflow run automatically for every commit on github it checks the syntax and launch the tests.
+# | grep . | uniq -c filters out empty lines and then groups consecutive lines together with the number of occurrences
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      comment:
+        description: Just a simple comment to know the purpose of the manual build
+        required: false
+
+jobs:
+  ci_assembly:
+    runs-on: ubuntu-20.04
+
+    services:
+      mssql:
+        image: mcr.microsoft.com/mssql/server:2017-latest
+        env:
+          ACCEPT_EULA: Y
+          SA_PASSWORD: GitHub999
+        ports:
+          - 1433:1433
+        # this health-cmd needed because the mssql container does not provide a health check
+        options: >-
+          --health-interval=10s
+          --health-timeout=5s
+          --health-start-period=10s
+          --health-retries=10
+          --health-cmd="/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${SA_PASSWORD} -Q 'SELECT 1' || exit 1"
+      
+      pgsql:
+        image: postgres
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          POSTGRES_DB: imis
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: GitHub999
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
+
+      - name: Install Python dependencies
+        working-directory: ./script
+        run: |
+          sudo apt-get update
+          sudo apt-get install jq
+          python -m pip install --upgrade pip
+          pip install -r ../requirements.txt
+          python modules-requirements.py ../openimis.json > modules-requirements.txt
+          pip install --no-cache-dir -r modules-requirements.txt
+          export MODULES=$(jq -r '(.modules[].name)' openimis.json | xargs)
+          echo $modules
+
+      - name: Environment info
+        run: |
+          pip list
+
+      - name: Initialize PSQL
+        run: |
+          export DB_NAME_TEST="test_$DB_NAME"
+
+          if [ ${GITHUB_REF##*/} = "main" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
+          echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
+          git clone  --depth=1 --branch=$DBBRANCH https://github.com/openimis/database_postgresql.git ./sql_psql
+
+          echo 'set search_path to public' >> ~/.psqlrc
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -c "DROP DATABASE IF EXISTS \"$DB_NAME_TEST\";"
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -c "CREATE DATABASE \"$DB_NAME_TEST\";"
+
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/00_dump.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/02_aux_functions.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/03_views.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/04_functions.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/05_stored_procs.sql | grep . | uniq -c
+          PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/demo_db.sql | grep . | uniq -c
+
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: imis
+          DB_USER: postgres
+          DB_PASSWORD: GitHub999
+
+      - name: Initialize MSSQL
+        run: |
+          export DB_NAME_TEST="test_$DB_NAME"
+          
+          if [ ${GITHUB_REF##*/} = "main" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
+          echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
+          git clone --depth=1 --branch=$DBBRANCH https://github.com/openimis/database_ms_sqlserver.git ./sql_mssql
+          cd sql_mssql/ && bash concatenate_files.sh && cd ..
+
+          curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+          curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+          sudo apt-get update
+          sudo apt-get install mssql-tools unixodbc-dev
+          
+          #Main db has to exists for tests to run correctly, psql container creates empty main db by default
+          /opt/mssql-tools/bin/sqlcmd -S $DB_HOST -U $DB_USER -P $DB_PASSWORD -Q "DROP DATABASE IF EXISTS $DB_NAME"
+          /opt/mssql-tools/bin/sqlcmd -S $DB_HOST -U $DB_USER -P $DB_PASSWORD -Q "CREATE DATABASE $DB_NAME"
+
+          /opt/mssql-tools/bin/sqlcmd -S $DB_HOST -U $DB_USER -P $DB_PASSWORD -Q "DROP DATABASE IF EXISTS $DB_NAME_TEST"
+          /opt/mssql-tools/bin/sqlcmd -S $DB_HOST -U $DB_USER -P $DB_PASSWORD -Q "CREATE DATABASE $DB_NAME_TEST"
+          /opt/mssql-tools/bin/sqlcmd -S $DB_HOST -U $DB_USER -P $DB_PASSWORD -d $DB_NAME_TEST -i ./sql_mssql/output/fullDemoDatabase.sql | grep . | uniq -c
+        env:
+          DB_HOST: localhost
+          DB_PORT: 1433
+          DB_NAME: imis
+          DB_USER: sa
+          DB_PASSWORD: GitHub999
+
+      - name: Django tests PSQL
+        working-directory: ./openIMIS
+        # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
+        if: success() || failure()
+        run: |
+          python -V
+          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
+          echo $MODULES
+          python manage.py test --keepdb $MODULES
+        env:
+          SECRET_KEY: secret
+          MODE: DEV
+          DB_ENGINE: django.db.backends.postgresql
+          #DJANGO_SETTINGS_MODULE: hat.settings
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: imis
+          DB_USER: postgres
+          DB_PASSWORD: GitHub999
+          #DEV_SERVER: true
+          SITE_ROOT: api
+          CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
+
+      - name: Django tests MSSQL
+        working-directory: ./openIMIS
+        # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
+        if: success() || failure()
+        run: |
+          python -V
+          export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
+          echo $MODULES
+          python manage.py test --debug-mode --timing --keepdb $MODULES
+        env:
+          SECRET_KEY: secret
+          MODE: DEV
+          DB_ENGINE: mssql
+          #DJANGO_SETTINGS_MODULE: hat.settings
+          DB_HOST: localhost
+          DB_PORT: 1433
+          DB_NAME: imis
+          DB_USER: sa
+          DB_PASSWORD: GitHub999
+          #DEV_SERVER: true
+          SITE_ROOT: api
+          #REMOTE_USER_AUTHENTICATION: False
+          CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
