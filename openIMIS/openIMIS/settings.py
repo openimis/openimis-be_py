@@ -547,7 +547,6 @@ LOCALE_PATHS = get_locale_folders() + [
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_URL = "/%sstatic/" % SITE_ROOT()
 
 
@@ -629,7 +628,10 @@ STORAGES = {
             "location": MEDIA_URL,
             "base_url": MEDIA_URL
         },
-    }
+    },
+    'staticfiles': {
+        'BACKEND': "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
 }
 
 PASSWORD_MIN_LENGTH = int(os.getenv('PASSWORD_MIN_LENGTH', 8))
