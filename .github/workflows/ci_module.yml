@@ -211,20 +211,12 @@ jobs:
         run: |
           python -V
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
-<<<<<<< HEAD
-          # Remove api_fhir_r4 from MODULES
-          MODULES=$(echo "$MODULES" | sed 's/api_fhir_r4//g' | xargs)
-          echo $MODULES
-          pip freeze | grep openimis
-          python manage.py test --debug-mode --timing --keepdb $MODULES
-=======
           MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           
           export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
           echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
           
           python manage.py test --debug-mode --timing --keepdb $MODULE_NAME
->>>>>>> develop
         env:
           SECRET_KEY: secret
           DB_ENGINE: mssql
