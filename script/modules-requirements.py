@@ -3,13 +3,14 @@ import json
 import sys
 
 
-sys.path.insert(0, './openIMIS/openIMIS')
+app_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', "openIMIS", "openIMIS")
+sys.path.insert(0, app_path)
 from openimisconf import load_openimis_conf
 
 conf_file_path = 'openimis.json'
 
-if len(sys.argv) > 1 :
-    conf_file_path = sys.argv[1]
+if len(sys.argv) > 1:
+    conf_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), sys.argv[1])
 
 if not conf_file_path:
     sys.exit("Missing config file path argument")
