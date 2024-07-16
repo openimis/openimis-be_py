@@ -8,6 +8,7 @@ import os
 from dotenv import load_dotenv
 from .openimisapps import openimis_apps, get_locale_folders
 from datetime import timedelta
+from cryptography.hazmat.primitives import serialization
 
 load_dotenv()
 
@@ -17,13 +18,13 @@ OPENIMIS_APPS = openimis_apps()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-
-LOGGING_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "DEBUG" if DEBUG else "WARNING" )
+DEBUG = os.environ.get("MODE", "PROD") == "DEV"
 DEFAULT_LOGGING_HANDLER = os.getenv("DJANGO_LOG_HANDLER", "console")
+DEFAULT_DB_LOGGING_HANDLER = os.getenv("DJANGO_DB_LOG_HANDLER", "db-queries")
+LOGGING_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "DEBUG" if DEBUG else "WARNING")
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGGING = {
     "version": 1,
@@ -59,7 +60,7 @@ LOGGING = {
         "django.db.backends": {
             "level": LOGGING_LEVEL,
             "propagate": False,
-            "handlers": ["db-queries"],
+            "handlers": [DEFAULT_DB_LOGGING_HANDLER],
         },
         "openIMIS": {
             "level": LOGGING_LEVEL,
@@ -127,7 +128,6 @@ def SITE_URL():
 SECRET_KEY = os.environ.get(
     "SECRET_KEY", "chv^^7i_v3-04!rzu&qe#+h*a=%h(ib#5w9n$!f2q7%2$qp=zz"
 )
-
 
 # SECURITY WARNING: don't run without row security in production!
 # Row security is dedicated to filter the data result sets according to users' right
@@ -212,6 +212,7 @@ if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    'core.middleware.GraphQLRateLimitMiddleware',
     "axes.middleware.AxesMiddleware",
     "core.middleware.DefaultAxesAttributesMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -219,7 +220,22 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "core.middleware.SecurityHeadersMiddleware",
 ]
+
+MODE = os.environ.get("MODE")
+
+# Lockout mechanism configuration
+AXES_ENABLED = True if os.environ.get("MODE", "DEV") == "PROD" else False
+AXES_FAILURE_LIMIT = int(os.getenv("LOGIN_LOCKOUT_FAILURE_LIMIT", 5))
+AXES_COOLOFF_TIME = timedelta(minutes=int(os.getenv("LOGIN_LOCKOUT_COOLOFF_TIME", 5)))
+
+RATELIMIT_CACHE = os.getenv('RATELIMIT_CACHE', 'default')
+RATELIMIT_KEY = os.getenv('RATELIMIT_KEY', 'ip')
+RATELIMIT_RATE = os.getenv('RATELIMIT_RATE', '150/m')
+RATELIMIT_METHOD = os.getenv('RATELIMIT_METHOD', 'ALL')
+RATELIMIT_GROUP = os.getenv('RATELIMIT_GROUP', 'graphql')
+RATELIMIT_SKIP_TIMEOUT = os.getenv('RATELIMIT_SKIP_TIMEOUT', 'False')
 
 if DEBUG:
     # Attach profiler middleware
@@ -269,7 +285,6 @@ GRAPHENE = {
 
 GRAPHQL_JWT = {
     "JWT_VERIFY_EXPIRATION": True,
-    "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
     "JWT_EXPIRATION_DELTA": timedelta(days=1),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=30),
     "JWT_AUTH_HEADER_PREFIX": "Bearer",
@@ -286,19 +301,63 @@ GRAPHQL_JWT = {
     ],
 }
 
-#no db
+# Load RSA keys
+private_key_path = os.path.join(BASE_DIR, 'keys', 'jwt_private_key.pem')
+public_key_path = os.path.join(BASE_DIR, 'keys', 'jwt_public_key.pem')
+
+if os.path.exists(private_key_path) and os.path.exists(public_key_path):
+    with open(private_key_path, 'rb') as f:
+        private_key = serialization.load_pem_private_key(
+            f.read(),
+            password=None,
+        )
+
+    with open(public_key_path, 'rb') as f:
+        public_key = serialization.load_pem_public_key(
+            f.read(),
+        )
+
+    # If RSA keys exist, update the algorithm and add keys to GRAPHQL_JWT settings
+    GRAPHQL_JWT.update({
+        "JWT_ALGORITHM": "RS256",
+        "JWT_PRIVATE_KEY": private_key,
+        "JWT_PUBLIC_KEY": public_key,
+    })
+
+if MODE == "PROD":
+    # Enhance security in production
+    GRAPHQL_JWT.update({
+        "JWT_COOKIE_SECURE": True,
+        "JWT_COOKIE_SAMESITE": "Lax",
+    })
+
+    CSRF_COOKIE_SECURE = True
+    CSRF_COOKIE_HTTPONLY = True
+    CSRF_COOKIE_SAMESITE = 'Lax'
+
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_SECONDS = 63072000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_SSL_REDIRECT = True
+
+csrf_trusted_origins = os.environ.get('CSRF_TRUSTED_ORIGINS', default='')
+CSRF_TRUSTED_ORIGINS = csrf_trusted_origins.split(',') if csrf_trusted_origins else []
+
+# no db
 DATABASES = {}
-DB_DEFAULT = os.environ.get("DB_DEFAULT", 'PSQL')
+DB_DEFAULT = os.environ.get("DB_DEFAULT", 'postgresql')
 
 if os.environ.get("NO_DATABASE", "False") == "True":
-    
     DATABASES['default'] = {
-            'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': ' ../script/sqlite.db',                      # Or path to database file if using sqlite3.
-            'USER': '',                      # Not used with sqlite3.
-            'PASSWORD': '',                  # Not used with sqlite3.
-            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3. 
+        # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ' ../script/sqlite.db',  # Or path to database file if using sqlite3.
+        'USER': '',  # Not used with sqlite3.
+        'PASSWORD': '',  # Not used with sqlite3.
+        'HOST': '',  # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',  # Set to empty string for default. Not used with sqlite3.
     }
 if "DB_OPTIONS" in os.environ:
     DATABASE_OPTIONS = json.loads(os.environ["DB_OPTIONS"])
@@ -309,7 +368,7 @@ else:
         MSSQL_DATABASE_OPTIONS = {
             "driver": "ODBC Driver 17 for SQL Server",
             "extra_params": "Persist Security Info=False;server=%s"
-            % os.environ.get("DB_HOST"),
+                            % os.environ.get("DB_HOST"),
             "unicode_results": True,
         }
     else:
@@ -319,48 +378,40 @@ else:
         }
     PSQL_DATABASE_OPTIONS = {'options': '-c search_path=django,public'}
 
+DEFAULT_ENGINE = os.environ.get("DB_ENGINE", "mssql" if DB_DEFAULT == 'mssql' else "django.db.backends.postgresql")
+DEFAULT_NAME = os.environ.get("DB_NAME", "imis")
+DEFAULT_USER = os.environ.get("DB_USER", "IMISuser")
+DEFAULT_PASSWORD = os.environ.get("DB_PASSWORD")
+DEFAULT_HOST = os.environ.get("DB_HOST", 'db')
+DEFAULT_PORT = os.environ.get("DB_PORT", "1433" if DB_DEFAULT == 'mssql' else "5432")
 
-if DB_DEFAULT == 'PSQL' and os.environ.get("PSQL_DB_ENGINE", "False") != "False":
+if DB_DEFAULT == 'mssql':
     DATABASES["default"] = {
-            "ENGINE": os.environ.get("PSQL_DB_ENGINE", 'django.db.backends.postgresql'),
-            "NAME": os.environ.get("PSQL_DB_NAME","imis"),
-            "USER": os.environ.get("PSQL_DB_USER", "IMISuser"),
-            "PASSWORD": os.environ.get("PSQL_DB_PASSWORD",os.environ.get("DB_PASSWORD")),
-            "HOST": os.environ.get("PSQL_DB_HOST",'postgres'),
-            "PORT": os.environ.get("PSQL_DB_PORT","5432"),
-            "OPTIONS": PSQL_DATABASE_OPTIONS,
-            'TEST': {
-                'NAME':  os.environ.get("DB_TEST_NAME","test_"+os.environ.get("MSSQL_DB_NAME", "imis")),
-            }
-        }
-
-elif DB_DEFAULT == 'MSSQL' and os.environ.get("MSSQL_DB_ENGINE", "False") != "False":
-    DATABASES["default"] = {
-            "ENGINE": os.environ.get("MSSQL_DB_ENGINE", 'mssql'),
-            "NAME": os.environ.get("MSSQL_DB_NAME","imis"),
-            "USER": os.environ.get("MSSQL_DB_USER", "IMISuser"),
-            "PASSWORD": os.environ.get("MSSQL_DB_PASSWORD",os.environ.get("DB_PASSWORD")),
-            "HOST": os.environ.get("MSSQL_DB_HOST",'mssql'),
-            "PORT": os.environ.get("MSSQL_DB_PORT",'1433'),
-            "OPTIONS": MSSQL_DATABASE_OPTIONS,
-            'TEST': {
-                'NAME':  os.environ.get("DB_TEST_NAME","test_"+os.environ.get("MSSQL_DB_NAME", "imis")),
-            }
-        }
-else:
-    DATABASES["default"] = {
-        "ENGINE": os.environ.get("DB_ENGINE"),
-        "NAME": os.environ.get("DB_NAME","imis"),
-        "USER": os.environ.get("DB_USER", "IMISuser"),
-        "PASSWORD": os.environ.get("DB_PASSWORD",os.environ.get("DB_PASSWORD")),
-        "HOST": os.environ.get("DB_HOST",'db'),
-        "PORT": os.environ.get("DB_PORT","5432"),
-        "OPTIONS": PSQL_DATABASE_OPTIONS if DB_DEFAULT == 'PSQL' else MSSQL_DATABASE_OPTIONS,
+        "ENGINE": os.environ.get("MSSQL_DB_ENGINE", DEFAULT_ENGINE),
+        "NAME": os.environ.get("MSSQL_DB_NAME", DEFAULT_NAME),
+        "USER": os.environ.get("MSSQL_DB_USER", DEFAULT_USER),
+        "PASSWORD": os.environ.get("MSSQL_DB_PASSWORD", DEFAULT_PASSWORD),
+        "HOST": os.environ.get("MSSQL_DB_HOST", DEFAULT_HOST),
+        "PORT": os.environ.get("MSSQL_DB_PORT", DEFAULT_PORT),
+        "OPTIONS": MSSQL_DATABASE_OPTIONS,
         'TEST': {
-            'NAME':  os.environ.get("DB_TEST_NAME","test_"+os.environ.get("DB_NAME", "imis")),
+            'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("MSSQL_DB_NAME", "imis")),
         }
     }
-    
+else:
+    DATABASES["default"] = {
+        "ENGINE": os.environ.get("PSQL_DB_ENGINE", DEFAULT_ENGINE),
+        "NAME": os.environ.get("PSQL_DB_NAME", DEFAULT_NAME),
+        "USER": os.environ.get("PSQL_DB_USER", DEFAULT_USER),
+        "PASSWORD": os.environ.get("PSQL_DB_PASSWORD", DEFAULT_PASSWORD),
+        "HOST": os.environ.get("PSQL_DB_HOST", DEFAULT_HOST),
+        "PORT": os.environ.get("PSQL_DB_PORT", DEFAULT_PORT),
+        "OPTIONS": PSQL_DATABASE_OPTIONS,
+        'TEST': {
+            'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("MSSQL_DB_NAME", "imis")),
+        }
+    }
+
 if "sql_server.pyodbc" in DATABASES["default"]['ENGINE'] or "mssql" in DATABASES["default"]['ENGINE']:
     MSSQL = True
 
@@ -370,14 +421,42 @@ else:
     # Database
     # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# should not add that config unless used
+if "DASHBOARD_DB_ENGINE" in os.environ:
+    DATABASES['dashboard_db'] = {
+        "ENGINE": os.environ.get("DASHBOARD_DB_ENGINE", DEFAULT_ENGINE),
+        "NAME": os.environ.get("DASHBOARD_DB_NAME"),
+        "USER": os.environ.get("DASHBOARD_DB_USER"),
+        "PASSWORD": os.environ.get("DASHBOARD_DB_PASSWORD"),
+        "HOST": os.environ.get("DASHBOARD_DB_HOST", DEFAULT_HOST),
+        "PORT": os.environ.get("DASHBOARD_DB_PORT", DEFAULT_PORT)
+    }
 
+if "sql_server.pyodbc" in DATABASES["default"]['ENGINE'] or "mssql" in DATABASES["default"]['ENGINE']:
+    MSSQL = True
 
+else:
+    MSSQL = False
 
+    # Database
+    # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-
+DATABASE_ROUTERS = ["openIMIS.routers.DashboardDatabaseRouter"]
 
 # Celery message broker configuration for RabbitMQ. One can also use Redis on AWS SQS
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "amqp://rabitmq")
+
+if 'CELERY_RESULT_BACKEND' in os.environ:
+    CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
+
+if 'CACHE_BACKEND' in os.environ and 'CACHE_URL' in os.environ:
+    CACHES = {
+        'default': {
+            'BACKEND': os.environ.get('CACHE_BACKEND'),
+            'LOCATION': os.environ.get("CACHE_URL"),
+            'OPTIONS': json.loads(os.environ.get("CACHE_OPTIONS", ""))
+        }
+    }
 
 # This scheduler config will:
 # - Store jobs in the project database
@@ -430,27 +509,20 @@ SCHEDULER_CUSTOM = [
     },
 ]
 
-
 AUTH_USER_MODEL = "core.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-]
-
+if not DEBUG:
+    AUTH_PASSWORD_VALIDATORS = [
+        {
+            "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        },
+        {
+            "NAME": "core.utils.CustomPasswordValidator",
+        }
+    ]
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -477,19 +549,19 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_URL = "/%sstatic/" % SITE_ROOT()
 
-
 ASGI_APPLICATION = "openIMIS.asgi.application"
 
 # Django channels require rabbitMQ server, by default it use 127.0.0.1, port 5672
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_rabbitmq.core.RabbitmqChannelLayer",
-        "CONFIG": {
-            "host": os.environ.get("CHANNELS_HOST", "amqp://guest:guest@127.0.0.1/"),
-            # "ssl_context": ... (optional)
+if "CHANNELS_BACKEND" in os.environ and "CHANNELS_HOST" in os.environ:
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": os.environ.get("CHANNELS_BACKEND"),
+            "CONFIG": {
+                "hosts": [os.environ.get("CHANNELS_HOST")],
+                # "ssl_context": ... (optional)
+            },
         },
-    },
-}
+    }
 
 # Django email settings
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -502,8 +574,7 @@ EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", False)
 EMAIL_USE_SSL = os.environ.get("EMAIL_USE_SSL", False)
 
 # By default, the maximum upload size is 2.5Mb, which is a bit short for base64 picture upload
-DATA_UPLOAD_MAX_MEMORY_SIZE = int(os.environ.get('DATA_UPLOAD_MAX_MEMORY_SIZE', 10*1024*1024))
-
+DATA_UPLOAD_MAX_MEMORY_SIZE = int(os.environ.get('DATA_UPLOAD_MAX_MEMORY_SIZE', 10 * 1024 * 1024))
 
 # Insuree number validation. One can use the validator function for specific processing or just specify the length
 # and modulo for the typical use case. These two can be overridden from the environment but the validator being a
@@ -519,7 +590,6 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = int(os.environ.get('DATA_UPLOAD_MAX_MEMORY_SIZE', 
 # INSUREE_NUMBER_VALIDATOR = insuree_number_validator
 INSUREE_NUMBER_LENGTH = os.environ.get("INSUREE_NUMBER_LENGTH", None)
 INSUREE_NUMBER_MODULE_ROOT = os.environ.get("INSUREE_NUMBER_MODULE_ROOT", None)
-
 
 # There used to be a default password for zip files but for security reasons, it was removed. Trying to export
 # without a password defined is going to fail

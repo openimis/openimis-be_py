@@ -3,16 +3,9 @@ import json
 import sys
 import itertools
 from distutils.sysconfig import get_python_lib
-
-def load_openimis_conf():
-    conf_file_path = sys.argv[1]
-    if not conf_file_path:
-        sys.exit("Missing config file path argument")
-    if not os.path.isfile(conf_file_path):
-        sys.exit("Config file parameter refers to missing file %s" % conf_file_path)
-
-    with open(conf_file_path) as conf_file:
-        return json.load(conf_file)
+app_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', "openIMIS", "openIMIS")
+sys.path.insert(0, app_path)
+from openimisconf import load_openimis_conf
 
 def extract_test(module):
     cmds = [

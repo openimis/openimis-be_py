@@ -47,10 +47,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Python 3.8
+      - name: Set up Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: "3.10"
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -63,6 +63,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install Python dependencies
+        working-directory: ./script
         run: |
           sudo apt-get update
           sudo apt-get install jq
@@ -71,8 +72,8 @@ jobs:
           sudo apt-get install pkg-config libxml2-dev libxmlsec1-dev libxmlsec1-openssl
 
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          python modules-requirements.py openimis.json > modules-requirements.txt
+          pip install -r ../requirements.txt
+          python modules-requirements.py ../openimis.json > modules-requirements.txt
           pip install --no-cache-dir -r modules-requirements.txt
           export MODULES=$(jq -r '(.modules[].name)' openimis.json | xargs)
           echo $modules
@@ -85,7 +86,7 @@ jobs:
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
 
-          if [ ${GITHUB_REF##*/} = "develop" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
+          if [ ${GITHUB_REF##*/} = "main" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
           echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
           git clone  --depth=1 --branch=$DBBRANCH https://github.com/openimis/database_postgresql.git ./sql_psql
 
@@ -111,7 +112,7 @@ jobs:
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
           
-          if [ ${GITHUB_REF##*/} = "develop" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
+          if [ ${GITHUB_REF##*/} = "main" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
           echo "Branch ${GITHUB_REF##*/}, usign ${DBBRANCH} branch for database"
           git clone --depth=1 --branch=$DBBRANCH https://github.com/openimis/database_ms_sqlserver.git ./sql_mssql
           cd sql_mssql/ && bash concatenate_files.sh && cd ..
@@ -142,11 +143,12 @@ jobs:
         run: |
           python -V
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo $MODULES
           python manage.py test --keepdb $MODULES
         env:
           SECRET_KEY: secret
-          DEBUG: true
+          MODE: DEV
           DB_ENGINE: django.db.backends.postgresql
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
@@ -156,6 +158,7 @@ jobs:
           DB_PASSWORD: GitHub999
           #DEV_SERVER: true
           SITE_ROOT: api
+          CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
 
       - name: Django tests MSSQL
         working-directory: ./openIMIS
@@ -164,11 +167,12 @@ jobs:
         run: |
           python -V
           export MODULES=$(jq -r '(.modules[].name)' ../openimis.json | xargs)
+          MODULES=$(echo "$MODULES" | sed -E "s/\b$(echo "${CI_EXCLUDED_MODULE// /\\b|\\b}")\b/ /g" | xargs)
           echo $MODULES
           python manage.py test --debug-mode --timing --keepdb $MODULES
         env:
           SECRET_KEY: secret
-          DEBUG: true
+          MODE: DEV
           DB_ENGINE: mssql
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
@@ -179,3 +183,4 @@ jobs:
           #DEV_SERVER: true
           SITE_ROOT: api
           #REMOTE_USER_AUTHENTICATION: False
+          CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
