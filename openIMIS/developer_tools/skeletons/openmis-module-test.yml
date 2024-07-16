@@ -84,7 +84,6 @@ jobs:
           python -V
           ls -l
           python manage.py migrate
-          python init_test_db.py | grep . | uniq -c
           python manage.py test --keepdb $MODULE_NAME
         env:
           SECRET_KEY: secret

@@ -10,7 +10,13 @@ exclude =
     .coverage,
     openIMIS/wsgi.py,
     dist,
-    openIMIS/migrations
+    openIMIS/migrations,
+    ../**/migrations/*.py, # Relative paths for other modules
+    ../**/.git,
+    ../**/.gitignore,
+    ../**/*.pot,
+    ../**/*.py[co],
+    ../**/__pycache__,
 
 ignore =
     # At least two spaces before inline comment.
@@ -19,5 +25,8 @@ ignore =
     E303,
     # Ambiguous variable name.
     E741,
+    # Unused imports - sometimes required in modular version, fixes in __init__.py may break builds
+    # Ideally added for every __init__ file manually but for the time it's added globally
+    F401
 
 max-line-length = 120

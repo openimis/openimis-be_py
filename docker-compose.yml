@@ -1,0 +1,46 @@
+version: "3.7"
+
+services:
+  db:
+    container_name: ${PROJECT_NAME:-openimis}-db
+    image: ghcr.io/openimis/openimis-pgsql:${DB_TAG:-develop}
+    environment:
+      - POSTGRES_PASSWORD=$PSQL_DB_PASSWORD
+      - POSTGRES_DB=$PSQL_DB_NAME
+      - POSTGRES_USER=$PSQL_DB_USER
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', "$PSQL_DB_USER", '-d', "test_imis"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    volumes:
+      - database:/var/lib/postgresql/data
+    restart: always
+    ports:
+      - 5432:5432
+  db-mssql:
+    container_name: ${PROJECT_NAME:-openimis}-mssql
+    image: ghcr.io/openimis/openimis-mssql:${DB_TAG:-latest}
+    restart: always
+    environment:
+      - DB_PASSWORD=$MSSQL_DB_PASSWORD
+      - SA_PASSWORD=$MSSQL_DB_PASSWORD
+      - DB_NAME=$MSSQL_DB_NAME
+      - DB_USER=$MSSQL_DB_USER
+      - ACCEPT_EULA=Y
+      - DEMO_DATASET=true
+    healthcheck:
+      test: "bash /app/healthcheck.sh"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 100s
+    volumes:
+      - database-mssql:/var/opt/mssql/data
+    ports:
+      - 1433:1433
+volumes:
+  database:
+  database-mssql:
+
