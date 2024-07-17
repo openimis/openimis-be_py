@@ -618,11 +618,7 @@ if not os.path.exists(MEDIA_ROOT):
 
 STORAGES = {
     "default": {
-        "class": "core.filesystem.storage.FileSystemStorage",
-        "options": {
-            "location": MEDIA_URL,
-            "base_url": MEDIA_URL
-        },
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     'staticfiles': {
         'BACKEND': "whitenoise.storage.CompressedManifestStaticFilesStorage",
