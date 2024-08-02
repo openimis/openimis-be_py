@@ -3,15 +3,7 @@ from waitress import serve
 
 from openIMIS.wsgi import application
 
-
-def get_proxy_ip():
-    try:
-        return socket.gethostbyname('frontend')
-    except socket.gaierror:
-        return ""
-
-
-trusted_proxy = get_proxy_ip()
+trusted_proxy = "*"  # Safe, because backend can only be proxied from frontend
 trusted_proxy_headers = (
     "x-forwarded-host",
     "x-forwarded-for",
