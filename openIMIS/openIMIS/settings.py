@@ -4,6 +4,7 @@ Django settings for openIMIS project.
 import json
 import logging
 import os
+import sys
 
 from dotenv import load_dotenv
 from .openimisapps import openimis_apps, get_locale_folders
@@ -630,3 +631,5 @@ PASSWORD_UPPERCASE = int(os.getenv('PASSWORD_UPPERCASE', 1))
 PASSWORD_LOWERCASE = int(os.getenv('PASSWORD_LOWERCASE', 1))
 PASSWORD_DIGITS = int(os.getenv('PASSWORD_DIGITS', 1))
 PASSWORD_SYMBOLS = int(os.getenv('PASSWORD_SYMBOLS', 1))
+
+IS_UNIT_TEST_ENV = 'test' in sys.argv
