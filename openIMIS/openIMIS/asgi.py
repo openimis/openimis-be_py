@@ -1,5 +1,5 @@
 from channels.auth import AuthMiddlewareStack
-import dashboard_etl.routing
+# import dashboard_etl.routing
 import json
 import os
 import logging
