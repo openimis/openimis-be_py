@@ -38,7 +38,7 @@
     },
     {
       "name": "insuree",
-      "pip": "openimis-be-insuree==v1.7.0"
+      "pip": "git+https://github.com/Ethiopian-Health-Insurance-Service/openimis-be-insuree_py.git@develop-ethiopia#egg=openimis-be-insuree"
     },
     {
       "name": "policy",
