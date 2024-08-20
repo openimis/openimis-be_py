@@ -96,7 +96,6 @@ jobs:
           PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/04_functions.sql | grep . | uniq -c
           PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/05_stored_procs.sql | grep . | uniq -c
           PGPASSWORD=GitHub999 psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/demo_db.sql | grep . | uniq -c
-
         env:
           DB_HOST: localhost
           DB_PORT: 5432
@@ -145,7 +144,9 @@ jobs:
         env:
           SECRET_KEY: secret
           MODE: DEV
-          DB_ENGINE: django.db.backends.postgresql
+          DB_DEFAULT: postgresql
+          CELERY_BROKER_URL": "memory://openIMIS-test//"
+          CELERY_RESULT_BACKEND": "cache+memory://openIMIS-test//"
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
           DB_PORT: 5432
@@ -169,7 +170,9 @@ jobs:
         env:
           SECRET_KEY: secret
           MODE: DEV
-          DB_ENGINE: mssql
+          DB_DEFAULT: mssql
+          CELERY_BROKER_URL": "memory://openIMIS-test//"
+          CELERY_RESULT_BACKEND": "cache+memory://openIMIS-test//"
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
           DB_PORT: 1433
