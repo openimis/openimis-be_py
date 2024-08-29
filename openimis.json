@@ -102,11 +102,11 @@
     },
     {
       "name": "msystems",
-      "pip": "git+https://github.com/openimis/openimis-be-msystems_py.git@feature/OM-189#egg=openimis-be-msystems"
+      "pip": "git+https://github.com/openimis/openimis-be-msystems_py.git@develop#egg=openimis-be-msystems"
     },
     {
       "name": "worker_voucher",
-      "pip": "git+https://github.com/openimis/openimis-be-worker_voucher_py.git@feature/OM-189#egg=openimis-be-worker_voucher"
+      "pip": "git+https://github.com/openimis/openimis-be-worker_voucher_py.git@feature/OM-202#egg=openimis-be-worker_voucher"
     },
     {
       "name": "business_config",
