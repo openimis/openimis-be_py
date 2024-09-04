@@ -109,13 +109,13 @@ jobs:
           tar -czf openimis.tar.gz ./openimis ./current-module
 
       - name: Upload compressed site-packages as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: site-packages
           path: site-packages.tar.gz
 
       - name: Upload build as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: code-artifacts
           path: openimis.tar.gz
@@ -450,7 +450,7 @@ jobs:
           cat coverage.xml
       - name: Coverage results
         if: success() || failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage.xml
           path: ./openimis/openIMIS/coverage
@@ -498,7 +498,7 @@ jobs:
           python -m flake8 $MOD_DIR
       - name: Flake8 results upload
         if: success() || failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: flake8-report.txt
           path: ./openimis/flake8-report.txt
