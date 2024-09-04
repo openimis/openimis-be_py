@@ -145,7 +145,7 @@ jobs:
           python-version: '3.10'
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: site-packages
           path: /tmp/
@@ -156,7 +156,7 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: code-artifacts
           path: /tmp/
@@ -255,7 +255,7 @@ jobs:
           python-version: '3.10'
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: site-packages
           path: /tmp/
@@ -266,7 +266,7 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: code-artifacts
           path: /tmp/
@@ -359,7 +359,7 @@ jobs:
           python-version: '3.10'
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: site-packages
           path: /tmp/
@@ -370,7 +370,7 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: code-artifacts
           path: /tmp/
@@ -464,7 +464,7 @@ jobs:
         with:
           python-version: '3.10'
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: site-packages
           path: /tmp/
@@ -475,7 +475,7 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
 
       - name: Download code artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: code-artifacts
           path: /tmp/
@@ -530,17 +530,17 @@ jobs:
             echo "SONAR_EXCLUSIONS=${{ inputs.SONAR_EXCLUSIONS }}" >> $GITHUB_ENV
           fi
       - name: Download coverage artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: coverage.xml
           path: report
       - name: Download flake8 artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: flake8-report.txt
           path: report
       - name: Download code artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: code-artifacts
           path: /tmp/
