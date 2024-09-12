@@ -112,13 +112,13 @@ jobs:
           tar -czf openimis.tar.gz ./openimis ./current-module
 
       - name: Upload compressed site-packages as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: site-packages
           path: site-packages.tar.gz
 
       - name: Upload build as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: code-artifacts
           path: openimis.tar.gz
@@ -148,7 +148,7 @@ jobs:
           python-version: '3.10'
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: site-packages
           path: /tmp/
@@ -159,7 +159,7 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: code-artifacts
           path: /tmp/
@@ -258,7 +258,7 @@ jobs:
           python-version: '3.10'
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: site-packages
           path: /tmp/
@@ -269,7 +269,7 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: code-artifacts
           path: /tmp/
@@ -362,7 +362,7 @@ jobs:
           python-version: '3.10'
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: site-packages
           path: /tmp/
@@ -373,7 +373,7 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: code-artifacts
           path: /tmp/
@@ -453,7 +453,7 @@ jobs:
           cat coverage.xml
       - name: Coverage results
         if: success() || failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage.xml
           path: ./openimis/openIMIS/coverage
@@ -467,7 +467,7 @@ jobs:
         with:
           python-version: '3.10'
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: site-packages
           path: /tmp/
@@ -478,7 +478,7 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
 
       - name: Download code artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: code-artifacts
           path: /tmp/
@@ -501,7 +501,7 @@ jobs:
           python -m flake8 $MOD_DIR
       - name: Flake8 results upload
         if: success() || failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: flake8-report.txt
           path: ./openimis/flake8-report.txt
@@ -533,17 +533,17 @@ jobs:
             echo "SONAR_EXCLUSIONS=${{ inputs.SONAR_EXCLUSIONS }}" >> $GITHUB_ENV
           fi
       - name: Download coverage artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: coverage.xml
           path: report
       - name: Download flake8 artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: flake8-report.txt
           path: report
       - name: Download code artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: code-artifacts
           path: /tmp/

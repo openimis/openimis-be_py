@@ -50,7 +50,7 @@ LOGGING = {
             "backupCount": 3,
             "formatter": "standard",
         },
-        "console": {"class": "logging.StreamHandler", "formatter": "short"},
+        "console": {"class": "logging.StreamHandler", "formatter": "standard"},
     },
     "loggers": {
         "": {
@@ -66,6 +66,10 @@ LOGGING = {
             "level": LOGGING_LEVEL,
             "handlers": [DEFAULT_LOGGING_HANDLER],
         },
+        "spyne": {
+            "level": "WARNING",
+            "handlers": [DEFAULT_LOGGING_HANDLER]
+        }
     },
 }
 
