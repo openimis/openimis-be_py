@@ -106,7 +106,7 @@
     },
     {
       "name": "worker_voucher",
-      "pip": "git+https://github.com/openimis/openimis-be-worker_voucher_py.git@develop#egg=openimis-be-worker_voucher",
+      "pip": "git+https://github.com/openimis/openimis-be-worker_voucher_py.git@develop#egg=openimis-be-worker_voucher"
     },
     {
       "name": "business_config",
