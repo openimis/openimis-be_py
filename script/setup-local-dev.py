@@ -10,7 +10,7 @@ ref_assembly = BRANCH#"develop"
 
 
 def main():
-    g = Github(GITHUB_TOKEN, verify=False)
+    g = Github(GITHUB_TOKEN)
     # assembly_fe='openimis/openimis-fe_js'
     assembly_be = "openimis/openimis-be_py"
     # refresh openimis.json from git
