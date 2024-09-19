@@ -591,9 +591,7 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = int(os.environ.get('DATA_UPLOAD_MAX_MEMORY_SIZE', 
 #         return []
 #
 #
-# INSUREE_NUMBER_VALIDATOR = insuree_number_validator
-INSUREE_NUMBER_LENGTH = os.environ.get("INSUREE_NUMBER_LENGTH", None)
-INSUREE_NUMBER_MODULE_ROOT = os.environ.get("INSUREE_NUMBER_MODULE_ROOT", None)
+
 
 
 # There used to be a default password for zip files but for security reasons, it was removed. Trying to export
