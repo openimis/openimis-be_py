@@ -159,6 +159,10 @@
         {
             "name": "claim_sampling",
             "pip": "git+https://github.com/openimis/openimis-be-claim_sampling_py.git@release/24.10#egg=openimis-be-claim_sampling"
+        },
+        {
+            "name": "deduplication",
+            "pip": "git+https://github.com/openimis/openimis-be-deduplication_py.git@release/24.10#egg=openimis-be-deduplication"
         }
     ]
 }
