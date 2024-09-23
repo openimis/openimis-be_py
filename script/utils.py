@@ -10,7 +10,7 @@ def parse_pip(pip_str):
      
 def parse_pip_branch(pip_str):
     if "https://github.com" in pip_str:
-        match = re.search(r'github.com/.+.git@([\w_-]+).*',pip_str )
+        match = re.search(r'github.com/.+.git@([\w_\-\/\.]+).*',pip_str )
         return match.group(1)
     else:
         print("Error branch not found")
