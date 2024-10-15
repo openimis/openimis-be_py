@@ -2,7 +2,7 @@ import uuid
 ##from {{module_name}}.apps import AbsCalculationRule
 ##from {{module_name}}.config import CLASS_RULE_PARAM_VALIDATION, DESCRIPTION_CONTRIBUTION_VALUATION, FROM_TO
 from django.core.exceptions import ValidationError
-from gettext import gettext as _
+from django.utils.translation import gettext as _
 ##from core.signals import *
 ##from core import datetime
 from django.contrib.contenttypes.models import ContentType

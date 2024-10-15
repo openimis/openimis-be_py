@@ -109,6 +109,10 @@
             "pip": "git+https://github.com/openimis/openimis-be-calcrule_commission_py.git@release/24.10#egg=openimis-be-calcrule_commission"
         },
         {
+            "name": "calcrule_validations",
+            "pip": "git+https://github.com/openimis/openimis-be-calcrule_validations_py.git@release/24.10#egg=openimis-be-calcrule_validations"
+        },
+        {
             "name": "calcrule_contribution_income_percentage",
             "pip": "git+https://github.com/openimis/openimis-be-calcrule_contribution_income_percentage_py.git@release/24.10#egg=openimis-be-calcrule_contribution_income_percentage"
         },
