@@ -28,7 +28,7 @@ def get_locale_folders():
             with resources.path(mod_name, "__init__.py") as path:
                 apps.append(path.parent.parent)
         except ModuleNotFoundError:
-            raise logger.error(f"Module \"{mod_name}\" not found.")
+            logger.error(f"Module \"{mod_name}\" not found.")
 
     for topdir in ["."] + apps:
         for dirpath, dirnames, filenames in os.walk(topdir, topdown=True):

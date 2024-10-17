@@ -46,6 +46,7 @@ class GraphQLView(BaseGraphQLView):
                 response["errors"] = [
                     self.format_error(e) for e in execution_result.errors
                 ]
+                # status_code = 500 per spec GQL must return 200 even for error
 
             if execution_result.invalid:
                 status_code = 400
