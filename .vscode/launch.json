@@ -21,6 +21,7 @@
         "product",
         "insuree",
         "policy",
+        "calcrule_validations",
         "contribution",
         "payer",
         "payment",
@@ -213,6 +214,7 @@
         "opensearch_reports",
         "payment_cycle",
         "calcrule_social_protection",
+        "calcrule_validations",
         "payroll"
       ],
       "django": true,
