@@ -102,7 +102,7 @@
     },
     {
       "name": "msystems",
-      "pip": "git+https://github.com/openimis/openimis-be-msystems_py.git@implementation/moldova/develop#egg=openimis-be-msystems"
+      "pip": "git+https://github.com/openimis/openimis-be-msystems_py.git@feature/OM-349#egg=openimis-be-msystems"
     },
     {
       "name": "worker_voucher",
