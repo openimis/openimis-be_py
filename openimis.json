@@ -167,6 +167,10 @@
         {
             "name": "deduplication",
             "pip": "git+https://github.com/openimis/openimis-be-deduplication_py.git@release/24.10#egg=openimis-be-deduplication"
-        }
+        },
+        {
+			"name": "api_etl",
+			"pip": "git+https://github.com/openimis/openimis-be-api_etl_py.git@release/24.10#egg=openimis-be-api_etl"
+		}
     ]
 }
