@@ -44,6 +44,16 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
+      opensearch:
+        image: opensearchproject/opensearch:latest
+        ports:
+          - 9200:9200
+        env:
+          discovery.type: single-node
+          cluster.name: my_opensearch_local
+          http.port: 9200
+          plugins.security.ssl.http.enabled: false
+          plugins.security.disabled: true
     steps:
       - uses: actions/checkout@v2
 

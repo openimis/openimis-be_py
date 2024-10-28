@@ -124,6 +124,16 @@ jobs:
     runs-on: ubuntu-20.04
     needs: build_backend
     services:
+      opensearch:
+        image: opensearchproject/opensearch:latest
+        ports:
+          - 9200:9200
+        env:
+          discovery.type: single-node
+          cluster.name: my_opensearch_local
+          http.port: 9200
+          plugins.security.ssl.http.enabled: false
+          plugins.security.disabled: true
       mssql:
         image: mcr.microsoft.com/mssql/server:2017-latest
         env:
@@ -233,6 +243,16 @@ jobs:
     runs-on: ubuntu-20.04
     needs: build_backend
     services:
+      opensearch:
+        image: opensearchproject/opensearch:latest
+        ports:
+          - 9200:9200
+        env:
+          discovery.type: single-node
+          cluster.name: my_opensearch_local
+          http.port: 9200
+          plugins.security.ssl.http.enabled: false
+          plugins.security.disabled: true
       pgsql:
         image: postgres
         env:
@@ -337,6 +357,16 @@ jobs:
     runs-on: ubuntu-20.04
     needs: build_backend
     services:
+      opensearch:
+        image: opensearchproject/opensearch:latest
+        ports:
+          - 9200:9200
+        env:
+          discovery.type: single-node
+          cluster.name: my_opensearch_local
+          http.port: 9200
+          plugins.security.ssl.http.enabled: false
+          plugins.security.disabled: true
       pgsql:
         image: postgres
         env:
