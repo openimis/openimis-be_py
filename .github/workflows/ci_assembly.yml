@@ -54,8 +54,6 @@ jobs:
           http.port: 9200
           plugins.security.ssl.http.enabled: false
           plugins.security.disabled: true
-          OPENSEARCH_INITIAL_ADMIN_PASSWORD: admin
-          OPENSEARCH_ADMIN_USER: admin
 
     steps:
       - uses: actions/checkout@v2

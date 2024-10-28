@@ -134,8 +134,7 @@ jobs:
           http.port: 9200
           plugins.security.ssl.http.enabled: false
           plugins.security.disabled: true
-          OPENSEARCH_INITIAL_ADMIN_PASSWORD: admin
-          OPENSEARCH_ADMIN_USER: admin
+
       mssql:
         image: mcr.microsoft.com/mssql/server:2017-latest
         env:
@@ -257,8 +256,7 @@ jobs:
           http.port: 9200
           plugins.security.ssl.http.enabled: false
           plugins.security.disabled: true
-          OPENSEARCH_INITIAL_ADMIN_PASSWORD: admin
-          OPENSEARCH_ADMIN_USER: admin
+
       pgsql:
         image: postgres
         env:
@@ -375,8 +373,7 @@ jobs:
           http.port: 9200
           plugins.security.ssl.http.enabled: false
           plugins.security.disabled: true
-          OPENSEARCH_INITIAL_ADMIN_PASSWORD: admin
-          OPENSEARCH_ADMIN_USER: admin
+
       pgsql:
         image: postgres
         env:
