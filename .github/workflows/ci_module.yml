@@ -241,6 +241,9 @@ jobs:
           MODE: DEV
           OPENSEARCH_ADMIN: admin
           OPENSEARCH_PASSWORD: admin
+          OPEN_SEARCH_HTTP_PORT: 9200
+          OPENSEARCH_HOST: opensearch
+          OPENSEARCH_HOSTS: http://opensearch:9200
   ci_module_psql_test_module_only:
     name: Run Module Tests (PSQL)
     runs-on: ubuntu-20.04
