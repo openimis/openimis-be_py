@@ -161,8 +161,8 @@ jobs:
           SECRET_KEY: secret
           MODE: DEV
           DB_DEFAULT: postgresql
-          CELERY_BROKER_URL": "memory://openIMIS-test//"
-          CELERY_RESULT_BACKEND": "cache+memory://openIMIS-test//"
+          CELERY_BROKER_URL: "memory://openIMIS-test//"
+          CELERY_RESULT_BACKEND: "cache+memory://openIMIS-test//"
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
           DB_PORT: 5432
@@ -192,8 +192,8 @@ jobs:
           SECRET_KEY: secret
           MODE: DEV
           DB_DEFAULT: mssql
-          CELERY_BROKER_URL": "memory://openIMIS-test//"
-          CELERY_RESULT_BACKEND": "cache+memory://openIMIS-test//"
+          CELERY_BROKER_URL: "memory://openIMIS-test//"
+          CELERY_RESULT_BACKEND: "cache+memory://openIMIS-test//"
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
           DB_PORT: 1433
