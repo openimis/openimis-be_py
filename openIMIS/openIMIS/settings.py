@@ -632,9 +632,12 @@ FRONTEND_URL = os.environ.get("FRONTEND_URL", "")
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+OPENSEARCH_HOST = os.environ.get("OPENSEARCH_HOST", "0.0.0.0")
+OPEN_SEARCH_HTTP_PORT = os.environ.get("OPEN_SEARCH_HTTP_PORT", "9200")
+
 OPENSEARCH_DSL = {
     'default': {
-        'hosts': os.environ.get("OPENSEARCH_HOST", '0.0.0.0:9200'),
+        'hosts': f"{OPENSEARCH_HOST}:{OPEN_SEARCH_HTTP_PORT}",
         'http_auth': (
             f"{os.environ.get('OPENSEARCH_ADMIN')}",
             f"{os.environ.get('OPENSEARCH_PASSWORD')}"
