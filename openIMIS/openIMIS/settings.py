@@ -4,6 +4,7 @@ Django settings for openIMIS project.
 import json
 import logging
 import os
+import sys
 
 from dotenv import load_dotenv
 from .openimisapps import openimis_apps, get_locale_folders
