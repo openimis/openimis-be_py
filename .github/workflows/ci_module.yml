@@ -134,6 +134,11 @@ jobs:
           http.port: 9200
           plugins.security.ssl.http.enabled: false
           plugins.security.disabled: true
+          OPENSEARCH_ADMIN: admin
+          OPENSEARCH_PASSWORD: admin
+          OPEN_SEARCH_HTTP_PORT: 9200
+          OPENSEARCH_HOST: opensearch
+          OPENSEARCH_HOSTS: http://opensearch:9200
 
       mssql:
         image: mcr.microsoft.com/mssql/server:2017-latest
@@ -259,6 +264,11 @@ jobs:
           http.port: 9200
           plugins.security.ssl.http.enabled: false
           plugins.security.disabled: true
+          OPENSEARCH_ADMIN: admin
+          OPENSEARCH_PASSWORD: admin
+          OPEN_SEARCH_HTTP_PORT: 9200
+          OPENSEARCH_HOST: opensearch
+          OPENSEARCH_HOSTS: http://opensearch:9200
 
       pgsql:
         image: postgres
@@ -379,6 +389,11 @@ jobs:
           http.port: 9200
           plugins.security.ssl.http.enabled: false
           plugins.security.disabled: true
+          OPENSEARCH_ADMIN: admin
+          OPENSEARCH_PASSWORD: admin
+          OPEN_SEARCH_HTTP_PORT: 9200
+          OPENSEARCH_HOST: opensearch
+          OPENSEARCH_HOSTS: http://opensearch:9200
 
       pgsql:
         image: postgres

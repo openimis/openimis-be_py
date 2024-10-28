@@ -54,6 +54,11 @@ jobs:
           http.port: 9200
           plugins.security.ssl.http.enabled: false
           plugins.security.disabled: true
+          OPENSEARCH_ADMIN: admin
+          OPENSEARCH_PASSWORD: admin
+          OPEN_SEARCH_HTTP_PORT: 9200
+          OPENSEARCH_HOST: opensearch
+          OPENSEARCH_HOSTS: http://opensearch:9200
 
     steps:
       - uses: actions/checkout@v2
@@ -199,3 +204,8 @@ jobs:
           SITE_ROOT: api
           #REMOTE_USER_AUTHENTICATION: False
           CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
+          OPENSEARCH_ADMIN: admin
+          OPENSEARCH_PASSWORD: admin
+          OPEN_SEARCH_HTTP_PORT: 9200
+          OPENSEARCH_HOST: opensearch
+          OPENSEARCH_HOSTS: http://opensearch:9200
