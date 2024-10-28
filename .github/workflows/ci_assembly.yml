@@ -169,6 +169,9 @@ jobs:
           CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
           OPENSEARCH_ADMIN: admin
           OPENSEARCH_PASSWORD: admin
+          OPEN_SEARCH_HTTP_PORT: 9200
+          OPENSEARCH_HOST: opensearch
+          OPENSEARCH_HOSTS: http://opensearch:9200
 
       - name: Django tests MSSQL
         working-directory: ./openIMIS
