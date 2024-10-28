@@ -134,6 +134,8 @@ jobs:
           http.port: 9200
           plugins.security.ssl.http.enabled: false
           plugins.security.disabled: true
+          OPENSEARCH_INITIAL_ADMIN_PASSWORD: admin
+          OPENSEARCH_ADMIN_USER: admin
       mssql:
         image: mcr.microsoft.com/mssql/server:2017-latest
         env:
@@ -238,6 +240,8 @@ jobs:
           #REMOTE_USER_AUTHENTICATION: False
           CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
           MODE: DEV
+          OPENSEARCH_ADMIN: admin
+          OPENSEARCH_PASSWORD: admin
   ci_module_psql_test_module_only:
     name: Run Module Tests (PSQL)
     runs-on: ubuntu-20.04
@@ -253,6 +257,8 @@ jobs:
           http.port: 9200
           plugins.security.ssl.http.enabled: false
           plugins.security.disabled: true
+          OPENSEARCH_INITIAL_ADMIN_PASSWORD: admin
+          OPENSEARCH_ADMIN_USER: admin
       pgsql:
         image: postgres
         env:
@@ -352,6 +358,8 @@ jobs:
           SITE_ROOT: api
           CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
           MODE: DEV
+          OPENSEARCH_ADMIN: admin
+          OPENSEARCH_PASSWORD: admin
   ci_module_psql_test:
     name: Run All Tests (PSQL)
     runs-on: ubuntu-20.04
@@ -367,6 +375,8 @@ jobs:
           http.port: 9200
           plugins.security.ssl.http.enabled: false
           plugins.security.disabled: true
+          OPENSEARCH_INITIAL_ADMIN_PASSWORD: admin
+          OPENSEARCH_ADMIN_USER: admin
       pgsql:
         image: postgres
         env:
@@ -465,6 +475,8 @@ jobs:
           SITE_ROOT: api
           CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
           MODE: DEV
+          OPENSEARCH_ADMIN: admin
+          OPENSEARCH_PASSWORD: admin
       - name: Generate Coverage Report
         if: always()
         working-directory: ./openimis/openIMIS

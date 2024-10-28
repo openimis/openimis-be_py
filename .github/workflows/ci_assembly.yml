@@ -54,6 +54,9 @@ jobs:
           http.port: 9200
           plugins.security.ssl.http.enabled: false
           plugins.security.disabled: true
+          OPENSEARCH_INITIAL_ADMIN_PASSWORD: admin
+          OPENSEARCH_ADMIN_USER: admin
+
     steps:
       - uses: actions/checkout@v2
 
@@ -166,6 +169,8 @@ jobs:
           #DEV_SERVER: true
           SITE_ROOT: api
           CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
+          OPENSEARCH_ADMIN: admin
+          OPENSEARCH_PASSWORD: admin
 
       - name: Django tests MSSQL
         working-directory: ./openIMIS
