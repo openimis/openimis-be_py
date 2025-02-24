@@ -4,7 +4,7 @@ celery>=4.4
 channels~=3.0.3
 channels-redis==3.2.0
 channels-rabbitmq==2.0.0
-django~=4.2
+django~=4.2.17
 djangorestframework
 django-cryptography==1.1
 django-filter~=22.1

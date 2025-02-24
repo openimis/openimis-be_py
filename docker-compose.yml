@@ -52,12 +52,11 @@ services:
       - "plugins.security.ssl.http.enabled=${SLL_HTTP_ENABLED:-false}"
       - "plugins.security.disabled=true"
       - "OPENSEARCH_INITIAL_ADMIN_PASSWORD=${OPENSEARCH_PASSWORD}"
-
     volumes:
-      - "opensearch-data1:/usr/share/opensearch/data"
-    networks:
-      openimis-net:
+      - "opensearch-data:/usr/share/opensearch/data"
+
 volumes:
   database:
   database-mssql:
+  opensearch-data:
 
