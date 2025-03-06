@@ -92,6 +92,8 @@ RATELIMIT_SKIP_TIMEOUT = os.getenv('RATELIMIT_SKIP_TIMEOUT', 'False')
 # CSRF settings
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+# session cookie validity = 8 hours
+SESSION_COOKIE_AGE = 28800
 
 # CORS settings
 CORS_ALLOW_CREDENTIALS = True
