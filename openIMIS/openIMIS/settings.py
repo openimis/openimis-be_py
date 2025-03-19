@@ -224,6 +224,7 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "core.middleware.SecurityHeadersMiddleware",
+    "csp.middleware.CSPMiddleware",
 ]
 
 MODE = os.environ.get("MODE")
@@ -333,10 +334,6 @@ if MODE == "PROD":
         "JWT_COOKIE_SECURE": True,
         "JWT_COOKIE_SAMESITE": "Lax",
     })
-
-    CSRF_COOKIE_SECURE = True
-    CSRF_COOKIE_HTTPONLY = True
-    CSRF_COOKIE_SAMESITE = 'Lax'
 
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
@@ -659,3 +656,29 @@ PASSWORD_DIGITS = int(os.getenv('PASSWORD_DIGITS', 1))
 PASSWORD_SYMBOLS = int(os.getenv('PASSWORD_SYMBOLS', 1))
 
 IS_UNIT_TEST_ENV = 'test' in sys.argv
+
+# CSRF settings
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+# session cookie validity = 8 hours
+SESSION_COOKIE_AGE = 28800
+SESSION_COOKIE_NAME = "openimis_session"
+
+# CORS settings
+CORS_ALLOW_CREDENTIALS = True
+
+# Cookie settings
+CSRF_COOKIE_NAME = 'csrftoken'
+CSRF_USE_SESSIONS = True
+SESSION_COOKIE_SAMESITE = 'Lax'  # or 'None' if cross-site
+CSRF_COOKIE_SAMESITE = 'Lax'  # or 'None' if cross-site
+CSRF_COOKIE_HTTPONLY = False  # False if you need to access it from JavaScript
+
+USER_AGENT_CSRF_BYPASS = []
+
+CSP_DEFAULT_SRC = ["'self'"]
+CSP_SCRIPT_SRC = ["'self'"]
+CSP_STYLE_SRC = ["'self'"]
+CSP_IMG_SRC = ["'self'", "data:"]  # Allows images from the same origin and base64 encoded images
+CSP_FRAME_ANCESTORS = ["'self'"]
+
