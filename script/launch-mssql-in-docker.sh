@@ -60,7 +60,7 @@ if [ -z "$sa_password" ]; then
 fi
 
 __exec docker pull microsoft/mssql-server-linux
-container=$(__exec docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=$sa_password" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest)
+container=$(__exec docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=$sa_password" -e "MSSQL_PID=Express" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest)
 echo "Created container $container"
 __exec docker ps -a
 

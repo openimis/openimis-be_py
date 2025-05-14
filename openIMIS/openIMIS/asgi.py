@@ -9,7 +9,7 @@ from importlib import import_module
 
 from django.core.asgi import get_asgi_application
 from django.urls import path
-
+from .openimisconf import load_openimis_conf
 logger = logging.getLogger(__name__)
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'openIMIS.settings')
@@ -24,12 +24,6 @@ def SITE_ROOT():
         return root
     else:
         return "%s/" % root
-
-
-def load_openimis_conf():
-    conf_file_path = os.environ.get("OPENIMIS_CONF", "../openimis.json")
-    with open(conf_file_path) as conf_file:
-        return json.load(conf_file)
 
 
 def extract_websocket_urls(module):
@@ -55,8 +49,7 @@ def extract_websocket_urls(module):
 
 
 def openimis_websocket_endpoints():
-    OPENIMIS_CONF = load_openimis_conf()
-    module_routings_paths = map(extract_websocket_urls, OPENIMIS_CONF["modules"])
+    module_routings_paths = map(extract_websocket_urls, load_openimis_conf()['modules'])
     return [route for module_routings in module_routings_paths for route in module_routings if route]
 
 

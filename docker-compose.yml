@@ -21,15 +21,16 @@ services:
       - 5432:5432
   db-mssql:
     container_name: ${PROJECT_NAME:-openimis}-mssql
-    image: ghcr.io/openimis/openimis-mssql:${DB_TAG:-latest}
+    image: ghcr.io/openimis/openimis-mssql:${DB_TAG:-develop}
     restart: always
+    user: root
     environment:
       - DB_PASSWORD=$MSSQL_DB_PASSWORD
       - SA_PASSWORD=$MSSQL_DB_PASSWORD
       - DB_NAME=$MSSQL_DB_NAME
       - DB_USER=$MSSQL_DB_USER
       - ACCEPT_EULA=Y
-      - DEMO_DATASET=true
+      - INIT_MODE=demo
     healthcheck:
       test: "bash /app/healthcheck.sh"
       interval: 10s
@@ -40,7 +41,22 @@ services:
       - database-mssql:/var/opt/mssql/data
     ports:
       - 1433:1433
+  opensearch:
+    image: opensearchproject/opensearch:latest
+    env_file:
+      - ".env.openSearch"
+    environment:
+      - "discovery.type=single-node"
+      - "cluster.name=${CLUSTER_NAME:-my_opensearch_local}"
+      - "http.port=${OPEN_SEARCH_HTTP_PORT:-9200}"
+      - "plugins.security.ssl.http.enabled=${SLL_HTTP_ENABLED:-false}"
+      - "plugins.security.disabled=true"
+      - "OPENSEARCH_INITIAL_ADMIN_PASSWORD=${OPENSEARCH_PASSWORD}"
+    volumes:
+      - "opensearch-data:/usr/share/opensearch/data"
+
 volumes:
   database:
   database-mssql:
+  opensearch-data:
 

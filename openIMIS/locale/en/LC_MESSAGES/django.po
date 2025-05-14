@@ -15,10 +15,10 @@ msgid "claim.mutation.authentication_required"
 msgstr "User needs to be authenticated for this operation"
 
 msgid "claim.validation.id_does_not_exist"
-msgstr "Claim with id %(id)s does not exist"
+msgstr "id %s does not exist"
 
 msgid "claim.mutation.failed_to_change_status_of_claim"
-msgstr "Failed to change status of claim %(code)s"
+msgstr "Failed to change status of claim %s"
 
 msgid "claim.validation.pricelist.item"
 msgstr "Couldn't find a valid item price list item for %s in location %s"
@@ -31,18 +31,18 @@ msgstr "Claim Item %s is referencing item %s that is invalid"
 
 #, fuzzy
 msgid "claim.validation.validity.service"
-msgstr "Claim Service %s is referencing service %s that is invalid"
+msgstr "claim.validation.validity.service"
 
 #, fuzzy
 msgid "claim.validation.care_type.service"
-msgstr "Care type %s and health facility care type %s with date %s vs %s"
+msgstr "claim.validation.care_type.service"
 
 msgid "claim.validation.target_date"
-msgstr "%(code)s: Neither date_from nor date_to is specified"
+msgstr "Claim %s: neither date_from nor date_to is specified"
 
 #, fuzzy
 msgid "claim.validation.care_type.item"
-msgstr "Care type %s and health facility care type %s with date %s vs %s"
+msgstr "claim.validation.care_type.item"
 
 msgid "claim.validation.limitation.item"
 msgstr "ClaimItem %s referencing item %s has a patient category mask of %s but insuree has a mask of %s"
@@ -54,40 +54,38 @@ msgid "claim.validation.family.insuree_validity"
 msgstr "claim %(code)s: Insuree %(insuree)s validity expired"
 
 msgid "claim.validation.family.no_family"
-msgstr ""
-"%(code)s: Insuree %(insuree)s should have a family, even if only one member"
+msgstr "Insuree %s should have a family, even if only one member"
 
 msgid "claim.validation.family.family_validity"
-msgstr "%(code)s: Insuree %(insuree)s family validity expired"
+msgstr "Insuree %s family is not valid"
 
 msgid "claim.validation.product_family.waiting_period"
-msgstr "%(code)s: Item/service %(element)s waiting period violation"
+msgstr "Item/service %s waiting period violation"
 
 msgid "claim.validation.product_family.max_nb_allowed"
-msgstr ""
-"%(code)s: Item/service %(element)s, provided %(provided)s over maximum "
-"number allowed %(max)s"
+msgstr "\"%(code)s: Item/service %(element)s, provided %(provided)s over maximum \""
+"\"number allowed %(max)s\""
 
 msgid "claim.validation.product_family.no_product_found"
-msgstr "%(code)s: No product item/service found for %(element)s"
+msgstr "No product item/service found for %s"
 
-msgid "claim.validation.product_family.max_nb_consultation"
-msgstr "%(code)s: %(count)s is over maximum consultations %(max)s"
+msgid "claim.validation.product_family.max_nb_consultations"
+msgstr "%s is over maximum consultations %s"
 
 msgid "claim.validation.product_family.max_nb_surgeries"
-msgstr "%(code)s: %(count)s is over maximum surgeries %(max)s"
+msgstr "%s is over maximum surgeries %s"
 
 msgid "claim.validation.product_family.max_nb_deliveries"
-msgstr "%(code)s: %(count)s is over maximum deliveries %(max)s"
+msgstr "%s is over maximum deliveries %s"
 
 msgid "claim.validation.product_family.max_nb_antenatal"
-msgstr "%(code)s: %(count)s is over maximum antenatal services %(max)s"
+msgstr "%s is over maximum antenatal services %s"
 
 msgid "claim.validation.product_family.max_nb_hospitalizations"
-msgstr "%(code)s: %(count)s is over maximum hospitalizations %(max)s"
+msgstr "%s is over maximum hospitalizations %s"
 
 msgid "claim.validation.product_family.max_nb_visits"
-msgstr "%(code)s: %(count)s is over maximum visits %(max)s"
+msgstr "%s is over maximum visits %s"
 
 msgid "claim.validation.assign_prod.item.no_product_code"
 msgstr "Claim item %s refers to an item %s that doesn't seem to have a valid Policy ⇾ Product"
@@ -116,9 +114,6 @@ msgstr "Claim with code %(code) already exists"
 msgid "claim.mutation.failed_to_attach_document"
 msgstr "Failed to attach document to the claim %(code)s"
 
-msgid "claim.mutation.failed_to_update_claim_attachment"
-msgstr "Failed to update attachment from claim %(code)s"
-
 msgid "claim.mutation.failed_to_delete_claim_attachment"
 msgstr "Failed delete attachment from claim %(code)s"
 
@@ -126,44 +121,7 @@ msgid "claim.validation.all_items_and_services_rejected"
 msgstr "%(code)s: All claim items/services are rejected"
 
 msgid "claim.validation.assign_prod.elt.no_product_code"
-msgstr ""
-"%(code)s: Claim service/item %(elt)s doesn't seem to have a valid Policy-"
-">Product"
-
-msgid "claim.validation.claimitem_validity"
-msgstr "%(code)s: Claim item validity_to is not null"
-
-#: claim/validations.py:200 claim/validations.py:200
-msgid "claim.validation.claimservice_validity"
-msgstr "%(code)s: Claim service validity_to is not null"
-
-#: claim/validations.py:218 claim/validations.py:218
-msgid "claim.validation.claimitem_in_price_list_validity"
-msgstr "%(code)s: Claim item not in the price list"
-
-#: claim/validations.py:237 claim/validations.py:237
-msgid "claim.validation.claimservice_in_price_list_validity"
-msgstr "%(code)s: Claim service not in the price list"
-
-#: claim/validations.py:261 claim/validations.py:261
-msgid "claim.validation.claimdetail_care_type_validity"
-msgstr "%(code)s: Claim item/service invalid care type"
-
-#: claim/validations.py:277 claim/validations.py:277
-msgid "claim.validation.claimdetail_limitation_validity"
-msgstr "%(code)s: Claim item/service passed its limit"
-
-#: claim/validations.py:307 claim/validations.py:307
-msgid "claim.validation.claimitem_frequency_validity"
-msgstr "%(code)s: Claim item invalid frequency"
-
-#: claim/validations.py:320 claim/validations.py:320
-msgid "claim.validation.claimservice_frequency_validity"
-msgstr "%(code)s: Claim service invalid frequency"
-
-#: claim/gql_mutations.py:284 claim/gql_mutations.py:284
-msgid "mutation.code_name_duplicated"
-msgstr "Code name duplicate"
+msgstr "%(code)s: Claim service/item %(elt)s doesn't seem to have a valid Policy ⇾ Product"
 
 msgid "claim_batch.reports.nodata"
 msgstr "No data for the report"
@@ -260,3 +218,5498 @@ msgstr "Failed to change insuree from family"
 
 msgid "insuree.validation.policy_above_max_members"
 msgstr "Policy %(product_code)s - %(start_date)s covers max %(max)s insurees. Current family members count: %(count)s"
+
+msgid "policy_uuid_required"
+msgstr "The policy UUID is required"
+
+msgid "policy_uuid_not_found"
+msgstr "The policy UUID was not found"
+
+msgid "contribution.mutation.failed_to_create_premium"
+msgstr "Failed to create the premium"
+
+msgid "contribution.mutation.failed_to_update_premium"
+msgstr "Failed to update the premium %(id)s"
+
+msgid "contribution.validation.id_does_not_exist"
+msgstr "Contribution with id %(id)s does not exist"
+
+msgid "contribution.mutation.failed_to_delete_premium"
+msgstr "Failed to delete premium %(uuid)s"
+
+msgid "premium.mutation.failed_to_delete_premium"
+msgstr "Failed to delete premium %(uuid)s"
+
+msgid "payment.gql.payment_base.premium_uuid"
+msgstr "UUID of the Premium"
+
+msgid "payment.mutation.failed_to_create_payment"
+msgstr "Failed to create the payment"
+
+msgid "payment.mutation.failed_to_update_payment"
+msgstr "Failed to update the payment %(id)s"
+
+msgid "payment.validation.id_does_not_exist"
+msgstr "The payment with id %(id)s does not exist"
+
+msgid "payment.mutation.failed_to_delete_payment"
+msgstr "Failed to delete the payment %(uuid)s"
+
+msgid "payment.mutation.failed_to_detach_payment_detail"
+msgstr "Failed to detach the payment detail %(payment_detail)s"
+
+msgid "payment.validation.detail.reject.insurance_nb"
+msgstr "Payment detail %(id)s has no insurance number"
+
+msgid "payment.validation.detail.reject.product_code"
+msgstr "Payment detail %(id)s has no product code"
+
+msgid "payment.validation.detail.reject.insurance_nb_invalid"
+msgstr "Payment detail %(id)s has an invalid insurance nb %(chf)s"
+
+msgid "payment.validation.detail.reject.policy_not_found"
+msgstr "Payment detail %(id)s doesn't relate to a valid policy for insuree %(chf)s and product code %(product_code)s"
+
+msgid "payment.validation.detail.reject.product_not_allowed"
+msgstr "Payment detail %(id)s refers to a product %(product_code)s that is not allowed for insuree %(chf)s"
+
+msgid "payment.validation.detail.reject.officer_not_found"
+msgstr "Payment detail %(id)s has an unknown officer code %(officer_code)s for insuree %(chf)s"
+
+msgid "payment.validation.detail.reject.product_location"
+msgstr "Payment detail %(id)s has an invalid product %(product_code)s location for insuree %(chf)s"
+
+msgid "payment.validation.detail.reject.no_premium"
+msgstr "Payment detail %(id)s could not identify a corresponding premium"
+
+msgid "policy_notification.sms_on_activation"
+msgstr "The policy for the family/group %(InsuranceID)s - %(Name)s with the insurance product %(ProductCode)s - %(ProductName)s has been activated from the date %(EffectiveDate)s until the expiry date %(ExpiryDate)s."
+
+msgid "policy_notification.sms_on_effective"
+msgstr "The policy for the family/group %(InsuranceID)s - %(Name)s with the insurance product %(ProductCode)s - %(ProductName)s starts insurance coverage today and expires on %(ExpiryDate)s."
+
+msgid "policy_notification.sms_before_expiry"
+msgstr "The policy for the family/group %(InsuranceID)s - %(Name)s with the insurance product %(ProductCode)s - %(ProductName)s will expire on %(ExpiryDate)s. Its renewal is recommended."
+
+msgid "policy_notification.sms_on_expiration"
+msgstr "The policy for the family/group %(InsuranceID)s - %(Name)s with the insurance product %(ProductCode)s - %(ProductName)s  expires today and it has not been renewed yet."
+
+msgid "policy_notification.sms_after_expiry"
+msgstr "The policy for the family/group %(InsuranceID)s - %(Name)s with the insurance product %(ProductCode)s - %(ProductName)s expired on %(ExpiryDate)s and it hasn’t been renewed yet. Its renewal is recommended."
+
+msgid "policy_notification.sms_on_renewal"
+msgstr "The policy for the family/group %(InsuranceID)s - %(Name)s with the insurance product %(ProductCode)s - %(ProductName)s has been renewed from the date %(EffectiveDate)s until the expiry date %(ExpiryDate)s."
+
+msgid "policy_notification.sms_control_number_assigned"
+msgstr "The control number %(ControlNumber)s was assigned for the request issued on %(DateRequest)s at %(TimeRequest)s for payment of the set of policies containing the family/group %(InsuranceID)s - %(Name)s with the insurance product %(ProductCode)s - %(ProductCode)s and altogether %(NumberPolicies)s policies. The amount of payment associated with the request is %(AmountToBePaid)s."
+
+msgid "policy_notification.sms_control_number_error_bulk_payment"
+msgstr "The control number %(ControlNumber)s cannot be assigned for the request issued on %(DateRequest)s at %(TimeRequest)s for payment of the set of policies containing the family/group %(InsuranceID)s - %(Name)s with the insurance product %(ProductCode)s - %(ProductCode)s and alltogether %(NumberPolicies)s policies. The reason is %(ErrorMessage)s."
+
+msgid "policy_notification.sms_control_number_error_single_payment"
+msgstr "The control number %(ControlNumber)s cannot be assigned for the request issued on %(DateRequest)s at %(TimeRequest)s for payment of the policy for the family/group %(InsuranceID)s with the insurance product %(ProductCode)s. The reason is %(ErrorMessage)s"
+
+msgid "policy_notification.sms_paid_and_activated"
+msgstr "The payment %(Payment)s performed on %(DatePayment)s for the control number %(ControlNumber)s received and the policy for the family/group %(InsuranceID)s - %(Name)s with the insurance product %(ProductCode)s - %(ProductName)s activated from the date %(EffectiveDate)s until the expiry date %(ExpiryDate)s. The allocated payment for the policy is %(Payment)s."
+
+msgid "policy_notification.sms_paid_and_not_activated"
+msgstr "The payment %(Payment)s performed on %(DatePayment)s for the control number %(ControlNumber)s received but the policy for the family/group %(InsuranceID)s - %(Name)s with the insurance product %(ProductCode)s - %(ProductName)s has not been activated. The allocated payment for the policy is %(Payment)s but still %(PaymentLeft)s should be paid for activation of the policy."
+
+msgid "policy_notification.sms_paid_and_not_matched"
+msgstr "The payment %(Payment)s performed on %(DatePayment)s for the control number %(ControlNumber)s received but the policies in the set containing the family/group %(InsuranceID)s - %(Name)s with the insurance product %(ProductCode)s - %(ProductName)s cannot be matched for time being"
+
+msgid "policy_notification.Mode.0"
+msgstr "All"
+
+msgid "policy_notification.Mode.1"
+msgstr "Approval and phone number"
+
+msgid "policy_notification.Mode.2"
+msgstr "Approval only"
+
+msgid "policy_notification.Mode.3"
+msgstr "Phone number only"
+
+msgid "policy_notification.Mode.4"
+msgstr "No approval and phone number"
+
+msgid "mutation.user_email_duplicated"
+msgstr "Email already in use."
+
+msgid "policy.mutation.failed_to_delete_policies"
+msgstr "Failed to delete policies"
+
+msgid "mutation.hf_code_duplicated"
+msgstr "Health facility code is duplicated"
+
+msgid "mutation.location_code_duplicated"
+msgstr "Location code is duplicated"
+
+msgid "unauthorized_to_create_update_region_district"
+msgstr "unauthorized to create or update region and district"
+
+msgid "unauthorized_to_create_or_update_municipalities_and_villages"
+msgstr "unauthorized to create or update municipalities and villages"
+
+msgid "mutation.contract_dates_required"
+msgstr "Contract dates required"
+
+msgid "mutation.single_date_hf_contract"
+msgstr "Contract start and end date is needed"
+
+msgid "mutation.incorrect_hf_contract_date_range"
+msgstr "Incorrect health facility contract range"
+
+msgid "mutation.incorrect_hf_status"
+msgstr "Incorrect health facility status"
+
+msgid "cannot_update_historical_hf"
+msgstr "Cannot update historical hf"
+
+msgid "claim.validation.product_family.max_nb_consultation"
+msgstr "%(code)s: %(count)s is over maximum consultations %(max)s"
+
+msgid "claim.mutation.failed_to_update_claim_attachment"
+msgstr "Failed to update attachment from claim %(code)s"
+
+msgid "claim.validation.claimitem_validity"
+msgstr "%(code)s: Claim item validity_to is not null"
+
+msgid "claim.validation.claimservice_validity"
+msgstr "%(code)s: Claim service validity_to is not null"
+
+msgid "claim.validation.claimitem_in_price_list_validity"
+msgstr "%(code)s: Claim item not in the price list"
+
+msgid "claim.validation.claimservice_in_price_list_validity"
+msgstr "%(code)s: Claim service not in the price list"
+
+msgid "claim.validation.claimdetail_care_type_validity"
+msgstr "%(code)s: Claim item/service invalid care type"
+
+msgid "claim.validation.claimdetail_limitation_validity"
+msgstr "%(code)s: Claim item/service passed its limit"
+
+msgid "claim.validation.claimitem_frequency_validity"
+msgstr "%(code)s: Claim item invalid frequency"
+
+msgid "claim.validation.claimservice_frequency_validity"
+msgstr "%(code)s: Claim service invalid frequency"
+
+msgid "mutation.code_name_duplicated"
+msgstr "Code name duplicate"
+
+msgid "insuree.mutation.failed_to_update_family"
+msgstr "Failed to update family"
+
+msgid "validator_module_import_error"
+msgstr "Validator module import error."
+
+msgid "validator_function_not_found"
+msgstr "Validator function not found."
+
+#, fuzzy
+msgid "Invalid insuree number (empty), should be %s"
+msgstr "Invalid insuree number (empty), should be %s"
+
+#, fuzzy
+msgid "Invalid insuree number length %s, should be maximun %s"
+msgstr "Invalid insuree number length %s, should be maximun %s"
+
+#, fuzzy
+msgid "Invalid insuree number length %s, should be minimum %s"
+msgstr "Invalid insuree number length %s, should be minimum %s"
+
+msgid "insuree.validation.insuree_requires_dob"
+msgstr "Insuree requires date of birth."
+
+msgid "insuree.validation.insuree_requires_gender"
+msgstr "Insuree requires gender."
+
+msgid "insuree.validation.insuree_requires_status"
+msgstr "Insuree requires status."
+
+#, fuzzy
+msgid "worker_requires_other_names"
+msgstr "worker_requires_other_names"
+
+#, fuzzy
+msgid "worker_requires_last_name"
+msgstr "worker_requires_last_name"
+
+msgid "mutation.insuree.wrong_status"
+msgstr "insuree's mutation: wrong status"
+
+msgid "mutation.insuree.no_required_photo"
+msgstr "insuree's mutation: no photo but photo required"
+
+#, fuzzy
+msgid "{instance_name_str}_national_id_checksum_not_valid"
+msgstr "{instance_name_str}_national_id_checksum_not_valid"
+
+#, fuzzy
+msgid "{instance_name_str}_national_id_not_valid"
+msgstr "{instance_name_str}_national_id_not_valid"
+
+msgid "Unauthorized"
+msgstr "Unauthorized"
+
+msgid "validations.CommentValidation.validate_ticket_exists"
+msgstr "Ticket %(ticket_id) does not exist."
+
+msgid "validations.CommentValidation.validate_commenter_exists"
+msgstr "Commenter does not exist."
+
+msgid "validations.CommentValidation.commenter_not_associated_with_ticket"
+msgstr "Commenter not associated with ticket."
+
+msgid "validations.TicketValidation.validate_ticket_unique_code"
+msgstr "Ticket %(code) already exists."
+
+#, fuzzy
+msgid "validations.TicketValidation.invalid_reporter_type"
+msgstr "validations.TicketValidation.invalid_reporter_type"
+
+#, fuzzy
+msgid "validations.TicketValidation.reporter_type_invalid"
+msgstr "validations.TicketValidation.reporter_type_invalid"
+
+#, fuzzy
+msgid "validations.TicketValidation.reporter_not_found"
+msgstr "validations.TicketValidation.reporter_not_found"
+
+#, fuzzy
+msgid "validations.TicketValidation.reporter_type_required"
+msgstr "validations.TicketValidation.reporter_type_required"
+
+#, fuzzy
+msgid "validations.TicketValidation.reporter_id_required"
+msgstr "validations.TicketValidation.reporter_id_required"
+
+#, fuzzy
+msgid "mutation.user_email_invalid"
+msgstr "mutation.user_email_invalid"
+
+#, fuzzy
+msgid "mutation.user_no_email_provided"
+msgstr "mutation.user_no_email_provided"
+
+#, fuzzy
+msgid "mutation.user_username_too_long"
+msgstr "mutation.user_username_too_long"
+
+#, fuzzy
+msgid "mutation.user_username_not_changeable"
+msgstr "mutation.user_username_not_changeable"
+
+#, fuzzy
+msgid "Failed to change user password"
+msgstr "Failed to change user password"
+
+#, fuzzy
+msgid "Username of the account to recover"
+msgstr "Username of the account to recover"
+
+#, fuzzy
+msgid "Failed to reset password."
+msgstr "Failed to reset password."
+
+#, fuzzy
+msgid "Username of the user"
+msgstr "Username of the user"
+
+#, fuzzy
+msgid "Token used to validate the user"
+msgstr "Token used to validate the user"
+
+#, fuzzy
+msgid "New password for the user"
+msgstr "New password for the user"
+
+#, fuzzy
+msgid "Failed to set password."
+msgstr "Failed to set password."
+
+#, fuzzy
+msgid "core.user.edit_historical_data_error"
+msgstr "core.user.edit_historical_data_error"
+
+msgid "core.wrong_old_password"
+msgstr "The old password is incorrect"
+
+#, fuzzy
+msgid "Missing username or password"
+msgstr "Missing username or password"
+
+msgid "core.utils.schema_validation.invalid_schema"
+msgstr "Schema is not valid %(error)"
+
+msgid "core.utils.schema_validation.invalid_json"
+msgstr "Schema json is not valid %(error)"
+
+#, fuzzy
+msgid "%(model)s for id  %(id)s does not exists"
+msgstr "%(model)s for id  %(id)s does not exists"
+
+msgid "core.validation.stringFieldValidationMixin.empty_string"
+msgstr "Field cannot be empty."
+
+msgid "core.validation.stringFieldValidationMixin.string_starts_with_whitespace"
+msgstr "Field cannot start with whitespace."
+
+msgid "core.validation.stringFieldValidationMixin.string_ends_with_whitespace"
+msgstr "Field cannot end with whitespace."
+
+#, fuzzy
+msgid "Object code %(code)s is not unique."
+msgstr "Object code %(code)s is not unique."
+
+#, fuzzy
+msgid "Only user requesting export can fetch request"
+msgstr "Only user requesting export can fetch request"
+
+#, fuzzy
+msgid "mutation.ph_code_duplicated"
+msgstr "mutation.ph_code_duplicated"
+
+#, fuzzy
+msgid "Code already exists."
+msgstr "Code already exists."
+
+#, fuzzy
+msgid "medical.mutation.patient_category_missing"
+msgstr "medical.mutation.patient_category_missing"
+
+#, fuzzy
+msgid "service.mutation.failed_to_create_service"
+msgstr "service.mutation.failed_to_create_service"
+
+#, fuzzy
+msgid "service.mutation.failed_to_update_service"
+msgstr "service.mutation.failed_to_update_service"
+
+#, fuzzy
+msgid "service.validation.id_does_not_exist"
+msgstr "service.validation.id_does_not_exist"
+
+#, fuzzy
+msgid "item.mutation.failed_to_create_item"
+msgstr "item.mutation.failed_to_create_item"
+
+#, fuzzy
+msgid "item.mutation.failed_to_update_item"
+msgstr "item.mutation.failed_to_update_item"
+
+#, fuzzy
+msgid "item.validation.id_does_not_exist"
+msgstr "item.validation.id_does_not_exist"
+
+#, fuzzy
+msgid "medical.mutation.failed_to_delete_{item_or_service_element}"
+msgstr "medical.mutation.failed_to_delete_{item_or_service_element}"
+
+#, fuzzy
+msgid "POTENTIAL"
+msgstr "POTENTIAL"
+
+#, fuzzy
+msgid "ACTIVE"
+msgstr "ACTIVE"
+
+#, fuzzy
+msgid "GRADUATED"
+msgstr "GRADUATED"
+
+#, fuzzy
+msgid "SUSPENDED"
+msgstr "SUSPENDED"
+
+#, fuzzy
+msgid "INDIVIDUAL"
+msgstr "INDIVIDUAL"
+
+#, fuzzy
+msgid "GROUP"
+msgstr "GROUP"
+
+#, fuzzy
+msgid "Beneficiary must be associated with an individual benefit plan."
+msgstr "Beneficiary must be associated with an individual benefit plan."
+
+#, fuzzy
+msgid "Group beneficiary must be associated with a benefit plan type = GROUP."
+msgstr "Group beneficiary must be associated with a benefit plan type = GROUP."
+
+msgid "social_protection.validation.benefit_plan.code_exists"
+msgstr "BenefitPlan code %(code) already exists"
+
+msgid "social_protection.validation.benefit_plan.name_exists"
+msgstr "BenefitPlan name %(name) already exists"
+
+msgid "social_protection.validation.field_empty"
+msgstr "%(field) can't be empty"
+
+msgid "Pending"
+msgstr "Pending"
+
+msgid "Triggered"
+msgstr "Triggered"
+
+msgid "In progress"
+msgstr "In progress"
+
+msgid "Success"
+msgstr "Success"
+
+msgid "Partial Success"
+msgstr "Partial Success"
+
+msgid "WAITING_FOR_VERIFICATION"
+msgstr "WAITING FOR VERIFICATION"
+
+msgid "Fail"
+msgstr "Fail"
+
+msgid "HEAD"
+msgstr "HEAD"
+
+msgid "SPOUSE"
+msgstr "SPOUSE"
+
+msgid "SON"
+msgstr "SON"
+
+msgid "DAUGHTER"
+msgstr "DAUGHTER"
+
+msgid "GRANDFATHER"
+msgstr "GRANDFATHER"
+
+msgid "GRANDMOTHER"
+msgstr "GRANDMOTHER"
+
+msgid "MOTHER"
+msgstr "MOTHER"
+
+msgid "FATHER"
+msgstr "FATHER"
+
+msgid "PRIMARY"
+msgstr "PRIMARY"
+
+msgid "SECONDARY"
+msgstr "SECONDARY"
+
+msgid "individual.validation.validate_undo_delete.individual_not_deleted"
+msgstr "Individual %(id) is not deleted."
+
+msgid "individual.validation.validate_create_group_and_individual.group_individual_does_not_exist"
+msgstr "GroupIndividual does not exist."
+
+msgid "individual.validation.check_if_group_id"
+msgstr "Missing group_id."
+
+msgid "individual.validation.validate_group_task_pending"
+msgstr "There is one task pending for the group %(group_id)."
+
+msgid "Month"
+msgstr "Month"
+
+msgid "Quarter"
+msgstr "Quarter"
+
+msgid "Year"
+msgstr "Year"
+
+msgid "Both"
+msgstr "Both"
+
+msgid "In-Patient"
+msgstr "In-Patient"
+
+msgid "Out-Patient"
+msgstr "Out-Patient"
+
+#, fuzzy
+msgid "mutation.service_name_duplicated"
+msgstr "mutation.service_name_duplicated"
+
+#, fuzzy
+msgid "mutation.item_name_duplicated"
+msgstr "mutation.item_name_duplicated"
+
+#, fuzzy
+msgid "pricelist.mutation.failed_to_create_pricelist"
+msgstr "pricelist.mutation.failed_to_create_pricelist"
+
+#, fuzzy
+msgid "pricelist.mutation.failed_to_update_pricelist"
+msgstr "pricelist.mutation.failed_to_update_pricelist"
+
+#, fuzzy
+msgid "pricelist.validation.id_does_not_exist"
+msgstr "pricelist.validation.id_does_not_exist"
+
+msgid "pricelist.mutation.failed_to_delete_{pricelist.model_prefix}"
+msgstr "failed to delete {pricelist.model_prefix}"
+
+msgid "ALL"
+msgstr "ALL"
+
+msgid "ANY"
+msgstr "ANY"
+
+msgid "N"
+msgstr "N"
+
+msgid "Received"
+msgstr "Received"
+
+msgid "Accepted"
+msgstr "Accepted"
+
+msgid "Completed"
+msgstr "Completed"
+
+msgid "Failed"
+msgstr "Failed"
+
+msgid "tasks_management.validation.task.updating_completed_task"
+msgstr "Cannot update completed task."
+
+msgid "tasks_management.validation.group_executor.user_does_not_exist"
+msgstr "User does not exist"
+
+msgid "tasks_management.validation.field_empty"
+msgstr "Empty field"
+
+msgid "tasks_management.validation.entity_not_found"
+msgstr "Entity not found."
+
+msgid "tasks_management.validation.another_task_pending"
+msgstr "Another task is pending for %(instance)."
+
+msgid "tasks_management.validation.validate_unique_task_source"
+msgstr "Task sources already assigned to task groups: %(task_groups_by_source)"
+
+#, fuzzy
+msgid "mutation.cpb_code_duplicated"
+msgstr "mutation.cpb_code_duplicated"
+
+#, fuzzy
+msgid "mutation.cp_code_duplicated"
+msgstr "mutation.cp_code_duplicated"
+
+#, fuzzy
+msgid "mutation.payment_plan_code_duplicated"
+msgstr "mutation.payment_plan_code_duplicated"
+
+msgid "PENDING_APPROVAL"
+msgstr "PENDING APPROVAL"
+
+msgid "APPROVE_FOR_PAYMENT"
+msgstr "APPROVE FOR PAYMENT"
+
+msgid "REJECTED"
+msgstr "REJECTED"
+
+msgid "RECONCILED"
+msgstr "RECONCILED"
+
+msgid "ACCEPTED"
+msgstr "ACCEPTED"
+
+msgid "CREATED"
+msgstr "CREATED"
+
+msgid "DUPLICATE"
+msgstr "DUPLICATE"
+
+msgid "PENDING_DELETION"
+msgstr "PENDING_DELETION"
+
+#, fuzzy
+msgid "csv_reconciliation.validation.file_required"
+msgstr "csv_reconciliation.validation.file_required"
+
+msgid "Unknown error while loading import file"
+msgstr "Unknown error while loading import file"
+
+msgid "Import file is empty"
+msgstr "Import file is empty"
+
+#, fuzzy
+msgid "Column errors in csv."
+msgstr "Column errors in csv."
+
+msgid "All of the Benefit Consumptions have been already reconciled."
+msgstr "All of the Benefit Consumptions have been already reconciled."
+
+#, fuzzy
+msgid "benefit_consumption_not_found"
+msgstr "benefit_consumption_not_found"
+
+#, fuzzy
+msgid "benefit_consumption_not_in_payroll"
+msgstr "benefit_consumption_not_in_payroll"
+
+#, fuzzy
+msgid "paid_column_invalid_value"
+msgstr "paid_column_invalid_value"
+
+msgid "receipt_required"
+msgstr "Receipt is required"
+
+msgid "status_not_matching"
+msgstr "Status of the row is not matching"
+
+msgid "payroll.validation.payroll.no_bills_for_filter_criteria"
+msgstr "Bills not found for given search criteria."
+
+msgid "payroll.validation.payroll.bill_already_assigned"
+msgstr "Bills %(bill_ids) already assigned to payroll."
+
+msgid "payroll.validation.payroll.name_exists"
+msgstr "Name %(name) already exists."
+
+msgid "payroll.validation.field_empty"
+msgstr "Field %(field) can not be empty."
+
+#, fuzzy
+msgid "mutation.product_code_duplicated"
+msgstr "mutation.product_code_duplicated"
+
+#, fuzzy
+msgid "product.mutation.failed_to_create_product"
+msgstr "product.mutation.failed_to_create_product"
+
+#, fuzzy
+msgid "product.mutation.failed_to_duplicate_product"
+msgstr "product.mutation.failed_to_duplicate_product"
+
+#, fuzzy
+msgid "product.mutation.failed_to_update_product"
+msgstr "product.mutation.failed_to_update_product"
+
+#, fuzzy
+msgid "product.validation.id_does_not_exist"
+msgstr "product.validation.id_does_not_exist"
+
+#, fuzzy
+msgid "product.mutation.failed_to_delete_product"
+msgstr "product.mutation.failed_to_delete_product"
+
+msgid "INSUREE"
+msgstr "INSUREE"
+
+msgid "TREATMENT"
+msgstr "TREATMENT"
+
+msgid "POLICY"
+msgstr "POLICY"
+
+msgid "Claim Type"
+msgstr "Claim Type"
+
+msgid "Health Facility Type"
+msgstr "Health Facility Type"
+
+msgid "Fixed"
+msgstr "Fixed"
+
+msgid "Co-insurance"
+msgstr "Co-insurance"
+
+msgid "Schema Price"
+msgstr "Schema Price"
+
+msgid "Providers Own Price"
+msgstr "Providers Own Price"
+
+msgid "Relative Price"
+msgstr "Relative Price"
+
+msgid "Search in `name` & `code`"
+msgstr "Search in `name` & `code`"
+
+msgid "PENDING"
+msgstr "PENDING"
+
+#, fuzzy
+msgid "payment_cycle.validation.payment_cycle.code_exists"
+msgstr "payment_cycle.validation.payment_cycle.code_exists"
+
+#, fuzzy
+msgid "payment_cycle.validation.payment_cycle.code_whitespace"
+msgstr "payment_cycle.validation.payment_cycle.code_whitespace"
+
+#, fuzzy
+msgid "claim.mutation.failed_to_create_claim_sampling_batch"
+msgstr "claim.mutation.failed_to_create_claim_sampling_batch"
+
+#, fuzzy
+msgid "claim.mutation.failed_to_update_claim_sampling_batch"
+msgstr "claim.mutation.failed_to_update_claim_sampling_batch"
+
+msgid "Claim List cannot be empty"
+msgstr "Claim List cannot be empty"
+
+msgid "All claims already assigned"
+msgstr "All claims already assigned"
+
+msgid "Percentage not in range (0, 100)"
+msgstr "Percentage not in range (0, 100)"
+
+msgid "policy.mutation.contribution_plan_not_found"
+msgstr "The chosen contribution plan was not found"
+
+msgid "policy.mutation.error_family_level"
+msgstr "Unable to assign a policy to a level 1 family"
+
+msgid "policy.mutation.policy_value_error"
+msgstr "An error occurred when processing the policy amount."
+
+msgid "Batch run %s failed %s: %s"
+msgstr "Batch run %s failed %s: %s"
+
+msgid "mutation.duplicate_of_role_name"
+msgstr "Role name already exists"
+
+msgid "deduplication.validations.CreateDeduplicationReviewTasksValidation.count_missing"
+msgstr "Count missing in task data."
+
+msgid "deduplication.validations.CreateDeduplicationReviewTasksValidation.ids_missing"
+msgstr "Ids missing in task data."
+
+msgid "deduplication.validations.CreateDeduplicationReviewTasksValidation.column_values_missing"
+msgstr "Column values missing in task data."
+
+msgid "deduplication.validations.CreateDeduplicationReviewTasksValidation.not_existing_ids"
+msgstr "No beneficiaries for ids: %(ids)"
+
+msgid "deduplication.validations.CreateDeduplicationReviewTasksValidation.beneficiary_in_task"
+msgstr "Beneficiaries: %(beneficiaries) already in deduplication task."
+
+msgid "unauthorized.location"
+msgstr "The user is not authorised for this location access"
+
+msgid "mutation.individual_group_location_mismatch"
+msgstr "To add an individual to a group their locations must be the same."
+
+msgid "There is no ETL service with provided name"
+msgstr "There is no ETL service with provided name"
+
+msgid "cannot updload groups"
+msgstr "cannot upload groups"
+
+#, fuzzy
+msgid "Invalid basic header. No credentials provided."
+msgstr "Invalid basic header. No credentials provided."
+
+#, fuzzy
+msgid "Invalid basic header. Credentials string should not contain spaces."
+msgstr "Invalid basic header. Credentials string should not contain spaces."
+
+#, fuzzy
+msgid "Invalid basic header. Credentials not correctly base64 encoded."
+msgstr "Invalid basic header. Credentials not correctly base64 encoded."
+
+#, fuzzy
+msgid "Invalid username/password."
+msgstr "Invalid username/password."
+
+#, fuzzy
+msgid "User inactive or deleted."
+msgstr "User inactive or deleted."
+
+#, fuzzy
+msgid "Invalid token header. No credentials provided."
+msgstr "Invalid token header. No credentials provided."
+
+#, fuzzy
+msgid "Invalid token header. Token string should not contain spaces."
+msgstr "Invalid token header. Token string should not contain spaces."
+
+#, fuzzy
+msgid "Invalid token header. Token string should not contain invalid characters."
+msgstr "Invalid token header. Token string should not contain invalid characters."
+
+#, fuzzy
+msgid "Invalid token."
+msgstr "Invalid token."
+
+#, fuzzy
+msgid "Key"
+msgstr "Key"
+
+#, fuzzy
+msgid "User"
+msgstr "User"
+
+#, fuzzy
+msgid "Created"
+msgstr "Created"
+
+#, fuzzy
+msgid "Token"
+msgstr "Token"
+
+#, fuzzy
+msgid "Tokens"
+msgstr "Tokens"
+
+#, fuzzy
+msgid "Username"
+msgstr "Username"
+
+#, fuzzy
+msgid "Password"
+msgstr "Password"
+
+#, fuzzy
+msgid "Unable to log in with provided credentials."
+msgstr "Unable to log in with provided credentials."
+
+#, fuzzy
+msgid "Must include \"username\" and \"password\"."
+msgstr "Must include \"username\" and \"password\"."
+
+#, fuzzy
+msgid "Auth Token"
+msgstr "Auth Token"
+
+#, fuzzy
+msgid "A server error occurred."
+msgstr "A server error occurred."
+
+#, fuzzy
+msgid "Invalid input."
+msgstr "Invalid input."
+
+#, fuzzy
+msgid "Malformed request."
+msgstr "Malformed request."
+
+#, fuzzy
+msgid "Incorrect authentication credentials."
+msgstr "Incorrect authentication credentials."
+
+#, fuzzy
+msgid "Authentication credentials were not provided."
+msgstr "Authentication credentials were not provided."
+
+#, fuzzy
+msgid "You do not have permission to perform this action."
+msgstr "You do not have permission to perform this action."
+
+#, fuzzy
+msgid "Not found."
+msgstr "Not found."
+
+#, fuzzy
+msgid "Method \"{method}\" not allowed."
+msgstr "Method \"{method}\" not allowed."
+
+#, fuzzy
+msgid "Could not satisfy the request Accept header."
+msgstr "Could not satisfy the request Accept header."
+
+#, fuzzy
+msgid "Unsupported media type \"{media_type}\" in request."
+msgstr "Unsupported media type \"{media_type}\" in request."
+
+#, fuzzy
+msgid "Request was throttled."
+msgstr "Request was throttled."
+
+#, fuzzy
+msgid "Expected available in {wait} second."
+msgstr "Expected available in {wait} second."
+
+#, fuzzy
+msgid "Expected available in {wait} seconds."
+msgstr "Expected available in {wait} seconds."
+
+#, fuzzy
+msgid "This field is required."
+msgstr "This field is required."
+
+#, fuzzy
+msgid "This field may not be null."
+msgstr "This field may not be null."
+
+#, fuzzy
+msgid "Must be a valid boolean."
+msgstr "Must be a valid boolean."
+
+#, fuzzy
+msgid "Not a valid string."
+msgstr "Not a valid string."
+
+#, fuzzy
+msgid "This field may not be blank."
+msgstr "This field may not be blank."
+
+#, fuzzy
+msgid "Ensure this field has no more than {max_length} characters."
+msgstr "Ensure this field has no more than {max_length} characters."
+
+#, fuzzy
+msgid "Ensure this field has at least {min_length} characters."
+msgstr "Ensure this field has at least {min_length} characters."
+
+#, fuzzy
+msgid "Enter a valid email address."
+msgstr "Enter a valid email address."
+
+#, fuzzy
+msgid "This value does not match the required pattern."
+msgstr "This value does not match the required pattern."
+
+#, fuzzy
+msgid "Enter a valid \"slug\" consisting of letters, numbers, underscores or hyphens."
+msgstr "Enter a valid \"slug\" consisting of letters, numbers, underscores or hyphens."
+
+#, fuzzy
+msgid "Enter a valid \"slug\" consisting of Unicode letters, numbers, underscores, or hyphens."
+msgstr "Enter a valid \"slug\" consisting of Unicode letters, numbers, underscores, or hyphens."
+
+#, fuzzy
+msgid "Enter a valid URL."
+msgstr "Enter a valid URL."
+
+#, fuzzy
+msgid "Must be a valid UUID."
+msgstr "Must be a valid UUID."
+
+#, fuzzy
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr "Enter a valid IPv4 or IPv6 address."
+
+#, fuzzy
+msgid "A valid integer is required."
+msgstr "A valid integer is required."
+
+#, fuzzy
+msgid "Ensure this value is less than or equal to {max_value}."
+msgstr "Ensure this value is less than or equal to {max_value}."
+
+#, fuzzy
+msgid "Ensure this value is greater than or equal to {min_value}."
+msgstr "Ensure this value is greater than or equal to {min_value}."
+
+#, fuzzy
+msgid "String value too large."
+msgstr "String value too large."
+
+#, fuzzy
+msgid "A valid number is required."
+msgstr "A valid number is required."
+
+#, fuzzy
+msgid "Integer value too large to convert to float"
+msgstr "Integer value too large to convert to float"
+
+#, fuzzy
+msgid "Ensure that there are no more than {max_digits} digits in total."
+msgstr "Ensure that there are no more than {max_digits} digits in total."
+
+#, fuzzy
+msgid "Ensure that there are no more than {max_decimal_places} decimal places."
+msgstr "Ensure that there are no more than {max_decimal_places} decimal places."
+
+#, fuzzy
+msgid "Ensure that there are no more than {max_whole_digits} digits before the decimal point."
+msgstr "Ensure that there are no more than {max_whole_digits} digits before the decimal point."
+
+#, fuzzy
+msgid "Datetime has wrong format. Use one of these formats instead: {format}."
+msgstr "Datetime has wrong format. Use one of these formats instead: {format}."
+
+#, fuzzy
+msgid "Expected a datetime but got a date."
+msgstr "Expected a datetime but got a date."
+
+#, fuzzy
+msgid "Invalid datetime for the timezone \"{timezone}\"."
+msgstr "Invalid datetime for the timezone \"{timezone}\"."
+
+#, fuzzy
+msgid "Datetime value out of range."
+msgstr "Datetime value out of range."
+
+#, fuzzy
+msgid "Date has wrong format. Use one of these formats instead: {format}."
+msgstr "Date has wrong format. Use one of these formats instead: {format}."
+
+#, fuzzy
+msgid "Expected a date but got a datetime."
+msgstr "Expected a date but got a datetime."
+
+#, fuzzy
+msgid "Time has wrong format. Use one of these formats instead: {format}."
+msgstr "Time has wrong format. Use one of these formats instead: {format}."
+
+#, fuzzy
+msgid "Duration has wrong format. Use one of these formats instead: {format}."
+msgstr "Duration has wrong format. Use one of these formats instead: {format}."
+
+#, fuzzy
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr "The number of days must be between {min_days} and {max_days}."
+
+#, fuzzy
+msgid "\"{input}\" is not a valid choice."
+msgstr "\"{input}\" is not a valid choice."
+
+#, fuzzy
+msgid "More than {count} items..."
+msgstr "More than {count} items..."
+
+#, fuzzy
+msgid "Expected a list of items but got type \"{input_type}\"."
+msgstr "Expected a list of items but got type \"{input_type}\"."
+
+#, fuzzy
+msgid "This selection may not be empty."
+msgstr "This selection may not be empty."
+
+#, fuzzy
+msgid "\"{input}\" is not a valid path choice."
+msgstr "\"{input}\" is not a valid path choice."
+
+#, fuzzy
+msgid "No file was submitted."
+msgstr "No file was submitted."
+
+#, fuzzy
+msgid "The submitted data was not a file. Check the encoding type on the form."
+msgstr "The submitted data was not a file. Check the encoding type on the form."
+
+#, fuzzy
+msgid "No filename could be determined."
+msgstr "No filename could be determined."
+
+#, fuzzy
+msgid "The submitted file is empty."
+msgstr "The submitted file is empty."
+
+#, fuzzy
+msgid "Ensure this filename has at most {max_length} characters (it has {length})."
+msgstr "Ensure this filename has at most {max_length} characters (it has {length})."
+
+#, fuzzy
+msgid "Upload a valid image. The file you uploaded was either not an image or a corrupted image."
+msgstr "Upload a valid image. The file you uploaded was either not an image or a corrupted image."
+
+#, fuzzy
+msgid "This list may not be empty."
+msgstr "This list may not be empty."
+
+#, fuzzy
+msgid "Ensure this field has at least {min_length} elements."
+msgstr "Ensure this field has at least {min_length} elements."
+
+#, fuzzy
+msgid "Ensure this field has no more than {max_length} elements."
+msgstr "Ensure this field has no more than {max_length} elements."
+
+#, fuzzy
+msgid "Expected a dictionary of items but got type \"{input_type}\"."
+msgstr "Expected a dictionary of items but got type \"{input_type}\"."
+
+#, fuzzy
+msgid "This dictionary may not be empty."
+msgstr "This dictionary may not be empty."
+
+#, fuzzy
+msgid "Value must be valid JSON."
+msgstr "Value must be valid JSON."
+
+#, fuzzy
+msgid "Invalid data. Expected a dictionary, but got {datatype}."
+msgstr "Invalid data. Expected a dictionary, but got {datatype}."
+
+#, fuzzy
+msgid "unique integer value"
+msgstr "unique integer value"
+
+#, fuzzy
+msgid "UUID string"
+msgstr "UUID string"
+
+#, fuzzy
+msgid "unique value"
+msgstr "unique value"
+
+#, fuzzy
+msgid "A {value_type} identifying this {name}."
+msgstr "A {value_type} identifying this {name}."
+
+#, fuzzy
+msgid "Invalid version in \"Accept\" header."
+msgstr "Invalid version in \"Accept\" header."
+
+#, fuzzy
+msgid "Invalid version in URL path."
+msgstr "Invalid version in URL path."
+
+#, fuzzy
+msgid "Invalid version in URL path. Does not match any version namespace."
+msgstr "Invalid version in URL path. Does not match any version namespace."
+
+#, fuzzy
+msgid "Invalid version in hostname."
+msgstr "Invalid version in hostname."
+
+#, fuzzy
+msgid "Invalid version in query parameter."
+msgstr "Invalid version in query parameter."
+
+#, fuzzy
+msgid "This field must be unique."
+msgstr "This field must be unique."
+
+#, fuzzy
+msgid "The fields {field_names} must make a unique set."
+msgstr "The fields {field_names} must make a unique set."
+
+#, fuzzy
+msgid "Surrogate characters are not allowed: U+{code_point:X}."
+msgstr "Surrogate characters are not allowed: U+{code_point:X}."
+
+#, fuzzy
+msgid "This field must be unique for the \"{date_field}\" date."
+msgstr "This field must be unique for the \"{date_field}\" date."
+
+#, fuzzy
+msgid "This field must be unique for the \"{date_field}\" month."
+msgstr "This field must be unique for the \"{date_field}\" month."
+
+#, fuzzy
+msgid "This field must be unique for the \"{date_field}\" year."
+msgstr "This field must be unique for the \"{date_field}\" year."
+
+#, fuzzy
+msgid "Invalid pk \"{pk_value}\" - object does not exist."
+msgstr "Invalid pk \"{pk_value}\" - object does not exist."
+
+#, fuzzy
+msgid "Incorrect type. Expected pk value, received {data_type}."
+msgstr "Incorrect type. Expected pk value, received {data_type}."
+
+#, fuzzy
+msgid "Invalid hyperlink - No URL match."
+msgstr "Invalid hyperlink - No URL match."
+
+#, fuzzy
+msgid "Invalid hyperlink - Incorrect URL match."
+msgstr "Invalid hyperlink - Incorrect URL match."
+
+#, fuzzy
+msgid "Invalid hyperlink - Object does not exist."
+msgstr "Invalid hyperlink - Object does not exist."
+
+#, fuzzy
+msgid "Incorrect type. Expected URL string, received {data_type}."
+msgstr "Incorrect type. Expected URL string, received {data_type}."
+
+#, fuzzy
+msgid "Object with {slug_name}={value} does not exist."
+msgstr "Object with {slug_name}={value} does not exist."
+
+#, fuzzy
+msgid "Invalid value."
+msgstr "Invalid value."
+
+#, fuzzy
+msgid "A page number within the paginated result set."
+msgstr "A page number within the paginated result set."
+
+#, fuzzy
+msgid "Number of results to return per page."
+msgstr "Number of results to return per page."
+
+#, fuzzy
+msgid "Invalid page."
+msgstr "Invalid page."
+
+#, fuzzy
+msgid "The initial index from which to return the results."
+msgstr "The initial index from which to return the results."
+
+#, fuzzy
+msgid "The pagination cursor value."
+msgstr "The pagination cursor value."
+
+#, fuzzy
+msgid "Invalid cursor"
+msgstr "Invalid cursor"
+
+#, fuzzy
+msgid "Search"
+msgstr "Search"
+
+#, fuzzy
+msgid "A search term."
+msgstr "A search term."
+
+#, fuzzy
+msgid "Ordering"
+msgstr "Ordering"
+
+#, fuzzy
+msgid "Which field to use when ordering the results."
+msgstr "Which field to use when ordering the results."
+
+#, fuzzy
+msgid "ascending"
+msgstr "ascending"
+
+#, fuzzy
+msgid "descending"
+msgstr "descending"
+
+#, fuzzy
+msgid "All"
+msgstr "All"
+
+#, fuzzy
+msgid "Unknown"
+msgstr "Unknown"
+
+#, fuzzy
+msgid "Yes"
+msgstr "Yes"
+
+#, fuzzy
+msgid "No"
+msgstr "No"
+
+#, fuzzy
+msgid "Submit"
+msgstr "Submit"
+
+#, fuzzy
+msgid "date"
+msgstr "date"
+
+#, fuzzy
+msgid "year"
+msgstr "year"
+
+#, fuzzy
+msgid "month"
+msgstr "month"
+
+#, fuzzy
+msgid "day"
+msgstr "day"
+
+#, fuzzy
+msgid "week day"
+msgstr "week day"
+
+#, fuzzy
+msgid "hour"
+msgstr "hour"
+
+#, fuzzy
+msgid "minute"
+msgstr "minute"
+
+#, fuzzy
+msgid "second"
+msgstr "second"
+
+#, fuzzy
+msgid "contains"
+msgstr "contains"
+
+#, fuzzy
+msgid "is in"
+msgstr "is in"
+
+#, fuzzy
+msgid "is greater than"
+msgstr "is greater than"
+
+#, fuzzy
+msgid "is greater than or equal to"
+msgstr "is greater than or equal to"
+
+#, fuzzy
+msgid "is less than"
+msgstr "is less than"
+
+#, fuzzy
+msgid "is less than or equal to"
+msgstr "is less than or equal to"
+
+#, fuzzy
+msgid "starts with"
+msgstr "starts with"
+
+#, fuzzy
+msgid "ends with"
+msgstr "ends with"
+
+#, fuzzy
+msgid "is in range"
+msgstr "is in range"
+
+#, fuzzy
+msgid "is null"
+msgstr "is null"
+
+#, fuzzy
+msgid "matches regex"
+msgstr "matches regex"
+
+#, fuzzy
+msgid "search"
+msgstr "search"
+
+#, fuzzy
+msgid "is contained by"
+msgstr "is contained by"
+
+#, fuzzy
+msgid "overlaps"
+msgstr "overlaps"
+
+#, fuzzy
+msgid "has key"
+msgstr "has key"
+
+#, fuzzy
+msgid "has keys"
+msgstr "has keys"
+
+#, fuzzy
+msgid "has any keys"
+msgstr "has any keys"
+
+#, fuzzy
+msgid "Select a lookup."
+msgstr "Select a lookup."
+
+#, fuzzy
+msgid "Range query expects two values."
+msgstr "Range query expects two values."
+
+#, fuzzy
+msgid "exclude"
+msgstr "exclude"
+
+#, fuzzy
+msgid "Today"
+msgstr "Today"
+
+#, fuzzy
+msgid "Yesterday"
+msgstr "Yesterday"
+
+#, fuzzy
+msgid "Past 7 days"
+msgstr "Past 7 days"
+
+#, fuzzy
+msgid "This month"
+msgstr "This month"
+
+#, fuzzy
+msgid "This year"
+msgstr "This year"
+
+#, fuzzy
+msgid "Multiple values may be separated by commas."
+msgstr "Multiple values may be separated by commas."
+
+#, fuzzy
+msgid "%s (descending)"
+msgstr "%s (descending)"
+
+#, fuzzy
+msgid "unknown error"
+msgstr "unknown error"
+
+#, fuzzy
+msgid "warning"
+msgstr "warning"
+
+#, fuzzy
+msgid "unavailable"
+msgstr "unavailable"
+
+#, fuzzy
+msgid "unexpected result"
+msgstr "unexpected result"
+
+#, fuzzy
+msgid "working"
+msgstr "working"
+
+#, fuzzy
+msgid "Duplication successful, redirected to cloned: {}"
+msgstr "Duplication successful, redirected to cloned: {}"
+
+#, fuzzy
+msgid "Successfully created: {} new duplicates"
+msgstr "Successfully created: {} new duplicates"
+
+#, fuzzy
+msgid "Duplicate selected %(verbose_name_plural)s"
+msgstr "Duplicate selected %(verbose_name_plural)s"
+
+#, fuzzy
+msgid "Invalid ID specified."
+msgstr "Invalid ID specified."
+
+#, fuzzy
+msgid "One of the specified IDs was invalid (%(value)s)."
+msgstr "One of the specified IDs was invalid (%(value)s)."
+
+#, fuzzy
+msgid "Enter a list of values."
+msgstr "Enter a list of values."
+
+#, fuzzy
+msgid "Spanish"
+msgstr "Spanish"
+
+#, fuzzy
+msgid "English"
+msgstr "English"
+
+#, fuzzy
+msgid "that"
+msgstr "that"
+
+#, fuzzy
+msgid "value_b"
+msgstr "value_b"
+
+#, fuzzy
+msgid "value_a"
+msgstr "value_a"
+
+#, fuzzy
+msgid "Changed"
+msgstr "Changed"
+
+#, fuzzy
+msgid "Deleted"
+msgstr "Deleted"
+
+#, fuzzy
+msgid "Deleted %(type_name)s"
+msgstr "Deleted %(type_name)s"
+
+#, fuzzy
+msgid "View history: %s"
+msgstr "View history: %s"
+
+#, fuzzy
+msgid "Change history: %s"
+msgstr "Change history: %s"
+
+#, fuzzy
+msgid "The %(name)s \"%(obj)s\" was changed successfully."
+msgstr "The %(name)s \"%(obj)s\" was changed successfully."
+
+#, fuzzy
+msgid "You may edit it again below"
+msgstr "You may edit it again below"
+
+#, fuzzy
+msgid "View %s"
+msgstr "View %s"
+
+#, fuzzy
+msgid "Revert %s"
+msgstr "Revert %s"
+
+#, fuzzy
+msgid "Pickled data"
+msgstr "Pickled data"
+
+#, fuzzy
+msgid "Encrypted %s"
+msgstr "Encrypted %s"
+
+#, fuzzy
+msgid "Use a few words, avoid common phrases."
+msgstr "Use a few words, avoid common phrases."
+
+#, fuzzy
+msgid "No need for symbols, digits, or uppercase letters."
+msgstr "No need for symbols, digits, or uppercase letters."
+
+#, fuzzy
+msgid "Add another word or two. Uncommon words are better."
+msgstr "Add another word or two. Uncommon words are better."
+
+#, fuzzy
+msgid "Straight rows of keys are easy to guess."
+msgstr "Straight rows of keys are easy to guess."
+
+#, fuzzy
+msgid "Short keyboard patterns are easy to guess."
+msgstr "Short keyboard patterns are easy to guess."
+
+#, fuzzy
+msgid "Use a longer keyboard pattern with more turns."
+msgstr "Use a longer keyboard pattern with more turns."
+
+#, fuzzy
+msgid "Repeats like \"aaa\" are easy to guess."
+msgstr "Repeats like \"aaa\" are easy to guess."
+
+#, fuzzy
+msgid "Repeats like \"abcabcabc\" are only slightly harder to guess than \"abc\"."
+msgstr "Repeats like \"abcabcabc\" are only slightly harder to guess than \"abc\"."
+
+#, fuzzy
+msgid "Avoid repeated words and characters."
+msgstr "Avoid repeated words and characters."
+
+#, fuzzy
+msgid "Sequences like \"abc\" or \"6543\" are easy to guess."
+msgstr "Sequences like \"abc\" or \"6543\" are easy to guess."
+
+#, fuzzy
+msgid "Avoid sequences."
+msgstr "Avoid sequences."
+
+#, fuzzy
+msgid "Recent years are easy to guess."
+msgstr "Recent years are easy to guess."
+
+#, fuzzy
+msgid "Avoid recent years."
+msgstr "Avoid recent years."
+
+#, fuzzy
+msgid "Avoid years that are associated with you."
+msgstr "Avoid years that are associated with you."
+
+#, fuzzy
+msgid "Dates are often easy to guess."
+msgstr "Dates are often easy to guess."
+
+#, fuzzy
+msgid "Avoid dates and years that are associated with you."
+msgstr "Avoid dates and years that are associated with you."
+
+#, fuzzy
+msgid "This is a top-10 common password."
+msgstr "This is a top-10 common password."
+
+#, fuzzy
+msgid "This is a top-100 common password."
+msgstr "This is a top-100 common password."
+
+#, fuzzy
+msgid "This is a very common password."
+msgstr "This is a very common password."
+
+#, fuzzy
+msgid "This is similar to a commonly used password."
+msgstr "This is similar to a commonly used password."
+
+#, fuzzy
+msgid "A word by itself is easy to guess."
+msgstr "A word by itself is easy to guess."
+
+#, fuzzy
+msgid "Names and surnames by themselves are easy to guess."
+msgstr "Names and surnames by themselves are easy to guess."
+
+#, fuzzy
+msgid "Common names and surnames are easy to guess."
+msgstr "Common names and surnames are easy to guess."
+
+#, fuzzy
+msgid "Capitalization doesn't help very much."
+msgstr "Capitalization doesn't help very much."
+
+#, fuzzy
+msgid "All-uppercase is almost as easy to guess as all-lowercase."
+msgstr "All-uppercase is almost as easy to guess as all-lowercase."
+
+#, fuzzy
+msgid "Reversed words aren't much harder to guess."
+msgstr "Reversed words aren't much harder to guess."
+
+#, fuzzy
+msgid "Predictable substitutions like '@' instead of 'a' don't help very much."
+msgstr "Predictable substitutions like '@' instead of 'a' don't help very much."
+
+#, fuzzy
+msgid "File"
+msgstr "File"
+
+#, fuzzy
+msgid "Image"
+msgstr "Image"
+
+#, fuzzy
+msgid "Value %(value)r is not a valid choice."
+msgstr "Value %(value)r is not a valid choice."
+
+#, fuzzy
+msgid "This field cannot be null."
+msgstr "This field cannot be null."
+
+#, fuzzy
+msgid "This field cannot be blank."
+msgstr "This field cannot be blank."
+
+#, fuzzy
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr "%(model_name)s with this %(field_label)s already exists."
+
+#, fuzzy
+msgid "%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr "%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+
+#, fuzzy
+msgid "Field of type: %(field_type)s"
+msgstr "Field of type: %(field_type)s"
+
+#, fuzzy
+msgid "“%(value)s” value must be either True or False."
+msgstr "“%(value)s” value must be either True or False."
+
+#, fuzzy
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr "“%(value)s” value must be either True, False, or None."
+
+#, fuzzy
+msgid "Boolean (Either True or False)"
+msgstr "Boolean (Either True or False)"
+
+#, fuzzy
+msgid "String (up to %(max_length)s)"
+msgstr "String (up to %(max_length)s)"
+
+#, fuzzy
+msgid "String (unlimited)"
+msgstr "String (unlimited)"
+
+#, fuzzy
+msgid "Comma-separated integers"
+msgstr "Comma-separated integers"
+
+#, fuzzy
+msgid "“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD format."
+msgstr "“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD format."
+
+#, fuzzy
+msgid "“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid date."
+msgstr "“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid date."
+
+#, fuzzy
+msgid "Date (without time)"
+msgstr "Date (without time)"
+
+#, fuzzy
+msgid "“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ] format."
+msgstr "“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ] format."
+
+#, fuzzy
+msgid "“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
+msgstr "“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
+
+#, fuzzy
+msgid "Date (with time)"
+msgstr "Date (with time)"
+
+#, fuzzy
+msgid "“%(value)s” value must be a decimal number."
+msgstr "“%(value)s” value must be a decimal number."
+
+#, fuzzy
+msgid "Decimal number"
+msgstr "Decimal number"
+
+#, fuzzy
+msgid "“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[.uuuuuu] format."
+msgstr "“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[.uuuuuu] format."
+
+#, fuzzy
+msgid "Duration"
+msgstr "Duration"
+
+#, fuzzy
+msgid "Email address"
+msgstr "Email address"
+
+#, fuzzy
+msgid "File path"
+msgstr "File path"
+
+#, fuzzy
+msgid "“%(value)s” value must be a float."
+msgstr "“%(value)s” value must be a float."
+
+#, fuzzy
+msgid "Floating point number"
+msgstr "Floating point number"
+
+#, fuzzy
+msgid "“%(value)s” value must be an integer."
+msgstr "“%(value)s” value must be an integer."
+
+#, fuzzy
+msgid "Integer"
+msgstr "Integer"
+
+#, fuzzy
+msgid "Big (8 byte) integer"
+msgstr "Big (8 byte) integer"
+
+#, fuzzy
+msgid "Small integer"
+msgstr "Small integer"
+
+#, fuzzy
+msgid "IPv4 address"
+msgstr "IPv4 address"
+
+#, fuzzy
+msgid "IP address"
+msgstr "IP address"
+
+#, fuzzy
+msgid "“%(value)s” value must be either None, True or False."
+msgstr "“%(value)s” value must be either None, True or False."
+
+#, fuzzy
+msgid "Boolean (Either True, False or None)"
+msgstr "Boolean (Either True, False or None)"
+
+#, fuzzy
+msgid "Positive big integer"
+msgstr "Positive big integer"
+
+#, fuzzy
+msgid "Positive integer"
+msgstr "Positive integer"
+
+#, fuzzy
+msgid "Positive small integer"
+msgstr "Positive small integer"
+
+#, fuzzy
+msgid "Slug (up to %(max_length)s)"
+msgstr "Slug (up to %(max_length)s)"
+
+#, fuzzy
+msgid "Text"
+msgstr "Text"
+
+#, fuzzy
+msgid "“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] format."
+msgstr "“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] format."
+
+#, fuzzy
+msgid "“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an invalid time."
+msgstr "“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an invalid time."
+
+#, fuzzy
+msgid "Time"
+msgstr "Time"
+
+#, fuzzy
+msgid "URL"
+msgstr "URL"
+
+#, fuzzy
+msgid "Raw binary data"
+msgstr "Raw binary data"
+
+#, fuzzy
+msgid "“%(value)s” is not a valid UUID."
+msgstr "“%(value)s” is not a valid UUID."
+
+#, fuzzy
+msgid "Universally unique identifier"
+msgstr "Universally unique identifier"
+
+#, fuzzy
+msgid "A JSON object"
+msgstr "A JSON object"
+
+#, fuzzy
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr "%(model)s instance with %(field)s %(value)r does not exist."
+
+#, fuzzy
+msgid "Foreign Key (type determined by related field)"
+msgstr "Foreign Key (type determined by related field)"
+
+#, fuzzy
+msgid "One-to-one relationship"
+msgstr "One-to-one relationship"
+
+#, fuzzy
+msgid "%(from)s-%(to)s relationship"
+msgstr "%(from)s-%(to)s relationship"
+
+#, fuzzy
+msgid "%(from)s-%(to)s relationships"
+msgstr "%(from)s-%(to)s relationships"
+
+#, fuzzy
+msgid "Many-to-many relationship"
+msgstr "Many-to-many relationship"
+
+#, fuzzy
+msgid "and"
+msgstr "and"
+
+#, fuzzy
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr "%(model_name)s with this %(field_labels)s already exists."
+
+#, fuzzy
+msgid "Constraint “%(name)s” is violated."
+msgstr "Constraint “%(name)s” is violated."
+
+#, fuzzy
+msgid "Clear"
+msgstr "Clear"
+
+#, fuzzy
+msgid "Currently"
+msgstr "Currently"
+
+#, fuzzy
+msgid "Change"
+msgstr "Change"
+
+#, fuzzy
+msgid ":"
+msgstr ":"
+
+#, fuzzy
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr "(Hidden field %(name)s) %(error)s"
+
+#, fuzzy
+msgid "Please correct the duplicate data for %(field)s."
+msgstr "Please correct the duplicate data for %(field)s."
+
+#, fuzzy
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr "Please correct the duplicate data for %(field)s, which must be unique."
+
+#, fuzzy
+msgid "Please correct the duplicate data for %(field_name)s which must be unique for the %(lookup)s in %(date_field)s."
+msgstr "Please correct the duplicate data for %(field_name)s which must be unique for the %(lookup)s in %(date_field)s."
+
+#, fuzzy
+msgid "Please correct the duplicate values below."
+msgstr "Please correct the duplicate values below."
+
+#, fuzzy
+msgid "The inline value did not match the parent instance."
+msgstr "The inline value did not match the parent instance."
+
+#, fuzzy
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr "Select a valid choice. That choice is not one of the available choices."
+
+#, fuzzy
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr "Select a valid choice. %(value)s is not one of the available choices."
+
+#, fuzzy
+msgid "“%(pk)s” is not a valid value."
+msgstr "“%(pk)s” is not a valid value."
+
+#, fuzzy
+msgid ":?.!"
+msgstr ":?.!"
+
+#, fuzzy
+msgid "Enter a whole number."
+msgstr "Enter a whole number."
+
+#, fuzzy
+msgid "Enter a number."
+msgstr "Enter a number."
+
+#, fuzzy
+msgid "Enter a valid date."
+msgstr "Enter a valid date."
+
+#, fuzzy
+msgid "Enter a valid time."
+msgstr "Enter a valid time."
+
+#, fuzzy
+msgid "Enter a valid date/time."
+msgstr "Enter a valid date/time."
+
+#, fuzzy
+msgid "Enter a valid duration."
+msgstr "Enter a valid duration."
+
+#, fuzzy
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr "No file was submitted. Check the encoding type on the form."
+
+#, fuzzy
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural "Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgstr[1] "Ensure this filename has at most %(max)d characters (it has %(length)d)."
+
+#, fuzzy
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr "Please either submit a file or check the clear checkbox, not both."
+
+#, fuzzy
+msgid "Enter a complete value."
+msgstr "Enter a complete value."
+
+#, fuzzy
+msgid "Enter a valid UUID."
+msgstr "Enter a valid UUID."
+
+#, fuzzy
+msgid "Enter a valid JSON."
+msgstr "Enter a valid JSON."
+
+#, fuzzy
+msgid "%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it may be ambiguous or it may not exist."
+msgstr "%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it may be ambiguous or it may not exist."
+
+#, fuzzy
+msgid "ManagementForm data is missing or has been tampered with. Missing fields: %(field_names)s. You may need to file a bug report if the issue persists."
+msgstr "ManagementForm data is missing or has been tampered with. Missing fields: %(field_names)s. You may need to file a bug report if the issue persists."
+
+#, fuzzy
+msgid "Please submit at most %(num)d form."
+msgid_plural "Please submit at most %(num)d forms."
+msgstr[0] "Please submit at most %(num)d form."
+msgstr[1] "Please submit at most %(num)d forms."
+
+#, fuzzy
+msgid "Please submit at least %(num)d form."
+msgid_plural "Please submit at least %(num)d forms."
+msgstr[0] "Please submit at least %(num)d form."
+msgstr[1] "Please submit at least %(num)d forms."
+
+#, fuzzy
+msgid "Order"
+msgstr "Order"
+
+#, fuzzy
+msgid "Delete"
+msgstr "Delete"
+
+#, fuzzy
+msgid "…"
+msgstr "…"
+
+#, fuzzy
+msgid "That page number is not an integer"
+msgstr "That page number is not an integer"
+
+#, fuzzy
+msgid "That page number is less than 1"
+msgstr "That page number is less than 1"
+
+#, fuzzy
+msgid "That page contains no results"
+msgstr "That page contains no results"
+
+#, fuzzy
+msgid "Enter a valid value."
+msgstr "Enter a valid value."
+
+#, fuzzy
+msgid "Enter a valid integer."
+msgstr "Enter a valid integer."
+
+#, fuzzy
+msgid "Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr "Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+
+#, fuzzy
+msgid "Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or hyphens."
+msgstr "Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or hyphens."
+
+#, fuzzy
+msgid "Enter a valid IPv4 address."
+msgstr "Enter a valid IPv4 address."
+
+#, fuzzy
+msgid "Enter a valid IPv6 address."
+msgstr "Enter a valid IPv6 address."
+
+#, fuzzy
+msgid "Enter only digits separated by commas."
+msgstr "Enter only digits separated by commas."
+
+#, fuzzy
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+
+#, fuzzy
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr "Ensure this value is less than or equal to %(limit_value)s."
+
+#, fuzzy
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr "Ensure this value is greater than or equal to %(limit_value)s."
+
+#, fuzzy
+msgid "Ensure this value is a multiple of step size %(limit_value)s."
+msgstr "Ensure this value is a multiple of step size %(limit_value)s."
+
+#, fuzzy
+msgid "Ensure this value has at least %(limit_value)d character (it has %(show_value)d)."
+msgid_plural "Ensure this value has at least %(limit_value)d characters (it has %(show_value)d)."
+msgstr[0] "Ensure this value has at least %(limit_value)d character (it has %(show_value)d)."
+msgstr[1] "Ensure this value has at least %(limit_value)d characters (it has %(show_value)d)."
+
+#, fuzzy
+msgid "Ensure this value has at most %(limit_value)d character (it has %(show_value)d)."
+msgid_plural "Ensure this value has at most %(limit_value)d characters (it has %(show_value)d)."
+msgstr[0] "Ensure this value has at most %(limit_value)d character (it has %(show_value)d)."
+msgstr[1] "Ensure this value has at most %(limit_value)d characters (it has %(show_value)d)."
+
+#, fuzzy
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] "Ensure that there are no more than %(max)s digit in total."
+msgstr[1] "Ensure that there are no more than %(max)s digits in total."
+
+#, fuzzy
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] "Ensure that there are no more than %(max)s decimal place."
+msgstr[1] "Ensure that there are no more than %(max)s decimal places."
+
+#, fuzzy
+msgid "Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural "Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] "Ensure that there are no more than %(max)s digit before the decimal point."
+msgstr[1] "Ensure that there are no more than %(max)s digits before the decimal point."
+
+#, fuzzy
+msgid "File extension “%(extension)s” is not allowed. Allowed extensions are: %(allowed_extensions)s."
+msgstr "File extension “%(extension)s” is not allowed. Allowed extensions are: %(allowed_extensions)s."
+
+#, fuzzy
+msgid "Null characters are not allowed."
+msgstr "Null characters are not allowed."
+
+#, fuzzy
+msgid "Static Files"
+msgstr "Static Files"
+
+#, fuzzy
+msgid "Date:"
+msgstr "Date:"
+
+#, fuzzy
+msgid "Time:"
+msgstr "Time:"
+
+#, fuzzy
+msgid "Lookup"
+msgstr "Lookup"
+
+#, fuzzy
+msgid "Currently:"
+msgstr "Currently:"
+
+#, fuzzy
+msgid "Change:"
+msgstr "Change:"
+
+#, fuzzy
+msgid "All dates"
+msgstr "All dates"
+
+#, fuzzy
+msgid "Log in"
+msgstr "Log in"
+
+#, fuzzy
+msgid "Please enter the correct %(username)s and password for a staff account. Note that both fields may be case-sensitive."
+msgstr "Please enter the correct %(username)s and password for a staff account. Note that both fields may be case-sensitive."
+
+#, fuzzy
+msgid "Addition"
+msgstr "Addition"
+
+#, fuzzy
+msgid "Deletion"
+msgstr "Deletion"
+
+#, fuzzy
+msgid "action time"
+msgstr "action time"
+
+#, fuzzy
+msgid "user"
+msgstr "user"
+
+#, fuzzy
+msgid "content type"
+msgstr "content type"
+
+#, fuzzy
+msgid "object id"
+msgstr "object id"
+
+#, fuzzy
+msgid "object repr"
+msgstr "object repr"
+
+#, fuzzy
+msgid "action flag"
+msgstr "action flag"
+
+#, fuzzy
+msgid "change message"
+msgstr "change message"
+
+#, fuzzy
+msgid "log entry"
+msgstr "log entry"
+
+#, fuzzy
+msgid "log entries"
+msgstr "log entries"
+
+#, fuzzy
+msgid "Added “%(object)s”."
+msgstr "Added “%(object)s”."
+
+#, fuzzy
+msgid "Changed “%(object)s” — %(changes)s"
+msgstr "Changed “%(object)s” — %(changes)s"
+
+#, fuzzy
+msgid "Deleted “%(object)s.”"
+msgstr "Deleted “%(object)s.”"
+
+#, fuzzy
+msgid "LogEntry Object"
+msgstr "LogEntry Object"
+
+#, fuzzy
+msgid "Added {name} “{object}”."
+msgstr "Added {name} “{object}”."
+
+#, fuzzy
+msgid "Added."
+msgstr "Added."
+
+#, fuzzy
+msgid "Changed {fields} for {name} “{object}”."
+msgstr "Changed {fields} for {name} “{object}”."
+
+#, fuzzy
+msgid "Changed {fields}."
+msgstr "Changed {fields}."
+
+#, fuzzy
+msgid "Deleted {name} “{object}”."
+msgstr "Deleted {name} “{object}”."
+
+#, fuzzy
+msgid "No fields changed."
+msgstr "No fields changed."
+
+#, fuzzy
+msgid "None"
+msgstr "None"
+
+#, fuzzy
+msgid "Hold down “Control”, or “Command” on a Mac, to select more than one."
+msgstr "Hold down “Control”, or “Command” on a Mac, to select more than one."
+
+#, fuzzy
+msgid "The {name} “{obj}” was added successfully."
+msgstr "The {name} “{obj}” was added successfully."
+
+#, fuzzy
+msgid "You may edit it again below."
+msgstr "You may edit it again below."
+
+#, fuzzy
+msgid "The {name} “{obj}” was added successfully. You may add another {name} below."
+msgstr "The {name} “{obj}” was added successfully. You may add another {name} below."
+
+#, fuzzy
+msgid "The {name} “{obj}” was changed successfully. You may edit it again below."
+msgstr "The {name} “{obj}” was changed successfully. You may edit it again below."
+
+#, fuzzy
+msgid "The {name} “{obj}” was added successfully. You may edit it again below."
+msgstr "The {name} “{obj}” was added successfully. You may edit it again below."
+
+#, fuzzy
+msgid "The {name} “{obj}” was changed successfully. You may add another {name} below."
+msgstr "The {name} “{obj}” was changed successfully. You may add another {name} below."
+
+#, fuzzy
+msgid "The {name} “{obj}” was changed successfully."
+msgstr "The {name} “{obj}” was changed successfully."
+
+#, fuzzy
+msgid "Items must be selected in order to perform actions on them. No items have been changed."
+msgstr "Items must be selected in order to perform actions on them. No items have been changed."
+
+#, fuzzy
+msgid "No action selected."
+msgstr "No action selected."
+
+#, fuzzy
+msgid "The %(name)s “%(obj)s” was deleted successfully."
+msgstr "The %(name)s “%(obj)s” was deleted successfully."
+
+#, fuzzy
+msgid "%(name)s with ID “%(key)s” doesn’t exist. Perhaps it was deleted?"
+msgstr "%(name)s with ID “%(key)s” doesn’t exist. Perhaps it was deleted?"
+
+#, fuzzy
+msgid "Add %s"
+msgstr "Add %s"
+
+#, fuzzy
+msgid "Change %s"
+msgstr "Change %s"
+
+#, fuzzy
+msgid "Database error"
+msgstr "Database error"
+
+#, fuzzy
+msgid "%(count)s %(name)s was changed successfully."
+msgid_plural "%(count)s %(name)s were changed successfully."
+msgstr[0] "%(count)s %(name)s was changed successfully."
+msgstr[1] "%(count)s %(name)s were changed successfully."
+
+#, fuzzy
+msgid "%(total_count)s selected"
+msgid_plural "All %(total_count)s selected"
+msgstr[0] "%(total_count)s selected"
+msgstr[1] "All %(total_count)s selected"
+
+#, fuzzy
+msgid "0 of %(cnt)s selected"
+msgstr "0 of %(cnt)s selected"
+
+#, fuzzy
+msgid "Cannot delete %(name)s"
+msgstr "Cannot delete %(name)s"
+
+#, fuzzy
+msgid "Are you sure?"
+msgstr "Are you sure?"
+
+#, fuzzy
+msgid "%(class_name)s %(instance)s"
+msgstr "%(class_name)s %(instance)s"
+
+#, fuzzy
+msgid "Deleting %(class_name)s %(instance)s would require deleting the following protected related objects: %(related_objects)s"
+msgstr "Deleting %(class_name)s %(instance)s would require deleting the following protected related objects: %(related_objects)s"
+
+#, fuzzy
+msgid "Delete selected %(verbose_name_plural)s"
+msgstr "Delete selected %(verbose_name_plural)s"
+
+#, fuzzy
+msgid "Successfully deleted %(count)d %(items)s."
+msgstr "Successfully deleted %(count)d %(items)s."
+
+#, fuzzy
+msgid "Administration"
+msgstr "Administration"
+
+#, fuzzy
+msgid "Select %s"
+msgstr "Select %s"
+
+#, fuzzy
+msgid "Select %s to change"
+msgstr "Select %s to change"
+
+#, fuzzy
+msgid "Select %s to view"
+msgstr "Select %s to view"
+
+#, fuzzy
+msgid "Action:"
+msgstr "Action:"
+
+#, fuzzy
+msgid "Add another %(verbose_name)s"
+msgstr "Add another %(verbose_name)s"
+
+#, fuzzy
+msgid "Remove"
+msgstr "Remove"
+
+#, fuzzy
+msgid "Django site admin"
+msgstr "Django site admin"
+
+#, fuzzy
+msgid "Django administration"
+msgstr "Django administration"
+
+#, fuzzy
+msgid "Site administration"
+msgstr "Site administration"
+
+#, fuzzy
+msgid "%(app)s administration"
+msgstr "%(app)s administration"
+
+#, fuzzy
+msgid "Any date"
+msgstr "Any date"
+
+#, fuzzy
+msgid "No date"
+msgstr "No date"
+
+#, fuzzy
+msgid "Has date"
+msgstr "Has date"
+
+#, fuzzy
+msgid "Empty"
+msgstr "Empty"
+
+#, fuzzy
+msgid "Not empty"
+msgstr "Not empty"
+
+#, fuzzy
+msgid "Site Maps"
+msgstr "Site Maps"
+
+#, fuzzy
+msgid "Administrative Documentation"
+msgstr "Administrative Documentation"
+
+#, fuzzy
+msgid "tag:"
+msgstr "tag:"
+
+#, fuzzy
+msgid "filter:"
+msgstr "filter:"
+
+#, fuzzy
+msgid "view:"
+msgstr "view:"
+
+#, fuzzy
+msgid "App %(app_label)r not found"
+msgstr "App %(app_label)r not found"
+
+#, fuzzy
+msgid "Model %(model_name)r not found in app %(app_label)r"
+msgstr "Model %(model_name)r not found in app %(app_label)r"
+
+#, fuzzy
+msgid "model:"
+msgstr "model:"
+
+#, fuzzy
+msgid "the related `%(app_label)s.%(data_type)s` object"
+msgstr "the related `%(app_label)s.%(data_type)s` object"
+
+#, fuzzy
+msgid "related `%(app_label)s.%(object_name)s` objects"
+msgstr "related `%(app_label)s.%(object_name)s` objects"
+
+#, fuzzy
+msgid "all %s"
+msgstr "all %s"
+
+#, fuzzy
+msgid "number of %s"
+msgstr "number of %s"
+
+#, fuzzy
+msgid "%s does not appear to be a urlpattern object"
+msgstr "%s does not appear to be a urlpattern object"
+
+#, fuzzy
+msgid "Item %(nth)s in the array did not validate:"
+msgstr "Item %(nth)s in the array did not validate:"
+
+#, fuzzy
+msgid "Nested arrays must have the same length."
+msgstr "Nested arrays must have the same length."
+
+#, fuzzy
+msgid "Map of strings to strings/nulls"
+msgstr "Map of strings to strings/nulls"
+
+#, fuzzy
+msgid "The value of “%(key)s” is not a string or null."
+msgstr "The value of “%(key)s” is not a string or null."
+
+#, fuzzy
+msgid "Enter two valid values."
+msgstr "Enter two valid values."
+
+#, fuzzy
+msgid "The start of the range must not exceed the end of the range."
+msgstr "The start of the range must not exceed the end of the range."
+
+#, fuzzy
+msgid "Enter two whole numbers."
+msgstr "Enter two whole numbers."
+
+#, fuzzy
+msgid "Enter two numbers."
+msgstr "Enter two numbers."
+
+#, fuzzy
+msgid "Enter two valid date/times."
+msgstr "Enter two valid date/times."
+
+#, fuzzy
+msgid "Enter two valid dates."
+msgstr "Enter two valid dates."
+
+#, fuzzy
+msgid "Could not load JSON data."
+msgstr "Could not load JSON data."
+
+#, fuzzy
+msgid "Input must be a JSON dictionary."
+msgstr "Input must be a JSON dictionary."
+
+#, fuzzy
+msgid "PostgreSQL extensions"
+msgstr "PostgreSQL extensions"
+
+#, fuzzy
+msgid "List contains %(show_value)d item, it should contain no more than %(limit_value)d."
+msgid_plural "List contains %(show_value)d items, it should contain no more than %(limit_value)d."
+msgstr[0] "List contains %(show_value)d item, it should contain no more than %(limit_value)d."
+msgstr[1] "List contains %(show_value)d items, it should contain no more than %(limit_value)d."
+
+#, fuzzy
+msgid "List contains %(show_value)d item, it should contain no fewer than %(limit_value)d."
+msgid_plural "List contains %(show_value)d items, it should contain no fewer than %(limit_value)d."
+msgstr[0] "List contains %(show_value)d item, it should contain no fewer than %(limit_value)d."
+msgstr[1] "List contains %(show_value)d items, it should contain no fewer than %(limit_value)d."
+
+#, fuzzy
+msgid "Some keys were missing: %(keys)s"
+msgstr "Some keys were missing: %(keys)s"
+
+#, fuzzy
+msgid "Some unknown keys were provided: %(keys)s"
+msgstr "Some unknown keys were provided: %(keys)s"
+
+#, fuzzy
+msgid "Ensure that the upper bound of the range is not greater than %(limit_value)s."
+msgstr "Ensure that the upper bound of the range is not greater than %(limit_value)s."
+
+#, fuzzy
+msgid "Ensure that the lower bound of the range is not less than %(limit_value)s."
+msgstr "Ensure that the lower bound of the range is not less than %(limit_value)s."
+
+#, fuzzy
+msgid "algorithm"
+msgstr "algorithm"
+
+#, fuzzy
+msgid "iterations"
+msgstr "iterations"
+
+#, fuzzy
+msgid "salt"
+msgstr "salt"
+
+#, fuzzy
+msgid "hash"
+msgstr "hash"
+
+#, fuzzy
+msgid "variety"
+msgstr "variety"
+
+#, fuzzy
+msgid "version"
+msgstr "version"
+
+#, fuzzy
+msgid "memory cost"
+msgstr "memory cost"
+
+#, fuzzy
+msgid "time cost"
+msgstr "time cost"
+
+#, fuzzy
+msgid "parallelism"
+msgstr "parallelism"
+
+#, fuzzy
+msgid "work factor"
+msgstr "work factor"
+
+#, fuzzy
+msgid "checksum"
+msgstr "checksum"
+
+#, fuzzy
+msgid "block size"
+msgstr "block size"
+
+#, fuzzy
+msgid "This password is too short. It must contain at least %(min_length)d character."
+msgid_plural "This password is too short. It must contain at least %(min_length)d characters."
+msgstr[0] "This password is too short. It must contain at least %(min_length)d character."
+msgstr[1] "This password is too short. It must contain at least %(min_length)d characters."
+
+#, fuzzy
+msgid "Your password must contain at least %(min_length)d character."
+msgid_plural "Your password must contain at least %(min_length)d characters."
+msgstr[0] "Your password must contain at least %(min_length)d character."
+msgstr[1] "Your password must contain at least %(min_length)d characters."
+
+#, fuzzy
+msgid "The password is too similar to the %(verbose_name)s."
+msgstr "The password is too similar to the %(verbose_name)s."
+
+#, fuzzy
+msgid "Your password can’t be too similar to your other personal information."
+msgstr "Your password can’t be too similar to your other personal information."
+
+#, fuzzy
+msgid "This password is too common."
+msgstr "This password is too common."
+
+#, fuzzy
+msgid "Your password can’t be a commonly used password."
+msgstr "Your password can’t be a commonly used password."
+
+#, fuzzy
+msgid "This password is entirely numeric."
+msgstr "This password is entirely numeric."
+
+#, fuzzy
+msgid "Your password can’t be entirely numeric."
+msgstr "Your password can’t be entirely numeric."
+
+#, fuzzy
+msgid "No password set."
+msgstr "No password set."
+
+#, fuzzy
+msgid "Invalid password format or unknown hashing algorithm."
+msgstr "Invalid password format or unknown hashing algorithm."
+
+#, fuzzy
+msgid "The two password fields didn’t match."
+msgstr "The two password fields didn’t match."
+
+#, fuzzy
+msgid "Password confirmation"
+msgstr "Password confirmation"
+
+#, fuzzy
+msgid "Enter the same password as before, for verification."
+msgstr "Enter the same password as before, for verification."
+
+#, fuzzy
+msgid "Raw passwords are not stored, so there is no way to see this user’s password, but you can change the password using <a href=\"{}\">this form</a>."
+msgstr "Raw passwords are not stored, so there is no way to see this user’s password, but you can change the password using <a href=\"{}\">this form</a>."
+
+#, fuzzy
+msgid "Please enter a correct %(username)s and password. Note that both fields may be case-sensitive."
+msgstr "Please enter a correct %(username)s and password. Note that both fields may be case-sensitive."
+
+#, fuzzy
+msgid "This account is inactive."
+msgstr "This account is inactive."
+
+#, fuzzy
+msgid "Email"
+msgstr "Email"
+
+#, fuzzy
+msgid "New password"
+msgstr "New password"
+
+#, fuzzy
+msgid "New password confirmation"
+msgstr "New password confirmation"
+
+#, fuzzy
+msgid "Your old password was entered incorrectly. Please enter it again."
+msgstr "Your old password was entered incorrectly. Please enter it again."
+
+#, fuzzy
+msgid "Old password"
+msgstr "Old password"
+
+#, fuzzy
+msgid "Password (again)"
+msgstr "Password (again)"
+
+#, fuzzy
+msgid "name"
+msgstr "name"
+
+#, fuzzy
+msgid "codename"
+msgstr "codename"
+
+#, fuzzy
+msgid "permission"
+msgstr "permission"
+
+#, fuzzy
+msgid "permissions"
+msgstr "permissions"
+
+#, fuzzy
+msgid "group"
+msgstr "group"
+
+#, fuzzy
+msgid "groups"
+msgstr "groups"
+
+#, fuzzy
+msgid "superuser status"
+msgstr "superuser status"
+
+#, fuzzy
+msgid "Designates that this user has all permissions without explicitly assigning them."
+msgstr "Designates that this user has all permissions without explicitly assigning them."
+
+#, fuzzy
+msgid "The groups this user belongs to. A user will get all permissions granted to each of their groups."
+msgstr "The groups this user belongs to. A user will get all permissions granted to each of their groups."
+
+#, fuzzy
+msgid "user permissions"
+msgstr "user permissions"
+
+#, fuzzy
+msgid "Specific permissions for this user."
+msgstr "Specific permissions for this user."
+
+#, fuzzy
+msgid "username"
+msgstr "username"
+
+#, fuzzy
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+
+#, fuzzy
+msgid "A user with that username already exists."
+msgstr "A user with that username already exists."
+
+#, fuzzy
+msgid "first name"
+msgstr "first name"
+
+#, fuzzy
+msgid "last name"
+msgstr "last name"
+
+#, fuzzy
+msgid "email address"
+msgstr "email address"
+
+#, fuzzy
+msgid "staff status"
+msgstr "staff status"
+
+#, fuzzy
+msgid "Designates whether the user can log into this admin site."
+msgstr "Designates whether the user can log into this admin site."
+
+#, fuzzy
+msgid "active"
+msgstr "active"
+
+#, fuzzy
+msgid "Designates whether this user should be treated as active. Unselect this instead of deleting accounts."
+msgstr "Designates whether this user should be treated as active. Unselect this instead of deleting accounts."
+
+#, fuzzy
+msgid "date joined"
+msgstr "date joined"
+
+#, fuzzy
+msgid "users"
+msgstr "users"
+
+#, fuzzy
+msgid "Personal info"
+msgstr "Personal info"
+
+#, fuzzy
+msgid "Permissions"
+msgstr "Permissions"
+
+#, fuzzy
+msgid "Important dates"
+msgstr "Important dates"
+
+#, fuzzy
+msgid "%(name)s object with primary key %(key)r does not exist."
+msgstr "%(name)s object with primary key %(key)r does not exist."
+
+#, fuzzy
+msgid "Password changed successfully."
+msgstr "Password changed successfully."
+
+#, fuzzy
+msgid "Change password: %s"
+msgstr "Change password: %s"
+
+#, fuzzy
+msgid "Authentication and Authorization"
+msgstr "Authentication and Authorization"
+
+#, fuzzy
+msgid "Enter a valid username. This value may contain only unaccented lowercase a-z and uppercase A-Z letters, numbers, and @/./+/-/_ characters."
+msgstr "Enter a valid username. This value may contain only unaccented lowercase a-z and uppercase A-Z letters, numbers, and @/./+/-/_ characters."
+
+#, fuzzy
+msgid "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters."
+msgstr "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters."
+
+#, fuzzy
+msgid "Logged out"
+msgstr "Logged out"
+
+#, fuzzy
+msgid "Password reset"
+msgstr "Password reset"
+
+#, fuzzy
+msgid "Password reset sent"
+msgstr "Password reset sent"
+
+#, fuzzy
+msgid "Enter new password"
+msgstr "Enter new password"
+
+#, fuzzy
+msgid "Password reset unsuccessful"
+msgstr "Password reset unsuccessful"
+
+#, fuzzy
+msgid "Password reset complete"
+msgstr "Password reset complete"
+
+#, fuzzy
+msgid "Password change"
+msgstr "Password change"
+
+#, fuzzy
+msgid "Password change successful"
+msgstr "Password change successful"
+
+#, fuzzy
+msgid "password"
+msgstr "password"
+
+#, fuzzy
+msgid "last login"
+msgstr "last login"
+
+#, fuzzy
+msgid "python model class name"
+msgstr "python model class name"
+
+#, fuzzy
+msgid "content types"
+msgstr "content types"
+
+#, fuzzy
+msgid "Content Types"
+msgstr "Content Types"
+
+#, fuzzy
+msgid "Content type %(ct_id)s object has no associated model"
+msgstr "Content type %(ct_id)s object has no associated model"
+
+#, fuzzy
+msgid "Content type %(ct_id)s object %(obj_id)s doesn’t exist"
+msgstr "Content type %(ct_id)s object %(obj_id)s doesn’t exist"
+
+#, fuzzy
+msgid "%(ct_name)s objects don’t have a get_absolute_url() method"
+msgstr "%(ct_name)s objects don’t have a get_absolute_url() method"
+
+#, fuzzy
+msgid "Messages"
+msgstr "Messages"
+
+#, fuzzy
+msgid "Sessions"
+msgstr "Sessions"
+
+#, fuzzy
+msgid "session key"
+msgstr "session key"
+
+#, fuzzy
+msgid "session data"
+msgstr "session data"
+
+#, fuzzy
+msgid "expire date"
+msgstr "expire date"
+
+#, fuzzy
+msgid "session"
+msgstr "session"
+
+#, fuzzy
+msgid "sessions"
+msgstr "sessions"
+
+#, fuzzy
+msgid "site"
+msgstr "site"
+
+#, fuzzy
+msgid "redirect from"
+msgstr "redirect from"
+
+#, fuzzy
+msgid "This should be an absolute path, excluding the domain name. Example: “/events/search/”."
+msgstr "This should be an absolute path, excluding the domain name. Example: “/events/search/”."
+
+#, fuzzy
+msgid "redirect to"
+msgstr "redirect to"
+
+#, fuzzy
+msgid "This can be either an absolute path (as above) or a full URL starting with a scheme such as “https://”."
+msgstr "This can be either an absolute path (as above) or a full URL starting with a scheme such as “https://”."
+
+#, fuzzy
+msgid "redirect"
+msgstr "redirect"
+
+#, fuzzy
+msgid "redirects"
+msgstr "redirects"
+
+#, fuzzy
+msgid "Redirects"
+msgstr "Redirects"
+
+#, fuzzy
+msgid "The domain name cannot contain any spaces or tabs."
+msgstr "The domain name cannot contain any spaces or tabs."
+
+#, fuzzy
+msgid "domain name"
+msgstr "domain name"
+
+#, fuzzy
+msgid "display name"
+msgstr "display name"
+
+#, fuzzy
+msgid "sites"
+msgstr "sites"
+
+#, fuzzy
+msgid "Sites"
+msgstr "Sites"
+
+#, fuzzy
+msgid "Syndication"
+msgstr "Syndication"
+
+#, fuzzy
+msgctxt "ordinal 11, 12, 13"
+msgid "{}th"
+msgstr "{}th"
+
+#, fuzzy
+msgctxt "ordinal 0"
+msgid "{}th"
+msgstr "{}th"
+
+#, fuzzy
+msgctxt "ordinal 1"
+msgid "{}st"
+msgstr "{}st"
+
+#, fuzzy
+msgctxt "ordinal 2"
+msgid "{}nd"
+msgstr "{}nd"
+
+#, fuzzy
+msgctxt "ordinal 3"
+msgid "{}rd"
+msgstr "{}rd"
+
+#, fuzzy
+msgctxt "ordinal 4"
+msgid "{}th"
+msgstr "{}th"
+
+#, fuzzy
+msgctxt "ordinal 5"
+msgid "{}th"
+msgstr "{}th"
+
+#, fuzzy
+msgctxt "ordinal 6"
+msgid "{}th"
+msgstr "{}th"
+
+#, fuzzy
+msgctxt "ordinal 7"
+msgid "{}th"
+msgstr "{}th"
+
+#, fuzzy
+msgctxt "ordinal 8"
+msgid "{}th"
+msgstr "{}th"
+
+#, fuzzy
+msgctxt "ordinal 9"
+msgid "{}th"
+msgstr "{}th"
+
+#, fuzzy
+msgid "%(value)s million"
+msgid_plural "%(value)s million"
+msgstr[0] "%(value)s million"
+msgstr[1] "%(value)s million"
+
+#, fuzzy
+msgid "%(value)s billion"
+msgid_plural "%(value)s billion"
+msgstr[0] "%(value)s billion"
+msgstr[1] "%(value)s billion"
+
+#, fuzzy
+msgid "%(value)s trillion"
+msgid_plural "%(value)s trillion"
+msgstr[0] "%(value)s trillion"
+msgstr[1] "%(value)s trillion"
+
+#, fuzzy
+msgid "%(value)s quadrillion"
+msgid_plural "%(value)s quadrillion"
+msgstr[0] "%(value)s quadrillion"
+msgstr[1] "%(value)s quadrillion"
+
+#, fuzzy
+msgid "%(value)s quintillion"
+msgid_plural "%(value)s quintillion"
+msgstr[0] "%(value)s quintillion"
+msgstr[1] "%(value)s quintillion"
+
+#, fuzzy
+msgid "%(value)s sextillion"
+msgid_plural "%(value)s sextillion"
+msgstr[0] "%(value)s sextillion"
+msgstr[1] "%(value)s sextillion"
+
+#, fuzzy
+msgid "%(value)s septillion"
+msgid_plural "%(value)s septillion"
+msgstr[0] "%(value)s septillion"
+msgstr[1] "%(value)s septillion"
+
+#, fuzzy
+msgid "%(value)s octillion"
+msgid_plural "%(value)s octillion"
+msgstr[0] "%(value)s octillion"
+msgstr[1] "%(value)s octillion"
+
+#, fuzzy
+msgid "%(value)s nonillion"
+msgid_plural "%(value)s nonillion"
+msgstr[0] "%(value)s nonillion"
+msgstr[1] "%(value)s nonillion"
+
+#, fuzzy
+msgid "%(value)s decillion"
+msgid_plural "%(value)s decillion"
+msgstr[0] "%(value)s decillion"
+msgstr[1] "%(value)s decillion"
+
+#, fuzzy
+msgid "%(value)s googol"
+msgid_plural "%(value)s googol"
+msgstr[0] "%(value)s googol"
+msgstr[1] "%(value)s googol"
+
+#, fuzzy
+msgid "one"
+msgstr "one"
+
+#, fuzzy
+msgid "two"
+msgstr "two"
+
+#, fuzzy
+msgid "three"
+msgstr "three"
+
+#, fuzzy
+msgid "four"
+msgstr "four"
+
+#, fuzzy
+msgid "five"
+msgstr "five"
+
+#, fuzzy
+msgid "six"
+msgstr "six"
+
+#, fuzzy
+msgid "seven"
+msgstr "seven"
+
+#, fuzzy
+msgid "eight"
+msgstr "eight"
+
+#, fuzzy
+msgid "nine"
+msgstr "nine"
+
+#, fuzzy
+msgid "today"
+msgstr "today"
+
+#, fuzzy
+msgid "tomorrow"
+msgstr "tomorrow"
+
+#, fuzzy
+msgid "yesterday"
+msgstr "yesterday"
+
+#, fuzzy
+msgid "%(delta)s ago"
+msgstr "%(delta)s ago"
+
+#, fuzzy
+msgid "an hour ago"
+msgid_plural "%(count)s hours ago"
+msgstr[0] "an hour ago"
+msgstr[1] "%(count)s hours ago"
+
+#, fuzzy
+msgid "a minute ago"
+msgid_plural "%(count)s minutes ago"
+msgstr[0] "a minute ago"
+msgstr[1] "%(count)s minutes ago"
+
+#, fuzzy
+msgid "a second ago"
+msgid_plural "%(count)s seconds ago"
+msgstr[0] "a second ago"
+msgstr[1] "%(count)s seconds ago"
+
+#, fuzzy
+msgid "now"
+msgstr "now"
+
+#, fuzzy
+msgid "a second from now"
+msgid_plural "%(count)s seconds from now"
+msgstr[0] "a second from now"
+msgstr[1] "%(count)s seconds from now"
+
+#, fuzzy
+msgid "a minute from now"
+msgid_plural "%(count)s minutes from now"
+msgstr[0] "a minute from now"
+msgstr[1] "%(count)s minutes from now"
+
+#, fuzzy
+msgid "an hour from now"
+msgid_plural "%(count)s hours from now"
+msgstr[0] "an hour from now"
+msgstr[1] "%(count)s hours from now"
+
+#, fuzzy
+msgid "%(delta)s from now"
+msgstr "%(delta)s from now"
+
+#, fuzzy
+msgctxt "naturaltime-past"
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] "%(num)d year"
+msgstr[1] "%(num)d years"
+
+#, fuzzy
+msgctxt "naturaltime-past"
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] "%(num)d month"
+msgstr[1] "%(num)d months"
+
+#, fuzzy
+msgctxt "naturaltime-past"
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] "%(num)d week"
+msgstr[1] "%(num)d weeks"
+
+#, fuzzy
+msgctxt "naturaltime-past"
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] "%(num)d day"
+msgstr[1] "%(num)d days"
+
+#, fuzzy
+msgctxt "naturaltime-past"
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] "%(num)d hour"
+msgstr[1] "%(num)d hours"
+
+#, fuzzy
+msgctxt "naturaltime-past"
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] "%(num)d minute"
+msgstr[1] "%(num)d minutes"
+
+#, fuzzy
+msgctxt "naturaltime-future"
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] "%(num)d year"
+msgstr[1] "%(num)d years"
+
+#, fuzzy
+msgctxt "naturaltime-future"
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] "%(num)d month"
+msgstr[1] "%(num)d months"
+
+#, fuzzy
+msgctxt "naturaltime-future"
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] "%(num)d week"
+msgstr[1] "%(num)d weeks"
+
+#, fuzzy
+msgctxt "naturaltime-future"
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] "%(num)d day"
+msgstr[1] "%(num)d days"
+
+#, fuzzy
+msgctxt "naturaltime-future"
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] "%(num)d hour"
+msgstr[1] "%(num)d hours"
+
+#, fuzzy
+msgctxt "naturaltime-future"
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] "%(num)d minute"
+msgstr[1] "%(num)d minutes"
+
+#, fuzzy
+msgid "Humanize"
+msgstr "Humanize"
+
+#, fuzzy
+msgid "Example: “/about/contact/”. Make sure to have leading and trailing slashes."
+msgstr "Example: “/about/contact/”. Make sure to have leading and trailing slashes."
+
+#, fuzzy
+msgid "This value must contain only letters, numbers, dots, underscores, dashes, slashes or tildes."
+msgstr "This value must contain only letters, numbers, dots, underscores, dashes, slashes or tildes."
+
+#, fuzzy
+msgid "Example: “/about/contact”. Make sure to have a leading slash."
+msgstr "Example: “/about/contact”. Make sure to have a leading slash."
+
+#, fuzzy
+msgid "URL is missing a leading slash."
+msgstr "URL is missing a leading slash."
+
+#, fuzzy
+msgid "URL is missing a trailing slash."
+msgstr "URL is missing a trailing slash."
+
+#, fuzzy
+msgid "Flatpage with url %(url)s already exists for site %(site)s"
+msgstr "Flatpage with url %(url)s already exists for site %(site)s"
+
+#, fuzzy
+msgid "title"
+msgstr "title"
+
+#, fuzzy
+msgid "content"
+msgstr "content"
+
+#, fuzzy
+msgid "enable comments"
+msgstr "enable comments"
+
+#, fuzzy
+msgid "template name"
+msgstr "template name"
+
+#, fuzzy
+msgid "Example: “flatpages/contact_page.html”. If this isn’t provided, the system will use “flatpages/default.html”."
+msgstr "Example: “flatpages/contact_page.html”. If this isn’t provided, the system will use “flatpages/default.html”."
+
+#, fuzzy
+msgid "registration required"
+msgstr "registration required"
+
+#, fuzzy
+msgid "If this is checked, only logged-in users will be able to view the page."
+msgstr "If this is checked, only logged-in users will be able to view the page."
+
+#, fuzzy
+msgid "flat page"
+msgstr "flat page"
+
+#, fuzzy
+msgid "flat pages"
+msgstr "flat pages"
+
+#, fuzzy
+msgid "Advanced options"
+msgstr "Advanced options"
+
+#, fuzzy
+msgid "Flat Pages"
+msgstr "Flat Pages"
+
+#, fuzzy
+msgid "The base GIS field."
+msgstr "The base GIS field."
+
+#, fuzzy
+msgid "The base Geometry field — maps to the OpenGIS Specification Geometry type."
+msgstr "The base Geometry field — maps to the OpenGIS Specification Geometry type."
+
+#, fuzzy
+msgid "Point"
+msgstr "Point"
+
+#, fuzzy
+msgid "Line string"
+msgstr "Line string"
+
+#, fuzzy
+msgid "Polygon"
+msgstr "Polygon"
+
+#, fuzzy
+msgid "Multi-point"
+msgstr "Multi-point"
+
+#, fuzzy
+msgid "Multi-line string"
+msgstr "Multi-line string"
+
+#, fuzzy
+msgid "Multi polygon"
+msgstr "Multi polygon"
+
+#, fuzzy
+msgid "Geometry collection"
+msgstr "Geometry collection"
+
+#, fuzzy
+msgid "Extent Aggregate Field"
+msgstr "Extent Aggregate Field"
+
+#, fuzzy
+msgid "Raster Field"
+msgstr "Raster Field"
+
+#, fuzzy
+msgid "No geometry value provided."
+msgstr "No geometry value provided."
+
+#, fuzzy
+msgid "Invalid geometry value."
+msgstr "Invalid geometry value."
+
+#, fuzzy
+msgid "Invalid geometry type."
+msgstr "Invalid geometry type."
+
+#, fuzzy
+msgid "An error occurred when transforming the geometry to the SRID of the geometry form field."
+msgstr "An error occurred when transforming the geometry to the SRID of the geometry form field."
+
+#, fuzzy
+msgid "GIS"
+msgstr "GIS"
+
+#, fuzzy
+msgid "No feeds are registered."
+msgstr "No feeds are registered."
+
+#, fuzzy
+msgid "Slug %r isn’t registered."
+msgstr "Slug %r isn’t registered."
+
+#, fuzzy
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#, fuzzy
+msgid "Arabic"
+msgstr "Arabic"
+
+#, fuzzy
+msgid "Algerian Arabic"
+msgstr "Algerian Arabic"
+
+#, fuzzy
+msgid "Asturian"
+msgstr "Asturian"
+
+#, fuzzy
+msgid "Azerbaijani"
+msgstr "Azerbaijani"
+
+#, fuzzy
+msgid "Bulgarian"
+msgstr "Bulgarian"
+
+#, fuzzy
+msgid "Belarusian"
+msgstr "Belarusian"
+
+#, fuzzy
+msgid "Bengali"
+msgstr "Bengali"
+
+#, fuzzy
+msgid "Breton"
+msgstr "Breton"
+
+#, fuzzy
+msgid "Bosnian"
+msgstr "Bosnian"
+
+#, fuzzy
+msgid "Catalan"
+msgstr "Catalan"
+
+#, fuzzy
+msgid "Central Kurdish (Sorani)"
+msgstr "Central Kurdish (Sorani)"
+
+#, fuzzy
+msgid "Czech"
+msgstr "Czech"
+
+#, fuzzy
+msgid "Welsh"
+msgstr "Welsh"
+
+#, fuzzy
+msgid "Danish"
+msgstr "Danish"
+
+#, fuzzy
+msgid "German"
+msgstr "German"
+
+#, fuzzy
+msgid "Lower Sorbian"
+msgstr "Lower Sorbian"
+
+#, fuzzy
+msgid "Greek"
+msgstr "Greek"
+
+#, fuzzy
+msgid "Australian English"
+msgstr "Australian English"
+
+#, fuzzy
+msgid "British English"
+msgstr "British English"
+
+#, fuzzy
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#, fuzzy
+msgid "Argentinian Spanish"
+msgstr "Argentinian Spanish"
+
+#, fuzzy
+msgid "Colombian Spanish"
+msgstr "Colombian Spanish"
+
+#, fuzzy
+msgid "Mexican Spanish"
+msgstr "Mexican Spanish"
+
+#, fuzzy
+msgid "Nicaraguan Spanish"
+msgstr "Nicaraguan Spanish"
+
+#, fuzzy
+msgid "Venezuelan Spanish"
+msgstr "Venezuelan Spanish"
+
+#, fuzzy
+msgid "Estonian"
+msgstr "Estonian"
+
+#, fuzzy
+msgid "Basque"
+msgstr "Basque"
+
+#, fuzzy
+msgid "Persian"
+msgstr "Persian"
+
+#, fuzzy
+msgid "Finnish"
+msgstr "Finnish"
+
+#, fuzzy
+msgid "French"
+msgstr "French"
+
+#, fuzzy
+msgid "Frisian"
+msgstr "Frisian"
+
+#, fuzzy
+msgid "Irish"
+msgstr "Irish"
+
+#, fuzzy
+msgid "Scottish Gaelic"
+msgstr "Scottish Gaelic"
+
+#, fuzzy
+msgid "Galician"
+msgstr "Galician"
+
+#, fuzzy
+msgid "Hebrew"
+msgstr "Hebrew"
+
+#, fuzzy
+msgid "Hindi"
+msgstr "Hindi"
+
+#, fuzzy
+msgid "Croatian"
+msgstr "Croatian"
+
+#, fuzzy
+msgid "Upper Sorbian"
+msgstr "Upper Sorbian"
+
+#, fuzzy
+msgid "Hungarian"
+msgstr "Hungarian"
+
+#, fuzzy
+msgid "Armenian"
+msgstr "Armenian"
+
+#, fuzzy
+msgid "Interlingua"
+msgstr "Interlingua"
+
+#, fuzzy
+msgid "Indonesian"
+msgstr "Indonesian"
+
+#, fuzzy
+msgid "Igbo"
+msgstr "Igbo"
+
+#, fuzzy
+msgid "Ido"
+msgstr "Ido"
+
+#, fuzzy
+msgid "Icelandic"
+msgstr "Icelandic"
+
+#, fuzzy
+msgid "Italian"
+msgstr "Italian"
+
+#, fuzzy
+msgid "Japanese"
+msgstr "Japanese"
+
+#, fuzzy
+msgid "Georgian"
+msgstr "Georgian"
+
+#, fuzzy
+msgid "Kabyle"
+msgstr "Kabyle"
+
+#, fuzzy
+msgid "Kazakh"
+msgstr "Kazakh"
+
+#, fuzzy
+msgid "Khmer"
+msgstr "Khmer"
+
+#, fuzzy
+msgid "Kannada"
+msgstr "Kannada"
+
+#, fuzzy
+msgid "Korean"
+msgstr "Korean"
+
+#, fuzzy
+msgid "Kyrgyz"
+msgstr "Kyrgyz"
+
+#, fuzzy
+msgid "Luxembourgish"
+msgstr "Luxembourgish"
+
+#, fuzzy
+msgid "Lithuanian"
+msgstr "Lithuanian"
+
+#, fuzzy
+msgid "Latvian"
+msgstr "Latvian"
+
+#, fuzzy
+msgid "Macedonian"
+msgstr "Macedonian"
+
+#, fuzzy
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#, fuzzy
+msgid "Mongolian"
+msgstr "Mongolian"
+
+#, fuzzy
+msgid "Marathi"
+msgstr "Marathi"
+
+#, fuzzy
+msgid "Malay"
+msgstr "Malay"
+
+#, fuzzy
+msgid "Burmese"
+msgstr "Burmese"
+
+#, fuzzy
+msgid "Norwegian Bokmål"
+msgstr "Norwegian Bokmål"
+
+#, fuzzy
+msgid "Nepali"
+msgstr "Nepali"
+
+#, fuzzy
+msgid "Dutch"
+msgstr "Dutch"
+
+#, fuzzy
+msgid "Norwegian Nynorsk"
+msgstr "Norwegian Nynorsk"
+
+#, fuzzy
+msgid "Ossetic"
+msgstr "Ossetic"
+
+#, fuzzy
+msgid "Punjabi"
+msgstr "Punjabi"
+
+#, fuzzy
+msgid "Polish"
+msgstr "Polish"
+
+#, fuzzy
+msgid "Portuguese"
+msgstr "Portuguese"
+
+#, fuzzy
+msgid "Brazilian Portuguese"
+msgstr "Brazilian Portuguese"
+
+#, fuzzy
+msgid "Romanian"
+msgstr "Romanian"
+
+#, fuzzy
+msgid "Russian"
+msgstr "Russian"
+
+#, fuzzy
+msgid "Slovak"
+msgstr "Slovak"
+
+#, fuzzy
+msgid "Slovenian"
+msgstr "Slovenian"
+
+#, fuzzy
+msgid "Albanian"
+msgstr "Albanian"
+
+#, fuzzy
+msgid "Serbian"
+msgstr "Serbian"
+
+#, fuzzy
+msgid "Serbian Latin"
+msgstr "Serbian Latin"
+
+#, fuzzy
+msgid "Swedish"
+msgstr "Swedish"
+
+#, fuzzy
+msgid "Swahili"
+msgstr "Swahili"
+
+#, fuzzy
+msgid "Tamil"
+msgstr "Tamil"
+
+#, fuzzy
+msgid "Telugu"
+msgstr "Telugu"
+
+#, fuzzy
+msgid "Tajik"
+msgstr "Tajik"
+
+#, fuzzy
+msgid "Thai"
+msgstr "Thai"
+
+#, fuzzy
+msgid "Turkmen"
+msgstr "Turkmen"
+
+#, fuzzy
+msgid "Turkish"
+msgstr "Turkish"
+
+#, fuzzy
+msgid "Tatar"
+msgstr "Tatar"
+
+#, fuzzy
+msgid "Udmurt"
+msgstr "Udmurt"
+
+#, fuzzy
+msgid "Ukrainian"
+msgstr "Ukrainian"
+
+#, fuzzy
+msgid "Urdu"
+msgstr "Urdu"
+
+#, fuzzy
+msgid "Uzbek"
+msgstr "Uzbek"
+
+#, fuzzy
+msgid "Vietnamese"
+msgstr "Vietnamese"
+
+#, fuzzy
+msgid "Simplified Chinese"
+msgstr "Simplified Chinese"
+
+#, fuzzy
+msgid "Traditional Chinese"
+msgstr "Traditional Chinese"
+
+#, fuzzy
+msgid "yes,no,maybe"
+msgstr "yes,no,maybe"
+
+#, fuzzy
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] "%(size)d byte"
+msgstr[1] "%(size)d bytes"
+
+#, fuzzy
+msgid "%s KB"
+msgstr "%s KB"
+
+#, fuzzy
+msgid "%s MB"
+msgstr "%s MB"
+
+#, fuzzy
+msgid "%s GB"
+msgstr "%s GB"
+
+#, fuzzy
+msgid "%s TB"
+msgstr "%s TB"
+
+#, fuzzy
+msgid "%s PB"
+msgstr "%s PB"
+
+#, fuzzy
+msgid "Directory indexes are not allowed here."
+msgstr "Directory indexes are not allowed here."
+
+#, fuzzy
+msgid "“%(path)s” does not exist"
+msgstr "“%(path)s” does not exist"
+
+#, fuzzy
+msgid "Index of %(directory)s"
+msgstr "Index of %(directory)s"
+
+#, fuzzy
+msgid "No %(verbose_name)s found matching the query"
+msgstr "No %(verbose_name)s found matching the query"
+
+#, fuzzy
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr "Page is not “last”, nor can it be converted to an int."
+
+#, fuzzy
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr "Invalid page (%(page_number)s): %(message)s"
+
+#, fuzzy
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr "Empty list and “%(class_name)s.allow_empty” is False."
+
+#, fuzzy
+msgid "No year specified"
+msgstr "No year specified"
+
+#, fuzzy
+msgid "Date out of range"
+msgstr "Date out of range"
+
+#, fuzzy
+msgid "No month specified"
+msgstr "No month specified"
+
+#, fuzzy
+msgid "No day specified"
+msgstr "No day specified"
+
+#, fuzzy
+msgid "No week specified"
+msgstr "No week specified"
+
+#, fuzzy
+msgid "No %(verbose_name_plural)s available"
+msgstr "No %(verbose_name_plural)s available"
+
+#, fuzzy
+msgid "Future %(verbose_name_plural)s not available because %(class_name)s.allow_future is False."
+msgstr "Future %(verbose_name_plural)s not available because %(class_name)s.allow_future is False."
+
+#, fuzzy
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr "Invalid date string “%(datestr)s” given format “%(format)s”"
+
+#, fuzzy
+msgid "Forbidden"
+msgstr "Forbidden"
+
+#, fuzzy
+msgid "CSRF verification failed. Request aborted."
+msgstr "CSRF verification failed. Request aborted."
+
+#, fuzzy
+msgid "You are seeing this message because this HTTPS site requires a “Referer header” to be sent by your web browser, but none was sent. This header is required for security reasons, to ensure that your browser is not being hijacked by third parties."
+msgstr "You are seeing this message because this HTTPS site requires a “Referer header” to be sent by your web browser, but none was sent. This header is required for security reasons, to ensure that your browser is not being hijacked by third parties."
+
+#, fuzzy
+msgid "If you have configured your browser to disable “Referer” headers, please re-enable them, at least for this site, or for HTTPS connections, or for “same-origin” requests."
+msgstr "If you have configured your browser to disable “Referer” headers, please re-enable them, at least for this site, or for HTTPS connections, or for “same-origin” requests."
+
+#, fuzzy
+msgid "If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or including the “Referrer-Policy: no-referrer” header, please remove them. The CSRF protection requires the “Referer” header to do strict referer checking. If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer\" …> for links to third-party sites."
+msgstr "If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or including the “Referrer-Policy: no-referrer” header, please remove them. The CSRF protection requires the “Referer” header to do strict referer checking. If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer\" …> for links to third-party sites."
+
+#, fuzzy
+msgid "You are seeing this message because this site requires a CSRF cookie when submitting forms. This cookie is required for security reasons, to ensure that your browser is not being hijacked by third parties."
+msgstr "You are seeing this message because this site requires a CSRF cookie when submitting forms. This cookie is required for security reasons, to ensure that your browser is not being hijacked by third parties."
+
+#, fuzzy
+msgid "If you have configured your browser to disable cookies, please re-enable them, at least for this site, or for “same-origin” requests."
+msgstr "If you have configured your browser to disable cookies, please re-enable them, at least for this site, or for “same-origin” requests."
+
+#, fuzzy
+msgid "More information is available with DEBUG=True."
+msgstr "More information is available with DEBUG=True."
+
+#, fuzzy
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] "%(num)d year"
+msgstr[1] "%(num)d years"
+
+#, fuzzy
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] "%(num)d month"
+msgstr[1] "%(num)d months"
+
+#, fuzzy
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] "%(num)d week"
+msgstr[1] "%(num)d weeks"
+
+#, fuzzy
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] "%(num)d day"
+msgstr[1] "%(num)d days"
+
+#, fuzzy
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] "%(num)d hour"
+msgstr[1] "%(num)d hours"
+
+#, fuzzy
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] "%(num)d minute"
+msgstr[1] "%(num)d minutes"
+
+#, fuzzy
+msgid ", "
+msgstr ", "
+
+#, fuzzy
+msgid "p.m."
+msgstr "p.m."
+
+#, fuzzy
+msgid "a.m."
+msgstr "a.m."
+
+#, fuzzy
+msgid "PM"
+msgstr "PM"
+
+#, fuzzy
+msgid "AM"
+msgstr "AM"
+
+#, fuzzy
+msgid "midnight"
+msgstr "midnight"
+
+#, fuzzy
+msgid "noon"
+msgstr "noon"
+
+#, fuzzy
+msgid "This is not a valid IPv6 address."
+msgstr "This is not a valid IPv6 address."
+
+#, fuzzy
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr "%(truncated_text)s…"
+
+#, fuzzy
+msgid "or"
+msgstr "or"
+
+#, fuzzy
+msgid "Monday"
+msgstr "Monday"
+
+#, fuzzy
+msgid "Tuesday"
+msgstr "Tuesday"
+
+#, fuzzy
+msgid "Wednesday"
+msgstr "Wednesday"
+
+#, fuzzy
+msgid "Thursday"
+msgstr "Thursday"
+
+#, fuzzy
+msgid "Friday"
+msgstr "Friday"
+
+#, fuzzy
+msgid "Saturday"
+msgstr "Saturday"
+
+#, fuzzy
+msgid "Sunday"
+msgstr "Sunday"
+
+#, fuzzy
+msgid "Mon"
+msgstr "Mon"
+
+#, fuzzy
+msgid "Tue"
+msgstr "Tue"
+
+#, fuzzy
+msgid "Wed"
+msgstr "Wed"
+
+#, fuzzy
+msgid "Thu"
+msgstr "Thu"
+
+#, fuzzy
+msgid "Fri"
+msgstr "Fri"
+
+#, fuzzy
+msgid "Sat"
+msgstr "Sat"
+
+#, fuzzy
+msgid "Sun"
+msgstr "Sun"
+
+#, fuzzy
+msgid "January"
+msgstr "January"
+
+#, fuzzy
+msgid "February"
+msgstr "February"
+
+#, fuzzy
+msgid "March"
+msgstr "March"
+
+#, fuzzy
+msgid "April"
+msgstr "April"
+
+#, fuzzy
+msgid "May"
+msgstr "May"
+
+#, fuzzy
+msgid "June"
+msgstr "June"
+
+#, fuzzy
+msgid "July"
+msgstr "July"
+
+#, fuzzy
+msgid "August"
+msgstr "August"
+
+#, fuzzy
+msgid "September"
+msgstr "September"
+
+#, fuzzy
+msgid "October"
+msgstr "October"
+
+#, fuzzy
+msgid "November"
+msgstr "November"
+
+#, fuzzy
+msgid "December"
+msgstr "December"
+
+#, fuzzy
+msgid "jan"
+msgstr "jan"
+
+#, fuzzy
+msgid "feb"
+msgstr "feb"
+
+#, fuzzy
+msgid "mar"
+msgstr "mar"
+
+#, fuzzy
+msgid "apr"
+msgstr "apr"
+
+#, fuzzy
+msgid "may"
+msgstr "may"
+
+#, fuzzy
+msgid "jun"
+msgstr "jun"
+
+#, fuzzy
+msgid "jul"
+msgstr "jul"
+
+#, fuzzy
+msgid "aug"
+msgstr "aug"
+
+#, fuzzy
+msgid "sep"
+msgstr "sep"
+
+#, fuzzy
+msgid "oct"
+msgstr "oct"
+
+#, fuzzy
+msgid "nov"
+msgstr "nov"
+
+#, fuzzy
+msgid "dec"
+msgstr "dec"
+
+#, fuzzy
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr "Jan."
+
+#, fuzzy
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr "Feb."
+
+#, fuzzy
+msgctxt "abbrev. month"
+msgid "March"
+msgstr "March"
+
+#, fuzzy
+msgctxt "abbrev. month"
+msgid "April"
+msgstr "April"
+
+#, fuzzy
+msgctxt "abbrev. month"
+msgid "May"
+msgstr "May"
+
+#, fuzzy
+msgctxt "abbrev. month"
+msgid "June"
+msgstr "June"
+
+#, fuzzy
+msgctxt "abbrev. month"
+msgid "July"
+msgstr "July"
+
+#, fuzzy
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr "Aug."
+
+#, fuzzy
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr "Sept."
+
+#, fuzzy
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr "Oct."
+
+#, fuzzy
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr "Nov."
+
+#, fuzzy
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr "Dec."
+
+#, fuzzy
+msgctxt "alt. month"
+msgid "January"
+msgstr "January"
+
+#, fuzzy
+msgctxt "alt. month"
+msgid "February"
+msgstr "February"
+
+#, fuzzy
+msgctxt "alt. month"
+msgid "March"
+msgstr "March"
+
+#, fuzzy
+msgctxt "alt. month"
+msgid "April"
+msgstr "April"
+
+#, fuzzy
+msgctxt "alt. month"
+msgid "May"
+msgstr "May"
+
+#, fuzzy
+msgctxt "alt. month"
+msgid "June"
+msgstr "June"
+
+#, fuzzy
+msgctxt "alt. month"
+msgid "July"
+msgstr "July"
+
+#, fuzzy
+msgctxt "alt. month"
+msgid "August"
+msgstr "August"
+
+#, fuzzy
+msgctxt "alt. month"
+msgid "September"
+msgstr "September"
+
+#, fuzzy
+msgctxt "alt. month"
+msgid "October"
+msgstr "October"
+
+#, fuzzy
+msgctxt "alt. month"
+msgid "November"
+msgstr "November"
+
+#, fuzzy
+msgctxt "alt. month"
+msgid "December"
+msgstr "December"
+
+#, fuzzy
+msgid "You do not have permission to perform this action"
+msgstr "You do not have permission to perform this action"
+
+#, fuzzy
+msgid "Signature has expired"
+msgstr "Signature has expired"
+
+#, fuzzy
+msgid "Please enter valid credentials"
+msgstr "Please enter valid credentials"
+
+#, fuzzy
+msgid "Token is required"
+msgstr "Token is required"
+
+#, fuzzy
+msgid "Error decoding signature"
+msgstr "Error decoding signature"
+
+#, fuzzy
+msgid "Invalid token"
+msgstr "Invalid token"
+
+#, fuzzy
+msgid "Invalid payload"
+msgstr "Invalid payload"
+
+#, fuzzy
+msgid "User is disabled"
+msgstr "User is disabled"
+
+#, fuzzy
+msgid "Revoke selected %(verbose_name_plural)s"
+msgstr "Revoke selected %(verbose_name_plural)s"
+
+#, fuzzy
+msgid "is expired"
+msgstr "is expired"
+
+#, fuzzy
+msgid "Expired"
+msgstr "Expired"
+
+#, fuzzy
+msgid "Revoked"
+msgstr "Revoked"
+
+#, fuzzy
+msgid "Refresh token is required"
+msgstr "Refresh token is required"
+
+#, fuzzy
+msgid "token"
+msgstr "token"
+
+#, fuzzy
+msgid "created"
+msgstr "created"
+
+#, fuzzy
+msgid "revoked"
+msgstr "revoked"
+
+#, fuzzy
+msgid "refresh token"
+msgstr "refresh token"
+
+#, fuzzy
+msgid "refresh tokens"
+msgstr "refresh tokens"
+
+#, fuzzy
+msgid "Invalid refresh token"
+msgstr "Invalid refresh token"
+
+#, fuzzy
+msgid "Refresh token"
+msgstr "Refresh token"
+
+#, fuzzy
+msgid "Refresh token is expired"
+msgstr "Refresh token is expired"
+
+#, fuzzy
+msgid "origIat field is required"
+msgstr "origIat field is required"
+
+#, fuzzy
+msgid "Refresh has expired"
+msgstr "Refresh has expired"
+
+#, fuzzy
+msgid "Value could not be parsed."
+msgstr "Value could not be parsed."
+
+#, fuzzy
+msgid "use_natural_foreign_keys and key_is_id cannot both be True"
+msgstr "use_natural_foreign_keys and key_is_id cannot both be True"
+
+#, fuzzy
+msgid "Resource"
+msgstr "Resource"
+
+#, fuzzy
+msgid "Format"
+msgstr "Format"
+
+#, fuzzy
+msgid "File to import"
+msgstr "File to import"
+
+#, fuzzy
+msgid "Form is not validated, call `is_valid` first"
+msgstr "Form is not validated, call `is_valid` first"
+
+#, fuzzy
+msgid "Select at least 1 field for \"%(resource_name)s\" to export"
+msgstr "Select at least 1 field for \"%(resource_name)s\" to export"
+
+#, fuzzy
+msgid "%s through import_export"
+msgstr "%s through import_export"
+
+#, fuzzy
+msgid "Import finished: {} new, {} updated, {} deleted and {} skipped {}."
+msgstr "Import finished: {} new, {} updated, {} deleted and {} skipped {}."
+
+#, fuzzy
+msgid "%(exc_name)s encountered while trying to read file. Ensure you have chosen the correct format for the file."
+msgstr "%(exc_name)s encountered while trying to read file. Ensure you have chosen the correct format for the file."
+
+#, fuzzy
+msgid "No valid data to import. Ensure your file has the correct headers or data for import."
+msgstr "No valid data to import. Ensure your file has the correct headers or data for import."
+
+#, fuzzy
+msgid "Import"
+msgstr "Import"
+
+#, fuzzy
+msgid "Export"
+msgstr "Export"
+
+#, fuzzy
+msgid "Export selected %(verbose_name_plural)s"
+msgstr "Export selected %(verbose_name_plural)s"
+
+#, fuzzy
+msgid "call to force_str() on instance failed: %s"
+msgstr "call to force_str() on instance failed: %s"
+
+#, fuzzy
+msgid "The following fields are declared in 'import_id_fields' but are not present in the resource fields: %s"
+msgstr "The following fields are declared in 'import_id_fields' but are not present in the resource fields: %s"
+
+#, fuzzy
+msgid "The following fields are declared in 'import_id_fields' but are not present in the file headers: %s"
+msgstr "The following fields are declared in 'import_id_fields' but are not present in the file headers: %s"
+
+#, fuzzy
+msgid "inactive"
+msgstr "inactive"
+
+#, fuzzy
+msgid "rest-hook"
+msgstr "rest-hook"
+
+#, fuzzy
+msgid "Enrolment Officer"
+msgstr "Enrolment Officer"
+
+#, fuzzy
+msgid "Medical"
+msgstr "Medical"
+
+#, fuzzy
+msgid "Period"
+msgstr "Period"
+
+#, fuzzy
+msgid "Member Count"
+msgstr "Member Count"
+
+#, fuzzy
+msgid "Lumpsum"
+msgstr "Lumpsum"
+
+#, fuzzy
+msgid "Premium Adult"
+msgstr "Premium Adult"
+
+#, fuzzy
+msgid "Premium Child"
+msgstr "Premium Child"
+
+#, fuzzy
+msgid "Registration Lumpsum"
+msgstr "Registration Lumpsum"
+
+#, fuzzy
+msgid "Registration Fee"
+msgstr "Registration Fee"
+
+#, fuzzy
+msgid "General Assembly Lumpsum"
+msgstr "General Assembly Lumpsum"
+
+#, fuzzy
+msgid "General Assembly Fee"
+msgstr "General Assembly Fee"
+
+#, fuzzy
+msgid "InsurancePlan FHIR without code - this field is obligatory"
+msgstr "InsurancePlan FHIR without code - this field is obligatory"
+
+#, fuzzy
+msgid "Insurance Organisation to_imis_obj() not implemented."
+msgstr "Insurance Organisation to_imis_obj() not implemented."
+
+#, fuzzy
+msgid "Administrative"
+msgstr "Administrative"
+
+#, fuzzy
+msgid "Missing the claim admin code"
+msgstr "Missing the claim admin code"
+
+#, fuzzy
+msgid "Claim Administrator"
+msgstr "Claim Administrator"
+
+#, fuzzy
+msgid "Missing patient `birthDate` attribute"
+msgstr "Missing patient `birthDate` attribute"
+
+#, fuzzy
+msgid "Patient can provide at most one general practitioner."
+msgstr "Patient can provide at most one general practitioner."
+
+#, fuzzy
+msgid "FHIR Patient entity without identifier"
+msgstr "FHIR Patient entity without identifier"
+
+#, fuzzy
+msgid "At least one extension with is_head is required"
+msgstr "At least one extension with is_head is required"
+
+#, fuzzy
+msgid "Missing is-head in IMIS object"
+msgstr "Missing is-head in IMIS object"
+
+#, fuzzy
+msgid "Address must be supported"
+msgstr "Address must be supported"
+
+#, fuzzy
+msgid "FHIR Patient without photo data."
+msgstr "FHIR Patient without photo data."
+
+#, fuzzy
+msgid "FHIR Patient misses one of required fields:  contentType, title, creation"
+msgstr "FHIR Patient misses one of required fields:  contentType, title, creation"
+
+#, fuzzy
+msgid "Insuree %(insuree_uuid)s without code"
+msgstr "Insuree %(insuree_uuid)s without code"
+
+#, fuzzy
+msgid "Patient without family address"
+msgstr "Patient without family address"
+
+#, fuzzy
+msgid "Missing fhir patient attribute: name"
+msgstr "Missing fhir patient attribute: name"
+
+#, fuzzy
+msgid "Missing obligatory fields for fhir patient name: family or given"
+msgstr "Missing obligatory fields for fhir patient name: family or given"
+
+#, fuzzy
+msgid "Missing patient family name or given name"
+msgstr "Missing patient family name or given name"
+
+#, fuzzy
+msgid "Claim does not exist"
+msgstr "Claim does not exist"
+
+#, fuzzy
+msgid "about is required"
+msgstr "about is required"
+
+#, fuzzy
+msgid "subject is required"
+msgstr "subject is required"
+
+#, fuzzy
+msgid "Missing or invalid `subject` reference"
+msgstr "Missing or invalid `subject` reference"
+
+#, fuzzy
+msgid "status is required field"
+msgstr "status is required field"
+
+#, fuzzy
+msgid "status value must be = completed"
+msgstr "status value must be = completed"
+
+#, fuzzy
+msgid "payload is required"
+msgstr "payload is required"
+
+#, fuzzy
+msgid "payload must have 5 elements"
+msgstr "payload must have 5 elements"
+
+#, fuzzy
+msgid "payload must support all five elemets: 'CareRendered', 'PaymentAsked', 'DrugPrescribed', 'DrugReceived', 'Asessment'"
+msgstr "payload must support all five elemets: 'CareRendered', 'PaymentAsked', 'DrugPrescribed', 'DrugReceived', 'Asessment'"
+
+#, fuzzy
+msgid "Missing location code"
+msgstr "Missing location code"
+
+#, fuzzy
+msgid "Missing location `name` attribute"
+msgstr "Missing location `name` attribute"
+
+#, fuzzy
+msgid "Missing location level"
+msgstr "Missing location level"
+
+#, fuzzy
+msgid "Missing location `parent id` attribute"
+msgstr "Missing location `parent id` attribute"
+
+#, fuzzy
+msgid "Missing medication `item_code` attribute"
+msgstr "Missing medication `item_code` attribute"
+
+#, fuzzy
+msgid "Missing medication `item_name` attribute"
+msgstr "Missing medication `item_name` attribute"
+
+#, fuzzy
+msgid "Missing medication `form` and `amount` attribute"
+msgstr "Missing medication `form` and `amount` attribute"
+
+#, fuzzy
+msgid "Missing activity definition `serv care type` attribute"
+msgstr "Missing activity definition `serv care type` attribute"
+
+#, fuzzy
+msgid "Medication FHIR without code - this field is obligatory"
+msgstr "Medication FHIR without code - this field is obligatory"
+
+#, fuzzy
+msgid "Informal Sector"
+msgstr "Informal Sector"
+
+#, fuzzy
+msgid "Beneficiary"
+msgstr "Beneficiary"
+
+#, fuzzy
+msgid "Contribution and Others"
+msgstr "Contribution and Others"
+
+#, fuzzy
+msgid "Missing  `period start` attribute"
+msgstr "Missing  `period start` attribute"
+
+#, fuzzy
+msgid "Missing  `period end` attribute"
+msgstr "Missing  `period end` attribute"
+
+#, fuzzy
+msgid "Missing  `period` attribute"
+msgstr "Missing  `period` attribute"
+
+#, fuzzy
+msgid "Missing  `usePeriod start` attribute"
+msgstr "Missing  `usePeriod start` attribute"
+
+#, fuzzy
+msgid "Missing  `usePeriod end` attribute"
+msgstr "Missing  `usePeriod end` attribute"
+
+#, fuzzy
+msgid "Missing  `usePeriod` attribute"
+msgstr "Missing  `usePeriod` attribute"
+
+#, fuzzy
+msgid "Missing  `status` attribute"
+msgstr "Missing  `status` attribute"
+
+#, fuzzy
+msgid "Missing  `author` attribute"
+msgstr "Missing  `author` attribute"
+
+#, fuzzy
+msgid "Missing  `subject` attribute"
+msgstr "Missing  `subject` attribute"
+
+#, fuzzy
+msgid "Missing  `Member details provided belong to a depedant` attribute"
+msgstr "Missing  `Member details provided belong to a depedant` attribute"
+
+#, fuzzy
+msgid "Missing  `Family head provided does not exist` attribute"
+msgstr "Missing  `Family head provided does not exist` attribute"
+
+#, fuzzy
+msgid "Missing  `type` attribute"
+msgstr "Missing  `type` attribute"
+
+#, fuzzy
+msgid "Missing  `signer` attribute"
+msgstr "Missing  `signer` attribute"
+
+#, fuzzy
+msgid "Missing  `Invalid Context reference` attribute"
+msgstr "Missing  `Invalid Context reference` attribute"
+
+#, fuzzy
+msgid "Missing  `context` attribute"
+msgstr "Missing  `context` attribute"
+
+#, fuzzy
+msgid "Missing  `asset` attribute"
+msgstr "Missing  `asset` attribute"
+
+#, fuzzy
+msgid "Missing  `term` attribute"
+msgstr "Missing  `term` attribute"
+
+#, fuzzy
+msgid "Missing  `valuedItem` attribute"
+msgstr "Missing  `valuedItem` attribute"
+
+#, fuzzy
+msgid "Missing  `legalState` attribute"
+msgstr "Missing  `legalState` attribute"
+
+#, fuzzy
+msgid "Missing `member` attribute"
+msgstr "Missing `member` attribute"
+
+#, fuzzy
+msgid "Missing member should not be empty"
+msgstr "Missing member should not be empty"
+
+#, fuzzy
+msgid "Missing `last_name` and `other_names` for IMIS object"
+msgstr "Missing `last_name` and `other_names` for IMIS object"
+
+#, fuzzy
+msgid "FHIR Group entity without identifier"
+msgstr "FHIR Group entity without identifier"
+
+#, fuzzy
+msgid "At least one extension with address is required"
+msgstr "At least one extension with address is required"
+
+#, fuzzy
+msgid "Family Group FHIR without code - this field is obligatory"
+msgstr "Family Group FHIR without code - this field is obligatory"
+
+#, fuzzy
+msgid "Family %(family_uuid)s without code"
+msgstr "Family %(family_uuid)s without code"
+
+#, fuzzy
+msgid "Family %(family_uuid)s without location"
+msgstr "Family %(family_uuid)s without location"
+
+#, fuzzy
+msgid "new Family without location"
+msgstr "new Family without location"
+
+#, fuzzy
+msgid "Invalid activity definition `timingTiming` attribute"
+msgstr "Invalid activity definition `timingTiming` attribute"
+
+#, fuzzy
+msgid "Missing the service code"
+msgstr "Missing the service code"
+
+#, fuzzy
+msgid "Missing activity definition `validity from` attribute"
+msgstr "Missing activity definition `validity from` attribute"
+
+#, fuzzy
+msgid "Missing activity definition `serv code` attribute"
+msgstr "Missing activity definition `serv code` attribute"
+
+#, fuzzy
+msgid "Missing activity definition `serv name` attribute"
+msgstr "Missing activity definition `serv name` attribute"
+
+#, fuzzy
+msgid "Invalid activity definition `use context - age/gender` attribute"
+msgstr "Invalid activity definition `use context - age/gender` attribute"
+
+#, fuzzy
+msgid "Invalid activity definition `use context - workflow` attribute"
+msgstr "Invalid activity definition `use context - workflow` attribute"
+
+#, fuzzy
+msgid "Missing activity definition `use context - venue` attribute"
+msgstr "Missing activity definition `use context - venue` attribute"
+
+#, fuzzy
+msgid "Invalid activity definition `use context - venue` attribute"
+msgstr "Invalid activity definition `use context - venue` attribute"
+
+#, fuzzy
+msgid "Invalid activity definition `topic` attribute"
+msgstr "Invalid activity definition `topic` attribute"
+
+#, fuzzy
+msgid "Missing HF Organization code"
+msgstr "Missing HF Organization code"
+
+#, fuzzy
+msgid "Missing HF Name"
+msgstr "Missing HF Name"
+
+#, fuzzy
+msgid "More than one contact point of system {system} assigned to health facility"
+msgstr "More than one contact point of system {system} assigned to health facility"
+
+#, fuzzy
+msgid "Extension with HF care type not found"
+msgstr "Extension with HF care type not found"
+
+#, fuzzy
+msgid "Invalid HF legal form code, has to be one of %(codes)s"
+msgstr "Invalid HF legal form code, has to be one of %(codes)s"
+
+#, fuzzy
+msgid "Extension with HF legal form not found"
+msgstr "Extension with HF legal form not found"
+
+#, fuzzy
+msgid "PH Organization to_imis_obj() not implemented."
+msgstr "PH Organization to_imis_obj() not implemented."
+
+#, fuzzy
+msgid "Plan"
+msgstr "Plan"
+
+#, fuzzy
+msgid "Missing `created` attribute"
+msgstr "Missing `created` attribute"
+
+#, fuzzy
+msgid "Missing or invalid `identifier` attribute"
+msgstr "Missing or invalid `identifier` attribute"
+
+#, fuzzy
+msgid "Missing or invalid `patient` reference"
+msgstr "Missing or invalid `patient` reference"
+
+#, fuzzy
+msgid "Missing or invalid `provider` reference"
+msgstr "Missing or invalid `provider` reference"
+
+#, fuzzy
+msgid "Missing or invalid 'billable_period' attribute"
+msgstr "Missing or invalid 'billable_period' attribute"
+
+#, fuzzy
+msgid "Missing or invalid `diagnosis` attribute"
+msgstr "Missing or invalid `diagnosis` attribute"
+
+#, fuzzy
+msgid "Missing `total` attribute"
+msgstr "Missing `total` attribute"
+
+#, fuzzy
+msgid "Missing or invalid `enterer` reference"
+msgstr "Missing or invalid `enterer` reference"
+
+#, fuzzy
+msgid "Missing or invalid `type` attribute"
+msgstr "Missing or invalid `type` attribute"
+
+#, fuzzy
+msgid "Unknown supporting info category: `%s`"
+msgstr "Unknown supporting info category: `%s`"
+
+#, fuzzy
+msgid "Unknown item category: `%s`"
+msgstr "Unknown item category: `%s`"
+
+#, fuzzy
+msgid "Missing location physical type"
+msgstr "Missing location physical type"
+
+#, fuzzy
+msgid "Invalid location physical type with code %(code), allowed codes are: %(types)"
+msgstr "Invalid location physical type with code %(code), allowed codes are: %(types)"
+
+#, fuzzy
+msgid "No matching location for district {address.district}, state {address.state}."
+msgstr "No matching location for district {address.district}, state {address.state}."
+
+#, fuzzy
+msgid "More than one matching location district {address.district}, state {address.state}:\n"
+msgstr "More than one matching location district {address.district}, state {address.state}:\n"
+
+#, fuzzy
+msgid "Invalid Location's partOf.reference"
+msgstr "Invalid Location's partOf.reference"
+
+#, fuzzy
+msgid "Code identifier has to be present in FHIR Location identifiers, \nidentifiers are: %(identifiers)"
+msgstr "Code identifier has to be present in FHIR Location identifiers, \nidentifiers are: %(identifiers)"
+
+#, fuzzy
+msgid "Location  %(location_uuid)s without name"
+msgstr "Location  %(location_uuid)s without name"
+
+#, fuzzy
+msgid "Invalid Location's type %(type) for location %(location), supported types are: %(types)"
+msgstr "Invalid Location's type %(type) for location %(location), supported types are: %(types)"
+
+#, fuzzy
+msgid "Invalid format for Location's partOf identifier."
+msgstr "Invalid format for Location's partOf identifier."
+
+#, fuzzy
+msgid "Missing Practitioner for id {}"
+msgstr "Missing Practitioner for id {}"
+
+#, fuzzy
+msgid "complete"
+msgstr "complete"
+
+#, fuzzy
+msgid "queued"
+msgstr "queued"
+
+#, fuzzy
+msgid "partial"
+msgstr "partial"
+
+#, fuzzy
+msgid "Emergency"
+msgstr "Emergency"
+
+#, fuzzy
+msgid "Referrals"
+msgstr "Referrals"
+
+#, fuzzy
+msgid "Other"
+msgstr "Other"
+
+#, fuzzy
+msgid "REJECTED BY AI EVALUATION"
+msgstr "REJECTED BY AI EVALUATION"
+
+#, fuzzy
+msgid "REJECTED BY MEDICAL OFFICER"
+msgstr "REJECTED BY MEDICAL OFFICER"
+
+#, fuzzy
+msgid "INVALID ITEM OR SERVICE"
+msgstr "INVALID ITEM OR SERVICE"
+
+#, fuzzy
+msgid "NOT IN PRICE LIST"
+msgstr "NOT IN PRICE LIST"
+
+#, fuzzy
+msgid "NO PRODUCT FOUND"
+msgstr "NO PRODUCT FOUND"
+
+#, fuzzy
+msgid "CATEGORY LIMITATION"
+msgstr "CATEGORY LIMITATION"
+
+#, fuzzy
+msgid "FREQUENCY FAILURE"
+msgstr "FREQUENCY FAILURE"
+
+#, fuzzy
+msgid "DUPLICATED"
+msgstr "DUPLICATED"
+
+#, fuzzy
+msgid "FAMILY"
+msgstr "FAMILY"
+
+#, fuzzy
+msgid "DIAGNOSIS NOT IN LIST"
+msgstr "DIAGNOSIS NOT IN LIST"
+
+#, fuzzy
+msgid "TARGET DATE"
+msgstr "TARGET DATE"
+
+#, fuzzy
+msgid "CARE TYPE"
+msgstr "CARE TYPE"
+
+#, fuzzy
+msgid "MAX HOSPITAL ADMISSIONS"
+msgstr "MAX HOSPITAL ADMISSIONS"
+
+#, fuzzy
+msgid "MAX VISITS"
+msgstr "MAX VISITS"
+
+#, fuzzy
+msgid "MAX CONSULTATIONS"
+msgstr "MAX CONSULTATIONS"
+
+#, fuzzy
+msgid "MAX SURGERIES"
+msgstr "MAX SURGERIES"
+
+#, fuzzy
+msgid "MAX DELIVERIES"
+msgstr "MAX DELIVERIES"
+
+#, fuzzy
+msgid "QTY OVER LIMIT"
+msgstr "QTY OVER LIMIT"
+
+#, fuzzy
+msgid "WAITING PERIOD FAIL"
+msgstr "WAITING PERIOD FAIL"
+
+#, fuzzy
+msgid "MAX ANTENATAL"
+msgstr "MAX ANTENATAL"
+
+#, fuzzy
+msgid "Policy"
+msgstr "Policy"
+
+#, fuzzy
+msgid "Contribution"
+msgstr "Contribution"
+
+#, fuzzy
+msgid "Contract"
+msgstr "Contract"
+
+#, fuzzy
+msgid "Claim"
+msgstr "Claim"
+
+#, fuzzy
+msgid "Commission"
+msgstr "Commission"
+
+#, fuzzy
+msgid "Claim batch payment"
+msgstr "Claim batch payment"
+
+#, fuzzy
+msgid "Fees"
+msgstr "Fees"
+
+#, fuzzy
+msgid "Bank transfer"
+msgstr "Bank transfer"
+
+#, fuzzy
+msgid "Cash"
+msgstr "Cash"
+
+#, fuzzy
+msgid "Mobile phone"
+msgstr "Mobile phone"
+
+#, fuzzy
+msgid "Funding"
+msgstr "Funding"
+
+#, fuzzy
+msgid "Missing extensions for Address"
+msgstr "Missing extensions for Address"
+
+#, fuzzy
+msgid "INCORRECT_CREDENTIALS"
+msgstr "INCORRECT_CREDENTIALS"
+
+#, fuzzy
+msgid "The request cannot be processed due to the following issues:\nMissing medication `item_code` attribute"
+msgstr "The request cannot be processed due to the following issues:\nMissing medication `item_code` attribute"
+
+#, fuzzy
+msgid "The request cannot be processed due to the following issues:\nMissing medication `item_name` attribute"
+msgstr "The request cannot be processed due to the following issues:\nMissing medication `item_name` attribute"
+
+#, fuzzy
+msgid "The request cannot be processed due to the following issues:\nBad value in paymentStatus, should be either 'active', 'cancelled', draft', 'entered-in-error',\nBad value in paymentStatus, should be either 'active', 'cancelled', draft', 'entered-in-error'"
+msgstr "The request cannot be processed due to the following issues:\nBad value in paymentStatus, should be either 'active', 'cancelled', draft', 'entered-in-error',\nBad value in paymentStatus, should be either 'active', 'cancelled', draft', 'entered-in-error'"
+
+#, fuzzy
+msgid "The request cannot be processed due to the following issues:\nBad value in paymentStatus, should be either 'paid' or 'cleared'"
+msgstr "The request cannot be processed due to the following issues:\nBad value in paymentStatus, should be either 'paid' or 'cleared'"
+
+#, fuzzy
+msgid "The request cannot be processed due to the following issues:\nBad value in type in request, should be either 'bill' or 'invoice'"
+msgstr "The request cannot be processed due to the following issues:\nBad value in type in request, should be either 'bill' or 'invoice'"
+
+#, fuzzy
+msgid "The request cannot be processed due to the following issues:\n"
+msgstr "The request cannot be processed due to the following issues:\n"
+
+#, fuzzy
+msgid "The attribute named '{}' is not a valid property for '{}'."
+msgstr "The attribute named '{}' is not a valid property for '{}'."
+
+#, fuzzy
+msgid "The max size was exceeded for property {} [{}..{}]"
+msgstr "The max size was exceeded for property {} [{}..{}]"
+
+#, fuzzy
+msgid "Expected '{}' but got '{}' for '{}' property"
+msgstr "Expected '{}' but got '{}' for '{}' property"
+
+#, fuzzy
+msgid "The format '{}' is not supported"
+msgstr "The format '{}' is not supported"
+
+#, fuzzy
+msgid "no %s found, it is mandatory for this claim to bill converter"
+msgstr "no %s found, it is mandatory for this claim to bill converter"
+
+#, fuzzy
+msgid "REJECTEDPOSTED_3"
+msgstr "REJECTEDPOSTED_3"
+
+#, fuzzy
+msgid "REJECTEDPOSTED_2"
+msgstr "REJECTEDPOSTED_2"
+
+#, fuzzy
+msgid "REJECTEDPOSTED_1"
+msgstr "REJECTEDPOSTED_1"
+
+#, fuzzy
+msgid "NOTYETCONFIRMED"
+msgstr "NOTYETCONFIRMED"
+
+#, fuzzy
+msgid "POSTED"
+msgstr "POSTED"
+
+#, fuzzy
+msgid "ASSIGNED"
+msgstr "ASSIGNED"
+
+#, fuzzy
+msgid "UNMATCHED"
+msgstr "UNMATCHED"
+
+#, fuzzy
+msgid "PAYMENTMATCHED"
+msgstr "PAYMENTMATCHED"
+
+#, fuzzy
+msgid "GRANDSON"
+msgstr "GRANDSON"
+
+#, fuzzy
+msgid "GRANDDAUGHTER"
+msgstr "GRANDDAUGHTER"
+
+#, fuzzy
+msgid "SISTER"
+msgstr "SISTER"
+
+#, fuzzy
+msgid "BROTHER"
+msgstr "BROTHER"
+
+#, fuzzy
+msgid "OTHER RELATIVE"
+msgstr "OTHER RELATIVE"
+
+#, fuzzy
+msgid "NOT RELATED"
+msgstr "NOT RELATED"
+
+#, fuzzy
+msgid "Invalid file type. Allowed: .csv, .xls, .xlsx"
+msgstr "Invalid file type. Allowed: .csv, .xls, .xlsx"
+
+#, fuzzy
+msgid "Could not determine file type"
+msgstr "Could not determine file type"
+
+#, fuzzy
+msgid "Invalid MIME type:"
+msgstr "Invalid MIME type:"
+
+#, fuzzy
+msgid "mutation.code_already_taken"
+msgstr "mutation.code_already_taken"
+
+#, fuzzy
+msgid "report.mutation.failed_to_override_report"
+msgstr "report.mutation.failed_to_override_report"
+
+#, fuzzy
+msgid "Such User does not exist"
+msgstr "Such User does not exist"
+
+#, fuzzy
+msgid "policy_renewal.mutation.failed_to_delete_policy_renewal"
+msgstr "policy_renewal.mutation.failed_to_delete_policy_renewal"
+
+#, fuzzy
+msgid "policy.mutation.policy_is_used_in_claims"
+msgstr "policy.mutation.policy_is_used_in_claims"
+
+#, fuzzy
+msgid "validations.TicketValidation.validate_resolution.invalid_format"
+msgstr "validations.TicketValidation.validate_resolution.invalid_format"
+
+#, fuzzy
+msgid "validations.TicketValidation.validate_resolution.invalid_day_value"
+msgstr "validations.TicketValidation.validate_resolution.invalid_day_value"
+
+#, fuzzy
+msgid "validations.TicketValidation.validate_resolution.invalid_hour_value"
+msgstr "validations.TicketValidation.validate_resolution.invalid_hour_value"
+
+#, fuzzy
+msgid "Amount payed for invoice %(invoice)s is not matching amount total. Expected: %(expected).2f, Payed: %(payed).2f"
+msgstr "Amount payed for invoice %(invoice)s is not matching amount total. Expected: %(expected).2f, Payed: %(payed).2f"
+
+#, fuzzy
+msgid "Not all invoice line items for invoice %(invoice)s have a amount total attached. It's not possible to validate payment. "
+msgstr "Not all invoice line items for invoice %(invoice)s have a amount total attached. It's not possible to validate payment. "
+
+#, fuzzy
+msgid "Invalid tax_analysis format, 'total' and 'lines' keys are required."
+msgstr "Invalid tax_analysis format, 'total' and 'lines' keys are required."
+
+#, fuzzy
+msgid "tax_analysis.lines is not in list format."
+msgstr "tax_analysis.lines is not in list format."
+
+#, fuzzy
+msgid "tax_analysis.lines content is not a dict."
+msgstr "tax_analysis.lines content is not a dict."
+
+#, fuzzy
+msgid "Payment for invoice %(invoice)s can't be made. Invoice has to be in status[%(allowed_invoice)s]. Invoice status is %(invoice_status)s."
+msgstr "Payment for invoice %(invoice)s can't be made. Invoice has to be in status[%(allowed_invoice)s]. Invoice status is %(invoice_status)s."
+
+#, fuzzy
+msgid "It's not possible to set payment status to %(payment_status)s during payment. Allowed statuses are %(allowed_payment)s."
+msgstr "It's not possible to set payment status to %(payment_status)s during payment. Allowed statuses are %(allowed_payment)s."
+
+#, fuzzy
+msgid "Invoice %(invoice)s can't be refunded. Invoice has to be in PAYED status, currently it's %(invoice_status)s."
+msgstr "Invoice %(invoice)s can't be refunded. Invoice has to be in PAYED status, currently it's %(invoice_status)s."
+
+#, fuzzy
+msgid "It's not possible to refund payment %(payment)s, as it's in %(payment_status) status. Only ACCEPTED payments can be refunded."
+msgstr "It's not possible to refund payment %(payment)s, as it's in %(payment_status) status. Only ACCEPTED payments can be refunded."
+
+#, fuzzy
+msgid "Invoice %(invoice)s can't be canceled. Invoice has to be in PAYED status, currently it's %(invoice_status)s."
+msgstr "Invoice %(invoice)s can't be canceled. Invoice has to be in PAYED status, currently it's %(invoice_status)s."
+
+#, fuzzy
+msgid "It's not possible to cancel payment %(payment)s, only ACCEPTED payments can be canceled."
+msgstr "It's not possible to cancel payment %(payment)s, only ACCEPTED payments can be canceled."
+
+#, fuzzy
+msgid "Amount payed for payment_invoice %(payment_invoice)s is not matching amount total. Expected: %(expected).2f, Payed: %(payed).2f"
+msgstr "Amount payed for payment_invoice %(payment_invoice)s is not matching amount total. Expected: %(expected).2f, Payed: %(payed).2f"
+
+#, fuzzy
+msgid "Not all payment_invoice line items for payment_invoice %(payment_invoice)s have a amount total attached. It's not possible to validate payment. "
+msgstr "Not all payment_invoice line items for payment_invoice %(payment_invoice)s have a amount total attached. It's not possible to validate payment. "
+
+#, fuzzy
+msgid "draft"
+msgstr "draft"
+
+#, fuzzy
+msgid "validated"
+msgstr "validated"
+
+#, fuzzy
+msgid "paid"
+msgstr "paid"
+
+#, fuzzy
+msgid "cancelled"
+msgstr "cancelled"
+
+#, fuzzy
+msgid "deleted"
+msgstr "deleted"
+
+#, fuzzy
+msgid "suspended"
+msgstr "suspended"
+
+#, fuzzy
+msgid "unpaid"
+msgstr "unpaid"
+
+#, fuzzy
+msgid "reconciliated"
+msgstr "reconciliated"
+
+#, fuzzy
+msgid "rejected"
+msgstr "rejected"
+
+#, fuzzy
+msgid "accepted"
+msgstr "accepted"
+
+#, fuzzy
+msgid "refunded"
+msgstr "refunded"
+
+#, fuzzy
+msgid "message"
+msgstr "message"
+
+#, fuzzy
+msgid "status"
+msgstr "status"
+
+#, fuzzy
+msgid "payment"
+msgstr "payment"
+
+#, fuzzy
+msgid "payment_error"
+msgstr "payment_error"
+
+#, fuzzy
+msgid "not reconciliated"
+msgstr "not reconciliated"
+
+#, fuzzy
+msgid "User is not creator of invoice events: %(events)s, events can't be deleted."
+msgstr "User is not creator of invoice events: %(events)s, events can't be deleted."
+
+#, fuzzy
+msgid "User is not creator of bill events: %(events)s, events can't be deleted."
+msgstr "User is not creator of bill events: %(events)s, events can't be deleted."
+
+#, fuzzy
+msgid "mutation.restored_from_does_not_exist"
+msgstr "mutation.restored_from_does_not_exist"
+
+#, fuzzy
+msgid "mutation.cannot_restore_not_rejected_claim"
+msgstr "mutation.cannot_restore_not_rejected_claim"
+
+#, fuzzy
+msgid "mutation.no_restore_rights"
+msgstr "mutation.no_restore_rights"
+
+#, fuzzy
+msgid "mutation.max_restored_claim"
+msgstr "mutation.max_restored_claim"
+
+#, fuzzy
+msgid "mutation.claim_not_editable"
+msgstr "mutation.claim_not_editable"
+
+#, fuzzy
+msgid "mutation.claim_too_many_additional_diagnoses"
+msgstr "mutation.claim_too_many_additional_diagnoses"
+
+#, fuzzy
+msgid "mutation.service_explanation_required"
+msgstr "mutation.service_explanation_required"
+
+#, fuzzy
+msgid "mutation.code_name_too_long"
+msgstr "mutation.code_name_too_long"
+
+#, fuzzy
+msgid "claim.validation.family.no_policy"
+msgstr "claim.validation.family.no_policy"
+
+msgid "mutation.claim_item_service_maximum_amount_overshoot"
+msgstr "mutation claim: item or service maximum amount overshoot"
+
+msgid "mutation.attachment_url_domain_not_allowed"
+msgstr "mutation attachment: domain URL not allowed"
+
+msgid "mutation.attachment_general_type_incorrect"
+msgstr "mutation attachment: general type incorrect"
+
+msgid "claim.validation.claim_uuid_not_found"
+msgstr "claim validation: claim uuid not found"
+
+#, fuzzy
+msgid "error"
+msgstr "error"
+
+#, fuzzy
+msgid "Contract code %s already exists"
+msgstr "Contract code %s already exists"
+
+#, fuzzy
+msgid "contract.mandatory_fields.date_valid"
+msgstr "contract.mandatory_fields.date_valid"
+
+#, fuzzy
+msgid "contract.validation.date_valid"
+msgstr "contract.validation.date_valid"
+
+#, fuzzy
+msgid "contract valuation failed %s"
+msgstr "contract valuation failed %s"
+
+#, fuzzy
+msgid "create contract status %s"
+msgstr "create contract status %s"
+
+#, fuzzy
+msgid "That fields are not editable in that permission!"
+msgstr "That fields are not editable in that permission!"
+
+#, fuzzy
+msgid "contract.validation.locked_by_state"
+msgstr "contract.validation.locked_by_state"
+
+#, fuzzy
+msgid "You cannot update already set PolicyHolder in Contract!"
+msgstr "You cannot update already set PolicyHolder in Contract!"
+
+#, fuzzy
+msgid "update contract status %s"
+msgstr "update contract status %s"
+
+#, fuzzy
+msgid "No contract found for this id %s"
+msgstr "No contract found for this id %s"
+
+#, fuzzy
+msgid "Unable to valuate contract: %s"
+msgstr "Unable to valuate contract: %s"
+
+#, fuzzy
+msgid "The contract does not contain PolicyHolder!"
+msgstr "The contract does not contain PolicyHolder!"
+
+#, fuzzy
+msgid "contract.validation.no_details"
+msgstr "contract.validation.no_details"
+
+#, fuzzy
+msgid "The contract cannot be submitted because of current state!"
+msgstr "The contract cannot be submitted because of current state!"
+
+#, fuzzy
+msgid "The contract has been already submitted!"
+msgstr "The contract has been already submitted!"
+
+#, fuzzy
+msgid "You cannot approve this contract! The status of contract is not Negotiable!"
+msgstr "You cannot approve this contract! The status of contract is not Negotiable!"
+
+#, fuzzy
+msgid "You cannot counter this contract! The status of contract is not Negotiable!"
+msgstr "You cannot counter this contract! The status of contract is not Negotiable!"
+
+#, fuzzy
+msgid "You cannot amend this contract!"
+msgstr "You cannot amend this contract!"
+
+#, fuzzy
+msgid "You cannot update this field during amend contract!"
+msgstr "You cannot update this field during amend contract!"
+
+#, fuzzy
+msgid "You cannot renew this contract!"
+msgstr "You cannot renew this contract!"
+
+#, fuzzy
+msgid "Contract in that state cannot be deleted"
+msgstr "Contract in that state cannot be deleted"
+
+#, fuzzy
+msgid "No contracts to terminate!"
+msgstr "No contracts to terminate!"
+
+#, fuzzy
+msgid "We do not have any contract to be terminated!"
+msgstr "We do not have any contract to be terminated!"
+
+#, fuzzy
+msgid "You cannot update contract by adding insuree - contract not in updatable state!"
+msgstr "You cannot update contract by adding insuree - contract not in updatable state!"
+
+#, fuzzy
+msgid "You cannot insuree - is deleted or not enough data to create contract!"
+msgstr "You cannot insuree - is deleted or not enough data to create contract!"
+
+#, fuzzy
+msgid "unathorized"
+msgstr "unathorized"
+
+msgid "ticket.mutation.failed_to_attach_document"
+msgstr "ticket mutation failed to attach document"
+
+#, fuzzy
+msgid "Filter funding by UUID"
+msgstr "Filter funding by UUID"
+
+#, fuzzy
+msgid "Filter payers with or below a given location ID"
+msgstr "Filter payers with or below a given location ID"
+
+#, fuzzy
+msgid "Filter payers with or below a given payer type code"
+msgstr "Filter payers with or below a given payer type code"
+
+#, fuzzy
+msgid "PAID"
+msgstr "PAID"
+
+#, fuzzy
+msgid "AWAITING_FOR_RECONCILIATION"
+msgstr "AWAITING_FOR_RECONCILIATION"
+
+#, fuzzy
+msgid "RECONCILIATED"
+msgstr "RECONCILIATED"
+
+#, fuzzy
+msgid "Search in `name`, `phone` & `email`"
+msgstr "Search in `name`, `phone` & `email`"
+
+#, fuzzy
+msgid "Cannot update historical values"
+msgstr "Cannot update historical values"
+
+#, fuzzy
+msgid "payer.mutation.failed_to_create_payer"
+msgstr "payer.mutation.failed_to_create_payer"
+
+#, fuzzy
+msgid "payer.mutation.failed_to_update_payer"
+msgstr "payer.mutation.failed_to_update_payer"
+
+msgid "payer.validation.id_does_not_exist"
+msgstr "payer validation:  id does not exist"
+
+msgid "payer.mutation.failed_to_delete_payer"
+msgstr "failed to delete payer"
+
+msgid "payer.mutation.failed_to_add_funding"
+msgstr "Failed to add funding"

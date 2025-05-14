@@ -27,7 +27,7 @@ class Command(BaseCommand):
         base_path = Path(settings.BASE_DIR)
         modules_directory = base_path.parent.parent
         if not Path(modules_directory).joinpath('openimis-fe_js').exists():
-            raise Exception("Main assembly frontend module not presented locally")
+            print("Main assembly frontend module not presented locally")
 
         extracted_translations = self.__create_translation_folder(modules_directory)
 

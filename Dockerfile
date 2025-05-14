@@ -9,10 +9,10 @@ RUN apt-get -y install git
 RUN test "$DB_DEFAULT" != "postgresql" && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - || :
 RUN test "$DB_DEFAULT" != "postgresql" && curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list || :
 RUN test "$DB_DEFAULT" != "postgresql" && apt-get update || :
-RUN test "$DB_DEFAULT" != "postgresql" && ACCEPT_EULA=Y apt-get install -y msodbcsql17 mssql-tools || :
+RUN test "$DB_DEFAULT" != "postgresql" && ACCEPT_EULA=Y apt-get install -y msodbcsql17 mssql-tools18 || :
 
 RUN pip install --upgrade pip
-RUN test "$DB_DEFAULT" != "postgresql" && pip install mssql-cli || :
+#RUN test "$DB_DEFAULT" != "postgresql" && pip install mssql-cli || :
 
 RUN pip install gunicorn
 

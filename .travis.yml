@@ -26,8 +26,8 @@ before_install:
 - sudo apt-get install -y apt-transport-https ca-certificates
 # Necessary for some pip modules
 - sudo apt-get install -y rustc cargo
-- ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 odbcinst mssql-tools mssql-cli
-- sudo ln -s /opt/mssql-tools/bin/sqlcmd /usr/bin/sqlcmd
+- ACCEPT_EULA=Y sudo apt-get install -y msodbcsql17 odbcinst mssql-tools18 mssql-cli
+- sudo ln -s /opt/mssql-tools18/bin/sqlcmd /usr/bin/sqlcmd
 - sudo apt-get install -y python3-dev unixodbc-dev
 - "./script/launch-mssql-in-docker.sh -p $DB_PASSWORD"
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64

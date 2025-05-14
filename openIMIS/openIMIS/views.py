@@ -1,5 +1,5 @@
 from django.db import connection, transaction
-from django.http import HttpResponseNotAllowed
+from django.http import HttpResponseNotAllowed, HttpResponse
 from django.http.response import HttpResponseBadRequest
 from .dataloaders import get_dataloaders
 from . import tracer
@@ -46,6 +46,7 @@ class GraphQLView(BaseGraphQLView):
                 response["errors"] = [
                     self.format_error(e) for e in execution_result.errors
                 ]
+                # status_code = 500 per spec GQL must return 200 even for error
 
             if execution_result.invalid:
                 status_code = 400
@@ -85,6 +86,11 @@ class GraphQLView(BaseGraphQLView):
     def execute_graphql_request(
         self, request, data, query, variables, operation_name, show_graphiql=False
     ):
+        if not request or getattr(request, "content_type", "") != "application/json":
+            raise HttpError(HttpResponse(
+                "Unsupported Media Type: The server only accepts application/json requests.",
+                status=415,
+            ))
         if not query:
             if show_graphiql:
                 return None
