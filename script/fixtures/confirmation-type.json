@@ -1,0 +1,46 @@
+[
+    {
+        "model": "insuree.confirmationtype",
+        "pk": "A",
+        "fields": {
+            "code": "A",
+            "confirmationtype": "Local council",
+            "alt_language": "Conseil local",
+            "sort_order": null,
+            "is_confirmation_number_required": false
+        }
+    },
+    {
+        "model": "insuree.confirmationtype",
+        "pk": "B",
+        "fields": {
+            "code": "B",
+            "confirmationtype": "Municipality",
+            "alt_language": "Municipalité",
+            "sort_order": null,
+            "is_confirmation_number_required": false
+        }
+    },
+    {
+        "model": "insuree.confirmationtype",
+        "pk": "C",
+        "fields": {
+            "code": "C",
+            "confirmationtype": "State",
+            "alt_language": "Etat",
+            "sort_order": null,
+            "is_confirmation_number_required": false
+        }
+    },
+    {
+        "model": "insuree.confirmationtype",
+        "pk": "D",
+        "fields": {
+            "code": "D",
+            "confirmationtype": "Other",
+            "alt_language": "Autre",
+            "sort_order": null,
+            "is_confirmation_number_required": false
+        }
+    }
+]
