@@ -476,3 +476,31 @@ You can find more informations about seeting up db docker [here](https://github.
 
 If you face another issues not described in that section you could use our [ticketing site](https://openimis.atlassian.net/servicedesk/customer/portal/1).
 Here you can report any bugs/problems you faced during setting up openIMIS app.
+
+## Django Fixtures Guide
+
+This directory includes JSON fixtures used to populate Django models such as:
+
+- `Control`
+- `HealthFacilitySubLevel`
+- `HealthFacilityLegalForm`
+
+### 🔧 Loading Fixtures via Django
+
+To load a fixture manually, use the `loaddata` management command:
+```bash
+python manage.py loaddata control_fixture.json
+
+python manage.py loaddata healthfacilitysublevel_fixture.json
+
+python manage.py loaddata healthfacilitylegalform_fixture.json
+```
+
+Make sure the `"model"` field in each fixture JSON correctly reflects the app and model names (e.g., `"yourapp.control"`).
+
+### 📁 Adding Fixtures to `scripts/fixture/`
+
+If you want your fixture to be automatically used in a setup or deployment pipeline:
+
+1. Add your JSON file into the `scripts/fixture/` directory.
+2. Modify the relevant script or loader that applies fixtures during setup (e.g., a shell script, Python management command, or CI/CD step).
