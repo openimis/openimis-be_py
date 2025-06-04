@@ -479,7 +479,7 @@ Here you can report any bugs/problems you faced during setting up openIMIS app.
 
 ## Django Fixtures Guide
 
-This directory includes JSON fixtures used to populate Django models such as:
+This directory (under `script/fixture`) includes JSON fixtures used to populate Django models such as:
 
 - `Control`
 - `HealthFacilitySubLevel`
