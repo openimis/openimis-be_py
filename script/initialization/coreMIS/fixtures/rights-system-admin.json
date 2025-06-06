@@ -1,0 +1,652 @@
+[
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "953002",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "953001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "153001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "153003",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "172002",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "172001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127005",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127003",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127004",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127000",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127006",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127002",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180002",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159002",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180004",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159004",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159005",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180003",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159003",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "199001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "199003",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200002",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200004",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200003",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "201002",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "201004",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "201001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "201003",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "202002",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "206002",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "202004",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "202001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "206001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160005",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "170002",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160002",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171002",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "170004",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160004",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171004",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "170001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171001",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "170003",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160003",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171003",
+        "audit_user_id": null,
+        "role": [
+          "System Administrator"
+        ]
+      }
+    }
+]
