@@ -7,10 +7,15 @@ from github import Github  # pip install pyGithub
 import sys
 from all_requirements import install_modules
 ref_assembly = BRANCH#"develop"
-
+MODE = None
+if len(sys.argv) > 1:
+    MODE = sys.argv[1]
 
 def main():
-    g = Github(GITHUB_TOKEN)
+    if GITHUB_TOKEN:
+        g = Github(GITHUB_TOKEN)
+    else: # Anonymous
+        g = Github()
     # assembly_fe='openimis/openimis-fe_js'
     assembly_be = "openimis/openimis-be_py"
     # refresh openimis.json from git
@@ -28,11 +33,20 @@ def main():
 
 
 
+def get_remote(repo, mode = None):
+    if mode == 'ssh':
+        remote = f"git@github.com:openimis/openimis-be_py.git"
+    elif GITHUB_TOKEN:
+        remote = f"https://{USER_NAME}:{GITHUB_TOKEN}@{repo.git_url[6:]}"
+    else:
+        remote = f"https://{repo.git_url[6:]}"
+    return remote
 
 def clone_repo(repo, module_name, ref='develop'):
-    src_path = os.path.abspath("../src/")
+    src_path = os.path.abspath("../../")
     path = os.path.join(src_path, module_name)
-    remote = f"https://{USER_NAME}:{GITHUB_TOKEN}@{repo.git_url[6:]}"
+    remote = get_remote(repo, MODE)
+
     if os.path.exists(path):
         repo_git = git.Repo(path)
         try:

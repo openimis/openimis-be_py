@@ -1,7 +1,8 @@
 import re
 
 def parse_pip(pip_str):
-    if "https://github.com" in pip_str:
+    match = re.search(r'github.com/(.+).git', pip_str )
+    if match:
         match = re.search(r'github.com/(.+).git', pip_str )
         return match.group(1)
     else:
@@ -9,8 +10,8 @@ def parse_pip(pip_str):
 
      
 def parse_pip_branch(pip_str):
-    if "https://github.com" in pip_str:
-        match = re.search(r'github.com/.+.git@([\w_\-\/\.]+).*',pip_str )
+    match = re.search(r'github.com/.+.git@([\w_\-\/\.]+).*',pip_str )
+    if match:
         return match.group(1)
     else:
         print("Error branch not found")
@@ -18,11 +19,13 @@ def parse_pip_branch(pip_str):
 
   
 def parse_npm(npm_str):
-    if "https://github.com" in npm_str:
-        match = re.search(r'github.com/(.+).git',npm_str )
+    match = re.search(r'github.com/(.+).git',npm_str )
+    if match:
         return match.group(1)
     else:
         match = re.search(r'@openimis/(.+)@',npm_str )
+        if match:
+            return match.group(1)
     
     
 def walk_config_be(g,be, callback):
