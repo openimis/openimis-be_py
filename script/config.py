@@ -1,0 +1,3 @@
+GITHUB_TOKEN=""
+USER_NAME=""
+BRANCH="develop"
