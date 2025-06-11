@@ -1,0 +1,199 @@
+[
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "fe17fee9-a501-48c2-966e-091b765f3718",
+        "name": "Enrolment Officer",
+        "alt_language": null,
+        "is_system": 1,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2019-05-10T05:08:23.167Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "10824c66-f7dc-4eb7-a4c9-481f514e35ac",
+        "name": "Manager",
+        "alt_language": null,
+        "is_system": 2,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2019-05-10T05:08:23.173Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "496d7cdc-16d2-4d36-ae35-313a5795158b",
+        "name": "Accountant",
+        "alt_language": null,
+        "is_system": 4,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2019-05-10T05:08:23.180Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "caa6fe3c-b59d-4b2f-b9e6-9df6ef35f7de",
+        "name": "Clerk",
+        "alt_language": null,
+        "is_system": 8,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2019-05-10T05:08:23.180Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "47b0f22f-29f6-41f7-b17e-469aae76e7d3",
+        "name": "Medical Officer",
+        "alt_language": null,
+        "is_system": 16,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2019-05-10T05:08:23.183Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "335a2380-211b-44dc-bb69-7ad6c4de7dce",
+        "name": "Scheme Administrator",
+        "alt_language": null,
+        "is_system": 32,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2019-05-10T05:08:23.187Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "e794c4ab-3554-4f14-98c4-a5c72d6c3e9a",
+        "name": "IMIS Administrator",
+        "alt_language": null,
+        "is_system": 64,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2019-05-10T05:08:23.190Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "f9725efc-a649-4af9-962b-003d24d4e863",
+        "name": "Receptionist",
+        "alt_language": null,
+        "is_system": 128,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2019-05-10T05:08:23.193Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "20f7fc37-c0c3-427c-8241-04af84fcf876",
+        "name": "Claim Administrator",
+        "alt_language": null,
+        "is_system": 256,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2019-05-10T05:08:23.200Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "577f654d-4ace-49fe-9abd-0e6d1ca2c95f",
+        "name": "Claim Contributor",
+        "alt_language": null,
+        "is_system": 512,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2019-05-10T05:08:23.200Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "b5a31366-35a1-466d-b814-213ca76adf30",
+        "name": "HF Administrator",
+        "alt_language": null,
+        "is_system": 524288,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2019-05-10T05:08:23.207Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "009436c3-6066-4c34-a96f-cee3b4aa7329",
+        "name": "Offline Administrator",
+        "alt_language": null,
+        "is_system": 1048576,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2019-05-10T05:08:23.210Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "491294bf-dc84-41be-8c8e-f5a018f82b84",
+        "name": "Schema Admin",
+        "alt_language": null,
+        "is_system": 4194304,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2024-09-13T14:05:06.810Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "8c672edd-a955-489f-8c62-2ec7c7f9eb83",
+        "name": "Task Triage",
+        "alt_language": null,
+        "is_system": 2097152,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2024-09-13T14:05:13.496Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    }
+  ]
+  

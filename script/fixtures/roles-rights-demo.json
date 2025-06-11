@@ -1,0 +1,4709 @@
+[
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101001",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101002",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101003",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101004",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101101",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101102",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101103",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101104",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101105",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101201",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101202",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101203",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101204",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101205",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101301",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101302",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101303",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.460Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101304",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101105",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121001",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121002",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121003",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121004",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121005",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121101",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121102",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121103",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121104",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121201",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121202",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121203",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121204",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121205",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121301",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121302",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121303",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121304",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121305",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121401",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121402",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121403",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121404",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "122101",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "122102",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "122103",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "122104",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121501",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121502",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121503",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121504",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121601",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121602",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121603",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121604",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121801",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121802",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121803",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121804",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131001",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131002",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131003",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131004",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131101",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131102",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131103",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131104",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131105",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131106",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.550Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131209",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101105",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121701",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121702",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121703",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121704",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121901",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121902",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121903",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121904",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121905",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131005",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131006",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131207",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131301",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131302",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131303",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131304",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "122000",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "122001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "122002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "122003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "122004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.683Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "122005",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101001",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101101",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101105",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101201",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101301",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101401",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101402",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101403",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101404",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "111101",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "111102",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "111103",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131204",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131205",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131206",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131210",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131211",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131212",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131213",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131214",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131215",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131216",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131217",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131218",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131219",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131220",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131221",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131222",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.767Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131401",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101001",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101002",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101003",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101004",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101101",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101102",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101103",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101104",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101105",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101201",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101202",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101203",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101204",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101205",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101301",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101302",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101303",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.903Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101304",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.950Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131201",
+        "audit_user_id": null,
+        "role": [
+          "Manager"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.950Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131202",
+        "audit_user_id": null,
+        "role": [
+          "Manager"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.950Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131203",
+        "audit_user_id": null,
+        "role": [
+          "Manager"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.950Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131208",
+        "audit_user_id": null,
+        "role": [
+          "Manager"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.950Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101105",
+        "audit_user_id": null,
+        "role": [
+          "Manager"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.980Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "111001",
+        "audit_user_id": null,
+        "role": [
+          "Medical Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.980Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "111008",
+        "audit_user_id": null,
+        "role": [
+          "Medical Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.980Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "111009",
+        "audit_user_id": null,
+        "role": [
+          "Medical Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.980Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "111010",
+        "audit_user_id": null,
+        "role": [
+          "Medical Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.980Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "111011",
+        "audit_user_id": null,
+        "role": [
+          "Medical Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:23.980Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131223",
+        "audit_user_id": null,
+        "role": [
+          "Medical Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:24.010Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101001",
+        "audit_user_id": null,
+        "role": [
+          "Receptionist"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:24.010Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101101",
+        "audit_user_id": null,
+        "role": [
+          "Receptionist"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:24.010Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101105",
+        "audit_user_id": null,
+        "role": [
+          "Receptionist"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2019-05-10T05:08:24.010Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101201",
+        "audit_user_id": null,
+        "role": [
+          "Receptionist"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.135Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151101",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.137Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151102",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.138Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151103",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.140Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151104",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.141Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151106",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.143Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151201",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.145Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151202",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.146Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151203",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.148Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151204",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.150Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151206",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.151Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157101",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.153Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157102",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.155Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157103",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.156Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157104",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.158Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157106",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.870Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "153001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:05.872Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "153003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:06.187Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121001",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:06.482Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101201",
+        "audit_user_id": null,
+        "role": [
+          "Medical Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:09.811Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121901",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:09.858Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121901",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:09.860Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121901",
+        "audit_user_id": null,
+        "role": [
+          "Clerk"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:09.862Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121901",
+        "audit_user_id": null,
+        "role": [
+          "Receptionist"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:09.912Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121906",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:14.597Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "111012",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:24.297Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "152101",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:24.299Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "152102",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:24.301Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "152103",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:24.303Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "152104",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:24.305Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "152106",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:24.306Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "152107",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:24.308Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "152108",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:27.209Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "172001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:29.198Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "123000",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:29.200Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "123001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:29.202Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "123002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:29.204Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "123003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:29.205Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "123004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:29.207Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "123005",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:29.210Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "123006",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:29.212Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "123007",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:31.994Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127000",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:31.996Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:31.998Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:32.000Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:32.002Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:32.004Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127005",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:33.832Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:33.833Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:33.834Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:33.836Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:34.659Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:34.660Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:34.661Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:34.662Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.487Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155101",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.489Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155102",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.491Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155103",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.492Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155104",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.494Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155109",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.496Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155201",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.498Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155202",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.500Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155203",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.501Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155204",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.503Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155206",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.505Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155301",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.507Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155302",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.509Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155303",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.511Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155304",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.512Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155306",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.514Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155307",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.516Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155308",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.518Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156101",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.521Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156102",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.522Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156103",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.524Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156104",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.526Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156109",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.528Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156201",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.530Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156202",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.532Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156203",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.534Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156204",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.536Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156206",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.538Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156301",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.540Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156302",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.542Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156303",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.543Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156304",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.545Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156306",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.547Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156307",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.549Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156308",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.659Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155101",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.661Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155102",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.663Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155103",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.665Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155104",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.667Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155109",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.669Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155201",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.671Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155202",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.673Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155203",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.675Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155204",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.677Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155206",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.679Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155301",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.681Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155302",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.682Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155303",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.684Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155304",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.686Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155306",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.688Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155307",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.690Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155308",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.692Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156101",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.694Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156102",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.695Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156103",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.697Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156104",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.699Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156109",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.701Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156201",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.703Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156202",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.705Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156203",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.706Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156204",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.708Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156206",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.710Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156301",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.712Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156302",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.714Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156303",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.715Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156304",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.717Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156306",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.719Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156307",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:03:49.721Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156308",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:16.962Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "199001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:16.963Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "199003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:18.688Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121801",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:20.124Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:20.125Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:20.126Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:20.127Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:20.128Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200005",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.085Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150101",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.087Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150102",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.089Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150103",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.090Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150104",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.092Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150201",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.094Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150202",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.095Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150203",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.097Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150204",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.099Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150206",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.100Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150301",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.102Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150302",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.104Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150303",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.106Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150304",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.108Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150306",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.109Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150401",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.111Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150402",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.113Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150403",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.115Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150404",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:36.116Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "150406",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:38.050Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:38.052Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:38.054Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:38.058Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:38.721Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "170001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:38.723Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "170002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:38.724Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "170003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:38.725Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "170004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:42.023Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "201001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:42.024Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "201002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:42.025Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "201003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:42.026Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "201004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:43.262Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "202001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:43.263Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "202002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:43.264Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "202004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:57.600Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "206001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:04:57.601Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "206002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:05.251Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131201",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:05.418Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131225",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:05.420Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131225",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:06.431Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131200",
+        "audit_user_id": null,
+        "role": [
+          "Enrolment Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:06.433Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131200",
+        "audit_user_id": null,
+        "role": [
+          "Manager"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:06.435Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131200",
+        "audit_user_id": null,
+        "role": [
+          "Accountant"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:06.437Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131200",
+        "audit_user_id": null,
+        "role": [
+          "Medical Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:06.439Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131200",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:06.441Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131200",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:06.813Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:06.814Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:06.816Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:06.818Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:13.498Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:13.500Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:13.502Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:13.504Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:16.634Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:16.635Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:16.636Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:16.637Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:22.316Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191005",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:22.647Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131000",
+        "audit_user_id": null,
+        "role": [
+          "Scheme Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:22.793Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131007",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:22.795Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131008",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:22.797Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131009",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-09-13T14:05:22.799Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "131010",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-11-01T12:52:25.109Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101500",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2024-11-01T12:52:25.162Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "154901",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-05-15T03:12:49.041Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "158001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-05-15T03:12:49.490Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "158002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-05-15T03:12:49.493Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "158003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-05-15T03:12:49.497Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "158004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-05-15T03:12:58.266Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "208001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-05-15T03:12:58.268Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "208002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-05-15T03:12:58.270Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "208003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-05-15T03:12:58.272Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "208004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-05-15T03:12:58.274Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "209001",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-05-15T03:12:58.276Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "209002",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-05-15T03:12:58.278Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "209003",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-05-15T03:12:58.280Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "209004",
+        "audit_user_id": null,
+        "role": [
+          "IMIS Administrator"
+        ]
+      }
+    }
+  ]
+  
