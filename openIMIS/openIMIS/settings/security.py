@@ -89,23 +89,16 @@ RATELIMIT_METHOD = os.getenv('RATELIMIT_METHOD', 'ALL')
 RATELIMIT_GROUP = os.getenv('RATELIMIT_GROUP', 'graphql')
 RATELIMIT_SKIP_TIMEOUT = os.getenv('RATELIMIT_SKIP_TIMEOUT', 'False')
 
-# CSRF settings
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+
 # session cookie validity = 8 hours
 SESSION_COOKIE_AGE = 28800
 SESSION_COOKIE_NAME = "openimis_session"
-
+SESSION_COOKIE_SECURE = True
 # CORS settings
 CORS_ALLOW_CREDENTIALS = True
 
-# Cookie settings
-CSRF_COOKIE_NAME = 'csrftoken'
-CSRF_USE_SESSIONS = True
-SESSION_COOKIE_SAMESITE = 'Lax'  # or 'None' if cross-site
-CSRF_COOKIE_SAMESITE = 'Lax'  # or 'None' if cross-site
-CSRF_COOKIE_HTTPONLY = False  # False if you need to access it from JavaScript
 
+SESSION_COOKIE_SAMESITE = 'Lax'  # or 'None' if cross-site
 USER_AGENT_CSRF_BYPASS = [bypass.strip() for bypass in os.getenv("USER_AGENT_CSRF_BYPASS", '').split(',') if bypass != '']
 # Adjust other settings as needed for your specific application
 # ...
