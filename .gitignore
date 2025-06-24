@@ -1,3 +1,4 @@
+**/.vscode
 **/.idea
 **/venv
 **/.venv
@@ -11,6 +12,7 @@ modules-tests.sh
 **/*.log
 **/*.log.*
 **/*.mo
+openIMIS/file_storage
 openIMIS/locale/en/LC_MESSAGES/django.mo
 **/staticfiles
 extracted_translations_fe
@@ -18,6 +20,7 @@ script/config.py
 **/src/*
 **/images/insurees
 openimis-dev.json
+
 # Except for the runConfigurations folder
 !.idea/runConfigurations
 

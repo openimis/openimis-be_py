@@ -1,0 +1,73 @@
+[
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "b7e2511f-c7e3-4692-99cb-51cc12a962f1",
+        "name": "System Administrator",
+        "alt_language": null,
+        "is_system": 0,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2025-01-01T00:00:00Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "9d5ec2b4-41a7-45c3-b86f-1f0fc84cc142",
+        "name": "Program Manager",
+        "alt_language": null,
+        "is_system": 0,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2025-01-01T00:00:00Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "f74bb1e5-3f23-4f35-9a53-1fc5f7e23e36",
+        "name": "Case Worker / Social Officer",
+        "alt_language": null,
+        "is_system": 0,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2025-01-01T00:00:00Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "c2ac672b-e356-4466-a3cb-3ab3e4708e03",
+        "name": "Data Analyst",
+        "alt_language": null,
+        "is_system": 0,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2025-01-01T00:00:00Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    },
+    {
+      "model": "core.role",
+      "fields": {
+        "uuid": "6dbe6d9b-0aa3-4cb0-9e15-e63d57f6e4e0",
+        "name": "Finance Officer",
+        "alt_language": null,
+        "is_system": 0,
+        "is_blocked": false,
+        "audit_user_id": null,
+        "validity_from": "2025-01-01T00:00:00Z",
+        "validity_to": null,
+        "legacy_id": null
+      }
+    }
+  ]
+  

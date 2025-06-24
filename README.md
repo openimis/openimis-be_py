@@ -89,11 +89,10 @@ When programming for openIMIS backend, you are highly encouraged to use the feat
 
 At this stage, you may (depends on the database you connect to) need to:
 
-- apply django migrations, from `openimis-be_py/openIMIS`: `python manage.py migrate`
+- apply django migrations, from `openimis-be_py/openIMIS`: `python manage.py migrate`. See [PostgresQL section](#postgresql) if you are using postgresql for dev DB.
 - create a superuser for django admin console, from
- `openimis-be_py/openIMIS`: `python manage.py createsuperuser` (will
- not prompt for a password) and then `python manage.py changepassword
-<username>`
+  `openimis-be_py/openIMIS`: `python manage.py createsuperuser` (will
+  not prompt for a password) and then `python manage.py changepassword <username>`
 
 ### To edit (modify) an existing openIMIS module (e.g. `openimis-be-claim`)
 
@@ -220,6 +219,68 @@ The configuration for connection to the database is identical for developers and
 - default 'options' in openIMIS are `{'driver': 'ODBC Driver 17 for SQL Server','unicode_results': True}`
  If you need to provide other options, use the `DB_OPTIONS` entry in the `.env` file (be complete: the new json string will entirely replace the default one)
 
+
+### PostgresQL
+
+**Requirement:** `postgres-json-schema`.
+Follow the README at https://github.com/gavinwahl/postgres-json-schema to install.
+
+To use postgresql as the dev database, specify `DB_ENGINE` in `.env` alongside other DB config vars:
+```
+DB_ENGINE=django.db.backends.postgresql
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=imis
+DB_USER=postgres
+```
+
+Create the database, named `imis` using the example `DB_NAME` above:
+```bash
+psql postgres -c 'create database imis'
+```
+
+Before applying django migrations, the database needs to be prepared using scripts from https://github.com/openimis/database_postgresql:
+
+```bash
+git clone https://github.com/openimis/database_postgresql
+cd database_postgresql
+
+# generate concatenated .sql for easy execution
+bash concatenate_files.sh
+
+# prepare the database - replace fullDemoDatabase.sql with EmptyDatabase.sql if you don't need demo data
+psql -d imis -a -f output/fullDemoDatabase.sql
+```
+
+From here on django's `python manage.py migrate` should execute succesfully.
+
+Repeat the same steps for `test_imis`, which is used for unit tests:
+
+```bash
+psql postgres -c 'create database test_imis'
+psql -d test_imis -a -f output/fullDemoDatabase.sql
+```
+
+
+## OpenSearch
+
+### OpenSearch - Adding Environmental Variables to Your Build
+To configure environmental variables for your build, include the following:
+* `OPENSEARCH_HOST` - For the non-dockerized instance in a local context, set it to 0.0.0.0:9200. 
+For the dockerized instance, use opensearch:9200.
+* `OPENSEARCH_ADMIN` This variable is used for the admin username. (default value: admin)
+* `OPENSEARCH_PASSWORD`  This variable is used for the admin password. (default value: admin)
+
+### OpenSearch - How to initialize data after deployment
+* If you have initialized the application but still have some data to be transferred, you can effortlessly 
+achieve this by using the commands available in the business module: `python manage.py add_<model_name>_data_to_opensearch`. 
+This command loads existing data into OpenSearch.
+
+### OpenSearch - more details
+* For more comprehensive details on OpenSearch configuration, please consult the [resource](https://github.com/openimis/openimis-be-opensearch_reports_py/tree/develop) 
+provided in the README section.
+
+
 ## Developer tools
 
 ### To create backend module skeleton in single command
@@ -324,6 +385,7 @@ module skeleton in single command` section
  to extract frontend translations of all modules present in `openimis.json`.
  - those translations will be copied into 'extracted_translations_fe' folder in assembly backend module
 
+
 ### JWT Security Configuration
 
 To enhance JWT token security, you can configure the system to use RSA keys for signing and verifying tokens.
@@ -343,7 +405,6 @@ To enhance JWT token security, you can configure the system to use RSA keys for 
  Ensure that the settings.py file is configured to read these keys. If RSA keys are found, the system will use RS256. Otherwise, it will fallback to HS256 using DJANGO_SECRET_KEY.
 
 Note: If RSA keys are not provided, the system defaults to HS256. Using RS256 with RSA keys is recommended for enhanced security.
-
 
 ## CSRF Setup Guide
 
@@ -404,6 +465,7 @@ USER_AGENT_CSRF_BYPASS = [
     "InternalTool/1.0",  # Allow internal tool
 ]
 ```
+
 
 ## Custom exception handler for new modules REST-based modules
 

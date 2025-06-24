@@ -344,6 +344,25 @@ jobs:
           OPEN_SEARCH_HTTP_PORT: 9200
           OPENSEARCH_HOSTS: "localhost:9200"
           OPENSEARCH_DSL_AUTOSYNC: False
+      - name: Generate Coverage Report
+        if: always()
+        working-directory: ./openimis/openIMIS
+        run: |
+          python -m coverage xml -o coverage.xml
+          # Only leave actual code part, skip absuolute directory like 
+          # /home/runner/work/openimis-be-invoice_py/openimis-be-invoice_py/current-module/
+          # It's required by circle-ci setup
+          mkdir coverage
+          sed -E 's|/home/runner/work/(.*?)/(.*?)/current-module/|./current-module/|' coverage.xml >> coverage/coverage1.xml
+          sed -E 's|/home/runner/work/(.*?)/(.*?)/current-module/|./|' coverage.xml >> coverage/coverage2.xml
+          
+          cat coverage.xml
+      - name: Coverage results
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage.xml
+          path: ./openimis/openIMIS/coverage
   flake-8-linter:
     name: Run flake8 check
     runs-on: ubuntu-24.04

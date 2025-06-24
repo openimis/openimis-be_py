@@ -177,8 +177,22 @@ if DEBUG:
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_URL = "/%sstatic/" % SITE_ROOT()
+
+MEDIA_URL = "/file_storage/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "file_storage/")
+
+if not os.path.exists(MEDIA_ROOT):
+    os.makedirs(MEDIA_ROOT)
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    'staticfiles': {
+        'BACKEND': "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 
 ASGI_APPLICATION = "openIMIS.asgi.application"

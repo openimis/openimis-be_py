@@ -1,0 +1,1160 @@
+[
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155302",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155303",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155304",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155306",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155307",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155308",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156101",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156102",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156103",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156104",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156109",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156201",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156202",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156203",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156204",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156206",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156301",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156302",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156303",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156304",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156306",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156307",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "156308",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "199001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "199003",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101401",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101402",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101403",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101404",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200002",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200003",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200004",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "201001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "172001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "172002",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159002",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159003",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159004",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159005",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180003",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180004",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180002",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155101",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155102",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155103",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155104",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155109",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155201",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155202",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155203",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155204",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155206",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "155301",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "201002",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "201003",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "201004",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "202001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "202002",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "202004",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "206001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "206002",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "170001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171002",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171003",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171004",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191002",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191003",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191004",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191005",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190002",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190003",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:12:31.954Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190004",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:20:26.203Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "953001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:20:26.203Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "153001",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:20:26.203Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157101",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:20:26.203Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157102",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:20:26.203Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157103",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:20:26.203Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157104",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:20:26.203Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157106",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:20:26.203Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "900101",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:20:26.203Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127000",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:20:26.203Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121901",
+        "audit_user_id": null,
+        "role": [
+          "Finance Officer"
+        ]
+      }
+    }
+  ]
+  
