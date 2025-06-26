@@ -60,3 +60,4 @@ django-axes==6.4.0
 django-split-settings
 django-csp
 sqlparse>=0.5.0 # not directly required, pinned by Snyk to avoid a vulnerability
+urllib3>=2.5.0 # not directly required, pinned by Snyk to avoid a vulnerability
