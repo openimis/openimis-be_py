@@ -34,7 +34,7 @@
         },
         {
             "name": "product",
-            "pip": "git+https://github.com/openimis/openimis-be-product_py.git@develop#egg=openimis-be-product"
+            "pip": "git+https://github.com/habtec/openimis-be-product_py.git@develop#egg=openimis-be-product"
         },
         {
             "name": "insuree",
