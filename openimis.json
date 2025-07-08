@@ -38,7 +38,7 @@
         },
         {
             "name": "insuree",
-            "pip": "git+https://github.com/openimis/openimis-be-insuree_py.git@develop#egg=openimis-be-insuree"
+            "pip": "git+https://github.com/habtec/openimis-be-insuree_py.git@develop#egg=openimis-be-insuree"
         },
         {
             "name": "policy",
