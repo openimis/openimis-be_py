@@ -1,8 +1,9 @@
 import os
 import sys
+from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = Path(__file__).absolute().parent.parent.parent
 
 MODE = os.environ.get("MODE", 'prod').lower()
 if MODE == "dev" or "test" in sys.argv:
