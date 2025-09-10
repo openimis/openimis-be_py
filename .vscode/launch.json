@@ -124,7 +124,7 @@
       "type": "python",
       "request": "launch",
       "program": "./setup-local-dev.py",
-      "args": ["ssh"],
+      "args": ["extract_translations"],
       "django": true,
       "cwd": "${workspaceRoot}/script",
       "purpose": ["debug-in-terminal"],
