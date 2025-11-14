@@ -1,7 +1,14 @@
 #!/bin/bash
 set -e
 
+
+
 install_modules() {
+    # Create and activate shared venv if not exists
+    if [ ! -d /venv/bin ]; then
+      python -m venv /venv
+    fi
+    source /venv/bin/activate
     local config_file=$1
     local config_name=$(basename "$config_file" .json)
     local req_file="modules-requirements-${config_name}.txt"
