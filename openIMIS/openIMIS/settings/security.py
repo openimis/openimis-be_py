@@ -33,6 +33,18 @@ SECRET_KEY = os.environ.get(
 )
 REMOTE_USER_AUTHENTICATION = os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true"
 
+# Keycloak authentication settings
+KEYCLOAK_ENABLED = os.environ.get("KEYCLOAK_ENABLED", "false").lower() == "true"
+KEYCLOAK_SERVER_URL = os.environ.get("KEYCLOAK_SERVER_URL", "http://localhost:8080")
+KEYCLOAK_REALM = os.environ.get("KEYCLOAK_REALM", "openimis")
+KEYCLOAK_CLIENT_ID = os.environ.get("KEYCLOAK_CLIENT_ID", "openimis-frontend")
+KEYCLOAK_CLIENT_SECRET = os.environ.get("KEYCLOAK_CLIENT_SECRET", "")
+KEYCLOAK_USER_MAPPING = {
+    'username': 'preferred_username',
+    'email': 'email',
+    'first_name': 'given_name',
+    'last_name': 'family_name',
+}
 
 GRAPHQL_JWT = {
     "JWT_VERIFY_EXPIRATION": True,
