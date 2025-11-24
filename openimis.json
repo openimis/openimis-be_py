@@ -2,7 +2,7 @@
     "modules": [
         {
             "name": "core",
-            "pip": "git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core"
+            "pip": "git+https://github.com/openimis/openimis-be-core_py.git@feature/test-empty-db#egg=openimis-be-core"
         },
         {
             "name": "individual",
@@ -22,7 +22,7 @@
         },
         {
             "name": "location",
-            "pip": "git+https://github.com/openimis/openimis-be-location_py.git@develop#egg=openimis-be-location"
+            "pip": "git+https://github.com/openimis/openimis-be-location_py.git@feature/test-empty-db#egg=openimis-be-location"
         },
         {
             "name": "medical",
