@@ -100,7 +100,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install jq
 
-          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
+          export MODULE_NAME="$(echo "$GITHUB_REPOSITORY" | sed 's#.*/openimis-be-\(.*\)_py$#\1#')"
           
           echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
           
@@ -213,7 +213,7 @@ jobs:
         if: success() || failure()
         run: |
           python -V
-          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
+          export MODULE_NAME="$(echo "$GITHUB_REPOSITORY" | sed 's#.*/openimis-be-\(.*\)_py$#\1#')"
           python manage.py test --keepdb $MODULE_NAME
         env:
           SECRET_KEY: secret
@@ -370,7 +370,7 @@ jobs:
         if: success() || failure()
         run: |
           # Flake8 Report
-          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
+          export MODULE_NAME="$(echo "$GITHUB_REPOSITORY" | sed 's#.*/openimis-be-\(.*\)_py$#\1#')"
           MOD_DIR="../current-module/$MODULE_NAME"
           python -m flake8 --output-file=flake8-report.txt $MOD_DIR --exit-zero --ignore W503
           sed -i 's|\.\./current-module/||g' flake8-report.txt
