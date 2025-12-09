@@ -24,8 +24,9 @@ class Command(BaseCommand):
         perms_parts = set()
         for app, app_perms in permissions_dict.items():
             for perm_name, perm_ids in app_perms.items():
-                perms_part = perm_name[:-6] if perm_name.endswith('_perms') else perm_name
+                perms_part = app + "." + perm_name if perm_name.endswith('_perms') else perm_name
                 perms_parts.add(perms_part)
+
 
         locale_dir = Path(settings.BASE_DIR) / 'openIMIS' / 'locale' / 'en' / 'LC_MESSAGES'
         locale_dir.mkdir(parents=True, exist_ok=True)
