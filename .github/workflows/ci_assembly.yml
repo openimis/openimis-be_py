@@ -36,6 +36,7 @@ jobs:
           DB_HOST: localhost
           DB_PORT: 5432
           POSTGRES_DB: test_imis
+          DB_TEST_NAME: test_imis
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: YourStrong!Passw0rd
         ports:
@@ -106,7 +107,8 @@ jobs:
         env:
           DB_HOST: localhost
           DB_PORT: 5432
-          DB_NAME: imis
+          DB_TEST_NAME: test_imis
+          DB_NAME: test_imis
           DB_USER: postgres
           DB_PASSWORD: YourStrong!Passw0rd
 
@@ -163,7 +165,8 @@ jobs:
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
           DB_PORT: 5432
-          DB_NAME: imis
+          DB_TEST_NAME: test_imis
+          DB_NAME: test_imis
           DB_USER: postgres
           DB_PASSWORD: YourStrong!Passw0rd
           #DEV_SERVER: true
