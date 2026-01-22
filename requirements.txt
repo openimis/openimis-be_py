@@ -35,6 +35,10 @@ wheel
 whitenoise
 django-health-check
 requests~=2.32.4
+# Keycloak authentication
+python-keycloak~=3.7.0
+PyJWT~=2.4.0
+cryptography
 apscheduler==3.10.1
 # As from v0.4, Django-apscheduler has a migration that is incompatible with SQL Server
 # (autoincrement int => bigint) so we are using our own fork with a squashed migration

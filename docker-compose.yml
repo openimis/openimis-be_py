@@ -1,5 +1,3 @@
-version: "3.7"
-
 services:
   db:
     container_name: ${PROJECT_NAME:-openimis}-db
@@ -42,18 +40,59 @@ services:
     ports:
       - 1433:1433
   opensearch:
+    container_name: ${PROJECT_NAME:-openimis}-opensearch
     image: opensearchproject/opensearch:latest
     env_file:
       - ".env.openSearch"
     environment:
-      - "discovery.type=single-node"
+      - "discovery.type=${DISCOVERY_TYPE:-single-node}"
       - "cluster.name=${CLUSTER_NAME:-my_opensearch_local}"
       - "http.port=${OPEN_SEARCH_HTTP_PORT:-9200}"
       - "plugins.security.ssl.http.enabled=${SLL_HTTP_ENABLED:-false}"
       - "plugins.security.disabled=true"
       - "OPENSEARCH_INITIAL_ADMIN_PASSWORD=${OPENSEARCH_PASSWORD}"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     volumes:
       - "opensearch-data:/usr/share/opensearch/data"
+    ports:
+      - "9200:9200"
+      - "9600:9600"
+    restart: always
+
+  opensearch-dashboards:
+    container_name: ${PROJECT_NAME:-openimis}-opensearch-dashboards
+    image: opensearchproject/opensearch-dashboards:3.2.0
+    environment:
+      - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true"
+      - SERVER_BASEPATH=/opensearch
+      - SERVER_REWRITEBASEPATH=true
+    volumes:
+      - "./conf/opensearch/opensearch.yml:/usr/share/opensearch-dashboards/config/opensearch_dashboards.yml"
+    depends_on:
+      - opensearch
+    ports:
+      - "5601:5601"
+    restart: always
+
+  nginx-proxy:
+    container_name: ${PROJECT_NAME:-openimis}-nginx-proxy
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - "./conf/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
+      - "./conf/nginx/locations:/conf/locations:ro"
+      - "./conf/nginx/variables:/conf/variables:ro"
+    environment:
+      - OPENSEARCH_BASIC_TOKEN=${OPENSEARCH_BASIC_TOKEN}
+    depends_on:
+      - opensearch-dashboards
+    restart: always
 
 volumes:
   database:

@@ -74,6 +74,10 @@ AUTHENTICATION_BACKENDS = []
 if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
     AUTHENTICATION_BACKENDS += ["django.contrib.auth.backends.RemoteUserBackend"]
 
+# Add Keycloak authentication backend if enabled
+if os.environ.get("KEYCLOAK_ENABLED", "false").lower() == "true":
+    AUTHENTICATION_BACKENDS += ["core.keycloak_auth.KeycloakAuthenticationBackend"]
+
 AUTHENTICATION_BACKENDS += [
     "axes.backends.AxesStandaloneBackend",
     "rules.permissions.ObjectPermissionBackend",
@@ -120,9 +124,16 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    # Middleware pour synchro automatique des rôles Keycloak (toujours actif)
+    "core.keycloak_role_sync_middleware.KeycloakRoleSyncMiddleware",
     "core.middleware.SecurityHeadersMiddleware",
     "csp.middleware.CSPMiddleware",
 ]
+
+# Add Keycloak middleware if enabled
+if os.environ.get("KEYCLOAK_ENABLED", "false").lower() == "true":
+    MIDDLEWARE.insert(-1, "core.keycloak_middleware.KeycloakJWTMiddleware")
+    MIDDLEWARE.insert(-1, "core.keycloak_middleware.KeycloakCallbackMiddleware")
 
 if DEBUG:
     # Attach profiler middleware
