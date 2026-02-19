@@ -10,22 +10,31 @@ install_modules() {
       python -m venv /venv
     fi
     source /venv/bin/activate
+    cd /openimis-be/script
     local config_file=$1
     local config_name=$(basename "$config_file" .json)
     local req_file="modules-requirements-${config_name}.txt"
+    local lock_file="modules-requirements-${config_name}.lock"
+
+    # Skip installation if lock file exists
+    if [ -f "$lock_file" ]; then
+        echo "Lock file $lock_file found – skipping installation."
+        return 0
+    fi
 
     echo "Installing modules for $config_file..."
 
-    pip install --quiet --root-user-action 'ignore' --cache-dir /pip-cache -r ../requirements.txt 
+    pip install --quiet --root-user-action 'ignore' --cache-dir /pip-cache -r ../requirements.txt
 
     # Generate requirements (always do this to ensure we have latest)
     python ./modules-requirements.py "$config_file" > "$req_file"
 
     # Always install modules but use pip cache to avoid re-downloading
     echo "Installing modules (using cache for dependencies)..."
-    pip install --quiet --root-user-action 'ignore' --cache-dir /pip-cache -r "$req_file" 
+    pip install --quiet --root-user-action 'ignore' --cache-dir /pip-cache -r "$req_file"
 
-   
+    # Create lock file after successful installation
+    touch "$lock_file"
     echo "Module installation complete."
 }
 
