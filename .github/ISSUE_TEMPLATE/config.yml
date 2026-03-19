@@ -1,0 +1,7 @@
+name: Issue Template Chooser
+
+ons:
+  - issues
+
+templates:
+  - "c4gt_community.yml"
