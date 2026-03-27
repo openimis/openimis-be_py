@@ -1,0 +1,82 @@
+[
+    {
+        "model": "insuree.relation",
+        "pk": 1,
+        "fields": {
+            "id": 1,
+            "relation": "Brother/Sister",
+            "alt_language": "Frère/soeur",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.relation",
+        "pk": 2,
+        "fields": {
+            "id": 2,
+            "relation": "Father/Mother",
+            "alt_language": "Père/Mère",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.relation",
+        "pk": 3,
+        "fields": {
+            "id": 3,
+            "relation": "Uncle/Aunt",
+            "alt_language": "Oncle/tante",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.relation",
+        "pk": 4,
+        "fields": {
+            "id": 4,
+            "relation": "Son/Daughter",
+            "alt_language": "Fils/fille",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.relation",
+        "pk": 5,
+        "fields": {
+            "id": 5,
+            "relation": "Grand parents",
+            "alt_language": "Grands/parents",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.relation",
+        "pk": 6,
+        "fields": {
+            "id": 6,
+            "relation": "Employee",
+            "alt_language": "Employé",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.relation",
+        "pk": 7,
+        "fields": {
+            "id": 7,
+            "relation": "Others",
+            "alt_language": "Autres",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.relation",
+        "pk": 8,
+        "fields": {
+            "id": 8,
+            "relation": "Spouse",
+            "alt_language": "Époux",
+            "sort_order": null
+        }
+    }
+]

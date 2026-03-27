@@ -158,6 +158,42 @@ creates profiler report for execution of query/mutation defined in request's POS
 - create the PyPI package (can be automated on a ci-build): `python setup.py bdist_wheel`
 - upload the created package (in `dist/`) to PyPI.org: `twine upload -r pypi dist/openimis_be_mymodule-1.2.3*`
 
+## Loading Demo Data
+
+The project includes demo data fixtures located in the `fixtures/demo/` directory, organized by modules (e.g., `core/`, `payer/`, `insuree/`, etc.).
+
+To load the demo data into your database:
+
+### Using Django Management Command
+
+From the `openIMIS/` directory, run:
+
+```bash
+python manage.py load_fixtures --dir ../fixtures/demo
+```
+
+This command intelligently loads JSON fixtures, skipping tables that already contain data (based on soft-delete conventions).
+
+### Using VSCode Launch Configuration
+
+A "loadDemo" configuration is available in `.vscode/launch.json` for easy loading via VSCode debugger:
+
+- Open the Run and Debug panel in VSCode.
+- Select "loadDemo" from the configuration dropdown.
+- Run it to load the demo fixtures.
+
+### Using Bash Script
+
+Alternatively, use the provided script:
+
+```bash
+bash script/load_fixture.sh
+```
+
+Note: The script defaults to loading from `../fixtures` (relative to openIMIS/), but for demo data, ensure the directory is set correctly or modify the script as needed.
+
+The demo data includes sample records for users, roles, insurees, payers, medical items, and more, useful for development and testing.
+
 ## Distributor setup
 
 Note: as a distributor, you may want to run an openIMIS version without docker. To do so, follow developers setup here above (up to running django migrations)

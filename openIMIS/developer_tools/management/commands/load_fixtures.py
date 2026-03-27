@@ -35,7 +35,7 @@ class Command(BaseCommand):
             self.stdout.write(self.style.ERROR(f"Fixture directory does not exist: {fixture_dir}"))
             return
 
-        json_files = sorted(fixture_dir.glob("*.json"))
+        json_files = sorted(fixture_dir.rglob("*.json"))
         if not json_files:
             self.stdout.write("No .json fixtures found.")
             return

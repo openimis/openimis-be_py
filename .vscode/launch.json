@@ -290,6 +290,19 @@
         "CELERY_RESULT_BACKEND": "cache+memory://openIMIS-test//"
       },
       "justMyCode": true
+    },
+    {
+      "name": "loadDemo",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/openIMIS/manage.py",
+      "args": ["load_fixtures", "--dir", "../fixtures/demo"],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "${input:dbEngine}"
+      },
+      "justMyCode": true
     }
   ]
 }
