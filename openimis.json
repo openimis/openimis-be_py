@@ -150,7 +150,7 @@
         },
         {
             "name": "calcrule_timesheet",
-            "pip": "git+https://github.com/openimis/openimis-be-calcrule_timesheet_py.git@develop#egg=openimis-be-calcrule_timesheet"
+            "pip": "git+https://github.com/openimis/openimis-be-calcrule_timesheet_py.git@release/26.04#egg=openimis-be-calcrule_timesheet"
         },
         {
             "name": "payroll",
