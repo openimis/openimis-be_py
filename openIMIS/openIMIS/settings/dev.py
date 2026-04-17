@@ -16,4 +16,5 @@ CORS_ALLOW_CREDENTIALS = True
 
 # Dev cookies
 CSRF_COOKIE_SECURE = False
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8000","http://localhost:3000"]
 SESSION_COOKIE_SECURE = False
