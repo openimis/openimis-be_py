@@ -6,7 +6,7 @@
         },
         {
             "name": "individual",
-            "pip": "git+https://github.com/openimis/openimis-be-individual_py.git@develop#egg=openimis-be-individual"
+            "pip": "git+https://github.com/openimis/openimis-be-individual_py.git@fix/group-individual-null-individual-id#egg=openimis-be-individual"
         },
         {
             "name": "workflow",
