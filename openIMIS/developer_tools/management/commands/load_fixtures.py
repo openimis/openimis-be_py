@@ -11,6 +11,7 @@ import networkx as nx  # pip install networkx (required for dependency graph + c
 from django.core.management.base import BaseCommand
 from django.apps import apps
 from django.db import transaction
+from django.db.utils import IntegrityError
 from django.db.models import ForeignKey
 from django.core.management import call_command
 from django.core.exceptions import ValidationError
@@ -240,11 +241,17 @@ class Command(BaseCommand):
 
             # Bulk create
             self.stdout.write(f"   → Bulk to be created {len(objects)} {model_name} objects")
-            Model.objects.bulk_create(objects, ignore_conflicts=True)
-            
+            # Save individually to ensure PKs are set
+            saved_count = 0
+            for instance in objects:
+                try:
+                    instance.save()
+                    saved_count += 1
+                except IntegrityError:
+                    self.stdout.write(f"   → Skipped existing {model_name} instance")
+            self.stdout.write(f"   → Saved {saved_count} {model_name} objects")
 
-            # ←←← THIS IS THE KEY PART ←←←
-            self._inject_pks_after_bulk_create(Model, objects)
+            # PKs are set by save()
 
     def _inject_pks_after_bulk_create(self, Model, objects):
         """
@@ -308,8 +315,15 @@ class Command(BaseCommand):
                 # Only resolve mandatory FKs + already-created objects
                 self._resolve_instance_fks(instance, collected_objects, mandatory_only=True)
 
-            Model.objects.bulk_create(objects, ignore_conflicts=True)
-            self.stdout.write(f"   → Created {len(objects)} {model_name} objects (nullable FKs deferred)")
+            # Save individually
+            saved_count = 0
+            for instance in objects:
+                try:
+                    instance.save()
+                    saved_count += 1
+                except IntegrityError:
+                    self.stdout.write(f"   → Skipped existing {model_name} instance")
+            self.stdout.write(f"   → Saved {saved_count} {model_name} objects (nullable FKs deferred)")
 
     def _resolve_instance_fks(self, instance, collected_objects, mandatory_only=False):
         """Resolve FKs preferring ID maps (fast + reliable)"""
