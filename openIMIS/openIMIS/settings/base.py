@@ -77,7 +77,7 @@ if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
 AUTHENTICATION_BACKENDS += [
     "axes.backends.AxesStandaloneBackend",
     "rules.permissions.ObjectPermissionBackend",
-    "graphql_jwt.backends.JSONWebTokenBackend",
+    "core.jwt_authentication.JSONWebTokenBackend",
     "django.contrib.auth.backends.ModelBackend",
 ]
 
@@ -116,6 +116,7 @@ MIDDLEWARE = [
     "core.middleware.DefaultAxesAttributesMiddleware",
     "core.middleware.AdminLogoutMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "core.middleware.ClearUserContextMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "simple_history.middleware.HistoryRequestMiddleware",
