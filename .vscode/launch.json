@@ -87,7 +87,8 @@
       "name": "create superuser",
       "type": "python",
       "request": "launch",
-      "args": ["createsuperuser", "--username", "admin_dev", "--email", "admin_dev@example.com", "--noinput"],
+      "program": "./manage.py",
+      "args": ["createsuperuser", "--username", "dev", "--noinput"],
       "django": true,
       "cwd": "${workspaceRoot}/openIMIS",
       "env": {
