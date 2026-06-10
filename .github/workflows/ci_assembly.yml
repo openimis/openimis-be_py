@@ -107,7 +107,7 @@ jobs:
           DB_HOST: localhost
           DB_PORT: 5432
           DB_NAME: test_imis
-          DB_NAME_TEST: test_imis
+          DB_TEST_NAME: test_imis
           DB_USER: postgres
           DB_PASSWORD: YourStrong!Passw0rd
 
@@ -165,7 +165,7 @@ jobs:
           DB_HOST: localhost
           DB_PORT: 5432
           DB_NAME: test_imis
-          DB_NAME_TEST: test_imis
+          DB_TEST_NAME: test_imis
           DB_USER: postgres
           DB_PASSWORD: YourStrong!Passw0rd
           #DEV_SERVER: true
