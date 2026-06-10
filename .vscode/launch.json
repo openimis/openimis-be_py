@@ -51,7 +51,8 @@
         "payroll",
         "grievance_social_protection",
         "deduplication",
-        "api_etl"
+        "api_etl",
+        "form_builder"
       ]
     },
     {
@@ -59,6 +60,12 @@
       "type": "pickString",
       "description": "provide DB engine to use",
       "options": ["mssql", "psql"]
+    },
+    {
+      "id": "solutionType",
+      "type": "pickString",
+      "description": "select solution type for fixtures",
+      "options": ["claimai", "coreMIS", "full", "IBR", "SHI", "SR"]
     }
   ],
   "configurations": [
@@ -76,7 +83,20 @@
       "purpose": ["debug-in-terminal"],
       "justMyCode": true
     },
-
+    {
+      "name": "create superuser",
+      "type": "python",
+      "request": "launch",
+      "program": "./manage.py",
+      "args": ["createsuperuser", "--username", "admin_dev", "--password", "admin123"],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "PSQL"
+      },
+      "purpose": ["debug-in-terminal"],
+      "justMyCode": true
+    },
     {
       "name": "orgunit",
       "type": "python",
@@ -297,6 +317,45 @@
       "request": "launch",
       "program": "${workspaceFolder}/openIMIS/manage.py",
       "args": ["load_fixtures", "--dir", "../fixtures/demo"],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "${input:dbEngine}"
+      },
+      "justMyCode": true
+    },
+    {
+      "name": "loadSolutionFixture",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/openIMIS/manage.py",
+      "args": ["load_fixtures", "--dir", "../../../solution-builder/build/${input:solutionType}/fixtures"],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "${input:dbEngine}"
+      },
+      "justMyCode": true
+    },
+    {
+      "name": "Generate Permissions Map",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/openIMIS/manage.py",
+      "args": ["generate_permissions_map"],
+      "django": true,
+      "cwd": "${workspaceRoot}/openIMIS",
+      "env": {
+        "DB_DEFAULT": "${input:dbEngine}"
+      },
+      "justMyCode": true
+    },
+    {
+      "name": "Generate Permissions Map and Sync Django Permissions",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/openIMIS/manage.py",
+      "args": ["generate_permissions_map", "--sync-permissions"],
       "django": true,
       "cwd": "${workspaceRoot}/openIMIS",
       "env": {
