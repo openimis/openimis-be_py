@@ -87,7 +87,11 @@ def _locate_module_file(module_dotted_path):
 
 
 def _source_defines_class(file_path, class_name):
-    tree = ast.parse(file_path.read_text(encoding="utf-8"))
+    try:
+        source = file_path.read_text(encoding="utf-8")
+        tree = ast.parse(source)
+    except (OSError, UnicodeDecodeError, SyntaxError):
+        return False
     return any(
         isinstance(node, ast.ClassDef) and node.name == class_name
         for node in ast.walk(tree)

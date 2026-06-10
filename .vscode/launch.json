@@ -87,12 +87,12 @@
       "name": "create superuser",
       "type": "python",
       "request": "launch",
-      "program": "./manage.py",
-      "args": ["createsuperuser", "--username", "admin_dev", "--password", "admin123"],
+      "args": ["createsuperuser", "--username", "admin_dev", "--email", "admin_dev@example.com", "--noinput"],
       "django": true,
       "cwd": "${workspaceRoot}/openIMIS",
       "env": {
-        "DB_DEFAULT": "PSQL"
+        "DB_DEFAULT": "PSQL",
+        "DJANGO_SUPERUSER_PASSWORD": "admin123"
       },
       "purpose": ["debug-in-terminal"],
       "justMyCode": true
