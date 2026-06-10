@@ -1,10 +1,12 @@
 """
 Django settings for openIMIS project.
 """
+import ast
 import json
 import logging
 import os
 import sys
+from pathlib import Path
 
 from ..openimisapps import openimis_apps, get_locale_folders
 from datetime import timedelta
@@ -69,6 +71,80 @@ INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["apscheduler_runner", "signal_binding", "receiver_binding"]  # Signal binding should be last installed module
 IS_TESTING =  'test' in sys.argv
 
+
+def _locate_module_file(module_dotted_path):
+    """Find a module file on sys.path without importing it."""
+    relative = Path(*module_dotted_path.split("."))
+    for entry in sys.path:
+        base = Path(entry)
+        for candidate in (
+            base / relative.with_suffix(".py"),
+            base / relative / "__init__.py",
+        ):
+            if candidate.is_file():
+                return candidate
+    return None
+
+
+def _source_defines_class(file_path, class_name):
+    tree = ast.parse(file_path.read_text(encoding="utf-8"))
+    return any(
+        isinstance(node, ast.ClassDef) and node.name == class_name
+        for node in ast.walk(tree)
+    )
+
+
+def _core_defines_class(class_path):
+    """Return True when class_path exists in core module source (no import)."""
+    module_path, _, class_name = class_path.rpartition(".")
+    module_file = _locate_module_file(module_path)
+    return module_file is not None and _source_defines_class(module_file, class_name)
+
+
+_CORE_GRAPHQL_JWT_BACKEND = "core.jwt_authentication.JSONWebTokenBackend"
+_CORE_GRAPHQL_JWT_MIDDLEWARE = "core.middleware.CustomJSONWebTokenMiddleware"
+_DEFAULT_GRAPHQL_JWT_BACKEND = "graphql_jwt.backends.JSONWebTokenBackend"
+_DEFAULT_GRAPHQL_JWT_MIDDLEWARE = "graphql_jwt.middleware.JSONWebTokenMiddleware"
+
+_CORE_GRAPHQL_JWT_EXTENSIONS = (
+    _CORE_GRAPHQL_JWT_BACKEND,
+    _CORE_GRAPHQL_JWT_MIDDLEWARE,
+)
+
+
+def _resolve_graphql_jwt_settings():
+    """
+    Use core JWT backend + middleware only when core is installed and defines
+    both CustomJSONWebTokenMiddleware and JSONWebTokenBackend.
+
+    Uses AST inspection instead of import: base.py loads before CACHES and
+    importing core at this stage would fail.
+    """
+    logger = logging.getLogger(__name__)
+    if "core" not in OPENIMIS_APPS:
+        logger.warning(
+            "App core is not installed; using default graphql_jwt backend and middleware."
+        )
+        return _DEFAULT_GRAPHQL_JWT_BACKEND, _DEFAULT_GRAPHQL_JWT_MIDDLEWARE
+
+    missing = [
+        class_path
+        for class_path in _CORE_GRAPHQL_JWT_EXTENSIONS
+        if not _core_defines_class(class_path)
+    ]
+    if missing:
+        logger.warning(
+            "core is missing JWT extension(s) %s; using default graphql_jwt "
+            "backend and middleware.",
+            ", ".join(missing),
+        )
+        return _DEFAULT_GRAPHQL_JWT_BACKEND, _DEFAULT_GRAPHQL_JWT_MIDDLEWARE
+
+    return _CORE_GRAPHQL_JWT_BACKEND, _CORE_GRAPHQL_JWT_MIDDLEWARE
+
+
+GRAPHQL_JWT_BACKEND, GRAPHQL_JWT_MIDDLEWARE = _resolve_graphql_jwt_settings()
+
 AUTHENTICATION_BACKENDS = []
 
 if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
@@ -77,7 +153,7 @@ if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
 AUTHENTICATION_BACKENDS += [
     "axes.backends.AxesStandaloneBackend",
     "rules.permissions.ObjectPermissionBackend",
-    "core.jwt_authentication.JSONWebTokenBackend",
+    GRAPHQL_JWT_BACKEND,
     "django.contrib.auth.backends.ModelBackend",
 ]
 
@@ -168,7 +244,7 @@ GRAPHENE = {
     "MIDDLEWARE": [
         "openIMIS.tracer.TracerMiddleware",
         "openIMIS.schema.GQLUserLanguageMiddleware",
-        "graphql_jwt.middleware.JSONWebTokenMiddleware"
+        GRAPHQL_JWT_MIDDLEWARE,
     ],
 }
 
