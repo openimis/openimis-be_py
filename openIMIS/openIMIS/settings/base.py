@@ -122,6 +122,7 @@ MIDDLEWARE = [
     "simple_history.middleware.HistoryRequestMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "simple_history.middleware.HistoryRequestMiddleware",
     "core.middleware.SecurityHeadersMiddleware",
     "csp.middleware.CSPMiddleware",
 ]

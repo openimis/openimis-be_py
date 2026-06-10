@@ -31,11 +31,6 @@ for app in all_apps:
         pass
         # The module doesn't have a schema.py, just skip
         #logger.debug(f"{app} has no schema module, skipping")
-    except AttributeError as exc:
-        logger.debug(f"{app} queries couldn't be loaded")
-        raise  # This can be hiding actual compilation errors
-    except Exception as exc:
-        logger.debug(f"{app} exception", exc)
 
     try:
         schema_module = __import__(f"{app}.schema")
@@ -49,9 +44,6 @@ for app in all_apps:
     except ModuleNotFoundError as exc:
         # The module doesn't have a schema.py, just skip
         logger.debug(f"{app} has no schema module (mutation), skipping")
-    except AttributeError as exc:
-        # The module doesn't have a Query or Mutation, just ignore
-        logger.debug(f"{app} has a schema module and Mutation but failed nonetheless")
 
     for binder in bind_signals:
         binder()

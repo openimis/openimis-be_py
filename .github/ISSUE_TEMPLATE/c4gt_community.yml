@@ -1,0 +1,29 @@
+---
+name: C4GT Community
+description: Template for C4GT Community issues
+title: "[C4GT] Issue Title"
+labels: ["C4GT"]
+assignees: []
+---
+
+## Overview
+
+<!-- Provide a brief description of the issue, why it's important, and any context needed. -->
+
+## Steps to Reproduce
+
+1. 
+2. 
+3. 
+
+## Expected Behavior
+
+<!-- Describe what you expected to happen. -->
+
+## Actual Behavior
+
+<!-- Describe what actually happened. -->
+
+## Additional Information
+
+<!-- Add any additional context or details that might be helpful. -->

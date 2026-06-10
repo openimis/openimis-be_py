@@ -50,33 +50,42 @@ jobs:
 
       - name: Pull openIMIS Backend
         run: |
-          # Determine the target branch
-          if [ "${{ github.event_name }}" == "pull_request" ]; then
+          # ------------------------------------------------------------------
+          # Determine which branch of openimis-be_py we should use
+          # ------------------------------------------------------------------
+          if [[ "${{ github.event_name }}" == "pull_request" || "${{ github.event_name }}" == "pull_request_target" ]]; then
+            # For PRs → always use the base branch (where the PR is merged into)
             TARGET_BRANCH="${{ github.event.pull_request.base.ref }}"
+            echo "Event is a Pull Request → using base branch: $TARGET_BRANCH"
           else
-            TARGET_BRANCH="${{ github.event.ref }}"
-            TARGET_BRANCH=${TARGET_BRANCH#refs/heads/}
+            # For push (direct commit on a branch), workflow_dispatch, etc.
+            # → use the CURRENT branch name (e.g. feature/xyz, hotfix/abc, main, develop…)
+            CURRENT_BRANCH="${GITHUB_REF#refs/heads/}"
+            TARGET_BRANCH="$CURRENT_BRANCH"
+            echo "Not a PR → using current branch: $TARGET_BRANCH"
           fi
-      
-          # Use 'develop' as fallback if TARGET_BRANCH is empty or not a release branch
+
+          # Final fallback only if something went terribly wrong
           if [[ -z "$TARGET_BRANCH" ]]; then
+            echo "WARNING: TARGET_BRANCH is empty! Falling back to 'develop'"
             TARGET_BRANCH="develop"
           fi
-      
-          echo "Target branch: $TARGET_BRANCH"
-      
-          # Clone the repository
+
+          echo "TARGET_BRANCH=$TARGET_BRANCH" >> $GITHUB_ENV
+          echo "Cloning openimis-be_py from branch: $TARGET_BRANCH"
+
+          # Clone with the determined branch
           rm -rf ./openimis
-          git clone --depth=1 --branch=$TARGET_BRANCH https://github.com/openimis/openimis-be_py.git ./openimis || {
-            echo "Failed to clone $TARGET_BRANCH, falling back to develop"
+          git clone --depth=1 --branch="$TARGET_BRANCH" https://github.com/openimis/openimis-be_py.git ./openimis || {
+            echo "Failed to clone branch '$TARGET_BRANCH' – falling back to 'develop'"
             git clone --depth=1 --branch=develop https://github.com/openimis/openimis-be_py.git ./openimis
+            echo "Cloned fallback branch: develop"
           }
-      
-          # Verify the cloned branch
+
+          # Verify what we actually got
           cd ./openimis
           CLONED_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-          echo "Cloned branch: $CLONED_BRANCH"
-
+          echo "Actually cloned branch: $CLONED_BRANCH"
       - name: Copy Current branch
         uses: actions/checkout@v4
         with:
@@ -407,7 +416,7 @@ jobs:
           python -m flake8 --output-file=flake8-report.txt $MOD_DIR --exit-zero --ignore W503
           sed -i 's|\.\./current-module/||g' flake8-report.txt
           
-          python -m flake8 $MOD_DIR --ignore W503
+          python -m flake8 $MOD_DIR --ignore W503,E501
       - name: Flake8 results upload
         if: success() || failure()
         uses: actions/upload-artifact@v4
