@@ -237,7 +237,6 @@ MIDDLEWARE = _middleware_stack(
     _RESOLVED_CORE["clear_user_context"],
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "simple_history.middleware.HistoryRequestMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "simple_history.middleware.HistoryRequestMiddleware",
