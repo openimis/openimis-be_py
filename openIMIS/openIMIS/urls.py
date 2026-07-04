@@ -13,11 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import  re_path as url, include
+from django.urls import re_path as url, include
 from django.contrib import admin
 from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
-from .views import OpenIMISGraphQLView
+from .views import OpenIMISGraphQLView, afyacapital_opportunities
 from graphql_jwt.decorators import jwt_cookie
 
 
@@ -25,6 +25,8 @@ from .openimisurls import openimis_urls
 from .settings import SITE_ROOT, DEBUG
 
 urlpatterns = [
+    path("finance/opportunities/", afyacapital_opportunities),
+    path("api/finance/opportunities/", afyacapital_opportunities),
     path("%sadmin/" % SITE_ROOT(), admin.site.urls),
     path(
         "%sgraphql" % SITE_ROOT(),
