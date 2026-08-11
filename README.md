@@ -93,8 +93,9 @@ At this stage, you may (depends on the database you connect to) need to:
 
 - apply django migrations, from `openimis-be_py/openIMIS`: `python manage.py migrate`. See [PostgresQL section](#postgresql) if you are using postgresql for dev DB.
 - create a superuser for django admin console, from
-  `openimis-be_py/openIMIS`: `python manage.py createsuperuser` (will
-  not prompt for a password) and then `python manage.py changepassword <username>`
+  `openimis-be_py/openIMIS`: `python manage.py createsuperuser` (supports
+  `--username` and `--password` for non-interactive use)
+- load reference demo data (roles, lookup tables, etc.): see [Loading Demo Data](#loading-demo-data)
 
 ### To edit (modify) an existing openIMIS module (e.g. `openimis-be-claim`)
 
@@ -160,39 +161,60 @@ creates profiler report for execution of query/mutation defined in request's POS
 
 ## Loading Demo Data
 
-The project includes demo data fixtures located in the `fixtures/demo/` directory, organized by modules (e.g., `core/`, `payer/`, `insuree/`, etc.).
+The assembly ships JSON fixtures under `fixtures/demo/`, grouped by module (`core/`, `insuree/`, `payer/`, `medical/`, `controls/`, etc.). They provide **reference and lookup data** for local development—roles and rights, languages, insuree lookup tables (gender, profession, …), payer types, diagnoses, health-facility metadata, and controls—not a full transactional dataset.
 
-To load the demo data into your database:
+The recommended loader is the `load_fixtures` management command. It resolves foreign-key dependencies across files, supports both Django field names and legacy `db_column` names, and **skips tables that already contain data** (soft-delete aware), so it is safe to re-run on a partially loaded database.
 
-### Using Django Management Command
+### Prerequisites
 
-From the `openIMIS/` directory, run:
+1. Complete the [developers setup](#developers-setup) above (dependencies, `.env`, database connection).
+2. Apply migrations from `openIMIS/`:
+   ```bash
+   python manage.py migrate
+   ```
+   For PostgreSQL, follow the [PostgreSQL section](#postgresql) first.
+3. Prefer an **empty or freshly migrated** database. Pre-existing rows in a table prevent that table's fixtures from loading.
+
+When using `openimis-dev.json` locally, prefix commands with `OPENIMIS_CONF=../openimis-dev.json` (or set it in `.env`).
+
+### Option 1 — VS Code (`loadDemo`)
+
+The **loadDemo** configuration in `.vscode/launch.json` is the quickest way to load demo data during local development. It runs the same command as the CLI below.
+
+1. Open **Run and Debug** (Ctrl+Shift+D / Cmd+Shift+D).
+2. Select **loadDemo** from the configuration dropdown.
+3. When prompted for the database engine, choose **psql** (PostgreSQL) or **mssql** (SQL Server). This sets `DB_DEFAULT` for the run and must match your `.env` database setup.
+4. Press **F5** (or **Run**).
+
+The configuration uses `openIMIS/` as the working directory and executes:
 
 ```bash
 python manage.py load_fixtures --dir ../fixtures/demo
 ```
 
-This command intelligently loads JSON fixtures, skipping tables that already contain data (based on soft-delete conventions).
+### Option 2 — Command line
 
-### Using VSCode Launch Configuration
-
-A "loadDemo" configuration is available in `.vscode/launch.json` for easy loading via VSCode debugger:
-
-- Open the Run and Debug panel in VSCode.
-- Select "loadDemo" from the configuration dropdown.
-- Run it to load the demo fixtures.
-
-### Using Bash Script
-
-Alternatively, use the provided script:
+From `openIMIS/`:
 
 ```bash
-bash script/load_fixture.sh
+python manage.py load_fixtures --dir ../fixtures/demo
 ```
 
-Note: The script defaults to loading from `../fixtures` (relative to openIMIS/), but for demo data, ensure the directory is set correctly or modify the script as needed.
+With the local dev manifest:
 
-The demo data includes sample records for users, roles, insurees, payers, medical items, and more, useful for development and testing.
+```bash
+OPENIMIS_CONF=../openimis-dev.json python manage.py load_fixtures --dir ../fixtures/demo
+```
+
+Ensure `DB_DEFAULT` in `.env` matches your database (`postgresql` or `mssql`).
+
+### Solution-specific fixtures (optional)
+
+To load fixtures built for a particular solution instead of the generic demo set, use the **loadSolutionFixture** launch configuration in `.vscode/launch.json`. It prompts for a solution type (e.g. SHI, IBR, coreMIS) and loads from `solution-builder/build/<solution>/fixtures`. Alternatively, `load_fixtures --solution <name>` clones fixtures from the [openIMIS solutions](https://github.com/openimis/solutions) repository (see `python manage.py load_fixtures --help`).
+
+### Legacy script
+
+`script/load_fixture.sh` uses the older `loaddata` flow against flat JSON files in `../fixtures/`, not the `fixtures/demo/` tree. **Do not use it for demo data**—use `load_fixtures` or the **loadDemo** launch configuration instead.
 
 ## Distributor setup
 
