@@ -82,7 +82,7 @@ When programming for openIMIS backend, you are highly encouraged to use the feat
 - within `openimis-be_py` directory
  - install openIMIS (external) dependencies: `pip install -r requirements.txt`. For development workstations, one can use `pip install -r dev-requirements.txt` instead, for more modules.
  - In the script directory, 
- - generate the openIMIS modules dependencies file (from openimis.json config): `python modules-requirements.py openimis.json > modules-requirements.txt`
+ - generate the openIMIS modules dependencies file (from openimis.json config): `python modules-requirements.py ../openimis.json > modules-requirements.txt`
  - if you previously installed openIMIS on another version, it seems safe to uninstall all previous modules-requirement to be sure it match current version `pip uninstall -r modules-requirements.txt`
  - install openIMIS current modules: `pip install -r modules-requirements.txt`
  - Copy the example environment setup and adjust the settings (like database connection): `cp .env.example .env`.
