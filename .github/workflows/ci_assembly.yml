@@ -54,9 +54,12 @@ jobs:
           cluster.name: my_opensearch_local
           http.port: 9200
           plugins.security.ssl.http.enabled: false
-          OPENSEARCH_INITIAL_ADMIN_PASSWORD: B9wc9VrqX7pY
+          # No security plugin, so no admin credential; the demo installer has
+          # to be skipped or it demands one anyway.
+          plugins.security.disabled: true
+          DISABLE_INSTALL_DEMO_CONFIG: true
         options: >-
-          --health-cmd "curl -f -u admin:${OPENSEARCH_INITIAL_ADMIN_PASSWORD} http://localhost:9200/_cluster/health || exit 1"
+          --health-cmd "curl -f http://localhost:9200/_cluster/health || exit 1"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
@@ -170,7 +173,7 @@ jobs:
           SITE_ROOT: api
           CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
           OPENSEARCH_ADMIN: admin
-          OPENSEARCH_PASSWORD: B9wc9VrqX7pY
+          OPENSEARCH_PASSWORD: ""
           OPEN_SEARCH_HTTP_PORT: 9200
           OPENSEARCH_HOSTS: "localhost:9200"
 
