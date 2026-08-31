@@ -164,3 +164,25 @@ class OpenIMISGraphQLView(GraphQLView):
                 logger.error(error.original_error)
             except AttributeError:
                 logger.error(error)
+
+def afyacapital_opportunities(request):
+    from django.http import JsonResponse
+    data = [
+        {
+            "claim": "CLM-2026-8841",
+            "facility": "Nairobi West Hospital",
+            "approvedAmount": 400000,
+            "availableAdvance": 280000,
+            "risk": "Low",
+            "status": "Eligible"
+        },
+        {
+            "claim": "CLM-2026-9012",
+            "facility": "Karen Referral Clinic",
+            "approvedAmount": 1250000,
+            "availableAdvance": 875000,
+            "risk": "Low",
+            "status": "Eligible"
+        }
+    ]
+    return JsonResponse(data, safe=False)
