@@ -1,0 +1,186 @@
+[
+    {
+        "model": "controls.control",
+        "pk": "BeneficiaryCard",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "ClaimAdministrator",
+        "fields": {
+            "adjustability": "M",
+            "usage": "FindClaim, Claim, ClaimReview, ClaimFeedback"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "Confirmation",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree, OverviewFamily, ChangeFamily"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "ConfirmationNo",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree, FindFamily, OverviewFamily, ChangeFamily"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "ContributionCategory",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Premium, FindPremium"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "CurrentAddress",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "CurrentDistrict",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "CurrentMunicipality",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "CurrentVillage",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "Education",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "FSP",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "FSPCategory",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "FSPDistrict",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "FamilyType",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, ChangeFamily"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "GuaranteeNo",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Claim, ClaimReview"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "IdentificationNumber",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "IdentificationType",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "InsureeEmail",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree, FindFamily"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "MaritalStatus",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "PermanentAddress",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree, ChangeFamily"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "Poverty",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree, Policy, Premium, FindFamily, ChangeFamily"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "Profession",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Family, Insuree"
+        }
+    },
+    {
+        "model": "controls.control",
+        "pk": "Relationship",
+        "fields": {
+            "adjustability": "O",
+            "usage": "Insuree"
+        }
+    }
+]

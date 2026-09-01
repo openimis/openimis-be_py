@@ -13,9 +13,13 @@ if len(sys.argv) > 1:
 
 def main():
     if GITHUB_TOKEN:
-        g = Github(GITHUB_TOKEN)
+        g = Github(
+            GITHUB_TOKEN,
+            seconds_between_requests=0.75,
+            seconds_between_writes=2.0
+        )
     else: # Anonymous
-        g = Github()
+        g = Github(seconds_between_requests=60.0)
     # assembly_fe='openimis/openimis-fe_js'
     assembly_be = "openimis/openimis-be_py"
     # refresh openimis.json from git

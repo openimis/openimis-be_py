@@ -47,6 +47,8 @@ GRAPHQL_JWT = {
         "graphql_jwt.mutations.Verify",
         "graphql_jwt.mutations.Refresh",
         "graphql_jwt.mutations.Revoke",
+        "graphql_jwt.mutations.DeleteJSONWebTokenCookie",
+        "graphql_jwt.refresh_token.mutations.DeleteRefreshTokenCookie",
         "core.schema.ResetPasswordMutation",
         "core.schema.SetPasswordMutation",
     ],

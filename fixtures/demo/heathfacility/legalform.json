@@ -1,0 +1,38 @@
+[
+    {
+        "model": "location.healthfacilitylegalform",
+        "pk": "C",
+        "fields": {
+            "legal_form": "Charity",
+            "sort_order": null,
+            "alt_language": "Charité"
+        }
+    },
+    {
+        "model": "location.healthfacilitylegalform",
+        "pk": "D",
+        "fields": {
+            "legal_form": "District organization",
+            "sort_order": null,
+            "alt_language": "Organisation du district"
+        }
+    },
+    {
+        "model": "location.healthfacilitylegalform",
+        "pk": "G",
+        "fields": {
+            "legal_form": "Government",
+            "sort_order": null,
+            "alt_language": "Gouvernement"
+        }
+    },
+    {
+        "model": "location.healthfacilitylegalform",
+        "pk": "P",
+        "fields": {
+            "legal_form": "Private organization",
+            "sort_order": null,
+            "alt_language": "Organisation privée"
+        }
+    }
+]
