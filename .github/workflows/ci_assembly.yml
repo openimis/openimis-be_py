@@ -148,6 +148,13 @@ jobs:
       #     DB_USER: sa
       #     DB_PASSWORD: YourStrong!Passw0rd
 
+      - name: Settings unit tests
+        working-directory: ./openIMIS
+        # Pure-stdlib unit tests for settings helpers; not collected by
+        # `manage.py test <module>`, so run them explicitly.
+        if: success() || failure()
+        run: python openIMIS/settings/test_base_utils.py
+
       - name: Django tests PSQL
         working-directory: ./openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)

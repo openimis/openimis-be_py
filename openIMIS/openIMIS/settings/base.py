@@ -6,10 +6,10 @@ import json
 import logging
 import os
 import sys
-from pathlib import Path
 
 from ..openimisapps import openimis_apps, get_locale_folders
 from datetime import timedelta
+from .base_utils import locate_module_file
 from .common import DEBUG, BASE_DIR, MODE
 from .security import REMOTE_USER_AUTHENTICATION
 
@@ -72,20 +72,6 @@ INSTALLED_APPS += ["apscheduler_runner", "signal_binding", "receiver_binding"]  
 IS_TESTING =  'test' in sys.argv
 
 
-def _locate_module_file(module_dotted_path):
-    """Find a module file on sys.path without importing it."""
-    relative = Path(*module_dotted_path.split("."))
-    for entry in sys.path:
-        base = Path(entry)
-        for candidate in (
-            base / relative.with_suffix(".py"),
-            base / relative / "__init__.py",
-        ):
-            if candidate.is_file():
-                return candidate
-    return None
-
-
 _CORE_EXTENSIONS = {
     "graphql_jwt_backend": (
         "core.jwt_authentication.JSONWebTokenBackend",
@@ -130,7 +116,7 @@ def _core_module_classes(extensions):
     }
     classes_by_module = {}
     for module_path in module_paths:
-        module_file = _locate_module_file(module_path)
+        module_file = locate_module_file(module_path)
         if module_file is None:
             classes_by_module[module_path] = set()
             continue
