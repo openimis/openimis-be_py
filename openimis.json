@@ -6,7 +6,7 @@
         },
         {
             "name": "individual",
-            "pip": "git+https://github.com/openimis/openimis-be-individual_py.git@develop#egg=openimis-be-individual"
+            "pip": "git+https://github.com/openimis/openimis-be-individual_py.git@fix/group-individual-null-individual-id#egg=openimis-be-individual"
         },
         {
             "name": "workflow",
@@ -38,7 +38,7 @@
         },
         {
             "name": "insuree",
-            "pip": "git+https://github.com/openimis/openimis-be-insuree_py.git@develop#egg=openimis-be-insuree"
+            "pip": "git+https://github.com/openimis/openimis-be-insuree_py.git@chore/flake8-cleanup#egg=openimis-be-insuree"
         },
         {
             "name": "policy",
@@ -62,11 +62,11 @@
         },
         {
             "name": "claim_batch",
-            "pip": "git+https://github.com/openimis/openimis-be-claim_batch_py.git@develop#egg=openimis-be-claim_batch"
+            "pip": "git+https://github.com/openimis/openimis-be-claim_batch_py.git@chore/flake8-cleanup#egg=openimis-be-claim_batch"
         },
         {
             "name": "tools",
-            "pip": "git+https://github.com/openimis/openimis-be-tools_py.git@develop#egg=openimis-be-tools"
+            "pip": "git+https://github.com/openimis/openimis-be-tools_py.git@chore/flake8-cleanup#egg=openimis-be-tools"
         },
         {
             "name": "api_fhir_r4",
@@ -86,7 +86,7 @@
         },
         {
             "name": "contract",
-            "pip": "git+https://github.com/openimis/openimis-be-contract_py.git@develop#egg=openimis-be-contract"
+            "pip": "git+https://github.com/openimis/openimis-be-contract_py.git@fix/subtract-date-ranges-type-mismatch#egg=openimis-be-contract"
         },
         {
             "name": "invoice",
@@ -150,7 +150,7 @@
         },
         {
             "name": "payroll",
-            "pip": "git+https://github.com/openimis/openimis-be-payroll_py.git@develop#egg=openimis-be-payroll"
+            "pip": "git+https://github.com/openimis/openimis-be-payroll_py.git@fix/multiple-project-enrollment#egg=openimis-be-payroll"
         },
         {
             "name": "controls",

@@ -105,6 +105,9 @@ jobs:
           git clone  --depth=1 --branch=$DBBRANCH https://github.com/openimis/database_postgresql.git ./sql_psql
           sudo bash ./sql_psql/install_postgres_json_schema_extension.sh
           echo 'set search_path to public' >> ~/.psqlrc
+          # The pgsql service container creates test_imis (POSTGRES_DB=test_imis) but not imis.
+          # Django requires the main DB (imis) to exist at startup, even with --keepdb.
+          PGPASSWORD=$DB_PASSWORD psql -U $DB_USER -h $DB_HOST -d postgres -c "CREATE DATABASE $DB_NAME;" || true
           PGPASSWORD=YourStrong!Passw0rd psql -U $DB_USER -h $DB_HOST -d $DB_NAME_TEST -f  ./sql_psql/database\ scripts/json_schema_extension.sql | grep . | uniq -c
         env:
           DB_HOST: localhost
