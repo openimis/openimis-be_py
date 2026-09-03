@@ -1,10 +1,12 @@
 """
 Django settings for openIMIS project.
 """
+import ast
 import json
 import logging
 import os
 import sys
+from pathlib import Path
 
 from ..openimisapps import openimis_apps, get_locale_folders
 from datetime import timedelta
@@ -69,6 +71,122 @@ INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["apscheduler_runner", "signal_binding", "receiver_binding"]  # Signal binding should be last installed module
 IS_TESTING =  'test' in sys.argv
 
+
+def _locate_module_file(module_dotted_path):
+    """Find a module file on sys.path without importing it."""
+    relative = Path(*module_dotted_path.split("."))
+    for entry in sys.path:
+        base = Path(entry)
+        for candidate in (
+            base / relative.with_suffix(".py"),
+            base / relative / "__init__.py",
+        ):
+            if candidate.is_file():
+                return candidate
+    return None
+
+
+_CORE_EXTENSIONS = {
+    "graphql_jwt_backend": (
+        "core.jwt_authentication.JSONWebTokenBackend",
+        "graphql_jwt.backends.JSONWebTokenBackend",
+    ),
+    "graphql_jwt_middleware": (
+        "core.middleware.CustomJSONWebTokenMiddleware",
+        "graphql_jwt.middleware.JSONWebTokenMiddleware",
+    ),
+    "graphql_rate_limit": (
+        "core.middleware.GraphQLRateLimitMiddleware",
+        None,
+    ),
+    "default_axes_attributes": (
+        "core.middleware.DefaultAxesAttributesMiddleware",
+        None,
+    ),
+    "admin_logout": (
+        "core.middleware.AdminLogoutMiddleware",
+        None,
+    ),
+    "clear_user_context": (
+        "core.middleware.ClearUserContextMiddleware",
+        None,
+    ),
+    "security_headers": (
+        "core.middleware.SecurityHeadersMiddleware",
+        None,
+    ),
+    "remote_user": (
+        "core.security.RemoteUserMiddleware",
+        None,
+    ),
+}
+
+
+def _core_module_classes(extensions):
+    """Parse each core module source once; return {module_path: set(class_names)}."""
+    module_paths = {
+        core_path.rpartition(".")[0]
+        for core_path, _ in extensions.values()
+    }
+    classes_by_module = {}
+    for module_path in module_paths:
+        module_file = _locate_module_file(module_path)
+        if module_file is None:
+            classes_by_module[module_path] = set()
+            continue
+        try:
+            source = module_file.read_text(encoding="utf-8")
+            tree = ast.parse(source)
+        except (OSError, UnicodeDecodeError, SyntaxError):
+            classes_by_module[module_path] = set()
+            continue
+        classes_by_module[module_path] = {
+            node.name
+            for node in ast.walk(tree)
+            if isinstance(node, ast.ClassDef)
+        }
+    return classes_by_module
+
+
+def _resolve_core_extensions(extensions):
+    """
+    Resolve {name: (core_path, fallback)} to {name: resolved_path}.
+
+    Uses AST inspection instead of import: base.py loads before CACHES and
+    importing core at this stage would fail. Each core module source is parsed
+    once and reused for every class lookup.
+    """
+    logger = logging.getLogger(__name__)
+    classes_by_module = _core_module_classes(extensions)
+    resolved = {}
+    for name, (core_path, fallback) in extensions.items():
+        module_path, _, class_name = core_path.rpartition(".")
+        if class_name in classes_by_module.get(module_path, set()):
+            resolved[name] = core_path
+        elif fallback:
+            logger.warning(
+                "core is missing %s (%s); using fallback %s.",
+                name,
+                core_path,
+                fallback,
+            )
+            resolved[name] = fallback
+        else:
+            logger.warning(
+                "core is missing %s (%s); skipping.",
+                name,
+                core_path,
+            )
+            resolved[name] = None
+    return resolved
+
+
+_RESOLVED_CORE = _resolve_core_extensions(_CORE_EXTENSIONS)
+
+
+def _middleware_stack(*entries):
+    return [entry for entry in entries if entry]
+
 AUTHENTICATION_BACKENDS = []
 
 if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
@@ -77,7 +195,7 @@ if os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true":
 AUTHENTICATION_BACKENDS += [
     "axes.backends.AxesStandaloneBackend",
     "rules.permissions.ObjectPermissionBackend",
-    "graphql_jwt.backends.JSONWebTokenBackend",
+    _RESOLVED_CORE["graphql_jwt_backend"],
     "django.contrib.auth.backends.ModelBackend",
 ]
 
@@ -108,21 +226,23 @@ SPECTACULAR_SETTINGS = {
     ],
 }
 
-MIDDLEWARE = [
+MIDDLEWARE = _middleware_stack(
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    'core.middleware.GraphQLRateLimitMiddleware',
+    _RESOLVED_CORE["graphql_rate_limit"],
     "axes.middleware.AxesMiddleware",
-    "core.middleware.DefaultAxesAttributesMiddleware",
-    "core.middleware.AdminLogoutMiddleware",
+    _RESOLVED_CORE["default_axes_attributes"],
+    _RESOLVED_CORE["admin_logout"],
     "django.contrib.sessions.middleware.SessionMiddleware",
+    _RESOLVED_CORE["clear_user_context"],
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "core.middleware.SecurityHeadersMiddleware",
+    "simple_history.middleware.HistoryRequestMiddleware",
+    _RESOLVED_CORE["security_headers"],
     "csp.middleware.CSPMiddleware",
-]
+)
 
 if DEBUG:
     # Attach profiler middleware
@@ -132,7 +252,7 @@ if DEBUG:
     DJANGO_CPROFILE_MIDDLEWARE_REQUIRE_STAFF = False
 
 if REMOTE_USER_AUTHENTICATION:
-    MIDDLEWARE += ["core.security.RemoteUserMiddleware"]
+    MIDDLEWARE += _middleware_stack(_RESOLVED_CORE["remote_user"])
 MIDDLEWARE += [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -165,7 +285,7 @@ GRAPHENE = {
     "MIDDLEWARE": [
         "openIMIS.tracer.TracerMiddleware",
         "openIMIS.schema.GQLUserLanguageMiddleware",
-        "graphql_jwt.middleware.JSONWebTokenMiddleware"
+        _RESOLVED_CORE["graphql_jwt_middleware"],
     ],
 }
 
@@ -211,4 +331,3 @@ EMAIL_USE_SSL = os.environ.get("EMAIL_USE_SSL", False)
 
 # By default, the maximum upload size is 2.5Mb, which is a bit short for base64 picture upload
 DATA_UPLOAD_MAX_MEMORY_SIZE = int(os.environ.get('DATA_UPLOAD_MAX_MEMORY_SIZE', 10 * 1024 * 1024))
-

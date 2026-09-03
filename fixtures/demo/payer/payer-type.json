@@ -1,0 +1,56 @@
+[
+    {
+        "model": "payer.payertype",
+        "pk": "C",
+        "fields": {
+            "payer_type": "Co-operative",
+            "alt_language": null,
+            "sort_order": null
+        }
+    },
+    {
+        "model": "payer.payertype",
+        "pk": "D",
+        "fields": {
+            "payer_type": "Donor",
+            "alt_language": null,
+            "sort_order": null
+        }
+    },
+    {
+        "model": "payer.payertype",
+        "pk": "G",
+        "fields": {
+            "payer_type": "Government",
+            "alt_language": null,
+            "sort_order": null
+        }
+    },
+    {
+        "model": "payer.payertype",
+        "pk": "L",
+        "fields": {
+            "payer_type": "Local Authority",
+            "alt_language": null,
+            "sort_order": null
+        }
+    },
+    {
+        "model": "payer.payertype",
+        "pk": "O",
+        "fields": {
+            "payer_type": "Other",
+            "alt_language": null,
+            "sort_order": null
+        }
+    },
+    {
+        "model": "payer.payertype",
+        "pk": "P",
+        "fields": {
+            "payer_type": "Private Organization",
+            "alt_language": null,
+            "sort_order": null
+        }
+    }
+]
