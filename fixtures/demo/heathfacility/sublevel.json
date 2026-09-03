@@ -1,0 +1,29 @@
+[
+    {
+        "model": "location.healthfacilitysublevel",
+        "pk": "I",
+        "fields": {
+            "health_facility_sub_level": "Integrated",
+            "sort_order": null,
+            "alt_language": null
+        }
+    },
+    {
+        "model": "location.healthfacilitysublevel",
+        "pk": "N",
+        "fields": {
+            "health_facility_sub_level": "No Sublevel",
+            "sort_order": null,
+            "alt_language": null
+        }
+    },
+    {
+        "model": "location.healthfacilitysublevel",
+        "pk": "R",
+        "fields": {
+            "health_facility_sub_level": "Reference",
+            "sort_order": null,
+            "alt_language": null
+        }
+    }
+]

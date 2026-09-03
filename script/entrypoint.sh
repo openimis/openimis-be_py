@@ -2,19 +2,39 @@
 set -e
 
 install_modules() {
+    mkdir -p /pip-cache
+    # If the container runs as UID 1000 (most openIMIS images) make it owner:
+    chown -R 1000:1000 /pip-cache 2>/dev/null || true
+    # Create and activate shared venv if not exists
+    if [ ! -d /venv/bin ]; then
+      python -m venv /venv
+    fi
+    source /venv/bin/activate
+    cd /openimis-be/script
     local config_file=$1
     local config_name=$(basename "$config_file" .json)
     local req_file="modules-requirements-${config_name}.txt"
+    local lock_file="modules-requirements-${config_name}.lock"
+
+    # Skip installation if lock file exists
+    if [ -f "$lock_file" ]; then
+        echo "Lock file $lock_file found – skipping installation."
+        return 0
+    fi
 
     echo "Installing modules for $config_file..."
+
+    pip install --quiet --root-user-action 'ignore' --cache-dir /pip-cache -r ../requirements.txt
 
     # Generate requirements (always do this to ensure we have latest)
     python ./modules-requirements.py "$config_file" > "$req_file"
 
     # Always install modules but use pip cache to avoid re-downloading
     echo "Installing modules (using cache for dependencies)..."
-    pip install --quiet --cache-dir /pip-cache -r "$req_file"
+    pip install --quiet --root-user-action 'ignore' --cache-dir /pip-cache -r "$req_file"
 
+    # Create lock file after successful installation
+    touch "$lock_file"
     echo "Module installation complete."
 }
 
@@ -67,23 +87,20 @@ case "$1" in
   "dev" )
     echo "Starting Django in development mode..."
     install_modules "../openimis-dev.json"
+    source /venv/bin/activate
     cd /openimis-be/openIMIS
     OPENIMIS_CONF=../openimis-dev.json python server.py
   ;;
   "debug" )
     echo "Starting Django in debug mode..."
     install_modules "../openimis-dev.json"
+    source /venv/bin/activate
     cd /openimis-be/openIMIS
+    pip install debugpy
     OPENIMIS_CONF=../openimis-dev.json python -m debugpy --listen 0.0.0.0:5678 --wait-for-client manage.py runserver 0.0.0.0:8000 --noreload --nothreading
   ;;
   "start" )
     echo "Starting Django in production mode..."
-    # In production, modules should already be installed during build
-    # But add a safety check in case they're not
-    if ! python -c "import sys; sys.path.insert(0, 'openIMIS'); from openimisconf import load_openimis_conf; print('Modules OK')" 2>/dev/null; then
-        echo "Installing production modules..."
-        install_modules "openimis.json"
-    fi
     cd /openimis-be/openIMIS
     python server.py
   ;;
@@ -106,6 +123,7 @@ case "$1" in
   "init-dev" )
     echo "Migrating Django in debug mode..."
     install_modules "../openimis-dev.json"
+    source /venv/bin/activate
     init
     exit 0
   ;;

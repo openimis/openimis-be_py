@@ -66,7 +66,7 @@ else:
         "PORT": os.environ.get("PSQL_DB_PORT", DEFAULT_PORT),
         "OPTIONS": PSQL_DATABASE_OPTIONS,
         'TEST': {
-            'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("MSSQL_DB_NAME", "imis")),
+            'NAME': os.environ.get("DB_TEST_NAME", "test_" + os.environ.get("PSQL_DB_NAME", "imis")),
         }
     }
 

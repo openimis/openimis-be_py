@@ -1,0 +1,588 @@
+[
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "953001",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157101",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127000",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127004",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127001",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127002",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127003",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127005",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "127006",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159001",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159002",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159003",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159004",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "159005",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180001",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180002",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180003",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "180004",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "121901",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "200001",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "101401",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "202001",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "206001",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160001",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160002",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160003",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160004",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "160005",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "170001",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "170002",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "170003",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "170004",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171001",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171002",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171003",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "171004",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190001",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190002",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190003",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190004",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191001",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191002",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191003",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191004",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-06-06T10:32:36.678Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "191005",
+        "audit_user_id": null,
+        "role": [
+          "Case Worker / Social Officer"
+        ]
+      }
+    }
+  ]
+  
