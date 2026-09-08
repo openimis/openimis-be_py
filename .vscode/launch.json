@@ -170,7 +170,7 @@
       "type": "python",
       "request": "launch",
       "program": "${workspaceFolder}/openIMIS/manage.py",
-      "args": ["makemigrations"],
+      "args": ["makemigrations","${input:moduleName}"],
       "django": true,
       "cwd": "${workspaceRoot}/openIMIS",
       "env": {
