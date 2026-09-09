@@ -19,7 +19,7 @@ mssql-django~=1.4
 django-test-without-migrations
 graphene-django<3
 graphene-django-optimizer==0.8.0
-PyJWT~=2.4.0
+PyJWT~=2.9.0
 django-graphql-jwt==0.3.4
 markdown~=3.4.1
 nepalicalendar
