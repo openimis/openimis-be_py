@@ -171,6 +171,10 @@
         {
             "name": "api_etl",
             "pip": "git+https://github.com/openimis/openimis-be-api_etl_py.git@develop#egg=openimis-be-api_etl"
+        },
+        {
+            "name": "claimguard",
+            "pip": "-e /openimis-be/openimis-be-claimguard_py"
         }
     ]
 }
