@@ -448,23 +448,32 @@ module skeleton in single command` section
 
 ### JWT Security Configuration
 
-To enhance JWT token security, you can configure the system to use RSA keys for signing and verifying tokens.
+openIMIS signs tokens with a deployment RSA keypair when one is provisioned, and with the legacy
+per-user key when none is. Provisioning the key is the switch; there is no mode setting.
 
-1. **Generate RSA Keys**:
+1. **Generate a signing key**:
+
  ```bash
- # Generate a private key
- openssl genpkey -algorithm RSA -out jwt_private_key.pem -aes256
+ openssl genrsa -out jwt_signing_key.pem 2048
+ ```
 
- # Generate a public key
- openssl rsa -pubout -in jwt_private_key.pem -out jwt_public_key.pem
+ Do not passphrase-protect it: the loader opens the key with no password and rejects one that needs
+ a passphrase.
 
-2. **Store RSA Keys**:
- Place jwt_private_key.pem and jwt_public_key.pem in a secure directory within your project, e.g., keys/.
+2. **Point the backend at it** with `JWT_SIGNING_KEY`, which takes either a path to a mounted PEM or
+ the PEM itself inline:
 
-3. **Django Configuration**:
- Ensure that the settings.py file is configured to read these keys. If RSA keys are found, the system will use RS256. Otherwise, it will fallback to HS256 using DJANGO_SECRET_KEY.
+ ```
+ JWT_SIGNING_KEY=/var/openimis/keys/jwt_signing_key.pem
+ ```
 
-Note: If RSA keys are not provided, the system defaults to HS256. Using RS256 with RSA keys is recommended for enhanced security.
+ Tokens are then signed RS256 and carry a `kid` derived from the key itself, so replicas agree on
+ it without sharing anything. Leave the setting unset to keep the legacy per-user key.
+
+3. **Optionally set `JWT_ISSUER` and `JWT_AUDIENCE`**. Both default to unset. **Setting either one
+ invalidates every token already in circulation**, so do it during a maintenance window.
+
+See `.env.example` for all three settings and for the key rotation procedure.
 
 ## CSRF Setup Guide
 
