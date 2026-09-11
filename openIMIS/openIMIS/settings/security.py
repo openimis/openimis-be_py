@@ -38,6 +38,9 @@ GRAPHQL_JWT = {
     "JWT_EXPIRATION_DELTA": timedelta(days=1),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=30),
     "JWT_AUTH_HEADER_PREFIX": "Bearer",
+    # Setting JWT_ISSUER invalidates every token already in circulation; see .env.example.
+    "JWT_ISSUER": os.environ.get("JWT_ISSUER") or None,
+    "JWT_AUDIENCE": os.environ.get("JWT_AUDIENCE") or None,
     "JWT_ENCODE_HANDLER": "core.jwt.jwt_encode_user_key",
     "JWT_DECODE_HANDLER": "core.jwt.jwt_decode_user_key",
     # This can be used to expose some resources without authentication
