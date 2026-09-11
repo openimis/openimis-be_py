@@ -94,7 +94,7 @@ At this stage, you may (depends on the database you connect to) need to:
 - apply django migrations, from `openimis-be_py/openIMIS`: `python manage.py migrate`. See [PostgresQL section](#postgresql) if you are using postgresql for dev DB.
 - create a superuser for django admin console, from
   `openimis-be_py/openIMIS`: `python manage.py createsuperuser` (supports
-  `--username` and `--password` for non-interactive use)
+  `--username` and `DJANGO_SUPERUSER_PASSWORD` for non-interactive use, same as Django)
 - load reference demo data (roles, lookup tables, etc.): see [Loading Demo Data](#loading-demo-data)
 
 ### To edit (modify) an existing openIMIS module (e.g. `openimis-be-claim`)

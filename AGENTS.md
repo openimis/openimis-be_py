@@ -26,6 +26,48 @@ backend/
 
 To work on a module locally, edit code in `../backend-packages/<module>/` — the assembly picks it up via the editable install (no reinstall needed for most changes).
 
+## Module dependencies — declare them in the module
+
+`backend/requirements.txt` is for the **assembly shell only**: Django, the DB driver, the
+web/worker runtime, the test runner, and cross-cutting infrastructure. It is not a dumping
+ground for whatever the current module happens to need.
+
+Everything a module imports belongs in that module's own `setup.py`:
+
+```python
+# ../backend-packages/<module>/setup.py
+install_requires=[
+    'django',
+    'djangorestframework',
+    'openimis-be-location',   # inter-module deps go here too
+    'factory-boy',            # imported by test_factories.py, which ships in the package
+],
+```
+
+| Where the dependency is imported | Where to declare it |
+|----------------------------------|---------------------|
+| Module runtime code | module `setup.py` → `install_requires` |
+| Module code that **ships** in the package and other modules import (`test_helpers.py`, `test_factories.py`) | module `setup.py` → `install_requires` |
+| Tests that never leave the module repo | module `setup.py` → `extras_require={'dev': [...]}` (see `controls`, which reads `requirements-dev.txt`) |
+| Assembly shell / runtime / DB driver | `backend/requirements.txt` |
+
+Rules:
+
+- **Never** add a module's dependency to `backend/requirements.txt`. It makes the module
+  uninstallable on its own, hides the coupling, and breaks CI, which installs modules from
+  their own manifests. If a module fails to import in a fresh environment, the fix is its
+  `setup.py`, not the assembly.
+- `test_helpers.py` / `test_factories.py` are **public API** — other modules import them for
+  their own test data. A library they import is a real install dependency, not a dev extra.
+- Editable installs do not pick up new dependencies on their own. After editing a module's
+  `setup.py`, reinstall it:
+
+  ```bash
+  pip install -e ../backend-packages/<module>
+  ```
+
+- Bump the module `version` in `setup.py` when its dependencies change.
+
 ## Running the backend
 
 ```bash
@@ -85,6 +127,39 @@ CI runs the same pattern: `python manage.py test --keepdb $MODULE_NAME` against 
 - Celery is stubbed in test configs via in-memory broker/backend (see launch.json env vars).
 - Some modules need OpenSearch or other services; check module README and CI service definitions.
 
+### Test data — factory-boy
+
+Build test data with **factory-boy** (`factory.django.DjangoModelFactory`). Do not hand-roll
+`Model.objects.create(...)` blocks in test cases. Reference implementation:
+`../backend-packages/insuree/insuree/test_factories.py` and `test_helpers.py`.
+
+Two layers, kept separate:
+
+| File | Holds | Imported by |
+|------|-------|-------------|
+| `<app>/test_factories.py` | Thin `DjangoModelFactory` classes: field defaults only. Plus shared binary/base64 fixtures as module constants. | the module's own `test_helpers.py` and tests |
+| `<app>/test_helpers.py` | `create_test_<thing>()` functions that compose factories and absorb openIMIS specifics — validity ranges, `audit_user_id`, config-driven validation, mutually dependent FKs (Insuree ↔ Family). | **other modules' tests** |
+
+Cross-module test data always goes through the helpers, never the factories directly:
+
+```python
+from insuree.test_helpers import create_test_insuree      # yes
+from insuree.test_factories import InsureeFactory         # no, module-internal
+```
+
+When writing factories:
+
+- **Defer DB lookups to call time** with `factory.LazyFunction`. Reference tables are seeded
+  lazily by the `create_test_*` helpers, so an import-time `Gender.objects.get(code='M')`
+  breaks test collection for every module that imports the file.
+- Default the openIMIS bookkeeping fields (`validity_from`, `audit_user_id = -1`).
+- Keep base64/binary fixtures as **single-line module constants** in `test_factories.py`, and
+  make sure they are **complete, valid payloads**. Services open uploaded images with Pillow,
+  so a truncated image parses as a header and only fails deep inside a mutation
+  (`broken data stream when reading image file`). Multi-line triple-quoted base64 also breaks
+  the moment it is inlined into a GraphQL string literal.
+- Never inline a fixture in a test file — import it, so one fix covers every test.
+
 ## Linting — flake8
 
 Run flake8 from the **`backend/` directory** so the assembly `.flake8` config applies.
@@ -117,11 +192,13 @@ The assembly repo holds cross-cutting docs like `GraphQL.md` and `README.md` (en
 
 1. Create a branch in the module repo (`../backend-packages/<module>/`).
 2. Implement changes in the Django app package (`<module>/<app_name>/`).
-3. Add or update tests in `<app_name>/tests.py` or `tests/`.
-4. Run **Test module** launch config (or `manage.py test --keepdb <module>`).
-5. Run **flake8** on the app package.
-6. Update **`docs/`** and **`README.md`** in the module repo.
-7. Bump version in `setup.py` when releasing; open PR on the module's GitHub repo.
+3. Add or update tests in `<app_name>/tests.py` or `tests/`, building data with the
+   module's factory-boy factories / `test_helpers.py`.
+4. Declare any new dependency in the module's `setup.py` (never in `backend/requirements.txt`).
+5. Run **Test module** launch config (or `manage.py test --keepdb <module>`).
+6. Run **flake8** on the app package.
+7. Update **`docs/`** and **`README.md`** in the module repo.
+8. Bump version in `setup.py` when releasing; open PR on the module's GitHub repo.
 
 ## Reference module
 
