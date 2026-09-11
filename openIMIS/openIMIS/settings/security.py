@@ -1,7 +1,6 @@
 import os
-from .common import DEBUG, BASE_DIR
+from .common import DEBUG
 from datetime import timedelta
-from cryptography.hazmat.primitives import serialization
 
 
 AUTH_USER_MODEL = "core.User"
@@ -53,30 +52,6 @@ GRAPHQL_JWT = {
         "core.schema.SetPasswordMutation",
     ],
 }
-
-# Load RSA keys
-private_key_path = os.path.join(BASE_DIR, 'keys', 'jwt_private_key.pem')
-public_key_path = os.path.join(BASE_DIR, 'keys', 'jwt_public_key.pem')
-
-if os.path.exists(private_key_path) and os.path.exists(public_key_path):
-    with open(private_key_path, 'rb') as f:
-        private_key = serialization.load_pem_private_key(
-            f.read(),
-            password=None,
-        )
-
-    with open(public_key_path, 'rb') as f:
-        public_key = serialization.load_pem_public_key(
-            f.read(),
-        )
-
-    # If RSA keys exist, update the algorithm and add keys to GRAPHQL_JWT settings
-    GRAPHQL_JWT.update({
-        "JWT_ALGORITHM": "RS256",
-        "JWT_PRIVATE_KEY": private_key,
-        "JWT_PUBLIC_KEY": public_key,
-    })
-
 
 # Lockout mechanism configuration
 AXES_FAILURE_LIMIT = int(os.getenv("LOGIN_LOCKOUT_FAILURE_LIMIT", 5))
