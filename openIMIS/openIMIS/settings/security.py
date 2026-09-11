@@ -42,7 +42,7 @@ GRAPHQL_JWT = {
     "JWT_ISSUER": os.environ.get("JWT_ISSUER") or None,
     "JWT_AUDIENCE": os.environ.get("JWT_AUDIENCE") or None,
     "JWT_ENCODE_HANDLER": "core.jwt.jwt_encode_user_key",
-    "JWT_DECODE_HANDLER": "core.jwt.jwt_decode_user_key",
+    "JWT_DECODE_HANDLER": "core.auth.decode",
     # This can be used to expose some resources without authentication
     "JWT_ALLOW_ANY_CLASSES": [
         "graphql_jwt.mutations.ObtainJSONWebToken",
