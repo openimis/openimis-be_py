@@ -53,6 +53,10 @@ GRAPHQL_JWT = {
     ],
 }
 
+# Provisioning this key is the switch to deployment-key signing; there is no mode setting.
+JWT_SIGNING_KEY = os.environ.get("JWT_SIGNING_KEY") or None
+
+
 # Lockout mechanism configuration
 AXES_FAILURE_LIMIT = int(os.getenv("LOGIN_LOCKOUT_FAILURE_LIMIT", 5))
 AXES_COOLOFF_TIME = timedelta(minutes=int(os.getenv("LOGIN_LOCKOUT_COOLOFF_TIME", 5)))
