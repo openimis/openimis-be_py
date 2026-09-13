@@ -171,6 +171,10 @@
         {
             "name": "api_etl",
             "pip": "git+https://github.com/openimis/openimis-be-api_etl_py.git@develop#egg=openimis-be-api_etl"
+        },
+        {
+            "name":"program",
+            "pip":"git+https://github.com/Y-Note-SAS/openimis-be-program_py.git@develop#egg=openimis-be-program"
         }
     ]
 }
