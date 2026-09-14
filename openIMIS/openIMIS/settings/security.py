@@ -1,5 +1,5 @@
 import os
-from .common import DEBUG, BASE_DIR
+from .common import DEBUG, BASE_DIR, MODE
 from datetime import timedelta
 from cryptography.hazmat.primitives import serialization
 
@@ -32,6 +32,14 @@ SECRET_KEY = os.environ.get(
     "SECRET_KEY", "chv^^7i_v3-04!rzu&qe#+h*a=%h(ib#5w9n$!f2q7%2$qp=zz"
 )
 REMOTE_USER_AUTHENTICATION = os.environ.get("REMOTE_USER_AUTHENTICATION", "false").lower() == "true"
+
+# SECURITY WARNING: impersonation lets a superuser act as any other user for the
+# duration of a request (X-Impersonate-User header). It is a development and
+# support aid, so it defaults to on in dev mode and off everywhere else.
+# Setting it explicitly wins, which is the only way to turn it on in production.
+IMPERSONATION_ENABLED = os.environ.get(
+    "IMPERSONATION_ENABLED", "true" if MODE == "dev" else "false"
+).lower() == "true"
 
 
 GRAPHQL_JWT = {
