@@ -99,6 +99,14 @@ MASTER_DATA_PASSWORD = os.environ.get("MASTER_DATA_PASSWORD", None)
 # default keeps a fresh install from showing a bare username.
 OTP_TOTP_ISSUER = os.environ.get("OTP_TOTP_ISSUER", "openIMIS")
 
+# Installing the device apps registers them on the Django admin site, and
+# django-otp defaults this to False - which puts the TOTP shared key and a QR
+# link on every device's admin page. A superuser could then clone another
+# user's authenticator, which is quieter than the password reset they can
+# already do: the victim notices a reset, not a copied seed. The list view
+# stays useful for spotting and deleting a lost device.
+OTP_ADMIN_HIDE_SENSITIVE_DATA = True
+
 PASSWORD_MIN_LENGTH = int(os.getenv('PASSWORD_MIN_LENGTH', 8))
 PASSWORD_UPPERCASE = int(os.getenv('PASSWORD_UPPERCASE', 1))
 PASSWORD_LOWERCASE = int(os.getenv('PASSWORD_LOWERCASE', 1))
