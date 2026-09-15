@@ -94,6 +94,11 @@ USER_AGENT_CSRF_BYPASS = [bypass.strip() for bypass in os.getenv("USER_AGENT_CSR
 # without a password defined is going to fail
 MASTER_DATA_PASSWORD = os.environ.get("MASTER_DATA_PASSWORD", None)
 
+# The label an authenticator app shows next to the account, from TOTPDevice's
+# config_url. Deployment-specific, so it is read from the environment; the
+# default keeps a fresh install from showing a bare username.
+OTP_TOTP_ISSUER = os.environ.get("OTP_TOTP_ISSUER", "openIMIS")
+
 PASSWORD_MIN_LENGTH = int(os.getenv('PASSWORD_MIN_LENGTH', 8))
 PASSWORD_UPPERCASE = int(os.getenv('PASSWORD_UPPERCASE', 1))
 PASSWORD_LOWERCASE = int(os.getenv('PASSWORD_LOWERCASE', 1))

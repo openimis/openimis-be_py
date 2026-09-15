@@ -65,6 +65,14 @@ INSTALLED_APPS = [
     "developer_tools",
     "drf_spectacular",  # Swagger UI for FHIR API
     "axes",
+    # Second-factor device models only. django-otp's middleware, views and admin
+    # integration all assume a Django session login; openIMIS logs in through the
+    # tokenAuth GraphQL mutation, so core/auth/second_factor.py drives the models
+    # directly. otp_totp is listed first so an authenticator code - the common
+    # case - is tried before a recovery code.
+    "django_otp",
+    "django_otp.plugins.otp_totp",
+    "django_otp.plugins.otp_static",
     "django_opensearch_dsl",
 ]
 INSTALLED_APPS += OPENIMIS_APPS
