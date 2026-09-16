@@ -24,7 +24,21 @@ from graphql_jwt.decorators import jwt_cookie
 from .openimisurls import openimis_urls
 from .settings import SITE_ROOT, DEBUG
 
-urlpatterns = [
+try:
+    from core.auth.admin_login import admin_login_redirect
+except ImportError:
+    # An older core has no redirect; the admin keeps its own login form.
+    admin_login_redirect = None
+
+urlpatterns = []
+
+if admin_login_redirect:
+    # Ahead of admin.site.urls: Django resolves in order, so this shadows
+    # AdminSite's own "login/" while reverse("admin:login") still produces
+    # this very path.
+    urlpatterns.append(path("%sadmin/login/" % SITE_ROOT(), admin_login_redirect))
+
+urlpatterns += [
     path("%sadmin/" % SITE_ROOT(), admin.site.urls),
     path(
         "%sgraphql" % SITE_ROOT(),
