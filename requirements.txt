@@ -27,7 +27,7 @@ pyodbc
 python-dateutil
 python-dotenv
 
-reportbro-lib~=2.1.1
+reportbro-lib~=3.12.2
 reportbro-fpdf~=1.7.11
 rules
 waitress
