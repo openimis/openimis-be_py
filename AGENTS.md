@@ -179,6 +179,263 @@ The assembly `.flake8` (in `backend/.flake8`) also ignores `E261`, `E303`, `E741
 python -m flake8 ../backend-packages/<module>/<app_name> --ignore=W503
 ```
 
+## Row security
+
+**Which rows a user may see is declared on the model, never on an API type.**
+
+`Model.get_queryset(queryset, user)` is the single definition, present on every
+model through `core.models.row_security.RowSecurityMixin` (wired into
+`ExtendableModel`, `UUIDModel`, `OpenIMISHistoryMixin`, `BaseVersionedModel` and
+`HistoryModel`). The default is unrestricted, so a caller never needs a
+`getattr` guard and never has to ask whether a given model is secured.
+
+`user` may be a user or a graphene `ResolveInfo`. Normalise once at the top with
+`cls.scoping_user(user)` instead of repeating an `isinstance` check:
+
+```python
+@classmethod
+def get_queryset(cls, queryset, user=None):
+    user = cls.scoping_user(user)
+    if user is None:
+        return queryset.none()
+    return queryset.filter(district__in=user.districts)
+```
+
+### Declaring a scope
+
+Most models need no code at all — set `row_scope`:
+
+```python
+from core.models import GenericScope, LocationScope, ParentScope
+
+class Product(VersionedModel):
+    row_scope = LocationScope("location")       # own path to a Location
+
+class ClaimItem(...):
+    row_scope = ParentScope("claim")            # as restricted as its parent
+
+class Invoice(GenericInvoice):
+    row_scope = GenericScope("subject")         # subject is a generic FK
+```
+
+The rule is declared **once, on whichever ancestor owns the location**, and a
+child composes onto it: `ParentScope("claim")` turns Claim's
+`health_facility__location` into `claim__health_facility__location`, and a
+second hop turns it into `claim_service__claim__health_facility__location`.
+Restating the path in the child is how the two drift apart.
+
+- **The most specific parent wins.** A policy is scoped through its head
+  insuree, not its product: the product says which benefits apply, the insuree
+  says whose data this is.
+- **A fallback is another path, not a special case.** `LocationScope` takes
+  several, OR'ed: `LocationScope("current_village__parent__parent",
+  "family__location__parent__parent")` for an insuree who may have no village of
+  their own.
+- **A parent that scopes itself in code exposes no path to compose.** Declare
+  `ParentScope` anyway: it restricts through the parent's queryset instead, so a
+  child can be secured before its parent is migrated.
+- `row_scope = None` — the default — means no row security, which is right for
+  reference and configuration tables. Override `get_queryset` directly only when
+  the rule needs logic a scope cannot express.
+
+Service code that filters on its own asks the model for the `Q` objects, shaped
+like `filter_validity`:
+
+```python
+queryset = queryset.filter(*Claim.filter_location(user, prefix="claim__"))
+```
+
+`prefix` is the path from the queryset being filtered to the model that owns the
+location. It returns `[]` when there is no scope, so the call is always safe.
+
+### Generic foreign keys
+
+`GenericScope` is for a subject reached through a content type plus a loose id,
+where there is no ORM path to compose. It emits one term per content type
+**actually present in the table** — `subject_type = X AND subject_id IN (rows X
+allows)` — OR'ed, with unscoped types passed through and a null subject left
+visible.
+
+Two things it deliberately does, do not undo them:
+
+- **No content types, no filtering.** An empty `django_content_type`, or tables
+  that do not exist yet, mean "before migration": it skips rather than fails.
+- **The set of present types is cached without expiry**, keyed per model and
+  field, and evicted by a `post_save` that sees a type the cached set does not
+  list. Without it, every query would build a subquery per installed model for
+  content types the table has never held.
+
+### GraphQL
+
+Add `ScopedQuerysetMixin` to the type; do not write a filter there:
+
+```python
+from core.gql import ScopedQuerysetMixin
+
+class InsureeGQLType(ScopedQuerysetMixin, DjangoObjectType):
+    class Meta:
+        model = Insuree
+```
+
+graphene-django calls `DjangoObjectType.get_queryset(cls, queryset, info)` from
+`DjangoConnectionField.resolve_queryset`, applying it to whatever the resolver
+returned. That makes the type a convenient place to filter and the **wrong**
+place to define the filter: REST and FHIR never call it, so a rule written there
+protects one surface and silently misses the others. The mixin holds no policy —
+it normalises `info` to a user and forwards to the model.
+
+For GraphQL-only shaping (a `.distinct()` undoing a filter JOIN, say) override
+`refine_queryset`, which runs *after* row security. Keeping it separate is the
+point: it stays visibly not a security rule.
+
+### Three traps
+
+- **A module mixin ahead of the shared bases silently disables every scope in
+  that module.** If it defines `get_queryset` and *returns* the queryset instead
+  of handing it on with `super().get_queryset(queryset, user)`, it wins the MRO
+  and no `row_scope` below it ever runs — declared, tested as declared, and
+  dead. `invoice.mixins.GenericInvoiceQuerysetMixin` did exactly this.
+- **`Model.objects` bypasses row security silently.** The mixin makes the
+  correct call universally available, not the default. In a resolver or a
+  service serving a request, start from `Model.get_queryset(Model.objects.all(),
+  user)`.
+- **A connection field is scoped; its singular sibling usually is not.** A
+  `graphene.Field(XGQLType, id=...)` with a custom resolver gets no automatic
+  hook, so `X.objects.get(id=id)` reads any row in the database. This is the
+  most common gap — see the audit in `script/scan_unscoped.py` output.
+
+From `backend/`, `.venv/bin/python script/scan_unscoped.py` lists read fields
+covered by neither mechanism, and `script/row_security_table.py` prints the
+coverage table per model — a model counts as covered when it declares
+`row_scope` or writes its own `get_queryset`.
+
+## Error handling
+
+One vocabulary of error codes, defined in `core/gql_errors.py` (`ERROR_CODES`):
+`UNAUTHENTICATED`, `FORBIDDEN`, `CSRF_FAILED`, `RATE_LIMITED`, `LOCKED_OUT`,
+`BAD_REQUEST`, `NOT_FOUND`, `CONFLICT`, `INTERNAL_ERROR`. Codes are stable and
+unlocalised; **messages are translated**, so never branch on message text —
+neither in client code nor in tests.
+
+### Raising in a module
+
+Prefer an exception whose type says what went wrong. `core.gql_errors.classify`
+already understands Django's `PermissionDenied`/`ValidationError`, DRF's
+`APIException` family, and the legacy `raise PermissionError("Unauthorized")`
+convention. For a deliberate, client-facing GraphQL failure use
+`CodedGraphQLError` or a subclass of `CodedErrorMixin`, which puts the code in
+`extensions.code` automatically.
+
+Do not invent a new error dict shape. Several modules still carry a local copy
+of `{"success": False, "message": "Authentication required"}`; that is legacy,
+not a pattern to follow.
+
+### Returning from a service
+
+openIMIS services report failure **in band** — they return a result payload
+rather than raising. This is deliberate: a GraphQL response is HTTP 200 even
+when the operation failed, and async mutations report through `MutationLog` long
+after the response is gone.
+
+Build that payload with `core.service_errors.ServiceError`, never by hand:
+
+```python
+from core.service_errors import ServiceError
+
+return ServiceError.from_exception(exc, message=f"Failed to create {name}").as_dict()
+```
+
+`output_exception(...)` in `core/services/utils/` already does this, so the
+~108 existing call sites need no change. `ServiceError` validates what it is
+given (closed code vocabulary, non-empty message) and renders the historical
+keys — `success`, `message`, `detail`, `data` — **unchanged**.
+
+The code is *not* a key. `as_dict()` returns a `ServicePayload`, a `dict`
+subclass whose keys and JSON are byte-identical to the hand-built dict, with the
+typed error attached as an attribute:
+
+```python
+payload = service.create(data)          # the legacy dict, unchanged
+error = ServiceError.from_dict(payload) # None when it succeeded
+error.code                              # "FORBIDDEN"
+```
+
+That is deliberate: several module suites assert the payload with
+`assertDictEqual`, so adding a key would break them and every open PR that
+touches them. `as_dict(with_code=True)` emits `code` (and `field_errors`) as
+keys for a surface with no other channel; making that the default is the
+follow-up, once those assertions have been updated.
+
+`payload.error` is in-process only — it does not survive `json.dumps`, a
+`dict(payload)` copy, or MutationLog. `ServiceError.from_dict` prefers it when
+present and falls back to reading the keys.
+
+It also retains the originating exception (`error.exception`), excluded from
+equality, `repr` and `as_dict()`. Use `error.reraise()` where a caller decides
+the failure must propagate: it re-raises the original exception with its
+original traceback, or raises `ServiceErrorException` carrying the payload when
+the original is gone (e.g. after `from_dict`). Because it holds a traceback,
+never cache or long-term store a `ServiceError`.
+
+At an API edge, recover a typed error from a service result with
+`ServiceError.from_dict(result)` — it returns `None` when the payload is not a
+failure.
+
+### Converting at the API edge
+
+Conversion happens once, at the boundary, never in module code:
+
+| Surface | Converter |
+|---|---|
+| GraphQL | `core.gql_errors.format_error`, wired into `OpenIMISGraphQLView.format_error` |
+| REST / DRF | `openIMIS.ExceptionHandlerDispatcher.dispatcher` |
+| FHIR | `api_fhir_r4.exceptions.fhir_api_exception_handler` → `OperationOutcome` |
+
+### Disclosure and logging
+
+`classify` returns `(code, client_safe)`. Outside `DEBUG`, a message that is not
+client-safe is replaced by a generic one; the real one is logged.
+
+**`INTERNAL_ERROR` never discloses its message**, however it was raised — an
+unexpected exception, a `CodedGraphQLError`, or a `ServiceErrorException`. That
+is a single invariant rather than a per-class opt-in, so a code and its
+disclosure can never disagree. If a failure has something the caller should
+read, give it a code that is not `INTERNAL_ERROR`.
+
+So:
+
+- Put anything the caller should read in the exception message, under a
+  non-internal code.
+- Never put internals (SQL, paths, credentials) in a message and rely on the
+  environment to hide them — log them.
+- Always log unexpected exceptions with `exc_info`, **regardless of `DEBUG`**.
+  Production is where a traceback matters most.
+
+### Reporting to Sentry
+
+graphql-core catches resolver exceptions and DRF turns them into responses, so
+neither reaches Sentry's Django integration on its own. Both edges report
+explicitly, and only for errors whose message was withheld — an expired session
+or a permission denial is the API working as designed, and reporting those
+buried the actionable failures:
+
+- GraphQL — `OpenIMISGraphQLView._capture_sentry_exceptions`
+- FHIR — `api_fhir_r4.exceptions.fhir_api_exception_handler`
+
+Both call `sentry_sdk.capture_exception`, a no-op when `sentry_sdk` is not
+installed (it is optional, see `sentry-requirements.txt`) or when no DSN is
+configured. Both also `ignore_logger(__name__)` so Sentry's logging integration
+does not raise a second event for the same exception.
+
+`django.test.TestCase` forces `DEBUG=False`, so sanitisation is active in tests.
+Pass `debug=True` explicitly when a test needs the raw message.
+
+### HTTP status
+
+GraphQL answers 200 even for errors — that is the spec, not a bug; the error
+lives in `errors[]` or in the mutation payload. REST and FHIR must use real
+statuses: a malformed request is 4xx, only a server fault is 5xx.
+
 ## Documentation
 
 When adding or changing backend behaviour, update documentation in the **module repository**:
@@ -195,10 +452,13 @@ The assembly repo holds cross-cutting docs like `GraphQL.md` and `README.md` (en
 3. Add or update tests in `<app_name>/tests.py` or `tests/`, building data with the
    module's factory-boy factories / `test_helpers.py`.
 4. Declare any new dependency in the module's `setup.py` (never in `backend/requirements.txt`).
-5. Run **Test module** launch config (or `manage.py test --keepdb <module>`).
-6. Run **flake8** on the app package.
-7. Update **`docs/`** and **`README.md`** in the module repo.
-8. Bump version in `setup.py` when releasing; open PR on the module's GitHub repo.
+5. Report failures per **Error handling** above: raise a typed exception, or build the
+   service payload with `ServiceError` — never hand-roll an error dict or branch on
+   message text.
+6. Run **Test module** launch config (or `manage.py test --keepdb <module>`).
+7. Run **flake8** on the app package.
+8. Update **`docs/`** and **`README.md`** in the module repo.
+9. Bump version in `setup.py` when releasing; open PR on the module's GitHub repo.
 
 ## Reference module
 

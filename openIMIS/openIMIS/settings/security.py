@@ -57,6 +57,9 @@ GRAPHQL_JWT = {
         "graphql_jwt.mutations.Revoke",
         "graphql_jwt.mutations.DeleteJSONWebTokenCookie",
         "graphql_jwt.refresh_token.mutations.DeleteRefreshTokenCookie",
+        # Logging out has to work once the access token has expired, which is
+        # exactly when the front end calls it.
+        "core.schema.LogoutMutation",
         "core.schema.ResetPasswordMutation",
         "core.schema.SetPasswordMutation",
     ],
