@@ -85,6 +85,10 @@ _CORE_EXTENSIONS = {
         "core.jwt_authentication.JSONWebTokenBackend",
         "graphql_jwt.backends.JSONWebTokenBackend",
     ),
+    "basic_auth": (
+        "core.auth.basic.SecondFactorBasicAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+    ),
     "graphql_jwt_middleware": (
         "core.middleware.CustomJSONWebTokenMiddleware",
         "graphql_jwt.middleware.JSONWebTokenMiddleware",
@@ -198,7 +202,7 @@ ANONYMOUS_USER_NAME = None
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "core.jwt_authentication.JWTAuthentication",
-        "rest_framework.authentication.BasicAuthentication",
+        _RESOLVED_CORE["basic_auth"],
         "rest_framework.authentication.SessionAuthentication",
     ],
     "EXCEPTION_HANDLER": "openIMIS.ExceptionHandlerDispatcher.dispatcher",
