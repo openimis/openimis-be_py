@@ -448,8 +448,9 @@ module skeleton in single command` section
 
 ### JWT Security Configuration
 
-openIMIS signs tokens with a deployment RSA keypair. Older core versions fall back to the legacy
-per-user key when none is provisioned; newer ones require it. There is no mode setting.
+openIMIS signs tokens with a deployment RSA keypair once core reads this setting. Core versions that
+still carry the legacy per-user key fall back to it when none is provisioned; later ones require it.
+There is no mode setting.
 
 1. **Generate a signing key**:
 
@@ -469,8 +470,8 @@ per-user key when none is provisioned; newer ones require it. There is no mode s
 
  Tokens are then signed RS256 and carry a `kid` derived from the key itself, so replicas agree on
  it without sharing anything. A core version that still has the legacy per-user key falls back
- to it while the setting is unset; later versions refuse to start without it, so provision the key
- before upgrading core.
+ to it while the setting is unset; later versions fail `migrate` with `core.auth.E001` and cannot
+ issue a token without it, so provision the key before upgrading core.
 
 3. **Optionally set `JWT_ISSUER` and `JWT_AUDIENCE`**. Both default to unset. **Setting either one
  invalidates every token already in circulation**, so do it during a maintenance window.
