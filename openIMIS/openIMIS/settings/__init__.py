@@ -6,8 +6,6 @@ import logging
 import os
 
 from ..openimisapps import openimis_apps, get_locale_folders
-from datetime import timedelta
-from cryptography.hazmat.primitives import serialization
 from .common import MODE
 
 from split_settings.tools import optional, include
