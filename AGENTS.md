@@ -445,6 +445,31 @@ When adding or changing backend behaviour, update documentation in the **module 
 
 The assembly repo holds cross-cutting docs like `GraphQL.md` and `README.md` (environment variables, distributor setup). Module feature docs belong in the module's own `docs/` folder under `../backend-packages/<module>/`.
 
+### Comments and messages are in English
+
+**Everything written in the source is in English**: comments, docstrings, log
+messages, exception messages, `assert*` failure messages, management-command
+`help` strings, `verbose_name` / `help_text`, and identifiers — including test
+data and fixture keys.
+
+openIMIS is maintained by contributors who share no second language. A comment
+explaining *why* a permission check exists is worth nothing to the reviewer who
+cannot read it, and a log line nobody on call understands is worse than no log
+line. This holds whatever language the surrounding ticket, PR discussion or
+commit message used.
+
+The one exception is text shown to an end user, which is translated through
+`gettext` (`_("...")`) with English as the source string — never by writing
+another language into the code.
+
+Two traps when correcting an existing file:
+
+- A test may assert on a log or exception message (`assertIn("...", logs)`).
+  Translate both sides in the same change, or the suite goes red.
+- `help_text` and `verbose_name` are duplicated into the generated migration.
+  While the migration is still unreleased, edit it in place so the model and
+  the migration stay consistent and `makemigrations` reports nothing.
+
 ## Module development checklist
 
 1. Create a branch in the module repo (`../backend-packages/<module>/`).
@@ -457,7 +482,9 @@ The assembly repo holds cross-cutting docs like `GraphQL.md` and `README.md` (en
    message text.
 6. Run **Test module** launch config (or `manage.py test --keepdb <module>`).
 7. Run **flake8** on the app package.
-8. Update **`docs/`** and **`README.md`** in the module repo.
+8. Check that every comment, docstring and message added is in **English** (see
+   **Comments and messages are in English** above).
+9. Update **`docs/`** and **`README.md`** in the module repo.
 9. Bump version in `setup.py` when releasing; open PR on the module's GitHub repo.
 
 ## Reference module

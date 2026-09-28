@@ -438,13 +438,6 @@ module skeleton in single command` section
  - run this command: `python manage.py create_release_branch <version> <from_branch: by default 'develop'>`. This command will execute all steps required
  to create release branches of all modules present in `openimis.json` (frontend json and backend json).
 
-### To extract all translations from frontend modules
-
-- from `/openimis-be_py/openIMIS`:
- - run this command: `python manage.py extract_translations`. This command will execute all steps required
- to extract frontend translations of all modules present in `openimis.json`.
- - those translations will be copied into 'extracted_translations_fe' folder in assembly backend module
-
 
 ### JWT Security Configuration
 
