@@ -28,7 +28,7 @@ python-dateutil
 python-dotenv
 
 reportbro-lib~=3.12.2
-reportbro-fpdf~=1.7.11
+reportbro-fpdf2
 rules
 waitress
 wheel
