@@ -179,6 +179,38 @@ The assembly `.flake8` (in `backend/.flake8`) also ignores `E261`, `E303`, `E741
 python -m flake8 ../backend-packages/<module>/<app_name> --ignore=W503
 ```
 
+## Rights
+
+**Which actions a user may perform is declared in the module's `apps.py`, with
+`core.rights_declaration.RightsDeclaration`.** `DJANGO_PERMS` lists the rights by
+entity, then action, each as `(django name, openIMIS right id)`. `_PERM_CFG` maps
+each `gql_*_perms` config key to an `(entity, action)` pair. `claim_batch/apps.py`
+is a short example. Check a right by its action rather than by a numeric list:
+
+```python
+from <module>.apps import require
+
+if not require(user, "paymentGatewayConfig", "query"):
+    raise PermissionError(_("Unauthorized"))
+```
+
+### `permissions_map.json` is generated
+
+`openIMIS/permissions_map.json` is the right catalogue. **Never edit it by hand.**
+It is generated from the installed modules' code, with the key derived from each
+config key: `gql_payroll_close_perms` becomes `payroll.payroll_close`. The
+django names in `DJANGO_PERMS` do not appear in it. Regenerate it after adding
+or renaming a right, from `backend/openIMIS/`:
+
+```bash
+OPENIMIS_CONF=../openimis-dev.json python manage.py generate_permissions_map --output ./permissions_map.json
+```
+
+Copy the result to `../solution-builder/solution/permissions_map.json`, which must
+stay identical. Roles get their rights from the solution-builder fixtures
+(`core.roleright` rows), **never from a migration**. Before adding a new right id,
+look for a declared right that nothing checks yet and reuse it.
+
 ## Row security
 
 **Which rows a user may see is declared on the model, never on an API type.**
