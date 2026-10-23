@@ -177,8 +177,8 @@
             "pip": "git+https://github.com/openimis/openimis-be-api_etl_py.git@release/26.10#egg=openimis-be-api_etl"
         },
         {
-            "name": "home_messages",
-            "pip": "git+https://github.com/openimis/openimis-be-home-messages_py.git@release/26.10#egg=openimis-be-home-messages"
+            "name": "notice",
+            "pip": "git+https://github.com/openimis/openimis-be-home-messages_py.git@release/26.10#egg=openimis-be-notice"
         }
     ]
 }
