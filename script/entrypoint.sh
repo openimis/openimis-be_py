@@ -74,6 +74,11 @@ init(){
         python manage.py load_fixtures
     fi
 
+    # A shared cache (Redis) outlives the containers: entries written by the
+    # previous release, or that missed an invalidation, would be served as-is.
+    echo "=== Flushing caches ==="
+    python manage.py flushcache || echo "WARNING: flushcache failed - stale cache entries may remain"
+
     export SCHEDULER_AUTOSTART=True
     echo "=== Initialization complete ==="
 }
