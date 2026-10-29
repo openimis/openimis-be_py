@@ -31,7 +31,7 @@ jobs:
       #      --health-cmd="sqlcmd -S localhost -U sa -P ${SA_PASSWORD} -Q 'SELECT 1' || exit 1"
  
       pgsql:
-        image: ghcr.io/openimis/openimis-pgsql:develop
+        image: ghcr.io/openimis/openimis-pgsql:ci-18
         env:
           DB_HOST: localhost
           DB_PORT: 5432
@@ -54,22 +54,25 @@ jobs:
           cluster.name: my_opensearch_local
           http.port: 9200
           plugins.security.ssl.http.enabled: false
-          OPENSEARCH_INITIAL_ADMIN_PASSWORD: B9wc9VrqX7pY
+          # No security plugin, so no admin credential; the demo installer has
+          # to be skipped or it demands one anyway.
+          plugins.security.disabled: true
+          DISABLE_INSTALL_DEMO_CONFIG: true
         options: >-
-          --health-cmd "curl -f -u admin:${OPENSEARCH_INITIAL_ADMIN_PASSWORD} http://localhost:9200/_cluster/health || exit 1"
+          --health-cmd "curl -f http://localhost:9200/_cluster/health || exit 1"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.11"
 
       - name: Cache dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
@@ -94,6 +97,15 @@ jobs:
         run: |
           pip list
 
+      - name: Install PostgreSQL 18 client
+        run: |
+          sudo install -d /usr/share/postgresql-common/pgdg
+          sudo curl -fsSL -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client-18
+          psql --version
+
       - name: Initialize PSQL
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
@@ -106,7 +118,8 @@ jobs:
         env:
           DB_HOST: localhost
           DB_PORT: 5432
-          DB_NAME: imis
+          DB_NAME: test_imis
+          DB_TEST_NAME: test_imis
           DB_USER: postgres
           DB_PASSWORD: YourStrong!Passw0rd
 
@@ -144,6 +157,13 @@ jobs:
       #     DB_USER: sa
       #     DB_PASSWORD: YourStrong!Passw0rd
 
+      - name: Settings unit tests
+        working-directory: ./openIMIS
+        # Pure-stdlib unit tests for settings helpers; not collected by
+        # `manage.py test <module>`, so run them explicitly.
+        if: success() || failure()
+        run: python openIMIS/settings/test_base_utils.py
+
       - name: Django tests PSQL
         working-directory: ./openIMIS
         # Run the tests regardless if previous steps failed (if setup fails the tests should crash instantly)
@@ -163,14 +183,15 @@ jobs:
           #DJANGO_SETTINGS_MODULE: hat.settings
           DB_HOST: localhost
           DB_PORT: 5432
-          DB_NAME: imis
+          DB_NAME: test_imis
+          DB_TEST_NAME: test_imis
           DB_USER: postgres
           DB_PASSWORD: YourStrong!Passw0rd
           #DEV_SERVER: true
           SITE_ROOT: api
           CI_EXCLUDED_MODULE: ${{ vars.CI_EXCLUDED_MODULE }}
           OPENSEARCH_ADMIN: admin
-          OPENSEARCH_PASSWORD: B9wc9VrqX7pY
+          OPENSEARCH_PASSWORD: ""
           OPEN_SEARCH_HTTP_PORT: 9200
           OPENSEARCH_HOSTS: "localhost:9200"
 

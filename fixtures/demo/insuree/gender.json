@@ -1,0 +1,32 @@
+[
+    {
+        "model": "insuree.gender",
+        "pk": "F",
+        "fields": {
+            "code": "F",
+            "gender": "Female",
+            "alt_language": null,
+            "sort_order": 2
+        }
+    },
+    {
+        "model": "insuree.gender",
+        "pk": "M",
+        "fields": {
+            "code": "M",
+            "gender": "Male",
+            "alt_language": null,
+            "sort_order": 1
+        }
+    },
+    {
+        "model": "insuree.gender",
+        "pk": "O",
+        "fields": {
+            "code": "O",
+            "gender": "Other",
+            "alt_language": null,
+            "sort_order": 3
+        }
+    }
+]

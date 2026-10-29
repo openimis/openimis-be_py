@@ -1,0 +1,72 @@
+[
+    {
+        "model": "insuree.education",
+        "pk": 1,
+        "fields": {
+            "id": 1,
+            "education": "Nursery",
+            "alt_language": "Garderie",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.education",
+        "pk": 2,
+        "fields": {
+            "id": 2,
+            "education": "Primary school",
+            "alt_language": "École primaire",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.education",
+        "pk": 3,
+        "fields": {
+            "id": 3,
+            "education": "Secondary school",
+            "alt_language": "École secondaire",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.education",
+        "pk": 4,
+        "fields": {
+            "id": 4,
+            "education": "University",
+            "alt_language": "Université",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.education",
+        "pk": 5,
+        "fields": {
+            "id": 5,
+            "education": "Postgraduate studies",
+            "alt_language": "Études supérieures",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.education",
+        "pk": 6,
+        "fields": {
+            "id": 6,
+            "education": "PHD",
+            "alt_language": "Doctorat",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.education",
+        "pk": 7,
+        "fields": {
+            "id": 7,
+            "education": "Other",
+            "alt_language": "Autre",
+            "sort_order": null
+        }
+    }
+]

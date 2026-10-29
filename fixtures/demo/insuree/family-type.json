@@ -1,0 +1,72 @@
+[
+    {
+        "model": "insuree.familytype",
+        "pk": "C",
+        "fields": {
+            "code": "C",
+            "type": "Council",
+            "alt_language": "Conseil",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.familytype",
+        "pk": "G",
+        "fields": {
+            "code": "G",
+            "type": "Organization",
+            "alt_language": "Organisation",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.familytype",
+        "pk": "H",
+        "fields": {
+            "code": "H",
+            "type": "Household",
+            "alt_language": "Ménage",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.familytype",
+        "pk": "O",
+        "fields": {
+            "code": "O",
+            "type": "Other",
+            "alt_language": "Autre",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.familytype",
+        "pk": "P",
+        "fields": {
+            "code": "P",
+            "type": "Priests",
+            "alt_language": "Prètres",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.familytype",
+        "pk": "S",
+        "fields": {
+            "code": "S",
+            "type": "Students",
+            "alt_language": "Etudiants",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.familytype",
+        "pk": "T",
+        "fields": {
+            "code": "T",
+            "type": "Teachers",
+            "alt_language": "Enseignant",
+            "sort_order": null
+        }
+    }
+]

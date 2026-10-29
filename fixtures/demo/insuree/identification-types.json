@@ -1,0 +1,42 @@
+[
+    {
+        "model": "insuree.identificationtype",
+        "pk": "D",
+        "fields": {
+            "code": "D",
+            "identification_type": "Driver's License",
+            "alt_language": "Permis de conduire",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.identificationtype",
+        "pk": "N",
+        "fields": {
+            "code": "N",
+            "identification_type": "National ID",
+            "alt_language": "Carte d'identité",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.identificationtype",
+        "pk": "P",
+        "fields": {
+            "code": "P",
+            "identification_type": "Passport",
+            "alt_language": "Passeport",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.identificationtype",
+        "pk": "V",
+        "fields": {
+            "code": "V",
+            "identification_type": "Voter Card",
+            "alt_language": "Carte d'électeur",
+            "sort_order": null
+        }
+    }
+]

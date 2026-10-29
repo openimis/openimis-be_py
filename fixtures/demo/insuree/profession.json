@@ -1,0 +1,42 @@
+[
+    {
+        "model": "insuree.profession",
+        "pk": 1,
+        "fields": {
+            "id": 1,
+            "profession": "Housewife",
+            "alt_language": "Femme au foyer",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.profession",
+        "pk": 2,
+        "fields": {
+            "id": 2,
+            "profession": "Employee",
+            "alt_language": "Employé",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.profession",
+        "pk": 3,
+        "fields": {
+            "id": 3,
+            "profession": "Self Employee",
+            "alt_language": "Indépendant",
+            "sort_order": null
+        }
+    },
+    {
+        "model": "insuree.profession",
+        "pk": 4,
+        "fields": {
+            "id": 4,
+            "profession": "Others",
+            "alt_language": "Autres",
+            "sort_order": null
+        }
+    }
+]

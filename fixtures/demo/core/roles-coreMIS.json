@@ -1,18 +1,5 @@
 [
-    {
-      "model": "core.role",
-      "fields": {
-        "uuid": "b7e2511f-c7e3-4692-99cb-51cc12a962f1",
-        "name": "System Administrator",
-        "alt_language": null,
-        "is_system": 0,
-        "is_blocked": false,
-        "audit_user_id": null,
-        "validity_from": "2025-01-01T00:00:00Z",
-        "validity_to": null,
-        "legacy_id": null
-      }
-    },
+
     {
       "model": "core.role",
       "fields": {

@@ -1,0 +1,5141 @@
+[
+    {
+        "model": "medical.diagnosis",
+        "pk": 2,
+        "fields": {
+            "code": "A000",
+            "name": "Cholera due to Vibrio cholerae 01, biovar cholerae",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 3,
+        "fields": {
+            "code": "A001",
+            "name": "Cholera due to Vibrio cholerae 01, biovar eltor",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 4,
+        "fields": {
+            "code": "A009",
+            "name": "Cholera, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 5,
+        "fields": {
+            "code": "A0100",
+            "name": "Typhoid fever, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 6,
+        "fields": {
+            "code": "A0101",
+            "name": "Typhoid meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 7,
+        "fields": {
+            "code": "A0102",
+            "name": "Typhoid fever with heart involvement",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 8,
+        "fields": {
+            "code": "A0103",
+            "name": "Typhoid pneumonia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 9,
+        "fields": {
+            "code": "A0104",
+            "name": "Typhoid arthritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 10,
+        "fields": {
+            "code": "A0105",
+            "name": "Typhoid osteomyelitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 11,
+        "fields": {
+            "code": "A0109",
+            "name": "Typhoid fever with other complications",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 12,
+        "fields": {
+            "code": "A011",
+            "name": "Paratyphoid fever A",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 13,
+        "fields": {
+            "code": "A012",
+            "name": "Paratyphoid fever B",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 14,
+        "fields": {
+            "code": "A013",
+            "name": "Paratyphoid fever C",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 15,
+        "fields": {
+            "code": "A014",
+            "name": "Paratyphoid fever, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 16,
+        "fields": {
+            "code": "A020",
+            "name": "Salmonella enteritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 17,
+        "fields": {
+            "code": "A021",
+            "name": "Salmonella sepsis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 18,
+        "fields": {
+            "code": "A0220",
+            "name": "Localized salmonella infection, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 19,
+        "fields": {
+            "code": "A0221",
+            "name": "Salmonella meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 20,
+        "fields": {
+            "code": "A0222",
+            "name": "Salmonella pneumonia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 21,
+        "fields": {
+            "code": "A0223",
+            "name": "Salmonella arthritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 22,
+        "fields": {
+            "code": "A0224",
+            "name": "Salmonella osteomyelitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 23,
+        "fields": {
+            "code": "A0225",
+            "name": "Salmonella pyelonephritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 24,
+        "fields": {
+            "code": "A0229",
+            "name": "Salmonella with other localized infection",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 25,
+        "fields": {
+            "code": "A028",
+            "name": "Other specified salmonella infections",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 26,
+        "fields": {
+            "code": "A029",
+            "name": "Salmonella infection, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 27,
+        "fields": {
+            "code": "A030",
+            "name": "Shigellosis due to Shigella dysenteriae",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 28,
+        "fields": {
+            "code": "A031",
+            "name": "Shigellosis due to Shigella flexneri",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 29,
+        "fields": {
+            "code": "A032",
+            "name": "Shigellosis due to Shigella boydii",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 30,
+        "fields": {
+            "code": "A033",
+            "name": "Shigellosis due to Shigella sonnei",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 31,
+        "fields": {
+            "code": "A038",
+            "name": "Other shigellosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 32,
+        "fields": {
+            "code": "A039",
+            "name": "Shigellosis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 33,
+        "fields": {
+            "code": "A040",
+            "name": "Enteropathogenic Escherichia coli infection",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 34,
+        "fields": {
+            "code": "A041",
+            "name": "Enterotoxigenic Escherichia coli infection",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 35,
+        "fields": {
+            "code": "A042",
+            "name": "Enteroinvasive Escherichia coli infection",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 36,
+        "fields": {
+            "code": "A043",
+            "name": "Enterohemorrhagic Escherichia coli infection",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 37,
+        "fields": {
+            "code": "A044",
+            "name": "Other intestinal Escherichia coli infections",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 38,
+        "fields": {
+            "code": "A045",
+            "name": "Campylobacter enteritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 39,
+        "fields": {
+            "code": "A046",
+            "name": "Enteritis due to Yersinia enterocolitica",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 40,
+        "fields": {
+            "code": "A047",
+            "name": "Enterocolitis due to Clostridium difficile",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 41,
+        "fields": {
+            "code": "A0471",
+            "name": "Enterocolitis due to Clostridium difficile, recurrent",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 42,
+        "fields": {
+            "code": "A0472",
+            "name": "Enterocolitis d/t Clostridium difficile, not spcf as recur",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 43,
+        "fields": {
+            "code": "A048",
+            "name": "Other specified bacterial intestinal infections",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 44,
+        "fields": {
+            "code": "A049",
+            "name": "Bacterial intestinal infection, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 45,
+        "fields": {
+            "code": "A050",
+            "name": "Foodborne staphylococcal intoxication",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 46,
+        "fields": {
+            "code": "A051",
+            "name": "Botulism food poisoning",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 47,
+        "fields": {
+            "code": "A052",
+            "name": "Foodborne Clostridium perfringens intoxication",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 48,
+        "fields": {
+            "code": "A053",
+            "name": "Foodborne Vibrio parahaemolyticus intoxication",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 49,
+        "fields": {
+            "code": "A054",
+            "name": "Foodborne Bacillus cereus intoxication",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 50,
+        "fields": {
+            "code": "A055",
+            "name": "Foodborne Vibrio vulnificus intoxication",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 51,
+        "fields": {
+            "code": "A058",
+            "name": "Other specified bacterial foodborne intoxications",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 52,
+        "fields": {
+            "code": "A059",
+            "name": "Bacterial foodborne intoxication, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 53,
+        "fields": {
+            "code": "A060",
+            "name": "Acute amebic dysentery",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 54,
+        "fields": {
+            "code": "A061",
+            "name": "Chronic intestinal amebiasis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 55,
+        "fields": {
+            "code": "A062",
+            "name": "Amebic nondysenteric colitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 56,
+        "fields": {
+            "code": "A063",
+            "name": "Ameboma of intestine",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 57,
+        "fields": {
+            "code": "A064",
+            "name": "Amebic liver abscess",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 58,
+        "fields": {
+            "code": "A065",
+            "name": "Amebic lung abscess",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 59,
+        "fields": {
+            "code": "A066",
+            "name": "Amebic brain abscess",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 60,
+        "fields": {
+            "code": "A067",
+            "name": "Cutaneous amebiasis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 61,
+        "fields": {
+            "code": "A0681",
+            "name": "Amebic cystitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 62,
+        "fields": {
+            "code": "A0682",
+            "name": "Other amebic genitourinary infections",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 63,
+        "fields": {
+            "code": "A0689",
+            "name": "Other amebic infections",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 64,
+        "fields": {
+            "code": "A069",
+            "name": "Amebiasis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 65,
+        "fields": {
+            "code": "A070",
+            "name": "Balantidiasis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 66,
+        "fields": {
+            "code": "A071",
+            "name": "Giardiasis [lambliasis]",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 67,
+        "fields": {
+            "code": "A072",
+            "name": "Cryptosporidiosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 68,
+        "fields": {
+            "code": "A073",
+            "name": "Isosporiasis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 69,
+        "fields": {
+            "code": "A074",
+            "name": "Cyclosporiasis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 70,
+        "fields": {
+            "code": "A078",
+            "name": "Other specified protozoal intestinal diseases",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 71,
+        "fields": {
+            "code": "A079",
+            "name": "Protozoal intestinal disease, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 72,
+        "fields": {
+            "code": "A080",
+            "name": "Rotaviral enteritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 73,
+        "fields": {
+            "code": "A0811",
+            "name": "Acute gastroenteropathy due to Norwalk agent",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 74,
+        "fields": {
+            "code": "A0819",
+            "name": "Acute gastroenteropathy due to other small round viruses",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 75,
+        "fields": {
+            "code": "A082",
+            "name": "Adenoviral enteritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 76,
+        "fields": {
+            "code": "A0831",
+            "name": "Calicivirus enteritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 77,
+        "fields": {
+            "code": "A0832",
+            "name": "Astrovirus enteritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 78,
+        "fields": {
+            "code": "A0839",
+            "name": "Other viral enteritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 79,
+        "fields": {
+            "code": "A084",
+            "name": "Viral intestinal infection, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 80,
+        "fields": {
+            "code": "A088",
+            "name": "Other specified intestinal infections",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 81,
+        "fields": {
+            "code": "A09",
+            "name": "Infectious gastroenteritis and colitis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 82,
+        "fields": {
+            "code": "A150",
+            "name": "Tuberculosis of lung",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 83,
+        "fields": {
+            "code": "A154",
+            "name": "Tuberculosis of intrathoracic lymph nodes",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 84,
+        "fields": {
+            "code": "A155",
+            "name": "Tuberculosis of larynx, trachea and bronchus",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 85,
+        "fields": {
+            "code": "A156",
+            "name": "Tuberculous pleurisy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 86,
+        "fields": {
+            "code": "A157",
+            "name": "Primary respiratory tuberculosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 87,
+        "fields": {
+            "code": "A158",
+            "name": "Other respiratory tuberculosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 88,
+        "fields": {
+            "code": "A159",
+            "name": "Respiratory tuberculosis unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 89,
+        "fields": {
+            "code": "A170",
+            "name": "Tuberculous meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 90,
+        "fields": {
+            "code": "A171",
+            "name": "Meningeal tuberculoma",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 91,
+        "fields": {
+            "code": "A1781",
+            "name": "Tuberculoma of brain and spinal cord",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 92,
+        "fields": {
+            "code": "A1782",
+            "name": "Tuberculous meningoencephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 93,
+        "fields": {
+            "code": "A1783",
+            "name": "Tuberculous neuritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 94,
+        "fields": {
+            "code": "A1789",
+            "name": "Other tuberculosis of nervous system",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 95,
+        "fields": {
+            "code": "A179",
+            "name": "Tuberculosis of nervous system, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 96,
+        "fields": {
+            "code": "A1801",
+            "name": "Tuberculosis of spine",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 97,
+        "fields": {
+            "code": "A1802",
+            "name": "Tuberculous arthritis of other joints",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 98,
+        "fields": {
+            "code": "A1803",
+            "name": "Tuberculosis of other bones",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 99,
+        "fields": {
+            "code": "A1809",
+            "name": "Other musculoskeletal tuberculosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 100,
+        "fields": {
+            "code": "A1810",
+            "name": "Tuberculosis of genitourinary system, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 101,
+        "fields": {
+            "code": "A1811",
+            "name": "Tuberculosis of kidney and ureter",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 102,
+        "fields": {
+            "code": "A1812",
+            "name": "Tuberculosis of bladder",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 103,
+        "fields": {
+            "code": "A1813",
+            "name": "Tuberculosis of other urinary organs",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 104,
+        "fields": {
+            "code": "A1814",
+            "name": "Tuberculosis of prostate",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 105,
+        "fields": {
+            "code": "A1815",
+            "name": "Tuberculosis of other male genital organs",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 106,
+        "fields": {
+            "code": "A1816",
+            "name": "Tuberculosis of cervix",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 107,
+        "fields": {
+            "code": "A1817",
+            "name": "Tuberculous female pelvic inflammatory disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 108,
+        "fields": {
+            "code": "A1818",
+            "name": "Tuberculosis of other female genital organs",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 109,
+        "fields": {
+            "code": "A182",
+            "name": "Tuberculous peripheral lymphadenopathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 110,
+        "fields": {
+            "code": "A1831",
+            "name": "Tuberculous peritonitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 111,
+        "fields": {
+            "code": "A1832",
+            "name": "Tuberculous enteritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 112,
+        "fields": {
+            "code": "A1839",
+            "name": "Retroperitoneal tuberculosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 113,
+        "fields": {
+            "code": "A184",
+            "name": "Tuberculosis of skin and subcutaneous tissue",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 114,
+        "fields": {
+            "code": "A1850",
+            "name": "Tuberculosis of eye, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 115,
+        "fields": {
+            "code": "A1851",
+            "name": "Tuberculous episcleritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 116,
+        "fields": {
+            "code": "A1852",
+            "name": "Tuberculous keratitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 117,
+        "fields": {
+            "code": "A1853",
+            "name": "Tuberculous chorioretinitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 118,
+        "fields": {
+            "code": "A1854",
+            "name": "Tuberculous iridocyclitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 119,
+        "fields": {
+            "code": "A1859",
+            "name": "Other tuberculosis of eye",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 120,
+        "fields": {
+            "code": "A186",
+            "name": "Tuberculosis of (inner) (middle) ear",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 121,
+        "fields": {
+            "code": "A187",
+            "name": "Tuberculosis of adrenal glands",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 122,
+        "fields": {
+            "code": "A1881",
+            "name": "Tuberculosis of thyroid gland",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 123,
+        "fields": {
+            "code": "A1882",
+            "name": "Tuberculosis of other endocrine glands",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 124,
+        "fields": {
+            "code": "A1883",
+            "name": "Tuberculosis of digestive tract organs, NEC",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 125,
+        "fields": {
+            "code": "A1884",
+            "name": "Tuberculosis of heart",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 126,
+        "fields": {
+            "code": "A1885",
+            "name": "Tuberculosis of spleen",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 127,
+        "fields": {
+            "code": "A1889",
+            "name": "Tuberculosis of other sites",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 128,
+        "fields": {
+            "code": "A190",
+            "name": "Acute miliary tuberculosis of a single specified site",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 129,
+        "fields": {
+            "code": "A191",
+            "name": "Acute miliary tuberculosis of multiple sites",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 130,
+        "fields": {
+            "code": "A192",
+            "name": "Acute miliary tuberculosis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 131,
+        "fields": {
+            "code": "A198",
+            "name": "Other miliary tuberculosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 132,
+        "fields": {
+            "code": "A199",
+            "name": "Miliary tuberculosis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 133,
+        "fields": {
+            "code": "A200",
+            "name": "Bubonic plague",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 134,
+        "fields": {
+            "code": "A201",
+            "name": "Cellulocutaneous plague",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 135,
+        "fields": {
+            "code": "A202",
+            "name": "Pneumonic plague",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 136,
+        "fields": {
+            "code": "A203",
+            "name": "Plague meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 137,
+        "fields": {
+            "code": "A207",
+            "name": "Septicemic plague",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 138,
+        "fields": {
+            "code": "A208",
+            "name": "Other forms of plague",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 139,
+        "fields": {
+            "code": "A209",
+            "name": "Plague, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 140,
+        "fields": {
+            "code": "A210",
+            "name": "Ulceroglandular tularemia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 141,
+        "fields": {
+            "code": "A211",
+            "name": "Oculoglandular tularemia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 142,
+        "fields": {
+            "code": "A212",
+            "name": "Pulmonary tularemia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 143,
+        "fields": {
+            "code": "A213",
+            "name": "Gastrointestinal tularemia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 144,
+        "fields": {
+            "code": "A217",
+            "name": "Generalized tularemia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 145,
+        "fields": {
+            "code": "A218",
+            "name": "Other forms of tularemia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 146,
+        "fields": {
+            "code": "A219",
+            "name": "Tularemia, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 147,
+        "fields": {
+            "code": "A220",
+            "name": "Cutaneous anthrax",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 148,
+        "fields": {
+            "code": "A221",
+            "name": "Pulmonary anthrax",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 149,
+        "fields": {
+            "code": "A222",
+            "name": "Gastrointestinal anthrax",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 150,
+        "fields": {
+            "code": "A227",
+            "name": "Anthrax sepsis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 151,
+        "fields": {
+            "code": "A228",
+            "name": "Other forms of anthrax",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 152,
+        "fields": {
+            "code": "A229",
+            "name": "Anthrax, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 153,
+        "fields": {
+            "code": "A230",
+            "name": "Brucellosis due to Brucella melitensis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 154,
+        "fields": {
+            "code": "A231",
+            "name": "Brucellosis due to Brucella abortus",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 155,
+        "fields": {
+            "code": "A232",
+            "name": "Brucellosis due to Brucella suis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 156,
+        "fields": {
+            "code": "A233",
+            "name": "Brucellosis due to Brucella canis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 157,
+        "fields": {
+            "code": "A238",
+            "name": "Other brucellosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 158,
+        "fields": {
+            "code": "A239",
+            "name": "Brucellosis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 159,
+        "fields": {
+            "code": "A240",
+            "name": "Glanders",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 160,
+        "fields": {
+            "code": "A241",
+            "name": "Acute and fulminating melioidosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 161,
+        "fields": {
+            "code": "A242",
+            "name": "Subacute and chronic melioidosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 162,
+        "fields": {
+            "code": "A243",
+            "name": "Other melioidosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 163,
+        "fields": {
+            "code": "A249",
+            "name": "Melioidosis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 164,
+        "fields": {
+            "code": "A250",
+            "name": "Spirillosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 165,
+        "fields": {
+            "code": "A251",
+            "name": "Streptobacillosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 166,
+        "fields": {
+            "code": "A259",
+            "name": "Rat-bite fever, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 167,
+        "fields": {
+            "code": "A260",
+            "name": "Cutaneous erysipeloid",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 168,
+        "fields": {
+            "code": "A267",
+            "name": "Erysipelothrix sepsis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 169,
+        "fields": {
+            "code": "A268",
+            "name": "Other forms of erysipeloid",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 170,
+        "fields": {
+            "code": "A269",
+            "name": "Erysipeloid, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 171,
+        "fields": {
+            "code": "A270",
+            "name": "Leptospirosis icterohemorrhagica",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 172,
+        "fields": {
+            "code": "A2781",
+            "name": "Aseptic meningitis in leptospirosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 173,
+        "fields": {
+            "code": "A2789",
+            "name": "Other forms of leptospirosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 174,
+        "fields": {
+            "code": "A279",
+            "name": "Leptospirosis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 175,
+        "fields": {
+            "code": "A280",
+            "name": "Pasteurellosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 176,
+        "fields": {
+            "code": "A281",
+            "name": "Cat-scratch disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 177,
+        "fields": {
+            "code": "A282",
+            "name": "Extraintestinal yersiniosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 178,
+        "fields": {
+            "code": "A288",
+            "name": "Oth zoonotic bacterial diseases, not elsewhere classified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 179,
+        "fields": {
+            "code": "A289",
+            "name": "Zoonotic bacterial disease, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 180,
+        "fields": {
+            "code": "A300",
+            "name": "Indeterminate leprosy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 181,
+        "fields": {
+            "code": "A301",
+            "name": "Tuberculoid leprosy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 182,
+        "fields": {
+            "code": "A302",
+            "name": "Borderline tuberculoid leprosy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 183,
+        "fields": {
+            "code": "A303",
+            "name": "Borderline leprosy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 184,
+        "fields": {
+            "code": "A304",
+            "name": "Borderline lepromatous leprosy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 185,
+        "fields": {
+            "code": "A305",
+            "name": "Lepromatous leprosy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 186,
+        "fields": {
+            "code": "A308",
+            "name": "Other forms of leprosy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 187,
+        "fields": {
+            "code": "A309",
+            "name": "Leprosy, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 188,
+        "fields": {
+            "code": "A310",
+            "name": "Pulmonary mycobacterial infection",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 189,
+        "fields": {
+            "code": "A311",
+            "name": "Cutaneous mycobacterial infection",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 190,
+        "fields": {
+            "code": "A312",
+            "name": "Dissem mycobacterium avium-intracellulare complex (DMAC)",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 191,
+        "fields": {
+            "code": "A318",
+            "name": "Other mycobacterial infections",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 192,
+        "fields": {
+            "code": "A319",
+            "name": "Mycobacterial infection, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 193,
+        "fields": {
+            "code": "A320",
+            "name": "Cutaneous listeriosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 194,
+        "fields": {
+            "code": "A3211",
+            "name": "Listerial meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 195,
+        "fields": {
+            "code": "A3212",
+            "name": "Listerial meningoencephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 196,
+        "fields": {
+            "code": "A327",
+            "name": "Listerial sepsis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 197,
+        "fields": {
+            "code": "A3281",
+            "name": "Oculoglandular listeriosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 198,
+        "fields": {
+            "code": "A3282",
+            "name": "Listerial endocarditis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 199,
+        "fields": {
+            "code": "A3289",
+            "name": "Other forms of listeriosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 200,
+        "fields": {
+            "code": "A329",
+            "name": "Listeriosis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 201,
+        "fields": {
+            "code": "A33",
+            "name": "Tetanus neonatorum",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 202,
+        "fields": {
+            "code": "A34",
+            "name": "Obstetrical tetanus",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 203,
+        "fields": {
+            "code": "A35",
+            "name": "Other tetanus",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 204,
+        "fields": {
+            "code": "A360",
+            "name": "Pharyngeal diphtheria",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 205,
+        "fields": {
+            "code": "A361",
+            "name": "Nasopharyngeal diphtheria",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 206,
+        "fields": {
+            "code": "A362",
+            "name": "Laryngeal diphtheria",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 207,
+        "fields": {
+            "code": "A363",
+            "name": "Cutaneous diphtheria",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 208,
+        "fields": {
+            "code": "A3681",
+            "name": "Diphtheritic cardiomyopathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 209,
+        "fields": {
+            "code": "A3682",
+            "name": "Diphtheritic radiculomyelitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 210,
+        "fields": {
+            "code": "A3683",
+            "name": "Diphtheritic polyneuritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 211,
+        "fields": {
+            "code": "A3684",
+            "name": "Diphtheritic tubulo-interstitial nephropathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 212,
+        "fields": {
+            "code": "A3685",
+            "name": "Diphtheritic cystitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 213,
+        "fields": {
+            "code": "A3686",
+            "name": "Diphtheritic conjunctivitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 214,
+        "fields": {
+            "code": "A3689",
+            "name": "Other diphtheritic complications",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 215,
+        "fields": {
+            "code": "A369",
+            "name": "Diphtheria, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 216,
+        "fields": {
+            "code": "A3700",
+            "name": "Whooping cough due to Bordetella pertussis without pneumonia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 217,
+        "fields": {
+            "code": "A3701",
+            "name": "Whooping cough due to Bordetella pertussis with pneumonia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 218,
+        "fields": {
+            "code": "A3710",
+            "name": "Whooping cough due to Bordetella parapertussis w/o pneumonia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 219,
+        "fields": {
+            "code": "A3711",
+            "name": "Whooping cough due to Bordetella parapertussis w pneumonia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 220,
+        "fields": {
+            "code": "A3780",
+            "name": "Whooping cough due to other Bordetella species w/o pneumonia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 221,
+        "fields": {
+            "code": "A3781",
+            "name": "Whooping cough due to oth Bordetella species with pneumonia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 222,
+        "fields": {
+            "code": "A3790",
+            "name": "Whooping cough, unspecified species without pneumonia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 223,
+        "fields": {
+            "code": "A3791",
+            "name": "Whooping cough, unspecified species with pneumonia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 224,
+        "fields": {
+            "code": "A380",
+            "name": "Scarlet fever with otitis media",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 225,
+        "fields": {
+            "code": "A381",
+            "name": "Scarlet fever with myocarditis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 226,
+        "fields": {
+            "code": "A388",
+            "name": "Scarlet fever with other complications",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 227,
+        "fields": {
+            "code": "A389",
+            "name": "Scarlet fever, uncomplicated",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 228,
+        "fields": {
+            "code": "A390",
+            "name": "Meningococcal meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 229,
+        "fields": {
+            "code": "A391",
+            "name": "Waterhouse-Friderichsen syndrome",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 230,
+        "fields": {
+            "code": "A392",
+            "name": "Acute meningococcemia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 231,
+        "fields": {
+            "code": "A393",
+            "name": "Chronic meningococcemia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 232,
+        "fields": {
+            "code": "A394",
+            "name": "Meningococcemia, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 233,
+        "fields": {
+            "code": "A3950",
+            "name": "Meningococcal carditis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 234,
+        "fields": {
+            "code": "A3951",
+            "name": "Meningococcal endocarditis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 235,
+        "fields": {
+            "code": "A3952",
+            "name": "Meningococcal myocarditis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 236,
+        "fields": {
+            "code": "A3953",
+            "name": "Meningococcal pericarditis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 237,
+        "fields": {
+            "code": "A3981",
+            "name": "Meningococcal encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 238,
+        "fields": {
+            "code": "A3982",
+            "name": "Meningococcal retrobulbar neuritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 239,
+        "fields": {
+            "code": "A3983",
+            "name": "Meningococcal arthritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 240,
+        "fields": {
+            "code": "A3984",
+            "name": "Postmeningococcal arthritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 241,
+        "fields": {
+            "code": "A3989",
+            "name": "Other meningococcal infections",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 242,
+        "fields": {
+            "code": "A399",
+            "name": "Meningococcal infection, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 243,
+        "fields": {
+            "code": "A400",
+            "name": "Sepsis due to streptococcus, group A",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 244,
+        "fields": {
+            "code": "A401",
+            "name": "Sepsis due to streptococcus, group B",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 245,
+        "fields": {
+            "code": "A403",
+            "name": "Sepsis due to Streptococcus pneumoniae",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 246,
+        "fields": {
+            "code": "A408",
+            "name": "Other streptococcal sepsis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 247,
+        "fields": {
+            "code": "A409",
+            "name": "Streptococcal sepsis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 248,
+        "fields": {
+            "code": "A4101",
+            "name": "Sepsis due to Methicillin susceptible Staphylococcus aureus",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 249,
+        "fields": {
+            "code": "A4102",
+            "name": "Sepsis due to Methicillin resistant Staphylococcus aureus",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 250,
+        "fields": {
+            "code": "A411",
+            "name": "Sepsis due to other specified staphylococcus",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 251,
+        "fields": {
+            "code": "A412",
+            "name": "Sepsis due to unspecified staphylococcus",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 252,
+        "fields": {
+            "code": "A413",
+            "name": "Sepsis due to Hemophilus influenzae",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 253,
+        "fields": {
+            "code": "A414",
+            "name": "Sepsis due to anaerobes",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 254,
+        "fields": {
+            "code": "A4150",
+            "name": "Gram-negative sepsis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 255,
+        "fields": {
+            "code": "A4151",
+            "name": "Sepsis due to Escherichia coli [E. coli]",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 256,
+        "fields": {
+            "code": "A4152",
+            "name": "Sepsis due to Pseudomonas",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 257,
+        "fields": {
+            "code": "A4153",
+            "name": "Sepsis due to Serratia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 258,
+        "fields": {
+            "code": "A4159",
+            "name": "Other Gram-negative sepsis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 259,
+        "fields": {
+            "code": "A4181",
+            "name": "Sepsis due to Enterococcus",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 260,
+        "fields": {
+            "code": "A4189",
+            "name": "Other specified sepsis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 261,
+        "fields": {
+            "code": "A419",
+            "name": "Sepsis, unspecified organism",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 262,
+        "fields": {
+            "code": "A420",
+            "name": "Pulmonary actinomycosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 263,
+        "fields": {
+            "code": "A421",
+            "name": "Abdominal actinomycosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 264,
+        "fields": {
+            "code": "A422",
+            "name": "Cervicofacial actinomycosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 265,
+        "fields": {
+            "code": "A427",
+            "name": "Actinomycotic sepsis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 266,
+        "fields": {
+            "code": "A4281",
+            "name": "Actinomycotic meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 267,
+        "fields": {
+            "code": "A4282",
+            "name": "Actinomycotic encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 268,
+        "fields": {
+            "code": "A4289",
+            "name": "Other forms of actinomycosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 269,
+        "fields": {
+            "code": "A429",
+            "name": "Actinomycosis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 270,
+        "fields": {
+            "code": "A430",
+            "name": "Pulmonary nocardiosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 271,
+        "fields": {
+            "code": "A431",
+            "name": "Cutaneous nocardiosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 272,
+        "fields": {
+            "code": "A438",
+            "name": "Other forms of nocardiosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 273,
+        "fields": {
+            "code": "A439",
+            "name": "Nocardiosis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 274,
+        "fields": {
+            "code": "A440",
+            "name": "Systemic bartonellosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 275,
+        "fields": {
+            "code": "A441",
+            "name": "Cutaneous and mucocutaneous bartonellosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 276,
+        "fields": {
+            "code": "A448",
+            "name": "Other forms of bartonellosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 277,
+        "fields": {
+            "code": "A449",
+            "name": "Bartonellosis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 278,
+        "fields": {
+            "code": "A46",
+            "name": "Erysipelas",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 279,
+        "fields": {
+            "code": "A480",
+            "name": "Gas gangrene",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 280,
+        "fields": {
+            "code": "A481",
+            "name": "Legionnaires' disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 281,
+        "fields": {
+            "code": "A482",
+            "name": "Nonpneumonic Legionnaires' disease [Pontiac fever]",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 282,
+        "fields": {
+            "code": "A483",
+            "name": "Toxic shock syndrome",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 283,
+        "fields": {
+            "code": "A484",
+            "name": "Brazilian purpuric fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 284,
+        "fields": {
+            "code": "A4851",
+            "name": "Infant botulism",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 285,
+        "fields": {
+            "code": "A4852",
+            "name": "Wound botulism",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 286,
+        "fields": {
+            "code": "A488",
+            "name": "Other specified bacterial diseases",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 557,
+        "fields": {
+            "code": "A950",
+            "name": "Sylvatic yellow fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 287,
+        "fields": {
+            "code": "A4901",
+            "name": "Methicillin suscep staph infection, unsp site",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 288,
+        "fields": {
+            "code": "A4902",
+            "name": "Methicillin resis staph infection, unsp site",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 289,
+        "fields": {
+            "code": "A491",
+            "name": "Streptococcal infection, unspecified site",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 290,
+        "fields": {
+            "code": "A492",
+            "name": "Hemophilus influenzae infection, unspecified site",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 291,
+        "fields": {
+            "code": "A493",
+            "name": "Mycoplasma infection, unspecified site",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 292,
+        "fields": {
+            "code": "A498",
+            "name": "Other bacterial infections of unspecified site",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 293,
+        "fields": {
+            "code": "A499",
+            "name": "Bacterial infection, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 294,
+        "fields": {
+            "code": "A5001",
+            "name": "Early congenital syphilitic oculopathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 295,
+        "fields": {
+            "code": "A5002",
+            "name": "Early congenital syphilitic osteochondropathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 296,
+        "fields": {
+            "code": "A5003",
+            "name": "Early congenital syphilitic pharyngitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 297,
+        "fields": {
+            "code": "A5004",
+            "name": "Early congenital syphilitic pneumonia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 298,
+        "fields": {
+            "code": "A5005",
+            "name": "Early congenital syphilitic rhinitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 299,
+        "fields": {
+            "code": "A5006",
+            "name": "Early cutaneous congenital syphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 300,
+        "fields": {
+            "code": "A5007",
+            "name": "Early mucocutaneous congenital syphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 301,
+        "fields": {
+            "code": "A5008",
+            "name": "Early visceral congenital syphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 302,
+        "fields": {
+            "code": "A5009",
+            "name": "Other early congenital syphilis, symptomatic",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 303,
+        "fields": {
+            "code": "A501",
+            "name": "Early congenital syphilis, latent",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 304,
+        "fields": {
+            "code": "A502",
+            "name": "Early congenital syphilis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 305,
+        "fields": {
+            "code": "A5030",
+            "name": "Late congenital syphilitic oculopathy, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 306,
+        "fields": {
+            "code": "A5031",
+            "name": "Late congenital syphilitic interstitial keratitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 307,
+        "fields": {
+            "code": "A5032",
+            "name": "Late congenital syphilitic chorioretinitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 308,
+        "fields": {
+            "code": "A5039",
+            "name": "Other late congenital syphilitic oculopathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 309,
+        "fields": {
+            "code": "A5040",
+            "name": "Late congenital neurosyphilis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 310,
+        "fields": {
+            "code": "A5041",
+            "name": "Late congenital syphilitic meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 311,
+        "fields": {
+            "code": "A5042",
+            "name": "Late congenital syphilitic encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 312,
+        "fields": {
+            "code": "A5043",
+            "name": "Late congenital syphilitic polyneuropathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 313,
+        "fields": {
+            "code": "A5044",
+            "name": "Late congenital syphilitic optic nerve atrophy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 314,
+        "fields": {
+            "code": "A5045",
+            "name": "Juvenile general paresis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 315,
+        "fields": {
+            "code": "A5049",
+            "name": "Other late congenital neurosyphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 316,
+        "fields": {
+            "code": "A5051",
+            "name": "Clutton's joints",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 317,
+        "fields": {
+            "code": "A5052",
+            "name": "Hutchinson's teeth",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 318,
+        "fields": {
+            "code": "A5053",
+            "name": "Hutchinson's triad",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 319,
+        "fields": {
+            "code": "A5054",
+            "name": "Late congenital cardiovascular syphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 320,
+        "fields": {
+            "code": "A5055",
+            "name": "Late congenital syphilitic arthropathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 321,
+        "fields": {
+            "code": "A5056",
+            "name": "Late congenital syphilitic osteochondropathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 322,
+        "fields": {
+            "code": "A5057",
+            "name": "Syphilitic saddle nose",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 323,
+        "fields": {
+            "code": "A5059",
+            "name": "Other late congenital syphilis, symptomatic",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 324,
+        "fields": {
+            "code": "A506",
+            "name": "Late congenital syphilis, latent",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 325,
+        "fields": {
+            "code": "A507",
+            "name": "Late congenital syphilis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 326,
+        "fields": {
+            "code": "A509",
+            "name": "Congenital syphilis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 327,
+        "fields": {
+            "code": "A510",
+            "name": "Primary genital syphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 328,
+        "fields": {
+            "code": "A511",
+            "name": "Primary anal syphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 329,
+        "fields": {
+            "code": "A512",
+            "name": "Primary syphilis of other sites",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 330,
+        "fields": {
+            "code": "A5131",
+            "name": "Condyloma latum",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 331,
+        "fields": {
+            "code": "A5132",
+            "name": "Syphilitic alopecia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 332,
+        "fields": {
+            "code": "A5139",
+            "name": "Other secondary syphilis of skin",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 333,
+        "fields": {
+            "code": "A5141",
+            "name": "Secondary syphilitic meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 334,
+        "fields": {
+            "code": "A5142",
+            "name": "Secondary syphilitic female pelvic disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 335,
+        "fields": {
+            "code": "A5143",
+            "name": "Secondary syphilitic oculopathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 336,
+        "fields": {
+            "code": "A5144",
+            "name": "Secondary syphilitic nephritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 337,
+        "fields": {
+            "code": "A5145",
+            "name": "Secondary syphilitic hepatitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 338,
+        "fields": {
+            "code": "A5146",
+            "name": "Secondary syphilitic osteopathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 339,
+        "fields": {
+            "code": "A5149",
+            "name": "Other secondary syphilitic conditions",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 340,
+        "fields": {
+            "code": "A515",
+            "name": "Early syphilis, latent",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 341,
+        "fields": {
+            "code": "A519",
+            "name": "Early syphilis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 342,
+        "fields": {
+            "code": "A5200",
+            "name": "Cardiovascular syphilis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 343,
+        "fields": {
+            "code": "A5201",
+            "name": "Syphilitic aneurysm of aorta",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 344,
+        "fields": {
+            "code": "A5202",
+            "name": "Syphilitic aortitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 345,
+        "fields": {
+            "code": "A5203",
+            "name": "Syphilitic endocarditis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 346,
+        "fields": {
+            "code": "A5204",
+            "name": "Syphilitic cerebral arteritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 347,
+        "fields": {
+            "code": "A5205",
+            "name": "Other cerebrovascular syphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 348,
+        "fields": {
+            "code": "A5206",
+            "name": "Other syphilitic heart involvement",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 349,
+        "fields": {
+            "code": "A5209",
+            "name": "Other cardiovascular syphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 350,
+        "fields": {
+            "code": "A5210",
+            "name": "Symptomatic neurosyphilis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 351,
+        "fields": {
+            "code": "A5211",
+            "name": "Tabes dorsalis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 352,
+        "fields": {
+            "code": "A5212",
+            "name": "Other cerebrospinal syphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 353,
+        "fields": {
+            "code": "A5213",
+            "name": "Late syphilitic meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 354,
+        "fields": {
+            "code": "A5214",
+            "name": "Late syphilitic encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 355,
+        "fields": {
+            "code": "A5215",
+            "name": "Late syphilitic neuropathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 356,
+        "fields": {
+            "code": "A5216",
+            "name": "Charcot's arthropathy (tabetic)",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 357,
+        "fields": {
+            "code": "A5217",
+            "name": "General paresis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 358,
+        "fields": {
+            "code": "A5219",
+            "name": "Other symptomatic neurosyphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 359,
+        "fields": {
+            "code": "A522",
+            "name": "Asymptomatic neurosyphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 360,
+        "fields": {
+            "code": "A523",
+            "name": "Neurosyphilis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 361,
+        "fields": {
+            "code": "A5271",
+            "name": "Late syphilitic oculopathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 362,
+        "fields": {
+            "code": "A5272",
+            "name": "Syphilis of lung and bronchus",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 363,
+        "fields": {
+            "code": "A5273",
+            "name": "Symptomatic late syphilis of other respiratory organs",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 364,
+        "fields": {
+            "code": "A5274",
+            "name": "Syphilis of liver and other viscera",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 365,
+        "fields": {
+            "code": "A5275",
+            "name": "Syphilis of kidney and ureter",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 366,
+        "fields": {
+            "code": "A5276",
+            "name": "Other genitourinary symptomatic late syphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 367,
+        "fields": {
+            "code": "A5277",
+            "name": "Syphilis of bone and joint",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 368,
+        "fields": {
+            "code": "A5278",
+            "name": "Syphilis of other musculoskeletal tissue",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 369,
+        "fields": {
+            "code": "A5279",
+            "name": "Other symptomatic late syphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 370,
+        "fields": {
+            "code": "A528",
+            "name": "Late syphilis, latent",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 371,
+        "fields": {
+            "code": "A529",
+            "name": "Late syphilis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 372,
+        "fields": {
+            "code": "A530",
+            "name": "Latent syphilis, unspecified as early or late",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 373,
+        "fields": {
+            "code": "A539",
+            "name": "Syphilis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 374,
+        "fields": {
+            "code": "A5400",
+            "name": "Gonococcal infection of lower genitourinary tract, unsp",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 375,
+        "fields": {
+            "code": "A5401",
+            "name": "Gonococcal cystitis and urethritis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 376,
+        "fields": {
+            "code": "A5402",
+            "name": "Gonococcal vulvovaginitis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 377,
+        "fields": {
+            "code": "A5403",
+            "name": "Gonococcal cervicitis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 378,
+        "fields": {
+            "code": "A5409",
+            "name": "Other gonococcal infection of lower genitourinary tract",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 379,
+        "fields": {
+            "code": "A541",
+            "name": "Gonocl infct of lower GU tract w periureth and acc glnd abcs",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 380,
+        "fields": {
+            "code": "A5421",
+            "name": "Gonococcal infection of kidney and ureter",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 381,
+        "fields": {
+            "code": "A5422",
+            "name": "Gonococcal prostatitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 382,
+        "fields": {
+            "code": "A5423",
+            "name": "Gonococcal infection of other male genital organs",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 383,
+        "fields": {
+            "code": "A5424",
+            "name": "Gonococcal female pelvic inflammatory disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 384,
+        "fields": {
+            "code": "A5429",
+            "name": "Other gonococcal genitourinary infections",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 385,
+        "fields": {
+            "code": "A5430",
+            "name": "Gonococcal infection of eye, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 386,
+        "fields": {
+            "code": "A5431",
+            "name": "Gonococcal conjunctivitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 387,
+        "fields": {
+            "code": "A5432",
+            "name": "Gonococcal iridocyclitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 388,
+        "fields": {
+            "code": "A5433",
+            "name": "Gonococcal keratitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 389,
+        "fields": {
+            "code": "A5439",
+            "name": "Other gonococcal eye infection",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 390,
+        "fields": {
+            "code": "A5440",
+            "name": "Gonococcal infection of musculoskeletal system, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 391,
+        "fields": {
+            "code": "A5441",
+            "name": "Gonococcal spondylopathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 392,
+        "fields": {
+            "code": "A5442",
+            "name": "Gonococcal arthritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 393,
+        "fields": {
+            "code": "A5443",
+            "name": "Gonococcal osteomyelitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 394,
+        "fields": {
+            "code": "A5449",
+            "name": "Gonococcal infection of other musculoskeletal tissue",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 395,
+        "fields": {
+            "code": "A545",
+            "name": "Gonococcal pharyngitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 396,
+        "fields": {
+            "code": "A546",
+            "name": "Gonococcal infection of anus and rectum",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 397,
+        "fields": {
+            "code": "A5481",
+            "name": "Gonococcal meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 398,
+        "fields": {
+            "code": "A5482",
+            "name": "Gonococcal brain abscess",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 399,
+        "fields": {
+            "code": "A5483",
+            "name": "Gonococcal heart infection",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 400,
+        "fields": {
+            "code": "A5484",
+            "name": "Gonococcal pneumonia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 401,
+        "fields": {
+            "code": "A5485",
+            "name": "Gonococcal peritonitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 402,
+        "fields": {
+            "code": "A5486",
+            "name": "Gonococcal sepsis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 403,
+        "fields": {
+            "code": "A5489",
+            "name": "Other gonococcal infections",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 404,
+        "fields": {
+            "code": "A549",
+            "name": "Gonococcal infection, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 405,
+        "fields": {
+            "code": "A55",
+            "name": "Chlamydial lymphogranuloma (venereum)",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 406,
+        "fields": {
+            "code": "A5600",
+            "name": "Chlamydial infection of lower genitourinary tract, unsp",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 407,
+        "fields": {
+            "code": "A5601",
+            "name": "Chlamydial cystitis and urethritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 408,
+        "fields": {
+            "code": "A5602",
+            "name": "Chlamydial vulvovaginitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 409,
+        "fields": {
+            "code": "A5609",
+            "name": "Other chlamydial infection of lower genitourinary tract",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 410,
+        "fields": {
+            "code": "A5611",
+            "name": "Chlamydial female pelvic inflammatory disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 411,
+        "fields": {
+            "code": "A5619",
+            "name": "Other chlamydial genitourinary infection",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 412,
+        "fields": {
+            "code": "A562",
+            "name": "Chlamydial infection of genitourinary tract, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 413,
+        "fields": {
+            "code": "A563",
+            "name": "Chlamydial infection of anus and rectum",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 414,
+        "fields": {
+            "code": "A564",
+            "name": "Chlamydial infection of pharynx",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 415,
+        "fields": {
+            "code": "A568",
+            "name": "Sexually transmitted chlamydial infection of other sites",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 416,
+        "fields": {
+            "code": "A57",
+            "name": "Chancroid",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 417,
+        "fields": {
+            "code": "A58",
+            "name": "Granuloma inguinale",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 418,
+        "fields": {
+            "code": "A5900",
+            "name": "Urogenital trichomoniasis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 419,
+        "fields": {
+            "code": "A5901",
+            "name": "Trichomonal vulvovaginitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 420,
+        "fields": {
+            "code": "A5902",
+            "name": "Trichomonal prostatitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 421,
+        "fields": {
+            "code": "A5903",
+            "name": "Trichomonal cystitis and urethritis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 422,
+        "fields": {
+            "code": "A5909",
+            "name": "Other urogenital trichomoniasis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 423,
+        "fields": {
+            "code": "A598",
+            "name": "Trichomoniasis of other sites",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 424,
+        "fields": {
+            "code": "A599",
+            "name": "Trichomoniasis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 425,
+        "fields": {
+            "code": "A6000",
+            "name": "Herpesviral infection of urogenital system, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 426,
+        "fields": {
+            "code": "A6001",
+            "name": "Herpesviral infection of penis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 427,
+        "fields": {
+            "code": "A6002",
+            "name": "Herpesviral infection of other male genital organs",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 428,
+        "fields": {
+            "code": "A6003",
+            "name": "Herpesviral cervicitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 429,
+        "fields": {
+            "code": "A6004",
+            "name": "Herpesviral vulvovaginitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 430,
+        "fields": {
+            "code": "A6009",
+            "name": "Herpesviral infection of other urogenital tract",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 431,
+        "fields": {
+            "code": "A601",
+            "name": "Herpesviral infection of perianal skin and rectum",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 432,
+        "fields": {
+            "code": "A609",
+            "name": "Anogenital herpesviral infection, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 433,
+        "fields": {
+            "code": "A630",
+            "name": "Anogenital (venereal) warts",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 434,
+        "fields": {
+            "code": "A638",
+            "name": "Other specified predominantly sexually transmitted diseases",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 435,
+        "fields": {
+            "code": "A64",
+            "name": "Unspecified sexually transmitted disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 436,
+        "fields": {
+            "code": "A65",
+            "name": "Nonvenereal syphilis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 437,
+        "fields": {
+            "code": "A660",
+            "name": "Initial lesions of yaws",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 438,
+        "fields": {
+            "code": "A661",
+            "name": "Multiple papillomata and wet crab yaws",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 439,
+        "fields": {
+            "code": "A662",
+            "name": "Other early skin lesions of yaws",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 440,
+        "fields": {
+            "code": "A663",
+            "name": "Hyperkeratosis of yaws",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 441,
+        "fields": {
+            "code": "A664",
+            "name": "Gummata and ulcers of yaws",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 442,
+        "fields": {
+            "code": "A665",
+            "name": "Gangosa",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 443,
+        "fields": {
+            "code": "A666",
+            "name": "Bone and joint lesions of yaws",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 444,
+        "fields": {
+            "code": "A667",
+            "name": "Other manifestations of yaws",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 445,
+        "fields": {
+            "code": "A668",
+            "name": "Latent yaws",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 446,
+        "fields": {
+            "code": "A669",
+            "name": "Yaws, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 447,
+        "fields": {
+            "code": "A670",
+            "name": "Primary lesions of pinta",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 448,
+        "fields": {
+            "code": "A671",
+            "name": "Intermediate lesions of pinta",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 449,
+        "fields": {
+            "code": "A672",
+            "name": "Late lesions of pinta",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 450,
+        "fields": {
+            "code": "A673",
+            "name": "Mixed lesions of pinta",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 451,
+        "fields": {
+            "code": "A679",
+            "name": "Pinta, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 452,
+        "fields": {
+            "code": "A680",
+            "name": "Louse-borne relapsing fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 453,
+        "fields": {
+            "code": "A681",
+            "name": "Tick-borne relapsing fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 454,
+        "fields": {
+            "code": "A689",
+            "name": "Relapsing fever, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 455,
+        "fields": {
+            "code": "A690",
+            "name": "Necrotizing ulcerative stomatitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 456,
+        "fields": {
+            "code": "A691",
+            "name": "Other Vincent's infections",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 457,
+        "fields": {
+            "code": "A6920",
+            "name": "Lyme disease, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 458,
+        "fields": {
+            "code": "A6921",
+            "name": "Meningitis due to Lyme disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 459,
+        "fields": {
+            "code": "A6922",
+            "name": "Other neurologic disorders in Lyme disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 460,
+        "fields": {
+            "code": "A6923",
+            "name": "Arthritis due to Lyme disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 461,
+        "fields": {
+            "code": "A6929",
+            "name": "Other conditions associated with Lyme disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 462,
+        "fields": {
+            "code": "A698",
+            "name": "Other specified spirochetal infections",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 463,
+        "fields": {
+            "code": "A699",
+            "name": "Spirochetal infection, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 464,
+        "fields": {
+            "code": "A70",
+            "name": "Chlamydia psittaci infections",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 465,
+        "fields": {
+            "code": "A710",
+            "name": "Initial stage of trachoma",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 466,
+        "fields": {
+            "code": "A711",
+            "name": "Active stage of trachoma",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 467,
+        "fields": {
+            "code": "A719",
+            "name": "Trachoma, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 468,
+        "fields": {
+            "code": "A740",
+            "name": "Chlamydial conjunctivitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 469,
+        "fields": {
+            "code": "A7481",
+            "name": "Chlamydial peritonitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 470,
+        "fields": {
+            "code": "A7489",
+            "name": "Other chlamydial diseases",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 471,
+        "fields": {
+            "code": "A749",
+            "name": "Chlamydial infection, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 472,
+        "fields": {
+            "code": "A750",
+            "name": "Epidemic louse-borne typhus fever d/t Rickettsia prowazekii",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 473,
+        "fields": {
+            "code": "A751",
+            "name": "Recrudescent typhus [Brill's disease]",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 474,
+        "fields": {
+            "code": "A752",
+            "name": "Typhus fever due to Rickettsia typhi",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 475,
+        "fields": {
+            "code": "A753",
+            "name": "Typhus fever due to Rickettsia tsutsugamushi",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 476,
+        "fields": {
+            "code": "A759",
+            "name": "Typhus fever, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 477,
+        "fields": {
+            "code": "A770",
+            "name": "Spotted fever due to Rickettsia rickettsii",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 478,
+        "fields": {
+            "code": "A771",
+            "name": "Spotted fever due to Rickettsia conorii",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 479,
+        "fields": {
+            "code": "A772",
+            "name": "Spotted fever due to Rickettsia siberica",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 480,
+        "fields": {
+            "code": "A773",
+            "name": "Spotted fever due to Rickettsia australis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 481,
+        "fields": {
+            "code": "A7740",
+            "name": "Ehrlichiosis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 482,
+        "fields": {
+            "code": "A7741",
+            "name": "Ehrlichiosis chafeensis [E. chafeensis]",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 483,
+        "fields": {
+            "code": "A7749",
+            "name": "Other ehrlichiosis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 484,
+        "fields": {
+            "code": "A778",
+            "name": "Other spotted fevers",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 485,
+        "fields": {
+            "code": "A779",
+            "name": "Spotted fever, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 486,
+        "fields": {
+            "code": "A78",
+            "name": "Q fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 487,
+        "fields": {
+            "code": "A790",
+            "name": "Trench fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 488,
+        "fields": {
+            "code": "A791",
+            "name": "Rickettsialpox due to Rickettsia akari",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 489,
+        "fields": {
+            "code": "A7981",
+            "name": "Rickettsiosis due to Ehrlichia sennetsu",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 490,
+        "fields": {
+            "code": "A7989",
+            "name": "Other specified rickettsioses",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 491,
+        "fields": {
+            "code": "A799",
+            "name": "Rickettsiosis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 492,
+        "fields": {
+            "code": "A800",
+            "name": "Acute paralytic poliomyelitis, vaccine-associated",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 493,
+        "fields": {
+            "code": "A801",
+            "name": "Acute paralytic poliomyelitis, wild virus, imported",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 494,
+        "fields": {
+            "code": "A802",
+            "name": "Acute paralytic poliomyelitis, wild virus, indigenous",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 495,
+        "fields": {
+            "code": "A8030",
+            "name": "Acute paralytic poliomyelitis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 496,
+        "fields": {
+            "code": "A8039",
+            "name": "Other acute paralytic poliomyelitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 497,
+        "fields": {
+            "code": "A804",
+            "name": "Acute nonparalytic poliomyelitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 498,
+        "fields": {
+            "code": "A809",
+            "name": "Acute poliomyelitis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 499,
+        "fields": {
+            "code": "A8100",
+            "name": "Creutzfeldt-Jakob disease, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 500,
+        "fields": {
+            "code": "A8101",
+            "name": "Variant Creutzfeldt-Jakob disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 501,
+        "fields": {
+            "code": "A8109",
+            "name": "Other Creutzfeldt-Jakob disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 502,
+        "fields": {
+            "code": "A811",
+            "name": "Subacute sclerosing panencephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 503,
+        "fields": {
+            "code": "A812",
+            "name": "Progressive multifocal leukoencephalopathy",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 504,
+        "fields": {
+            "code": "A8181",
+            "name": "Kuru",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 505,
+        "fields": {
+            "code": "A8182",
+            "name": "Gerstmann-Straussler-Scheinker syndrome",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 506,
+        "fields": {
+            "code": "A8183",
+            "name": "Fatal familial insomnia",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 507,
+        "fields": {
+            "code": "A8189",
+            "name": "Other atypical virus infections of central nervous system",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 508,
+        "fields": {
+            "code": "A819",
+            "name": "Atypical virus infection of central nervous system, unsp",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 509,
+        "fields": {
+            "code": "A820",
+            "name": "Sylvatic rabies",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 510,
+        "fields": {
+            "code": "A821",
+            "name": "Urban rabies",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 511,
+        "fields": {
+            "code": "A829",
+            "name": "Rabies, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 512,
+        "fields": {
+            "code": "A830",
+            "name": "Japanese encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 513,
+        "fields": {
+            "code": "A831",
+            "name": "Western equine encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 514,
+        "fields": {
+            "code": "A832",
+            "name": "Eastern equine encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 515,
+        "fields": {
+            "code": "A833",
+            "name": "St Louis encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 516,
+        "fields": {
+            "code": "A834",
+            "name": "Australian encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 517,
+        "fields": {
+            "code": "A835",
+            "name": "California encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 518,
+        "fields": {
+            "code": "A836",
+            "name": "Rocio virus disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 519,
+        "fields": {
+            "code": "A838",
+            "name": "Other mosquito-borne viral encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 520,
+        "fields": {
+            "code": "A839",
+            "name": "Mosquito-borne viral encephalitis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 521,
+        "fields": {
+            "code": "A840",
+            "name": "Far Eastern tick-borne encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 522,
+        "fields": {
+            "code": "A841",
+            "name": "Central European tick-borne encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 523,
+        "fields": {
+            "code": "A848",
+            "name": "Other tick-borne viral encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 524,
+        "fields": {
+            "code": "A849",
+            "name": "Tick-borne viral encephalitis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 525,
+        "fields": {
+            "code": "A850",
+            "name": "Enteroviral encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 526,
+        "fields": {
+            "code": "A851",
+            "name": "Adenoviral encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 527,
+        "fields": {
+            "code": "A852",
+            "name": "Arthropod-borne viral encephalitis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 528,
+        "fields": {
+            "code": "A858",
+            "name": "Other specified viral encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 529,
+        "fields": {
+            "code": "A86",
+            "name": "Unspecified viral encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 530,
+        "fields": {
+            "code": "A870",
+            "name": "Enteroviral meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 531,
+        "fields": {
+            "code": "A871",
+            "name": "Adenoviral meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 532,
+        "fields": {
+            "code": "A872",
+            "name": "Lymphocytic choriomeningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 533,
+        "fields": {
+            "code": "A878",
+            "name": "Other viral meningitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 534,
+        "fields": {
+            "code": "A879",
+            "name": "Viral meningitis, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 535,
+        "fields": {
+            "code": "A880",
+            "name": "Enteroviral exanthematous fever [Boston exanthem]",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 536,
+        "fields": {
+            "code": "A881",
+            "name": "Epidemic vertigo",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 537,
+        "fields": {
+            "code": "A888",
+            "name": "Other specified viral infections of central nervous system",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 538,
+        "fields": {
+            "code": "A89",
+            "name": "Unspecified viral infection of central nervous system",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 539,
+        "fields": {
+            "code": "A90",
+            "name": "Dengue fever [classical dengue]",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 540,
+        "fields": {
+            "code": "A91",
+            "name": "Dengue hemorrhagic fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 541,
+        "fields": {
+            "code": "A920",
+            "name": "Chikungunya virus disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 542,
+        "fields": {
+            "code": "A921",
+            "name": "O'nyong-nyong fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 543,
+        "fields": {
+            "code": "A922",
+            "name": "Venezuelan equine fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 544,
+        "fields": {
+            "code": "A9230",
+            "name": "West Nile virus infection, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 545,
+        "fields": {
+            "code": "A9231",
+            "name": "West Nile virus infection with encephalitis",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 546,
+        "fields": {
+            "code": "A9232",
+            "name": "West Nile virus infection with oth neurologic manifestation",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 547,
+        "fields": {
+            "code": "A9239",
+            "name": "West Nile virus infection with other complications",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 548,
+        "fields": {
+            "code": "A924",
+            "name": "Rift Valley fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 549,
+        "fields": {
+            "code": "A925",
+            "name": "Zika virus disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 550,
+        "fields": {
+            "code": "A928",
+            "name": "Other specified mosquito-borne viral fevers",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 551,
+        "fields": {
+            "code": "A929",
+            "name": "Mosquito-borne viral fever, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 552,
+        "fields": {
+            "code": "A930",
+            "name": "Oropouche virus disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 553,
+        "fields": {
+            "code": "A931",
+            "name": "Sandfly fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 554,
+        "fields": {
+            "code": "A932",
+            "name": "Colorado tick fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 555,
+        "fields": {
+            "code": "A938",
+            "name": "Other specified arthropod-borne viral fevers",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 556,
+        "fields": {
+            "code": "A94",
+            "name": "Unspecified arthropod-borne viral fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 558,
+        "fields": {
+            "code": "A951",
+            "name": "Urban yellow fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 559,
+        "fields": {
+            "code": "A959",
+            "name": "Yellow fever, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 560,
+        "fields": {
+            "code": "A960",
+            "name": "Junin hemorrhagic fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 561,
+        "fields": {
+            "code": "A961",
+            "name": "Machupo hemorrhagic fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 562,
+        "fields": {
+            "code": "A962",
+            "name": "Lassa fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 563,
+        "fields": {
+            "code": "A968",
+            "name": "Other arenaviral hemorrhagic fevers",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 564,
+        "fields": {
+            "code": "A969",
+            "name": "Arenaviral hemorrhagic fever, unspecified",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 565,
+        "fields": {
+            "code": "A980",
+            "name": "Crimean-Congo hemorrhagic fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 566,
+        "fields": {
+            "code": "A981",
+            "name": "Omsk hemorrhagic fever",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 567,
+        "fields": {
+            "code": "A982",
+            "name": "Kyasanur Forest disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 568,
+        "fields": {
+            "code": "A983",
+            "name": "Marburg virus disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 569,
+        "fields": {
+            "code": "A984",
+            "name": "Ebola virus disease",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 570,
+        "fields": {
+            "code": "A985",
+            "name": "Hemorrhagic fever with renal syndrome",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 571,
+        "fields": {
+            "code": "A988",
+            "name": "Other specified viral hemorrhagic fevers",
+            "audit_user_id": 1
+        }
+    },
+    {
+        "model": "medical.diagnosis",
+        "pk": 572,
+        "fields": {
+            "code": "A99",
+            "name": "Unspecified viral hemorrhagic fever",
+            "audit_user_id": 1
+        }
+    }
+]

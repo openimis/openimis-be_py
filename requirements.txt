@@ -1,7 +1,6 @@
-
 # psycopg2
 #If psycopg2 does not build on your system, try:
-psycopg2-binary
+psycopg
 cached-property
 coverage~=6.4.4
 celery>=4.4
@@ -27,8 +26,8 @@ pyodbc
 python-dateutil
 python-dotenv
 
-reportbro-lib~=2.1.1
-reportbro-fpdf~=1.7.11
+reportbro-lib~=3.12.2
+reportbro-fpdf2
 rules
 waitress
 wheel
@@ -64,3 +63,8 @@ faker
 django-csp
 sqlparse>=0.5.0 # not directly required, pinned by Snyk to avoid a vulnerability
 debugpy
+networkx
+
+# Test runner alternative to `manage.py test` - see openIMIS/pytest.ini
+pytest
+pytest-django
