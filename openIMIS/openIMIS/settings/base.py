@@ -10,7 +10,7 @@ import sys
 from ..openimisapps import openimis_apps, get_locale_folders
 from datetime import timedelta
 from .base_utils import locate_module_file
-from .common import DEBUG, BASE_DIR, MODE
+from .common import DEBUG, BASE_DIR, MODE, WEBSOCKETS_ENABLED
 from .security import REMOTE_USER_AUTHENTICATION
 
 # Makes openimis_apps available to other modules
@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     "health_check.cache",
     "health_check.storage",
     "django_apscheduler",
-    "channels",  # Websocket support
+    *(["channels"] if WEBSOCKETS_ENABLED else []),  # WebSocket support
     "developer_tools",
     "drf_spectacular",  # Swagger UI for FHIR API
     "axes",
@@ -303,7 +303,8 @@ STORAGES = {
 }
 
 
-ASGI_APPLICATION = "openIMIS.asgi.application"
+if WEBSOCKETS_ENABLED:
+    ASGI_APPLICATION = "openIMIS.asgi.application"
 
 
 # Django email settings
