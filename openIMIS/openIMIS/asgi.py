@@ -1,14 +1,11 @@
-from channels.auth import AuthMiddlewareStack
-import json
 import os
 import logging
 import django
 
-from channels.routing import ProtocolTypeRouter, URLRouter
 from importlib import import_module
 
+from django.conf import settings
 from django.core.asgi import get_asgi_application
-from django.urls import path
 from .openimisconf import load_openimis_conf
 logger = logging.getLogger(__name__)
 
@@ -35,7 +32,7 @@ def extract_websocket_urls(module):
             return []
         return module_routing
 
-    except ModuleNotFoundError as e:
+    except ModuleNotFoundError:
         logger.log(level=logging.INFO,
                    msg=F"Websocket routing for module {module['name']} not found, "
                        F"if you want to attach websocket endpoint add routing.py with websocket_urlpatterns "
@@ -53,10 +50,15 @@ def openimis_websocket_endpoints():
     return [route for module_routings in module_routings_paths for route in module_routings if route]
 
 
+django_application = get_asgi_application()
 
-routings = openimis_websocket_endpoints()
+if settings.WEBSOCKETS_ENABLED:
+    from channels.routing import ProtocolTypeRouter, URLRouter
 
-application = ProtocolTypeRouter({
-    "http": get_asgi_application(),
-    "websocket": URLRouter(routings)
-})
+    routings = openimis_websocket_endpoints()
+    application = ProtocolTypeRouter({
+        "http": django_application,
+        "websocket": URLRouter(routings)
+    })
+else:
+    application = django_application
