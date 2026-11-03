@@ -71,6 +71,29 @@ INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["apscheduler_runner", "signal_binding", "receiver_binding"]  # Signal binding should be last installed module
 IS_TESTING =  'test' in sys.argv
 
+# Tests run without a provisioned keypair, so nothing would sign a token once
+# the per-user signing key is gone, and core.auth.E001 fails the run before the
+# first test. Ephemeral, never written to disk.
+#
+# globals(), not a plain name: split_settings execs every included file into one
+# namespace, and security.py - included first - defines JWT_SIGNING_KEY on some
+# trees and not others. This fills the gap without overwriting a real key.
+if IS_TESTING and not globals().get("JWT_SIGNING_KEY"):
+    JWT_SIGNING_KEY = os.environ.get("JWT_SIGNING_KEY")
+    if not JWT_SIGNING_KEY:
+        from cryptography.hazmat.primitives import serialization
+        from cryptography.hazmat.primitives.asymmetric import rsa
+
+        JWT_SIGNING_KEY = (
+            rsa.generate_private_key(public_exponent=65537, key_size=2048)
+            .private_bytes(
+                encoding=serialization.Encoding.PEM,
+                format=serialization.PrivateFormat.PKCS8,
+                encryption_algorithm=serialization.NoEncryption(),
+            )
+            .decode()
+        )
+
 
 _CORE_EXTENSIONS = {
     "graphql_jwt_backend": (
