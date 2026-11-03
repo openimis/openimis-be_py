@@ -1,7 +1,6 @@
 import os
-from .common import DEBUG, BASE_DIR
+from .common import DEBUG
 from datetime import timedelta
-from cryptography.hazmat.primitives import serialization
 
 
 AUTH_USER_MODEL = "core.User"
@@ -39,8 +38,11 @@ GRAPHQL_JWT = {
     "JWT_EXPIRATION_DELTA": timedelta(days=1),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=30),
     "JWT_AUTH_HEADER_PREFIX": "Bearer",
+    # Setting either of these invalidates every token already in circulation; see .env.example.
+    "JWT_ISSUER": os.environ.get("JWT_ISSUER") or None,
+    "JWT_AUDIENCE": os.environ.get("JWT_AUDIENCE") or None,
     "JWT_ENCODE_HANDLER": "core.jwt.jwt_encode_user_key",
-    "JWT_DECODE_HANDLER": "core.jwt.jwt_decode_user_key",
+    "JWT_DECODE_HANDLER": "core.auth.decode",
     # This can be used to expose some resources without authentication
     "JWT_ALLOW_ANY_CLASSES": [
         "graphql_jwt.mutations.ObtainJSONWebToken",
@@ -54,28 +56,8 @@ GRAPHQL_JWT = {
     ],
 }
 
-# Load RSA keys
-private_key_path = os.path.join(BASE_DIR, 'keys', 'jwt_private_key.pem')
-public_key_path = os.path.join(BASE_DIR, 'keys', 'jwt_public_key.pem')
-
-if os.path.exists(private_key_path) and os.path.exists(public_key_path):
-    with open(private_key_path, 'rb') as f:
-        private_key = serialization.load_pem_private_key(
-            f.read(),
-            password=None,
-        )
-
-    with open(public_key_path, 'rb') as f:
-        public_key = serialization.load_pem_public_key(
-            f.read(),
-        )
-
-    # If RSA keys exist, update the algorithm and add keys to GRAPHQL_JWT settings
-    GRAPHQL_JWT.update({
-        "JWT_ALGORITHM": "RS256",
-        "JWT_PRIVATE_KEY": private_key,
-        "JWT_PUBLIC_KEY": public_key,
-    })
+# Provisioning this key is the switch to deployment-key signing; there is no mode setting.
+JWT_SIGNING_KEY = os.environ.get("JWT_SIGNING_KEY") or None
 
 
 # Lockout mechanism configuration
