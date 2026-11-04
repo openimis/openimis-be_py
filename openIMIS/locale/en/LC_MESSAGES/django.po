@@ -109,7 +109,7 @@ msgid "mutation.authentication_required"
 msgstr "User must be authenticated for this operation"
 
 msgid "claim.mutation.duplicated_claim_code"
-msgstr "Claim with code %(code) already exists"
+msgstr "Claim with code %(code)s already exists"
 
 msgid "claim.mutation.failed_to_attach_document"
 msgstr "Failed to attach document to the claim %(code)s"
@@ -133,25 +133,25 @@ msgid "core.insuree.unknown_dob"
 msgstr "Unknown date of birth"
 
 msgid "location.mutation.failed_to_create_location"
-msgstr "Failed create location %(code)"
+msgstr "Failed create location %(code)s"
 
 msgid "location.mutation.failed_to_update_location"
-msgstr "Failed to update location %(code)"
+msgstr "Failed to update location %(code)s"
 
 msgid "location.mutation.failed_to_delete_location"
-msgstr "Failed delete location %(code)"
+msgstr "Failed delete location %(code)s"
 
 msgid "location.mutation.failed_to_move_location"
-msgstr "Failed to move location %(code)"
+msgstr "Failed to move location %(code)s"
 
 msgid "location.mutation.failed_to_create_health_facility"
-msgstr "Failed create health facility %(code)"
+msgstr "Failed create health facility %(code)s"
 
 msgid "location.mutation.failed_to_update_health_facility"
-msgstr "Failed to update health facility %(code)"
+msgstr "Failed to update health facility %(code)s"
 
 msgid "location.mutation.failed_to_delete_health_facility"
-msgstr "Failed delete health facility %(code)"
+msgstr "Failed delete health facility %(code)s"
 
 msgid "policy.mutation.failed_to_create_policy"
 msgstr "Failed to create policy"
@@ -455,7 +455,7 @@ msgid "Unauthorized"
 msgstr "Unauthorized"
 
 msgid "validations.CommentValidation.validate_ticket_exists"
-msgstr "Ticket %(ticket_id) does not exist."
+msgstr "Ticket %(ticket_id)s does not exist."
 
 msgid "validations.CommentValidation.validate_commenter_exists"
 msgstr "Commenter does not exist."
@@ -464,7 +464,7 @@ msgid "validations.CommentValidation.commenter_not_associated_with_ticket"
 msgstr "Commenter not associated with ticket."
 
 msgid "validations.TicketValidation.validate_ticket_unique_code"
-msgstr "Ticket %(code) already exists."
+msgstr "Ticket %(code)s already exists."
 
 #, fuzzy
 msgid "validations.TicketValidation.invalid_reporter_type"
@@ -542,10 +542,10 @@ msgid "Missing username or password"
 msgstr "Missing username or password"
 
 msgid "core.utils.schema_validation.invalid_schema"
-msgstr "Schema is not valid %(error)"
+msgstr "Schema is not valid %(error)s"
 
 msgid "core.utils.schema_validation.invalid_json"
-msgstr "Schema json is not valid %(error)"
+msgstr "Schema json is not valid %(error)s"
 
 #, fuzzy
 msgid "%(model)s for id  %(id)s does not exists"
@@ -641,13 +641,13 @@ msgid "Group beneficiary must be associated with a benefit plan type = GROUP."
 msgstr "Group beneficiary must be associated with a benefit plan type = GROUP."
 
 msgid "social_protection.validation.benefit_plan.code_exists"
-msgstr "BenefitPlan code %(code) already exists"
+msgstr "BenefitPlan code %(code)s already exists"
 
 msgid "social_protection.validation.benefit_plan.name_exists"
-msgstr "BenefitPlan name %(name) already exists"
+msgstr "BenefitPlan name %(name)s already exists"
 
 msgid "social_protection.validation.field_empty"
-msgstr "%(field) can't be empty"
+msgstr "%(field)s can't be empty"
 
 msgid "Pending"
 msgstr "Pending"
@@ -701,7 +701,7 @@ msgid "SECONDARY"
 msgstr "SECONDARY"
 
 msgid "individual.validation.validate_undo_delete.individual_not_deleted"
-msgstr "Individual %(id) is not deleted."
+msgstr "Individual %(id)s is not deleted."
 
 msgid "individual.validation.validate_create_group_and_individual.group_individual_does_not_exist"
 msgstr "GroupIndividual does not exist."
@@ -710,7 +710,7 @@ msgid "individual.validation.check_if_group_id"
 msgstr "Missing group_id."
 
 msgid "individual.validation.validate_group_task_pending"
-msgstr "There is one task pending for the group %(group_id)."
+msgstr "There is one task pending for the group %(group_id)s."
 
 msgid "Month"
 msgstr "Month"
@@ -787,10 +787,10 @@ msgid "tasks_management.validation.entity_not_found"
 msgstr "Entity not found."
 
 msgid "tasks_management.validation.another_task_pending"
-msgstr "Another task is pending for %(instance)."
+msgstr "Another task is pending for %(instance)s."
 
 msgid "tasks_management.validation.validate_unique_task_source"
-msgstr "Task sources already assigned to task groups: %(task_groups_by_source)"
+msgstr "Task sources already assigned to task groups: %(task_groups_by_source)s"
 
 #, fuzzy
 msgid "mutation.cpb_code_duplicated"
@@ -867,13 +867,13 @@ msgid "payroll.validation.payroll.no_bills_for_filter_criteria"
 msgstr "Bills not found for given search criteria."
 
 msgid "payroll.validation.payroll.bill_already_assigned"
-msgstr "Bills %(bill_ids) already assigned to payroll."
+msgstr "Bills %(bill_ids)s already assigned to payroll."
 
 msgid "payroll.validation.payroll.name_exists"
-msgstr "Name %(name) already exists."
+msgstr "Name %(name)s already exists."
 
 msgid "payroll.validation.field_empty"
-msgstr "Field %(field) can not be empty."
+msgstr "Field %(field)s can not be empty."
 
 #, fuzzy
 msgid "mutation.product_code_duplicated"
@@ -985,10 +985,10 @@ msgid "deduplication.validations.CreateDeduplicationReviewTasksValidation.column
 msgstr "Column values missing in task data."
 
 msgid "deduplication.validations.CreateDeduplicationReviewTasksValidation.not_existing_ids"
-msgstr "No beneficiaries for ids: %(ids)"
+msgstr "No beneficiaries for ids: %(ids)s"
 
 msgid "deduplication.validations.CreateDeduplicationReviewTasksValidation.beneficiary_in_task"
-msgstr "Beneficiaries: %(beneficiaries) already in deduplication task."
+msgstr "Beneficiaries: %(beneficiaries)s already in deduplication task."
 
 msgid "unauthorized.location"
 msgstr "The user is not authorised for this location access"

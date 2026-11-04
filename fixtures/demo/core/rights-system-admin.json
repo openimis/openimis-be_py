@@ -648,5 +648,447 @@
           "LOCAL Administrator"
         ]
       }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151101",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151102",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151103",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151104",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151105",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151106",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151201",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151202",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151203",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151204",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151205",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "151206",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157101",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157102",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157103",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157104",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157105",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "157106",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190001",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190002",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190003",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "190004",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "192001",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "192002",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "192003",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "192004",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "202005",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "208001",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "209001",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "209002",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "209003",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "209004",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "209005",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
+    },
+    {
+      "model": "core.roleright",
+      "fields": {
+        "validity_from": "2025-02-25T08:59:15.575236Z",
+        "validity_to": null,
+        "legacy_id": null,
+        "right_id": "209006",
+        "audit_user_id": null,
+        "role": [
+          "LOCAL Administrator"
+        ]
+      }
     }
 ]
