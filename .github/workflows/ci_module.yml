@@ -49,26 +49,31 @@ jobs:
           python-version: '3.11'
 
       - name: Pull openIMIS Backend
+        env:
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_BASE_REF: ${{ github.event.pull_request.base.ref }}
         run: |
           # ------------------------------------------------------------------
-          # Determine which branch of openimis-be_py we should use
+          # Determine which branch of openimis-be_py we should use: the branch
+          # being tested when the assembly has one (release/26.10 -> develop is
+          # tested with the release assembly), else the PR base, else develop
           # ------------------------------------------------------------------
           if [[ "${{ github.event_name }}" == "pull_request" || "${{ github.event_name }}" == "pull_request_target" ]]; then
-            # For PRs → always use the base branch (where the PR is merged into)
-            TARGET_BRANCH="${{ github.event.pull_request.base.ref }}"
-            echo "Event is a Pull Request → using base branch: $TARGET_BRANCH"
+            SOURCE_BRANCH="$PR_HEAD_REF"
+            FALLBACK_BRANCH="$PR_BASE_REF"
           else
-            # For push (direct commit on a branch), workflow_dispatch, etc.
-            # → use the CURRENT branch name (e.g. feature/xyz, hotfix/abc, main, develop…)
-            CURRENT_BRANCH="${GITHUB_REF#refs/heads/}"
-            TARGET_BRANCH="$CURRENT_BRANCH"
-            echo "Not a PR → using current branch: $TARGET_BRANCH"
+            # push, workflow_dispatch, ...
+            SOURCE_BRANCH="${GITHUB_REF#refs/heads/}"
+            FALLBACK_BRANCH="develop"
           fi
+          FALLBACK_BRANCH="${FALLBACK_BRANCH:-develop}"
 
-          # Final fallback only if something went terribly wrong
-          if [[ -z "$TARGET_BRANCH" ]]; then
-            echo "WARNING: TARGET_BRANCH is empty! Falling back to 'develop'"
-            TARGET_BRANCH="develop"
+          if [[ -n "$SOURCE_BRANCH" ]] && git ls-remote --exit-code --heads https://github.com/openimis/openimis-be_py.git "refs/heads/$SOURCE_BRANCH" > /dev/null; then
+            TARGET_BRANCH="$SOURCE_BRANCH"
+            echo "Assembly has branch $SOURCE_BRANCH → using it"
+          else
+            TARGET_BRANCH="$FALLBACK_BRANCH"
+            echo "Assembly has no branch '$SOURCE_BRANCH' → using $TARGET_BRANCH"
           fi
 
           echo "TARGET_BRANCH=$TARGET_BRANCH" >> $GITHUB_ENV
