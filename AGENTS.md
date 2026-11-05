@@ -194,22 +194,26 @@ if not require(user, "paymentGatewayConfig", "query"):
     raise PermissionError(_("Unauthorized"))
 ```
 
-### `permissions_map.json` is generated
+### `permissions_map.json` is generated, never committed
 
-`openIMIS/permissions_map.json` is the right catalogue. **Never edit it by hand.**
-It is generated from the installed modules' code, with the key derived from each
-config key: `gql_payroll_close_perms` becomes `payroll.payroll_close`. The
-django names in `DJANGO_PERMS` do not appear in it. Regenerate it after adding
-or renaming a right, from `backend/openIMIS/`:
+The rights map (`<module>.<operation>` -> right id) depends on the modules that
+are loaded, so it is generated when needed and is not kept in this repository.
+The key is derived from each config key: `gql_payroll_close_perms` becomes
+`payroll.payroll_close`. The django names in `DJANGO_PERMS` do not appear in it.
+
+- In code and tests, call `core.utils.build_permissions_map()`; the module
+  `test_permission_declarations` tests check their ids against it.
+- To write it out, from `backend/openIMIS/`:
 
 ```bash
 OPENIMIS_CONF=../openimis-dev.json python manage.py generate_permissions_map --output ./permissions_map.json
 ```
 
-Copy the result to `../solution-builder/solution/permissions_map.json`, which must
-stay identical. Roles get their rights from the solution-builder fixtures
-(`core.roleright` rows), **never from a migration**. Before adding a new right id,
-look for a declared right that nothing checks yet and reuse it.
+A solution ships its own copy, generated with that solution's modules, in
+`../solution-builder/solution/permissions_map.json`. Roles get their rights from
+the solution-builder fixtures (`core.roleright` rows), **never from a migration**.
+Before adding a new right id, look for a declared right that nothing checks yet
+and reuse it.
 
 ## Row security
 
