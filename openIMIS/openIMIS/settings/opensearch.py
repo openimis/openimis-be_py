@@ -11,5 +11,9 @@ OPENSEARCH_DSL = {
             f"{os.environ.get('OPENSEARCH_PASSWORD')}"
         ),
         'timeout': 120,
+        # CA bundle for an https host signed by a private authority. Unset keeps
+        # opensearch-py's default (SSL_CERT_FILE/SSL_CERT_DIR, then certifi);
+        # ignored for http.
+        'ca_certs': os.environ.get('OPENSEARCH_CA_CERTS') or None,
     }
 }
