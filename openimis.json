@@ -2,11 +2,11 @@
     "modules": [
         {
             "name": "core",
-            "pip": "git+https://github.com/openimis/openimis-be-core_py.git@develop#egg=openimis-be-core"
+            "pip": "git+https://github.com/openimis/openimis-be-core_py.git@feature/OP-3317#egg=openimis-be-core"
         },
         {
             "name": "individual",
-            "pip": "git+https://github.com/openimis/openimis-be-individual_py.git@develop#egg=openimis-be-individual"
+            "pip": "git+https://github.com/openimis/openimis-be-individual_py.git@feature/OP-3317#egg=openimis-be-individual"
         },
         {
             "name": "workflow",
@@ -14,7 +14,7 @@
         },
         {
             "name": "tasks_management",
-            "pip": "git+https://github.com/openimis/openimis-be-tasks_management_py.git@develop#egg=openimis-be-tasks_management"
+            "pip": "git+https://github.com/openimis/openimis-be-tasks_management_py.git@feature/OP-3317#egg=openimis-be-tasks_management"
         },
         {
             "name": "report",
@@ -22,27 +22,27 @@
         },
         {
             "name": "location",
-            "pip": "git+https://github.com/openimis/openimis-be-location_py.git@develop#egg=openimis-be-location"
+            "pip": "git+https://github.com/openimis/openimis-be-location_py.git@feature/OP-3317#egg=openimis-be-location"
         },
         {
             "name": "medical",
-            "pip": "git+https://github.com/openimis/openimis-be-medical_py.git@develop#egg=openimis-be-medical"
+            "pip": "git+https://github.com/openimis/openimis-be-medical_py.git@feature/OP-3317#egg=openimis-be-medical"
         },
         {
             "name": "medical_pricelist",
-            "pip": "git+https://github.com/openimis/openimis-be-medical_pricelist_py.git@develop#egg=openimis-be-medical_pricelist"
+            "pip": "git+https://github.com/openimis/openimis-be-medical_pricelist_py.git@feature/OP-3317#egg=openimis-be-medical_pricelist"
         },
         {
             "name": "product",
-            "pip": "git+https://github.com/openimis/openimis-be-product_py.git@develop#egg=openimis-be-product"
+            "pip": "git+https://github.com/openimis/openimis-be-product_py.git@feature/OP-3317#egg=openimis-be-product"
         },
         {
             "name": "insuree",
-            "pip": "git+https://github.com/openimis/openimis-be-insuree_py.git@develop#egg=openimis-be-insuree"
+            "pip": "git+https://github.com/openimis/openimis-be-insuree_py.git@feature/OP-3317#egg=openimis-be-insuree"
         },
         {
             "name": "policy",
-            "pip": "git+https://github.com/openimis/openimis-be-policy_py.git@develop#egg=openimis-be-policy"
+            "pip": "git+https://github.com/openimis/openimis-be-policy_py.git@feature/OP-3317#egg=openimis-be-policy"
         },
         {
             "name": "contribution",
@@ -50,7 +50,7 @@
         },
         {
             "name": "payer",
-            "pip": "git+https://github.com/openimis/openimis-be-payer_py.git@develop#egg=openimis-be-payer"
+            "pip": "git+https://github.com/openimis/openimis-be-payer_py.git@feature/OP-3317#egg=openimis-be-payer"
         },
         {
             "name": "payment",
@@ -58,7 +58,7 @@
         },
         {
             "name": "claim",
-            "pip": "git+https://github.com/openimis/openimis-be-claim_py.git@develop#egg=openimis-be-claim"
+            "pip": "git+https://github.com/openimis/openimis-be-claim_py.git@feature/OP-3317#egg=openimis-be-claim"
         },
         {
             "name": "claim_batch",
@@ -78,19 +78,19 @@
         },
         {
             "name": "contribution_plan",
-            "pip": "git+https://github.com/openimis/openimis-be-contribution_plan_py.git@develop#egg=openimis-be-contribution_plan"
+            "pip": "git+https://github.com/openimis/openimis-be-contribution_plan_py.git@feature/OP-3317#egg=openimis-be-contribution_plan"
         },
         {
             "name": "policyholder",
-            "pip": "git+https://github.com/openimis/openimis-be-policyholder_py.git@develop#egg=openimis-be-policyholder"
+            "pip": "git+https://github.com/openimis/openimis-be-policyholder_py.git@feature/OP-3317#egg=openimis-be-policyholder"
         },
         {
             "name": "contract",
-            "pip": "git+https://github.com/openimis/openimis-be-contract_py.git@develop#egg=openimis-be-contract"
+            "pip": "git+https://github.com/openimis/openimis-be-contract_py.git@feature/OP-3317#egg=openimis-be-contract"
         },
         {
             "name": "invoice",
-            "pip": "git+https://github.com/openimis/openimis-be-invoice_py.git@develop#egg=openimis-be-invoice"
+            "pip": "git+https://github.com/openimis/openimis-be-invoice_py.git@feature/OP-3317#egg=openimis-be-invoice"
         },
         {
             "name": "calcrule_contribution_legacy",
@@ -134,7 +134,7 @@
         },
         {
             "name": "social_protection",
-            "pip": "git+https://github.com/openimis/openimis-be-social_protection_py.git@develop#egg=openimis-be-social_protection"
+            "pip": "git+https://github.com/openimis/openimis-be-social_protection_py.git@feature/OP-3317#egg=openimis-be-social_protection"
         },
         {
             "name": "opensearch_reports",
@@ -158,7 +158,7 @@
         },
         {
             "name": "grievance_social_protection",
-            "pip": "git+https://github.com/openimis/openimis-be-grievance_social_protection_py.git@develop#egg=openimis-be-grievance_social_protection"
+            "pip": "git+https://github.com/openimis/openimis-be-grievance_social_protection_py.git@feature/OP-3317#egg=openimis-be-grievance_social_protection"
         },
         {
             "name": "claim_sampling",
