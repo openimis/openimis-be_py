@@ -20,9 +20,9 @@ mssql-django~=1.6
 django-test-without-migrations
 graphene-django<3
 graphene-django-optimizer==0.8.0
-PyJWT~=2.4.0
+PyJWT~=2.15
 django-graphql-jwt==0.3.4
-markdown~=3.4.1
+markdown>=3.8.1,<4
 nepalicalendar
 pyodbc
 python-dateutil
@@ -35,7 +35,7 @@ waitress
 wheel
 whitenoise
 django-health-check<4  # 4.x splits the checks into health_check.contrib.*; settings need a rewrite
-requests~=2.32.4
+requests~=2.33
 apscheduler==3.10.1
 # As from v0.4, Django-apscheduler has a migration that is incompatible with SQL Server
 # (autoincrement int => bigint) so we are using our own fork with a squashed migration
@@ -43,7 +43,7 @@ git+https://github.com/openimis/django-apscheduler.git@django-4.2#egg=django-aps
 django-simple-history
 django-dirtyfields~=1.9
 daphne~=4.2
-GitPython~=3.1.27
+GitPython>=3.2.1,<4
 drf-spectacular~=0.28
 django-cprofile-middleware==1.0.5
 # flake8 and django-nose are needed for sonar scan in backend modules
@@ -52,6 +52,8 @@ flake8
 nepali_datetime
 
 twisted>=23.10.0rc1 # not directly required, pinned by Snyk to avoid a vulnerability
+# pillow 13.0.0 fixes the 12.x advisories, but reportbro-lib 3.12 requires Pillow<13 and
+# reportbro-lib 3.13 (Pillow 13) requires Python 3.12: raise both when moving off Python 3.11.
 pillow>=10.2.0 # not directly required, pinned by Snyk to avoid a vulnerability
 
 django-redis~=6.0
