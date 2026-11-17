@@ -125,21 +125,68 @@ def parse_po(path):
 
 # --------------------------------------------------------------------------- module layout
 
+def _setup_call(tree):
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Call):
+            func = node.func.id if isinstance(node.func, ast.Name) else getattr(node.func, "attr", None)
+            if func == "setup":
+                return {k.arg: k.value for k in node.keywords if k.arg}
+    return {}
+
+
+def _declared_packages(root, packages_arg):
+    """The packages setup.py declares: a literal list, or find_packages(...) with literal arguments."""
+    if packages_arg is None:
+        return []
+    try:
+        return list(ast.literal_eval(packages_arg))
+    except ValueError:
+        pass
+    if isinstance(packages_arg, ast.Call):
+        func = packages_arg.func
+        name = func.id if isinstance(func, ast.Name) else getattr(func, "attr", None)
+        if name in ("find_packages", "find_namespace_packages"):
+            import setuptools
+
+            args = [ast.literal_eval(a) for a in packages_arg.args]
+            kwargs = {k.arg: ast.literal_eval(k.value) for k in packages_arg.keywords if k.arg}
+            if "where" in kwargs:
+                where = kwargs.pop("where")
+            else:
+                where = args.pop(0) if args else "."
+            return getattr(setuptools, name)(os.path.join(root, where), *args, **kwargs)
+    raise ValueError("packages= is neither a literal list nor find_packages() with literal arguments")
+
+
 def find_package(root, explicit):
+    """The Django app the module ships, as declared by the packages= argument of its setup.py."""
     if explicit:
         return explicit
-    candidates = [
-        d for d in sorted(os.listdir(root))
-        if d not in SKIP_DIRS and os.path.isfile(os.path.join(root, d, "__init__.py"))
-        and os.path.isfile(os.path.join(root, d, "apps.py"))
-    ]
-    if len(candidates) == 1:
-        return candidates[0]
-    repo = os.path.basename(os.path.abspath(root))
-    match = re.match(r"^openimis-be-(.+)_py$", repo)
-    if match and match.group(1) in candidates:
-        return match.group(1)
-    sys.exit(f"Cannot tell which package to check among {candidates or 'none'}: pass --package")
+    setup_py = os.path.join(root, "setup.py")
+    if not os.path.isfile(setup_py):
+        sys.exit(f"No setup.py in {root}: pass --package")
+    with open(setup_py, encoding="utf-8") as source:
+        # Parsed, never executed: setup.py is the code under review.
+        kwargs = _setup_call(ast.parse(source.read(), setup_py))
+    try:
+        packages = _declared_packages(root, kwargs.get("packages"))
+    except ValueError as exc:
+        sys.exit(f"Cannot read the packages of {setup_py} ({exc}): pass --package")
+    apps = sorted(
+        p for p in packages
+        if "." not in p and os.path.isfile(os.path.join(root, p, "apps.py"))
+    )
+    if len(apps) == 1:
+        return apps[0]
+    # Several apps: the distribution name tells them apart (openimis-be-contribution-plan -> contribution_plan).
+    try:
+        dist = ast.literal_eval(kwargs["name"])
+    except (KeyError, ValueError):
+        dist = ""
+    guess = re.sub(r"^openimis-be-", "", dist).replace("-", "_")
+    if guess in apps:
+        return guess
+    sys.exit(f"Cannot tell which package {setup_py} ships among {apps or 'none'}: pass --package")
 
 
 def python_files(root):
