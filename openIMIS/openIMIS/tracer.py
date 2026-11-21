@@ -45,7 +45,11 @@ class TracerMiddleware:
                 
                 # Optionally add error information to the trace
                 span.set_tag("error", True)
-                span.log_kv({"exception": str(e), "traceback": traceback.format_exc()})
+                # set_data, not the OpenTracing log_kv: neither Sentry's span nor
+                # FakeSpan has log_kv, and the AttributeError then replaced the
+                # resolver's own exception (graphql-core 3 raises it synchronously).
+                span.set_data("exception", str(e))
+                span.set_data("traceback", traceback.format_exc())
                 
                 # Re-raise the exception to allow GraphQL to handle it
                 raise e

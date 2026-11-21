@@ -3,7 +3,7 @@
 #If psycopg2 does not build on your system, try:
 psycopg
 cached-property
-coverage~=6.4.4
+coverage~=7.17
 celery>=4.4
 channels~=4.3
 channels-redis~=4.3
@@ -12,16 +12,16 @@ django~=5.2.8
 djangorestframework
 # drop-in fork of django-cryptography (unmaintained, imports django.utils.baseconv removed in Django 5)
 django-cryptography-5~=2.0
-django-filter~=25.1
+django-filter~=25.2
 #django-mssql-backend is a fork for django 3 of django-pyodbc-azure (django 2.1) which is a fork of django-pyodbc (1.x)
 # Since Q3 2021, Microsoft is providing an official driver mssql-django, the engine needs to become "mssql"
 #django-mssql-backend==2.8.1
 mssql-django~=1.6
 django-test-without-migrations
-graphene-django<3
-graphene-django-optimizer==0.8.0
+graphene-django~=3.2.3
+graphene-django-optimizer==0.10.0
 PyJWT~=2.15
-django-graphql-jwt==0.3.4
+django-graphql-jwt==0.4.0
 markdown>=3.8.1,<4
 nepalicalendar
 pyodbc
@@ -34,12 +34,12 @@ rules
 waitress
 wheel
 whitenoise
-django-health-check<4  # 4.x splits the checks into health_check.contrib.*; settings need a rewrite
+django-health-check~=4.8.0  # 4.9+ needs Python 3.14, 4.11+ Django 6
 requests~=2.33
 apscheduler==3.10.1
 # As from v0.4, Django-apscheduler has a migration that is incompatible with SQL Server
 # (autoincrement int => bigint) so we are using our own fork with a squashed migration
-git+https://github.com/openimis/django-apscheduler.git@django-4.2#egg=django-apscheduler
+django-apscheduler~=0.7.0  # upstream now has the select_for_update fixes of the openimis fork
 django-simple-history
 django-dirtyfields~=1.9
 daphne~=4.2
@@ -54,10 +54,10 @@ nepali_datetime
 twisted>=23.10.0rc1 # not directly required, pinned by Snyk to avoid a vulnerability
 # pillow 13.0.0 fixes the 12.x advisories, but reportbro-lib 3.12 requires Pillow<13 and
 # reportbro-lib 3.13 (Pillow 13) requires Python 3.12: raise both when moving off Python 3.11.
-pillow>=10.2.0 # not directly required, pinned by Snyk to avoid a vulnerability
+pillow>=10.2.0,<13 # not directly required, pinned by Snyk to avoid a vulnerability
 
 django-redis~=6.0
-django-opensearch-dsl==0.5.1
+django-opensearch-dsl==0.8.0
 
 zxcvbn~=4.4.28
 password-validator==1.0
