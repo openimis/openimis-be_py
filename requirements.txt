@@ -1,4 +1,4 @@
-
+ 
 # psycopg2
 #If psycopg2 does not build on your system, try:
 psycopg
@@ -27,7 +27,7 @@ nepalicalendar
 pyodbc
 python-dateutil
 python-dotenv
-
+ 
 reportbro-lib~=3.12.2
 reportbro-fpdf2
 rules
@@ -50,15 +50,15 @@ django-cprofile-middleware==1.0.5
 flake8
 # TODO remove to a separate file for implementations and change test workflows to reflect that
 nepali_datetime
-
+ 
 twisted>=23.10.0rc1 # not directly required, pinned by Snyk to avoid a vulnerability
 # pillow 13.0.0 fixes the 12.x advisories, but reportbro-lib 3.12 requires Pillow<13 and
 # reportbro-lib 3.13 (Pillow 13) requires Python 3.12: raise both when moving off Python 3.11.
 pillow>=10.2.0,<13 # not directly required, pinned by Snyk to avoid a vulnerability
-
+ 
 django-redis~=6.0
 django-opensearch-dsl==0.8.0
-
+ 
 zxcvbn~=4.4.28
 password-validator==1.0
 django-axes~=8.0
@@ -68,7 +68,9 @@ django-csp
 sqlparse>=0.6.1 # not directly required, pinned by Snyk to avoid a vulnerability
 debugpy
 networkx
-
+django-hordak==2.0.0
+ 
 # Test runner alternative to `manage.py test` - see openIMIS/pytest.ini
 pytest
 pytest-django
+ 

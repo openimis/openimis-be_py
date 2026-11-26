@@ -149,6 +149,10 @@
             "pip": "git+https://github.com/openimis/openimis-be-calcrule_social_protection_py.git@develop#egg=openimis-be-calcrule_social_protection"
         },
         {
+            "name": "calcrule_timesheet",
+            "pip": "git+https://github.com/openimis/openimis-be-calcrule_timesheet_py.git@develop#egg=openimis-be-calcrule_timesheet"
+        },
+        {
             "name": "payroll",
             "pip": "git+https://github.com/openimis/openimis-be-payroll_py.git@develop#egg=openimis-be-payroll"
         },
@@ -171,6 +175,10 @@
         {
             "name": "api_etl",
             "pip": "git+https://github.com/openimis/openimis-be-api_etl_py.git@develop#egg=openimis-be-api_etl"
+        },
+		{
+          "name": "ledger",
+          "pip": "git+https://github.com/Y-Note-SAS/openimis-be-ledger_py.git@develop#egg=openimis-be-ledger"
         }
     ]
 }

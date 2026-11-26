@@ -7,6 +7,9 @@ on:
       SONAR_TOKEN:
         description: 'A sonar access token passed from the caller workflow'
         required: false
+      LOKALISE_APIKEY:
+        description: 'Read-only Lokalise token for the i18n job; without it the Lokalise check is skipped'
+        required: false
     inputs:
       SONAR_PROJECT_KEY:
         description: 'SonarQube Project Key'
@@ -37,6 +40,12 @@ on:
         required: false
         type: string
         default: 'develop'
+      i18nBlocking:
+        # Report-only while modules still carry translation errors; flip the
+        # default to true once every calling module is clean.
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   build_backend:
@@ -400,6 +409,72 @@ jobs:
       #   with:
       #     name: coverage.xml
       #     path: ./openimis/openIMIS/coverage
+  i18n:
+    name: Translations (en catalogue, packaging, Lokalise)
+    # Its own job, without the assembly install, so a translation finding never
+    # hides the test results.
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+
+      - name: Pull the i18n check from openIMIS Backend
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_BASE_REF: ${{ github.event.pull_request.base.ref }}
+          REF_NAME: ${{ github.ref_name }}
+        # Same branch resolution as build_backend, so both jobs use one be_py.
+        run: |
+          if [[ "$EVENT_NAME" == "pull_request" || "$EVENT_NAME" == "pull_request_target" ]]; then
+            SOURCE_BRANCH="$PR_HEAD_REF"
+            TARGET_BRANCH="${PR_BASE_REF:-develop}"
+          else
+            SOURCE_BRANCH="$REF_NAME"
+            TARGET_BRANCH="develop"
+          fi
+          for BRANCH in "$SOURCE_BRANCH" "$TARGET_BRANCH" develop; do
+            if [[ -n "$BRANCH" ]] && git ls-remote --exit-code --heads https://github.com/openimis/openimis-be_py.git "refs/heads/$BRANCH" > /dev/null; then
+              echo "i18n check from openimis-be_py@$BRANCH"
+              git clone --depth=1 --filter=blob:none --sparse --branch="$BRANCH" \
+                https://github.com/openimis/openimis-be_py.git ./openimis
+              git -C ./openimis sparse-checkout set script
+              break
+            fi
+          done
+          if [ ! -f ./openimis/script/i18n_check.py ]; then
+            echo "::warning::No script/i18n_check.py in the resolved openimis-be_py branch; i18n check skipped"
+          fi
+
+      - name: Copy Current branch
+        uses: actions/checkout@v7
+        with:
+          path: './current-module'
+
+      - name: Install gettext
+        if: hashFiles('openimis/script/i18n_check.py') != ''
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gettext
+          python -m pip install --upgrade pip setuptools wheel
+
+      - name: Check translations
+        if: hashFiles('openimis/script/i18n_check.py') != ''
+        env:
+          BLOCKING: ${{ inputs.i18nBlocking }}
+          # Empty on fork PRs and when the caller does not pass it: the script
+          # then skips the Lokalise check with a warning.
+          LOKALISE_APIKEY: ${{ secrets.LOKALISE_APIKEY }}
+        run: |
+          if python openimis/script/i18n_check.py ./current-module --strict; then
+            exit 0
+          fi
+          if [ "$BLOCKING" == "true" ]; then
+            exit 1
+          fi
+          echo "::warning::The i18n check found errors (annotated above). Report-only for now: i18nBlocking is false."
   flake-8-linter:
     continue-on-error: true
     name: Run flake8 check

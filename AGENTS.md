@@ -179,6 +179,44 @@ The assembly `.flake8` (in `backend/.flake8`) also ignores `E261`, `E303`, `E741
 python -m flake8 ../backend-packages/<module>/<app_name> --ignore=W503
 ```
 
+## Translations — catalogue and check
+
+A module's catalogue lives **inside its Python package**, `<app_name>/locale/<lang>/LC_MESSAGES/django.po`,
+and `setup.py` declares it as package data:
+
+```python
+package_data={'<app_name>': ['locale/*/LC_MESSAGES/*.po']},
+```
+
+plus `recursive-include <app_name>/locale *.po` in `MANIFEST.in` for the sdist. Only `.po` files are
+committed and shipped: the assembly compiles them (`manage.py compilemessages` in the `Dockerfile`).
+A `locale/` next to `setup.py` is not installed by pip, so the API answers with raw msgids
+(`tasks_management.validation.another_task_pending` in a dialog). Some modules still have that legacy
+layout: move it with `git mv locale <app_name>/locale` when you touch their translations.
+
+Refresh the English catalogue from the module root with `script/gettext.sh`, then check it:
+
+```bash
+cd ../backend-packages/<module>
+bash ../../backend/script/gettext.sh            # writes <app_name>/locale/en/LC_MESSAGES/django.po
+python ../../backend/script/i18n_check.py .     # needs GNU gettext (xgettext)
+```
+
+`i18n_check.py` reports, as GitHub annotations in CI:
+
+- **error**: a msgid marked in the code (`_()`, `gettext_lazy`, ...) is missing from the en catalogue.
+- **warning**: `locale/` outside the package or missing from the built wheel; a key-like msgid
+  (`module.area.key`) with an empty English msgstr, which reaches the user as is; a fuzzy entry;
+  an en msgid missing in Lokalise (only when `LOKALISE_APIKEY` is set, read-only token).
+- **notice**: a catalogue msgid no longer used in the code.
+
+Msgids are key-like (`<module>.<area>.<key>`) with the English text in the en `msgstr`; a sentence msgid
+may keep an empty msgstr, since it falls back to itself. Upload new keys with `script/lokalise-upload.py`.
+
+CI runs the same check: `ci_module.yml` has an `i18n` job, report-only while the `i18nBlocking` input
+defaults to `false`. Pass `LOKALISE_APIKEY: ${{ secrets.LOKALISE_APIKEY }}` under `secrets:` in the
+module's `ci.yml` to enable the Lokalise part.
+
 ## Rights
 
 **Which actions a user may perform is declared in the module's `apps.py`, with
@@ -517,7 +555,7 @@ Two traps when correcting an existing file:
    service payload with `ServiceError` — never hand-roll an error dict or branch on
    message text.
 6. Run **Test module** launch config (or `manage.py test --keepdb <module>`).
-7. Run **flake8** on the app package.
+7. Run **flake8** on the app package, and `script/i18n_check.py` when you add or change messages.
 8. Check that every comment, docstring and message added is in **English** (see
    **Comments and messages are in English** above).
 9. Update **`docs/`** and **`README.md`** in the module repo.
