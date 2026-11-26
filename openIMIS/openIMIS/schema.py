@@ -1,6 +1,8 @@
 import graphene
 
 from core.models import Language
+from core.schema import node_field
+from django.conf import settings
 from django.utils import translation
 
 from .openimisapps import openimis_apps
@@ -50,8 +52,17 @@ for app in all_apps:
 
 
 class Query(*queries, graphene.ObjectType):
-    debug = graphene.Field(DjangoDebug, name="_debug")
-    node = graphene.relay.Node.Field()
+    # Refused to anonymous callers: node(id:) reaches every relay type by
+    # global id, including types without row security.
+    node = node_field()
+
+
+if settings.DEBUG:
+    # _debug returns the SQL of the request. It is only filled in by
+    # DjangoDebugMiddleware, itself only installed when DEBUG is on
+    # (settings/base.py), so the field is only declared then too.
+    class Query(Query):
+        debug = graphene.Field(DjangoDebug, name="_debug")
 
 
 class Mutation(*mutations, graphene.ObjectType):
