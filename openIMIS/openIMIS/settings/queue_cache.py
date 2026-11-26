@@ -1,4 +1,6 @@
 import os
+
+from .common import WEBSOCKETS_ENABLED
 import json
 
 CACHE_OBJECT_DEFAULT =  (os.environ.get("CACHE_OBJECT_DEFAULT", '').lower() == 'true')
@@ -44,7 +46,11 @@ CACHES = {
 }
 
 # Django channels require rabbitMQ server, by default it use 127.0.0.1, port 5672
-if "CHANNELS_BACKEND" in os.environ and "CHANNELS_HOST" in os.environ:
+if (
+    WEBSOCKETS_ENABLED
+    and "CHANNELS_BACKEND" in os.environ
+    and "CHANNELS_HOST" in os.environ
+):
     CHANNEL_LAYERS = {
         "default": {
             "BACKEND": os.environ.get("CHANNELS_BACKEND"),

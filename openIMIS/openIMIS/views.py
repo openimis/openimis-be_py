@@ -12,6 +12,28 @@ from graphene_django.settings import graphene_settings
 from graphene_django.views import GraphQLView as BaseGraphQLView, HttpError
 import logging
 
+try:
+    # core owns the error taxonomy; an older core simply keeps graphene's
+    # formatting, the same way base.py degrades for missing core middleware.
+    from core.gql_errors import (
+        format_error as format_openimis_error,
+        is_client_safe,
+    )
+except ImportError:  # pragma: no cover - depends on the installed core version
+    format_openimis_error = None
+    is_client_safe = None
+
+try:
+    from sentry_sdk import capture_exception
+    from sentry_sdk.integrations.logging import ignore_logger
+except ImportError:  # sentry_sdk is optional (see sentry-requirements.txt)
+    def capture_exception(_exception):
+        """No-op when sentry_sdk is not installed."""
+        return None
+
+    def ignore_logger(_name):
+        return None
+
 logger = logging.getLogger(__name__)
 
 
@@ -72,6 +94,17 @@ class GraphQLView(BaseGraphQLView):
             )
             span.set_tag("status_code", status_code)
         return result, status_code
+
+    @staticmethod
+    def format_error(error):
+        """Render errors with a stable ``extensions.code`` for clients to match.
+
+        Without this, clients are left matching translated message text, and an
+        unexpected exception reaches them as its raw string.
+        """
+        if format_openimis_error is None:
+            return BaseGraphQLView.format_error(error)
+        return format_openimis_error(error)
 
     def get_context(self, request):
         request.dataloaders = get_dataloaders()
@@ -150,6 +183,12 @@ class GraphQLView(BaseGraphQLView):
             return ExecutionResult(errors=[e], invalid=True)
 
 
+# capture_exception() below reports these explicitly, so let Sentry's logging
+# integration skip this logger rather than raise a second event for the same
+# exception.
+ignore_logger(__name__)
+
+
 class OpenIMISGraphQLView(GraphQLView):
     def execute_graphql_request(self, *args, **kwargs):
         """Extract any exceptions and send them to Sentry"""
@@ -159,8 +198,30 @@ class OpenIMISGraphQLView(GraphQLView):
         return result
 
     def _capture_sentry_exceptions(self, errors):
+        """Log and report the failures worth acting on.
+
+        graphql-core catches resolver exceptions and collects them into the
+        result, so they never propagate and Sentry's Django integration never
+        sees them: they have to be reported from here.
+
+        Only errors whose message is withheld from the client are reported. The
+        rest -- an expired session, a permission denial, a malformed query --
+        are the API behaving as designed; reporting those buried the actionable
+        failures among them. They stay at INFO in the application log.
+        """
         for error in errors:
-            try:
-                logger.error(error.original_error)
-            except AttributeError:
-                logger.error(error)
+            original = getattr(error, "original_error", None) or error
+
+            if is_client_safe is not None and is_client_safe(error):
+                logger.info("GraphQL client error: %s", original)
+                continue
+
+            # exc_info regardless of DEBUG: for an error whose message the
+            # client never saw, this log line is the only record of what
+            # actually happened.
+            logger.error(
+                "Unexpected GraphQL error: %s",
+                type(original).__name__,
+                exc_info=original,
+            )
+            capture_exception(original)

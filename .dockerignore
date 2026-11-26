@@ -1,0 +1,38 @@
+# Local environment — MUST stay out of the image: contains DB/OpenSearch
+# credentials and OPENIMIS_CONF, which would override openimis.json at runtime.
+.env
+**/.env
+
+# VCS and editor state
+.git
+.gitignore
+.github
+.vscode
+.idea
+
+# Python build artefacts
+**/__pycache__
+**/*.py[cod]
+.pytest_cache
+.coverage
+htmlcov
+
+# Local logs and scratch output
+*.log
+db-queries.log
+debug.log
+
+# Local audit / working notes, not part of the app
+access_control_audit.md
+rbac_audit_round2.md
+rights_audit_compiled.md
+rights_conversion_compiled.md
+rights_declaration_worksheet.md
+docs_rights_conversion_task.md
+docs_rights_module_checklist.md
+mr.txt
+defined_perms.txt
+expected_perms.txt
+extracted_translations_be
+extracted_translations_be.zip
+script/modules-requirements-openimis-dev.txt

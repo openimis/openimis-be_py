@@ -160,6 +160,9 @@ class Command(BaseCommand):
                 }
                 valid_names.update(['pk', 'id'])
                 fields = {k: v for k, v in fields.items() if k in valid_names}
+                # Columns the fixture actually carried: used below to recognise a
+                # row that a previous run already loaded.
+                fixture_field_names = set(fields) - {'pk', 'id'}
 
                 # Safely remap fixture 'pk' (top-level natural key value) to the model's actual PK field name.
                 # This prevents "Model() got unexpected keyword argument: 'pk'" on models whose PK field
@@ -194,6 +197,7 @@ class Command(BaseCommand):
                         ))
                     raise
                 instance._raw_fks = raw_fks
+                instance._fixture_fields = fixture_field_names
                 collected_objects[model_name].append(instance)
         self.stdout.write(f"Phase 2: Instantiated {sum(len(v) for v in collected_objects.values())} objects")
         return collected_objects
@@ -332,18 +336,8 @@ class Command(BaseCommand):
             for instance in objects:
                 self._resolve_instance_fks(instance, collected_objects, mandatory_only=mandatory_only)
 
-            # Bulk create
-            self.stdout.write(f"   → Bulk to be created {len(objects)} {model_name} objects")
-            # Save individually to ensure PKs are set
-            saved_count = 0
-            for instance in objects:
-                try:
-                    instance.save()
-                    saved_count += 1
-                except IntegrityError:
-                    self.stdout.write(f"   → Skipped existing {model_name} instance")
-            self.stdout.write(f"   → Saved {saved_count} {model_name} objects")
-
+            self.stdout.write(f"   → Processing {len(objects)} {model_name} objects")
+            self._save_all(model_name, objects)
             # PKs are set by save()
 
     def _bulk_create_with_temporary_nulls(self, collected_objects):
@@ -357,15 +351,85 @@ class Command(BaseCommand):
                 # Only resolve mandatory FKs + already-created objects
                 self._resolve_instance_fks(instance, collected_objects, mandatory_only=True)
 
-            # Save individually
-            saved_count = 0
-            for instance in objects:
-                try:
+            self._save_all(model_name, objects, suffix=" (nullable FKs deferred)")
+
+    # Columns that say *when* or *by whom* a row was written rather than *what*
+    # it is: they can never take part in recognising an already-loaded row.
+    IDENTITY_EXCLUDED = frozenset({
+        'validity_from', 'validity_to', 'legacy_id', 'audit_user_id', 'audit_user',
+        'date_created', 'date_updated', 'user_created', 'user_updated',
+        'version', 'is_deleted', 'json_ext',
+    })
+
+    def _identity_lookup(self, instance):
+        """Filter kwargs identifying the row this fixture entry stands for.
+
+        Fixtures carry no pk, so without this every run re-INSERTs the whole file
+        (that is how tblRole ended up with ten copies of each role). We match on a
+        natural key when the model has one, otherwise on every descriptive column
+        the fixture supplied -- for core.roleright that is (role, right_id).
+        """
+        Model = instance.__class__
+        provided = getattr(instance, '_fixture_fields', set())
+        raw_fks = getattr(instance, '_raw_fks', {})
+
+        for natural in ('uuid', 'code'):
+            if natural in provided and getattr(instance, natural, None):
+                return {natural: getattr(instance, natural)}
+
+        lookup = {}
+        for field in Model._meta.concrete_fields:
+            if field.primary_key or field.name in self.IDENTITY_EXCLUDED:
+                continue
+            if field.name not in provided:
+                continue
+            value = getattr(instance, field.attname)
+            if value is None and field.name in raw_fks:
+                # FK not resolved yet: matching on NULL would hit unrelated rows
+                return {}
+            lookup[field.attname] = value
+        return lookup
+
+    def _adopt_existing_pk(self, instance):
+        """Point the instance at the row it repeats, so save() updates in place."""
+        if instance.pk:
+            return True
+        lookup = self._identity_lookup(instance)
+        if not lookup:
+            return False
+        existing_pk = (instance.__class__._default_manager
+                       .filter(**lookup)
+                       .values_list('pk', flat=True)
+                       .first())
+        if existing_pk is None:
+            return False
+        instance.pk = existing_pk
+        instance._state.adding = False
+        return True
+
+    def _save_all(self, model_name, objects, suffix=''):
+        """Save each instance, reusing the row a previous run already created."""
+        created = updated = skipped = 0
+        for instance in objects:
+            existing = self._adopt_existing_pk(instance)
+            try:
+                # Savepoint: on PostgreSQL an IntegrityError aborts the whole
+                # transaction unless it is contained in a nested atomic block,
+                # so without this a single skip poisons every later save.
+                with transaction.atomic():
                     instance.save()
-                    saved_count += 1
-                except IntegrityError:
-                    self.stdout.write(f"   → Skipped existing {model_name} instance")
-            self.stdout.write(f"   → Saved {saved_count} {model_name} objects (nullable FKs deferred)")
+            except IntegrityError as exc:
+                skipped += 1
+                self.stdout.write(self.style.WARNING(
+                    f"   \u2192 Skipped {model_name} instance: {exc}"))
+                continue
+            if existing:
+                updated += 1
+            else:
+                created += 1
+        self.stdout.write(
+            f"   \u2192 {model_name}: {created} created, {updated} updated, "
+            f"{skipped} skipped{suffix}")
 
     def _resolve_instance_fks(self, instance, collected_objects, mandatory_only=False):
         """Resolve FKs preferring ID maps (fast + reliable)"""

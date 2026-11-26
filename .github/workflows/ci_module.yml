@@ -7,6 +7,9 @@ on:
       SONAR_TOKEN:
         description: 'A sonar access token passed from the caller workflow'
         required: false
+      LOKALISE_APIKEY:
+        description: 'Read-only Lokalise token for the i18n job; without it the Lokalise check is skipped'
+        required: false
     inputs:
       SONAR_PROJECT_KEY:
         description: 'SonarQube Project Key'
@@ -37,6 +40,12 @@ on:
         required: false
         type: string
         default: 'develop'
+      i18nBlocking:
+        # Report-only while modules still carry translation errors; flip the
+        # default to true once every calling module is clean.
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   build_backend:
@@ -44,31 +53,36 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
       - name: Pull openIMIS Backend
+        env:
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_BASE_REF: ${{ github.event.pull_request.base.ref }}
         run: |
           # ------------------------------------------------------------------
-          # Determine which branch of openimis-be_py we should use
+          # Determine which branch of openimis-be_py we should use: the branch
+          # being tested when the assembly has one (release/26.10 -> develop is
+          # tested with the release assembly), else the PR base, else develop
           # ------------------------------------------------------------------
           if [[ "${{ github.event_name }}" == "pull_request" || "${{ github.event_name }}" == "pull_request_target" ]]; then
-            # For PRs → always use the base branch (where the PR is merged into)
-            TARGET_BRANCH="${{ github.event.pull_request.base.ref }}"
-            echo "Event is a Pull Request → using base branch: $TARGET_BRANCH"
+            SOURCE_BRANCH="$PR_HEAD_REF"
+            FALLBACK_BRANCH="$PR_BASE_REF"
           else
-            # For push (direct commit on a branch), workflow_dispatch, etc.
-            # → use the CURRENT branch name (e.g. feature/xyz, hotfix/abc, main, develop…)
-            CURRENT_BRANCH="${GITHUB_REF#refs/heads/}"
-            TARGET_BRANCH="$CURRENT_BRANCH"
-            echo "Not a PR → using current branch: $TARGET_BRANCH"
+            # push, workflow_dispatch, ...
+            SOURCE_BRANCH="${GITHUB_REF#refs/heads/}"
+            FALLBACK_BRANCH="develop"
           fi
+          FALLBACK_BRANCH="${FALLBACK_BRANCH:-develop}"
 
-          # Final fallback only if something went terribly wrong
-          if [[ -z "$TARGET_BRANCH" ]]; then
-            echo "WARNING: TARGET_BRANCH is empty! Falling back to 'develop'"
-            TARGET_BRANCH="develop"
+          if [[ -n "$SOURCE_BRANCH" ]] && git ls-remote --exit-code --heads https://github.com/openimis/openimis-be_py.git "refs/heads/$SOURCE_BRANCH" > /dev/null; then
+            TARGET_BRANCH="$SOURCE_BRANCH"
+            echo "Assembly has branch $SOURCE_BRANCH → using it"
+          else
+            TARGET_BRANCH="$FALLBACK_BRANCH"
+            echo "Assembly has no branch '$SOURCE_BRANCH' → using $TARGET_BRANCH"
           fi
 
           echo "TARGET_BRANCH=$TARGET_BRANCH" >> $GITHUB_ENV
@@ -87,14 +101,14 @@ jobs:
           CLONED_BRANCH=$(git rev-parse --abbrev-ref HEAD)
           echo "Actually cloned branch: $CLONED_BRANCH"
       - name: Copy Current branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           # Disabling shallow clone is recommended for improving relevancy of reporting
           fetch-depth: 0
           path: './current-module'
 
       - name: Cache dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
@@ -142,13 +156,13 @@ jobs:
           tar -czf openimis.tar.gz ./openimis ./current-module
 
       - name: Upload compressed site-packages as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: site-packages
           path: site-packages.tar.gz
 
       - name: Upload build as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: code-artifacts
           path: openimis.tar.gz
@@ -176,7 +190,7 @@ jobs:
           --health-timeout 5s
           --health-retries 10
       pgsql:
-        image: ghcr.io/openimis/openimis-pgsql:develop
+        image: ghcr.io/openimis/openimis-pgsql:ci-18
         env:
           DB_HOST: localhost
           DB_PORT: 5432
@@ -192,12 +206,12 @@ jobs:
           --health-retries 10
     steps:
       - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: site-packages
           path: /tmp/
@@ -208,7 +222,7 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: code-artifacts
           path: /tmp/
@@ -217,6 +231,15 @@ jobs:
         run: |
           sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
           sudo tar -xzf /tmp/openimis.tar.gz -C .
+      - name: Install PostgreSQL 18 client
+        run: |
+          sudo install -d /usr/share/postgresql-common/pgdg
+          sudo curl -fsSL -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client-18
+          psql --version
+
       - name: Initialize PSQL
         run: |
           export DB_NAME_TEST="test_$DB_NAME"
@@ -269,7 +292,7 @@ jobs:
     needs: build_backend
     services:
       pgsql:
-        image: ghcr.io/openimis/openimis-pgsql:develop
+        image: ghcr.io/openimis/openimis-pgsql:ci-18
         env:
           DB_HOST: localhost
           DB_PORT: 5432
@@ -285,12 +308,12 @@ jobs:
           --health-retries 10
     steps:
       - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: site-packages
           path: /tmp/
@@ -301,7 +324,7 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
 
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: code-artifacts
           path: /tmp/
@@ -310,6 +333,15 @@ jobs:
         run: |
           sudo tar -xzf /tmp/site-packages.tar.gz -C ${{ env.SITE_PACKAGES }}
           sudo tar -xzf /tmp/openimis.tar.gz -C .
+      - name: Install PostgreSQL 18 client
+        run: |
+          sudo install -d /usr/share/postgresql-common/pgdg
+          sudo curl -fsSL -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client-18
+          psql --version
+
       - name: Initialize PSQL
         run: |
           if [ ${GITHUB_REF##*/} = "main" ]; then export DBBRANCH="main"; else export DBBRANCH="develop"; fi
@@ -373,10 +405,76 @@ jobs:
       #     cat coverage.xml
       # - name: Coverage results
       #   if: success() || failure()
-      #   uses: actions/upload-artifact@v4
+      #   uses: actions/upload-artifact@v7
       #   with:
       #     name: coverage.xml
       #     path: ./openimis/openIMIS/coverage
+  i18n:
+    name: Translations (en catalogue, packaging, Lokalise)
+    # Its own job, without the assembly install, so a translation finding never
+    # hides the test results.
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+
+      - name: Pull the i18n check from openIMIS Backend
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_BASE_REF: ${{ github.event.pull_request.base.ref }}
+          REF_NAME: ${{ github.ref_name }}
+        # Same branch resolution as build_backend, so both jobs use one be_py.
+        run: |
+          if [[ "$EVENT_NAME" == "pull_request" || "$EVENT_NAME" == "pull_request_target" ]]; then
+            SOURCE_BRANCH="$PR_HEAD_REF"
+            TARGET_BRANCH="${PR_BASE_REF:-develop}"
+          else
+            SOURCE_BRANCH="$REF_NAME"
+            TARGET_BRANCH="develop"
+          fi
+          for BRANCH in "$SOURCE_BRANCH" "$TARGET_BRANCH" develop; do
+            if [[ -n "$BRANCH" ]] && git ls-remote --exit-code --heads https://github.com/openimis/openimis-be_py.git "refs/heads/$BRANCH" > /dev/null; then
+              echo "i18n check from openimis-be_py@$BRANCH"
+              git clone --depth=1 --filter=blob:none --sparse --branch="$BRANCH" \
+                https://github.com/openimis/openimis-be_py.git ./openimis
+              git -C ./openimis sparse-checkout set script
+              break
+            fi
+          done
+          if [ ! -f ./openimis/script/i18n_check.py ]; then
+            echo "::warning::No script/i18n_check.py in the resolved openimis-be_py branch; i18n check skipped"
+          fi
+
+      - name: Copy Current branch
+        uses: actions/checkout@v7
+        with:
+          path: './current-module'
+
+      - name: Install gettext
+        if: hashFiles('openimis/script/i18n_check.py') != ''
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gettext
+          python -m pip install --upgrade pip setuptools wheel
+
+      - name: Check translations
+        if: hashFiles('openimis/script/i18n_check.py') != ''
+        env:
+          BLOCKING: ${{ inputs.i18nBlocking }}
+          # Empty on fork PRs and when the caller does not pass it: the script
+          # then skips the Lokalise check with a warning.
+          LOKALISE_APIKEY: ${{ secrets.LOKALISE_APIKEY }}
+        run: |
+          if python openimis/script/i18n_check.py ./current-module --strict; then
+            exit 0
+          fi
+          if [ "$BLOCKING" == "true" ]; then
+            exit 1
+          fi
+          echo "::warning::The i18n check found errors (annotated above). Report-only for now: i18nBlocking is false."
   flake-8-linter:
     continue-on-error: true
     name: Run flake8 check
@@ -384,11 +482,11 @@ jobs:
     needs: build_backend
     steps:
       - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
       - name: Download site-packages artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: site-packages
           path: /tmp/
@@ -399,7 +497,7 @@ jobs:
           echo "SITE_PACKAGES=$SITE_PACKAGES" >> $GITHUB_ENV
 
       - name: Download code artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: code-artifacts
           path: /tmp/
@@ -422,7 +520,7 @@ jobs:
           python -m flake8 $MOD_DIR --ignore W503,E501
       - name: Flake8 results upload
         if: success() || failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: flake8-report.txt
           path: ./openimis/flake8-report.txt
@@ -454,17 +552,17 @@ jobs:
   #           echo "SONAR_EXCLUSIONS=${{ inputs.SONAR_EXCLUSIONS }}" >> $GITHUB_ENV
   #         fi
   #     - name: Download coverage artifact
-  #       uses: actions/download-artifact@v4
+  #       uses: actions/download-artifact@v8
   #       with:
   #         name: coverage.xml
   #         path: report
   #     - name: Download flake8 artifact
-  #       uses: actions/download-artifact@v4
+  #       uses: actions/download-artifact@v8
   #       with:
   #         name: flake8-report.txt
   #         path: report
   #     - name: Download code artifact
-  #       uses: actions/download-artifact@v4
+  #       uses: actions/download-artifact@v8
   #       with:
   #         name: code-artifacts
   #         path: /tmp/
@@ -481,7 +579,7 @@ jobs:
   #         ls current-module -a
 
   #     - name: SonarCloud Scan
-  #       uses: SonarSource/sonarcloud-github-action@master
+  #       uses: SonarSource/sonarqube-scan-action@v8
   #       with:
   #         args: >
   #           -Dsonar.projectKey=${{ inputs.SONAR_PROJECT_KEY }}

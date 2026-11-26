@@ -1,0 +1,81 @@
+name: Publish Python module to PyPI
+
+# Shared by every backend module: its python-publish.yml calls this workflow when a
+# release is created. The version published is the release tag, written into
+# setup.py before the build, so PyPI always matches the GitHub release.
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        description: 'Tag to publish (e.g. v1.12.0); defaults to the tag of the release that triggered the caller'
+        required: false
+        type: string
+      python_version:
+        description: 'Python version used to build'
+        required: false
+        type: string
+        default: '3.x'
+    secrets:
+      PYPI_TOKEN:
+        required: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ inputs.tag || github.event.release.tag_name }}
+    steps:
+      - name: Check the tag
+        run: |
+          if [ -z "$TAG" ]; then
+            echo "::error::No tag: pass the tag input or trigger from a release"
+            exit 1
+          fi
+          echo "tag to use $TAG"
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python_version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install setuptools wheel twine packaging
+
+      - name: Write the tag version into setup.py
+        # setup.py files use both version='…' and version="…": accept either, and fail
+        # rather than silently building whatever version setup.py already holds
+        run: |
+          python - <<'EOF'
+          import os, re, sys
+          version = os.environ["TAG"].removeprefix("v")
+          with open("setup.py") as f:
+              src = f.read()
+          src, n = re.subn(r"""\bversion\s*=\s*(['"])[^'"]*\1""", f"version='{version}'", src, count=1)
+          if n != 1:
+              sys.exit("::error::no version='…' argument found in setup.py")
+          with open("setup.py", "w") as f:
+              f.write(src)
+          print(f"setup.py version set to {version}")
+          EOF
+
+      - name: Build
+        run: |
+          python setup.py sdist bdist_wheel
+          BUILT=$(python setup.py --version)
+          python -c "import sys; from packaging.version import Version as V; sys.exit(V(sys.argv[1]) != V(sys.argv[2].removeprefix('v')) and f'::error::built {sys.argv[1]}, expected {sys.argv[2]}')" "$BUILT" "$TAG"
+          ls dist
+
+      - name: Publish
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        # --skip-existing makes a re-run of an already published release a no-op
+        run: twine upload --skip-existing dist/*
