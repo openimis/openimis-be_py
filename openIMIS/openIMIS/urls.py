@@ -13,12 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import  re_path as url, include
 from django.contrib import admin
 from django.urls import path
 from django.views.decorators.csrf import csrf_exempt
 from .views import OpenIMISGraphQLView
 from graphql_jwt.decorators import jwt_cookie
+from health_check.views import HealthCheckView
 
 
 from .openimisurls import openimis_urls
@@ -30,5 +30,15 @@ urlpatterns = [
         "%sgraphql" % SITE_ROOT(),
         csrf_exempt(jwt_cookie(OpenIMISGraphQLView.as_view(graphiql=DEBUG))),
     ),
-    url(r"^ht/", include("health_check.urls")),
+    path(
+        "ht/",
+        HealthCheckView.as_view(
+            checks=[
+                "health_check.checks.Database",
+                "health_check.checks.Cache",
+                "health_check.checks.Storage",
+            ]
+        ),
+        name="health_check_home",
+    ),
 ] + openimis_urls()

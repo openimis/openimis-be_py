@@ -56,10 +56,7 @@ INSTALLED_APPS = [
     "test_without_migrations",
     "rest_framework",
     "rules",
-    "health_check",  # required
-    "health_check.db",  # stock Django health checkers
-    "health_check.cache",
-    "health_check.storage",
+    "health_check",  # templates; the checks are listed on the view in urls.py
     "django_apscheduler",
     *(["channels"] if WEBSOCKETS_ENABLED else []),  # WebSocket support
     "developer_tools",
@@ -85,6 +82,10 @@ _CORE_EXTENSIONS = {
     ),
     "graphql_rate_limit": (
         "core.middleware.GraphQLRateLimitMiddleware",
+        None,
+    ),
+    "graphql_enum_values": (
+        "core.middleware.EnumValuesMiddleware",
         None,
     ),
     "default_axes_attributes": (
@@ -270,7 +271,13 @@ GRAPHENE = {
     "SCHEMA": "openIMIS.schema.schema",
     "RELAY_CONNECTION_MAX_LIMIT": 100,
     "GRAPHIQL_HEADER_EDITOR_ENABLED": True,
+    # Keep the graphene-django 2 names of the enums generated from model choices
+    # (e.g. PolicyStatus, not PolicyPolicyStatusChoices): clients may name them
+    # in query variables.
+    "DJANGO_CHOICE_FIELD_ENUM_V2_NAMING": True,
     "MIDDLEWARE": [
+        # graphene 3 passes enum arguments as Python enum members; modules expect values.
+        *([_RESOLVED_CORE["graphql_enum_values"]] if _RESOLVED_CORE.get("graphql_enum_values") else []),
         "openIMIS.tracer.TracerMiddleware",
         "openIMIS.schema.GQLUserLanguageMiddleware",
         _RESOLVED_CORE["graphql_jwt_middleware"],
