@@ -65,7 +65,10 @@ django-csp
 sqlparse>=0.6.1 # not directly required, pinned by Snyk to avoid a vulnerability
 debugpy
 networkx
+django-hordak==2.0.0
+
 
 # Test runner alternative to `manage.py test` - see openIMIS/pytest.ini
 pytest
 pytest-django
+

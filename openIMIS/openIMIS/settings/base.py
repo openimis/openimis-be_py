@@ -66,6 +66,8 @@ INSTALLED_APPS = [
     "drf_spectacular",  # Swagger UI for FHIR API
     "axes",
     "django_opensearch_dsl",
+    "mptt",
+    "hordak"
 ]
 INSTALLED_APPS += OPENIMIS_APPS
 INSTALLED_APPS += ["apscheduler_runner", "signal_binding", "receiver_binding"]  # Signal binding should be last installed module
