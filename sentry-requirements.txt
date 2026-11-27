@@ -1,2 +1,2 @@
-sentry_sdk>=1.29
+sentry_sdk>=1.29,<3 # 3.x removed sentry_sdk.scrubber and send_default_pii, used by settings/sentry.py
 urllib3>=2.6.3 # not directly required, pinned by Snyk to avoid a vulnerability
