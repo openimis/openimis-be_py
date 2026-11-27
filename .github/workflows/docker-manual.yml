@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
     inputs:   
       tag:
+        description: 'Docker tag(s), comma or space separated, e.g. "26.10.1, 26.10"'
         required: true
       file_url:
         description: 'url (CURL compatible) of your custom openIMIS.json'
@@ -24,6 +25,14 @@ jobs:
       run: |
           curl -o ./openimis.json ${{ inputs.file_url }}
     - name: Build the openimis backend  Docker image
+      env:
+        TAGS: ${{ github.event.inputs.tag }}
       run: |
-         docker build . --tag ghcr.io/openimis/openimis-be:${{ github.event.inputs.tag }}
-         docker push ghcr.io/openimis/openimis-be:${{ github.event.inputs.tag }}
+         # one build, pushed under every tag of the comma or space separated list
+         read -ra tags <<< "${TAGS//,/ }"
+         if [ ${#tags[@]} -eq 0 ]; then echo "::error::no tag given"; exit 1; fi
+         for t in "${tags[@]}"; do
+           if ! [[ "$t" =~ ^[A-Za-z0-9_][A-Za-z0-9_.-]{0,127}$ ]]; then echo "::error::invalid docker tag: $t"; exit 1; fi
+         done
+         docker build . "${tags[@]/#/--tag=ghcr.io/openimis/openimis-be:}"
+         docker push --all-tags ghcr.io/openimis/openimis-be
