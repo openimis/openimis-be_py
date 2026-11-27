@@ -34,6 +34,5 @@ jobs:
          for t in "${tags[@]}"; do
            if ! [[ "$t" =~ ^[A-Za-z0-9_][A-Za-z0-9_.-]{0,127}$ ]]; then echo "::error::invalid docker tag: $t"; exit 1; fi
          done
-         docker build . --tag ghcr.io/openimis/openimis-be:${tags[0]}
-         for t in "${tags[@]:1}"; do docker tag ghcr.io/openimis/openimis-be:${tags[0]} ghcr.io/openimis/openimis-be:$t; done
-         for t in "${tags[@]}"; do docker push ghcr.io/openimis/openimis-be:$t; done
+         docker build . "${tags[@]/#/--tag=ghcr.io/openimis/openimis-be:}"
+         docker push --all-tags ghcr.io/openimis/openimis-be
