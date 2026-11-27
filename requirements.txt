@@ -54,7 +54,7 @@ nepali_datetime
 twisted>=23.10.0rc1 # not directly required, pinned by Snyk to avoid a vulnerability
 # pillow 13.0.0 fixes the 12.x advisories, but reportbro-lib 3.12 requires Pillow<13 and
 # reportbro-lib 3.13 (Pillow 13) requires Python 3.12: raise both when moving off Python 3.11.
-pillow>=10.2.0,<13 # not directly required, pinned by Snyk to avoid a vulnerability
+pillow>=13.0.0 # not directly required, pinned by Snyk to avoid a vulnerability
  
 django-redis~=6.0
 django-opensearch-dsl==0.8.0
@@ -74,3 +74,4 @@ django-hordak==2.0.0
 pytest
 pytest-django
  
+cryptography>=49.0.0 # not directly required, pinned by Snyk to avoid a vulnerability
